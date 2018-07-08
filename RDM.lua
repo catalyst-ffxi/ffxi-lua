@@ -591,7 +591,8 @@ function midcast_magic(spell)
         end
         if string.find(eng, 'Regen') then
           equip(sets.midcast.enhancing_regen)
-        elseif eng == 'Refresh' or eng == 'Refresh II' or eng == 'Refresh III' then
+        -- elseif eng == 'Refresh' or eng == 'Refresh II' or eng == 'Refresh III' then
+        elseif string.find(eng, 'Refresh') then
           equip(sets.midcast.enhancing_refresh)
           if spell.target.type == 'SELF' then
             equip(sets.midcast.enhancing_refresh_self)
@@ -615,7 +616,6 @@ function midcast_magic(spell)
 
   -- Enfeebles
   elseif spell.skill == 'Enfeebling Magic' then
-    -- equip(sets.staves[spell.element])
     if enfeeble_is_affected_by_potency(spell.english) then
       equip(sets.midcast.enfeebling[EnfeebleMode.current])
     else
@@ -628,7 +628,6 @@ function midcast_magic(spell)
 
   -- Nukes
   elseif spell.skill == 'Elemental Magic' then
-    -- equip(sets.staves[spell.element])
     equip(sets.midcast.elemental[NukingMode.current])
   end
 end

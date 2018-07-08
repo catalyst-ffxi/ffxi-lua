@@ -110,7 +110,7 @@ function get_sets()
     rring = "Hizamaru Ring",
     back = gear.smertrios.tp,
     waist = "Ioskeha Belt",
-    legs = gear.valorous.hose.acc,
+    legs = "Wakido Haidate +3",
     feet = "Flam. Gambieras +2"
   }
   sets.modes.AccuracyHigh = set_combine(sets.modes.Accuracy, {
@@ -232,7 +232,7 @@ function get_sets()
     -- body = "Despair Mail",
     hands = "Ryuo Tekko",
     lring = 'Asklepian Ring',
-    legs = "Wakido Haidate",
+    legs = "Wakido Haidate +3",
     -- feet = "Despair Greaves"
   }
 

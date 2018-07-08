@@ -66,7 +66,7 @@ function get_sets()
       meleeTp = { name="Camulus's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','"Store TP"+10',}},
       rangedTp = { name="Camulus's Mantle", augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','"Store TP"+10',}},
       rangedWsMagic = { name="Camulus's Mantle", augments={'AGI+20','Mag. Acc+20 /Mag. Dmg.+20','Weapon skill damage +10%',}},
-      rangedWsPhys = {},
+      rangedWsPhys = { name="Camulus's Mantle", augments={'STR+20','Rng.Acc.+20 Rng.Atk.+20','Weapon skill damage +10%',}},
       meleeWs = { name="Camulus's Mantle", augments={'STR+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
       snapShot = { name="Camulus's Mantle", augments={'"Snapshot"+10',}}
     }
@@ -165,8 +165,6 @@ function get_sets()
   --
   sets.WS = { neck = "Fotia Gorget" }
   sets.WS.RangedPhys = set_combine(sets.WS, {
-    -- ammo=gear.bullets.rangedAtt,
-    -- head=gear.herc.head.rangedWs,
     head="Meghanada Visor +2",
     body="Laksamana's Frac +3",
     hands="Meg. Gloves +2",
@@ -175,34 +173,22 @@ function get_sets()
     neck="Fotia Gorget",
     waist="Yemaya Belt",
     left_ear="Ishvara Earring",
-    -- left_ear = "Enervating earring",
-    right_ear="Moonshade Earring",
-    -- left_ring="Garuda Ring",
-    -- right_ring="Longshot Ring",
+    right_ear = "Enervating earring",
     lring = "Karieyh Ring +1",
-    -- right_ring="Arvina Ringlet +1",
     right_ring = "Dingir Ring",
-    back=gear.camulus.rangedTp
-    -- back=gear.camulus.rangedWsPhys -- TODO
+    back=gear.camulus.rangedWsPhys
   })
   sets.WS.RangedMagic = set_combine(sets.WS, {
-    -- ammo=gear.bullets.rangedAtt,
     head=gear.herc.head.magicWs,
     body="Laksamana's Frac +3",
-    -- hands="Meg. Gloves +2",
     hands = gear.carmine.hands.magic,
     legs=gear.herc.legs.magicWs,
-    -- feet=gear.herc.feet.magicWs,
     feet="Lanun Bottes +3",
-    -- neck="Fotia Gorget",
     neck = "Sanctity Necklace",
     waist="Yemaya Belt",
-    -- left_ear="Friomisi Earring",
     left_ear="Friomisi Earring",
-    right_ear="Moonshade Earring",
-    lring = "Karieyh Ring +1",
-    -- left_ring="Acumen Ring",
-    -- right_ring="Arvina Ringlet +1",
+    right_ear="Ishvara Earring",
+    left_ring = "Karieyh Ring +1",
     right_ring = "Dingir Ring",
     back=gear.camulus.rangedWsMagic
   })
@@ -222,16 +208,15 @@ function get_sets()
   }
 
   -- WS Specific
-  light_belt = { waist = "Fotia Belt" }
+  local fotiaBelt = { waist = "Fotia Belt" }
   sets.WS['Leaden Salute'] = set_combine(sets.WS.RangedMagic, {
     head = "Pixie Hairpin +1",
     body = "Lanun Frac +2",
     waist = "Svelt. Gouriz +1",
-    lring = "Arcon Ring"
-    -- waist = "Fotia Belt"
+    lring = "Archon Ring"
   })
   sets.WS['Wildfire'] = sets.WS.RangedMagic
-  sets.WS['Last Stand'] = set_combine(sets.WS.RangedPhys, light_belt)
+  sets.WS['Last Stand'] = set_combine(sets.WS.RangedPhys, fotiaBelt)
   sets.WS['Slug Shot'] = sets.WS.RangedPhys
   sets.WS['Requiescat'] = sets.WS.Melee
   sets.WS['Savage Blade'] = sets.WS.Melee
@@ -245,7 +230,7 @@ function get_sets()
     neck = "Sanctity Necklace",
     waist="Caudata Belt",
     left_ear="Friomisi Earring",
-    right_ear="Moonshade Earring",
+    right_ear="Ishvara Earring",
     left_ring="Acumen Ring",
     right_ring = "Dingir Ring",
     back=gear.camulus.rangedWsMagic
@@ -324,20 +309,17 @@ function precast(spell)
     equip(sets.Preshot)
     equip({ammo = gear.bullets.rangedAtt})
 
-  -- elseif spell.english == 'Random Deal' then
-  --   equip({ body = "Lanun Frac +2" })
-
   elseif spell.action_type == 'Magic' then
     precast_magic(spell)
 
   elseif spell.type == 'WeaponSkill' then
     equip(set_for_ws(spell.english))
-    equip({ammo = gear.bullets.rangedAtt})
+    equip({ ammo = gear.bullets.rangedAtt })
 
-    -- Dont use Moonshade if at near-capped TP
-    -- if player.tp > 2900 and spell.english == 'Leaden Salute' then
-    --   equip({right_ear = "Ishvara Earring"})
-    -- end
+    -- Equip moonshade if TP is not capped
+    if player.tp < 2900 then
+      equip({ right_ear = "Moonshade Earring" })
+    end
   end
 end
 

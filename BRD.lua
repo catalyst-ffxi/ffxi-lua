@@ -2,7 +2,7 @@ include('Modes.lua')
 
 function define_modes()
   Capacity = M(false, 'Capacity Mantle')
-  DummySongs = S{"Army's Paeon","Gold Capriccio","Shining Fantasia","Herb Pastoral","Goblin Gavotte"}
+  DummySongs = S{"Swift Etude", "Bewitching Etude", "Enchanting Etude"}
 end
 
 function define_aliases()
@@ -21,8 +21,19 @@ function get_sets()
 
   -- Modes
   sets.Idle = {
-    -- main = "Kali"
+    main = "Kali",
     -- sub = ""
+    head = "Inyanga Tiara",
+    left_ear = "Flashward Earring",
+    right_ear = "Novia Earring",
+    body = "Inyanga Jubbah",
+    hands = "Inyanga Dastanas",
+    left_ring = "Prolix Ring",
+    right_ring = "Inyanga Ring",
+    back = "Intarabus's Cape",
+    waist = "Witful Belt",
+    legs = "Inyanga Shalwar",
+    feet = "Inyanga Crackows +1"
   }
   sets.Engaged = {
 
@@ -31,10 +42,16 @@ function get_sets()
   -- Magic
   sets.Magic = {}
   sets.Magic.Precast = {
-    back = "Swith Cape"
+    main = "Kali",
+    body = "Inyanga Jubbah",
+    hands = { name="Telchine Gloves", augments={'"Fast Cast"+4',}},
+    left_ring = "Prolix Ring",
+    back = "Intarabus's Cape",
+    waist = "Witful Belt",
+    feet = "Telchine Pigaches"
   }
   sets.Magic.Healing = {
-
+    hands={ name="Telchine Gloves", augments={'"Cure" potency +5%',}}
   }
   sets.Magic.HealingSelf = {
 
@@ -48,24 +65,29 @@ function get_sets()
 
   -- Songs
   sets.Songs = {}
-  sets.Songs.PreCast = set_combine(sets.Magic.Precast, {
+  sets.Songs.Precast = set_combine(sets.Magic.Precast, {
 
   })
   sets.Songs.Dummy = {
-    main = "Terpander"
+    ranged = "Terpander"
   }
   sets.Songs.Potency = {
-    -- main = "Gjallarhorn" -- TODO
-    main = "Eminent Flute",
-    neck = "Moonbow Whistle"
+    main = "Kali",
+    ranged = "Eminent Flute",
+    neck = "Moonbow Whistle",
+    legs = "Inyanga Shalwar"
   }
   sets.Songs.List = {}
   sets.Songs.List.Finale = {}
   sets.Songs.List.Lullaby = {}
   sets.Songs.List.Madrigal = {}
   sets.Songs.List.March = {}
+  sets.Songs.List.Mambo = { ranged = "Vihuela" }
+  sets.Songs.List.Mazurka = { ranged = "Vihuela" }
+  sets.Songs.List.Minne = { ranged = "Syrinx" }
   sets.Songs.List.Minuet = {}
   sets.Songs.List.Scherzo = {}
+  sets.Songs.List.Threnody = { ranged = "Sorrowful Harp" }
 
   -- Abilities
   sets.JobAbility = {}
@@ -80,7 +102,7 @@ function precast(spell)
   if spell.type == 'JobAbility' then
     equip(sets.JobAbility[spell.english])
 
-  if spell.type == 'BardSong' then
+  elseif spell.type == 'BardSong' then
     equip(sets.Songs.Precast)
 
   elseif spell.action_type == 'Magic' then
@@ -110,12 +132,13 @@ function midcast(spell)
 
   -- Bard Songs
   if spell.type == 'BardSong' then
+    add_to_chat(122, spell.english)
     if DummySongs:contains(spell.english) then
       equip(sets.Songs.Dummy)
     else
-      equip(sets.Songs.Pontency)
+      equip(sets.Songs.Potency)
       for key, gear in pairs(sets.Songs.List) do
-        if string.find(spell.english, k) then
+        if string.find(spell.english, key) then
           equip(gear)
           break
         end
@@ -163,9 +186,8 @@ function midcast(spell)
 end
 
 function aftercast(spell)
-  if player.in_combat then
-    equip(sets.Idle)
-  end
+  equip(sets.Idle)
+
   if Capacity.value then
     equip({back = "Mecistopins Mantle"})
   end
@@ -194,11 +216,12 @@ function self_command(commandArgs)
   if command == 'mode' then
     equip(sets.Idle)
   elseif command == 'cycle' then
-    local mode = _G[commandArgs[2]]
-    if mode ~= nil and mode._class == 'mode' then
-      mode:cycle()
-      add_to_chat(122, 'SET [' .. mode.description .. '] to ' .. mode.current)
-    end
+    -- local mode = _G[commandArgs[2]]
+    -- if mode ~= nil and mode._class == 'mode' then
+    --   mode:cycle()
+    --   add_to_chat(122, 'SET [' .. mode.description .. '] to ' .. mode.current)
+    -- end
+    equip(sets.Idle)
   elseif command == 'idle' then
     equip(sets.Idle)
   elseif command == 'run' then
