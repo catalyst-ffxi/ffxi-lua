@@ -2,7 +2,7 @@ include('Modes.lua')
 
 function define_modes()
   Capacity = M(false, 'Capacity Mantle')
-  DummySongs = S{"Swift Etude", "Bewitching Etude", "Enchanting Etude"}
+  DummySongs = S{"Swift Etude", "Bewitching Etude", "Enchanting Etude", "Warding Round"}
 end
 
 function define_aliases()
@@ -24,11 +24,12 @@ function get_sets()
     main = "Kali",
     -- sub = ""
     head = "Inyanga Tiara",
+    neck = "Dampener's Torque",
     left_ear = "Flashward Earring",
     right_ear = "Novia Earring",
     body = "Inyanga Jubbah",
     hands = "Inyanga Dastanas",
-    left_ring = "Prolix Ring",
+    left_ring = "Fortified Ring",
     right_ring = "Inyanga Ring",
     back = "Intarabus's Cape",
     waist = "Witful Belt",
@@ -46,12 +47,13 @@ function get_sets()
     body = "Inyanga Jubbah",
     hands = { name="Telchine Gloves", augments={'"Fast Cast"+4',}},
     left_ring = "Prolix Ring",
+    legs = "Kaykaus Tights",
     back = "Intarabus's Cape",
-    waist = "Witful Belt",
-    feet = "Telchine Pigaches"
+    waist = "Witful Belt"
   }
   sets.Magic.Healing = {
-    hands={ name="Telchine Gloves", augments={'"Cure" potency +5%',}}
+    hands={ name="Telchine Gloves", augments={'"Cure" potency +5%',}},
+    legs = "Kaykaus Tights"
   }
   sets.Magic.HealingSelf = {
 
@@ -66,27 +68,34 @@ function get_sets()
   -- Songs
   sets.Songs = {}
   sets.Songs.Precast = set_combine(sets.Magic.Precast, {
-
+    neck = "Aoidos' Matinee",
+    feet = { name="Telchine Pigaches", augments={'Song spellcasting time -7%',}}
   })
   sets.Songs.Dummy = {
-    ranged = "Terpander"
+    ranged = "Terpander",
+    neck = "Dampener's Torque",
+    body = "Inyanga Jubbah"
   }
   sets.Songs.Potency = {
     main = "Kali",
     ranged = "Eminent Flute",
     neck = "Moonbow Whistle",
+    body = "Fili Hongreline",
     legs = "Inyanga Shalwar"
   }
   sets.Songs.List = {}
+  sets.Songs.List.Ballad = { legs = "Fili Rhingrave" }
+  sets.Songs.List.Elegy = { ranged = "Syrinx" }
   sets.Songs.List.Finale = {}
   sets.Songs.List.Lullaby = {}
-  sets.Songs.List.Madrigal = {}
-  sets.Songs.List.March = {}
+  sets.Songs.List.Madrigal = { head = "Fili Calot" }
+  sets.Songs.List.March = { hands = "Fili Manchettes" }
   sets.Songs.List.Mambo = { ranged = "Vihuela" }
   sets.Songs.List.Mazurka = { ranged = "Vihuela" }
   sets.Songs.List.Minne = { ranged = "Syrinx" }
-  sets.Songs.List.Minuet = {}
-  sets.Songs.List.Scherzo = {}
+  sets.Songs.List.Minuet = { body = "Fili Hongreline" }
+  sets.Songs.List.Paeon = { ranged = "Oneiros Harp" }
+  sets.Songs.List.Scherzo = { feet = "Fili Cothurnes" }
   sets.Songs.List.Threnody = { ranged = "Sorrowful Harp" }
 
   -- Abilities

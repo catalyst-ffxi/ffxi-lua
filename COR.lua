@@ -2,7 +2,7 @@ include('Mote-Mappings.lua')
 include('Modes.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Hybrid'}
   Capacity = M(false, 'Capacity Mantle')
   Luzaf = M(true, 'Luzaf')
   Weapons = M{['description'] = 'Weapons', 'HollidayMagic', 'HollidayPhys', 'Compensator'}
@@ -66,7 +66,7 @@ function get_sets()
       meleeTp = { name="Camulus's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','"Store TP"+10',}},
       rangedTp = { name="Camulus's Mantle", augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','"Store TP"+10',}},
       rangedWsMagic = { name="Camulus's Mantle", augments={'AGI+20','Mag. Acc+20 /Mag. Dmg.+20','Weapon skill damage +10%',}},
-      rangedWsPhys = { name="Camulus's Mantle", augments={'STR+20','Rng.Acc.+20 Rng.Atk.+20','Weapon skill damage +10%',}},
+      rangedWsPhys = { name="Camulus's Mantle", augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','Weapon skill damage +10%',}},
       meleeWs = { name="Camulus's Mantle", augments={'STR+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
       snapShot = { name="Camulus's Mantle", augments={'"Snapshot"+10',}}
     }
@@ -92,12 +92,13 @@ function get_sets()
     legs="Carmine Cuisses +1",
     feet=gear.herc.feet.triple,
     -- neck="Sanctity Necklace",
-    neck="Lissome Necklace",
+    -- neck="Lissome Necklace",
+    neck="Iskur Gorget",
     waist="Windbuffet Belt +1",
     left_ear="Cessance Earring",
     right_ear="Suppanomimi",
     left_ring="Ilabrat Ring",
-    right_ring="Petrov Ring",
+    right_ring="Epona's Ring",
     back=gear.camulus.meleeTp,
   }
   sets.modes.Normal.Ranged = {
@@ -139,6 +140,20 @@ function get_sets()
     rring = "Fortified Ring",
     waist = "Flume Belt +1",
   }
+
+  sets.modes.Hybrid = {}
+  sets.modes.Hybrid.Engaged = set_combine(
+    sets.modes.Normal.Engaged, 
+    sets.DamageDown
+  )
+  sets.modes.Hybrid.Ranged = set_combine(
+    sets.modes.Normal.Ranged, 
+    sets.DamageDown
+  )
+  sets.modes.Hybrid.Idle = set_combine(
+    sets.modes.Normal.Idle, 
+    sets.DamageDown
+  )
 
   sets.Preshot = {                       -- Snap | Rapid
     head=gear.taeon.chapeau,             --   8    0

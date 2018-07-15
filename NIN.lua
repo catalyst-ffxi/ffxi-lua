@@ -9,13 +9,14 @@ function define_modes()
   Abyssea = {
     current = 0,
     weapons = {
-      { name="Pluto's Staff", ws="Earth Crusher, Sunburst" },
-      { name="Bronze Dagger", ws="Cyclone, Energy Drain" },
-      { name="Wax Sword", ws="Red Lotus Blade, Seraph Blade" },
-      { name="Uchigatana", ws="Tachi Jinpu, Koki" },
-      { name="Kunai", ws="Blade: Ei" },
-      { name="Ash Club", ws="Seraph Strike" },
-      { name="Hoe", ws="Shadow of Death" }
+      { name="Pluto's Staff", ws="Earth Crusher=Earth, Sunburst=Light" },
+      { name="Wax Sword", ws="Red Lotus Blade=Fire, Seraph Blade=Light" },
+      { name="Ash Club", ws="Seraph Strike=Light" },
+      { name="Uchigatana", ws="Tachi Jinpu=Wind, Koki=Light" },
+      { name="Bronze Dagger", ws="Cyclone=Wind, Energy Drain=Dark" },
+      { name="Kunai", ws="Blade: Ei=Dark" },
+      { name="Hoe", ws="Shadow of Death=Dark" },
+      { name="Tzee Xicu's Blade", ws="Raiden Thrust=Thunder"}
     }
   }
 end
@@ -43,14 +44,14 @@ function get_sets()
     head={ name="Adhemar Bonnet", augments={'DEX+10','AGI+10','Accuracy+15',}},
     body={ name="Adhemar Jacket +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
     hands={ name="Herculean Gloves", augments={'"Triple Atk."+2','Accuracy+13','Attack+7',}},
-    legs={ name="Herculean Trousers", augments={'"Conserve MP"+1','"Mag.Atk.Bns."+24','"Treasure Hunter"+1','Accuracy+18 Attack+18',}},
+    legs={ name="Herculean Trousers", augments={'Accuracy+25 Attack+25','Weapon skill damage +3%','DEX+7',}},
     feet={ name="Herculean Boots", augments={'Accuracy+9','"Triple Atk."+2','STR+5','Attack+12',}},
     neck="Moonbeam Nodowa",
     waist="Windbuffet Belt +1",
     left_ear="Digni. Earring",
     right_ear="Brutal Earring",
     left_ring="Ilabrat Ring",
-    right_ring="Petrov Ring",
+    right_ring="Epona's Ring",
     back="Yokaze Mantle",
   }
   sets.modes.Accuracy = {
