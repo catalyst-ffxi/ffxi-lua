@@ -111,7 +111,7 @@ function get_sets()
     hands = gear.chironic.gloves.nuke,
     -- lring = "Weatherspoon Ring",
     lring = "Stikini Ring",
-    rring = "Prolix Ring",
+    rring = "Defending Ring",
     back = gear.sucellos.enfeeble,
     waist = "Witful Belt",
     legs = "Chironic Hose",
@@ -153,7 +153,7 @@ function get_sets()
     left_ear="Cessance Earring",
     right_ear="Suppanomimi",
     left_ring="Gelatinous Ring +1",
-    right_ring="Fortified Ring",
+    right_ring="Defending Ring",
     back=gear.sucellos.melee
   }
 
@@ -168,7 +168,7 @@ function get_sets()
     left_ear = "Etiolation Earring",
     right_ear="Hearty Earring",
     lring = "Gelatinous Ring +1",
-    rring = "Fortified Ring",
+    rring = "Defending Ring",
     back = "Solemnity Cape",
     -- legs = "Chironic Hose",
     legs = "Carmine Cuisses +1",
@@ -261,7 +261,7 @@ function get_sets()
   sets.ws['Savage Blade'] = set_combine(sets.ws, {
     -- head = "Despair Helm",
     body = "Jhakri Robe +1",
-    -- left_ring = "Rufescent Ring",
+    left_ring = "Shukuyu Ring",
     right_ring = "Karieyh Ring +1",
     legs = "Jhakri Slops +1",
     feet = "Jhakri Pigaches +1"

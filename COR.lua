@@ -124,7 +124,7 @@ function get_sets()
     hands = "Herculean Gloves",
     legs="Carmine Cuisses +1",
     lring = "Gelatinous Ring +1",
-    rring = "Fortified Ring",
+    rring = "Defending Ring",
     back="Solemnity Cape",
     waist="Flume Belt +1",
     legs = "Carmine Cuisses +1",
@@ -137,7 +137,7 @@ function get_sets()
     body = "Lanun Frac +2",
     left_ear = "Etiolation Earring",
     lring = "Gelatinous Ring +1",
-    rring = "Fortified Ring",
+    rring = "Defending Ring",
     waist = "Flume Belt +1",
   }
 
@@ -195,7 +195,7 @@ function get_sets()
   })
   sets.WS.RangedMagic = set_combine(sets.WS, {
     head=gear.herc.head.magicWs,
-    body="Laksamana's Frac +3",
+    body = "Lanun Frac +2",
     hands = gear.carmine.hands.magic,
     legs=gear.herc.legs.magicWs,
     feet="Lanun Bottes +3",
@@ -215,7 +215,8 @@ function get_sets()
     body="Laksamana's Frac +3",
     hands="Meg. Gloves +2",
     left_ring="Karieyh Ring +1",
-    right_ring="Ifrit Ring",
+    -- right_ring="Ifrit Ring",
+    right_ring = "Shukuyu Ring",
     waist="Prosilio Belt +1",
     back=gear.camulus.meleeWs,
     legs=gear.herc.legs.ws,
@@ -226,7 +227,6 @@ function get_sets()
   local fotiaBelt = { waist = "Fotia Belt" }
   sets.WS['Leaden Salute'] = set_combine(sets.WS.RangedMagic, {
     head = "Pixie Hairpin +1",
-    body = "Lanun Frac +2",
     waist = "Svelt. Gouriz +1",
     lring = "Archon Ring"
   })

@@ -158,7 +158,7 @@ function get_sets()
   sets.DamageDown = {
     neck = "Loricate Torque +1",
     lring = "Gelatinous Ring +1",
-    rring = "Fortified Ring",
+    rring = "Defending Ring",
     waist = "Flume Belt +1",
   }
 

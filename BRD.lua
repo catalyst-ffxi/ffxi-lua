@@ -68,6 +68,7 @@ function get_sets()
   -- Songs
   sets.Songs = {}
   sets.Songs.Precast = set_combine(sets.Magic.Precast, {
+    head = "Fili Calot",
     neck = "Aoidos' Matinee",
     feet = { name="Telchine Pigaches", augments={'Song spellcasting time -7%',}}
   })

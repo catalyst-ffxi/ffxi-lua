@@ -44,7 +44,7 @@ function get_sets()
       },
       hose = {
         quad = { name="Valor. Hose", augments={'STR+12','VIT+6','Quadruple Attack +3',}},
-        dt = {}
+        dt = { name="Valor. Hose", augments={'STR+5','AGI+2','Damage taken-2%','Accuracy+20 Attack+20',}}
       },
       greaves = {
         da = { name="Valorous Greaves", augments={'"Dbl.Atk."+4','INT+8','Accuracy+18 Attack+18',}},
@@ -66,7 +66,7 @@ function get_sets()
   sets.modes = {}
   sets.modes.Kenda = {
     sub = "Bloodrain Strap",
-    head = "Flamma Zucchetto +2",
+    head = "Flam. Zucchetto +2",
     neck = "Moonbeam Nodowa",
     lear = "Cessance Earring",
     rear = "Brutal Earring",
@@ -82,13 +82,11 @@ function get_sets()
   }
   sets.modes.Normal = {
     sub = "Bloodrain Strap",
-    head = "Flamma Zucchetto +2",
-    -- neck = "Ganesha's Mala",
+    head = "Flam. Zucchetto +2",
     neck = "Moonbeam Nodowa",
     lear = "Cessance Earring",
     rear = "Brutal Earring",
     body = "Kasuga Domaru +1",
-    -- body = "Wakido domaru +2",
     hands = "Wakido Kote +3",
     lring = "Flamma Ring",
     rring = "Petrov Ring",
@@ -96,11 +94,10 @@ function get_sets()
     waist = "Ioskeha Belt",
     legs = gear.valorous.hose.quad,
     feet = "Flam. Gambieras +2"
-    -- feet = gear.valorous.greaves.da
   }
   sets.modes.Accuracy = {
     sub = "Bloodrain Strap",
-    head = "Flamma Zucchetto +2",
+    head = "Flam. Zucchetto +2",
     neck = "Moonbeam Nodowa",
     lear = "Cessance Earring",
     rear = "Brutal Earring",
@@ -118,25 +115,14 @@ function get_sets()
     legs = "Wakido Haidate +3",
     feet = "Wakido Sune-ate +2"
   })
-  sets.modes.Onca = {
-    sub = "Bloodrain Strap",
-    head = "Flamma Zucchetto +2",
-    neck = "Subtlety Spectacles",
-    lear = "Cessance Earring",
-    rear = "Brutal Earring",
-    body = 'Onca Suit',
-    lring = "Flamma Ring",
-    rring = "Hizamaru Ring",
-    back = gear.smertrios.tp,
-    waist = "Ioskeha Belt",
-  }
 
   -- Modifiers
   sets.DamageDown = {
     neck = "Loricate Torque +1",
     body = "Wakido domaru +2",
     lring = "Gelatinous Ring +1",
-    rring = "Fortified Ring",
+    rring = "Defending Ring",
+    -- rring = "Fortified Ring",
     waist = "Flume Belt +1",
     legs = gear.valorous.hose.dt
   }
@@ -144,11 +130,6 @@ function get_sets()
     head = gear.valorous.mask.treasure,
     waist = "Chaac belt"
   }
-
-  -- sets.tp = {}
-  -- sets.tp.reive = {
-  --   neck = "Ygnas's Resolve +1"
-  -- }
 
   -- Weapon Skills
   --
@@ -158,13 +139,12 @@ function get_sets()
     neck = "Fotia Gorget",
     lear = "Ishvara Earring",
     rear = "Moonshade earring",
-    body = "Sakonji Domaru +2",
+    body = "Sakonji Domaru +3",
     hands = gear.valorous.mitts.ws,
-    rring = "Karieyh Ring +1",
-    -- rring = "Ifrit Ring",
-    lring = "Rajas Ring",
+    lring = "Karieyh Ring +1",
+    rring = "Shukuyu Ring",
     back = gear.smertrios.ws,
-    waist = "Caudata Belt",
+    waist = "Fotia Belt",
     legs = "Wakido Haidate +3",
     feet = gear.valorous.greaves.ws
   }
@@ -174,47 +154,35 @@ function get_sets()
     neck = "Fotia Gorget",
     lear = "Ishvara Earring",
     rear = "Moonshade earring",
-    body = "Sakonji Domaru +2",
+    body = "Sakonji Domaru +3",
     hands = "Wakido Kote +3",
     lring = "Karieyh Ring +1",
-    rring = "Petrov Ring",
+    rring = "Rajas Ring",
     back = gear.smertrios.ws,
-    waist = "Caudata Belt",
+    waist = "Fotia Belt",
+    legs = "Wakido Haidate +3",
     feet = gear.valorous.greaves.ws
   }
   sets.WS.AccuracyHigh = set_combine(sets.WS.Accuracy, {
     body = "Wakido Domaru +2",
     feet = "Wakido Sune-Ate +2"
   })
-  sets.WS.Onca = sets.WS.AccuracyHigh
 
-  -- Light
-  sets.WS['Tachi: Kasha'] = {
-    waist = "Fotia Belt"
-  }
-  sets.WS['Tachi: Fudo'] = sets.WS['Tachi: Kasha']
-  sets.WS['Tachi: Kaiten'] = sets.WS['Tachi: Kasha']
-  -- Shadow
-  -- sets.WS['Tachi: Shoha'] = {
-  --   head = "Otomi Helm",
-  --   lear = "Brutal Earring",
-  --   hands = "Ryuo Tekko",
-  --   rring = "Petrov Ring",
-  --   feet = gear.valorous.greaves.da
-  -- }
-  sets.WS['Tachi: Shoha'] = sets.WS['Tachi: Fudo']
-  -- Snow
-  sets.WS['Tachi: Gekko'] = {}
-  sets.WS['Tachi: Yukikaze'] = sets.WS['Tachi: Gekko']
-  sets.WS['Tachi: Hobakue'] = sets.WS['Tachi: Gekko']
-  sets.WS['Tachi: Rana'] = sets.WS['Tachi: Gekko']
+  -- WS Specific Sets
+  -- sets.WS['Tachi: Kasha'] = {}
+  -- sets.WS['Tachi: Fudo'] = {}
+  -- sets.WS['Tachi: Kaiten'] = {}
+  -- sets.WS['Tachi: Shoha'] = {}
+  -- sets.WS['Tachi: Gekko'] = {}
+  -- sets.WS['Tachi: Rana'] = {}
+  -- sets.WS['Apex Arrow'] = {}
 
   -- Job Abilities
   --
   sets.JAs = {}
   sets.JAs.Meditate = {
     head = "Wakido Kabuto +1",
-    hands = "Sakonji Kote",
+    hands = "Sakonji Kote +2",
     back = gear.smertrios.tp
   }
   sets.JAs['Warding Circle'] = {
@@ -229,11 +197,7 @@ function get_sets()
   }
   sets.waltz = {
     head = gear.valorous.mask.waltz,
-    -- body = "Despair Mail",
-    hands = "Ryuo Tekko",
-    lring = 'Asklepian Ring',
-    legs = "Wakido Haidate +3",
-    -- feet = "Despair Greaves"
+    lring = 'Asklepian Ring'
   }
 
   -- Ranged Attack
@@ -243,7 +207,7 @@ function get_sets()
     neck = "Yarak torque",
     lear = "Enervating Earring",
     rear = "Matanki Earring",
-    hands = "Ryuo tekko",          -- "Kasuga Kote +1",
+    hands = "Ryuo tekko",
     body = "Aetosaur Jerkin",
     lear = "Drone Earring",
     rear = "Enervating Earring",
@@ -254,12 +218,6 @@ function get_sets()
     back = "Moondoe Mantle +1",
     waist = "Yemaya Belt"
   }
-  sets.WS['Apex Arrow'] = set_combine(sets.JAs.ranged, {
-    neck = "Light Gorget",
-    rear = "Moonshade earring",
-    rring = "Garuda Ring",
-    waist = "Fotia Belt"
-  })
 end
 
 function precast(spell)
@@ -296,12 +254,11 @@ end
 
 function aftercast(spell)
   if player.in_combat and not (buffactive['Meikyo Shisui']) then
-    -- equip_set_for_current_mode()
     equip(set_for_engaged())
   end
 
   if spell.english == 'Meditate' then
-    send_command('@wait 142; input /echo | ******** Meditate ready in 5 ******** |')
+    send_command('@wait 175; input /echo | ******** Meditate ready in 5 ******** |')
   elseif spell.english == 'Konzen-ittai' then
 
   end

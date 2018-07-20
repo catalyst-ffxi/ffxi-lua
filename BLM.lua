@@ -112,7 +112,7 @@ function get_sets()
     right_ear="Hearty Earring",
     body = "Jhakri Robe +1",
     lring = "Gelatinous Ring +1",
-    rring = "Fortified Ring",
+    rring = "Defending Ring",
     back = "Solemnity Cape",
     waist = "Fucho-no-Obi",
     legs = "Assiduity pants"

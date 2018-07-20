@@ -106,7 +106,7 @@ function get_sets()
     neck = "Loricate Torque +1",
     body = "Jhakri Robe +1",
     lring = "Gelatinous Ring +1",
-    rring = "Fortified Ring",
+    rring = "Defending Ring",
     back = "Solemnity Cape",
     -- waist = "Fucho-no-Obi",
     waist = "Flume Belt +1",
