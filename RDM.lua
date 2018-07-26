@@ -139,23 +139,12 @@ function get_sets()
     sub = gear.colada.sub,
     right_ear="Suppanomimi"
   })
-  sets.modes.DamageDown = {
-    main = gear.colada.main,
-    sub = gear.colada.sub,
-    ammo="Ginsen",
-    head="Aya. Zucchetto +2",
-    body="Ayanmo Corazza +2",
-    hands="Aya. Manopolas +1",
-    legs="Ayanmo Cosciales",
-    feet="Aya. Gambieras +1",
+  sets.modes.DamageDown = set_combine(sets.modes.DualWield, {
     neck="Loricate Torque +1",
-    waist="Windbuffet Belt +1",
-    left_ear="Cessance Earring",
-    right_ear="Suppanomimi",
     left_ring="Gelatinous Ring +1",
     right_ring="Defending Ring",
-    back=gear.sucellos.melee
-  }
+    waist = "Flume Belt +1"
+  })
 
   sets.aftercast = {}
   sets.aftercast.Caster = {
@@ -235,7 +224,8 @@ function get_sets()
     rear = "Moonshade earring",
     lring = "Ilabrat Ring",
     rring = "Ifrit Ring",
-    waist = "Caudata Belt",
+    -- waist = "Caudata Belt",
+    waist = "Fotia Belt"
     -- feet = "Jhakri pigaches +1"
   })
   sets.ws.Requiescat = set_combine(sets.ws, {

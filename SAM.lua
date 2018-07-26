@@ -2,16 +2,14 @@ include('Mote-Mappings.lua')
 include('Modes.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Kenda', 'Accuracy', 'AccuracyHigh'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Accuracy', 'AccuracyHigh'}
   DamageDown = M(false, 'Damage Down')
-  Capacity = M(false, 'Capacity Mantle')
   TreasureHunter = M(false, 'Treasure Hunter')
 end
 
 function define_binds()
   -- Modes
   send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
-  send_command("alias g15v2_m1g2 gs c cycle Capacity")
   send_command("alias g15v2_m1g3 gs c cycle DamageDown")
   send_command("alias g15v2_m1g4 gs c cycle TreasureHunter")
 
@@ -48,13 +46,7 @@ function get_sets()
       },
       greaves = {
         da = { name="Valorous Greaves", augments={'"Dbl.Atk."+4','INT+8','Accuracy+18 Attack+18',}},
-        ws = { name="Valorous Greaves", augments={'Attack+15','Weapon skill damage +3%','STR+6','Accuracy+7',}}
-      }
-    },
-    acro = {
-      body = {
-        stp = {name = "Acro Surcoat", augments = {"STR +4", "Accuracy +10", "Store TP +6"}},
-        ws = {name = "Acro Surcoat", augments = {"Accuracy +8", "Weapon Skill Acc. +9", "Weapon Skill Damage +3%"}}
+        ws = { name="Valorous Greaves", augments={'Accuracy+24','Weapon skill damage +4%','DEX+8','Attack+3',}}
       }
     },
     smertrios = {
@@ -64,27 +56,11 @@ function get_sets()
   }
 
   sets.modes = {}
-  sets.modes.Kenda = {
-    sub = "Bloodrain Strap",
-    head = "Flam. Zucchetto +2",
-    neck = "Moonbeam Nodowa",
-    lear = "Cessance Earring",
-    rear = "Brutal Earring",
-    body = "Ken. Samue",
-    hands = "Wakido Kote +3",
-    lring = "Flamma Ring",
-    rring = "Petrov Ring",
-    back = gear.smertrios.tp,
-    waist = "Ioskeha Belt",
-    legs = gear.valorous.hose.quad,
-    -- legs = "Ken. Hakama",
-    feet = "Flam. Gambieras +2"
-  }
   sets.modes.Normal = {
     sub = "Bloodrain Strap",
     head = "Flam. Zucchetto +2",
     neck = "Moonbeam Nodowa",
-    lear = "Cessance Earring",
+    lear = "Telos Earring",
     rear = "Brutal Earring",
     body = "Kasuga Domaru +1",
     hands = "Wakido Kote +3",
@@ -99,8 +75,8 @@ function get_sets()
     sub = "Bloodrain Strap",
     head = "Flam. Zucchetto +2",
     neck = "Moonbeam Nodowa",
-    lear = "Cessance Earring",
-    rear = "Brutal Earring",
+    lear = "Telos Earring",
+    rear = "Cessance Earring",
     body = "Wakido domaru +2",
     hands = "Wakido Kote +3",
     lring = "Flamma Ring",
@@ -148,7 +124,6 @@ function get_sets()
     legs = "Wakido Haidate +3",
     feet = gear.valorous.greaves.ws
   }
-  sets.WS.Kenda = sets.WS.Normal
   sets.WS.Accuracy = {
     head = gear.valorous.mask.ws_acc,
     neck = "Fotia Gorget",
@@ -304,7 +279,6 @@ function self_command(commandArgs)
 end
 
 function set_for_engaged()
-  local capcity_set = PrimaryMode.current..'_Capacity'
   local set = sets.modes[PrimaryMode.current]
   if DamageDown.value then
     set = set_combine(set, sets.DamageDown)
