@@ -1,4 +1,5 @@
 include('Modes.lua')
+include('augments.lua')
 
 function define_modes()
   PrimaryMode = M{['description'] = 'Primary Mode', 'Caster'}
@@ -57,26 +58,6 @@ function get_sets()
   define_aliases()
 
   gear = {
-    merlinic = {
-      hood = {
-        burst = { name="Merlinic Hood", augments={'Mag. Acc.+27','Magic burst mdg.+11%','INT+7','"Mag.Atk.Bns."+5',}},
-        nuke = { name="Merlinic Hood", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','"Fast Cast"+5','Mag. Acc.+14','"Mag.Atk.Bns."+6',}},
-        phalanx = { name="Merlinic Hood", augments={'Sklchn.dmg.+2%','Accuracy+22','Phalanx +2','Accuracy+20 Attack+20','Mag. Acc.+10 "Mag.Atk.Bns."+10',}}
-      },
-      jubbah = "Merlinic Jubbah",
-      dastanas = "Merlinic Dastanas",
-      shalwar = {
-        burst = { name="Merlinic Shalwar", augments={'"Mag.Atk.Bns."+18','Magic burst dmg.+10%','Mag. Acc.+15',}},
-        macc = { name="Merlinic Shalwar", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Mag. Acc.+2','"Mag.Atk.Bns."+11',}}
-      },
-      crackows = {
-        nuke = "Merlinic Crackows"
-      }
-    },
-    grio = {
-      nuke = { name="Grioavolr", augments={'Enh. Mag. eff. dur. +4','MND+9','Mag. Acc.+28','"Mag.Atk.Bns."+29','Magic Damage +3',}},
-      enfeeble = { name="Grioavolr", augments={'Enfb.mag. skill +12','INT+9','Mag. Acc.+27','Magic Damage +7',}}
-    }
   }
 
   -- Mode Sets
@@ -86,18 +67,18 @@ function get_sets()
     main = "Akademos",
     sub = "Enki Strap",
     ammo = "Ombre Tathlum +1",
-    head = gear.merlinic.hood.nuke,
+    head = augments.merlinic.hood.nuke,
     neck = "Sanctity Necklace",
     lear = "Strophadic Earring",
     rear = "Barkarole Earring",
-    body = gear.merlinic.jubbah,
+    body = augments.merlinic.jubbah,
     hands = "Amalric Gages",
     lring = "Shiva Ring",
     rring = "Strendu Ring",
     back = "Lugh's Cape",
     waist = "Refoccilation Stone",
-    legs = gear.merlinic.shalwar.burst,
-    feet = gear.merlinic.crackows.nuke
+    legs = augments.merlinic.shalwar.burst,
+    feet = augments.merlinic.crackows.nuke
   }
   sets.aftercast = {}
   sets.aftercast.Caster = set_combine(sets.modes.Caster, {
@@ -118,15 +99,15 @@ function get_sets()
   sets.base = {}
 
   sets.base.fast_cast = {
-    head = gear.merlinic.hood.nuke,    -- 13
+    head = augments.merlinic.hood.nuke,    -- 13
     lear = "Loquacious earring",       -- 2
     rear = "Magnetic earring",
-    body = gear.merlinic.jubbah,       -- 6
+    body = augments.merlinic.jubbah,       -- 6
     hands = "Helios Gloves",           -- 5
     rring = "Prolix Ring",             -- 2
     -- -- back = "Swith Cape", -- 3
     legs = "Lengo Pants",              -- 5
-    feet = gear.merlinic.crackows.nuke -- 5
+    feet = augments.merlinic.crackows.nuke -- 5
                                 -- TOTAL: 38
   }
   sets.base.quick_cast = {
@@ -158,14 +139,14 @@ function get_sets()
     neck = "Sanctity Necklace",
     lear = "Influx Earring",
     rear = "Moonshade Earring",
-    body = gear.merlinic.jubbah,
+    body = augments.merlinic.jubbah,
     hands = "Otomi Gloves",
     lring = "Etana Ring",
     rring = "Bifrost Ring",
     -- back = "Bane Cape",
     waist = "Fucho-no-Obi",
-    legs = gear.merlinic.shalwar.macc,
-    feet = gear.merlinic.crackows.nuke
+    legs = augments.merlinic.shalwar.macc,
+    feet = augments.merlinic.crackows.nuke
   }
 
   -- MIDCAST
@@ -183,20 +164,20 @@ function get_sets()
     neck = "Erra Pendant",
     lear = "Lifestorm Earring",
     rear = "Psystorm Earring",
-    body = gear.merlinic.jubbah,
+    body = augments.merlinic.jubbah,
     hands = "Amalric Gages",
     lring = "Weatherspoon Ring",
     rring = "Shiva Ring",
-    -- back = gear.taranus.nuke,
+    -- back = augments.taranus.nuke,
     waist = "Refoccilation Stone",
     -- legs = "Spaekona's Tonban +2",
-    feet = gear.merlinic.crackows.nuke
+    feet = augments.merlinic.crackows.nuke
   }
   sets.midcast.drain_aspir = set_combine(sets.midcast.dark, {
     neck = "Erra Pendant",
-    hands = gear.merlinic.dastanas,
+    hands = augments.merlinic.dastanas,
     waist = "Fucho-no-Obi",
-    feet = gear.merlinic.crackows.nuke
+    feet = augments.merlinic.crackows.nuke
   })
   sets.midcast.stun = set_combine(sets.midcast.dark, {
 
@@ -209,29 +190,29 @@ function get_sets()
     main = "Akademos",
     sub = "Enki Strap",
     ammo = "Ombre Tathlum +1",
-    head = gear.merlinic.hood.nuke,
+    head = augments.merlinic.hood.nuke,
     neck = "Sanctity Necklace",
     lear = "Strophadic Earring",
     -- rear = "Friomisi earring",
     rear = "Barkarole Earring",
-    body = gear.merlinic.jubbah,
+    body = augments.merlinic.jubbah,
     hands = "Amalric Gages",
     lring = "Shiva Ring",
     rring = "Strendu Ring",
     back = "Lugh's Cape",
     waist = "Refoccilation Stone",
-    legs = gear.merlinic.shalwar.macc,
-    feet = gear.merlinic.crackows.nuke
+    legs = augments.merlinic.shalwar.macc,
+    feet = augments.merlinic.crackows.nuke
   }
   sets.midcast.elemental.MagicBurst = set_combine(sets.midcast.elemental.Normal, {
     neck = "Mizu. Kubikazari",           -- MB +10
     lear = "Friomisi Earring",           -- 0
     lring = "Mujin Band",                -- MB II +5
     rring = "Locus Ring",                -- MB +5
-    head = gear.merlinic.hood.burst,     -- MB +11
-    body = gear.merlinic.jubbah,         -- MB +3
+    head = augments.merlinic.hood.burst,     -- MB +11
+    body = augments.merlinic.jubbah,         -- MB +3
     hands = "Amalric Gages",             -- MB II +5
-    legs = gear.merlinic.shalwar.burst,  -- MB +10
+    legs = augments.merlinic.shalwar.burst,  -- MB +10
   })                                     -- TOTALS
                                          -- MB +44 (Caps at 40%)
                                          -- MB II +10
@@ -245,7 +226,7 @@ function get_sets()
   --
   sets.midcast.enfeebling = {
     ammo = "Quartz Tathlum +1",
-    head = gear.merlinic.hood.nuke,
+    head = augments.merlinic.hood.nuke,
     neck = "Weike torque",
     lear = "Lifestorm Earring",
     rear = "Psystorm Earring",
@@ -255,8 +236,8 @@ function get_sets()
     rring = "Globidonta Ring",
     back = "Lugh's Cape",
     waist = "Rumination Sash",
-    legs = gear.merlinic.shalwar.macc,
-    feet = gear.merlinic.crackows.nuke
+    legs = augments.merlinic.shalwar.macc,
+    feet = augments.merlinic.crackows.nuke
   }
 
   -- Enhancing Magic
@@ -264,6 +245,7 @@ function get_sets()
   sets.midcast.enhancing_skill = {
   }
   sets.midcast.enhancing_duration = {
+    main = "Oranyan",
     back = "Lugh's Cape",
     legs = "Telchine Braconi"
   }
@@ -283,7 +265,7 @@ function get_sets()
     waist = "Siegel Sash"
   }
   sets.midcast.enhancing_phalanx_self = {
-    head = gear.merlinic.hood.phalanx
+    head = augments.merlinic.hood.phalanx
   }
 
   -- Precast Magic

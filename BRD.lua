@@ -22,9 +22,10 @@ function get_sets()
   -- Modes
   sets.Idle = {
     main = "Kali",
-    -- sub = ""
+    sub = "Genbu's Shield",
+    ranged = "Gjallarhorn",
     head = "Inyanga Tiara",
-    neck = "Dampener's Torque",
+    neck = "Loricate Torque +1",
     left_ear = "Flashward Earring",
     right_ear = "Novia Earring",
     body = "Inyanga Jubbah",
@@ -37,7 +38,20 @@ function get_sets()
     feet = "Inyanga Crackows +1"
   }
   sets.Engaged = {
-
+    main = "Kali",
+    sub = "Genbu's Shield",
+    ranged = "Gjallarhorn",
+    head="Aya. Zucchetto +1",
+    body="Ayanmo Corazza",
+    hands="Aya. Manopolas +1",
+    legs="Ayanmo Cosciales",
+    feet="Aya. Gambieras +1",
+    neck="Sanctity Necklace",
+    -- waist="Witful Belt",
+    -- left_ear="Flashward Earring",
+    -- right_ear="Novia Earring",
+    left_ring="Ayanmo Ring",
+    right_ring="Enlivened Ring",
   }
 
   -- Magic
@@ -47,6 +61,7 @@ function get_sets()
     body = "Inyanga Jubbah",
     hands = { name="Telchine Gloves", augments={'"Fast Cast"+4',}},
     left_ring = "Prolix Ring",
+    right_ear = "Loquacious earring",
     legs = "Kaykaus Tights",
     back = "Intarabus's Cape",
     waist = "Witful Belt"
@@ -74,30 +89,45 @@ function get_sets()
   })
   sets.Songs.Dummy = {
     ranged = "Terpander",
-    neck = "Dampener's Torque",
+    neck = "Loricate Torque +1",
     body = "Inyanga Jubbah"
   }
   sets.Songs.Potency = {
     main = "Kali",
-    ranged = "Eminent Flute",
+    ranged = "Gjallarhorn",
     neck = "Moonbow Whistle",
     body = "Fili Hongreline",
-    legs = "Inyanga Shalwar"
+    legs = "Inyanga Shalwar",
+    feet = "Brioso Slippers"
+  }
+  sets.Songs.Accuracy = {
+    main = "Kali",
+    range="Gjallarhorn",
+    head="Inyanga Tiara",
+    body="Fili Hongreline",
+    hands="Inyanga Dastanas",
+    legs="Fili Rhingrave",
+    feet="Inyan. Crackows +1",
+    neck="Moonbow Whistle",
+    left_ring="Vertigo Ring",
+    right_ring="Inyanga Ring",
+    waist = "Porous Rope",
+    back="Intarabus's Cape",
   }
   sets.Songs.List = {}
   sets.Songs.List.Ballad = { legs = "Fili Rhingrave" }
-  sets.Songs.List.Elegy = { ranged = "Syrinx" }
+  sets.Songs.List.Elegy = { }
   sets.Songs.List.Finale = {}
   sets.Songs.List.Lullaby = {}
   sets.Songs.List.Madrigal = { head = "Fili Calot" }
   sets.Songs.List.March = { hands = "Fili Manchettes" }
-  sets.Songs.List.Mambo = { ranged = "Vihuela" }
-  sets.Songs.List.Mazurka = { ranged = "Vihuela" }
-  sets.Songs.List.Minne = { ranged = "Syrinx" }
+  sets.Songs.List.Mambo = { }
+  sets.Songs.List.Mazurka = { }
+  sets.Songs.List.Minne = { }
   sets.Songs.List.Minuet = { body = "Fili Hongreline" }
-  sets.Songs.List.Paeon = { ranged = "Oneiros Harp" }
+  sets.Songs.List.Paeon = { }
   sets.Songs.List.Scherzo = { feet = "Fili Cothurnes" }
-  sets.Songs.List.Threnody = { ranged = "Sorrowful Harp" }
+  sets.Songs.List.Threnody = { }
 
   -- Abilities
   sets.JobAbility = {}
@@ -145,6 +175,8 @@ function midcast(spell)
     add_to_chat(122, spell.english)
     if DummySongs:contains(spell.english) then
       equip(sets.Songs.Dummy)
+    elseif spell.target.type == 'MONSTER' then
+      equip(sets.Songs.Accuracy)
     else
       equip(sets.Songs.Potency)
       for key, gear in pairs(sets.Songs.List) do
@@ -196,10 +228,13 @@ function midcast(spell)
 end
 
 function aftercast(spell)
-  equip(sets.Idle)
-
+  if player.status=='Engaged' then
+    equip(sets.Engaged)
+  else
+    equip(sets.Idle)
+  end
   if Capacity.value then
-    equip({back = "Mecistopins Mantle"})
+    equip({back = "Aptitude Mantle +1"})
   end
 end
 
@@ -224,7 +259,11 @@ function self_command(commandArgs)
   command = commandArgs[1]
 
   if command == 'mode' then
-    equip(sets.Idle)
+    if player.status=='Engaged' then
+      equip(sets.Engaged)
+    else
+      equip(sets.Idle)
+    end
   elseif command == 'cycle' then
     -- local mode = _G[commandArgs[2]]
     -- if mode ~= nil and mode._class == 'mode' then

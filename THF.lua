@@ -1,5 +1,6 @@
 include('Mote-Mappings.lua')
 include('Modes.lua')
+include('augments.lua')
 
 function define_modes()
   PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Accuracy'}
@@ -25,30 +26,12 @@ function get_sets()
   define_binds()
 
   gear = {
-    herc = {
-      head = {
-        rangedWs = { name="Herculean Helm", augments={'Rng.Atk.+18','Weapon skill damage +4%','MND+10','Rng.Acc.+13',}},
-        triple = { name="Herculean Helm", augments={'Accuracy+20','"Triple Atk."+2','AGI+8',}},
-        quad = { name="Herculean Helm", augments={'Accuracy+14','"Conserve MP"+1','Quadruple Attack +1','Accuracy+15 Attack+15',}}
-      },
-      hands = {
-        triple = { name="Herculean Gloves", augments={'"Triple Atk."+2','Accuracy+13','Attack+7',}}
-      },
-      legs = {
-        ws = { name="Herculean Trousers", augments={'Accuracy+25 Attack+25','Weapon skill damage +3%','DEX+7',}}
-      },
-      feet = {
-        triple = { name="Herculean Boots", augments={'Accuracy+9','"Triple Atk."+2','STR+5','Attack+12',}}
-      }
-    }
   }
 
   sets.idle = {
   }
   sets.modes = {}
   sets.modes.Normal = {
-    -- main={ name="Malevolence", augments={'INT+2','Mag. Acc.+3','"Mag.Atk.Bns."+3',}},
-    -- sub="Thief's Knife",
     ammo="Ginsen",
     head="Adhemar Bonnet",
     neck="Lissome Necklace",
@@ -61,28 +44,13 @@ function get_sets()
     back={ name="Canny Cape", augments={'DEX+2','AGI+1','"Dual Wield"+4','Crit. hit damage +2%',}},
     waist="Windbuffet Belt +1",
     legs="Meg. Chausses +2",
-    feet=gear.herc.feet.triple
+    feet=augments.herc.feet.triple
   }
   sets.modes.TreasureHunter = set_combine(sets.modes.Normal, {
     hands="Plunderer's Armlets +1",
     waist="Chaac Belt",
     legs = { name="Herculean Trousers", augments={'"Conserve MP"+1','"Mag.Atk.Bns."+24','"Treasure Hunter"+1','Accuracy+18 Attack+18',}}
   })
-  sets.modes.Accuracy = {
-    ammo="Falcon Eye",
-    head=gear.herc.head.quad,
-    neck="Sanctity Necklace",
-    left_ear="Dignitary's Earring",
-    right_ear="Telos Earring",
-    body="Adhemar Jacket +1",
-    hands="Meg. Gloves +2",
-    left_ring="Ilabrat Ring",
-    right_ring="Epona's Ring",
-    back={ name="Canny Cape", augments={'DEX+2','AGI+1','"Dual Wield"+4','Crit. hit damage +2%',}},
-    waist="Windbuffet Belt +1",
-    legs="Meg. Chausses +2",
-    feet="Meg. Jam. +2"
-  }
   sets.run = {
     feet = "Fajin boots"
   }
@@ -92,19 +60,18 @@ function get_sets()
   sets.WS = {}
   sets.WS.Normal = {
     ammo="Falcon Eye",
-    head=gear.herc.head.rangedWs,
-    neck="Fotia Gorget",
-    left_ear="Ishvara Earring",
-    right_ear="Moonshade Earring",
-    body="Meghanada Cuirie +1",
+    head={ name="Herculean Helm", augments={'Rng.Atk.+18','Weapon skill damage +4%','MND+10','Rng.Acc.+13',}},
+    body="Meg. Cuirie +1",
     hands="Meg. Gloves +2",
+    legs="Meg. Chausses +2",
+    feet="Meg. Jam. +2",
+    neck="Fotia Gorget",
+    waist="Fotia Belt",
+    left_ear="Ishvara Earring",
+    right_ear={ name="Moonshade Earring", augments={'Attack+4','TP Bonus +250',}},
     left_ring="Ilabrat Ring",
     right_ring="Karieyh Ring +1",
     back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
-    waist="Caudata Belt",
-    -- waist="Fotia Belt",
-    legs= "Herculean Trousers",
-    feet= "Herculean Boots",
   }
   sets.WS.TreasureHunter = sets.WS.Normal
   sets.WS.Accuracy = {
@@ -115,7 +82,7 @@ function get_sets()
   }
   sets.WS['Aeolian Edge'] =  {
     ammo="Ombre Tathlum +1",
-    head=gear.herc.head.magicWs,
+    head=augments.herc.head.magic,
     neck = "Sanctity Necklace",
     left_ear="Friomisi Earring",
     right_ear="Moonshade Earring",
@@ -175,7 +142,7 @@ function get_sets()
     hands = "Leyline Gloves",
     lear = "Loquacious earring",
     rear = "Magnetic earring",
-    lring = "Weatherspoon Ring",
+    lring = "Kishar Ring",
     rring = "Prolix Ring"
   }
 end

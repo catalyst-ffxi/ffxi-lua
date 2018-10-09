@@ -3,7 +3,7 @@ include('Modes.lua')
 
 function define_modes()
   PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Accuracy', 'AccuracyHigh'}
-  DamageDown = M(false, 'Damage Down')
+  DamageDown = M{['description'] = 'Damage Down', 'Off', 'PDT', 'MDT', 'BOTH'}
   TreasureHunter = M(false, 'Treasure Hunter')
 end
 
@@ -13,8 +13,8 @@ function define_binds()
   send_command("alias g15v2_m1g3 gs c cycle DamageDown")
   send_command("alias g15v2_m1g4 gs c cycle TreasureHunter")
 
-  -- send_command('bind !f11 input /equip main "Norifusa +1"; @wait 0.5; input /equip sub "Bloodrain Strap"')
-  -- send_command('bind !f12 input /equip main "Amanomurakumo"; @wait 0.5; input /equip sub "Bloodrain Strap"')
+  -- send_command('bind !f11 input /equip main "Norifusa +1"; @wait 0.5; input /equip sub "Utu Grip"')
+  send_command('bind !f9 input /equip main "Dojikiri Yasutsuna"; @wait 0.5; input /equip sub "Utu Grip"')
   -- send_command('bind !f10 gs c toggle_ranged')
 end
 
@@ -38,7 +38,8 @@ function get_sets()
         treasure = { name="Valorous Mask", augments={'INT+2','Pet: Attack+5 Pet: Rng.Atk.+5','"Treasure Hunter"+2','Accuracy+5 Attack+5',}},
       },
       mitts = {
-        ws = { name="Valorous Mitts", augments={'Attack+19','Weapon skill damage +4%','AGI+1','Accuracy+14',}}
+        wsAcc = { name="Valorous Mitts", augments={'Attack+19','Weapon skill damage +4%','AGI+1','Accuracy+14',}},
+        ws = { name="Valorous Mitts", augments={'Weapon skill damage +4%','STR+11','Accuracy+1','Attack+11',}}
       },
       hose = {
         quad = { name="Valor. Hose", augments={'STR+12','VIT+6','Quadruple Attack +3',}},
@@ -51,13 +52,14 @@ function get_sets()
     },
     smertrios = {
       ws = {name="Smertrios's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
-      tp = {name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}}
+      tp = {name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Damage taken-5%',}}
     }
   }
 
   sets.modes = {}
   sets.modes.Normal = {
-    sub = "Bloodrain Strap",
+    sub = "Utu Grip",
+    ammo = "Ginsen",
     head = "Flam. Zucchetto +2",
     neck = "Moonbeam Nodowa",
     lear = "Telos Earring",
@@ -72,7 +74,8 @@ function get_sets()
     feet = "Flam. Gambieras +2"
   }
   sets.modes.Accuracy = {
-    sub = "Bloodrain Strap",
+    sub = "Utu Grip",
+    ammo = "Ginsen",
     head = "Flam. Zucchetto +2",
     neck = "Moonbeam Nodowa",
     lear = "Telos Earring",
@@ -92,16 +95,33 @@ function get_sets()
     feet = "Wakido Sune-ate +2"
   })
 
-  -- Modifiers
+  -- Damage Down Sets
   sets.DamageDown = {
-    neck = "Loricate Torque +1",
-    body = "Wakido domaru +2",
-    lring = "Gelatinous Ring +1",
-    rring = "Defending Ring",
-    -- rring = "Fortified Ring",
-    waist = "Flume Belt +1",
-    legs = gear.valorous.hose.dt
+    PDT = {
+      ammo = "Staunch Tathlum",
+      neck = "Loricate Torque +1",
+      body = "Wakido domaru +2",
+      lring = "Gelatinous Ring +1",
+      rring = "Defending Ring",
+      waist = "Flume Belt +1",
+      legs = gear.valorous.hose.dt
+    },
+    MDT = {
+      ammo = "Staunch Tathlum",
+      neck = "Loricate Torque +1",
+      body = "Wakido domaru +2",
+      rear = "Etiolation Earring",
+      lring = "Fortified Ring",
+      rring = "Defending Ring",
+      legs = gear.valorous.hose.dt
+    }
   }
+  sets.DamageDown.BOTH = set_combine(
+    sets.DamageDown.PDT,
+    sets.DamageDown.MDT
+  )
+
+  -- Modifiers
   sets.TreasureHunter = {
     head = gear.valorous.mask.treasure,
     waist = "Chaac belt"
@@ -112,7 +132,8 @@ function get_sets()
   sets.WS = {}
   sets.WS.Normal = {
     head = gear.valorous.mask.ws_high,
-    neck = "Fotia Gorget",
+    -- neck = "Fotia Gorget",
+    neck = "Samurai's Nodowa",
     lear = "Ishvara Earring",
     rear = "Moonshade earring",
     body = "Sakonji Domaru +3",
@@ -126,20 +147,21 @@ function get_sets()
   }
   sets.WS.Accuracy = {
     head = gear.valorous.mask.ws_acc,
-    neck = "Fotia Gorget",
+    -- neck = "Fotia Gorget",
+    neck = "Samurai's Nodowa",
     lear = "Ishvara Earring",
     rear = "Moonshade earring",
     body = "Sakonji Domaru +3",
     hands = "Wakido Kote +3",
     lring = "Karieyh Ring +1",
-    rring = "Rajas Ring",
+    rring = "Shukuyu Ring",
     back = gear.smertrios.ws,
     waist = "Fotia Belt",
     legs = "Wakido Haidate +3",
     feet = gear.valorous.greaves.ws
   }
   sets.WS.AccuracyHigh = set_combine(sets.WS.Accuracy, {
-    body = "Wakido Domaru +2",
+    body = "Sakonji Domaru +3",
     feet = "Wakido Sune-Ate +2"
   })
 
@@ -157,13 +179,13 @@ function get_sets()
   sets.JAs = {}
   sets.JAs.Meditate = {
     head = "Wakido Kabuto +1",
-    hands = "Sakonji Kote +2",
+    hands = "Sakonji Kote +3",
     back = gear.smertrios.tp
   }
   sets.JAs['Warding Circle'] = {
     head = "Wakido Kabuto +1"
   }
-  sets.utsusemi = {
+  sets.FastCast = {
     -- ammo = "Impatiens",
     hands = "Leyline Gloves",
     lear = "Loquacious earring",
@@ -197,7 +219,9 @@ end
 
 function precast(spell)
   if spell.type == 'WeaponSkill' then
-    equip(set_for_ws(spell.english))
+    if player.equipment.main ~= "Soboro Sukehiro" and player.equipment.main ~= "Norifusa +1" then
+      equip(set_for_ws(spell.english))
+    end
   elseif spell.type == 'JobAbility' then
     if sets.JAs[spell.english] then
       equip(sets.JAs[spell.english])
@@ -206,8 +230,8 @@ function precast(spell)
       cast_delay(1.3)
       send_command('@input /ja "Seigan" <me>')
     end
-  elseif spell.english == 'Utsusemi: Ichi' or spell.english == 'Utsusemi: Ni' then
-    equip(sets.utsusemi)
+  elseif spell.action_type == 'Magic' then
+    equip(sets.FastCast)
     if spell.english == 'Utsusemi: Ichi' and (buffactive['Copy Image'] or buffactive['Copy Image (2)'] or buffactive['Copy Image (3)']) then
       send_command('@wait 3.3; cancel 66; cancel 444; cancel 445')
     end
@@ -280,15 +304,15 @@ end
 
 function set_for_engaged()
   local set = sets.modes[PrimaryMode.current]
-  if DamageDown.value then
-    set = set_combine(set, sets.DamageDown)
+  if DamageDown.value ~= 'Off' then
+    set = set_combine(set, sets.DamageDown[DamageDown.value])
   end
   if TreasureHunter.value then
     set = set_combine(set, sets.TreasureHunter)
   end
-  if bow_is_equipped() == false then
-    set = set_combine(set, { ammo = "Ginsen" })
-  end
+  -- if bow_is_equipped() == false then
+  --   set = set_combine(set, { ammo = "Ginsen" })
+  -- end
   return set
 end
 
@@ -297,15 +321,16 @@ function set_for_ws(named)
   if sets.WS[named] then
     set = set_combine(set, sets.WS[named])
   end
-  if bow_is_equipped() == false then
+  -- if bow_is_equipped() == false then
     set = set_combine(set, { ammo = "Knobkierrie" })
-  end
+  -- end
   return set
 end
 
 function bow_is_equipped()
-  local val = string.find(player.equipment.ammo, 'Arrow')
-  return val ~= nil
+  -- local val = string.find(player.equipment.ammo, 'Arrow')
+   -- return val ~= nil
+   return false
 end
 
 function equip_set_for_current_mode()
