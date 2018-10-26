@@ -131,6 +131,7 @@ function get_sets()
   --
   sets.WS = {}
   sets.WS.Normal = {
+    ammo = "Knobkierrie",
     head = gear.valorous.mask.ws_high,
     -- neck = "Fotia Gorget",
     neck = "Samurai's Nodowa",
@@ -146,6 +147,7 @@ function get_sets()
     feet = gear.valorous.greaves.ws
   }
   sets.WS.Accuracy = {
+    ammo = "Knobkierrie",
     head = gear.valorous.mask.ws_acc,
     -- neck = "Fotia Gorget",
     neck = "Samurai's Nodowa",
@@ -189,7 +191,7 @@ function get_sets()
     -- ammo = "Impatiens",
     hands = "Leyline Gloves",
     lear = "Loquacious earring",
-    lring = "Weatherspoon ring",
+    -- lring = "Weatherspoon ring",
     rring = "Prolix Ring"
   }
   sets.waltz = {
@@ -252,10 +254,6 @@ function midcast(spell)
 end
 
 function aftercast(spell)
-  if player.in_combat and not (buffactive['Meikyo Shisui']) then
-    equip(set_for_engaged())
-  end
-
   if spell.english == 'Meditate' then
     send_command('@wait 175; input /echo | ******** Meditate ready in 5 ******** |')
   elseif spell.english == 'Konzen-ittai' then
@@ -322,7 +320,7 @@ function set_for_ws(named)
     set = set_combine(set, sets.WS[named])
   end
   -- if bow_is_equipped() == false then
-    set = set_combine(set, { ammo = "Knobkierrie" })
+    -- set = set_combine(set, { ammo = "Knobkierrie" })
   -- end
   return set
 end

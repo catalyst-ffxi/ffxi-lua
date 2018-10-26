@@ -6,13 +6,15 @@ function define_modes()
   PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Hybrid'}
   Capacity = M(false, 'Capacity Mantle')
   Luzaf = M(true, 'Luzaf')
+  Compensator = M(true, 'Compensator')
   Weapons = M{
     ['description'] = 'Weapons',
     'HollidayMagic',
     -- 'Moly',
     'HollidayPhys',
     'Anarchy',
-    'Compensator'}
+    -- 'Compensator'
+  }
 end
 
 function define_binds()
@@ -69,7 +71,7 @@ function get_sets()
     waist="Windbuffet Belt +1",
     left_ear="Telos Earring",
     right_ear="Suppanomimi",
-    left_ring="Ilabrat Ring",
+    left_ring="Petrov Ring",
     right_ring="Epona's Ring",
     back=gear.camulus.meleeTp,
   }
@@ -163,7 +165,7 @@ function get_sets()
     head="Meghanada Visor +2",
     neck="Fotia Gorget",
     left_ear="Ishvara Earring",
-    right_ear="Enervating earring",
+    right_ear="Moonshade earring",
     body="Laksamana's Frac +3",
     hands="Meg. Gloves +2",
     lring="Karieyh Ring +1",
@@ -204,28 +206,29 @@ function get_sets()
 
   -- WS Specific
   sets.WS['Leaden Salute'] = set_combine(sets.WS.RangedMagic, {
-    head = "Pixie Hairpin +1",
-    lring = "Archon Ring",
+    head="Pixie Hairpin +1",
+    right_ear="Moonshade Earring",
+    lring="Archon Ring",
     waist="Svelt. Gouriz +1"
   })
   sets.WS['Wildfire'] = sets.WS.RangedMagic
   sets.WS['Last Stand'] = sets.WS.RangedPhys
-  sets.WS['Detonator'] = {} -- sets.WS.RangedPhys
+  sets.WS['Detonator'] = sets.WS.RangedPhys
   sets.WS['Slug Shot'] = sets.WS.RangedPhys
   sets.WS['Requiescat'] = sets.WS.Melee
   sets.WS['Savage Blade'] = sets.WS.Melee
   sets.WS['Aeolian Edge'] = {
     ammo=gear.bullets.quickDraw,
     head=augments.herc.head.mab,
-    neck = "Sanctity Necklace",
+    neck="Sanctity Necklace",
     left_ear="Friomisi Earring",
     right_ear="Moonshade Earring",
     body="Lanun Frac +3",
     hands="Carmine Fin. Ga. +1",
     left_ring="Acumen Ring",
-    right_ring = "Dingir Ring",
+    right_ring="Dingir Ring",
     back=gear.camulus.rangedWsMagic,
-    waist="Fotia Belt",
+    waist="Eschan Stone",
     legs=augments.herc.legs.magic,
     feet="Lanun Bottes +3"
   }
@@ -256,9 +259,10 @@ function get_sets()
     left_ring="Arvina Ringlet +1"
   })
   sets.JAs.PhantomRoll = {
+    -- ranged = "Compensator",
     head = "Lanun Tricorne +1",
     neck = "Regal Necklace",
-    hands = "Chasseur's Gants",
+    hands = "Chasseur's Gants +1",
     -- lring = "Barataria Ring",
     -- rring = "Luzaf's Ring",
     back = "Camulus's Mantle",
@@ -278,6 +282,9 @@ function precast(spell)
     if Luzaf.value then
       equip({rring = "Luzaf's Ring"})
     end
+    -- if Compensator.value then
+    --   equip({ranged = "Compensator"})
+    -- end
     if not spell.interrupted then
       display_roll_info(spell)
     end
@@ -308,9 +315,9 @@ function precast(spell)
     equip(set_for_ws(spell.english))
     equip({ ammo = gear.bullets.rangedAtt })
 
-    -- Equip moonshade if TP is not capped
-    if player.tp < 2900 then
-      equip({ right_ear = "Moonshade Earring" })
+    -- Replace moonshade earring if tp is capped
+    if spell.english == "Leaden Salute" and player.tp > 2900 then
+      equip({ right_ear="Ishvara Earring" })
     end
   end
 end

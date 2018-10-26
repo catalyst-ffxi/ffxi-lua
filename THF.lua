@@ -73,9 +73,6 @@ function get_sets()
     right_ring="Karieyh Ring +1",
     back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
   }
-  sets.WS.TreasureHunter = sets.WS.Normal
-  sets.WS.Accuracy = {
-  }
   sets.WS['Exenterator'] = {
   }
   sets.WS['Evisceration'] = {
@@ -233,7 +230,7 @@ function set_for_engaged()
 end
 
 function set_for_ws(named)
-  local set = sets.WS[PrimaryMode.current]
+  local set =  sets.WS.Normal
   if sets.WS[named] then
     set = set_combine(set, sets.WS[named])
   end

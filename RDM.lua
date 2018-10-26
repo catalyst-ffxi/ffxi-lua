@@ -180,7 +180,7 @@ function get_sets()
     head = "Atrophy Chapeau +2",   -- 12
     lear = "Loquacious earring",   -- 2
     rear = "Magnetic earring",
-    body = "Vitiation Tabard +1", -- 13
+    body = "Vitiation Tabard +3", -- 15
     hands = "Helios Gloves",       -- 5
     lring = "Kishar Ring",   -- 4
     rring = "Prolix Ring",         -- 2
@@ -288,7 +288,7 @@ function get_sets()
     legs = "Vitiation Tights"
   })
   sets.midcast.stun = set_combine(sets.midcast.dark, {
-    body = "Vitiation Tabard +1",
+    body = "Vitiation Tabard +3",
     hands = "Helios Gloves",
     -- lring = "Weatherspoon Ring",
     rring = "Prolix Ring",
@@ -364,7 +364,7 @@ function get_sets()
     head = "Umuthi Hat",
     neck = "Colossus's Torque",
     rear = "Andoaa earring",
-    body = "Vitiation Tabard +1",
+    body = "Vitiation Tabard +3",
     hands = "Vitiation Gloves +2",
     back = "Ghostfyre Cape",
     legs = "Atrophy tights +1",
@@ -374,6 +374,7 @@ function get_sets()
     -- main = augments.grio.nuke,
     main = "Oranyan",
     neck = "Duelist's torque",
+    body = "Vitiation Tabard +3",
     hands = "Atrophy Gloves +2",
     back = gear.sucellos.enfeeble,
     legs = "Telchine Braconi",
@@ -445,7 +446,7 @@ function get_sets()
   sets.midcast.cursna = {
     neck = "Colossus's Torque",
     rear = "Mendicant's Earring",
-    body = "Vitiation Tabard +1",
+    body = "Vitiation Tabard +3",
     lring = "Ephedra Ring",
     rring = "Ephedra Ring",
     legs = "Atrophy Tights +1",
@@ -522,7 +523,7 @@ end
 
 function precast_ja(spell)
   if spell.english == 'Chainspell' then
-    equip({body = "Vitiation Tabard +1"})
+    equip({body = "Vitiation Tabard +3"})
 
   elseif spell.english == 'Saboteur' then
     equip({hands = "Lethargy Gantherots +1"})

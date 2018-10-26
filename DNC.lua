@@ -30,7 +30,7 @@ function get_sets()
     feet="Mummu Gamashes +1",
     neck="Loricate Torque +1",
     waist="Windbuffet Belt",
-    left_ear="Flashward Earring",
+    left_ear="Sherida Earring",
     right_ear="Brutal Earring",
     left_ring="Mummu Ring",
     right_ring="Fortified Ring",
@@ -45,10 +45,9 @@ function get_sets()
     hands="Mummu Wrists",
     legs="Mummu Kecks",
     feet="Mummu Gamashes +1",
-    -- neck="Sanctity Necklace",
-    neck="Loricate Torque +1",
+    neck="Sanctity Necklace",
     waist="Windbuffet Belt",
-    left_ear="Flashward Earring",
+    left_ear="Sherida Earring",
     right_ear="Brutal Earring",
     left_ring="Mummu Ring",
     right_ring="Fortified Ring",
@@ -86,7 +85,7 @@ function get_sets()
     feet="Mummu Gamash. +1",
     neck="Sanctity Necklace",
     waist="Windbuffet Belt",
-    left_ear="Flashward Earring",
+    left_ear="Sherida Earring",
     right_ear="Brutal Earring",
     left_ring="Mummu Ring",
     right_ring="Ramuh Ring",
@@ -100,9 +99,6 @@ end
 function precast(spell)
   if spell.type == 'JobAbility' then
     equip(sets.JobAbility[spell.english])
-
-  elseif spell.type == 'BardSong' then
-    equip(sets.Songs.Precast)
 
   elseif spell.action_type == 'Magic' then
     equip(sets.Magic.Precast)
