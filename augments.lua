@@ -24,22 +24,25 @@ augments = {
     head = {
       wsd = { name="Herculean Helm", augments={'Rng.Atk.+18','Weapon skill damage +4%','MND+10','Rng.Acc.+13',}},
       mab = { name="Herculean Helm", augments={'Mag. Acc.+16 "Mag.Atk.Bns."+16','Crit. hit damage +3%','INT+2','Mag. Acc.+13','"Mag.Atk.Bns."+15',}},
-      pdt = { name="Herculean Helm", augments={'DEX+3','Phys. dmg. taken -5%',}},
       fc = { name="Herculean Helm", augments={'Accuracy+9','"Fast Cast"+5','STR+4',}},
+      reso = { name="Herculean Helm", augments={'Attack+20','"Triple Atk."+3','STR+6','Accuracy+9',}},
     },
     body = {
+      reso = { name="Herculean Vest", augments={'Accuracy+7','"Triple Atk."+3','STR+10','Attack+8',}},
+      phalanx = { name="Herculean Vest", augments={'CHR+3','"Subtle Blow"+1','Phalanx +5','Accuracy+10 Attack+10',}}
     },
     hands = {
-      triple = { name="Herculean Gloves", augments={'Accuracy+28','"Triple Atk."+2','DEX+9',}}
+      triple = { name="Herculean Gloves", augments={'Attack+23','"Triple Atk."+4','AGI+4','Accuracy+13',}},
     },
     legs = {
       ws = { name="Herculean Trousers", augments={'Accuracy+25 Attack+25','Weapon skill damage +3%','DEX+7',}},
-      magic = { name="Herculean Trousers", augments={'"Mag.Atk.Bns."+25','Pet: Mag. Acc.+14','Accuracy+12 Attack+12','Mag. Acc.+17 "Mag.Atk.Bns."+17',}}
+      magic = { name="Herculean Trousers", augments={'"Mag.Atk.Bns."+25','Pet: Mag. Acc.+14','Accuracy+12 Attack+12','Mag. Acc.+17 "Mag.Atk.Bns."+17',}},
+      treasure = { name="Herculean Trousers", augments={'"Conserve MP"+1','"Mag.Atk.Bns."+24','"Treasure Hunter"+1','Accuracy+18 Attack+18',}}
     },
     feet = {
-      triple = { name="Herculean Boots", augments={'Accuracy+19 Attack+19','"Triple Atk."+2',}},
-      magic = {name="Herculean Boots", augments={'Mag. Acc.+18','Weapon skill damage +2%','INT+4','"Mag.Atk.Bns."+10',}},
-      phalanx = { name="Herculean Boots", augments={'"Mag.Atk.Bns."+19','Phys. dmg. taken -1%','Phalanx +2','Mag. Acc.+14 "Mag.Atk.Bns."+14',}}
+      triple = { name="Herculean Boots", augments={'Accuracy+25 Attack+25','"Triple Atk."+4','STR+10','Accuracy+4',}},
+      -- phalanx = { name="Herculean Boots", augments={'"Mag.Atk.Bns."+19','Phys. dmg. taken -1%','Phalanx +2','Mag. Acc.+14 "Mag.Atk.Bns."+14',}},
+      -- reso={ name="Herculean Boots", augments={'Accuracy+27','"Triple Atk."+3','STR+10','Attack+8',}}
     }
   },
 
@@ -72,6 +75,18 @@ augments = {
   },
 
   taeon = {
-    chapeau = { name="Taeon Chapeau", augments={'"Snapshot"+5','"Snapshot"+3',}}
+    head = {
+      snapshot = { name="Taeon Chapeau", augments={'"Snapshot"+5','"Snapshot"+3',}},
+      SID = { name="Taeon Chapeau", augments={'Spell interruption rate down -7%','Phalanx +3',}}
+    },
+    hands = {
+      phalanx = { name="Taeon Gloves", augments={'Phalanx +3',}}
+    },
+    legs = {
+      phalanx = { name="Taeon Tights", augments={'Accuracy+19','"Fast Cast"+3','Phalanx +3',}},
+    },
+    feet = {
+      phalanx = { name="Taeon Boots", augments={'Accuracy+22','Spell interruption rate down -9%','Phalanx +3',}}
+    }
   },
 }

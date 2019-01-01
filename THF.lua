@@ -3,10 +3,25 @@ include('Modes.lua')
 include('augments.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Accuracy'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Hybrid'}
   TreasureHunter = M(true, 'Treasure Hunter')
   Capacity = M(false, 'Capacity Mantle')
   DamageDown = M(false, 'Damage Down')
+
+  Abyssea = {
+    current = 0,
+    weapons = {
+      { name="Pluto's Staff", ws="Earth Crusher=Earth, Sunburst=Light" },
+      { name="Wax Sword", ws="Red Lotus Blade=Fire, Seraph Blade=Light" },
+      { name="Ash Club", ws="Seraph Strike=Light" },
+      -- { name="Uchigatana", ws="Tachi Jinpu=Wind, Koki=Light" },
+      { name="Bronze Dagger", ws="Cyclone=Wind, Energy Drain=Dark" },
+      -- { name="Kunai", ws="Blade: Ei=Dark" },
+      { name="Lost Sickle", ws="Shadow of Death=Dark" },
+      { name="Lament", ws="Freezebite=Ice" },
+      { name="Tzee Xicu's Blade", ws="Raiden Thrust=Thunder"}
+    }
+  }
 end
 
 function define_binds()
@@ -14,6 +29,7 @@ function define_binds()
   send_command("alias g15v2_m1g2 gs c cycle Capacity")
   send_command("alias g15v2_m1g3 gs c cycle DamageDown")
   send_command("alias g15v2_m1g4 gs c cycle TreasureHunter")
+  send_command("alias g15v2_m1g5 gs c abbyweapon")
 end
 
 function define_gear()
@@ -33,26 +49,33 @@ function get_sets()
   sets.modes = {}
   sets.modes.Normal = {
     ammo="Ginsen",
-    head="Adhemar Bonnet",
-    neck="Lissome Necklace",
-    left_ear="Sherida Earring",
-    right_ear="Telos Earring",
+    head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
-    hands="Herculean Gloves",
-    left_ring="Ilabrat Ring",
+    hands=augments.herc.hands.triple,
+    legs="Samnuha Tights",
+    feet=augments.herc.feet.triple,
+    neck="Iskur Gorget",
+    waist="Windbuffet Belt +1",
+    left_ear="Telos Earring",
+    right_ear="Sherida Earring",
+    left_ring="Petrov Ring",
     right_ring="Epona's Ring",
     back={ name="Canny Cape", augments={'DEX+2','AGI+1','"Dual Wield"+4','Crit. hit damage +2%',}},
-    waist="Windbuffet Belt +1",
-    legs="Meg. Chausses +2",
-    feet=augments.herc.feet.triple
   }
-  sets.modes.TreasureHunter = set_combine(sets.modes.Normal, {
-    hands="Plunderer's Armlets +1",
-    waist="Chaac Belt",
-    legs = { name="Herculean Trousers", augments={'"Conserve MP"+1','"Mag.Atk.Bns."+24','"Treasure Hunter"+1','Accuracy+18 Attack+18',}}
-  })
-  sets.run = {
-    feet = "Fajin boots"
+  sets.modes.Hybrid = {
+    ammo="Staunch Tathlum",
+    head="Adhemar Bonnet +1",
+    body="Meg. Cuirie +2",
+    hands=augments.herc.hands.triple,
+    legs="Meg. Chausses +2",
+    feet=augments.herc.feet.triple,
+    neck="Loricate Torque +1",
+    waist="Windbuffet Belt +1",
+    left_ear="Telos Earring",
+    right_ear="Sherida Earring",
+    left_ring="Defending Ring", 
+    right_ring="Epona's Ring",
+    back={ name="Canny Cape", augments={'DEX+2','AGI+1','"Dual Wield"+4','Crit. hit damage +2%',}},
   }
 
   -- Weapon Skills
@@ -60,18 +83,18 @@ function get_sets()
   sets.WS = {}
   sets.WS.Normal = {
     ammo="Falcon Eye",
-    head={ name="Herculean Helm", augments={'Rng.Atk.+18','Weapon skill damage +4%','MND+10','Rng.Acc.+13',}},
-    body="Meg. Cuirie +1",
-    hands="Meg. Gloves +2",
-    legs="Meg. Chausses +2",
-    feet="Meg. Jam. +2",
+    head="Meghanada Visor +2",
     neck="Fotia Gorget",
-    waist="Fotia Belt",
     left_ear="Ishvara Earring",
-    right_ear={ name="Moonshade Earring", augments={'Attack+4','TP Bonus +250',}},
-    left_ring="Ilabrat Ring",
+    right_ear="Moonshade Earring",
+    body="Meg. Cuirie +2",
+    hands="Meg. Gloves +2",
+    left_ring="Regal Ring",
     right_ring="Karieyh Ring +1",
     back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
+    waist="Fotia Belt",
+    legs=augments.herc.legs.ws,
+    feet="Meg. Jam. +2",
   }
   sets.WS['Exenterator'] = {
   }
@@ -125,6 +148,9 @@ function get_sets()
     rring = "Defending Ring",
     waist = "Flume Belt +1",
   }
+  sets.run = {
+    feet = "Fajin boots"
+  }
 
   -- Ranged Attack
   --
@@ -134,13 +160,28 @@ function get_sets()
   -- Magic
   sets.MA = {}
   sets.MA.FastCast = {
-    ammo = "Impatiens",
-    neck = "Loricate torque",
-    hands = "Leyline Gloves",
-    lear = "Loquacious earring",
-    rear = "Magnetic earring",
-    lring = "Kishar Ring",
-    rring = "Prolix Ring"
+    ammo="Impatiens",
+    head=augments.herc.head.fc,         -- 12
+    neck="Orunmila's Torque",           -- 5
+    body="Taeon Tabard",                -- 8
+    hands="Leyline Gloves",             -- 7
+    lear="Loquacious earring",          -- 2
+    rear="Etiolation Earring",          -- 1
+    lring="Kishar Ring",                -- 4
+    rring="Prolix Ring",                -- 2
+    legs=augments.taeon.legs.phalanx,   -- 3
+  }
+  sets.MA.SpellInterrupt = {
+    ammo="Staunch Tathlum",          -- 10
+    head=augments.taeon.head.SID,    -- 7
+    neck="Loricate Torque +1",
+    lear="Halasz Earring",           -- 5
+    rear="Magnetic earring",         -- 8
+    hands="Rawhide Gloves",          -- 15
+    left_ring="Defending Ring",      -- PDT
+    right_ring="Warden's Ring",      -- PDT
+    waist="Flume Belt +1",
+    feet=augments.taeon.feet.phalanx -- 9
   }
 end
 
@@ -169,7 +210,9 @@ function precast(spell)
 end
 
 function midcast(spell)
-
+  if spell.action_type == 'Magic' then
+    equip(sets.MA.SpellInterrupt)
+  end
 end
 
 function aftercast(spell)
@@ -212,6 +255,8 @@ function self_command(commandArgs)
     equip(sets.idle)
   elseif command == 'run' then
     equip(sets.run)
+  elseif command == 'abbyweapon' then
+    cycle_weapon()
   end
 end
 
@@ -249,4 +294,26 @@ function maintain_reraise_equip()
   if player.equipment.lear == 'Reraise Earring' then
     equip({lear = 'Reraise Earring'})
   end
+end
+
+function cycle_weapon()
+  Abyssea.current = Abyssea.current + 1
+  local len = tablelength(Abyssea.weapons)
+
+  -- if Abyssea.current > tablelength(Abyssea.weapons) then
+  if Abyssea.current > #Abyssea.weapons then
+    add_to_chat(122, '*** DD Weapons Equiped ***')
+    equip({ main = "Skinflayer", sub = "Taming Sari" })
+    Abyssea.current = 0
+  else
+    local set = Abyssea.weapons[Abyssea.current]
+    add_to_chat(122, 'Switching to ' .. set.name ..'. Use weapon skills: ' .. set.ws)
+    equip({ main = set.name, sub = '-' })
+  end
+end
+
+function tablelength(T)
+  local count = 0
+  for _ in pairs(T) do count = count + 1 end
+  return count
 end

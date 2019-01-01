@@ -2,7 +2,8 @@ include('Modes.lua')
 
 function define_modes()
   Capacity = M(false, 'Capacity Mantle')
-  DummySongs = S{"Swift Etude", "Bewitching Etude", "Enchanting Etude", "Warding Round"}
+  DummySongs = S{"Swift Etude", "Bewitching Etude", "Enchanting Etude", "Spirited Etude", "Vital Etude"}
+  DummyIndex = 0
 end
 
 function define_aliases()
@@ -14,86 +15,148 @@ function define_aliases()
 end
 
 function get_sets()
+  send_command('lua load setlist')
+  -- send_command('lua load dressup')
   define_modes()
   define_aliases()
 
-  gear = {}
+  gear = {
+    kali = {
+      skill={ name="Kali", augments={'Mag. Acc.+15','String instrument skill +10','Wind instrument skill +10',}},
+      refresh={ name="Kali", augments={'MP+60','Mag. Acc.+20','"Refresh"+1',}}
+    },
+    cape = {
+      fastCast = { name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
+      enmity = { name="Intarabus's Cape", augments={'MND+10','Enmity-10',}},
+      melee = { name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}},
+    },
+    telchine = {
+      head = {
+        enhancing={ name="Telchine Cap", augments={'Enh. Mag. eff. dur. +9',}}
+      },
+      body={
+        enhancing={ name="Telchine Chas.", augments={'Enh. Mag. eff. dur. +6',}}
+      },
+      gloves = {
+        enhancing = { name="Telchine Gloves", augments={'"Fast Cast"+4','Enh. Mag. eff. dur. +10',}},
+        healing = { name="Telchine Gloves", augments={'"Cure" potency +5%',}}
+      },
+      legs={
+        enhancing={ name="Telchine Braconi", augments={'Accuracy+20','"Store TP"+6','Enh. Mag. eff. dur. +9',}},
+      },
+      feet = {
+        enhancing ={ name="Telchine Pigaches", augments={'Song spellcasting time -7%','Enh. Mag. eff. dur. +7',}}
+      }
+    },
+    chironic = {
+      gloves = {
+        tp = { name="Chironic Gloves", augments={'Accuracy+11 Attack+11','"Dbl.Atk."+3','Attack+12',}}
+      },
+      feet = {
+        tp={ name="Chironic Slippers", augments={'Accuracy+24','"Dbl.Atk."+3','Attack+4',}}
+      }
+    }
+  }
 
   -- Modes
   sets.Idle = {
-    main = "Kali",
-    sub = "Genbu's Shield",
-    -- ranged = "Gjallarhorn",
-    head = "Inyanga Tiara +1",
-    neck = "Loricate Torque +1",
-    left_ear = "Flashward Earring",
-    right_ear = "Etiolation Earring",
-    body = "Inyanga Jubbah +1",
-    hands = "Inyanga Dastanas +1",
-    left_ring = "Fortified Ring",
-    right_ring = "Inyanga Ring",
-    back = "Intarabus's Cape",
-    -- waist = "Witful Belt",
-    waist = "Fucho-no-Obi",
-    legs = "Inyanga Shalwar +2",
-    feet = "Inyanga Crackows +1"
+    main=gear.kali.refresh,
+    sub="Genbu's Shield",
+    head="Inyanga Tiara +1",
+    neck="Loricate Torque +1",
+    left_ear="Flashward Earring",
+    right_ear="Etiolation Earring",
+    body="Inyanga Jubbah +2",
+    hands="Inyanga Dastanas +2",
+    left_ring="Fortified Ring",
+    right_ring="Inyanga Ring",
+    back=gear.cape.fastCast,
+    waist="Fucho-no-Obi",
+    legs="Inyanga Shalwar +2",
+    feet="Fili Cothurnes +1"
   }
   sets.Engaged = {
-    -- main="Skinflayer",
-    main = "Kali",
     sub="Genbu's Shield",
-    -- ranged="Gjallarhorn",
-    head="Aya. Zucchetto +1",
-    body="Ayanmo Corazza",
-    hands="Aya. Manopolas +1",
-    legs="Ayanmo Cosciales",
-    feet="Aya. Gambieras +1",
-    neck="Sanctity Necklace",
-    waist="Windbuffet Belt",
-    left_ear="Flashward Earring",
+    head="Aya. Zucchetto +2",
+    body="Ayanmo Corazza +2",
+    hands=gear.chironic.gloves.tp,
+    legs=gear.telchine.legs.enhancing,
+    feet=gear.chironic.feet.tp,
+    neck="Bard's Charm",
+    waist="Kentarch Belt +1",
+    left_ear="Mache Earring",
     right_ear="Brutal Earring",
+    back=gear.cape.melee,
     left_ring="Ayanmo Ring",
-    right_ring="Enlivened Ring",
+    right_ring="Rajas Ring",
   }
 
   -- Magic
   sets.Magic = {}
   sets.Magic.Precast = {
-    main = "Kali",
-    body = "Inyanga Jubbah +1",
-    hands = { name="Telchine Gloves", augments={'"Fast Cast"+4',}},
-    left_ring = "Weatherspoon Ring",
-    right_ring = "Prolix Ring",
-    left_ear = "Loquacious earring",
-    right_ear = "Etiolation Earring",
-    legs = "Kaykaus Tights",
-    back = "Intarabus's Cape",
-    waist = "Witful Belt"
+    main=gear.kali.refresh,
+    head="Kaykaus Mitra",
+    neck="Orunmila's torque",
+    body="Inyanga Jubbah +2",
+    hands=gear.telchine.gloves.fastCast,
+    left_ring="Weatherspoon Ring",
+    right_ring="Kishar Ring",
+    left_ear="Loquacious earring",
+    right_ear="Etiolation Earring",
+    legs="Kaykaus Tights",
+    back=gear.cape.fastCast,
+    waist="Witful Belt"
   }
   sets.Magic.Healing = {
-    hands={ name="Telchine Gloves", augments={'"Cure" potency +5%',}},
-    legs = "Kaykaus Tights"
+    head="Kaykaus Mitra",
+    -- neck="Henic Torque",
+    left_ear="Novia Earring",
+    right_ear="Mendicant's Earring",
+    body="Vanya Robe",
+    hands="Kaykaus Cuffs",
+    left_ring="Lebeche Ring",
+    right_ring="Haoma's Ring",
+    back=gear.cape.enmity,
+    waist="Pythia Sash",
+    legs="Kaykaus Tights",
+    feet="Vanya Clogs"
+  }
+  sets.Magic.HealingPrecast = {
+    head="Kaykaus Mitra",
+    right_ear="Mendicant's Earring",
   }
   sets.Magic.HealingSelf = {
     waist="Chuq'aba belt"
   }
   sets.Magic.Cursna = {
-    lring = "Ephedra Ring",
-    rring = "Ephedra Ring",
-    feet = "Vanya Clogs"
+    head="Kaykaus Mitra",                -- Cursna/Skill
+    neck="Malison Medallion",            -- Cursna
+    left_ear="Loquacious earring",       -- FC
+    right_ear="Etiolation Earring",      -- FC
+    body="Inyanga Jubbah +2",            -- FC
+    hands=gear.telchine.gloves.enhancing,-- FC
+    left_ring="Haoma's Ring",            -- Cursna/Skill
+    right_ring="Haoma's Ring",           -- Cursna/Skill
+    back="Oretan. Cape +1",              -- Cursna
+    waist="Witful Belt",                 -- FC
+    legs="Kaykaus Tights",               -- FC
+    feet="Vanya Clogs"                   -- Cursna/Skill
   }
   sets.Magic.Enhancing = {
-
+    head=gear.telchine.head.enhancing,
+    hands=gear.telchine.gloves.enhancing,
+    body=gear.telchine.body.enhancing,
+    legs=gear.telchine.legs.enhancing,
+    feet=gear.telchine.feet.enhancing
   }
   sets.Magic.Enfeebling = {
-    main = "Kali",
-    -- range="Gjallarhorn",
+    main=gear.kali.refresh,
     head="Inyanga Tiara +1",
-    body="Fili Hongreline",
-    hands="Inyanga Dastanas +1",
+    body="Fili Hongreline +1",
+    hands="Inyanga Dastanas +2",
     legs="Fili Rhingrave",
     feet="Inyan. Crackows +1",
-    neck="Moonbow Whistle",
+    neck="Moonbow Whistle +1",
     left_ear="Gwati Earring",
     right_ear="Hermetic Earring",
     left_ring="Weatherspoon Ring",
@@ -105,54 +168,57 @@ function get_sets()
   -- Songs
   sets.Songs = {}
   sets.Songs.Precast = set_combine(sets.Magic.Precast, {
-    head = "Fili Calot",
-    neck = "Aoidos' Matinee",
-    feet = { name="Telchine Pigaches", augments={'Song spellcasting time -7%',}}
+    head="Fili Calot",
+    feet=gear.telchine.feet.enhancing
   })
   sets.Songs.Dummy = {
-    ranged = "Terpander",
-    neck = "Loricate Torque +1",
-    body = "Inyanga Jubbah +1"
+    main=gear.kali.skill,
+    ranged="Daurdabla",
+    neck="Moonbow Whistle +1",
+    body="Fili Hongreline +1",
+    -- legs="Inyanga Shalwar +2",
+    feet="Brioso Slippers +2"
   }
-  sets.Songs.Potency = {
-    main="Kali",
+  sets.Songs.Duration = {
+    main=gear.kali.skill,
     ranged="Gjallarhorn",
-    neck="Moonbow Whistle",
-    body="Fili Hongreline",
+    neck="Moonbow Whistle +1",
+    body="Fili Hongreline +1",
+    right_ring="Stikini Ring",
     legs="Inyanga Shalwar +2",
     feet="Brioso Slippers +2"
   }
   sets.Songs.Accuracy = {
-    main="Kali",
+    main=gear.kali.skill,
     ranged="Gjallarhorn",
     head="Inyanga Tiara +1",
-    body="Fili Hongreline",
-    hands="Brioso Cuffs +2",
+    body="Fili Hongreline +1",
+    hands="Inyanga Dastanas +2",
     legs="Inyanga Shalwar +2",
     feet="Brioso Slippers +2",
-    neck="Moonbow Whistle",
+    neck="Moonbow Whistle +1",
     left_ear="Gwati Earring",
     right_ear="Hermetic Earring",
     left_ring="Weatherspoon Ring",
-    right_ring="Inyanga Ring",
+    right_ring="Stikini Ring",
     waist="Porous Rope",
     back="Intarabus's Cape",
   }
   sets.Songs.List = {}
-  sets.Songs.List.Ballad = { legs = "Fili Rhingrave" }
+  sets.Songs.List.Ballad = { legs="Fili Rhingrave" }
+  sets.Songs.List.Carol = { hands="Mousai Gages" }
   sets.Songs.List.Elegy = { }
   sets.Songs.List.Finale = {}
-  sets.Songs.List.Lullaby = { hands = "Brioso Cuffs +2" }
-  sets.Songs.List.Madrigal = { head = "Fili Calot" }
-  sets.Songs.List.March = { hands = "Fili Manchettes" }
+  sets.Songs.List.Lullaby = { ranged="Daurdabla", hands="Brioso Cuffs +2" }
+  sets.Songs.List.Madrigal = { head="Fili Calot" }
+  sets.Songs.List.March = { hands="Fili Manchettes" }
   sets.Songs.List.Mambo = { }
   sets.Songs.List.Mazurka = { }
-  sets.Songs.List.Minne = { }
-  sets.Songs.List.Minuet = { body = "Fili Hongreline" }
+  sets.Songs.List.Minne = { legs="Mousai Seraweels" }
+  sets.Songs.List.Minuet = { body="Fili Hongreline +1" }
   sets.Songs.List.Paeon = { }
-  sets.Songs.List.Scherzo = { }
-  -- feet = "Fili Cothurnes"
-  sets.Songs.List.Threnody = { }
+  sets.Songs.List.Scherzo = { feet="Fili Cothurnes +1" }
+  sets.Songs.List.Threnody = { body="Mousai Manteel" }
 
   -- Abilities
   sets.JobAbility = {}
@@ -169,9 +235,15 @@ function precast(spell)
 
   elseif spell.type == 'BardSong' then
     equip(sets.Songs.Precast)
+    if string.find(spell.english, 'Lullaby') then
+      equip({ ranged="Daurdabla" })
+    end
 
   elseif spell.action_type == 'Magic' then
     equip(sets.Magic.Precast)
+    if string.find(spell.english, 'Cure') or string.find(spell.english, 'Curaga') then
+      equip(sets.Magic.HealingPrecast)
+    end
 
   elseif spell.type == 'WeaponSkill' then
     equip(sets.WeaponSkill)
@@ -197,13 +269,12 @@ function midcast(spell)
 
   -- Bard Songs
   if spell.type == 'BardSong' then
-    -- add_to_chat(122, spell.english)
     if DummySongs:contains(spell.english) then
       equip(sets.Songs.Dummy)
     elseif spell.target.type == 'MONSTER' then
       equip(sets.Songs.Accuracy)
     else
-      equip(sets.Songs.Potency)
+      equip(sets.Songs.Duration)
     end
     for key, gear in pairs(sets.Songs.List) do
       if string.find(spell.english, key) then
@@ -255,8 +326,8 @@ end
 function aftercast(spell)
   if player.status=='Engaged' then
     equip(sets.Engaged)
-  elseif player.in_combat then
-  -- else
+  -- elseif player.in_combat then
+  else
     equip(sets.Idle)
   end
   if Capacity.value then
@@ -301,6 +372,8 @@ function self_command(commandArgs)
     equip(sets.Idle)
   elseif command == 'run' then
     equip(sets.MoveSpeed)
+  elseif command == 'dummy' then
+    play_dummy()
   end
 end
 
@@ -313,4 +386,13 @@ function maintain_reraise_equip()
   if player.equipment.lear == 'Reraise Earring' then
     equip({lear = 'Reraise Earring'})
   end
+end
+
+function play_dummy()
+  DummyIndex = DummyIndex + 1
+  if DummyIndex > #DummySongs then
+    DummyIndex = 1
+  end
+  local song = DummySongs[DummyIndex]
+  send_command('@input /ma "'..song..'" <me>')
 end

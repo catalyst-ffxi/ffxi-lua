@@ -2,7 +2,6 @@ include('Modes.lua')
 
 function define_modes()
   Capacity = M(false, 'Capacity Mantle')
-  DummySongs = S{"Swift Etude", "Bewitching Etude", "Enchanting Etude", "Warding Round"}
 end
 
 function define_aliases()

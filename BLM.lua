@@ -87,11 +87,12 @@ function get_sets()
   }
   sets.aftercast = {}
   sets.aftercast.Caster = set_combine(sets.modes.Caster, {
+    ammo="Staunch Tathlum",
     head = "Befouled Crown",
     neck = "Loricate Torque +1",
     left_ear = "Etiolation Earring",
     right_ear="Hearty Earring",
-    body = "Jhakri Robe +1",
+    body = "Jhakri Robe +2",
     lring = "Gelatinous Ring +1",
     rring = "Defending Ring",
     back = "Solemnity Cape",
@@ -104,8 +105,9 @@ function get_sets()
   sets.base = {}
 
   sets.base.fast_cast = {
-    -- ammo = "Impatiens",
+    ammo="Sapience Orb",                -- 2
     head = augments.merlinic.hood.nuke,   -- 13
+    neck="Orunmila's Torque",           -- 5
     lear = "Loquacious earring",   -- 2
     rear = "Magnetic earring",
     body = augments.merlinic.jubbah,  -- 6
@@ -123,7 +125,7 @@ function get_sets()
     waist = "Witful Belt"
   }
   sets.base.auto_refresh = {
-    body = "Jhakri Robe +1"
+    body = "Jhakri Robe +2"
   }
   sets.base.move_speed = {
     legs = "Track Pants +1"
@@ -132,7 +134,7 @@ function get_sets()
   })
   sets.base.resting = set_combine(sets.modes.Caster, {
     head = "Befouled Crown",
-    body = "Jhakri Robe +1",
+    body = "Jhakri Robe +2",
     waist = "Fucho-no-Obi",
     legs = "Assiduity pants"
   })
@@ -177,10 +179,10 @@ function get_sets()
     rear = "Regal Earring",
     body = augments.merlinic.jubbah,
     hands = "Amalric Gages",
-    lring = "Weatherspoon Ring",
-    rring = "Shiva Ring",
+    lring = "Stikini Ring",
+    rring = "Stikini Ring",
     back = gear.taranus.nuke,
-    waist = "Refoccilation Stone",
+    waist = "Eschan Stone",
     legs = "Spaekona's Tonban +2",
     feet = augments.merlinic.crackows.nuke
   }
@@ -259,6 +261,7 @@ function get_sets()
   sets.midcast.enhancing_skill = {
   }
   sets.midcast.enhancing_duration = {
+    -- main = "Oranyan",
     legs = "Telchine Braconi"
   }
   sets.midcast.enhancing_regen = {

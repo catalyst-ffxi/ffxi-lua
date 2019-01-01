@@ -42,7 +42,8 @@ function define_aliases()
   send_command('bind !f5 stoneskin')
   send_command('bind !f6 phalanx')
   send_command('bind !f7 blink')
-  send_command('bind !f8 storm')
+  -- send_command('bind !f8 storm')
+  send_command('bind !f8 aquaveil')
 
   -- Modes
   send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
@@ -81,7 +82,8 @@ function get_sets()
     right_ear="Etiolation Earring",
     body="Atrophy Tabard +3",
     hands=augments.chironic.gloves.nuke,
-    lring="Fortified Ring",
+    -- lring="Fortified Ring",
+    lring="Gelatinous Ring +1",
     rring="Defending Ring",
     back="Solemnity Cape",
     waist="Flume Belt +1",
@@ -232,7 +234,7 @@ function get_sets()
       head="Aya. Zucchetto +2",
       body="Ayanmo Corazza +2",
       hands="Jhakri Cuffs +2",
-      legs={ name="Taeon Tights", augments={'Accuracy+19','Weapon Skill Acc.+15','Crit. hit damage +2%',}},
+      legs="Aya. Cosciales +2",
       feet="Thereoid Greaves",
       neck="Fotia Gorget",
       waist="Fotia Belt",
@@ -256,6 +258,21 @@ function get_sets()
     left_ring="Shukuyu Ring",
     right_ring="Karieyh Ring +1",
     back=gear.sucellos.ws
+  }
+  sets.ws['Sanguine Blade'] = {
+    ammo="Ombre Tathlum +1",
+    head="Pixie Hairpin +1",
+    neck="Sanctity Necklace",
+    lear="Regal Earring",
+    rear="Moonshade earring",
+    body=augments.merlinic.jubbah, -- need to compare to amalric and af/relic
+    hands="Jhakri Cuffs +2",
+    lring="Archon Ring",
+    rring="Karieyh Ring +1",
+    back=gear.sucellos.nuke,  -- need a new cape with int/macc/wsd
+    waist="Refoccilation Stone",
+    legs=augments.merlinic.shalwar.macc, -- jhakri slops?
+    feet=augments.merlinic.crackows.nuke -- vitiation boots?
   }
 
   -- MIDCAST
@@ -314,7 +331,7 @@ function get_sets()
     rring = "Strendu Ring",
     back = gear.sucellos.nuke,
     waist = "Refoccilation Stone",
-    legs = augments.merlinic.shalwar,
+    legs = augments.merlinic.shalwar.macc,
     feet = augments.merlinic.crackows.nuke
   }
   sets.midcast.elemental.MagicBurst = set_combine(sets.midcast.elemental.Normal, {
@@ -334,14 +351,14 @@ function get_sets()
   sets.midcast.enfeebling = {
     main = augments.grio.enfeeble,
     sub = "Mephitis Grip",
-    ammo = "Quartz Tathlum +1",
+    ammo = "Regal Gem",
     head = "Viti. Chapeau +2",
     neck = "Duelist's torque",
     lear = "Regal Earring",
     rear = "Digni. Earring",
     hands = "Lethargy Gantherots +1",
     lring = "Stikini Ring",
-    rring = "Globidonta Ring",
+    rring = "Stikini Ring",
     back = gear.sucellos.enfeeble,
     waist = "Rumination Sash",
     legs = "Chironic Hose",
@@ -361,12 +378,16 @@ function get_sets()
   -- Enhancing Magic
   --
   sets.midcast.enhancing_skill = {
+    -- sub = "Fulcio Grip"
     head = "Umuthi Hat",
-    neck = "Colossus's Torque",
+    neck = "Incanter's Torque",
     rear = "Andoaa earring",
     body = "Vitiation Tabard +3",
     hands = "Vitiation Gloves +2",
+    left_ring="Stikini Ring",
+    right_ring="Stikini Ring",
     back = "Ghostfyre Cape",
+    waist = "Olympus Sash",
     legs = "Atrophy tights +1",
     feet = "Lethargy Houseaux +1"
   }
@@ -416,7 +437,7 @@ function get_sets()
     main = "Serenity",            -- 25%
     sub = "Enki Strap",
     -- head = "Kaykaus Mitra",
-    neck = "Colossus's Torque",
+    neck = "Incanter's Torque",
     rear = "Mendicant's Earring", -- 5%
     body = "Vanya Robe",          -- 7%
     -- hands = "Telchine Gloves",    -- 18%
@@ -444,7 +465,7 @@ function get_sets()
   })
   -- Cursna chance to clear doom affected by Healing Magic and Cursna Effect+ gear
   sets.midcast.cursna = {
-    neck = "Colossus's Torque",
+    neck = "Incanter's Torque",
     rear = "Mendicant's Earring",
     body = "Vitiation Tabard +3",
     lring = "Ephedra Ring",
@@ -455,22 +476,22 @@ function get_sets()
 
   -- Ranged Attack
   --
-  sets.ranged = {
-    head = "Despair Helm",
-    neck = "Yarak torque",
-    lear = "Drone Earring",
-    rear = "Matanki Earring",
-    hands = "Buremte Gloves",
-    body = "Aetosaur Jerkin",
-    lear = "Drone Earring",
-    rear = "Enervating Earring",
-    lring = "Longshot Ring",
-    rring = "Hajduk Ring",
-    legs = "Lethargy Fuseau +1",
-    feet = "Despair Greaves",
-    back = "Moondoe Mantle +1",
-    waist = "Flax sash"
-  }
+  -- sets.ranged = {
+  --   head = "Despair Helm",
+  --   neck = "Yarak torque",
+  --   lear = "Drone Earring",
+  --   rear = "Matanki Earring",
+  --   hands = "Buremte Gloves",
+  --   body = "Aetosaur Jerkin",
+  --   lear = "Drone Earring",
+  --   rear = "Enervating Earring",
+  --   lring = "Longshot Ring",
+  --   rring = "Hajduk Ring",
+  --   legs = "Lethargy Fuseau +1",
+  --   feet = "Despair Greaves",
+  --   back = "Moondoe Mantle +1",
+  --   waist = "Flax sash"
+  -- }
 
 end
 
@@ -681,7 +702,8 @@ function self_command(commandArgs)
   command = commandArgs[1]
 
   if command == 'mode' then
-    equip_set_for_current_mode()
+    -- equip_set_for_current_mode()
+    equip(set_for_current_mode())
   elseif command == 'cycle' then
 
     local mode = _G[commandArgs[2]]
@@ -689,7 +711,8 @@ function self_command(commandArgs)
       mode:cycle()
       add_to_chat(122, 'SET [' .. mode.description .. '] to ' .. mode.current)
       if mode.description == 'Primary Mode' then
-        equip(sets.modes[mode.current])
+        -- equip(sets.modes[mode.current])
+        equip(set_for_current_mode())
       elseif mode.description == 'Primary Element' then
         define_aliases()
       end
@@ -775,4 +798,12 @@ function equip_set_for_current_mode()
   if DamageDown.value then
     equip(sets.DamageDown)
   end
+end
+
+function set_for_current_mode()
+  local set = sets.modes[PrimaryMode.current]
+  -- if PrimaryMode.current ~= 'Caster' and player.sub_job ~= 'NIN' then
+  --   set.sub = "Beatific Shield +1"
+  -- end
+  return set
 end

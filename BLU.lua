@@ -36,7 +36,7 @@ function get_sets()
   sets.modes.Normal = {}
   sets.modes.Normal.Engaged = {
     ammo="Ginsen",
-    head="Adhemar Bonnet",
+    head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
     hands=augments.herc.hands.triple,
     legs="Carmine Cuisses +1",
@@ -66,6 +66,7 @@ function get_sets()
     lring="Ayanmo Ring",
     rring="Defending Ring",
     waist="Flume Belt +1",
+    back="Solemnity Cape"
   }
 
   sets.modes.Hybrid = {}
@@ -135,7 +136,7 @@ function get_sets()
     body="Amalric Doublet",
     hands="Amalric Gages",
     legs="Amalric Slops",
-    feet=augments.herc.feet.phalanx,
+    feet="Jhakri Pigaches +1",
     -- feet="Amalric Nails",
     neck="Sanctity Necklace",
     waist="Eschan Stone",
@@ -221,6 +222,19 @@ function get_sets()
   --
   sets.JAs = {}
   sets.JAs.Waltz = { lring = 'Asklepian Ring' }
+
+  sets.learn={
+    main="Wax Sword",
+    ammo="Staunch Tathlum",
+    hands="Magus Bazubands",
+    neck="Loricate Torque +1",
+    waist="Flume Belt +1",
+    left_ear="Brutal Earring",
+    right_ear="Telos Earring",
+    left_ring="Ayanmo Ring",
+    right_ring="Defending Ring",
+    back="Solemnity Cape",
+}
 end
 
 function precast(spell)
