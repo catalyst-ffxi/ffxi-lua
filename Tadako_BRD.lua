@@ -1,7 +1,7 @@
 include('Modes.lua')
+include('augments_tadako.lua')
 
 function define_modes()
-  Capacity = M(false, 'Capacity Mantle')
   DummySongs = S{"Swift Etude", "Bewitching Etude", "Enchanting Etude", "Spirited Etude", "Vital Etude"}
   DummyIndex = 0
 end
@@ -29,62 +29,36 @@ function get_sets()
       fastCast = { name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
       enmity = { name="Intarabus's Cape", augments={'MND+10','Enmity-10',}},
       melee = { name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}},
-    },
-    telchine = {
-      head = {
-        enhancing={ name="Telchine Cap", augments={'Enh. Mag. eff. dur. +9',}}
-      },
-      body={
-        enhancing={ name="Telchine Chas.", augments={'Enh. Mag. eff. dur. +6',}}
-      },
-      gloves = {
-        enhancing = { name="Telchine Gloves", augments={'"Fast Cast"+4','Enh. Mag. eff. dur. +10',}},
-        healing = { name="Telchine Gloves", augments={'"Cure" potency +5%',}}
-      },
-      legs={
-        enhancing={ name="Telchine Braconi", augments={'Accuracy+20','"Store TP"+6','Enh. Mag. eff. dur. +9',}},
-      },
-      feet = {
-        enhancing ={ name="Telchine Pigaches", augments={'Song spellcasting time -7%','Enh. Mag. eff. dur. +7',}}
-      }
-    },
-    chironic = {
-      gloves = {
-        tp = { name="Chironic Gloves", augments={'Accuracy+11 Attack+11','"Dbl.Atk."+3','Attack+12',}}
-      },
-      feet = {
-        tp={ name="Chironic Slippers", augments={'Accuracy+24','"Dbl.Atk."+3','Attack+4',}}
-      }
     }
   }
 
   -- Modes
   sets.Idle = {
     main=gear.kali.refresh,
-    sub="Genbu's Shield",
-    head="Inyanga Tiara +1",
-    neck="Loricate Torque +1",
+    sub="Genbu's Shield",           -- 10 PDT
+    head="Inyanga Tiara +1",        -- 4 MDT
+    neck="Loricate Torque +1",      -- 6 DT
     left_ear="Flashward Earring",
-    right_ear="Etiolation Earring",
-    body="Inyanga Jubbah +2",
-    hands="Inyanga Dastanas +2",
-    left_ring="Fortified Ring",
-    right_ring="Inyanga Ring",
-    back=gear.cape.fastCast,
-    waist="Fucho-no-Obi",
-    legs="Inyanga Shalwar +2",
+    right_ear="Etiolation Earring", -- 3 MDT
+    body="Inyanga Jubbah +2",       -- 8 MDT
+    hands="Inyanga Dastanas +2",    -- 4 MDT
+    left_ring="Gelatinous Ring +1", -- 7 PDT
+    right_ring="Inyanga Ring",      -- 2 MDT
+    back=gear.cape.fastCast,        -- 5 DT
+    waist="Flume Belt",             -- 4 PDT
+    legs="Inyanga Shalwar +2",      -- 6 MDT
     feet="Fili Cothurnes +1"
   }
   sets.Engaged = {
     sub="Genbu's Shield",
     head="Aya. Zucchetto +2",
     body="Ayanmo Corazza +2",
-    hands=gear.chironic.gloves.tp,
-    legs=gear.telchine.legs.enhancing,
-    feet=gear.chironic.feet.tp,
+    hands=augments.chironic.gloves.tp,
+    legs=augments.telchine.legs.enhancing,
+    feet=augments.chironic.feet.tp,
     neck="Bard's Charm",
-    waist="Kentarch Belt +1",
-    left_ear="Mache Earring",
+    waist="Sarissapho. Belt",
+    left_ear="Digni. Earring",
     right_ear="Brutal Earring",
     back=gear.cape.melee,
     left_ring="Ayanmo Ring",
@@ -98,7 +72,7 @@ function get_sets()
     head="Kaykaus Mitra",
     neck="Orunmila's torque",
     body="Inyanga Jubbah +2",
-    hands=gear.telchine.gloves.fastCast,
+    hands=augments.telchine.gloves.fastCast,
     left_ring="Weatherspoon Ring",
     right_ring="Kishar Ring",
     left_ear="Loquacious earring",
@@ -134,7 +108,7 @@ function get_sets()
     left_ear="Loquacious earring",       -- FC
     right_ear="Etiolation Earring",      -- FC
     body="Inyanga Jubbah +2",            -- FC
-    hands=gear.telchine.gloves.enhancing,-- FC
+    hands=augments.telchine.gloves.enhancing,-- FC
     left_ring="Haoma's Ring",            -- Cursna/Skill
     right_ring="Haoma's Ring",           -- Cursna/Skill
     back="Oretan. Cape +1",              -- Cursna
@@ -143,11 +117,11 @@ function get_sets()
     feet="Vanya Clogs"                   -- Cursna/Skill
   }
   sets.Magic.Enhancing = {
-    head=gear.telchine.head.enhancing,
-    hands=gear.telchine.gloves.enhancing,
-    body=gear.telchine.body.enhancing,
-    legs=gear.telchine.legs.enhancing,
-    feet=gear.telchine.feet.enhancing
+    head=augments.telchine.head.enhancing,
+    hands=augments.telchine.gloves.enhancing,
+    body=augments.telchine.body.enhancing,
+    legs=augments.telchine.legs.enhancing,
+    feet=augments.telchine.feet.enhancing
   }
   sets.Magic.Enfeebling = {
     main=gear.kali.refresh,
@@ -157,8 +131,8 @@ function get_sets()
     legs="Fili Rhingrave",
     feet="Inyan. Crackows +1",
     neck="Moonbow Whistle +1",
-    left_ear="Gwati Earring",
-    right_ear="Hermetic Earring",
+    left_ear="Digni. Earring",
+    right_ear="Gwati Earring",
     left_ring="Weatherspoon Ring",
     right_ring="Inyanga Ring",
     waist="Porous Rope",
@@ -169,7 +143,7 @@ function get_sets()
   sets.Songs = {}
   sets.Songs.Precast = set_combine(sets.Magic.Precast, {
     head="Fili Calot",
-    feet=gear.telchine.feet.enhancing
+    feet=augments.telchine.feet.enhancing
   })
   sets.Songs.Dummy = {
     main=gear.kali.skill,
@@ -197,8 +171,8 @@ function get_sets()
     legs="Inyanga Shalwar +2",
     feet="Brioso Slippers +2",
     neck="Moonbow Whistle +1",
-    left_ear="Gwati Earring",
-    right_ear="Hermetic Earring",
+    left_ear="Digni. Earring",
+    right_ear="Regal Earring",
     left_ring="Weatherspoon Ring",
     right_ring="Stikini Ring",
     waist="Porous Rope",
@@ -222,6 +196,8 @@ function get_sets()
 
   -- Abilities
   sets.JobAbility = {}
+  sets.JobAbility.Troubadour = { body="Bihu Justaucorps" }
+  sets.JobAbility.Nightingale = { feet="Bihu Slippers" }
 
   -- Melee
   sets.WeaponSkill = set_combine(sets.Engaged, {
@@ -326,12 +302,11 @@ end
 function aftercast(spell)
   if player.status=='Engaged' then
     equip(sets.Engaged)
-  -- elseif player.in_combat then
   else
     equip(sets.Idle)
-  end
-  if Capacity.value then
-    equip({back = "Aptitude Mantle +1"})
+    if player.mpp <= 50 then
+      equip({waist = "Fucho-no-Obi"})
+    end
   end
 end
 

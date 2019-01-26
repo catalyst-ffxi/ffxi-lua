@@ -3,24 +3,15 @@ include('Modes.lua')
 -- include('organizer-lib')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Accuracy', 'AccuracyHigh'}
-  DamageDown = M{['description'] = 'Damage Down', 'Off', 'PDT', 'MDT', 'BOTH'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Hybrid', 'PDT', 'Accuracy'}
   TreasureHunter = M(false, 'Treasure Hunter')
 end
 
 function define_binds()
   -- Modes
   send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
-  send_command("alias g15v2_m1g2 gs c cycle DamageDown")
-  send_command("alias g15v2_m1g4 gs c cycle TreasureHunter")
-
-  -- send_command('bind !f11 input /equip main "Norifusa +1"; @wait 0.5; input /equip sub "Utu Grip"')
-  send_command('bind !f9 input /equip main "Dojikiri Yasutsuna"; @wait 0.5; input /equip sub "Utu Grip"')
-  -- send_command('bind !f10 gs c toggle_ranged')
-end
-
-function define_gear()
-
+  send_command('alias g15v2_m1g2 input /equip main "Dojikiri Yasutsuna"; @wait 0.5; input /equip sub "Utu Grip"')
+  send_command("alias g15v2_m1g3 gs c cycle TreasureHunter")
 end
 
 function get_sets()
@@ -54,178 +45,129 @@ function get_sets()
       }
     },
     smertrios = {
-      ws = {name="Smertrios's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
-      tp = {name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Damage taken-5%',}}
+      ws = { name="Smertrios's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
+      tp = { name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
   }
 
   sets.modes = {}
   sets.modes.Normal = {
-    sub = "Utu Grip",
-    ammo = "Ginsen",
-    head = "Flam. Zucchetto +2",     -- 4
-    neck = "Samurai's Nodowa +1",
-    lear = "Telos Earring",
-    rear = "Brutal Earring",
-    -- body = "Kasuga Domaru +1",       -- 3
-    body="Ken. Samue",
-    hands = "Wakido Kote +3",        -- 4
-    lring = "Flamma Ring",
-    rring = "Niqmaddu Ring",
-    back = gear.smertrios.tp,
-    waist = "Ioskeha Belt +1",        -- 7
-    legs = gear.valorous.hose.quad,  -- 5
-    feet = "Flam. Gambieras +2"     -- 2
-  }                                 -- 25
+    sub="Utu Grip",
+    ammo="Ginsen",                 -- 3 STP
+    head="Flam. Zucchetto +2",     -- 6 STP
+    neck="Samurai's Nodowa +1",    -- 11 STP
+    lear="Telos Earring",          -- 5 STP
+    rear="Brutal Earring",         -- 1 STP
+    body="Kasuga Domaru +1",       -- 12 STP
+    hands="Wakido Kote +3",        -- 7 STP
+    lring="Flamma Ring",           -- 5 STP
+    rring="Niqmaddu Ring",
+    back=gear.smertrios.tp,
+    waist="Ioskeha Belt +1",
+    legs=gear.valorous.hose.quad,
+    feet="Flam. Gambieras +2"      -- 6 STP
+  }                                -- 56 STP
+  sets.modes.Hybrid = {
+    sub="Utu Grip",
+    ammo="Staunch Tathlum +1",    --       | 3 DT
+    head="Flam. Zucchetto +2",    -- 6 STP |        | 4 Haste
+    neck="Samurai's Nodowa +1",   -- 11 STP
+    lear="Telos Earring",         -- 5 STP |
+    rear="Brutal Earring",        -- 1 STP |
+    body="Ken. Samue",            --                | 4 Haste
+    hands="Wakido Kote +3",       -- 7 STP |        | 4 Haste
+    lring="Gelatinous Ring +1",   --       | 7 PDT
+    rring="Defending Ring",       --       | 10 PDT
+    back=gear.smertrios.tp,       --       | 10 PDT
+    waist="Ioskeha Belt +1",      --                | 8 Haste
+    legs="Ken. Hakama",           --                | 9 Haste
+    feet="Flam. Gambieras +2"     -- 6 STP |        | 2 Haste
+  }                               -- 36 STP| 30 PDT | 31 Haste
+                                  -- Needs SAM Roll to 4-hit!
+  sets.modes.PDT = {
+    sub="Utu Grip",
+    ammo="Staunch Tathlum +1",    -- 3 DT
+    head="Flam. Zucchetto +2",
+    neck="Loricate Torque +1",    -- 6 DT
+    lear="Telos Earring",
+    rear="Brutal Earring",
+    body="Wakido domaru +3",      -- 8 PDT
+    hands="Wakido Kote +3",
+    lring="Gelatinous Ring +1",   -- 7 PDT
+    rring="Defending Ring",       -- 10 PDT
+    back=gear.smertrios.tp,       -- 10 PDT
+    waist="Flume Belt +1",        -- 4 PDT
+    legs=gear.valorous.hose.quad, -- 2 PDT
+    feet="Flam. Gambieras +2"
+  }                               -- 50 PDT
   sets.modes.Accuracy = {
-    sub = "Utu Grip",
-    ammo = "Ginsen",
-    head = "Flam. Zucchetto +2",
-    neck = "Moonbeam Nodowa",
-    lear = "Telos Earring",
-    rear = "Dignitary's Earring",
-    body = "Wakido domaru +3",
-    hands = "Wakido Kote +3",
-    lring = "Flamma Ring",
-    rring = "Niqmaddu Ring",
-    back = gear.smertrios.tp,
-    waist = "Ioskeha Belt +1",
-    legs = "Wakido Haidate +3",
-    feet = "Flam. Gambieras +2"
+    sub="Utu Grip",
+    ammo="Ginsen",
+    head="Flam. Zucchetto +2",
+    neck="Samurai's Nodowa +1",
+    lear="Telos Earring",
+    rear="Dignitary's Earring",
+    body="Wakido domaru +3",
+    hands="Wakido Kote +3",
+    lring="Flamma Ring",
+    rring="Regal Ring",
+    back=gear.smertrios.tp,
+    waist="Ioskeha Belt +1",
+    legs="Wakido Haidate +3",
+    feet="Flam. Gambieras +2"
   }
-  sets.modes.AccuracyHigh = set_combine(sets.modes.Accuracy, {
-    rring = "Hizamaru Ring",
-    legs = "Wakido Haidate +3",
-    feet = "Wakido Sune-ate +2"
-  })
-
-  -- Damage Down Sets
-  sets.DamageDown = {
-    PDT = {
-      ammo="Staunch Tathlum",
-      head="Genmei Kabuto",
-      neck="Loricate Torque +1",
-      body="Wakido domaru +3",
-      lring="Gelatinous Ring +1",
-      rring="Defending Ring",
-      waist="Flume Belt +1",
-      legs=gear.valorous.hose.dt
-    },
-    MDT = {
-      ammo="Staunch Tathlum",
-      neck="Loricate Torque +1",
-      -- body="Wakido domaru +3",
-      body="Ken. Samue",
-      rear="Etiolation Earring",
-      lring="Fortified Ring",
-      rring="Defending Ring",
-      legs=gear.valorous.hose.dt
-    }
-  }
-  sets.DamageDown.BOTH = set_combine(
-    sets.DamageDown.PDT,
-    sets.DamageDown.MDT
-  )
 
   -- Modifiers
   sets.TreasureHunter = {
-    head = gear.valorous.mask.treasure,
-    hands = gear.valorous.mitts.treasure,
-    waist = "Chaac belt"
+    head=gear.valorous.mask.treasure,
+    hands=gear.valorous.mitts.treasure,
+    waist="Chaac belt"
   }
 
   -- Weapon Skills
   --
   sets.WS = {}
   sets.WS.Normal = {
-    ammo = "Knobkierrie",
-    head = gear.valorous.mask.ws2,
-    -- neck = "Fotia Gorget",
-    neck = "Samurai's Nodowa +1",
-    lear = "Ishvara Earring",
-    rear = "Moonshade earring",
-    body = "Sakonji Domaru +3",
-    hands = gear.valorous.mitts.ws,
-    lring = "Karieyh Ring +1",
-    rring = "Regal Ring",
-    back = gear.smertrios.ws,
-    waist = "Fotia Belt",
-    legs = "Wakido Haidate +3",
-    feet = gear.valorous.greaves.ws2
+    ammo="Knobkierrie",
+    head=gear.valorous.mask.ws2,
+    neck="Samurai's Nodowa +1",
+    lear="Ishvara Earring",
+    rear="Moonshade earring",
+    body="Sakonji Domaru +3",
+    hands=gear.valorous.mitts.ws,
+    lring="Karieyh Ring +1",
+    rring="Regal Ring",
+    back=gear.smertrios.ws,
+    waist="Fotia Belt",
+    legs="Wakido Haidate +3",
+    feet=gear.valorous.greaves.ws2
   }
-  sets.WS.Accuracy = {
-    ammo = "Knobkierrie",
-    head = gear.valorous.mask.ws2,
-    neck = "Samurai's Nodowa +1",
-    lear = "Ishvara Earring",
-    rear = "Moonshade earring",
-    body = "Sakonji Domaru +3",
-    hands = "Wakido Kote +3",
-    lring = "Karieyh Ring +1",
-    rring = "Regal Ring",
-    back = gear.smertrios.ws,
-    waist = "Fotia Belt",
-    legs = "Wakido Haidate +3",
-    feet = gear.valorous.greaves.ws
-  }
-  sets.WS.AccuracyHigh = set_combine(sets.WS.Accuracy, {
-    body = "Sakonji Domaru +3",
-    rring = "Shukuyu Ring",
-    feet = "Wakido Sune-Ate +2"
-  })
-
-  -- WS Specific Sets
-  -- sets.WS['Tachi: Kasha'] = {}
-  -- sets.WS['Tachi: Fudo'] = {}
-  -- sets.WS['Tachi: Kaiten'] = {}
   -- sets.WS['Tachi: Shoha'] = {}
-  -- sets.WS['Tachi: Gekko'] = {}
-  -- sets.WS['Tachi: Rana'] = {}
-  -- sets.WS['Apex Arrow'] = {}
+  -- sets.WS['Tachi: Ageha'] = {}
 
   -- Job Abilities
   --
   sets.JAs = {}
   sets.JAs.Meditate = {
-    head = "Wakido Kabuto +1",
-    hands = "Sakonji Kote +3",
-    back = gear.smertrios.tp
+    head="Wakido Kabuto +1",
+    hands="Sakonji Kote +3",
+    back=gear.smertrios.tp
   }
   sets.JAs['Warding Circle'] = {
-    head = "Wakido Kabuto +1"
+    head="Wakido Kabuto +1"
   }
   sets.FastCast = {
     ammo="Sapience Orb",                -- 2
     neck="Orunmila's Torque",           -- 5
-    hands="Leyline Gloves",
+    hands="Leyline Gloves",             -- 7
     lear="Loquacious earring",          -- 2
     rear="Etiolation Earring",          -- 1
     rring="Prolix Ring",                -- 2
   }
   sets.waltz = {
-    head = gear.valorous.mask.waltz,
-    lring = 'Asklepian Ring'
+    head=gear.valorous.mask.waltz,
+    lring='Asklepian Ring'
   }
-
-  -- Ranged Attack
-  --
-  sets.JAs.ranged = {}
-  -- sets.JAs.ranged = {
-  --   head = "Sakonji Kabuto +1",
-  --   neck = "Yarak torque",
-  --   lear = "Enervating Earring",
-  --   rear = "Matanki Earring",
-  --   hands = "Ryuo tekko",
-  --   body = "Aetosaur Jerkin",
-  --   lear = "Drone Earring",
-  --   rear = "Enervating Earring",
-  --   lring = "Longshot Ring",
-  --   rring = "Hajduk Ring",
-  --   legs = "Wakido Haidate +3",
-  --   feet = "Wakido Sune-Ate +2",
-  --   back = "Moondoe Mantle +1",
-  --   waist = "Yemaya Belt"
-  -- }
 end
 
 function precast(spell)
@@ -313,33 +255,18 @@ end
 
 function set_for_engaged()
   local set = sets.modes[PrimaryMode.current]
-  if DamageDown.value ~= 'Off' then
-    set = set_combine(set, sets.DamageDown[DamageDown.value])
-  end
   if TreasureHunter.value then
     set = set_combine(set, sets.TreasureHunter)
   end
-  -- if bow_is_equipped() == false then
-  --   set = set_combine(set, { ammo = "Ginsen" })
-  -- end
   return set
 end
 
 function set_for_ws(named)
-  local set = sets.WS[PrimaryMode.current]
   if sets.WS[named] then
-    set = set_combine(set, sets.WS[named])
+    return sets.WS[named]
+  else
+    return sets.WS.Normal
   end
-  -- if bow_is_equipped() == false then
-    -- set = set_combine(set, { ammo = "Knobkierrie" })
-  -- end
-  return set
-end
-
-function bow_is_equipped()
-  -- local val = string.find(player.equipment.ammo, 'Arrow')
-   -- return val ~= nil
-   return false
 end
 
 function equip_set_for_current_mode()

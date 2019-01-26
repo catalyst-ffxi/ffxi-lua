@@ -3,7 +3,7 @@ include('Modes.lua')
 include('augments.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Accuracy'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Hybrid', 'Accuracy'}
   DamageDown = M(false, 'Damage Down')
   Capacity = M(false, 'Capacity Mantle')
   Luzaf = M(true, 'Luzaf')
@@ -63,7 +63,6 @@ function get_sets()
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
     hands=augments.herc.hands.triple,
-    -- legs="Meg. Chausses +2",
     legs="Samnuha Tights",
     feet=augments.herc.feet.triple,
     neck="Iskur Gorget",
@@ -87,10 +86,26 @@ function get_sets()
     right_ear="Enervating Earring",
     left_ring="Ilabrat Ring",
     right_ring="Dingir Ring",
-    -- right_ring="Arvina Ringlet +1",
-    -- right_ring="Longshot Ring",
     back=gear.camulus.rangedTp
   }
+
+  sets.modes.Hybrid = {}
+  sets.modes.Hybrid.Engaged = {
+    -- If Lanun:                      -- 8 DT
+    head="Adhemar Bonnet +1",
+    body="Lanun Frac +3",             -- 6 PDT
+    hands=augments.herc.hands.triple, -- 2 PDT
+    legs="Meg. Chausses +2",          -- 6 PDT
+    feet=augments.herc.feet.triple,   -- 2 PDT
+    neck="Loricate Torque +1",        -- 6 DT
+    waist="Windbuffet Belt +1",
+    left_ear="Telos Earring",
+    right_ear="Suppanomimi",
+    left_ring="Gelatinous Ring +1",   -- 7 PDT
+    right_ring="Defending Ring",      -- 10 DT
+    back=gear.camulus.meleeTp,        -- 5 DT
+  }                                   -- 52 PDT | 29 MDT
+  sets.modes.Hybrid.Ranged = sets.modes.Normal.Ranged
 
   -- TODO: Create accuracy sets
   sets.modes.Accuracy = {}
@@ -106,7 +121,7 @@ function get_sets()
     lring="Gelatinous Ring +1",
     rring="Defending Ring",
     waist="Flume Belt +1",
-    legs="Carmine Cuisses +1"
+    legs="Meg. Chausses +2"
   }
   sets.Regain = {
     lring="Karieyh Ring +1"
@@ -148,7 +163,7 @@ function get_sets()
     feet="Carmine Greaves +1"           -- 8
   }
   sets.Magic.SpellInterrupt = {
-    -- ammo="Staunch Tathlum",          -- 10
+    -- ammo="Staunch Tathlum +1",          -- 10
     head=augments.taeon.head.SID,    -- 7
     neck="Loricate Torque +1",
     lear="Halasz Earring",           -- 5

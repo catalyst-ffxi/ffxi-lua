@@ -57,7 +57,7 @@ function get_sets()
   })
 
   sets.DamageDown = {
-    ammo="Staunch Tathlum",
+    ammo="Staunch Tathlum +1",
     head="Aya. Zucchetto +2",
     neck="Loricate Torque +1",
     body="Ayanmo Corazza +2",
@@ -106,7 +106,7 @@ function get_sets()
     head= "Jhakri Coronal +1",
     body= "Jhakri Robe +2",
     hands= "Jhakri Cuffs +2",
-    legs="Jhakri Slops +1",
+    legs="Jhakri slops +2",
     feet= "Jhakri Pigaches +1",
     neck="Sanctity Necklace",
     waist="Grunfeld Rope",
@@ -137,7 +137,6 @@ function get_sets()
     hands="Amalric Gages",
     legs="Amalric Slops",
     feet="Jhakri Pigaches +1",
-    -- feet="Amalric Nails",
     neck="Sanctity Necklace",
     waist="Eschan Stone",
     left_ear="Regal Earring",
@@ -225,7 +224,7 @@ function get_sets()
 
   sets.learn={
     main="Wax Sword",
-    ammo="Staunch Tathlum",
+    ammo="Staunch Tathlum +1",
     hands="Magus Bazubands",
     neck="Loricate Torque +1",
     waist="Flume Belt +1",

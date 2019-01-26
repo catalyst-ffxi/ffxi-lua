@@ -68,8 +68,7 @@ function get_sets()
   --
   sets.modes = {}
   sets.modes.Caster = {
-    -- main = "Lathi",
-    main = augments.grio.nuke,
+    main = "Lathi",
     sub = "Enki Strap",
     ammo = "Ombre Tathlum +1",
     head = augments.merlinic.hood.nuke,
@@ -87,7 +86,7 @@ function get_sets()
   }
   sets.aftercast = {}
   sets.aftercast.Caster = set_combine(sets.modes.Caster, {
-    ammo="Staunch Tathlum",
+    ammo="Staunch Tathlum +1",
     head = "Befouled Crown",
     neck = "Loricate Torque +1",
     left_ear = "Etiolation Earring",
@@ -168,8 +167,7 @@ function get_sets()
   --
   sets.midcast = {}
   sets.midcast.dark = {
-    main = augments.grio.nuke,
-    -- main = "Lathi",
+    main = "Lathi",
     sub = "Enki Strap",
     ammo = "Ombre Tathlum +1",
     head = "Amalric Coif",
@@ -200,8 +198,7 @@ function get_sets()
   --
   sets.midcast.elemental = {}
   sets.midcast.elemental.Normal = {
-    -- main = "Lathi",
-    main = augments.grio.nuke,
+    main="Lathi",
     sub = "Enki Strap",
     ammo = "Ombre Tathlum +1",
     head = augments.merlinic.hood.nuke,
@@ -218,19 +215,24 @@ function get_sets()
     legs = augments.merlinic.shalwar.macc,
     feet = augments.merlinic.crackows.nuke
   }
-  sets.midcast.elemental.MagicBurst = set_combine(sets.midcast.elemental.Normal, {
-    neck = "Mizu. Kubikazari",           -- MB +10
-    lear = "Friomisi Earring",           -- 0
-    lring = "Mujin Band",                -- MB II +5
-    rring = "Locus Ring",                -- MB +5
-    head = augments.merlinic.hood.burst, -- MB +11
-    body = augments.merlinic.jubbah,         -- MB +3
-    hands = "Amalric Gages",             -- MB II +5
-    legs = augments.merlinic.shalwar.burst,  -- MB +10
-    back = gear.taranus.nuke             -- MB +5
-  })                                     -- TOTALS
-                                         -- MB +44 (Caps at 40%)
-                                         -- MB II +10
+  sets.midcast.elemental.MagicBurst = {
+    main="Lathi",
+    sub="Enki Strap",
+    ammo="Ombre Tathlum +1",
+    head="Ea Hat",              -- MB +6 | MB II +6
+    neck="Mizu. Kubikazari",    -- MB +10|
+    lear="Friomisi Earring",
+    rear="Barkarole Earring",
+    body="Ea Houppelande",      -- MB +8 | MB II +8
+    hands="Amalric Gages",      --       | MB II +5
+    lring="Mujin Band",         --       | MB II +5
+    rring="Locus Ring",         -- MB +5 |
+    back=gear.taranus.nuke,     -- MB +5 |
+    waist="Refoccilation Stone",
+    legs="Ea Slops",            -- MB +7 | MB II +7
+    feet=augments.merlinic.crackows.nuke
+  }                             -- MB +41| MB II +31
+
   -- Death
   --
   -- sets.precast.Death = {

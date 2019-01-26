@@ -3,8 +3,8 @@ include('Modes.lua')
 include('augments.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Hybrid'}
-  TreasureHunter = M(true, 'Treasure Hunter')
+  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Hybrid', 'TreasureHunterHybrid'}
+  TreasureHunter = M(false, 'Treasure Hunter')
   Capacity = M(false, 'Capacity Mantle')
   DamageDown = M(false, 'Damage Down')
 
@@ -42,6 +42,10 @@ function get_sets()
   define_binds()
 
   gear = {
+    toutatis = {
+      tp={},
+      ws={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
+    }
   }
 
   sets.idle = {
@@ -63,20 +67,20 @@ function get_sets()
     back={ name="Canny Cape", augments={'DEX+2','AGI+1','"Dual Wield"+4','Crit. hit damage +2%',}},
   }
   sets.modes.Hybrid = {
-    ammo="Staunch Tathlum",
+    ammo="Staunch Tathlum +1",           -- 3 PDT
     head="Adhemar Bonnet +1",
-    body="Meg. Cuirie +2",
-    hands=augments.herc.hands.triple,
-    legs="Meg. Chausses +2",
-    feet=augments.herc.feet.triple,
-    neck="Loricate Torque +1",
-    waist="Windbuffet Belt +1",
+    body="Adhemar Jacket +1",
+    hands=augments.herc.hands.triple,    -- 2 PDT
+    legs="Meg. Chausses +2",             -- 6 PDT
+    feet=augments.herc.feet.triple,      -- 2 PDT
+    neck="Loricate Torque +1",           -- 6 DT
+    waist="Flume Belet +1",              -- 4 PDT
     left_ear="Telos Earring",
     right_ear="Sherida Earring",
-    left_ring="Defending Ring", 
-    right_ring="Epona's Ring",
-    back={ name="Canny Cape", augments={'DEX+2','AGI+1','"Dual Wield"+4','Crit. hit damage +2%',}},
-  }
+    left_ring="Defending Ring",          -- 10 PDT
+    right_ring="Gelatinous Ring +1",     -- 7 PDT
+    back=gear.toutatis.tp,               -- 10 PDT
+  }                                      -- 50 PDT
 
   -- Weapon Skills
   --
@@ -91,7 +95,7 @@ function get_sets()
     hands="Meg. Gloves +2",
     left_ring="Regal Ring",
     right_ring="Karieyh Ring +1",
-    back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
+    back=gear.toutatis.ws,
     waist="Fotia Belt",
     legs=augments.herc.legs.ws,
     feet="Meg. Jam. +2",
@@ -102,18 +106,18 @@ function get_sets()
   }
   sets.WS['Aeolian Edge'] =  {
     ammo="Ombre Tathlum +1",
-    head=augments.herc.head.magic,
-    neck = "Sanctity Necklace",
+    head=augments.herc.head.mab,
+    neck="Sanctity Necklace",
     left_ear="Friomisi Earring",
     right_ear="Moonshade Earring",
     body="Samnuha Coat",
     hands="Leyline Gloves",
-    left_ring="Acumen Ring",
-    right_ring = "Dingir Ring",
-    back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
-    waist="Fotia Belt",
-    legs= { name="Herculean Trousers", augments={'"Mag.Atk.Bns."+25','Pet: Mag. Acc.+14','Accuracy+12 Attack+12','Mag. Acc.+17 "Mag.Atk.Bns."+17',}},
-    feet= {name="Herculean Boots", augments={'Mag. Acc.+18','Weapon skill damage +2%','INT+4','"Mag.Atk.Bns."+10',}}
+    left_ring="Dingir Ring",
+    right_ring="Karieyh Ring +1",
+    back=gear.toutatis.ws,
+    waist="Eschan Stone",
+    legs=augments.herc.legs.magic,
+    feet= augments.herc.feet.mab
   }
   sets.WS['Circle Blade'] = {
     ammo="Falcon Eye",
@@ -140,7 +144,7 @@ function get_sets()
   sets.TreasureHunter = {
     hands="Plunderer's Armlets +1",
     waist="Chaac Belt",
-    legs={ name="Herculean Trousers", augments={'"Conserve MP"+1','"Mag.Atk.Bns."+24','"Treasure Hunter"+1','Accuracy+18 Attack+18',}},
+    legs=augments.herc.feet.triple
   }
   sets.DamageDown = {
     neck = "Loricate Torque +1",
@@ -172,7 +176,7 @@ function get_sets()
     legs=augments.taeon.legs.phalanx,   -- 3
   }
   sets.MA.SpellInterrupt = {
-    ammo="Staunch Tathlum",          -- 10
+    ammo="Staunch Tathlum +1",          -- 10
     head=augments.taeon.head.SID,    -- 7
     neck="Loricate Torque +1",
     lear="Halasz Earring",           -- 5

@@ -15,9 +15,15 @@ augments = {
   },
 
   colada = {
-    main={ name="Colada", augments={'"Store TP"+3','STR+15','Accuracy+16','Attack+14','DMG:+16',}},
+    stp={ name="Colada", augments={'"Store TP"+3','STR+15','Accuracy+16','Attack+14','DMG:+16',}},
     crit={ name="Colada", augments={'Crit.hit rate+2','DEX+4','Accuracy+13','Attack+4','DMG:+9',}},
     dbl={ name="Colada", augments={'Attack+25','"Dbl.Atk."+2','DMG:+13',}}
+  },
+
+  helios = {
+    hands = {
+      fastCast = { name="Helios Gloves", augments={'Mag. Evasion+11','"Fast Cast"+5',}}
+    }
   },
 
   herc = {
@@ -25,7 +31,7 @@ augments = {
       wsd = { name="Herculean Helm", augments={'Rng.Atk.+18','Weapon skill damage +4%','MND+10','Rng.Acc.+13',}},
       mab = { name="Herculean Helm", augments={'Mag. Acc.+16 "Mag.Atk.Bns."+16','Crit. hit damage +3%','INT+2','Mag. Acc.+13','"Mag.Atk.Bns."+15',}},
       fc = { name="Herculean Helm", augments={'Accuracy+9','"Fast Cast"+5','STR+4',}},
-      reso = { name="Herculean Helm", augments={'Attack+20','"Triple Atk."+3','STR+6','Accuracy+9',}},
+      dimi = { name="Herculean Helm", augments={'Attack+20','Weapon skill damage +2%','DEX+15','Accuracy+3',}},
     },
     body = {
       reso = { name="Herculean Vest", augments={'Accuracy+7','"Triple Atk."+3','STR+10','Attack+8',}},
@@ -41,8 +47,8 @@ augments = {
     },
     feet = {
       triple = { name="Herculean Boots", augments={'Accuracy+25 Attack+25','"Triple Atk."+4','STR+10','Accuracy+4',}},
-      -- phalanx = { name="Herculean Boots", augments={'"Mag.Atk.Bns."+19','Phys. dmg. taken -1%','Phalanx +2','Mag. Acc.+14 "Mag.Atk.Bns."+14',}},
-      -- reso={ name="Herculean Boots", augments={'Accuracy+27','"Triple Atk."+3','STR+10','Attack+8',}}
+      mab = { name="Herculean Boots", augments={'"Mag.Atk.Bns."+19','Phys. dmg. taken -1%','Phalanx +2','Mag. Acc.+14 "Mag.Atk.Bns."+14',}},
+      dimi = { name="Herculean Boots", augments={'Accuracy+11','Weapon skill damage +2%','DEX+15',}},
     }
   },
 
@@ -84,6 +90,7 @@ augments = {
     },
     legs = {
       phalanx = { name="Taeon Tights", augments={'Accuracy+19','"Fast Cast"+3','Phalanx +3',}},
+      triple = { name="Taeon Tights", augments={'Accuracy+15 Attack+15','"Triple Atk."+2','STR+6 VIT+6',}},
     },
     feet = {
       phalanx = { name="Taeon Boots", augments={'Accuracy+22','Spell interruption rate down -9%','Phalanx +3',}}
