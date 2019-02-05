@@ -99,7 +99,7 @@ function get_sets()
     back=gear.ogma.tp
   }
   sets.modes.Hybrid = {
-    ammo="Staunch Tathlum +1",            -- 2 DT
+    ammo="Staunch Tathlum +1",         -- 2 DT
     head="Adhemar Bonnet +1",
     body="Ayanmo Corazza +2",          -- 6 DT
     hands=augments.herc.hands.triple,  -- 2 PDT
@@ -286,9 +286,8 @@ function get_sets()
   sets.Magic.SpellInterrupt = {
     ammo="Staunch Tathlum +1",       -- 11
     head="Meghanada Visor +2",       -- PDT
-    neck="Moonbeam Necklace",        -- 10
-    -- lear="Odnowa Earring",       -- MDT/HP
-    lear="Halasz Earring",           -- 5
+    neck="Moonlight Necklace",       -- 15
+    lear="Odnowa Earring",           -- MDT/HP
     rear="Magnetic Earring",         -- 8
     body="Futhark Coat +3",          -- DT
     hands="Rawhide Gloves",          -- 15
@@ -304,7 +303,6 @@ function get_sets()
 
   -- Upgrades:
   --
-  -- neck="Moonlight Necklace",   -- 15
   -- right_ear="Cryptic Earring", -- 4
   -- feet="Ahosi Leggings"       -- 7
   -- hands="Kurys Gloves",       -- 9
@@ -312,7 +310,7 @@ function get_sets()
   sets.Enmity = {
     ammo="Sapience Orb",           -- 2
     head="Halitus Helm",           -- 8
-    neck="Moonbeam Necklace",      -- 10
+    neck="Moonlight Necklace",     -- 15
 		left_ear="Trux Earring",       -- 5
 		right_ear="Friomisi Earring",  -- 2
     body="Emet Harness +1",        -- 10
@@ -331,8 +329,9 @@ function get_sets()
   -- Statuses
   --
   sets.Doom = {
-    -- left_ring="Saida Ring",
-    -- right_ring="Purity Ring",
+    neck="Nicander's Necklace",
+    left_ring="Purity Ring",
+    right_ring="Blenmot's Ring",
     waist="Gishdubar Sash"
   }
 end
@@ -407,8 +406,15 @@ function status_change(new, old)
 end
 
 function buff_change(buff, gain, bufftable)
-  if buff:lower() == "doom" and gain then
-    equip(sets.Doom)
+  if buff:lower() == "doom" then
+    if gain then
+      equip(sets.Doom)
+      send_command("input /party Help, I'm DOOMED!")
+      send_command('input /item "Holy Water" <me>')
+    else
+      equip_set_for_current_mode()
+      send_command("input /party Doom OFF!")
+    end
   end
 end
 

@@ -28,6 +28,7 @@ function define_aliases()
   send_command('bind ^f5 gainint')
   send_command('bind ^f6 gainmnd')
   send_command('bind ^f7 gaindex')
+  send_command('bind ^f8 gainstr')
   send_command('bind !f5 stoneskin')
   send_command('bind !f6 phalanx')
   send_command('bind !f7 blink')
@@ -35,7 +36,6 @@ function define_aliases()
 
   -- Modes
   send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
-  send_command("alias g15v2_m1g2 gs c cycle EnfeebleMode")
   send_command("alias g15v2_m1g3 gs c cycle NukingMode")
   send_command("alias g15v2_m1g4 gs c cycle Element")
 end
@@ -51,7 +51,7 @@ function get_sets()
   gear = {
     sucellos = {
       nuke = { name="Sucellos's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10',}},
-      enfeeble = { name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20',}},
+      enfeeble = { name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Cure" potency +10%','Phys. dmg. taken-10%',}},
       melee = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Store TP"+10',}},
       cdc = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Crit.hit rate+10',}}
     }
@@ -63,7 +63,7 @@ function get_sets()
     main="Contemplator",
     sub="Enki Strap",
     ammo="Homiliary",
-    head="Viti. Chapeau +2",
+    head="Viti. Chapeau +3",
     neck="Loricate Torque +1",
     left_ear="Genmei Earring",
     right_ear="Etiolation Earring",
@@ -71,7 +71,7 @@ function get_sets()
     hands="Viti. Gloves +2",
     lring="Gelatinous Ring +1",
     rring="Defending Ring",
-    back="Solemnity Cape",
+    back=gear.sucellos.enfeeble,
     waist="Flume Belt +1",
     legs="Carmine Cuisses +1",
     feet="Chironic Slippers"
@@ -104,7 +104,7 @@ function get_sets()
     feet="Aya. Gambieras +2",
     neck="Loricate Torque +1",
     waist="Flume Belt +1",
-    left_ear="Telos Earring",
+    left_ear="Genmei Earring",
     right_ear="Sherida Earring",
     left_ring="Hetairoi Ring",
     right_ring="Defending Ring",
@@ -139,7 +139,7 @@ function get_sets()
     ammo="Impatiens",
     head="Atro. Chapeau +2",
     body="Viti. Tabard +3",
-    hands=augments.helios.hands.fastCast,
+    hands="Leyline Gloves",
     legs="Lengo Pants",
     feet="Carmine Greaves +1",
     neck="Orunmila's Torque",
@@ -166,12 +166,12 @@ function get_sets()
 
   -- Heals
   sets.Magic.Healing = {
-    main="Serenity",
-    sub="Enki Strap",
+    main="Serenity",  -- Overcapped on Potency, but staff is ignored
+    sub="Enki Strap", -- when meleeing, so set is built to work without it
     ammo="Regal Gem",
     head="Vanya Hood",
     body="Vanya Robe",
-    hands="Telchine Gloves",
+    hands="Telchine Gloves",  -- Gonna replace with kaykaus +1
     legs="Atrophy Tights +2",
     feet="Vanya Clogs",
     neck="Incanter's Torque",
@@ -180,7 +180,7 @@ function get_sets()
     right_ear="Mendi. Earring",
     left_ring="Haoma's Ring",
     right_ring="Haoma's Ring",
-    back="Solemnity Cape",
+    back=gear.sucellos.enfeeble
   }
   sets.Magic.HealingSelf = {
     neck="Phalaina Locket",      -- 4% self
@@ -193,7 +193,7 @@ function get_sets()
     ammo="Sapience Orb",
     head="Vanya Hood",
     body="Vanya Robe",
-    hands=augments.helios.hands.fastCast,
+    hands="Leyline Gloves",  -- Pick up some vanya cuffs for healing skill
     legs="Atrophy Tights +2",
     feet="Vanya Clogs",
     neck="Malison Medallion",
@@ -207,10 +207,10 @@ function get_sets()
 
   -- Enhancing
   sets.Magic.EnhancingDuration = {
-    main="Oranyan",
-    neck="Duelist's torque",
+    main="Oranyan",             -- Should make a telchine hat too
+    neck="Duelist's Torque +1",
     body="Vitiation Tabard +3",
-    hands="Atrophy Gloves +2",
+    hands="Atrophy Gloves +2",  -- +3 this piece!
     back=gear.sucellos.enfeeble,
     legs="Telchine Braconi",
     feet="Lethargy Houseaux +1"
@@ -218,7 +218,7 @@ function get_sets()
   sets.Magic.EnhancingComposure = {
     main="Oranyan",
     head="Lethargy Chappel +1",
-    neck="Duelist's torque",
+    neck="Duelist's Torque +1",
     body="Lethargy Sayon +1",
     hands="Atrophy Gloves +2",
     back=gear.sucellos.enfeeble,
@@ -279,12 +279,12 @@ function get_sets()
     main=augments.grio.enfeeble,
     sub="Enki Strap",
     ammo="Regal Gem",
-    head="Atrophy Chapeau +2",    -- Upgrade to +3
+    head="Viti. Chapeau +3",
     body="Atrophy Tabard +3",
-    hands="Leth. Gantherots +1",  -- Replace with Kaykaus +1
+    hands="Kaykaus Cuffs +1",
     legs="Chironic Hose",
     feet="Vitiation Boots +3",
-    neck="Duelist's Torque",
+    neck="Duelist's Torque +1",
     waist="Rumination Sash",
     left_ear="Regal Earring",
     right_ear="Digni. Earring",
@@ -297,8 +297,9 @@ function get_sets()
   })
   sets.Magic.FrazzleDistract3 = set_combine(sets.Magic.EnfeebleAccuracy, {
     sub="Mephitis Grip",
-    head="Viti. Chapeau +2",  -- Upgrade to +3
-    body="Lethargy Sayon +1"
+    body="Lethargy Sayon +1",
+    hands="Leth. Gantherots +1",
+    legs="Psycloth Lappas"
   })
   sets.Magic.EnfeebleDuration = set_combine(sets.Magic.EnfeebleAccuracy, {
     left_ring="Kishar Ring"
@@ -336,15 +337,15 @@ function get_sets()
   -- Dark
   sets.Magic.Stun = {
     main=augments.grio.enfeeble,
-    sub="Mephitis Grip",
+    sub="Enki Strap",
     ammo="Regal Gem",
     head="Atrophy Chapeau +2",
     body="Atrophy Tabard +3",
-    hands="Leth. Gantherots +1",    -- Replace with Kaykaus +1
+    hands="Kaykaus Cuffs +1",
     legs="Chironic Hose",
-    feet="Vitiation Boots +3",
+    feet=augments.merlinic.crackows.nuke,
     neck="Erra Pendant",
-    waist="Rumination Sash",
+    waist="Eschan Stone",
     left_ear="Regal Earring",
     right_ear="Digni. Earring",
     left_ring="Stikini Ring",
@@ -357,7 +358,7 @@ function get_sets()
   sets.WS = {}
   sets.WS['Savage Blade'] = {
     ammo="Regal Gem",
-    head="Viti. Chapeau +2",
+    head="Viti. Chapeau +3",
     body="Viti. Tabard +3",
     hands="Jhakri Cuffs +2",
     legs="Jhakri slops +2",
@@ -405,8 +406,17 @@ end
 function precast(spell)
   precast_cancelations(spell)
 
+  -- Lock swords if DD'ing
+  if PrimaryMode.current == 'Caster' then
+    enable('main', 'sub')
+  else
+    disable('main', 'sub')
+  end
+
   if spell.type == 'WeaponSkill' then
     equip(sets.WS[spell.english] or sets.WS['Savage Blade'])
+
+    -- Use elemental obi if using Sanguine in dark day / weather
     if spell.english == 'Sanguine Blade' and (
       world.weather_element == "Dark" or world.day_element == "Dark"
     ) then
@@ -432,12 +442,11 @@ function precast_cancelations(spell)
 end
 
 function midcast(spell)
-  if spell.action_type ~= 'Magic' then
-    return
+  if spell.action_type == 'Magic' then
+    equip(sets.Magic.SpellInterrupt)
   end
 
   eng = spell.english
-  equip(sets.Magic.SpellInterrupt)
 
   if string.find(eng, 'Cure') or string.find(eng, 'Curaga') then
     equip(sets.Magic.Healing)
@@ -446,10 +455,11 @@ function midcast(spell)
     end
 
   elseif spell.skill == 'Enhancing Magic' then
-    -- Maximize duration
     if spell.target.type ~= 'SELF' and buffactive['Composure'] then
+      -- Maximize duration for others
       equip(sets.Magic.EnhancingComposure)
     else
+      -- Maximize duration for self
       equip(sets.Magic.EnhancingDuration)
     end
 
@@ -476,15 +486,16 @@ function midcast(spell)
     end
 
   elseif spell.skill == 'Enfeebling Magic' then
-    if S{'Paralyze', 'Slow II', 'Addle II', 'Induration'}:contains(eng) then
+    if S{'Paralyze', 'Slow II', 'Addle II', 'Dia III'}:contains(eng) then
       equip(sets.Magic.EnfeeblePotency)
     elseif S{'Distract III', 'Frazzle III'}:contains(eng) then
       equip(sets.Magic.FrazzleDistract3)
-    elseif S{'Sleep', 'Sleep II', 'Sleepga', 'Dia III'}:contains(eng) then
+    elseif S{'Sleep', 'Sleep II', 'Sleepga'}:contains(eng) then
       equip(sets.Magic.EnfeebleDuration)
     else
       equip(sets.Magic.EnfeebleAccuracy)
     end
+    -- Empy gloves enhance spells when Sabo is up
     if buffactive['Saboteur'] then
       equip(sets.JAs.Saboteur)
     end
@@ -543,11 +554,13 @@ end
 function set_for_current_mode()
   local set = sets.modes[PrimaryMode.current]
 
+  -- In DD mode if I dont' have dual weild, equip a shield instead
   if PrimaryMode.current ~= 'Caster'
     and player.sub_job ~= 'NIN'
     and player.sub_job ~= 'DNC' then
     set.sub = "Beatific Shield +1"
 
+  -- Get those MPs
   elseif PrimaryMode.current == 'Caster' and player.mpp <= 50 then
     set.waist = "Fucho-no-Obi"
   end

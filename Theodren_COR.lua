@@ -4,8 +4,6 @@ include('augments.lua')
 
 function define_modes()
   PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Hybrid', 'Accuracy'}
-  DamageDown = M(false, 'Damage Down')
-  Capacity = M(false, 'Capacity Mantle')
   Luzaf = M(true, 'Luzaf')
   Compensator = M(true, 'Compensator')
   Weapons = M{
@@ -17,11 +15,8 @@ function define_modes()
 end
 
 function define_binds()
-  -- windower.send_command('lua reload autora')
-
   -- Modes
   send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
-  send_command("alias g15v2_m1g2 gs c cycle DamageDown")
   send_command("alias g15v2_m1g3 gs c cycle Luzaf")
   send_command("alias g15v2_m1g4 gs c weapon")
 end
@@ -34,7 +29,6 @@ function get_sets()
 
   define_modes()
   define_binds()
-  define_roll_values()
 
   gear = {
     camulus = {
@@ -58,8 +52,7 @@ function get_sets()
   }
 
   sets.modes = {}
-  sets.modes.Normal = {}
-  sets.modes.Normal.Engaged = {
+  sets.modes.Normal = {
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
     hands=augments.herc.hands.triple,
@@ -73,25 +66,8 @@ function get_sets()
     right_ring="Epona's Ring",
     back=gear.camulus.meleeTp,
   }
-  sets.modes.Normal.Ranged = {
-    ammo=gear.bullets.rangedAtt,
-    head="Meghanada Visor +2",
-    body="Mummu Jacket +2",
-    hands="Meg. Gloves +2",
-    legs="Meg. Chausses +2",
-    feet="Meg. Jam. +2",
-    neck="Iskur Gorget",
-    waist="Yemaya Belt",
-    left_ear="Telos Earring",
-    right_ear="Enervating Earring",
-    left_ring="Ilabrat Ring",
-    right_ring="Dingir Ring",
-    back=gear.camulus.rangedTp
-  }
-
-  sets.modes.Hybrid = {}
-  sets.modes.Hybrid.Engaged = {
-    -- If Lanun:                      -- 8 DT
+  sets.modes.Hybrid = {
+    -- Lanun:                         -- 8 DT
     head="Adhemar Bonnet +1",
     body="Lanun Frac +3",             -- 6 PDT
     hands=augments.herc.hands.triple, -- 2 PDT
@@ -105,31 +81,24 @@ function get_sets()
     right_ring="Defending Ring",      -- 10 DT
     back=gear.camulus.meleeTp,        -- 5 DT
   }                                   -- 52 PDT | 29 MDT
-  sets.modes.Hybrid.Ranged = sets.modes.Normal.Ranged
-
-  -- TODO: Create accuracy sets
-  sets.modes.Accuracy = {}
-  sets.modes.Accuracy.Engaged = {}
-  sets.modes.Accuracy.Ranged = {}
-
-  -- DT / Idle Sets
-  sets.DamageDown = {
-    head=augments.herc.head.pdt,
-    neck="Loricate Torque +1",
-    body="Lanun Frac +3",
-    right_ear="Etiolation Earring",
-    lring="Gelatinous Ring +1",
-    rring="Defending Ring",
-    waist="Flume Belt +1",
-    legs="Meg. Chausses +2"
+  sets.modes.Accuracy = {
+    head="Meghanada Visor +2",
+    body="Meg. Cuirie +2",
+    hands="Meg. Gloves +2",
+    legs="Meg. Chausses +2",
+    feet="Meg. Jam. +2",
+    neck="Lissome Necklace",
+    waist="Windbuffet Belt +1",
+    left_ear="Telos Earring",
+    right_ear="Digni. Earring",
+    left_ring="Regal Ring",
+    right_ring="Ilabrat Ring",
+    back=gear.camulus.meleeTp
   }
-  sets.Regain = {
-    lring="Karieyh Ring +1"
-  }
+
   sets.Idle = set_combine(
-    sets.modes.Normal.Engaged,
-    sets.DamageDown,
-    sets.Regain
+    sets.modes.Normal,
+    { left_ring="Karieyh Ring +1" }
   )
 
   -- Shooting
@@ -147,6 +116,21 @@ function get_sets()
   sets.TripleShot = {
     -- body="Chasseur's Frac"
   }
+  sets.Ranged = {
+    ammo=gear.bullets.rangedAtt,
+    head="Meghanada Visor +2",
+    body="Mummu Jacket +2",
+    hands="Meg. Gloves +2",
+    legs="Meg. Chausses +2",
+    feet="Meg. Jam. +2",
+    neck="Iskur Gorget",
+    waist="Yemaya Belt",
+    left_ear="Telos Earring",
+    right_ear="Enervating Earring",
+    left_ring="Regal Ring",
+    right_ring="Dingir Ring",
+    back=gear.camulus.rangedTp
+  }
 
   -- Magic
   sets.Magic = {}
@@ -163,15 +147,14 @@ function get_sets()
     feet="Carmine Greaves +1"           -- 8
   }
   sets.Magic.SpellInterrupt = {
-    -- ammo="Staunch Tathlum +1",          -- 10
     head=augments.taeon.head.SID,    -- 7
     neck="Loricate Torque +1",
     lear="Halasz Earring",           -- 5
     rear="Magnetic earring",         -- 8
     body="Lanun Frac +3",
     hands="Rawhide Gloves",          -- 15
-    left_ring="Defending Ring",      -- PDT
-    right_ring="Warden's Ring",      -- PDT
+    left_ring="Gelatinous Ring +1",
+    right_ring="Defending Ring",
     back=gear.camulus.meleeTp,
     waist="Flume Belt +1",
     legs="Carmine Cuisses +1",       -- 20
@@ -189,7 +172,7 @@ function get_sets()
     right_ear="Moonshade earring",
     body="Laksamana's Frac +3",
     hands="Meg. Gloves +2",
-    lring="Ilabrat Ring", -- Replace w/ Regal Ring
+    left_ring="Regal Ring",
     right_ring="Dingir Ring",
     back=gear.camulus.rangedWsPhys,
     waist="Fotia Belt",
@@ -230,7 +213,7 @@ function get_sets()
   sets.WS['Leaden Salute'] = set_combine(sets.WS.RangedMagic, {
     head="Pixie Hairpin +1",
     right_ear="Moonshade Earring",
-    lring="Archon Ring",
+    left_ring="Archon Ring",
     waist="Svelt. Gouriz +1"
   })
   sets.WS['Wildfire'] = sets.WS.RangedMagic
@@ -240,20 +223,7 @@ function get_sets()
   sets.WS['Requiescat'] = sets.WS.Melee
   sets.WS['Savage Blade'] = sets.WS.Melee
   sets.WS['Circle Blade'] = sets.WS.Melee
-  sets.WS['Evisceration'] = {
-    head=augments.herc.head.reso,
-    body=augments.herc.body.reso,
-    hands="Meg. Gloves +2",
-    legs=augments.herc.legs.ws,
-    feet=augments.herc.feet.reso,
-    neck="Fotia Gorget",
-    waist="Fotia Belt",
-    left_ear="Moonshade Earring",
-    right_ear="Sherida Earring",
-    left_ring="Petrov Ring",
-    right_ring="Regal Ring",
-    back=gear.camulus.meleeWs,
-  }
+  sets.WS['Evisceration'] = sets.WS.Melee
   sets.WS['Aeolian Edge'] = {
     ammo=gear.bullets.quickDraw,
     head=augments.herc.head.mab,
@@ -307,11 +277,11 @@ function get_sets()
   -- Job Abilities
   --
   sets.JAs.PhantomRoll = {
-    -- ranged = "Compensator",
+    -- ranged = "Compensator",  -- See precast
     head="Lanun Tricorne +1",
     neck="Regal Necklace",
     hands="Chasseur's Gants +1",
-    -- rring = "Luzaf's Ring",
+    -- rring = "Luzaf's Ring",  -- See precast
     back="Camulus's Mantle",
     legs="Desultor Tassets"
   }
@@ -334,9 +304,6 @@ function precast(spell)
         and player.status ~= 'Engaged'
         and spell.type == 'CorsairRoll' then
       equip({ranged = "Compensator"})
-    end
-    if not spell.interrupted then
-      -- display_roll_info(spell)
     end
 
   elseif sets.JAs[spell.english] then
@@ -387,7 +354,7 @@ end
 
 function midcast(spell)
   if spell.english == 'Ranged' then
-    equip(sets.modes[PrimaryMode.current].Ranged)
+    equip(sets.Ranged)
 
   elseif spell.action_type == 'Magic' then
     equip(sets.Magic.SpellInterrupt)
@@ -413,9 +380,6 @@ function status_change(new, old)
   else
     equip(sets.Idle)
   end
-  if Capacity.value then
-    equip(sets.CapacityMantle)
-  end
 end
 
 function self_command(commandArgs)
@@ -429,7 +393,7 @@ function self_command(commandArgs)
   command = commandArgs[1]
 
   if command == 'run' then
-    equip(sets.Idle)
+    equip({ legs="Carmine Cuisses +1" })
   elseif command == "mode" then
     equip(set_for_engaged())
   elseif command == 'weapon' then
@@ -447,76 +411,13 @@ function self_command(commandArgs)
 end
 
 function set_for_engaged()
-  local set = sets.modes[PrimaryMode.current].Engaged
-  if DamageDown.value then
-    set = set_combine(set, sets.DamageDown)
-  end
-  return set
+  return sets.modes[PrimaryMode.current]
 end
 
 function set_for_ws(named)
   if sets.WS[named] then
     return sets.WS[named]
   else
-    return sets.WS
-  end
-end
-
-function array_contains(arr, value)
-  for k, v in pairs(arr) do
-    if value == v then
-      return true
-    end
-  end
-  return false
-end
-
--------------------------------------------------------------------------------------------------------------------
--- Utility functions specific to this job.
--------------------------------------------------------------------------------------------------------------------
-
-function define_roll_values()
-  rolls = {
-    ["Corsair's Roll"]   = {lucky=5, unlucky=9, bonus="Experience Points"},
-    ["Ninja Roll"]       = {lucky=4, unlucky=8, bonus="Evasion"},
-    ["Hunter's Roll"]    = {lucky=4, unlucky=8, bonus="Accuracy"},
-    ["Chaos Roll"]       = {lucky=4, unlucky=8, bonus="Attack"},
-    ["Magus's Roll"]     = {lucky=2, unlucky=6, bonus="Magic Defense"},
-    ["Healer's Roll"]    = {lucky=3, unlucky=7, bonus="Cure Potency Received"},
-    ["Puppet Roll"]      = {lucky=4, unlucky=8, bonus="Pet Magic Accuracy/Attack"},
-    ["Choral Roll"]      = {lucky=2, unlucky=6, bonus="Spell Interruption Rate"},
-    ["Monk's Roll"]      = {lucky=3, unlucky=7, bonus="Subtle Blow"},
-    ["Beast Roll"]       = {lucky=4, unlucky=8, bonus="Pet Attack"},
-    ["Samurai Roll"]     = {lucky=2, unlucky=6, bonus="Store TP"},
-    ["Evoker's Roll"]    = {lucky=5, unlucky=9, bonus="Refresh"},
-    ["Rogue's Roll"]     = {lucky=5, unlucky=9, bonus="Critical Hit Rate"},
-    ["Warlock's Roll"]   = {lucky=4, unlucky=8, bonus="Magic Accuracy"},
-    ["Fighter's Roll"]   = {lucky=5, unlucky=9, bonus="Double Attack Rate"},
-    ["Drachen Roll"]     = {lucky=3, unlucky=7, bonus="Pet Accuracy"},
-    ["Gallant's Roll"]   = {lucky=3, unlucky=7, bonus="Defense"},
-    ["Wizard's Roll"]    = {lucky=5, unlucky=9, bonus="Magic Attack"},
-    ["Dancer's Roll"]    = {lucky=3, unlucky=7, bonus="Regen"},
-    ["Scholar's Roll"]   = {lucky=2, unlucky=6, bonus="Conserve MP"},
-    ["Bolter's Roll"]    = {lucky=3, unlucky=9, bonus="Movement Speed"},
-    ["Caster's Roll"]    = {lucky=2, unlucky=7, bonus="Fast Cast"},
-    ["Courser's Roll"]   = {lucky=3, unlucky=9, bonus="Snapshot"},
-    ["Blitzer's Roll"]   = {lucky=4, unlucky=9, bonus="Attack Delay"},
-    ["Tactician's Roll"] = {lucky=5, unlucky=8, bonus="Regain"},
-    ["Allies's Roll"]    = {lucky=3, unlucky=10, bonus="Skillchain Damage"},
-    ["Miser's Roll"]     = {lucky=5, unlucky=7, bonus="Save TP"},
-    ["Companion's Roll"] = {lucky=2, unlucky=10, bonus="Pet Regain and Regen"},
-    ["Avenger's Roll"]   = {lucky=4, unlucky=8, bonus="Counter Rate"},
-    ["Runeist's Roll"]   = {lucky=4, unlocky=8, bonus="Magic Evasion"},
-  }
-end
-
-function display_roll_info(spell)
-  rollinfo = rolls[spell.english]
-  -- local rollsize = (state.LuzafRing.value and 'Large') or 'Small'
-
-  if rollinfo then
-    -- add_to_chat(104, spell.english..' provides a bonus to '..rollinfo.bonus..'.  Roll size: '..rollsize)
-    add_to_chat(104, spell.english..' provides a bonus to '..rollinfo.bonus..'.')
-    add_to_chat(104, 'Lucky roll is '..tostring(rollinfo.lucky)..', Unlucky roll is '..tostring(rollinfo.unlucky)..'.')
+    return sets.WS.Melee
   end
 end

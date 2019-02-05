@@ -12,6 +12,10 @@ function define_binds()
   send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
   send_command('alias g15v2_m1g2 input /equip main "Dojikiri Yasutsuna"; @wait 0.5; input /equip sub "Utu Grip"')
   send_command("alias g15v2_m1g3 gs c cycle TreasureHunter")
+
+  send_command('bind !f9 input /item "Echo Drops" <me>')
+  send_command('bind !f10 input /item "Remedy" <me>')
+  send_command('bind !f11 input /item "Holy Water" <me>')
 end
 
 function get_sets()
@@ -168,6 +172,15 @@ function get_sets()
     head=gear.valorous.mask.waltz,
     lring='Asklepian Ring'
   }
+
+  -- Statuses
+  --
+  sets.Doom = {
+    neck="Nicander's Necklace",
+    left_ring="Purity Ring",
+    right_ring="Blenmot's Ring",
+    waist="Gishdubar Sash"
+  }
 end
 
 function precast(spell)
@@ -225,6 +238,19 @@ function status_change(new, old)
   end
 end
 
+function buff_change(buff, gain, bufftable)
+  if buff:lower() == "doom" then
+    if gain then
+      equip(sets.Doom)
+      send_command("input /party Help, I'm DOOMED!")
+      send_command('input /item "Holy Water" <me>')
+    else
+      equip_set_for_current_mode()
+      send_command('input /party Doom OFF!')
+    end
+  end
+end
+
 function self_command(commandArgs)
   local commandArgs = commandArgs
   if type(commandArgs) == 'string' then
@@ -257,6 +283,9 @@ function set_for_engaged()
   local set = sets.modes[PrimaryMode.current]
   if TreasureHunter.value then
     set = set_combine(set, sets.TreasureHunter)
+  end
+  if buffactive.Doom then
+    set = set_combine(set, sets.Doom)
   end
   return set
 end
