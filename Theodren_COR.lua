@@ -8,8 +8,9 @@ function define_modes()
   Compensator = M(true, 'Compensator')
   Weapons = M{
     ['description'] = 'Weapons',
+    'Fomalhaut',
     'HollidayMagic',
-    'HollidayPhys',
+    -- 'HollidayPhys',
     'Anarchy',
   }
 end
@@ -41,12 +42,13 @@ function get_sets()
     },
     weapons = {
       HollidayMagic = { name="Holliday", augments={'"Mag.Atk.Bns."+21','Potency of "Cure" effect received+7%','Mag. Acc.+20 "Mag.Atk.Bns."+20','DMG:+5',}},
-      HollidayPhys = { name="Holliday", augments={'"Store TP"+6','Rng.Acc.+28','Rng.Atk.+18','DMG:+28',}},
+      -- HollidayPhys = { name="Holliday", augments={'"Store TP"+6','Rng.Acc.+28','Rng.Atk.+18','DMG:+28',}},
+      Fomalhaut = "Fomalhaut",
       Anarchy = "Anarchy +2",
     },
     bullets = {
       quickDraw = "Animikii Bullet",
-      rangedAtt = "Eminent Bullet",
+      rangedAtt = "Chrono Bullet",
       magicWs = "Orichalc. Bullet"
     }
   }
@@ -88,7 +90,7 @@ function get_sets()
     legs="Meg. Chausses +2",
     feet="Meg. Jam. +2",
     neck="Lissome Necklace",
-    waist="Windbuffet Belt +1",
+    waist="Reiki Yotai",
     left_ear="Telos Earring",
     right_ear="Digni. Earring",
     left_ring="Regal Ring",
@@ -119,7 +121,7 @@ function get_sets()
   sets.Ranged = {
     ammo=gear.bullets.rangedAtt,
     head="Meghanada Visor +2",
-    body="Mummu Jacket +2",
+    body="Nisroch Jerkin",
     hands="Meg. Gloves +2",
     legs="Meg. Chausses +2",
     feet="Meg. Jam. +2",
@@ -258,13 +260,28 @@ function get_sets()
     feet="Lanun Bottes +3",
     waist="Eschan Stone"
   }
+  sets.JAs.QuickDrawSTP = {
+    ammo=gear.bullets.quickDraw,
+    -- head=augments.herc.head.mab,
+    neck="Iskur Gorget",
+    -- left_ear="Friomisi Earring",
+    -- right_ear="Strophadic Earring",
+    -- body="Lanun Frac +3",
+    -- hands="Carmine Fin. Ga. +1",
+    -- left_ring="Arvina Ringlet +1",
+    -- right_ring="Dingir Ring",
+    back=gear.camulus.rangedTp,
+    -- legs=augments.herc.legs.magic,
+    -- feet="Lanun Bottes +3",
+    -- waist="Eschan Stone"
+  }
   sets.JAs.QuickDrawAcc = {
     ammo=gear.bullets.quickDraw,
     head=augments.herc.head.mab,
     neck="Sanctity Necklace",
     left_ear="Dignitary's Earring",
     right_ear="Gwati Earring",
-    body="Mummu Jacket +2",
+    body="Lanun Frac +3",
     hands="Leyline Gloves ",
     left_ring="Arvina Ringlet +1",
     right_ring="Stikini Ring",
@@ -299,12 +316,12 @@ function precast(spell)
     if Luzaf.value then
       equip({rring = "Luzaf's Ring"})
     end
-    if Compensator.value
-        and player.tp < 1000
-        and player.status ~= 'Engaged'
-        and spell.type == 'CorsairRoll' then
-      equip({ranged = "Compensator"})
-    end
+    -- if Compensator.value
+    --     and player.tp < 1000
+    --     and player.status ~= 'Engaged'
+    --     and spell.type == 'CorsairRoll' then
+    --   equip({ranged = "Compensator"})
+    -- end
 
   elseif sets.JAs[spell.english] then
     equip(sets.JAs[spell.english])

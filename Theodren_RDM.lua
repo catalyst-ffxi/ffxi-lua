@@ -2,8 +2,8 @@ include('Modes.lua')
 include('augments.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Caster', 'Melee', 'Accuracy', 'Hybrid'}
-  EnfeebleMode = M{['description'] = 'Enfeebling Mode', 'Potency', 'Accuracy'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Accuracy', 'Hybrid'}
+  WeaponMode = M{['description'] = 'Weapon Mode', 'Staff', 'Magic', 'Physical'}
   NukingMode = M{['description'] = 'Nuking Mode', 'Normal', 'MagicBurst'}
   Element = M{['description'] = 'Primary Element', 'Thunder', 'Blizzard', 'Fire', 'Aero', 'Water', 'Stone'}
 end
@@ -36,6 +36,7 @@ function define_aliases()
 
   -- Modes
   send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
+  send_command("alias g15v2_m1g2 gs c weapons")
   send_command("alias g15v2_m1g3 gs c cycle NukingMode")
   send_command("alias g15v2_m1g4 gs c cycle Element")
 end
@@ -53,13 +54,29 @@ function get_sets()
       nuke = { name="Sucellos's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10',}},
       enfeeble = { name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Cure" potency +10%','Phys. dmg. taken-10%',}},
       melee = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Store TP"+10',}},
-      cdc = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Crit.hit rate+10',}}
+      cdc = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Crit.hit rate+10',}},
+      savage = { name="Sucellos's Cape", augments={'STR+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
+    }
+  }
+
+  -- Weapon Sets
+  weapons = {
+    Staff={
+      main="Contemplator",
+      sub="Enki Strap"
+    },
+    Magic={
+      main="Vitiation Sword",
+      sub="Kaja Knife"
+    },
+    Physical={
+      main="Kaja Sword",
+      sub="Ternion Dagger +1"
     }
   }
 
   -- Idle Sets
-  sets.modes = {}
-  sets.modes.Caster = {
+  sets.Idle = {
     main="Contemplator",
     sub="Enki Strap",
     ammo="Homiliary",
@@ -76,26 +93,29 @@ function get_sets()
     legs="Carmine Cuisses +1",
     feet="Chironic Slippers"
   }
-  sets.modes.Melee = {
-    main="Vitiation Sword",
-    sub=augments.colada.stp,
+
+  -- Engaged sets
+  sets.Engaged = {}
+  sets.Engaged.Normal = {
+    -- main="Vitiation Sword",
+    -- sub="Kaja Knife",
     ammo="Ginsen",
-    head="Aya. Zucchetto +2",
+    head=augments.taeon.head.tp,
     body="Ayanmo Corazza +2",
-    hands=augments.chironic.gloves.melee,
+    hands="Aya. Manopolas +2",
     legs=augments.taeon.legs.triple,
     feet="Carmine Greaves +1",
-    neck="Lissome Necklace",
-    waist="Sarissapho. Belt",
-    left_ear="Telos Earring",
+    neck="Anu Torque",
+    waist="Reiki Yotai",
+    left_ear="Suppanomimi",
     right_ear="Sherida Earring",
     left_ring="Hetairoi Ring",
     right_ring="Petrov Ring",
     back=gear.sucellos.melee
   }
-  sets.modes.Hybrid = {
-    main="Vitiation Sword",
-    sub=augments.colada.stp,
+  sets.Engaged.Hybrid = {
+    -- main="Vitiation Sword",
+    -- sub=augments.colada.stp,
     ammo="Staunch Tathlum +1",
     head="Aya. Zucchetto +2",
     body="Ayanmo Corazza +2",
@@ -106,13 +126,13 @@ function get_sets()
     waist="Flume Belt +1",
     left_ear="Genmei Earring",
     right_ear="Sherida Earring",
-    left_ring="Hetairoi Ring",
+    left_ring="Ayanmo Ring",
     right_ring="Defending Ring",
     back=gear.sucellos.melee
   }
-  sets.modes.Accuracy = {
-    main="Vitiation Sword",
-    sub=augments.colada.stp,
+  sets.Engaged.Accuracy = {
+    -- main="Vitiation Sword",
+    -- sub=augments.colada.stp,
     ammo="Ginsen",
     head="Aya. Zucchetto +2",
     body="Ayanmo Corazza +2",
@@ -120,7 +140,7 @@ function get_sets()
     legs="Carmine Cuisses +1",
     feet="Carmine Greaves +1",
     neck="Sanctity Necklace",
-    waist="Sarissapho. Belt",
+    waist="Reiki Yotai",
     left_ear="Telos Earring",
     right_ear="Digni. Earring",
     left_ring="Ayanmo Ring",
@@ -140,7 +160,7 @@ function get_sets()
     head="Atro. Chapeau +2",
     body="Viti. Tabard +3",
     hands="Leyline Gloves",
-    legs="Lengo Pants",
+    legs="Aya. Cosciales +2",
     feet="Carmine Greaves +1",
     neck="Orunmila's Torque",
     waist="Witful Belt",
@@ -166,12 +186,12 @@ function get_sets()
 
   -- Heals
   sets.Magic.Healing = {
-    main="Serenity",  -- Overcapped on Potency, but staff is ignored
-    sub="Enki Strap", -- when meleeing, so set is built to work without it
+    -- main="Serenity",  -- Overcapped on Potency, but staff is ignored
+    -- sub="Enki Strap", -- when meleeing, so set is built to work without it
     ammo="Regal Gem",
     head="Vanya Hood",
     body="Vanya Robe",
-    hands="Telchine Gloves",  -- Gonna replace with kaykaus +1
+    hands="Kaykaus Cuffs +1",
     legs="Atrophy Tights +2",
     feet="Vanya Clogs",
     neck="Incanter's Torque",
@@ -207,10 +227,11 @@ function get_sets()
 
   -- Enhancing
   sets.Magic.EnhancingDuration = {
-    main="Oranyan",             -- Should make a telchine hat too
+    main="Oranyan",
+    head="Telchine Cap",
     neck="Duelist's Torque +1",
     body="Vitiation Tabard +3",
-    hands="Atrophy Gloves +2",  -- +3 this piece!
+    hands="Atrophy Gloves +3",
     back=gear.sucellos.enfeeble,
     legs="Telchine Braconi",
     feet="Lethargy Houseaux +1"
@@ -220,7 +241,7 @@ function get_sets()
     head="Lethargy Chappel +1",
     neck="Duelist's Torque +1",
     body="Lethargy Sayon +1",
-    hands="Atrophy Gloves +2",
+    hands="Atrophy Gloves +3",
     back=gear.sucellos.enfeeble,
     legs="Lethargy Fuseau +1",
     feet="Lethargy Houseaux +1"
@@ -233,14 +254,14 @@ function get_sets()
   sets.Magic.RefreshSelf = {
     waist="Gishdubar sash",
   }
-  sets.Magic.Regen = {
+  sets.Magic.Regen = { -- Full set of telchine regen gear would be nice to have
     body="Telchine Chasuble"
   }
   sets.Magic.EnhancingSkill = {
     head="Befouled Crown",
     body="Viti. Tabard +3",
     hands="Viti. Gloves +2",
-    legs="Carmine Cuisses +1",
+    legs="Atrophy Tights +2",
     feet="Leth. Houseaux +1",
     neck="Incanter's Torque",
     waist="Olympus Sash",
@@ -264,15 +285,9 @@ function get_sets()
     neck="Nodens Gorget",
     waist="Siegel Sash"
   }
-  sets.Magic.Enspell = set_combine(sets.Magic.EnhancingSkill, {
-    head="Umuthi Hat",
-    hands="Aya. Manopolas +2",
-    back="Ghostfyre Cape"
-  })
   sets.Magic.Gain = {
     hands="Viti. Gloves +2"
   }
-  sets.Magic.Temper = sets.Magic.EnhancingSkill
 
   -- Enfeebles
   sets.Magic.EnfeebleAccuracy = {
@@ -318,7 +333,7 @@ function get_sets()
     feet="Vitiation Boots +3",
     neck="Sanctity Necklace",
     waist="Refoccilation Stone",
-    left_ear="Strophadic Earring",
+    left_ear="Regal Earring",
     right_ear="Friomisi Earring",
     left_ring="Shiva Ring",
     right_ring="Strendu Ring",
@@ -332,27 +347,50 @@ function get_sets()
     lring="Mujin Band",         --       | MB II +5
     rring="Locus Ring",         -- MB +5 |
     legs="Ea Slops",            -- MB +7 | MB II +7
-  })
+    feet="Jhakri Pigaches +2",  -- MB +7
+  })                            -- MB +43| MB II +31
 
   -- Dark
   sets.Magic.Stun = {
-    main=augments.grio.enfeeble,
+    main=augments.grio.enfeeble, -- MACC augmwnts
     sub="Enki Strap",
-    ammo="Regal Gem",
+    ammo="Regal Gem",  -- Ambu bow actually provides more MACC if you have it
     head="Atrophy Chapeau +2",
     body="Atrophy Tabard +3",
     hands="Kaykaus Cuffs +1",
-    legs="Chironic Hose",
-    feet=augments.merlinic.crackows.nuke,
+    legs="Chironic Hose",  -- MACC augments
+    feet=augments.merlinic.crackows.nuke, -- MACC augmwnts
     neck="Erra Pendant",
     waist="Eschan Stone",
     left_ear="Regal Earring",
     right_ear="Digni. Earring",
     left_ring="Stikini Ring",
     right_ring="Stikini Ring",
-    back=gear.sucellos.nuke
+    back=gear.sucellos.nuke -- MACC augmwnts
   }
   sets.Magic['Bio III'] = {}  -- TODO
+
+  -- Enmity...?!
+  --
+  sets.Enmity = {
+    ammo="Sapience Orb",           -- 2
+    head="Halitus Helm",           -- 8
+    -- neck="Moonlight Necklace",     -- 15
+    left_ear="Trux Earring",       -- 5
+    right_ear="Friomisi Earring",  -- 2
+    body="Emet Harness +1",        -- 10
+    -- hands="Nilas Gloves",          -- 5
+    left_ring="Supershear Ring",   -- 5
+    right_ring="Eihwaz Ring",      -- 5
+    -- back=gear.ogma.enmity,         -- 10
+    waist="Kasiri Belt",           -- 3
+    -- legs="Eri. Leg Guards +1",     -- 11
+    -- feet="Erilaz Greaves +1"       -- 6
+  }
+  sets.Magic['Kurayami: Ichi'] = sets.Enmity
+  sets.Magic['Hojo: Ichi'] = sets.Enmity
+  sets.Magic['Dokumori: Ichi'] = sets.Enmity
+  sets.Magic['Jubaku: Ichi'] = sets.Enmity
 
   -- Weapon Skill
   sets.WS = {}
@@ -360,22 +398,37 @@ function get_sets()
     ammo="Regal Gem",
     head="Viti. Chapeau +3",
     body="Viti. Tabard +3",
-    hands="Jhakri Cuffs +2",
+    hands="Atrophy Gloves +3",
     legs="Jhakri slops +2",
     feet="Carmine Greaves +1",
-    neck="Fotia Gorget",
+    neck="Caro Necklace",
     waist="Prosilio Belt +1",
     left_ear="Regal Earring",
     right_ear="Moonshade Earring",
     left_ring="Shukuyu Ring",
     right_ring="Karieyh Ring +1",
-    back=gear.sucellos.cdc   -- TODO: STR/ATT/WSD Cape
+    back=gear.sucellos.savage
+  }
+  sets.WS.Requiescat = {
+    ammo="Regal Gem",
+    head="Viti. Chapeau +3",
+    body="Jhakri Robe +2",
+    hands="Atrophy Gloves +3",
+    legs="Jhakri slops +2",
+    feet="Vitiation Boots +3",
+    neck="Fotia Gorget",
+    waist="Prosilio Belt +1",
+    left_ear="Sherida Earring",
+    right_ear="Moonshade Earring",
+    left_ring="Shukuyu Ring",
+    right_ring="Karieyh Ring +1",
+    back=gear.sucellos.enfeeble
   }
   sets.WS['Chant du Cygne'] = {
     ammo="Yetshila",
     head="Aya. Zucchetto +2",
     body="Ayanmo Corazza +2",
-    hands="Jhakri Cuffs +2",
+    hands="Atrophy Gloves +3",
     legs=augments.taeon.legs.triple,
     feet="Thereoid Greaves",
     neck="Fotia Gorget",
@@ -384,7 +437,8 @@ function get_sets()
     right_ear="Sherida Earring",
     left_ring="Hetairoi Ring",
     right_ring="Ilabrat Ring",
-    back=gear.sucellos.cdc
+    back=gear.sucellos.savage
+    -- back=gear.sucellos.cdc
   }
   sets.WS['Sanguine Blade'] = {
     ammo="Ombre Tathlum +1",
@@ -407,11 +461,11 @@ function precast(spell)
   precast_cancelations(spell)
 
   -- Lock swords if DD'ing
-  if PrimaryMode.current == 'Caster' then
-    enable('main', 'sub')
-  else
-    disable('main', 'sub')
-  end
+  -- if PrimaryMode.current == 'Caster' then
+  --   enable('main', 'sub')
+  -- else
+  --   disable('main', 'sub')
+  -- end
 
   if spell.type == 'WeaponSkill' then
     equip(sets.WS[spell.english] or sets.WS['Savage Blade'])
@@ -477,12 +531,10 @@ function midcast(spell)
       equip(sets.Magic.Aquaveil)
     elseif eng == 'Stoneskin' then
       equip(sets.Magic.Stoneskin)
-    elseif starts_with(eng, 'En') then
-      equip(sets.Magic.Enspell)
     elseif string.find(eng, 'Gain-') then
       equip(sets.Magic.Gain)
-    elseif string.find(eng, 'Temper') then
-      equip(sets.Magic.Temper)
+    elseif starts_with(eng, 'En') or string.find(eng, 'Temper') then
+      equip(sets.Magic.EnhancingSkill)
     end
 
   elseif spell.skill == 'Enfeebling Magic' then
@@ -495,8 +547,7 @@ function midcast(spell)
     else
       equip(sets.Magic.EnfeebleAccuracy)
     end
-    -- Empy gloves enhance spells when Sabo is up
-    if buffactive['Saboteur'] then
+    if buffactive['Saboteur'] then -- Empy gloves enhance spells when Sabo is up
       equip(sets.JAs.Saboteur)
     end
 
@@ -513,15 +564,11 @@ function starts_with(str, start)
 end
 
 function aftercast(spell)
-  if player.in_combat then
-    equip(set_for_current_mode())
-  end
+  equip(set_for_current_mode())
 end
 
 function status_change(new, old)
-  if new == 'Engaged' then
-    equip(sets.modes[PrimaryMode.current])
-  end
+  equip(set_for_current_mode())
 end
 
 function self_command(commandArgs)
@@ -535,33 +582,77 @@ function self_command(commandArgs)
   command = commandArgs[1]
 
   if command == 'mode' then
-    equip(set_for_current_mode())
+    -- equip(set_for_current_mode())
+    equip(set_for_engaged())
 
   elseif command == 'cycle' then
     local mode = _G[commandArgs[2]]
     if mode ~= nil and mode._class == 'mode' then
       mode:cycle()
       add_to_chat(122, 'SET [' .. mode.description .. '] to ' .. mode.current)
-      equip(set_for_current_mode())
+      -- equip(set_for_current_mode())
+      equip(set_for_engaged())
       define_aliases()
     end
 
+  elseif command == 'weapons' then
+    cycle_weapons()
+
   elseif command == 'run' then
-    equip({ legs="Carmine Cuisses +1" })
+    -- equip({ legs="Carmine Cuisses +1" })
+    equip(set_for_current_mode())
   end
 end
 
 function set_for_current_mode()
-  local set = sets.modes[PrimaryMode.current]
+  if player.status == 'Engaged' then
+    return set_for_engaged()
+  else
+    return set_for_idle()
+  end
+end
 
-  -- In DD mode if I dont' have dual weild, equip a shield instead
-  if PrimaryMode.current ~= 'Caster'
-    and player.sub_job ~= 'NIN'
-    and player.sub_job ~= 'DNC' then
+function cycle_weapons()
+  WeaponMode:cycle()
+
+  local set = weapons[WeaponMode.current]
+  enable('main', 'sub')
+
+  if WeaponMode.current == 'Staff' then
+    equip(set)
+    return
+  end
+
+  if player.sub_job ~= 'NIN' and player.sub_job ~= 'DNC' then
     set.sub = "Beatific Shield +1"
+  end
 
-  -- Get those MPs
-  elseif PrimaryMode.current == 'Caster' and player.mpp <= 50 then
+  equip(set)
+  disable('main', 'sub')
+end
+
+function set_for_weapons()
+  if WeaponMode.current == 'Staff' then
+    return {}
+  end
+
+  local set = weapons[WeaponMode.current]
+
+  -- if player.sub_job ~= 'NIN' and player.sub_job ~= 'DNC' then
+  --   set.sub = "Beatific Shield +1"
+  -- end
+
+  return set
+end
+
+function set_for_engaged()
+  return sets.Engaged[PrimaryMode.current]
+end
+
+function set_for_idle()
+  local set = sets.Idle
+
+  if player.mpp <= 50 then
     set.waist = "Fucho-no-Obi"
   end
 

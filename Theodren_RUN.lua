@@ -1,6 +1,7 @@
 include('Mote-Mappings.lua')
 include('Modes.lua')
 include('augments.lua')
+include('utils.lua')
 -- include('organizer-lib')
 
 function define_modes()
@@ -63,7 +64,7 @@ function get_sets()
       reso={ name="Ogma's cape", augments={'STR+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}},
       dimi={ name="Ogma's cape", augments={'DEX+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
       enmity={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10','Spell interruption rate down-10%',}},
-      fastCast={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','"Fast Cast"+10','Damage taken-5%',}},
+      tank={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','"Fast Cast"+10','Damage taken-5%',}},
     }
   }
 
@@ -71,7 +72,7 @@ function get_sets()
   --
   sets.weapons = {}
   sets.weapons.DD = {
-    main="Zulfiqar",
+    main="Epeolatry",
     sub="Utu Grip"
   }
   sets.weapons.Tank = {
@@ -90,7 +91,7 @@ function get_sets()
     -- legs="Meg. Chausses +2",
     legs="Samnuha Tights",
     feet=augments.herc.feet.triple,
-    neck="Lissome Necklace",
+    neck="Anu Torque",
     waist="Windbuffet Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
@@ -99,34 +100,34 @@ function get_sets()
     back=gear.ogma.tp
   }
   sets.modes.Hybrid = {
-    ammo="Staunch Tathlum +1",         -- 2 DT
+    ammo="Staunch Tathlum +1",         -- 3 DT
     head="Adhemar Bonnet +1",
     body="Ayanmo Corazza +2",          -- 6 DT
     hands=augments.herc.hands.triple,  -- 2 PDT
     legs="Meg. Chausses +2",           -- 6 PDT
     feet=augments.herc.feet.triple,    -- 2 PDT
     neck="Loricate Torque +1",         -- 6 DT
-    waist="Ioskeha Belt +1",
+    waist="Windbuffet Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
     left_ring="Defending Ring",        -- 10 DT
-    right_ring="Epona's Ring",
+    right_ring="Moonbeam Ring",        -- 4 DT
     back=gear.ogma.tp                  -- 10 PDT
-  }                                    -- 44 PDT
+  }                                    -- 49 PDT
   sets.modes.Tank = {
     ammo="Staunch Tathlum +1",
     head="Turms Cap",
     body="Futhark Coat +3",
-    hands="Turms Mittens",
+    hands="Turms Mittens +1",
     legs="Eri. Leg Guards +1",
     feet="Turms Leggings",
 		neck="Loricate Torque +1",
     waist="Flume Belt +1",
-    left_ear="Odnowa Earring",
+    left_ear="Odnowa Earring +1",
     right_ear="Etiolation Earring",
     left_ring="Defending Ring",
     right_ring="Warden's Ring",
-    back=gear.ogma.fastCast
+    back=gear.ogma.tank
   }
 
   -- Idle Sets
@@ -155,7 +156,7 @@ function get_sets()
   }
   sets.WS.Dimidiation = {
     ammo="Knobkierrie",
-    head= augments.herc.head.dimi,
+    head=augments.herc.head.dimi,
     body="Meghanada cuirie +2",
     hands="Meg. Gloves +2",
     legs=augments.herc.legs.ws,
@@ -221,13 +222,16 @@ function get_sets()
     back="Altruistic Cape",
     legs="Runeist Trousers"
   }
+  sets.JAs['One for All'] = set_combine(sets.modes.Tank, {
+    -- maximize hp
+  })
 
   -- Magic
   --
   sets.Magic = {}
   sets.Magic.FastCast = {
     ammo="Sapience Orb",                -- 2
-    head=augments.herc.head.fc,         -- 12
+    head="Runeist's Bandeau +2",        -- 12
     neck="Orunmila's Torque",           -- 5
     lear="Loquacious earring",          -- 2
     rear="Etiolation Earring",          -- 1
@@ -235,20 +239,20 @@ function get_sets()
     hands="Leyline Gloves",             -- 7
     lring="Kishar Ring",                -- 4
     rring="Prolix Ring",                -- 2
-    -- rring="Eihwaz Ring",                -- HP
-    back=gear.ogma.fastCast,            -- 10
+    back=gear.ogma.tank,                -- 10
     waist="Kasiri Belt",                -- HP
-    legs=augments.taeon.legs.phalanx,   -- 3
-    -- legs="Futhark Trousers +1",         -- HP
+    legs="Aya. Cosciales +2",           -- 6
     feet="Carmine Greaves +1"           -- 8
-                                        -- 64
+                                        -- 67
   }
   sets.Magic.FastCastEnhancing = set_combine(sets.Magic.FastCast, {
     waist="Siegel Sash",             -- 9
-    legs="Futhark Trousers +1"       -- 13
+    legs="Futhark Trousers +2"       -- 14
+                                     -- 84
   })
   sets.Magic.FastCastUtsusemi = set_combine(sets.Magic.FastCast, {
     neck="Magoraga Beads",           -- 10
+                                     -- 72
   })
   sets.Magic.EnhancingSkill = {
     head="Carmine Mask",            -- 10
@@ -272,14 +276,18 @@ function get_sets()
   })
   sets.Magic.EnhancingDuration = {
     head="Erilaz Galea +1",
-    legs="Futhark Trousers +1"
+    legs="Futhark Trousers +2"
   }
+  sets.Magic.Barspell = set_combine(
+    sets.Magic.EnhancingSkill,
+    sets.Magic.EnhancingDuration
+  )
   sets.Magic.Refresh = set_combine(sets.Magic.EnhancingDuration, {
     head="Erilaz Galea +1",
     waist="Gishdubar Sash"
   })
   sets.Magic['Regen IV'] = set_combine(sets.Magic.EnhancingDuration, {
-    head="Runeist Bandeau"
+    head="Runeist's Bandeau +2"
   })
 
   -- head=augments.taeon.head.SID,    -- 7
@@ -287,7 +295,7 @@ function get_sets()
     ammo="Staunch Tathlum +1",       -- 11
     head="Meghanada Visor +2",       -- PDT
     neck="Moonlight Necklace",       -- 15
-    lear="Odnowa Earring",           -- MDT/HP
+    lear="Odnowa Earring +1",        -- MDT/HP
     rear="Magnetic Earring",         -- 8
     body="Futhark Coat +3",          -- DT
     hands="Rawhide Gloves",          -- 15
@@ -300,10 +308,17 @@ function get_sets()
                                      -- 8 Merit
                                      -- 106 Total
   }
+  -- sets.Magic.Phalanx = set_combine(sets.Magic.SpellInterrupt, {
+  --   head="Futhark Bandeau +1",
+  --   body=augments.herc.body.phalanx,
+  --   hands=augments.taeon.hands.phalanx,
+  --   legs=augments.taeon.legs.phalanx,
+  --   feet=augments.taeon.feet.phalanx
+  -- })
+
 
   -- Upgrades:
   --
-  -- right_ear="Cryptic Earring", -- 4
   -- feet="Ahosi Leggings"       -- 7
   -- hands="Kurys Gloves",       -- 9
   --
@@ -311,8 +326,8 @@ function get_sets()
     ammo="Sapience Orb",           -- 2
     head="Halitus Helm",           -- 8
     neck="Moonlight Necklace",     -- 15
-		left_ear="Trux Earring",       -- 5
-		right_ear="Friomisi Earring",  -- 2
+    left_ear="Trux Earring",       -- 5
+    right_ear="Cryptic Earring",   -- 4
     body="Emet Harness +1",        -- 10
     hands="Nilas Gloves",          -- 5
     left_ring="Supershear Ring",   -- 5
@@ -381,12 +396,14 @@ function midcast(spell)
     elseif Spells_AoeEnmity:contains(spell.english) then
       equip(sets.AoeEnmity)
 
-    elseif Spells_EnhancingDuration:contains(spell.english) then
-      equip(sets.Magic.EnhancingDuration)
-
-    elseif Spells_EnhancingSkill:contains(spell.english)
-        or string.find(spell.english, 'Bar') then
+    elseif Spells_EnhancingSkill:contains(spell.english) then
       equip(sets.Magic.EnhancingSkill)
+
+    elseif string.find(spell.english, 'Bar') then
+      equip(sets.Magic.Barspell)
+    
+    elseif spell.skill == 'Enhancing Magic' then
+      equip(sets.Magic.EnhancingDuration)
     end
   end
 end
@@ -405,18 +422,19 @@ function status_change(new, old)
   end
 end
 
-function buff_change(buff, gain, bufftable)
-  if buff:lower() == "doom" then
-    if gain then
-      equip(sets.Doom)
-      send_command("input /party Help, I'm DOOMED!")
-      send_command('input /item "Holy Water" <me>')
-    else
-      equip_set_for_current_mode()
-      send_command("input /party Doom OFF!")
-    end
-  end
-end
+-- function buff_change(buff, gain, bufftable)
+--   handle_doom(buff, gain)
+--   if buff:lower() == "doom" then
+--     if gain then
+--       equip(sets.Doom)
+--       send_command("input /party Help, I'm DOOMED!")
+--       send_command('input /item "Holy Water" <me>')
+--     else
+--       equip_set_for_current_mode()
+--       send_command("input /party Doom OFF!")
+--     end
+--   end
+-- end
 
 function self_command(commandArgs)
   local commandArgs = commandArgs

@@ -3,7 +3,7 @@ include('Modes.lua')
 -- include('organizer-lib')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Hybrid', 'PDT', 'Accuracy'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Meva', 'Hybrid', 'PDT', 'Accuracy'}
   TreasureHunter = M(false, 'Treasure Hunter')
 end
 
@@ -56,6 +56,7 @@ function get_sets()
 
   sets.modes = {}
   sets.modes.Normal = {
+    main="Dojikiri Yasutsuna",
     sub="Utu Grip",
     ammo="Ginsen",                 -- 3 STP
     head="Flam. Zucchetto +2",     -- 6 STP
@@ -71,23 +72,38 @@ function get_sets()
     legs=gear.valorous.hose.quad,
     feet="Flam. Gambieras +2"      -- 6 STP
   }                                -- 56 STP
-  sets.modes.Hybrid = {
+  sets.modes.Meva = {
     sub="Utu Grip",
-    ammo="Staunch Tathlum +1",    --       | 3 DT
+    ammo="Ginsen",                -- 3 STP
     head="Flam. Zucchetto +2",    -- 6 STP |        | 4 Haste
     neck="Samurai's Nodowa +1",   -- 11 STP
     lear="Telos Earring",         -- 5 STP |
     rear="Brutal Earring",        -- 1 STP |
-    body="Ken. Samue",            --                | 4 Haste
+    body="Ken. Samue +1",         --                | 4 Haste
     hands="Wakido Kote +3",       -- 7 STP |        | 4 Haste
-    lring="Gelatinous Ring +1",   --       | 7 PDT
+    lring="Flamma Ring",          -- 5 STP
+    rring="Niqmaddu Ring",        --
+    back=gear.smertrios.tp,       --       | 10 PDT
+    waist="Ioskeha Belt +1",      --                | 8 Haste
+    legs="Ken. Hakama +1",        --                | 9 Haste
+    feet="Flam. Gambieras +2"     -- 6 STP |        | 2 Haste
+  }
+  sets.modes.Hybrid = {
+    sub="Utu Grip",
+    ammo="Staunch Tathlum +1",    --       | 3 DT
+    head="Flam. Zucchetto +2",    -- 6 STP |        | 4 Haste
+    neck="Loricate Torque +1",    --
+    lear="Telos Earring",         -- 5 STP |
+    rear="Brutal Earring",        -- 1 STP |
+    body="Ken. Samue +1",         --                | 4 Haste
+    hands="Wakido Kote +3",       -- 7 STP |        | 4 Haste
+    lring="Flamma Ring",          -- 5 STP
     rring="Defending Ring",       --       | 10 PDT
     back=gear.smertrios.tp,       --       | 10 PDT
     waist="Ioskeha Belt +1",      --                | 8 Haste
-    legs="Ken. Hakama",           --                | 9 Haste
+    legs="Ken. Hakama +1",        --                | 9 Haste
     feet="Flam. Gambieras +2"     -- 6 STP |        | 2 Haste
-  }                               -- 36 STP| 30 PDT | 31 Haste
-                                  -- Needs SAM Roll to 4-hit!
+  }
   sets.modes.PDT = {
     sub="Utu Grip",
     ammo="Staunch Tathlum +1",    -- 3 DT
@@ -242,11 +258,11 @@ function buff_change(buff, gain, bufftable)
   if buff:lower() == "doom" then
     if gain then
       equip(sets.Doom)
-      send_command("input /party Help, I'm DOOMED!")
+      -- send_command("input /party Help, I'm DOOMED!")
       send_command('input /item "Holy Water" <me>')
     else
       equip_set_for_current_mode()
-      send_command('input /party Doom OFF!')
+      -- send_command('input /party Doom OFF!')
     end
   end
 end

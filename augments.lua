@@ -59,7 +59,7 @@ augments = {
   },
 
   grio = {
-    nuke = { name="Grioavolr", augments={'Enh. Mag. eff. dur. +4','MND+9','Mag. Acc.+28','"Mag.Atk.Bns."+29','Magic Damage +3',}},
+    nuke = { name="Grioavolr", augments={'Enmity-1','INT+10','Mag. Acc.+25','"Mag.Atk.Bns."+29','Magic Damage +6',}},
     enfeeble = { name="Grioavolr", augments={'Enfb.mag. skill +12','INT+9','Mag. Acc.+27','Magic Damage +7',}}
   },
 
@@ -83,7 +83,8 @@ augments = {
   taeon = {
     head = {
       snapshot = { name="Taeon Chapeau", augments={'"Snapshot"+5','"Snapshot"+3',}},
-      SID = { name="Taeon Chapeau", augments={'Spell interruption rate down -7%','Phalanx +3',}}
+      SID = { name="Taeon Chapeau", augments={'Spell interruption rate down -7%','Phalanx +3',}},
+      tp = { name="Taeon Chapeau", augments={'Accuracy+14 Attack+14','"Triple Atk."+2','DEX+8',}}
     },
     hands = {
       phalanx = { name="Taeon Gloves", augments={'Phalanx +3',}}

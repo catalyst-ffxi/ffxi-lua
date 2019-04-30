@@ -103,7 +103,7 @@ function get_sets()
   sets.BlueMagic = {}
   sets.BlueMagic.PhysicalBlueMagic = {
     ammo="Falcon Eye",
-    head= "Jhakri Coronal +1",
+    head= "Jhakri Coronal +2",
     body= "Jhakri Robe +2",
     hands= "Jhakri Cuffs +2",
     legs="Jhakri slops +2",
@@ -132,7 +132,7 @@ function get_sets()
   })
   sets.BlueMagic.MagicalBlueMagic = {
     ammo="Ombre Tathlum +1",
-    head="Jhakri Coronal +1",
+    head="Jhakri Coronal +2",
     body="Amalric Doublet",
     hands="Amalric Gages",
     legs="Amalric Slops",

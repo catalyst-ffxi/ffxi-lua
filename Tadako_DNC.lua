@@ -19,46 +19,32 @@ function get_sets()
   gear = {}
 
   -- Modes
-  sets.Idle = {
-    ammo="Jukukik Feather",
-    main={ name="Enchufla", augments={'DMG:+15','STR+15','Accuracy+10',}},
-    sub={ name="Skinflayer", augments={'Crit.hit rate+2','DEX+12','Accuracy+13','Attack+13','DMG:+6',}},
-    head="Mummu Bonnet",
-    body="Adhemar Jacket",
-    hands="Mummu Wrists",
-    legs="Mummu Kecks",
-    feet="Mummu Gamashes +1",
-    neck="Loricate Torque +1",
-    waist="Windbuffet Belt",
-    left_ear="Sherida Earring",
-    right_ear="Brutal Earring",
-    left_ring="Mummu Ring",
-    right_ring="Fortified Ring",
-    back="Solemnity Cape",
-  }
   sets.Engaged = {
     ammo="Jukukik Feather",
-    main={ name="Enchufla", augments={'DMG:+15','STR+15','Accuracy+10',}},
-    sub={ name="Skinflayer", augments={'Crit.hit rate+2','DEX+12','Accuracy+13','Attack+13','DMG:+6',}},
-    head="Mummu Bonnet",
+    main={ name="Skinflayer", augments={'Crit.hit rate+2','DEX+12','Accuracy+13','Attack+13','DMG:+6',}},
+    sub={ name="Enchufla", augments={'DMG:+15','STR+15','Accuracy+10',}},
+    head="Mummu Bonnet +1",
     body="Adhemar Jacket",
-    hands="Mummu Wrists",
-    legs="Mummu Kecks",
+    hands="Mummu Wrists +2",
+    legs="Mummu Kecks +1",
     feet="Mummu Gamashes +1",
     neck="Sanctity Necklace",
     waist="Windbuffet Belt",
     left_ear="Sherida Earring",
     right_ear="Brutal Earring",
     left_ring="Mummu Ring",
-    right_ring="Fortified Ring",
-    back="Solemnity Cape",
+    right_ring="Petrov Ring",
+    back="Senuna's mantle",
   }
+  sets.Idle = sets.Engaged
 
   -- Magic
   sets.Magic = {}
   sets.Magic.Precast = {
-    left_ring = "Prolix Ring",
-    waist = "Witful Belt"
+    neck="Orunmila's torque",
+    left_ring="Weatherspoon Ring",
+    left_ear="Loquacious earring",
+    right_ear="Etiolation Earring"
   }
   sets.Magic.Healing = {
   }
@@ -77,19 +63,18 @@ function get_sets()
 
   -- Melee
   sets.WeaponSkill = {
-    ammo="Jukukik Feather",
-    head="Mummu Bonnet",
-    body="Mummu Jacket",
-    hands="Mummu Wrists",
-    legs="Mummu Kecks",
-    feet="Mummu Gamash. +1",
+    head="Mummu Bonnet +1",
+    body="Adhemar Jacket",
+    hands="Meg. Gloves +1",
+    legs="Mummu Kecks +1",
+    feet="Mummu Gamashes +1",
     neck="Sanctity Necklace",
     waist="Windbuffet Belt",
     left_ear="Sherida Earring",
     right_ear="Brutal Earring",
     left_ring="Mummu Ring",
-    right_ring="Ramuh Ring",
-    back="Solemnity Cape",
+    right_ring="Petrov Ring",
+    back="Senuna's mantle",
   }
   sets.WeaponSkill['Evisceration'] = {
 

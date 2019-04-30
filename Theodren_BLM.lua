@@ -60,8 +60,9 @@ function get_sets()
 
   gear = {
     taranus = {
-      nuke = "Taranus's Cape"
-    }
+      nuke={ name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10',}},
+      fastCast={ name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10',}},
+    },
   }
 
   -- Mode Sets
@@ -70,7 +71,7 @@ function get_sets()
   sets.modes.Caster = {
     main = "Lathi",
     sub = "Enki Strap",
-    ammo = "Ombre Tathlum +1",
+    ammo = "Pemphredo Tathlum",
     head = augments.merlinic.hood.nuke,
     neck = "Sanctity Necklace",
     lear = "Strophadic Earring",
@@ -96,7 +97,7 @@ function get_sets()
     rring = "Defending Ring",
     back = "Solemnity Cape",
     waist = "Fucho-no-Obi",
-    legs = "Assiduity pants"
+    legs = "Assid. Pants +1"
   })
 
   -- Base Sets
@@ -113,7 +114,7 @@ function get_sets()
     hands = "Helios Gloves",       -- 5
     lring = "Kishar Ring",   -- 4
     rring = "Prolix Ring",         -- 2
-    -- -- back = "Swith Cape",           -- 3
+    back=gear.taranus.fastCast,
     -- waist = "Witful Belt",         -- 3
     legs = "Lengo Pants", -- 5
     feet = augments.merlinic.crackows.nuke -- 5
@@ -135,7 +136,7 @@ function get_sets()
     head = "Befouled Crown",
     body = "Jhakri Robe +2",
     waist = "Fucho-no-Obi",
-    legs = "Assiduity pants"
+    legs = "Assid. Pants +1"
   })
 
   -- Weapon Skills
@@ -169,7 +170,7 @@ function get_sets()
   sets.midcast.dark = {
     main = "Lathi",
     sub = "Enki Strap",
-    ammo = "Ombre Tathlum +1",
+    ammo = "Pemphredo Tathlum",
     head = "Amalric Coif",
     -- head = "Pixie Hairpin +1",
     neck = "Erra Pendant",
@@ -190,9 +191,44 @@ function get_sets()
     waist = "Fucho-no-Obi",
     feet = augments.merlinic.crackows.nuke
   })
-  sets.midcast.stun = set_combine(sets.midcast.dark, {
+  sets.midcast.stun = {                   -- FC  | Haste
+    main=augments.grio.nuke,              -- 4%  |
+    sub="Clerisy Strap",
+    ammo="Pemphredo Tathlum",
+    head=augments.merlinic.hood.nuke,     -- 4%
+    body=augments.merlinic.jubbah,
+    hands=augments.merlinic.dastanas,
+    legs="Spae. Tonban +2",
+    feet=augments.merlinic.crackows.nuke,
+    neck="Erra Pendant",
+    -- waist="Witful Belt",
+    waist="Eschan Stone",
+    left_ear="Digni. Earring",
+    right_ear="Regal Earring",
+    left_ring="Kishar Ring",
+    right_ring="Stikini Ring",
+    back=gear.taranus.fastCast,
+  }
+  -- sets.midcast.stun = {                   -- FC  | Haste
+  --   main=augments.grio.nuke,              -- 4%  |
+  --   sub="Enki Strap",
+  --   ammo="Pemphredo Tathlum",
+  --   head=augments.merlinic.hood.nuke,     -- 4%
+  --   body="Spaekona's Coat +2",
+  --   hands="Jhakri Cuffs +2",   -- change
+  --   legs="Spae. Tonban +2",
+  --   feet="Jhakri Pigaches +2", -- change
+  --   neck="Erra Pendant",
+  --   waist="Eschan Stone",
+  --   left_ear="Digni. Earring",
+  --   right_ear="Regal Earring",
+  --   left_ring="Stikini Ring",
+  --   right_ring="Stikini Ring",
+  --   back=gear.taranus.nuke,
+  -- }
+  -- sets.midcast.stun = set_combine(sets.midcast.dark, {
 
-  })
+  -- })
 
   -- Elemental magic
   --
@@ -200,7 +236,7 @@ function get_sets()
   sets.midcast.elemental.Normal = {
     main="Lathi",
     sub = "Enki Strap",
-    ammo = "Ombre Tathlum +1",
+    ammo = "Pemphredo Tathlum",
     head = augments.merlinic.hood.nuke,
     neck = "Sanctity Necklace",
     lear = "Strophadic Earring",
@@ -218,7 +254,7 @@ function get_sets()
   sets.midcast.elemental.MagicBurst = {
     main="Lathi",
     sub="Enki Strap",
-    ammo="Ombre Tathlum +1",
+    ammo="Pemphredo Tathlum",
     head="Ea Hat",              -- MB +6 | MB II +6
     neck="Mizu. Kubikazari",    -- MB +10|
     lear="Friomisi Earring",
@@ -245,7 +281,7 @@ function get_sets()
     -- main = augments.grio.enfeeble,
     ammo = "Quartz Tathlum +1",
     head = augments.merlinic.hood.nuke,
-    neck = "Weike torque",
+    neck = "Incanter's torque",
     lear = "Digni. Earring",
     rear = "Regal Earring",
     body = "Vanya Robe",
@@ -263,8 +299,8 @@ function get_sets()
   sets.midcast.enhancing_skill = {
   }
   sets.midcast.enhancing_duration = {
-    -- main = "Oranyan",
-    legs = "Telchine Braconi"
+    head="Telchine Cap",
+    legs="Telchine Braconi"
   }
   sets.midcast.enhancing_regen = {
     body = "Telchine Chasuble"
@@ -277,7 +313,6 @@ function get_sets()
     feet = "Inspirited Boots"
   }
   sets.midcast.enhancing_stoneskin = {
-    head = "Umuthi Hat",
     neck = "Nodens Gorget",
     waist = "Siegel Sash"
   }
@@ -421,10 +456,16 @@ function midcast_magic(spell)
   -- Stuns
   elseif spell.english == 'Stun' then
     equip(sets.midcast.stun)
+    -- if world.weather_element == "Lightning" or world.day_element == "Lightning" then
+    --   equip({ waist = "Rairin Obi" })
+    -- end
 
   -- Drain/Aspir
   elseif string.find(spell.english, 'Drain') or string.find(spell.english, 'Aspir') then
     equip(sets.midcast.drain_aspir)
+    if world.weather_element == "Dark" or world.day_element == "Dark" then
+      equip({ waist = "Anrin Obi" })
+    end
 
   elseif spell.skill == 'Dark Magic' then
     equip(sets.midcast.dark)

@@ -3,10 +3,10 @@ include('Modes.lua')
 include('augments.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Hybrid', 'TreasureHunterHybrid'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Hybrid', 'FullTH'}
   TreasureHunter = M(false, 'Treasure Hunter')
-  Capacity = M(false, 'Capacity Mantle')
-  DamageDown = M(false, 'Damage Down')
+  -- Capacity = M(false, 'Capacity Mantle')
+  -- DamageDown = M(false, 'Damage Down')
 
   Abyssea = {
     current = 0,
@@ -26,9 +26,7 @@ end
 
 function define_binds()
   send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
-  send_command("alias g15v2_m1g2 gs c cycle Capacity")
-  send_command("alias g15v2_m1g3 gs c cycle DamageDown")
-  send_command("alias g15v2_m1g4 gs c cycle TreasureHunter")
+  send_command("alias g15v2_m1g2 gs c cycle TreasureHunter")
   send_command("alias g15v2_m1g5 gs c abbyweapon")
 end
 
@@ -43,7 +41,7 @@ function get_sets()
 
   gear = {
     toutatis = {
-      tp={},
+      tp={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Store TP"+10','Phys. dmg. taken-10%',}},
       ws={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
     }
   }
@@ -59,12 +57,12 @@ function get_sets()
     legs="Samnuha Tights",
     feet=augments.herc.feet.triple,
     neck="Iskur Gorget",
-    waist="Windbuffet Belt +1",
-    left_ear="Telos Earring",
+    waist="Reiki Yotai",
+    left_ear="Brutal Earring",
     right_ear="Sherida Earring",
-    left_ring="Petrov Ring",
+    left_ring="Hetairoi Ring",
     right_ring="Epona's Ring",
-    back={ name="Canny Cape", augments={'DEX+2','AGI+1','"Dual Wield"+4','Crit. hit damage +2%',}},
+    back=gear.toutatis.tp,
   }
   sets.modes.Hybrid = {
     ammo="Staunch Tathlum +1",           -- 3 PDT
@@ -74,35 +72,77 @@ function get_sets()
     legs="Meg. Chausses +2",             -- 6 PDT
     feet=augments.herc.feet.triple,      -- 2 PDT
     neck="Loricate Torque +1",           -- 6 DT
-    waist="Flume Belet +1",              -- 4 PDT
-    left_ear="Telos Earring",
+    waist="Flume Belt +1",               -- 4 PDT
+    left_ear="Suppanomimi",
     right_ear="Sherida Earring",
     left_ring="Defending Ring",          -- 10 PDT
-    right_ring="Gelatinous Ring +1",     -- 7 PDT
+    right_ring="Moonbeam Ring",          -- 4 DT
     back=gear.toutatis.tp,               -- 10 PDT
   }                                      -- 50 PDT
+  sets.modes.FullTH = {
+    ammo="Ginsen",
+    head="Adhemar Bonnet +1",
+    body="Adhemar Jacket +1",
+    hands="Plunderer's Armlets +1",
+    legs=augments.herc.legs.treasure,
+    feet=augments.herc.feet.triple,
+    neck="Iskur Gorget",
+    waist="Chaac Belt",
+    left_ear="Brutal Earring",
+    right_ear="Sherida Earring",
+    left_ring="Hetairoi Ring",
+    right_ring="Epona's Ring",
+    back=gear.toutatis.tp,
+  }
 
   -- Weapon Skills
   --
   sets.WS = {}
-  sets.WS.Normal = {
+  sets.WS["Rudra's Storm"] = {
     ammo="Falcon Eye",
-    head="Meghanada Visor +2",
+    head=augments.herc.head.dimi,
+    neck="Caro Necklace",
+    left_ear="Moonshade Earring",
+    right_ear="Sherida Earring",
+    body="Meg. Cuirie +2",
+    hands="Meg. Gloves +2",
+    left_ring="Ilabrat Ring",
+    right_ring="Karieyh Ring +1",
+    back=gear.toutatis.ws,
+    waist="Grunfeld Rope",
+    legs=augments.herc.legs.ws,
+    feet=augments.herc.feet.dimi,
+  }
+  -- sets.WS['Exenterator'] = {
+  -- }
+  sets.WS['Evisceration'] = {
+    ammo="Yetshila",
+    head="Adhemar Bonnet",
+    neck="Fotia Gorget",
+    left_ear="Moonshade Earring",
+    right_ear="Sherida Earring",
+    body="Meg. Cuirie +2",
+    hands="Meg. Gloves +2",
+    left_ring="Regal Ring",
+    right_ring="Ilabrat Ring",
+    back=gear.toutatis.ws,
+    waist="Fotia Belt",
+    legs=augments.herc.legs.ws,
+    feet=augments.herc.feet.dimi
+  }
+  sets.WS['Savage Blade'] = {
+    head=augments.herc.head.wsd,
     neck="Fotia Gorget",
     left_ear="Ishvara Earring",
     right_ear="Moonshade Earring",
     body="Meg. Cuirie +2",
     hands="Meg. Gloves +2",
-    left_ring="Regal Ring",
-    right_ring="Karieyh Ring +1",
+    left_ring="Karieyh Ring +1",
+    right_ring="Regal Ring",
     back=gear.toutatis.ws,
-    waist="Fotia Belt",
+    waist="Prosilio Belt +1",
     legs=augments.herc.legs.ws,
-    feet="Meg. Jam. +2",
-  }
-  sets.WS['Exenterator'] = {
-  }
-  sets.WS['Evisceration'] = {
+    feet=augments.herc.feet.triple
   }
   sets.WS['Aeolian Edge'] =  {
     ammo="Ombre Tathlum +1",
@@ -144,7 +184,7 @@ function get_sets()
   sets.TreasureHunter = {
     hands="Plunderer's Armlets +1",
     waist="Chaac Belt",
-    legs=augments.herc.feet.triple
+    legs=augments.herc.legs.treasure
   }
   sets.DamageDown = {
     neck = "Loricate Torque +1",
@@ -187,11 +227,18 @@ function get_sets()
     waist="Flume Belt +1",
     feet=augments.taeon.feet.phalanx -- 9
   }
+
+  sets.Preshot = {                           -- Snap | Rapid
+    head=augments.taeon.head.shapshot,       --   8    0
+    legs=augments.adhemar.kecks.rapidShot,   --   9    10
+    feet="Meg. Jam. +2",                     --  10    0
+    waist="Yemaya Belt",                     --   0    5
+  }
 end
 
 function precast(spell)
   if spell.type == 'WeaponSkill' then
-    equip(set_for_ws(spell.english))
+    equip(sets.WS[spell.english] or sets.WS["Rudra's Storm"])
   elseif spell.type == 'JobAbility' then
     if sets.JAs[spell.english] then
       equip(sets.JAs[spell.english])
@@ -201,6 +248,8 @@ function precast(spell)
     if spell.english == 'Utsusemi: Ichi' and (buffactive['Copy Image'] or buffactive['Copy Image (2)'] or buffactive['Copy Image (3)']) then
       send_command('@wait 3.0; cancel 66; cancel 444; cancel 445')
     end
+  elseif spell.english == "Ranged" then
+    equip(sets.Preshot)
   elseif spell.english == 'Spectral Jig' then
     cast_delay(0.5)
     send_command('@cancel 71;')
@@ -266,22 +315,8 @@ end
 
 function set_for_engaged()
   local set = sets.modes[PrimaryMode.current]
-  if DamageDown.value then
-    set = set_combine(set, sets.DamageDown)
-  end
   if TreasureHunter.value then
     set = set_combine(set, sets.TreasureHunter)
-  end
-  if Capacity.value then
-    set = set_combine(set, {back = "Mecistopins Mantle"})
-  end
-  return set
-end
-
-function set_for_ws(named)
-  local set =  sets.WS.Normal
-  if sets.WS[named] then
-    set = set_combine(set, sets.WS[named])
   end
   return set
 end

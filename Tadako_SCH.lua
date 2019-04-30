@@ -4,6 +4,7 @@ include('augments_tadako.lua')
 function define_modes()
   Capacity = M(false, 'Capacity Mantle')
   DummyIndex = 0
+  SCRunning = false
 end
 
 function define_aliases()
@@ -15,7 +16,7 @@ function define_aliases()
 end
 
 function get_sets()
-  send_command('lua load setlist')
+  -- send_command('lua load setlist')
   -- send_command('lua load dressup')
   define_modes()
   define_aliases()
@@ -243,8 +244,94 @@ function self_command(commandArgs)
   elseif command == 'Fragmentation' then send_command('input /p Opening - Fragmentation [Wind/Thunder] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Blizzard" <t>;wait 5.3;input /p Closing - Fragmentation [Wind/Thunder] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Water" <t>;') 
   elseif command == 'Gravitation' then send_command('input /p Opening - Gravitation [Earth/Dark] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Aero" <t>;wait 5.3;input /p Closing - Gravitation [Earth/Dark] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Noctohelix" <t>;') 
   elseif command == 'Distortion' then send_command('input /p Opening - Distortion [Water/Ice] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Luminohelix" <t>;wait 5.3;input /p Closing - Distortion [Water/Ice] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Stone" <t>;')
-  elseif command == 'Tfusion' then send_command('input /p Opening - Liquefaction [Fire] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Stone" <t>;wait 5.3;input /p Closing - Liquefaction [Fire] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Fire" <t>;wait 4.8;input /p Closing - Fusion [Fire/Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Thunder" <t>;')
+  -- elseif command == 'Tfusion' then send_command('input /p Opening - Liquefaction [Fire] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Stone" <t>;wait 5.3;input /p Closing - Liquefaction [Fire] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Fire" <t>;wait 4.8;input /p Closing - Fusion [Fire/Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Thunder" <t>;')
+  elseif command == 'Tfusion' then perform_tfusion()
+  -- elseif command == 'Tfusion' then perform_skillchain('Fusion', {'Stone', 'Fire', 'Thunder'})
   end
+end
+
+function perform_tfusion()
+  if SCRunning then
+    send_command('input /echo SC Running - Wait and try again!')
+    return
+  end
+
+  if not buffactive['Dark Arts'] then
+    send_command('input /ja "Dark Arts" <me>')
+    send_command('input /echo Dark Arts wasnt up - Try again!')
+    return
+  end
+
+  SCRunning = true
+  send_command('input /p Opening - Liquefaction [Fire] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Stone" <t>;wait 5.3;input /p Closing - Liquefaction [Fire] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Fire" <t>;wait 4.8;input /p Closing - Fusion [Fire/Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Thunder" <t>;')
+
+  coroutine.schedule(function()
+    send_command('input /t Theodren Done -- Ready for next!')
+    SCRunning = false
+  end, 22)
+end
+
+-- function three_step_fusion()
+--   if SCRunning then
+--     send_command('input /echo SC Running - Wait and try again!')
+--     return
+--   end
+--   SCRunning = true
+
+--   local ja_delay = 1.2
+--   local ma_delay = 5.0
+
+--   send_command('input /ja "Immanence" <me>')
+
+--   coroutine.schedule(function()
+--     send_command('input /ma "Stone" <t>')
+--   end, ja_delay)
+
+--   coroutine.schedule(function()
+--     send_command('input /ja "Immanence" <me>')
+--   end, ja_delay + ma_delay)
+
+--   coroutine.schedule(function()
+--     send_command('input /ma "Fire" <t>')
+--   end, ja_delay * 2 + ma_delay)
+
+--   coroutine.schedule(function()
+--     send_command('input /ja "Immanence" <me>')
+--   end, ja_delay * 2 + ma_delay * 2)
+
+--   coroutine.schedule(function()
+--     send_command('input /ma "Thunder" <t>')
+--     SCRunning = false
+--   end, ja_delay * 3 + ma_delay * 2)
+-- end
+
+function perform_skillchain(name, spells)
+  local ja_delay = 1.2
+  local ma_delay = 5.0
+
+  if SCRunning then
+    send_command('input /echo SC Running - Wait and try again!')
+    return
+  end
+
+  if not buffactive['Dark Arts'] then
+    send_command('input /ja "Dark Arts" <me>')
+    coroutine.sleep(ja_delay)
+  end
+
+  SCRunning = true
+
+  for index, spell in ipairs(spells) do
+    send_command('input /echo Skillchain ['..name..'] Spell #'..index..' <t>')
+    send_command('input /ja "Immanence" <me>')
+    coroutine.sleep(ja_delay)
+
+    send_command('input /ma "'..spell..'" <t>')
+    coroutine.sleep(ma_delay)
+  end
+
+  SCRunning = false
+  send_command('input /echo Skillchain Complete!')
 end
 
 -- If currently wearing an RR earing, keep it on to avoid reseting the countdown

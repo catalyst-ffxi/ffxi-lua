@@ -91,7 +91,7 @@ function get_sets()
     back = "Solemnity Cape",
     -- waist = "Fucho-no-Obi",
     waist = "Flume Belt +1",
-    legs = "Assiduity pants"
+    legs = "Assid. Pants +1"
   })
 
   -- Base Sets
@@ -124,7 +124,7 @@ function get_sets()
     head = "Befouled Crown",
     body = "Jhakri Robe +1",
     waist = "Fucho-no-Obi",
-    legs = "Assiduity pants"
+    legs = "Assid. Pants +1"
   })
 
   -- Weapon Skills
@@ -227,7 +227,7 @@ function get_sets()
   sets.midcast.enfeebling = {
     ammo = "Quartz Tathlum +1",
     head = augments.merlinic.hood.nuke,
-    neck = "Weike torque",
+    neck = "Incanter's torque",
     lear = "Lifestorm Earring",
     rear = "Psystorm Earring",
     body = "Vanya Robe",
@@ -260,7 +260,6 @@ function get_sets()
     feet = "Inspirited Boots"
   }
   sets.midcast.enhancing_stoneskin = {
-    head = "Umuthi Hat",
     neck = "Nodens Gorget",
     waist = "Siegel Sash"
   }
