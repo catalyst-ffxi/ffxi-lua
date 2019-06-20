@@ -1,22 +1,10 @@
 include('Modes.lua')
+include('augments_tadako.lua')
 
 function define_modes()
   Capacity = M(false, 'Capacity Mantle')
-
-  Abyssea = {
-    current = 0,
-    weapons = {
-      -- { name="Pluto's Staff", ws="Earth Crusher=Earth, Sunburst=Light" },
-      -- { name="Wax Sword", ws="Red Lotus Blade=Fire, Seraph Blade=Light" },
-      -- { name="Ash Club", ws="Seraph Strike=Light" },
-      { name="Uchigatana", ws="Tachi Jinpu=Wind, Koki=Light" },
-      -- { name="Bronze Dagger", ws="Cyclone=Wind, Energy Drain=Dark" },
-      { name="Kunai", ws="Blade: Ei=Dark" },
-      -- { name="Lost Sickle", ws="Shadow of Death=Dark" },
-      -- { name="Lament", ws="Freezebite=Ice" },
-      -- { name="Tzee Xicu's Blade", ws="Raiden Thrust=Thunder"}
-    }
-  }
+  DummyIndex = 0
+  SCRunning = false
 end
 
 function define_aliases()
@@ -25,85 +13,102 @@ function define_aliases()
   send_command('bind !f6 phalanx')
   send_command('bind !f7 blink')
   send_command('bind !f8 aquaveil')
-  send_command("alias g15v2_m1g5")
-  send_command("alias g15v2_m1g6 gs c abbyweapon")
 end
 
 function get_sets()
+  -- send_command('lua load setlist')
+  -- send_command('lua load dressup')
   define_modes()
   define_aliases()
 
-  gear = {}
+  gear = {
+  }
 
   -- Modes
   sets.Idle = {
-    ammo="Jukukik Feather",
-    head="Skormoth Mask",
-    body="Adhemar Jacket",
-    hands=augments.herc.hands.tp,
-    legs="Samnuha Tights",
-    feet=augments.herc.feet.tp,
-    neck="Sanctity Necklace",
-    waist="Sarissapho. Belt",
-    left_ear="Suppanomimi",
-    right_ear="Brutal Earring",
-    left_ring="Hetairoi Ring",
-    right_ring="Petrov Ring",
+    main="Queller Rod",
+    sub="Genbu's Shield",
+    head="Inyanga Tiara +2",
+    neck="Loricate Torque +1",
+    left_ear="Flashward Earring",
+    right_ear="Etiolation Earring",
+    body="Inyanga Jubbah +2",
+    hands="Inyanga Dastanas +2",
+    left_ring="Gelatinous Ring +1",
+    right_ring="Warden's Ring",
     back="Solemnity Cape",
+    waist="Fucho-no-Obi",
+    legs="Inyanga Shalwar +2",
+    feet="Inyanga Crackows +1"
   }
   sets.Engaged = {
-    ammo="Jukukik Feather",
-    head="Skormoth Mask",
-    body="Adhemar Jacket",
-    hands=augments.herc.hands.tp,
-    legs="Samnuha Tights",
-    feet=augments.herc.feet.tp,
-    neck="Sanctity Necklace",
-    waist="Sarissapho. Belt",
-    left_ear="Suppanomimi",
-    right_ear="Brutal Earring",
-    left_ring="Hetairoi Ring",
-    right_ring="Petrov Ring",
-    back="Solemnity Cape",
+
   }
 
   -- Magic
   sets.Magic = {}
   sets.Magic.Precast = {
-    left_ring = "Prolix Ring",
-    waist = "Witful Belt"
+    -- main=gear.kali.refresh,
+    head="Kaykaus Mitra",
+    neck="Orunmila's torque",
+    body="Inyanga Jubbah +2",
+    hands=augments.telchine.gloves.fastCast,
+    left_ring="Weatherspoon Ring",
+    right_ring="Kishar Ring",
+    left_ear="Loquacious earring",
+    right_ear="Etiolation Earring",
+    legs="Kaykaus Tights",
+    -- back=gear.cape.fastCast,
+    waist="Witful Belt"
   }
   sets.Magic.Healing = {
+    main="Queller Rod",
+    head="Kaykaus Mitra",
+    -- neck="Henic Torque",
+    left_ear="Novia Earring",
+    right_ear="Mendicant's Earring",
+    body="Vanya Robe",
+    hands="Kaykaus Cuffs",
+    left_ring="Lebeche Ring",
+    right_ring="Haoma's Ring",
+    -- back=gear.cape.enmity,
+    waist="Pythia Sash",
+    legs="Kaykaus Tights",
+    feet="Vanya Clogs"
+  }
+  sets.Magic.HealingPrecast = {
+    head="Kaykaus Mitra",
+    right_ear="Mendicant's Earring",
   }
   sets.Magic.HealingSelf = {
-
+    waist="Chuq'aba belt"
+  }
+  sets.Magic.Cursna = {
+    head="Kaykaus Mitra",                    -- Cursna/Skill
+    neck="Malison Medallion",                -- Cursna
+    left_ear="Loquacious earring",           -- FC
+    right_ear="Etiolation Earring",          -- FC
+    body="Inyanga Jubbah +2",                -- FC
+    hands=augments.telchine.gloves.enhancing,-- FC
+    left_ring="Haoma's Ring",                -- Cursna/Skill
+    right_ring="Haoma's Ring",               -- Cursna/Skill
+    back="Oretan. Cape +1",                  -- Cursna
+    waist="Witful Belt",                     -- FC
+    legs="Kaykaus Tights",                   -- FC
+    feet="Vanya Clogs"                       -- Cursna/Skill
   }
   sets.Magic.Enhancing = {
-
+    head=augments.telchine.head.enhancing,
+    hands=augments.telchine.gloves.enhancing,
+    body=augments.telchine.body.enhancing,
+    legs=augments.telchine.legs.enhancing,
+    feet=augments.telchine.feet.enhancing
   }
-  sets.Magic.Enfeebling = {
-
-  }
+  sets.Magic.Enfeebling = {}
 
   -- Abilities
   sets.JobAbility = {}
-
-  -- Melee
-  sets.WeaponSkill = {
-    ammo="Jukukik Feather",
-    head="Mummu Bonnet",
-    body="Adhemar Jacket",
-    hands="Mummu Wrists",
-    legs="Mummu Kecks",
-    feet="Mummu Gamash. +1",
-    neck="Sanctity Necklace",
-    waist="Windbuffet Belt",
-    left_ear="Etiolation Earring",
-    right_ear="Brutal Earring",
-    left_ring="Mummu Ring",
-    right_ring="Fortified Ring",
-    back="Solemnity Cape",
-  }
+  sets.WeaponSkill = {}
 end
 
 function precast(spell)
@@ -112,6 +117,9 @@ function precast(spell)
 
   elseif spell.action_type == 'Magic' then
     equip(sets.Magic.Precast)
+    if string.find(spell.english, 'Cure') or string.find(spell.english, 'Curaga') then
+      equip(sets.Magic.HealingPrecast)
+    end
 
   elseif spell.type == 'WeaponSkill' then
     equip(sets.WeaponSkill)
@@ -179,12 +187,11 @@ function aftercast(spell)
   if player.status=='Engaged' then
     equip(sets.Engaged)
   else
-    -- equip(sets.Idle)
+    equip(sets.Idle)
   end
-  -- if Capacity.value then
---   if true then
---     equip({back = "Aptitude Mantle +1"})
---   end
+  if Capacity.value then
+    equip({back = "Aptitude Mantle +1"})
+  end
 end
 
 function status_change(new, old)
@@ -224,8 +231,6 @@ function self_command(commandArgs)
     equip(sets.Idle)
   elseif command == 'run' then
     equip(sets.MoveSpeed)
-  elseif command == 'abbyweapon' then
-    cycle_weapon()
   end
 end
 
@@ -238,26 +243,4 @@ function maintain_reraise_equip()
   if player.equipment.lear == 'Reraise Earring' then
     equip({lear = 'Reraise Earring'})
   end
-end
-
-function cycle_weapon()
-  Abyssea.current = Abyssea.current + 1
-  local len = tablelength(Abyssea.weapons)
-
-  -- if Abyssea.current > tablelength(Abyssea.weapons) then
-  if Abyssea.current > #Abyssea.weapons then
-    add_to_chat(122, '*** DD Weapons Equiped ***')
-    equip({ main = "Skinflayer", sub = "Taming Sari" })
-    Abyssea.current = 0
-  else
-    local set = Abyssea.weapons[Abyssea.current]
-    add_to_chat(122, 'Switching to ' .. set.name ..'. Use weapon skills: ' .. set.ws)
-    equip({ main = set.name, sub = '-' })
-  end
-end
-
-function tablelength(T)
-  local count = 0
-  for _ in pairs(T) do count = count + 1 end
-  return count
 end

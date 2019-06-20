@@ -72,7 +72,7 @@ function get_sets()
   }
   sets.Magic.Healing = {
     head="Kaykaus Mitra",
-    -- neck="Henic Torque",
+    neck="Incanter's Torque",
     left_ear="Novia Earring",
     right_ear="Mendicant's Earring",
     body="Vanya Robe",
@@ -216,7 +216,7 @@ function get_sets()
 
   -- Melee
   sets.Engaged = {
-    main="Skinflayer",
+    main="Aeneas",
     sub="Genbu's Shield",
     head="Aya. Zucchetto +2",
     body="Ayanmo Corazza +2",
@@ -227,7 +227,7 @@ function get_sets()
     waist="Sarissapho. Belt",
     left_ear="Digni. Earring",
     right_ear="Brutal Earring",
-    left_ring="Ayanmo Ring",
+    left_ring="Hetairoi Ring",
     right_ring="Petrov Ring",
     back=gear.cape.melee
   }

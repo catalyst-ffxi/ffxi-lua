@@ -3,18 +3,12 @@ include('Modes.lua')
 include('augments.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Hybrid'}
-  Capacity = M(false, 'Capacity Mantle')
+  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'HybridLight', 'HybridHeavy'}
 end
 
 function define_binds()
-  -- windower.send_command('lua reload autora')
-
   -- Modes
   send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
-  send_command("alias g15v2_m1g2 gs c cycle Capacity")
---   send_command("alias g15v2_m1g3 gs c cycle Luzaf")
---   send_command("alias g15v2_m1g4 gs c weapon")
 end
 
 function get_sets()
@@ -24,119 +18,144 @@ function get_sets()
   define_blue_magic()
 
   gear = {
-    -- TODO
     rosmerta = {
-      mab = "Cornflower Cape",
-      tp = "Rosmerta's Cape",
-      ws = "Rosmerta's Cape"
+      mab={ name="Rosmerta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10',}},
+      tp={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
+      ws={ name="Rosmerta's Cape", augments={'STR+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
+      fast={ name="Rosmerta's Cape", augments={'MND+20','"Fast Cast"+10',}},
     }
   }
 
+  -- DW Traits:
+  -- Delta Thrust + Barbed Crescent
+  -- Molting Plumage
+  -- Total DW: DW II
+  --
+  -- DW gear needed to cap with DW II:
+  -- Haste DW
+  -- 0    59
+  -- 10   55
+  -- 15   52   (Single Haste or March)
+  -- 30   41   (Haste II)
+  -- Cap  21   (Double March or Haste + March)
+  --
+  -- Various gear bonuses:
+  -- Adhemar Jacket +1: 6 DW
+  -- Suppanomimi:       5 DW
+  -- Reiki Yotai:       7 DW
+  -- Total:             18 DW
+
   sets.modes = {}
-  sets.modes.Normal = {}
-  sets.modes.Normal.Engaged = {
+  sets.modes.Normal = {
     ammo="Ginsen",
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
     hands=augments.herc.hands.triple,
-    legs="Carmine Cuisses +1",
+    legs="Samnuha Tights",
     feet=augments.herc.feet.triple,
-    neck="Lissome Necklace",
-    waist="Windbuffet Belt +1",
+    neck="Lissome Necklace", -- Mirage Stole +1
+    waist="Reiki Yotai",
     left_ear="Telos Earring",
     right_ear="Suppanomimi",
-    left_ring="Ilabrat Ring",
+    left_ring="Hetairoi Ring",
     right_ring="Epona's Ring",
     back=gear.rosmerta.tp
   }
-  sets.modes.Normal.Idle = set_combine(sets.modes.Normal.Engaged, {
-    head=augments.herc.head.pdt,
-    neck="Loricate Torque +1",
-    legs="Carmine Cuisses +1",
-    rring="Defending Ring",
-  })
+  sets.modes.HybridLight = {
+    ammo="Staunch Tathlum +1",         -- 3 DT
+    head="Adhemar Bonnet +1",
+    body="Ayanmo Corazza +2",          -- 6 PDT
+    hands=augments.herc.hands.triple,  -- 2 PDT
+    legs="Samnuha Tights",
+    feet=augments.herc.feet.triple,    -- 2 PDT
+    neck="Loricate Torque +1",         -- 6 PDT
+    waist="Reiki Yotai",
+    left_ear="Telos Earring",
+    right_ear="Suppanomimi",
+    left_ring="Defending Ring",        -- 10 DT
+    right_ring="Epona's Ring",
+    back=gear.rosmerta.tp              -- 10 PDT
+  }                                    -- 39 PDT
+  sets.modes.HybridHeavy = {
+    ammo="Staunch Tathlum +1",         -- 3 DT
+    head="Adhemar Bonnet +1",
+    body="Ayanmo Corazza +2",          -- 6 PDT
+    hands=augments.herc.hands.triple,  -- 2 PDT
+    legs="Samnuha Tights",
+    feet=augments.herc.feet.triple,    -- 2 PDT
+    neck="Loricate Torque +1",         -- 6 DT
+    waist="Flume Belt +1",             -- 4 PDT
+    left_ear="Telos Earring",
+    right_ear="Suppanomimi",
+    left_ring="Defending Ring",        -- 10 DT
+    right_ring="Gelatinous Ring +1",   -- 7 PDT
+    back=gear.rosmerta.tp              -- 10 PDT
+  }                                    -- 50 PDT
+  sets.Idle = { legs="Carmine Cuisses +1" }
 
-  sets.DamageDown = {
-    ammo="Staunch Tathlum +1",
-    head="Aya. Zucchetto +2",
-    neck="Loricate Torque +1",
-    body="Ayanmo Corazza +2",
-    hands=augments.herc.hands.triple,
-    left_ear="Etiolation Earring",
-    lring="Ayanmo Ring",
-    rring="Defending Ring",
-    waist="Flume Belt +1",
-    back="Solemnity Cape"
-  }
-
-  sets.modes.Hybrid = {}
-  sets.modes.Hybrid.Engaged = set_combine(
-    sets.modes.Normal.Engaged, 
-    sets.DamageDown
-  )
-  sets.modes.Hybrid.Idle = set_combine(
-    sets.modes.Normal.Idle, 
-    sets.DamageDown
-  )
+  -- JAs
+  sets.JAs = {}
 
   -- Magic
   sets.Magic = {}
   sets.Magic.FastCast = {
-    ammo="Impatiens",             -- SID 2%, 2 Quick
+    ammo="Impatiens",             -- 2 Quick
     head=augments.herc.head.fc,   -- 12
-    neck="Loricate Torque +1",
+    neck="Orunmila's Torque",     -- 5
     lear="Loquacious earring",    -- 2
-    rear="Magnetic earring",      -- SID 8%
-    body="Amalric Doublet",       -- 3
+    rear="Etiolation Earring",    -- 1
+    body="Taeon Tabard",          -- 8
     hands="Leyline Gloves",       -- 7
-    lring="Kishar Ring",          -- 4
-    rring="Defending Ring",
-    back="Perimede Cape",         -- 4 Quick
+    left_ring="Kishar Ring",          -- 4
+    right_ring="Prolix Ring",          -- 2
+    back=gear.rosmerta.fast,      -- 10
     waist="Witful Belt",          -- 3, 3 Quick
-    legs="Carmine Cuisses +1",    -- SID 20%
+    legs="Aya. Cosciales +2",     -- 6
     feet="Carmine Greaves +1"     -- 8
-                           -- Total: 39 FC, 9 Q, 30% SID
+                                  -- 65 FastCast, 6 QuickCast
+  }
+  sets.Magic.SpellInterrupt = {
+    ammo="Staunch Tathlum +1",       -- 11
+    head="Aya. Zucchetto +2",        -- PDT
+    neck="Loricate Torque +1",       -- DT
+    lear="Odnowa Earring +1",        -- MDT/HP
+    rear="Magnetic Earring",         -- 8
+    body="Ayanmo Corazza +2",        -- PDT
+    hands="Rawhide Gloves",          -- 15
+    left_ring="Defending Ring",      -- DT
+    right_ring="Gelatinous Ring +1", -- PDT
+    back=gear.rosmerta.tp,           -- PDT
+    waist="Rumination Sash",         -- 10
+    legs="Carmine Cuisses +1",       -- 20
+    feet=augments.taeon.feet.phalanx -- 9
+                                     -- 8 Merit
+                                     -- 81 Total
   }
 
   -- Blue Magic
-  ---- Categories
   sets.BlueMagic = {}
-  sets.BlueMagic.PhysicalBlueMagic = {
-    ammo="Falcon Eye",
-    head= "Jhakri Coronal +2",
-    body= "Jhakri Robe +2",
-    hands= "Jhakri Cuffs +2",
-    legs="Jhakri slops +2",
-    feet= "Jhakri Pigaches +1",
+  sets.BlueMagic.Macc = {
+    ammo="Pemphredo Tathlum",
+    head="Jhakri Coronal +2",
+    body="Jhakri Robe +2",
+    hands="Jhakri Cuffs +2",
+    legs="Jhakri Slops +2",
+    feet="Jhakri Pigaches +2",
     neck="Sanctity Necklace",
-    waist="Grunfeld Rope",
-    left_ear="Telos Earring",
-    right_ear="Dignitary's Earring",
-    left_ring="Ilabrat Ring",
-    right_ring="Rajas Ring",
-    back=gear.rosmerta.ws
+    waist="Eschan Stone",
+    left_ear="Regal Earring",
+    right_ear="Digni. Earring",
+    left_ring="Stikini Ring",
+    right_ring="Stikini Ring",
+    back=gear.rosmerta.mab
   }
-  sets.BlueMagic.PhysicalBlueMagic_STR = set_combine(sets.BlueMagic.PhysicalBlueMagic, {
-    neck = "Caro Necklace",
-    waist = "Prosilio Belt +1",
-    left_ring = "Rajas Ring",
-    right_ring = "Ifrit Ring"
-  })
-  sets.BlueMagic.PhysicalBlueMagic_DEX = set_combine(sets.BlueMagic.PhysicalBlueMagic, {
-    neck = "Caro Necklace",
-    right_ring = "Ramuh Ring"
-  })
-  sets.BlueMagic.PhysicalBlueMagic_VIT = set_combine(sets.BlueMagic.PhysicalBlueMagic, {})
-  sets.BlueMagic.PhysicalBlueMagic_AGI = set_combine(sets.BlueMagic.PhysicalBlueMagic, {
-    waist = "Svelt. Gouriz +1"
-  })
-  sets.BlueMagic.MagicalBlueMagic = {
-    ammo="Ombre Tathlum +1",
+  sets.BlueMagic.Mab = {
+    ammo="Pemphredo Tathlum",
     head="Jhakri Coronal +2",
     body="Amalric Doublet",
     hands="Amalric Gages",
     legs="Amalric Slops",
-    feet="Jhakri Pigaches +1",
+    feet="Jhakri Pigaches +2",
     neck="Sanctity Necklace",
     waist="Eschan Stone",
     left_ear="Regal Earring",
@@ -145,95 +164,147 @@ function get_sets()
     right_ring="Acumen Ring",
     back=gear.rosmerta.mab
   }
-  sets.BlueMagic.BlueMagic_Accuracy = set_combine(sets.BlueMagic.MagicalBlueMagic, {})
-  sets.BlueMagic.BlueMagic_Breath = set_combine(sets.BlueMagic.MagicalBlueMagic, {})
-  sets.BlueMagic.BlueMagic_Buff = {}
-  sets.BlueMagic.BlueMagic_Diffusion = {
-    feet = "Luhlaza Charuqs"
+  sets.BlueMagic.Physical = {
+    ammo="Falcon Eye",
+    head="Jhakri Coronal +2",
+    body="Jhakri Robe +2",
+    hands="Jhakri Cuffs +2",
+    legs="Jhakri Slops +2",
+    feet="Jhakri Pigaches +2",
+    neck="Caro Necklace",
+    waist="Prosilio Belt +1",
+    left_ear="Telos Earring",
+    right_ear="Dignitary's Earring",
+    left_ring="Ilabrat Ring",
+    right_ring="Shukuyu Ring",
+    back=gear.rosmerta.ws
   }
-  sets.BlueMagic.BlueMagic_Healing = {
+  sets.BlueMagic.Healing = {
     ammo="Quartz Tathlum +1",        -- MND
     head="Aya. Zucchetto +2",        -- MND/VIT
-    body="Ayanmo Corazza +2",        -- MND/VIT
+    body="Vrikodara Jupon",          -- 13%
     hands="Telchine Gloves",         -- 18%
-    legs="Carmine Cuisses +1",       -- 18 skill
-    feet="Medium's Sabots",          -- 7%
+    legs="Psycloth Lappas",          -- 36 MND
+    feet="Medium's Sabots",          -- 10%
     neck="Phalaina Locket",          -- 4%
-    waist="Penitent's Rope",         -- MND
+    waist="Luminary Sash",           -- MND
     left_ear="Regal Earring",        -- MND
     right_ear="Mendi. Earring",      -- 5%
-    left_ring="Ephedra Ring",        -- 7 skill
-    right_ring="Ephedra Ring",       -- 7 skill
-    back="Solemnity Cape",           -- 10%
-                             -- Total: +44% Cure Potency
+    left_ring="Stikini Ring",        -- 5 skill 5 MND
+    right_ring="Stikini Ring",       -- 5 skill 5 MND
+    back=gear.rosmerta.fast,         -- MND
+                             -- Total: +50% Cure Potency
   }
-  sets.BlueMagic.BlueMagic_Healing_Self = {
-    neck = "Phalaina Locket",  -- 4% self
-    -- hands = 'Buremte Gloves',  -- 13% self
-    lring = 'Kunaji Ring',     -- 5% self
-    rring = 'Asklepian Ring',  -- 3% self
-    waist = "Gishdubar Sash"   -- 10% self
-                        -- Total: 22% Self Cure Potency
+  sets.BlueMagic.HealingSelf = set_combine(sets.BlueMagic.Healing, {
+    neck="Phalaina Locket",      -- 4% self
+    left_ring='Kunaji Ring',     -- 5% self
+    waist="Gishdubar Sash"       -- 10% self
+                                 -- Total: 19%
+  })
+  sets.BlueMagic['White Wind'] = {
+    ammo="Falcon Eye",               -- 10 HP
+    head="Carmine Mask",             -- 98 HP
+    body="Vrikodara Jupon",          -- 13%
+    hands="Telchine Gloves",         -- 18%
+    legs="Carmine Cuisses +1",       -- 130 HP
+    feet="Medium's Sabots",          -- 10%
+    neck="Phalaina Locket",          -- 4%  4% self
+    waist="Gishdubar Sash",          --     10% self
+    left_ear="Odnowa Earring +1",    -- 100 HP
+    right_ear="Mendi. Earring",      -- 5%
+    left_ring="Etana Ring",          -- 60 HP
+    right_ring="Ilabrat Ring",       -- 60 HP
+    back="Aenoth. Mantle +1"         -- 120 HP  -- Moonbeam Cape 250 HP
+                             -- Total: +50% Cure Potency
   }
-  sets.BlueMagic.BlueMagic_Stun = set_combine(sets.BlueMagic.BlueMagic_Accuracy, {})
-  sets.BlueMagic.BlueMagic_Unbridled = {}
-
-  ---- Spell specific sets
   sets.BlueMagic['Battery Charge'] = {
-    head = "Amalric Coif",
-    waist = "Gishdubar Sash"
+    head="Amalric Coif",
+    waist="Gishdubar Sash"
   }
-  sets.BlueMagic['Tenebral Crush'] = {
-    head = "Pixie Hairpin +1",
-    right_ring = "Archon Ring"
+  sets.BlueMagic['Tenebral Crush'] = set_combine(sets.BlueMagic.Mab, {
+    head="Pixie Hairpin +1",
+    right_ring="Archon Ring"
+  })
+  sets.BlueMagic['Dream Flower'] = {
+    ammo="Staunch Tathlum +1",       -- 11
+    head="Jhakri Coronal +2",
+    neck="Loricate Torque +1",       -- DT
+    left_ear="Regal Earring",
+    right_ear="Magnetic Earring",    -- 8
+    body="Jhakri Robe +2",
+    hands="Rawhide Gloves",          -- 15
+    left_ring="Defending Ring",      -- DT
+    right_ring="Gelatinous Ring +1", -- PDT
+    back=gear.rosmerta.mab,
+    waist="Rumination Sash",         -- 10
+    legs="Carmine Cuisses +1",       -- 20
+    feet=augments.taeon.feet.phalanx -- 9
+                                     -- 8 Merit
+                                     -- 81 Total
+  }
+  sets.BlueMagic.Diffusion = {
+    feet="Luhlaza Charuqs"
   }
 
   -- Weapon Skills
   --
   sets.WS = {}
   sets.WS.Melee = {
+    ammo="Floestone",
     head=augments.herc.head.wsd,
     neck="Fotia Gorget",
     left_ear="Ishvara Earring",
     right_ear="Moonshade Earring",
-    body="Jhakri Robe +2",
+    body="Assimilator's Jubbah +3",
     hands="Jhakri Cuffs +2",
     left_ring="Karieyh Ring +1",
     right_ring="Shukuyu Ring",
     back=gear.rosmerta.ws,
     waist="Fotia Belt",
     legs=augments.herc.legs.ws,
-    feet="Jhakri Pigaches +1",
+    feet="Jhakri Pigaches +2",
   }
-
-  -- WS Specific
-  sets.WS['Requiescat'] = sets.WS.Melee
-  sets.WS['Savage Blade'] = set_combine(sets.WS.Melee, {
-    waist="Prosilio Belt +1"
-  })
+  sets.WS['Requiescat'] = set_combine(sets.WS.Melee, { })
+  -- sets.WS['Savage Blade'] = set_combine(sets.WS.Melee, { })
+  sets.WS['Savage Blade'] = sets.Magic.FastCast
+  -- sets.WS['Flat Blade'] = {}
   sets.WS['Chant du Cygne'] = set_combine(sets.WS.Melee, {
     ammo="Yetshila",
     feet="Thereoid Greaves",
     right_ring="Ramuh Ring",
   })
+  sets.WS['Shining Blade'] = {}
+  sets.WS['Circle Blade'] = {}
+  sets.WS['Burning Blade'] = {}
+  sets.WS['Sanguine Blade'] = {
+    ammo="Pemphredo Tathlum",
+    head="Pixie Hairpin +1",
+    neck="Sanctity Necklace",
+    lear="Regal Earring",
+    rear="Friomisi earring",
+    body="Amalric Doublet",
+    hands="Jhakri Cuffs +2",
+    lring="Archon Ring",
+    rring="Karieyh Ring +1",
+    back=gear.rosmerta.mab,
+    waist="Eschan Stone",
+    legs="Jhakri slops +2",
+    feet="Jhakri Pigaches +2",
+  }
 
-  -- Job Abilities
-  --
-  sets.JAs = {}
-  sets.JAs.Waltz = { lring = 'Asklepian Ring' }
-
-  sets.learn={
-    main="Wax Sword",
-    ammo="Staunch Tathlum +1",
-    hands="Magus Bazubands",
-    neck="Loricate Torque +1",
-    waist="Flume Belt +1",
-    left_ear="Brutal Earring",
-    right_ear="Telos Earring",
-    left_ring="Ayanmo Ring",
-    right_ring="Defending Ring",
-    back="Solemnity Cape",
-}
+  -- Spell Learning
+  -- sets.learn={
+  --   main="Wax Sword",
+  --   ammo="Staunch Tathlum +1",
+  --   hands="Magus Bazubands",
+  --   neck="Loricate Torque +1",
+  --   waist="Flume Belt +1",
+  --   left_ear="Brutal Earring",
+  --   right_ear="Telos Earring",
+  --   left_ring="Ayanmo Ring",
+  --   right_ring="Defending Ring",
+  --   back="Solemnity Cape",
+  -- }
 end
 
 function precast(spell)
@@ -246,12 +317,7 @@ function precast(spell)
     equip(sets.Magic.FastCast)
 
   elseif spell.type == 'WeaponSkill' then
-    equip(set_for_ws(spell.english))
-
-    -- Equip moonshade if TP is not capped
-    if player.tp < 2900 then
-      equip({ right_ear = "Moonshade Earring" })
-    end
+    equip(sets.WS[spell.english] or sets.WS.Melee)
   end
 end
 
@@ -265,39 +331,53 @@ function precast_cancelations(spell)
 end
 
 function midcast(spell)
-  -- Blue Magic
-  if spell.skill == 'Blue Magic' then
-    for key, spells in pairs(BlueMagic) do
-      if spells:contains(spell.english) then
-        equip(sets.BlueMagic[key])
-        if spell.target.type == 'SELF' then
-          equip(sets.BlueMagic[key .. '_Self'])
-        end
-        break
-      end
-    end
+  if sets.BlueMagic[spell.english] then
     equip(sets.BlueMagic[spell.english])
+
+  elseif BlueMagic_Macc:contains(spell.english) then
+    equip(sets.BlueMagic.Macc)
+
+  elseif BlueMagic_Mab:contains(spell.english) then
+    equip(sets.BlueMagic.Mab)
+
+  elseif BlueMagic_Physical:contains(spell.english) then
+    equip(sets.BlueMagic.Physical)
+
+  elseif BlueMagic_Healing:contains(spell.english) then
+    if spell.target.type == 'SELF' then
+      equip(sets.BlueMagic.HealingSelf)
+    else
+      equip(sets.BlueMagic.Healing)
+    end
+
+  elseif spell.action_type == 'Magic' then
+    equip(sets.Magic.SpellInterrupt)
+  end
+
+  if buffactive['Diffusion'] and spell.target.type == 'SELF' then
+    equip(sets.BlueMagic.Diffusion)
   end
 end
 
 function aftercast(spell)
   if player.in_combat then
-    if player.status == 'Engaged' then
-      equip(sets.modes[PrimaryMode.current].Engaged)
-    else
-      equip(sets.modes[PrimaryMode.current].Idle)
-    end
+    equip(sets.modes[PrimaryMode.current])
+  else
+    equip(set_combine(
+      sets.modes[PrimaryMode.current],
+      sets.Idle
+    ))
   end
 end
 
 function status_change(new, old)
   if new == 'Engaged' then
-    equip(sets.modes[PrimaryMode.current].Engaged)
+    equip(sets.modes[PrimaryMode.current])
   else
-    -- equip(sets.modes[PrimaryMode.current].Idle)
-  end
-  if Capacity.value then
-    equip(sets.CapacityMantle)
+    equip(set_combine(
+      sets.modes[PrimaryMode.current],
+      sets.Idle
+    ))
   end
 end
 
@@ -312,107 +392,60 @@ function self_command(commandArgs)
   command = commandArgs[1]
 
   if command == 'run' then
-    equip(sets.modes[PrimaryMode.current].Idle)
+    equip(sets.Idle)
   elseif command == "mode" then
-    equip(sets.modes[PrimaryMode.current].Engaged)
-  elseif command == 'weapon' then
-    Weapons:cycle()
-    add_to_chat(122, 'SET [Weapon] to ' .. Weapons.current)
-    equip({ ranged = gear.weapons[Weapons.current] })
+    equip(sets.modes[PrimaryMode.current])
   elseif command == 'cycle' then
     local mode = _G[commandArgs[2]]
     if mode ~= nil and mode._class == 'mode' then
       mode:cycle()
       add_to_chat(122, 'SET [' .. mode.description .. '] to ' .. mode.current)
     end
-    equip(sets.modes[PrimaryMode.current].Engaged)
+    equip(sets.modes[PrimaryMode.current])
   end
-end
-
-function set_for_ws(named)
-  if sets.WS[named] then
-    return sets.WS[named]
-  else
-    return sets.WS.Melee
-  end
-end
-
-function array_contains(arr, value)
-  for k, v in pairs(arr) do
-    if value == v then
-      return true
-    end
-  end
-  return false
 end
 
 function define_blue_magic()
-  BlueMagic = {
-    PhysicalBlueMagic = S{
-      'Asuran Claws','Bludgeon','Feather Storm','Mandibular Bite',
-      'Queasyshroom','Ram Charge', 'Spinal Cleave','Spiral Spin','Terror Touch'},
-
-    PhysicalBlueMagic_STR = S{
-      'Battle Dance','Bloodrake','Death Scissors','Dimensional Death','Empty Thrash',
-      'Heavy Strike','Quadrastrike','Uppercut','Tourbillion','Vertical Cleave',
-      'Whirl of Rage', 'Power Attack', 'Smite of Rage', 'Screwdriver'},
-
-    PhysicalBlueMagic_DEX = S{
-      'Amorphic Spikes','Barbed Crescent','Claw Cyclone','Disseverment','Foot Kick',
-      'Frenetic Rip','Goblin Rush','Hysteric Barrage','Paralyzing Triad','Seedspray',
-      'Vanity Dive','Sinker Drill', 'Sickle Slash'},
-
-    PhysicalBlueMagic_VIT = S{
-      'Cannonball','Delta Thrust','Glutinous Dart','Grand Slam','Quad. Continuum',
-      'Sprout Smack', 'Body Slam'},
-
-    PhysicalBlueMagic_AGI = S{
-      'Benthic Typhoon','Helldive','Hydro Shot','Jet Stream','Pinecone Bomb',
-      'Wild Oats'},
-
-    MagicalBlueMagic = S{
-      'Acrid Stream','Dark Orb','Droning Whirlwind','Embalming Earth','Evryone. Grudge',
-      'Firespit','Foul Waters','Gates of Hades','Leafstorm','Magic Hammer',
-      'Regurgitation','Rending Deluge','Tem. Upheaval','Thermal Pulse','Water Bomb','Subduction','Retinal Glare',
-      'Searing Tempest','Spectral Floe','Silent Storm','Entomb','Anvil Lightning','Scouring Spate',
-      'Blinding Fulgor','Tenebral Crush','Diffusion Ray',},
-
-    BlueMagic_Accuracy = S{
-      '1000 Needles','Absolute Terror','Actinic Burst','Auroral Drape','Awful Eye',
-      'Blank Gaze','Blistering Roar','Blood Drain','Blood Saber','Chaotic Eye',
-      'Cimicine Discharge','Cold Wave','Digest','Corrosive Ooze','Demoralizing Roar',
-      'Dream Flower','Enervation','Feather Tickle','Filamented Hold','Frightful Roar',
-      'Geist Wall','Hecatomb Wave','Infrasonics','Jettatura','Light of Penance','Lowing',
-      'Mind Blast','Mortal Ray','MP Drainkiss','Osmosis','Reaving Wind','Sandspin',
-      'Sandspray','Sheep Song','Soporific','Sound Blast','Stinking Gas','Sub-zero Smash',
-      'Triumphant Roar','Venom Shell','Voracious Trunk','Yawn'},
-
-    BlueMagic_Breath = S{
-      'Bad Breath','Flying Hip PrePress','Final Sting','Frost Breath','Heat Breath',
-      'Magnetite Cloud','Poison Breath','Radiant Breath','Self Destruct','Thunder Breath',
-      'Wind Breath'},
-
-    BlueMagic_Buff = S{
-      'Carcharian Verve','Diamondhide','Metallic Body','Magic Barrier',
-      'Orcish Counterstance','Plasma Charge',
-      'Pyric Bulwark','Reactor Cool'},
-
-    BlueMagic_Diffusion = S{
-      'Amplification','Cocoon','Exuviation','Feather Barrier','Harden Shell','Memento Mori',
-      'Metallic Body','Plasma Charge','Reactor Cool','Refueling','Saline Coat','Warm-Up',
-      'Zephyr Mantle','Battery Charge','Erratic Flutter','Barrier Tusk','Mighty Guard','Occultation','Carcharian Verve'},
-
-    BlueMagic_Healing = S{
-      'Healing Breeze','Plenilune Embrace','Pollen','White Wind',
-      'Wild Carrot','Restoral','Magic Fruit'},
-
-    BlueMagic_Stun = S{
-      'Blitzstrahl','Frypan','Head Butt','Sudden Lunge','Tail slap','Temporal Shift',
-      'Thunderbolt','Whirl of Rage'},
-
-    BlueMagic_Unbridled = S{
-      'Absolute Terror','Bilgestorm','Blistering Roar','Bloodrake','Carcharian Verve',
-      'Droning Whirlwind','Gates of Hades','Harden Shell','Pyric Bulwark','Thunderbolt',
-      'Tourbillion','Mighty Guard'}
+  BlueMagic_Macc = S{
+    'Blitzstrahl','Frypan','Head Butt','Sudden Lunge','Tail slap','Temporal Shift',
+    'Thunderbolt','Whirl of Rage',
+    '1000 Needles','Absolute Terror','Actinic Burst','Auroral Drape','Awful Eye',
+    'Blank Gaze','Blistering Roar','Blood Drain','Blood Saber','Chaotic Eye',
+    'Cimicine Discharge','Cold Wave','Digest','Corrosive Ooze','Demoralizing Roar',
+    'Dream Flower','Enervation','Feather Tickle','Filamented Hold','Frightful Roar',
+    'Geist Wall','Hecatomb Wave','Infrasonics','Jettatura','Light of Penance','Lowing',
+    'Mind Blast','Mortal Ray','MP Drainkiss','Osmosis','Reaving Wind','Sandspin',
+    'Sandspray','Sheep Song','Soporific','Sound Blast','Stinking Gas','Sub-zero Smash',
+    'Triumphant Roar','Venom Shell','Voracious Trunk','Yawn'
   }
+
+  BlueMagic_Mab = S{
+    'Acrid Stream','Dark Orb','Droning Whirlwind','Embalming Earth','Evryone. Grudge',
+    'Firespit','Foul Waters','Gates of Hades','Leafstorm','Magic Hammer',
+    'Regurgitation','Rending Deluge','Tem. Upheaval','Thermal Pulse','Water Bomb','Subduction','Retinal Glare',
+    'Searing Tempest','Spectral Floe','Silent Storm','Entomb','Anvil Lightning','Scouring Spate',
+    'Blinding Fulgor','Tenebral Crush','Diffusion Ray',
+    'Bad Breath','Flying Hip PrePress','Final Sting','Frost Breath','Heat Breath',
+    'Magnetite Cloud','Poison Breath','Radiant Breath','Self Destruct','Thunder Breath',
+    'Wind Breath'
+  }
+
+  BlueMagic_Physical = S{
+    'Asuran Claws','Bludgeon','Feather Storm','Mandibular Bite',
+    'Queasyshroom','Ram Charge', 'Spinal Cleave','Spiral Spin','Terror Touch',
+    'Battle Dance','Bloodrake','Death Scissors','Dimensional Death','Empty Thrash',
+    'Heavy Strike','Quadrastrike','Uppercut','Tourbillion','Vertical Cleave',
+    'Whirl of Rage', 'Power Attack', 'Smite of Rage', 'Screwdriver',
+    'Amorphic Spikes','Barbed Crescent','Claw Cyclone','Disseverment','Foot Kick',
+    'Frenetic Rip','Goblin Rush','Hysteric Barrage','Paralyzing Triad','Seedspray',
+    'Vanity Dive','Sinker Drill', 'Sickle Slash',
+    'Cannonball','Delta Thrust','Glutinous Dart','Grand Slam','Quad. Continuum',
+    'Sprout Smack', 'Body Slam',
+    'Benthic Typhoon','Helldive','Hydro Shot','Jet Stream','Pinecone Bomb',
+    'Wild Oats'
+  }
+
+  BlueMagic_Healing = S{
+    'Healing Breeze','Plenilune Embrace','Pollen','White Wind',
+    'Wild Carrot','Restoral','Magic Fruit'}
 end

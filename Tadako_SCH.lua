@@ -35,11 +35,12 @@ function get_sets()
     feet=augments.telchine.feet.enhancing,
     neck="Loricate Torque +1",
     waist="Fucho-no-Obi",
-    left_ear="Loquac. Earring",
-    right_ear="Mendi. Earring",
-    left_ring="Purity Ring",
+    left_ear="Flashward Earring",
+    right_ear="Etiolation Earring",
+    left_ring="Gelatinous Ring +1",
     right_ring="Warden's Ring",
-    back="Solemnity Cape"
+    back="Aptitude Mantle +1"
+    -- back="Solemnity Cape"
   }
   sets.Engaged = {
 
@@ -51,7 +52,7 @@ function get_sets()
     -- main=gear.kali.refresh,
     head="Kaykaus Mitra",
     neck="Orunmila's torque",
-    body="Inyanga Jubbah +2",
+    -- body="Inyanga Jubbah +2",
     hands=augments.telchine.gloves.fastCast,
     left_ring="Weatherspoon Ring",
     right_ring="Kishar Ring",
@@ -103,10 +104,15 @@ function get_sets()
     legs=augments.telchine.legs.enhancing,
     feet=augments.telchine.feet.enhancing
   }
+  sets.Magic.EnhancingRegen = {
+    head="Arbatel Bonnet",
+    back="Lugh's Cape"
+  }
   sets.Magic.Enfeebling = {}
 
   -- Abilities
   sets.JobAbility = {}
+  sets.JobAbility['Tabula Rasa'] = { legs="Pedagogy pants" }
   sets.WeaponSkill = {}
 end
 
@@ -172,6 +178,10 @@ function midcast(spell)
       if spell.target.type == 'SELF' then
         equip(sets.Magic.EnhancingRefreshSelf)
       end
+    end
+
+    if buffactive['Perpetuance'] then
+      equip({ hands = "Arbatel Bracers +1" })
     end
 
   -- Enfeebles

@@ -56,7 +56,7 @@ function get_sets()
 
   sets.modes = {}
   sets.modes.Normal = {
-    main="Dojikiri Yasutsuna",
+    main="Dojikiri Yasutsuna",     -- 10 STP
     sub="Utu Grip",
     ammo="Ginsen",                 -- 3 STP
     head="Flam. Zucchetto +2",     -- 6 STP
@@ -67,73 +67,77 @@ function get_sets()
     hands="Wakido Kote +3",        -- 7 STP
     lring="Flamma Ring",           -- 5 STP
     rring="Niqmaddu Ring",
-    back=gear.smertrios.tp,
+    back=gear.smertrios.tp,        -- {'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}}
     waist="Ioskeha Belt +1",
-    legs=gear.valorous.hose.quad,
-    feet="Flam. Gambieras +2"      -- 6 STP
-  }                                -- 56 STP
+    legs="Ryuo Hakama +1",         -- 13 STP
+    feet="Ryuo Sune-Ate +1"        -- 5 STP
+  }                                -- 78 STP
   sets.modes.Meva = {
+    main="Dojikiri Yasutsuna",    -- 10 STP
     sub="Utu Grip",
     ammo="Ginsen",                -- 3 STP
-    head="Flam. Zucchetto +2",    -- 6 STP |        | 4 Haste
+    head="Flam. Zucchetto +2",    -- 6 STP
     neck="Samurai's Nodowa +1",   -- 11 STP
-    lear="Telos Earring",         -- 5 STP |
-    rear="Brutal Earring",        -- 1 STP |
-    body="Ken. Samue +1",         --                | 4 Haste
-    hands="Wakido Kote +3",       -- 7 STP |        | 4 Haste
+    lear="Telos Earring",         -- 5 STP
+    rear="Brutal Earring",        -- 1 STP
+    body="Ken. Samue +1",         -- MEVA
+    hands="Wakido Kote +3",       -- 7 STP
     lring="Flamma Ring",          -- 5 STP
     rring="Niqmaddu Ring",        --
-    back=gear.smertrios.tp,       --       | 10 PDT
-    waist="Ioskeha Belt +1",      --                | 8 Haste
-    legs="Ken. Hakama +1",        --                | 9 Haste
-    feet="Flam. Gambieras +2"     -- 6 STP |        | 2 Haste
-  }
+    back=gear.smertrios.tp,       --
+    waist="Ioskeha Belt +1",      --
+    legs="Ken. Hakama +1",        -- MEVA
+    feet="Ryuo Sune-Ate +1"       -- 5 STP
+  }                               -- 53 STP
   sets.modes.Hybrid = {
+    main="Dojikiri Yasutsuna",    -- 10 STP
     sub="Utu Grip",
     ammo="Staunch Tathlum +1",    --       | 3 DT
-    head="Flam. Zucchetto +2",    -- 6 STP |        | 4 Haste
-    neck="Loricate Torque +1",    --
+    head="Flam. Zucchetto +2",    -- 6 STP |
+    neck="Loricate Torque +1",    --       | 6 DT
     lear="Telos Earring",         -- 5 STP |
     rear="Brutal Earring",        -- 1 STP |
-    body="Ken. Samue +1",         --                | 4 Haste
-    hands="Wakido Kote +3",       -- 7 STP |        | 4 Haste
+    body="Ken. Samue +1",         --       | MEVA
+    hands="Wakido Kote +3",       -- 7 STP |
     lring="Flamma Ring",          -- 5 STP
     rring="Defending Ring",       --       | 10 PDT
     back=gear.smertrios.tp,       --       | 10 PDT
-    waist="Ioskeha Belt +1",      --                | 8 Haste
-    legs="Ken. Hakama +1",        --                | 9 Haste
-    feet="Flam. Gambieras +2"     -- 6 STP |        | 2 Haste
-  }
+    waist="Ioskeha Belt +1",      --
+    legs="Ken. Hakama +1",        --       | MEVA
+    feet="Ryuo Sune-Ate +1"       -- 5 STP |
+  }                               -- 39 STP| 29 PDT
   sets.modes.PDT = {
+    main="Dojikiri Yasutsuna",
     sub="Utu Grip",
     ammo="Staunch Tathlum +1",    -- 3 DT
     head="Flam. Zucchetto +2",
     neck="Loricate Torque +1",    -- 6 DT
     lear="Telos Earring",
     rear="Brutal Earring",
-    body="Wakido domaru +3",      -- 8 PDT
+    body="Ken. Samue +1",
     hands="Wakido Kote +3",
     lring="Gelatinous Ring +1",   -- 7 PDT
-    rring="Defending Ring",       -- 10 PDT
+    rring="Defending Ring",       -- 10 DT
     back=gear.smertrios.tp,       -- 10 PDT
     waist="Flume Belt +1",        -- 4 PDT
-    legs=gear.valorous.hose.quad, -- 2 PDT
-    feet="Flam. Gambieras +2"
-  }                               -- 50 PDT
+    legs="Ryuo Hakama +1",        -- 4 PDT
+    feet="Ryuo Sune-Ate +1"
+  }                               -- 44 PDT
   sets.modes.Accuracy = {
+    main="Dojikiri Yasutsuna",
     sub="Utu Grip",
     ammo="Ginsen",
     head="Flam. Zucchetto +2",
     neck="Samurai's Nodowa +1",
     lear="Telos Earring",
     rear="Dignitary's Earring",
-    body="Wakido domaru +3",
+    body="Ken. Samue +1",
     hands="Wakido Kote +3",
     lring="Flamma Ring",
     rring="Regal Ring",
     back=gear.smertrios.tp,
     waist="Ioskeha Belt +1",
-    legs="Wakido Haidate +3",
+    legs="Ken. Hakama +1",
     feet="Flam. Gambieras +2"
   }
 
@@ -162,8 +166,36 @@ function get_sets()
     legs="Wakido Haidate +3",
     feet=gear.valorous.greaves.ws2
   }
-  -- sets.WS['Tachi: Shoha'] = {}
-  -- sets.WS['Tachi: Ageha'] = {}
+  sets.WS['Tachi: Shoha'] = {
+    ammo="Knobkierrie",
+    head="Flam. Zucchetto +2",
+    neck="Samurai's Nodowa +1",
+    lear="Ishvara Earring",
+    rear="Moonshade earring",
+    body="Sakonji Domaru +3",
+    hands=gear.valorous.mitts.ws,
+    lring="Flamma Ring",
+    rring="Niqmaddu Ring",
+    back=gear.smertrios.ws,
+    waist="Fotia Belt",
+    legs="Wakido Haidate +3",
+    feet="Flam. Gambieras +2"
+  }
+  sets.WS['Tachi: Ageha'] = {
+    ammo="Knobkierrie",
+    head="Flam. Zucchetto +2",
+    neck="Samurai's Nodowa +1",
+    lear="Ishvara Earring",
+    rear="Moonshade earring",
+    body="Sakonji Domaru +3",
+    hands=gear.valorous.mitts.ws,
+    lring="Flamma Ring",
+    rring="Niqmaddu Ring",
+    back=gear.smertrios.ws,
+    waist="Fotia Belt",
+    legs="Wakido Haidate +3",
+    feet="Flam. Gambieras +2"
+  }
 
   -- Job Abilities
   --

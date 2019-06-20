@@ -91,7 +91,7 @@ function get_sets()
     head = "Befouled Crown",
     neck = "Loricate Torque +1",
     left_ear = "Etiolation Earring",
-    right_ear="Hearty Earring",
+    right_ear="Genmei Earring",
     body = "Jhakri Robe +2",
     lring = "Gelatinous Ring +1",
     rring = "Defending Ring",
@@ -149,16 +149,16 @@ function get_sets()
     -- head = "Kaabnax Hat",
     head = "Pixie Hairpin +1",
     neck = "Sanctity Necklace",
-    lear = "Influx Earring",
+    lear = "Etiolation Earring",
     rear = "Moonshade Earring",
-    body = augments.merlinic.jubbah,
+    body = "Amalric Doublet",
     hands = "Otomi Gloves",
     lring = "Etana Ring",
     rring = "Bifrost Ring",
     back = "Bane Cape",
-    waist = "Fucho-no-Obi",
-    legs = augments.merlinic.shalwar.macc,
-    feet = augments.merlinic.crackows.nuke
+    waist = "Luminary Sash",
+    legs = "Spae. Tonban +2",
+    feet = "Medium's sabots"
   }
 
   -- MIDCAST
@@ -285,7 +285,7 @@ function get_sets()
     lear = "Digni. Earring",
     rear = "Regal Earring",
     body = "Vanya Robe",
-    hands = "Lurid Mitts",
+    hands = "Jhakri Cuffs +2",
     lring = "Weatherspoon Ring",
     rring = "Globidonta Ring",
     back = gear.taranus.nuke,
@@ -300,11 +300,12 @@ function get_sets()
   }
   sets.midcast.enhancing_duration = {
     head="Telchine Cap",
-    legs="Telchine Braconi"
+    body="Telchine Chasuble",
+    hands="Telchine Gloves",
+    legs="Telchine Braconi",
+    feet="Telchine Pigaches",
   }
-  sets.midcast.enhancing_regen = {
-    body = "Telchine Chasuble"
-  }
+  sets.midcast.enhancing_regen = {}
   sets.midcast.enhancing_refresh = {
     head = "Amalric Coif"
   }

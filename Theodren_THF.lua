@@ -50,7 +50,9 @@ function get_sets()
   }
   sets.modes = {}
   sets.modes.Normal = {
-    ammo="Ginsen",
+    -- ammo="Ginsen",
+    ranged="Exalted Crossbow +1",
+    ammo="Gashing Bolt",
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
     hands=augments.herc.hands.triple,
@@ -65,7 +67,9 @@ function get_sets()
     back=gear.toutatis.tp,
   }
   sets.modes.Hybrid = {
-    ammo="Staunch Tathlum +1",           -- 3 PDT
+    -- ammo="Staunch Tathlum +1",
+    ranged="Exalted Crossbow +1",
+    ammo="Gashing Bolt",
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
     hands=augments.herc.hands.triple,    -- 2 PDT
@@ -78,16 +82,18 @@ function get_sets()
     left_ring="Defending Ring",          -- 10 PDT
     right_ring="Moonbeam Ring",          -- 4 DT
     back=gear.toutatis.tp,               -- 10 PDT
-  }                                      -- 50 PDT
+  }                                      -- 47 PDT
   sets.modes.FullTH = {
-    ammo="Ginsen",
+    -- ammo="Ginsen",
+    ranged="Exalted Crossbow +1",
+    ammo="Gashing Bolt",
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
     hands="Plunderer's Armlets +1",
-    legs=augments.herc.legs.treasure,
-    feet=augments.herc.feet.triple,
+    legs="Samnuha Tights",
+    feet=augments.herc.feet.th2,
     neck="Iskur Gorget",
-    waist="Chaac Belt",
+    waist="Reiki Yotai",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
     left_ring="Hetairoi Ring",
@@ -98,25 +104,25 @@ function get_sets()
   -- Weapon Skills
   --
   sets.WS = {}
-  sets.WS["Rudra's Storm"] = {
-    ammo="Falcon Eye",
+  sets.WS.Rudra = {
+    -- ammo="Falcon Eye",
     head=augments.herc.head.dimi,
-    neck="Caro Necklace",
-    left_ear="Moonshade Earring",
-    right_ear="Sherida Earring",
     body="Meg. Cuirie +2",
     hands="Meg. Gloves +2",
-    left_ring="Ilabrat Ring",
-    right_ring="Karieyh Ring +1",
-    back=gear.toutatis.ws,
-    waist="Grunfeld Rope",
     legs=augments.herc.legs.ws,
     feet=augments.herc.feet.dimi,
+    neck="Caro Necklace",
+    waist="Grunfeld Rope",
+    left_ear="Moonshade Earring",
+    right_ear="Sherida Earring",
+    left_ring="Ilabrat Ring",
+    right_ring="Karieyh Ring +1",
+    back=gear.toutatis.ws
   }
   -- sets.WS['Exenterator'] = {
   -- }
   sets.WS['Evisceration'] = {
-    ammo="Yetshila",
+    -- ammo="Yetshila",
     head="Adhemar Bonnet",
     neck="Fotia Gorget",
     left_ear="Moonshade Earring",
@@ -145,7 +151,7 @@ function get_sets()
     feet=augments.herc.feet.triple
   }
   sets.WS['Aeolian Edge'] =  {
-    ammo="Ombre Tathlum +1",
+    -- ammo="Ombre Tathlum +1",
     head=augments.herc.head.mab,
     neck="Sanctity Necklace",
     left_ear="Friomisi Earring",
@@ -160,7 +166,7 @@ function get_sets()
     feet= augments.herc.feet.mab
   }
   sets.WS['Circle Blade'] = {
-    ammo="Falcon Eye",
+    -- ammo="Falcon Eye",
     head={ name="Herculean Helm", augments={'Rng.Atk.+18','Weapon skill damage +4%','MND+10','Rng.Acc.+13',}},
     body="Herculean Vest",
     hands="Meg. Gloves +2",
@@ -196,15 +202,10 @@ function get_sets()
     feet = "Fajin boots"
   }
 
-  -- Ranged Attack
-  --
-  sets.JAs.Ranged = {
-  }
-
   -- Magic
   sets.MA = {}
   sets.MA.FastCast = {
-    ammo="Impatiens",
+    -- ammo="Impatiens",
     head=augments.herc.head.fc,         -- 12
     neck="Orunmila's Torque",           -- 5
     body="Taeon Tabard",                -- 8
@@ -216,10 +217,10 @@ function get_sets()
     legs=augments.taeon.legs.phalanx,   -- 3
   }
   sets.MA.SpellInterrupt = {
-    ammo="Staunch Tathlum +1",          -- 10
+    -- ammo="Staunch Tathlum +1",          -- 10
     head=augments.taeon.head.SID,    -- 7
     neck="Loricate Torque +1",
-    lear="Halasz Earring",           -- 5
+    -- lear="Halasz Earring",           -- 5
     rear="Magnetic earring",         -- 8
     hands="Rawhide Gloves",          -- 15
     left_ring="Defending Ring",      -- PDT
@@ -229,16 +230,30 @@ function get_sets()
   }
 
   sets.Preshot = {                           -- Snap | Rapid
-    head=augments.taeon.head.shapshot,       --   8    0
+    head=augments.taeon.head.snapshot,       --   8    0
     legs=augments.adhemar.kecks.rapidShot,   --   9    10
     feet="Meg. Jam. +2",                     --  10    0
     waist="Yemaya Belt",                     --   0    5
+  }
+  sets.Ranged = {
+    head="Meghanada Visor +2",
+    body="Meg. Cuirie +2",
+    hands="Meg. Gloves +2",
+    legs="Meg. Chausses +2",
+    feet="Meg. Jam. +2",
+    neck="Iskur Gorget",
+    waist="Yemaya Belt",
+    left_ear="Telos Earring",
+    right_ear="Enervating Earring",
+    left_ring="Regal Ring",
+    right_ring="Dingir Ring",
+    back=gear.toutatis.tp
   }
 end
 
 function precast(spell)
   if spell.type == 'WeaponSkill' then
-    equip(sets.WS[spell.english] or sets.WS["Rudra's Storm"])
+    equip(sets.WS[spell.english] or sets.WS.Rudra)
   elseif spell.type == 'JobAbility' then
     if sets.JAs[spell.english] then
       equip(sets.JAs[spell.english])
@@ -255,8 +270,6 @@ function precast(spell)
     send_command('@cancel 71;')
   elseif spell.english == 'Curing Waltz II' or spell.english == 'Curing Waltz III' then
     equip(sets.JAs.Waltz)
-  elseif spell.english == 'Ranged' then
-    equip(sets.JAs.Ranged)
   end
 
   maintain_reraise_equip()
@@ -265,6 +278,8 @@ end
 function midcast(spell)
   if spell.action_type == 'Magic' then
     equip(sets.MA.SpellInterrupt)
+  elseif spell.english == 'Ranged' then
+    equip(sets.Ranged)
   end
 end
 

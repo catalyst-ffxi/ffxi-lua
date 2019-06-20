@@ -3,8 +3,7 @@ include('Modes.lua')
 include('augments.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Accuracy', 'Capacity'}
-  Capacity = M(false, 'Capacity Mantle')
+  PrimaryMode = M{['description'] = 'Primary Mode', 'FullDD', 'HybridLight', 'HybridHeavy'}
   TreasureHunter = M(false, 'Treasure Hunter')
 
   Abyssea = {
@@ -41,25 +40,51 @@ function get_sets()
   }
 
   sets.modes = {}
-  sets.modes.Normal = {
-    ammo="Ginsen",
+  sets.modes.FullDD = {
+    ammo="Yamarang",
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
     hands=augments.herc.hands.triple,
-    legs=augments.herc.legs.ws,
+    legs="Samnuha Tights",
     feet=augments.herc.feet.triple,
     neck="Iskur Gorget",
     waist="Windbuffet Belt +1",
     left_ear="Telos Earring",
-    right_ear="Suppanomimi",
-    left_ring="Petrov Ring",
+    right_ear="Brutal Earring",
+    left_ring="Hetairoi Ring",
     right_ring="Epona's Ring",
-    back="Yokaze Mantle",
+    back="Yokaze Mantle"
   }
-  sets.modes.Accuracy = {
-
+  sets.modes.HybridLight = {
+    ammo="Staunch Tathlum +1",
+    head="Adhemar Bonnet +1",
+    body="Adhemar Jacket +1",
+    hands=augments.herc.hands.triple,
+    legs="Samnuha Tights",
+    feet=augments.herc.feet.triple,
+    neck="Loricate Torque +1",
+    waist="Flume Belt +1",
+    left_ear="Telos Earring",
+    right_ear="Brutal Earring",
+    left_ring="Defending Ring",
+    right_ring="Epona's Ring",
+    back="Yokaze Mantle"
   }
-  sets.modes.Capacity = {
+  sets.modes.HybridHeavy = {
+    ammo="Staunch Tathlum +1",
+    head="Adhemar Bonnet +1",
+    body="Adhemar Jacket +1",
+    hands=augments.herc.hands.triple,
+    -- legs="Mummu Kecks +2", -- dont have
+    legs="Samnuha Tights",
+    feet=augments.herc.feet.triple,
+    neck="Loricate Torque +1",
+    waist="Flume Belt +1",
+    left_ear="Telos Earring",
+    right_ear="Brutal Earring",
+    left_ring="Defending Ring",
+    right_ring="Gelatinous Ring +1",
+    back="Yokaze Mantle"
   }
 
   sets.TreasureHunter = {
@@ -72,32 +97,35 @@ function get_sets()
   sets.WS = {}
   sets.WS.Normal = {
     ammo="Falcon Eye",
-    head="Adhemar Bonnet +1",
-    body="Meghanada Cuirie +1",
-    hands=augments.herc.hands.triple,
+    head=augments.herc.head.dimi,
+    body="Meghanada Cuirie +2",
+    hands="Meg. Gloves +2",
     legs=augments.herc.legs.ws,
-    feet=augments.herc.feet.triple,
+    feet=augments.herc.feet.dimi,
     neck="Fotia Gorget",
     waist="Fotia Belt",
-    left_ear="Telos Earring",
-    right_ear="Suppanomimi",
+    left_ear="Moonshade Earring",
+    right_ear="Ishvara Earring",
     left_ring="Regal Ring",
     right_ring="Karieyh Ring +1",
     back="Yokaze Mantle",
   }
-  sets.WS.Accuracy = {
-
-  }
-  sets.WS.Capacity = {
-  }
-  -- sets.WS['Blade: Ten'] = {
-  --   neck = "Shadow Gorget"
-  -- }
+  sets.WS['Blade: Ten'] = set_combine(sets.WS.Normal, {
+    neck="Caro Necklace",
+    waist="Grunfeld Rope"
+  })
 
   -- Job Abilities
   --
   sets.JAs = {}
-  sets.utsusemi = {
+  sets.Waltz = {
+    lring = 'Asklepian Ring'
+  }
+
+  -- Magic
+  sets.Magic = {}
+  sets.Magic.Precast = {
+    ammo="Sapience Orb",                -- 2
     head=augments.herc.head.fc,         -- 12
     neck="Orunmila's Torque",           -- 5
     body="Taeon Tabard",                -- 8
@@ -107,35 +135,47 @@ function get_sets()
     lring="Kishar Ring",                -- 4
     rring="Prolix Ring",                -- 2
     legs=augments.taeon.legs.phalanx,   -- 3
-    feet="Carmine Greaves +1"           -- 8
   }
-  sets.waltz = {
-    lring = 'Asklepian Ring'
+  sets.Magic.SpellInterrupt = {
+    ammo="Staunch Tathlum +1",       -- 11
+    -- head="",
+    neck="Loricate Torque +1",       -- PDT
+    lear="Genmei Earring",           -- PDT
+    rear="Magnetic Earring",         -- 8
+    -- body="",
+    hands="Rawhide Gloves",          -- 15
+    left_ring="Defending Ring",      -- DT
+    right_ring="Gelatinous Ring +1", -- PDT
+    -- back="",
+    waist="Flume Belt +1"            -- PDT
+    -- legs="",
+    feet=augments.taeon.feet.phalanx -- 9
   }
 
   -- Ranged Attack
   --
-  sets.JAs.ranged = {
+  sets.Ranged = {
   }
 
   -- Other
-  sets.move_speed = {
+  sets.MoveSpeed = {
     legs = "Track Pants +1"
   }
 end
 
 function precast(spell)
   if spell.type == 'WeaponSkill' then
-    equip(sets.WS[get_primary_mode()])
     if sets.WS[spell.english] then
       equip(sets.WS[spell.english])
+    else
+      equip(sets.WS.Normal)
     end
   elseif spell.type == 'JobAbility' then
     if sets.JAs[spell.english] then
       equip(sets.JAs[spell.english])
     end
-  elseif spell.english == 'Utsusemi: Ichi' or spell.english == 'Utsusemi: Ni' then
-    equip(sets.utsusemi)
+  elseif spell.action_type == 'Magic' then
+    equip(sets.Magic.FastCast)
     if spell.english == 'Utsusemi: Ichi' and (
       buffactive['Copy Image'] or
       buffactive['Copy Image (2)'] or
@@ -147,29 +187,27 @@ function precast(spell)
     cast_delay(0.5)
     send_command('@cancel 71;')
   elseif spell.english == 'Curing Waltz II' or spell.english == 'Curing Waltz III' then
-    equip(sets.waltz)
+    equip(sets.Waltz)
   elseif spell.english == 'Ranged' then
-    equip(sets.JAs.ranged)
+    equip(sets.Ranged)
   end
-
-  maintain_reraise_equip()
 end
 
 function midcast(spell)
-
+  if spell.action_type == 'Magic' then
+    equip(sets.Magic.SpellInterrupt)
+  end
 end
 
 function aftercast(spell)
   if player.in_combat then
     equip_set_for_current_mode()
   end
-  maintain_reraise_equip()
 end
 
 function status_change(new, old)
   if new == 'Engaged' then
     equip_set_for_current_mode()
-    maintain_reraise_equip()
   end
 end
 
@@ -201,7 +239,7 @@ function self_command(commandArgs)
     equip(sets.base.idle)
   elseif command == 'run' then
     -- equip_set_for_current_mode()
-    equip(sets.move_speed)
+    equip(sets.MoveSpeed)
   elseif command == 'abbyweapon' then
     cycle_weapon()
   end
@@ -221,26 +259,15 @@ end
 
 function equip_set_for_current_mode()
   equip(set_for_engaged())
-  maintain_reraise_equip()
-end
-
-function maintain_reraise_equip()
-  if player.equipment.rear == 'Reraise Earring' then
-    equip({rear = 'Reraise Earring'})
-  end
-  if player.equipment.lear == 'Reraise Earring' then
-    equip({lear = 'Reraise Earring'})
-  end
 end
 
 function cycle_weapon()
   Abyssea.current = Abyssea.current + 1
   local len = tablelength(Abyssea.weapons)
 
-  -- if Abyssea.current > tablelength(Abyssea.weapons) then
   if Abyssea.current > #Abyssea.weapons then
     add_to_chat(122, '*** DD Weapons Equiped ***')
-    equip({ main = "Kanaria", sub = "Raicho" })
+    equip({ main = "Kanaria", sub = "Ochu" })
     Abyssea.current = 0
   else
     local set = Abyssea.weapons[Abyssea.current]

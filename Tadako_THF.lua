@@ -30,53 +30,56 @@ function get_sets()
   -- Modes
   sets.Engaged = {}
   sets.Engaged.Normal = {
-    main="Skinflayer",
+    main="Aeneas",
     sub="Sandung",
-    ranged="Wingcutter +1",
+    ranged="Exalted Crossbow +1",
+    ammo="Gashing Bolt",
     head="Skormoth Mask",
-    body="Pillager's Vest +2",
+    body="Pillager's Vest +3",
     hands=augments.herc.hands.tp,
     legs="Samnuha Tights",
     feet=augments.herc.feet.tp,
     neck="Anu Torque",
     waist="Sarissapho. Belt",
-    left_ear="Brutal Earring",
+    left_ear="Suppanomimi",
     right_ear="Sherida Earring",
-    left_ring="Rajas Ring",
+    left_ring="Hetairoi Ring",
     right_ring="Petrov Ring",
     back=gear.toutatis.tp
   }
   sets.Engaged.Hybrid = {
-    main="Skinflayer",
+    main="Aeneas",
     sub="Sandung",
-    ranged="Wingcutter +1",
+    ranged="Exalted Crossbow +1",
+    ammo="Gashing Bolt",
     head="Skormoth Mask",
-    body="Pillager's Vest +2",
+    body="Pillager's Vest +3",
     hands=augments.herc.hands.tp,
     legs="Meg. Chausses +2",
     feet=augments.herc.feet.tp,
     neck="Loricate Torque +1",
     waist="Flume Belt",
-    left_ear="Brutal Earring",
+    left_ear="Suppanomimi",
     right_ear="Sherida Earring",
-    left_ring="Gelatinous Ring +1",
-    right_ring="Petrov Ring",
+    left_ring="Hetairoi Ring",
+    right_ring="Gelatinous Ring +1",
     back=gear.toutatis.tp,
   }
   sets.Engaged.FullTH = {
-    main="Skinflayer",
+    main="Aeneas",
     sub="Sandung",
-    ranged="Wingcutter +1",
+    ranged="Exalted Crossbow +1",
+    ammo="Gashing Bolt",
     head="Skormoth Mask",
-    body="Pillager's Vest +2",
+    body="Pillager's Vest +3",
     hands="Plunderer's Armlets +1",
     legs="Samnuha Tights",
     feet=augments.herc.feet.tp,
     neck="Anu Torque",
     waist="Chaac Belt",
-    left_ear="Brutal Earring",
+    left_ear="Suppanomimi",
     right_ear="Sherida Earring",
-    left_ring="Rajas Ring",
+    left_ring="Hetairoi Ring",
     right_ring="Petrov Ring",
     back=gear.toutatis.tp
   }
@@ -88,10 +91,10 @@ function get_sets()
   sets.WS = {}
   sets.WS.Rudra = {
     head=augments.herc.head.ws,
-    body=augments.herc.body.ws,
+    body="Plunderer's Vest +3",
     hands="Meg. Gloves +2",
-    legs=augments.herc.legs.ws,
-    feet=augments.herc.feet.ws,
+    legs=augments.herc.legs.crit,
+    feet=augments.herc.feet.crit,
     neck="Caro Necklace",
     waist="Grunfeld Rope",
     left_ear="Moonshade Earring",
@@ -102,11 +105,11 @@ function get_sets()
   }
   sets.WS.Evisceration = {
     head="Adhemar bonnet",
-    body="Adhemar jacket",
+    body=augments.herc.body.ws,
     hands="Mummu wrists +2",
-    legs="Mummu kecks +1",
-    feet="Adhemar gamashes",
-    neck="Caro Necklace",
+    legs=augments.herc.legs.crit,
+    feet=augments.herc.feet.crit,
+    neck="Soil Gorget",
     waist="Shadow Belt",
     left_ear="Moonshade Earring",
     right_ear="Sherida Earring",
@@ -128,14 +131,33 @@ function get_sets()
     right_ring="Acumen Ring",
     back=gear.toutatis.magic,
   }
-  sets.WS.Cyclone = set_combine(sets.WS['Aeolian Edge'], {
-    hands="Plunderer's Armlets +1",
-    waist="Chaac Belt"
-  })
 
   -- Abilities
   sets.JobAbility = {}
-  
+  sets.Preshot = {
+    -- head="Taeon Chapeau",
+    body="Pursuer's Doublet",
+    -- hands="Taeon Gloves",
+    -- legs="Adhemar Kecks",
+    feet="Meg. Jam. +1",
+    -- waist="Yemaya Belt",
+    -- back="Toutatis's Cape"
+  }
+  sets.Ranged = {
+    head="Mummu Bonnet +1",
+    body="Mummu Jacket +1",
+    hands="Meg. Gloves +2",
+    legs="Meg. Chausses +2",
+    feet="Meg. Jam. +1",
+    neck="Sanctity Necklace",
+    waist="Eschan Stone",
+    left_ear="Suppanomimi",
+    right_ear="Sherida Earring",
+    left_ring="Mummu Ring",
+    right_ring="Petrov Ring",
+    back=gear.toutatis.tp
+  }
+
   -- Magic
   sets.Magic = {}
   sets.Magic.Precast = {
@@ -145,6 +167,8 @@ function get_sets()
     left_ring="Weatherspoon Ring",
     left_ear="Loquacious earring",
     right_ear="Etiolation Earring"
+  }
+  sets.Magic.SpellInterrupt = {
   }
 end
 
@@ -157,6 +181,9 @@ function precast(spell)
 
   elseif spell.type == 'WeaponSkill' then
     equip(sets.WS[spell.english] or sets.WS.Rudra)
+
+  elseif spell.english == "Ranged" then
+    equip(sets.Preshot)
   end
 
   precast_cancelations(spell)
@@ -173,7 +200,12 @@ function precast_cancelations(spell)
 end
 
 function midcast(spell)
-  eng = spell.english
+  if spell.english == 'Ranged' then
+    equip(sets.Ranged)
+
+  elseif spell.action_type == 'Magic' then
+    equip(sets.Magic.SpellInterrupt)
+  end
 end
 
 function aftercast(spell)

@@ -62,37 +62,57 @@ function get_sets()
 
   -- Mode Sets
   --
-  sets.modes = {}
-  sets.modes.Caster = {
-    main = "Akademos",
-    sub = "Enki Strap",
-    ammo = "Ombre Tathlum +1",
-    head = augments.merlinic.hood.nuke,
-    neck = "Sanctity Necklace",
-    lear = "Strophadic Earring",
-    rear = "Barkarole Earring",
-    body = augments.merlinic.jubbah,
-    hands = "Amalric Gages",
-    lring = "Shiva Ring",
-    rring = "Strendu Ring",
-    back = "Lugh's Cape",
-    waist = "Refoccilation Stone",
-    legs = augments.merlinic.shalwar.burst,
-    feet = augments.merlinic.crackows.nuke
+  sets.Idle = {
+    -- main=augments.grio.nuke,
+    main="Malevolence",
+    sub="Ammurapi Shield",
+    ammo="Homiliary",
+    head="Befouled Crown",
+    neck="Loricate Torque +1",
+    left_ear="Genmei Earring",
+    right_ear="Etiolation Earring",
+    body="Jhakri Robe +2",
+    hands="Amalric Gages",
+    left_ring="Gelatinous Ring +1",
+    right_ring="Defending Ring",
+    -- back="Solemnity Cape",
+    back="Mecisto. Mantle",
+    waist="Fucho-no-Obi",
+    legs="Assid. Pants +1",
+    feet="Chironic Slippers"
   }
-  sets.aftercast = {}
-  sets.aftercast.Caster = set_combine(sets.modes.Caster, {
-    ammo = "Homiliary",
-    head = "Befouled Crown",
-    neck = "Loricate Torque +1",
-    body = "Jhakri Robe +1",
-    lring = "Gelatinous Ring +1",
-    rring = "Defending Ring",
-    back = "Solemnity Cape",
-    -- waist = "Fucho-no-Obi",
-    waist = "Flume Belt +1",
-    legs = "Assid. Pants +1"
-  })
+  -- sets.modes = {}
+  -- sets.modes.Caster = {
+  --   -- main = "Akademos",
+  --   main=augments.grio.nuke,
+  --   sub = "Enki Strap",
+  --   ammo = "Ombre Tathlum +1",
+  --   head = augments.merlinic.hood.nuke,
+  --   neck = "Sanctity Necklace",
+  --   lear = "Strophadic Earring",
+  --   rear = "Barkarole Earring",
+  --   body = augments.merlinic.jubbah,
+  --   hands = "Amalric Gages",
+  --   lring = "Shiva Ring",
+  --   rring = "Strendu Ring",
+  --   back = "Lugh's Cape",
+  --   waist = "Refoccilation Stone",
+  --   legs = augments.merlinic.shalwar.burst,
+  --   feet = augments.merlinic.crackows.nuke
+  -- }
+  -- sets.aftercast = {}
+  -- sets.aftercast.Caster = set_combine(sets.modes.Caster, {
+  --   ammo = "Homiliary",
+  --   head = "Befouled Crown",
+  --   neck = "Loricate Torque +1",
+  --   body = "Jhakri Robe +1",
+  --   lring = "Gelatinous Ring +1",
+  --   rring = "Defending Ring",
+  --   back = "Solemnity Cape",
+  --   -- waist = "Fucho-no-Obi",
+  --   waist = "Flume Belt +1",
+  --   legs = "Assid. Pants +1"
+  -- })
 
   -- Base Sets
   --
@@ -116,16 +136,16 @@ function get_sets()
     waist = "Witful Belt"             -- 3
                                -- TOTAL: 46
   }
-  sets.base.move_speed = {
-  }
-  sets.base.idle = set_combine(sets.modes.Caster, {
-  })
-  sets.base.resting = set_combine(sets.modes.Caster, {
-    head = "Befouled Crown",
-    body = "Jhakri Robe +1",
-    waist = "Fucho-no-Obi",
-    legs = "Assid. Pants +1"
-  })
+  -- sets.base.move_speed = {
+  -- }
+  -- sets.base.idle = set_combine(sets.modes.Caster, {
+  -- })
+  -- sets.base.resting = set_combine(sets.modes.Caster, {
+  --   head = "Befouled Crown",
+  --   body = "Jhakri Robe +1",
+  --   waist = "Fucho-no-Obi",
+  --   legs = "Assid. Pants +1"
+  -- })
 
   -- Weapon Skills
   --
@@ -137,16 +157,16 @@ function get_sets()
     -- head = "Kaabnax Hat",
     head = "Pixie Hairpin +1",
     neck = "Sanctity Necklace",
-    lear = "Influx Earring",
+    lear = "Etiolation Earring",
     rear = "Moonshade Earring",
-    body = augments.merlinic.jubbah,
+    body = "Amalric Doublet",
     hands = "Otomi Gloves",
     lring = "Etana Ring",
     rring = "Bifrost Ring",
-    -- back = "Bane Cape",
-    waist = "Fucho-no-Obi",
-    legs = augments.merlinic.shalwar.macc,
-    feet = augments.merlinic.crackows.nuke
+    back = "Merciful Cape",
+    waist = "Luminary Sash",
+    legs = "Chironic Hose",
+    feet = "Medium's sabots"
   }
 
   -- MIDCAST
@@ -156,8 +176,9 @@ function get_sets()
   --
   sets.midcast = {}
   sets.midcast.dark = {
-    main = "Akademos",
-    sub = "Enki Strap",
+    -- main = "Akademos",
+    -- main=augments.grio.nuke,
+    -- sub = "Enki Strap",
     ammo = "Ombre Tathlum +1",
     head = "Amalric Coif",
     -- head = "Pixie Hairpin +1",
@@ -187,8 +208,9 @@ function get_sets()
   --
   sets.midcast.elemental = {}
   sets.midcast.elemental.Normal = {
-    main = "Akademos",
-    sub = "Enki Strap",
+    -- main = "Akademos",
+    -- main=augments.grio.nuke,
+    -- sub = "Enki Strap",
     ammo = "Ombre Tathlum +1",
     head = augments.merlinic.hood.nuke,
     neck = "Sanctity Necklace",
@@ -231,7 +253,7 @@ function get_sets()
     lear = "Lifestorm Earring",
     rear = "Psystorm Earring",
     body = "Vanya Robe",
-    hands = "Lurid Mitts",
+    hands = "Jhakri Cuffs +2",
     lring = "Weatherspoon Ring",
     rring = "Globidonta Ring",
     back = "Lugh's Cape",
@@ -245,12 +267,18 @@ function get_sets()
   sets.midcast.enhancing_skill = {
   }
   sets.midcast.enhancing_duration = {
-    main = "Oranyan",
-    back = "Lugh's Cape",
-    legs = "Telchine Braconi"
+    -- main="Oranyan",
+    main="Malevolence",
+    sub="Ammurapi Shield",
+    head="Telchine Cap",
+    body="Telchine Chasuble",
+    hands="Telchine Gloves",
+    legs="Telchine Braconi",
+    feet="Telchine Pigaches",
+    back="Lugh's Cape",
   }
   sets.midcast.enhancing_regen = {
-    body = "Telchine Chasuble"
+    back="Lugh's Cape",
   }
   sets.midcast.enhancing_refresh = {
     head = "Amalric Coif"
@@ -426,12 +454,11 @@ function chat(msg)
 end
 
 function aftercast(spell)
-  if player.in_combat then
-    equip(sets.aftercast[PrimaryMode.current])
-  end
-  if Capacity.value then
-    equip({back = "Mecistopins Mantle"})
-  end
+  -- if player.in_combat then
+  --   equip(sets.aftercast[PrimaryMode.current])
+  -- end
+
+  equip(sets.Idle)
 
   if spell.english == "Sublimation" then
     if buffactive['Sublimation: Activated'] or buffactive['Sublimation: Complete'] then
@@ -442,12 +469,7 @@ end
 
 function status_change(new, old)
   if new == 'Resting' then
-    equip(sets.base.resting)
-  elseif new == 'Engaged' then
-    equip(sets.modes[PrimaryMode.current])
-    if DamageDown.current then
-      equip(sets.modes.DamageDown)
-    end
+    equip(sets.Idle)
   end
 end
 
@@ -476,12 +498,11 @@ function self_command(commandArgs)
       end
     end
   elseif command == 'idle' then
-    equip(sets.base.idle)
+    equip(sets.Idle)
   elseif command == 'idle' then
-    equip(sets.modes.Caster.aftercast)
+    equip(sets.Idle)
   elseif command == 'run' then
-    equip_set_for_current_mode()
-    equip(sets.base.move_speed)
+    equip(sets.Idle)
   elseif command == 'auto_aspir' then
     auto_aspir()
 
@@ -543,7 +564,8 @@ end
 -- Determine which idle set should be worn at this time
 --
 function equip_set_for_current_mode()
-  equip(sets.modes[PrimaryMode.current])
+  -- equip(sets.modes[PrimaryMode.current])
+  equip(sets.Idle)
 end
 
 function auto_aspir()

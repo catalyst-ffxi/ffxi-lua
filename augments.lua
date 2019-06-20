@@ -49,6 +49,7 @@ augments = {
       triple = { name="Herculean Boots", augments={'Accuracy+25 Attack+25','"Triple Atk."+4','STR+10','Accuracy+4',}},
       mab = { name="Herculean Boots", augments={'"Mag.Atk.Bns."+19','Phys. dmg. taken -1%','Phalanx +2','Mag. Acc.+14 "Mag.Atk.Bns."+14',}},
       dimi = { name="Herculean Boots", augments={'Accuracy+11','Weapon skill damage +2%','DEX+15',}},
+      th2 = { name="Herculean Boots", augments={'Pet: STR+3','STR+3','"Treasure Hunter"+2',}},
     }
   },
 

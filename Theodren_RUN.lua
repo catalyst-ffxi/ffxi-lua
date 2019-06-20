@@ -5,8 +5,8 @@ include('utils.lua')
 -- include('organizer-lib')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Tank', 'Hybrid', 'Normal'}
-  WeaponMode = M{['description'] = 'Weapon Mode', 'Tank', 'DD'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'Tank', 'HybridHeavy', 'HybridLight', 'FullDD'}
+  WeaponMode = M{['description'] = 'Weapon Mode', 'Tank', 'Hybrid', 'DD'}
 
   Runes = {
     current = 1,
@@ -21,16 +21,9 @@ function define_modes()
       { name="Tenebrae", ele="Dark", resist="Light" }
     }
   }
-
 end
 
 function define_spells()
-  Spells_EnhancingDuration = S{
-    "Shell V", "Protect IV", "Crusade", "Aquaveil", "Stoneskin"
-  }
-  Spells_EnhancingSkill = S{
-    "Temper"
-  }
   Spells_Enmity = S{
     "Flash", "Blank Gaze", "Jettatura", "Foil"
   }
@@ -72,23 +65,26 @@ function get_sets()
   --
   sets.weapons = {}
   sets.weapons.DD = {
+    main="Lionheart",
+    sub="Utu Grip"
+  }
+  sets.weapons.Hybrid = {
     main="Epeolatry",
     sub="Utu Grip"
   }
   sets.weapons.Tank = {
     main="Epeolatry",
-    sub="Refined Grip +1"
+    sub="Alber Strap"
   }
 
   -- Modes
   --
   sets.modes = {}
-  sets.modes.Normal = {
-    ammo="Ginsen",
+  sets.modes.FullDD = {
+    ammo="Yamarang",
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
     hands=augments.herc.hands.triple,
-    -- legs="Meg. Chausses +2",
     legs="Samnuha Tights",
     feet=augments.herc.feet.triple,
     neck="Anu Torque",
@@ -99,21 +95,36 @@ function get_sets()
     right_ring="Epona's Ring",
     back=gear.ogma.tp
   }
-  sets.modes.Hybrid = {
-    ammo="Staunch Tathlum +1",         -- 3 DT
+  sets.modes.HybridLight = {
+    ammo="Yamarang",
     head="Adhemar Bonnet +1",
-    body="Ayanmo Corazza +2",          -- 6 DT
+    body="Ayanmo Corazza +2",          -- 6 PDT
     hands=augments.herc.hands.triple,  -- 2 PDT
     legs="Meg. Chausses +2",           -- 6 PDT
     feet=augments.herc.feet.triple,    -- 2 PDT
-    neck="Loricate Torque +1",         -- 6 DT
-    waist="Windbuffet Belt +1",
+    neck="Loricate Torque +1",         -- 6 PDT
+    waist="Ioskeha Belt +1",
+    left_ear="Brutal Earring",
+    right_ear="Sherida Earring",
+    left_ring="Defending Ring",        -- 10 DT
+    right_ring="Epona's Ring",
+    back=gear.ogma.tp                  -- 10 PDT
+  }                                    -- 43 PDT
+  sets.modes.HybridHeavy = {
+    ammo="Staunch Tathlum +1",         -- 3 DT
+    head="Aya. Zucchetto +2",          -- 3 DT
+    body="Ayanmo Corazza +2",          -- 6 PDT
+    hands="Turms Mittens +1",
+    legs="Meg. Chausses +2",           -- 6 PDT
+    feet="Turms Leggings",
+    neck="Loricate Torque +1",         -- 6 PDT
+    waist="Ioskeha Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
     left_ring="Defending Ring",        -- 10 DT
     right_ring="Moonbeam Ring",        -- 4 DT
     back=gear.ogma.tp                  -- 10 PDT
-  }                                    -- 49 PDT
+  }                                    -- 48 PDT
   sets.modes.Tank = {
     ammo="Staunch Tathlum +1",
     head="Turms Cap",
@@ -126,7 +137,7 @@ function get_sets()
     left_ear="Odnowa Earring +1",
     right_ear="Etiolation Earring",
     left_ring="Defending Ring",
-    right_ring="Warden's Ring",
+    right_ring="Moonbeam Ring",
     back=gear.ogma.tank
   }
 
@@ -184,20 +195,6 @@ function get_sets()
     right_ring="Karieyh Ring +1",
     back=gear.ogma.reso
   }
-  -- sets.WS.Shockwave = {
-  --   head=augments.herc.head.wsd,
-  --   neck="Fotia Gorget",
-  --   left_ear="Ishvara Earring",
-  --   right_ear="Moonshade Earring",
-  --   body=augments.herc.body.reso,
-  --   hands="Meg. Gloves +2",
-  --   left_ring="Karieyh Ring +1",
-  --   right_ring="Shukuyu Ring",
-  --   back=gear.ogma.reso,
-  --   waist="Prosilio Belt +1",
-  --   legs=augments.herc.legs.ws,
-  --   feet=augments.herc.feet.reso,
-  -- }
   sets.WS.Shockwave = set_combine(sets.Enmity, {
     neck="Fotia Gorget",
     left_ear="Moonshade Earring",
@@ -207,9 +204,9 @@ function get_sets()
   -- Job Abilities
   --
   sets.JAs = {}
-  sets.JAs.Valiance = { body="Runeist Coat", back="Ogma's Cape" }
+  sets.JAs.Valiance = { body="Runeist Coat +1", back="Ogma's Cape" }
   sets.JAs.Vallation = sets.JAs.Valiance
-  sets.JAs.Pflug = { feet="Runeist Bottes" }
+  sets.JAs.Pflug = { feet="Runeist Bottes +1" }
   sets.JAs.Gambit = { hands="Runeist's Mitons +2" }
   sets.JAs.Rayke = { feet="Futhark Boots" }
   sets.JAs.Battuta = { head="Futhark Bandeau +1" }
@@ -218,7 +215,8 @@ function get_sets()
   sets.JAs['Vivacious Pulse'] = {
     head="Erilaz Galea +1",
     neck="Incanter's Torque",
-    left_ring="Globidonta Ring",
+    left_ring="Stikini Ring",
+    right_ring="Stikini Ring",
     back="Altruistic Cape",
     legs="Runeist Trousers"
   }
@@ -247,12 +245,8 @@ function get_sets()
   }
   sets.Magic.FastCastEnhancing = set_combine(sets.Magic.FastCast, {
     waist="Siegel Sash",             -- 9
-    legs="Futhark Trousers +2"       -- 14
-                                     -- 84
-  })
-  sets.Magic.FastCastUtsusemi = set_combine(sets.Magic.FastCast, {
-    neck="Magoraga Beads",           -- 10
-                                     -- 72
+    legs="Futhark Trousers +3"       -- 15
+                                     -- 85
   })
   sets.Magic.EnhancingSkill = {
     head="Carmine Mask",            -- 10
@@ -276,7 +270,8 @@ function get_sets()
   })
   sets.Magic.EnhancingDuration = {
     head="Erilaz Galea +1",
-    legs="Futhark Trousers +2"
+    hands="Regal Gauntlets",
+    legs="Futhark Trousers +3"
   }
   sets.Magic.Barspell = set_combine(
     sets.Magic.EnhancingSkill,
@@ -300,7 +295,7 @@ function get_sets()
     body="Futhark Coat +3",          -- DT
     hands="Rawhide Gloves",          -- 15
     left_ring="Defending Ring",      -- DT
-    right_ring="Warden's Ring",      -- PDT
+    right_ring="Moonbeam Ring",      -- PDT
     back=gear.ogma.enmity,           -- 10
     waist="Rumination Sash",         -- 10
     legs="Carmine Cuisses +1",       -- 20
@@ -308,19 +303,10 @@ function get_sets()
                                      -- 8 Merit
                                      -- 106 Total
   }
-  -- sets.Magic.Phalanx = set_combine(sets.Magic.SpellInterrupt, {
-  --   head="Futhark Bandeau +1",
-  --   body=augments.herc.body.phalanx,
-  --   hands=augments.taeon.hands.phalanx,
-  --   legs=augments.taeon.legs.phalanx,
-  --   feet=augments.taeon.feet.phalanx
-  -- })
-
 
   -- Upgrades:
   --
   -- feet="Ahosi Leggings"       -- 7
-  -- hands="Kurys Gloves",       -- 9
   --
   sets.Enmity = {
     ammo="Sapience Orb",           -- 2
@@ -329,7 +315,7 @@ function get_sets()
     left_ear="Trux Earring",       -- 5
     right_ear="Cryptic Earring",   -- 4
     body="Emet Harness +1",        -- 10
-    hands="Nilas Gloves",          -- 5
+    hands="Kurys Gloves",          -- 9
     left_ring="Supershear Ring",   -- 5
     right_ring="Eihwaz Ring",      -- 5
     back=gear.ogma.enmity,         -- 10
@@ -366,7 +352,6 @@ function precast(spell)
       equip(sets.Magic.FastCastEnhancing)
 
     elseif string.find(spell.english, 'Utsusemi') then
-      equip(sets.Magic.FastCastUtsusemi)
       if spell.english == 'Utsusemi: Ichi' and (buffactive['Copy Image'] or buffactive['Copy Image (2)'] or buffactive['Copy Image (3)']) then
         send_command('@wait 1.0; cancel 66; cancel 444; cancel 445')
       end
@@ -386,7 +371,7 @@ end
 function midcast(spell)
   if spell.action_type == 'Magic' then
     equip(sets.Magic.SpellInterrupt)
-  
+
     if sets.Magic[spell.name] then
       equip(sets.Magic[spell.name])
 
@@ -396,13 +381,17 @@ function midcast(spell)
     elseif Spells_AoeEnmity:contains(spell.english) then
       equip(sets.AoeEnmity)
 
-    elseif Spells_EnhancingSkill:contains(spell.english) then
+    elseif spell.english == "Temper" then
       equip(sets.Magic.EnhancingSkill)
 
     elseif string.find(spell.english, 'Bar') then
       equip(sets.Magic.Barspell)
-    
+
     elseif spell.skill == 'Enhancing Magic' then
+      equip(sets.Magic.EnhancingDuration)
+    end
+
+    if buffactive['Embolden'] then
       equip(sets.Magic.EnhancingDuration)
     end
   end

@@ -1,6 +1,7 @@
 include('Mote-Mappings.lua')
 include('Modes.lua')
 include('augments.lua')
+include('utils.lua')
 
 function define_modes()
   PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Hybrid', 'Accuracy'}
@@ -20,6 +21,9 @@ function define_binds()
   send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
   send_command("alias g15v2_m1g3 gs c cycle Luzaf")
   send_command("alias g15v2_m1g4 gs c weapon")
+  send_command('bind !f9 input /item "Echo Drops" <me>')
+  send_command('bind !f10 input /item "Remedy" <me>')
+  send_command('bind !f11 input /item "Holy Water" <me>')
 end
 
 function define_gear()
@@ -89,7 +93,7 @@ function get_sets()
     hands="Meg. Gloves +2",
     legs="Meg. Chausses +2",
     feet="Meg. Jam. +2",
-    neck="Lissome Necklace",
+    neck="Sanctity Necklace",
     waist="Reiki Yotai",
     left_ear="Telos Earring",
     right_ear="Digni. Earring",
@@ -98,22 +102,37 @@ function get_sets()
     back=gear.camulus.meleeTp
   }
 
-  sets.Idle = set_combine(
-    sets.modes.Normal,
-    { left_ring="Karieyh Ring +1" }
-  )
+  sets.Idle = {
+    head="Adhemar Bonnet +1",
+    body="Lanun Frac +3",
+    hands=augments.herc.hands.triple,
+    legs="Meg. Chausses +2",
+    feet=augments.herc.feet.triple,
+    neck="Loricate Torque +1",
+    waist="Flume Belt +1",
+    left_ear="Genmei Earring",
+    right_ear="Etiolation Earring",
+    left_ring="Defending Ring",
+    right_ring="Karieyh Ring +1",
+    back=gear.camulus.meleeTp,
+  }
+
+  -- sets.Idle = set_combine(
+  --   sets.modes.Normal,
+  --   { left_ring="Karieyh Ring +1" }
+  -- )
 
   -- Shooting
   sets.Preshot = {                           -- Snap | Rapid
     head=augments.taeon.head.shapshot,       --   8    0
     neck="Commodore Charm +1",               --   3
     body="Laksamana's Frac +3",              --   0    18
-    hands="Carmine Finger Gauntlets +1",     --   7    10
+    hands="Carmine Finger Gauntlets +1",     --   8    11
     legs=augments.adhemar.kecks.rapidShot,   --   9    10
     feet="Meg. Jam. +2",                     --  10    0
     waist="Yemaya Belt",                     --   0    5
     back=gear.camulus.snapShot               --  10    0
-                                      -- Total:  47    43
+                                      -- Total:  48    44
   }
   sets.TripleShot = {
     -- body="Chasseur's Frac"
@@ -151,7 +170,7 @@ function get_sets()
   sets.Magic.SpellInterrupt = {
     head=augments.taeon.head.SID,    -- 7
     neck="Loricate Torque +1",
-    lear="Halasz Earring",           -- 5
+    -- lear="Halasz Earring",           -- 5
     rear="Magnetic earring",         -- 8
     body="Lanun Frac +3",
     hands="Rawhide Gloves",          -- 15
@@ -306,6 +325,13 @@ function get_sets()
   sets.JAs['Random Deal'] = { body = "Lanun Frac +3" }
   sets.JAs['Wild Card'] = { feet = "Lanun Bottes +3" }
   sets.JAs.Waltz = { lring = 'Asklepian Ring' }
+
+  sets.Doom = {
+    neck="Nicander's Necklace",
+    left_ring="Purity Ring",
+    right_ring="Blenmot's Ring",
+    waist="Gishdubar Sash"
+  }
 end
 
 function precast(spell)
@@ -345,7 +371,7 @@ function precast(spell)
     equip(sets.Magic.FastCast)
 
   elseif spell.type == 'WeaponSkill' then
-    equip(set_for_ws(spell.english))
+    equip(sets.WS[spell.english])
 
     if spell.english == "Leaden Salute" then
       -- Replace moonshade earring if tp is capped
@@ -383,19 +409,19 @@ function aftercast(spell)
     if player.status == 'Engaged' then
       equip(set_for_engaged())
     else
-      equip(sets.Idle)
+      -- equip(sets.Idle)
     end
   end
-  if Compensator.value and player.equipment.ranged == 'Compensator' then
-    equip({ ranged = gear.weapons[Weapons.current] })
-  end
+  -- if Compensator.value and player.equipment.ranged == 'Compensator' then
+  --   equip({ ranged = gear.weapons[Weapons.current] })
+  -- end
 end
 
 function status_change(new, old)
   if new == 'Engaged' then
     equip(set_for_engaged())
   else
-    equip(sets.Idle)
+    -- equip(sets.Idle)
   end
 end
 
