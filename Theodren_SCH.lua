@@ -63,8 +63,7 @@ function get_sets()
   -- Mode Sets
   --
   sets.Idle = {
-    -- main=augments.grio.nuke,
-    main="Malevolence",
+    main="Maxentius",
     sub="Ammurapi Shield",
     ammo="Homiliary",
     head="Befouled Crown",
@@ -75,8 +74,7 @@ function get_sets()
     hands="Amalric Gages",
     left_ring="Gelatinous Ring +1",
     right_ring="Defending Ring",
-    -- back="Solemnity Cape",
-    back="Mecisto. Mantle",
+    back="Solemnity Cape",
     waist="Fucho-no-Obi",
     legs="Assid. Pants +1",
     feet="Chironic Slippers"
@@ -119,20 +117,35 @@ function get_sets()
   sets.base = {}
 
   sets.base.fast_cast = {
-    head = augments.merlinic.hood.nuke,    -- 13
-    lear = "Loquacious earring",       -- 2
+    ammo="Sapience Orb",                -- 2
+    head = "Amalric Coif +1",   -- 11
+    neck="Orunmila's Torque",           -- 5
+    lear = "Loquacious earring",   -- 2
     rear = "Magnetic earring",
-    body = augments.merlinic.jubbah,       -- 6
-    hands = "Helios Gloves",           -- 5
-    rring = "Prolix Ring",             -- 2
-    -- -- back = "Swith Cape", -- 3
-    legs = "Lengo Pants",              -- 5
+    body = augments.merlinic.jubbah,  -- 6
+    hands = "Helios Gloves",       -- 5
+    lring = "Kishar Ring",   -- 4
+    rring = "Prolix Ring",         -- 2
+    back="Perimede Cape",
+    waist = "Witful Belt",         -- 3
+    legs = "Lengo Pants", -- 5
     feet = augments.merlinic.crackows.nuke -- 5
-                                -- TOTAL: 38
   }
+
+  -- sets.base.fast_cast = {
+  --   head = "Amalric Coif +1",        -- 11
+  --   lear = "Loquacious earring",       -- 2
+  --   rear = "Magnetic earring",
+  --   body = augments.merlinic.jubbah,       -- 6
+  --   hands = "Helios Gloves",           -- 5
+  --   rring = "Prolix Ring",             -- 2
+  --   -- -- back = "Swith Cape", -- 3
+  --   legs = "Lengo Pants",              -- 5
+  --   feet = augments.merlinic.crackows.nuke -- 5
+  --                               -- TOTAL: 36
+  -- }
   sets.base.quick_cast = {
     ammo = "Impatiens",
-    lring = "Weatherspoon Ring",      -- 5
     waist = "Witful Belt"             -- 3
                                -- TOTAL: 46
   }
@@ -153,7 +166,7 @@ function get_sets()
     neck = "Fotia Gorget"
   }
   sets.ws.Myrkr = {
-    ammo = "Ombre Tathlum +1",
+    ammo = "Quartz Tathlum +1",
     -- head = "Kaabnax Hat",
     head = "Pixie Hairpin +1",
     neck = "Sanctity Necklace",
@@ -161,8 +174,10 @@ function get_sets()
     rear = "Moonshade Earring",
     body = "Amalric Doublet",
     hands = "Otomi Gloves",
-    lring = "Etana Ring",
-    rring = "Bifrost Ring",
+    -- lring = "Etana Ring", -- stored
+    -- rring = "Bifrost Ring",
+    left_ring="Supershear Ring",
+    right_ring="Prolix Ring",
     back = "Merciful Cape",
     waist = "Luminary Sash",
     legs = "Chironic Hose",
@@ -179,19 +194,19 @@ function get_sets()
     -- main = "Akademos",
     -- main=augments.grio.nuke,
     -- sub = "Enki Strap",
-    ammo = "Ombre Tathlum +1",
-    head = "Amalric Coif",
+    ammo = "Pemphredo Tathlum",
+    head = "Amalric Coif +1",
     -- head = "Pixie Hairpin +1",
     neck = "Erra Pendant",
-    lear = "Lifestorm Earring",
-    rear = "Psystorm Earring",
+    lear = "Digni. Earring",
+    rear = "Regal Earring",
     body = augments.merlinic.jubbah,
     hands = "Amalric Gages",
-    lring = "Weatherspoon Ring",
-    rring = "Shiva Ring",
-    -- back = augments.taranus.nuke,
+    lring = "Stikini Ring",
+    rring = "Stikini Ring",
+    back = "Lugh's Cape",
     waist = "Refoccilation Stone",
-    -- legs = "Spaekona's Tonban +2",
+    legs = augments.merlinic.shalwar.macc,
     feet = augments.merlinic.crackows.nuke
   }
   sets.midcast.drain_aspir = set_combine(sets.midcast.dark, {
@@ -208,14 +223,10 @@ function get_sets()
   --
   sets.midcast.elemental = {}
   sets.midcast.elemental.Normal = {
-    -- main = "Akademos",
-    -- main=augments.grio.nuke,
-    -- sub = "Enki Strap",
-    ammo = "Ombre Tathlum +1",
-    head = augments.merlinic.hood.nuke,
+    ammo = "Pemphredo Tathlum",
+    head = "Jhakri Coronal +2",
     neck = "Sanctity Necklace",
-    lear = "Strophadic Earring",
-    -- rear = "Friomisi earring",
+    lear = "Friomisi Earring",
     rear = "Barkarole Earring",
     body = augments.merlinic.jubbah,
     hands = "Amalric Gages",
@@ -228,38 +239,31 @@ function get_sets()
   }
   sets.midcast.elemental.MagicBurst = set_combine(sets.midcast.elemental.Normal, {
     neck = "Mizu. Kubikazari",           -- MB +10
-    lear = "Friomisi Earring",           -- 0
+    body = augments.merlinic.jubbah,     -- MB +3
+    hands = "Amalric Gages",             -- MB II +5
     lring = "Mujin Band",                -- MB II +5
     rring = "Locus Ring",                -- MB +5
-    head = augments.merlinic.hood.burst,     -- MB +11
-    body = augments.merlinic.jubbah,         -- MB +3
-    hands = "Amalric Gages",             -- MB II +5
-    legs = augments.merlinic.shalwar.burst,  -- MB +10
+    feet = "Jhakri Pigaches +2"          -- MB +7
   })                                     -- TOTALS
-                                         -- MB +44 (Caps at 40%)
+                                         -- MB +30 (Caps at 40%)
                                          -- MB II +10
-  -- Death
-  --
-  -- sets.precast.Death = {
-  --
-  -- }
 
   -- Enfeebling Magic
   --
   sets.midcast.enfeebling = {
     ammo = "Quartz Tathlum +1",
-    head = augments.merlinic.hood.nuke,
+    head = "Amalric Coif +1",
     neck = "Incanter's torque",
-    lear = "Lifestorm Earring",
-    rear = "Psystorm Earring",
+    lear = "Digni. Earring",
+    rear = "Regal Earring",
     body = "Vanya Robe",
     hands = "Jhakri Cuffs +2",
-    lring = "Weatherspoon Ring",
-    rring = "Globidonta Ring",
+    lring = "Stikini Ring",
+    rring = "Stikini Ring",
     back = "Lugh's Cape",
-    waist = "Rumination Sash",
+    waist = "Luminary Sash",
     legs = augments.merlinic.shalwar.macc,
-    feet = augments.merlinic.crackows.nuke
+    feet = "Medium's Sabots"
   }
 
   -- Enhancing Magic
@@ -268,7 +272,7 @@ function get_sets()
   }
   sets.midcast.enhancing_duration = {
     -- main="Oranyan",
-    main="Malevolence",
+    main="Maxentius",
     sub="Ammurapi Shield",
     head="Telchine Cap",
     body="Telchine Chasuble",
@@ -281,11 +285,11 @@ function get_sets()
     back="Lugh's Cape",
   }
   sets.midcast.enhancing_refresh = {
-    head = "Amalric Coif"
+    head = "Amalric Coif +1"
   }
   sets.midcast.enhancing_refresh_self = {
     waist = "Gishdubar sash",
-    feet = "Inspirited Boots"
+    -- feet = "Inspirited Boots"
   }
   sets.midcast.enhancing_stoneskin = {
     neck = "Nodens Gorget",
@@ -303,31 +307,42 @@ function get_sets()
   -- Healing Sets
   --
   sets.midcast.healing = {
-    -- main = "Serenity",            -- 25%
-    -- sub = "Mephitis Grip",
-    neck = "Colossus's Torque",
-    rear = "Mendicant's Earring", -- 5%
-    body = "Vanya Robe",          -- 7%
-    hands = "Telchine Gloves",    -- 18%
-    lring = "Ephedra Ring",
-    rring = "Ephedra Ring",
-    legs = "Vanya Slops",
-    feet = "Vanya Clogs"          -- 5%
+    ammo="Quartz Tathlum +1",
+    head="Vanya Hood",
+    body="Vanya Robe",
+    hands="Telchine Gloves",
+    legs="Vanya Slops",
+    feet="Vanya Clogs",
+    neck="Incanter's Torque",
+    waist="Luminary Sash",
+    left_ear="Regal Earring",
+    right_ear="Mendi. Earring",
+    left_ring="Haoma's Ring",
+    right_ring="Haoma's Ring",
+    back="Solemnity Cape"       -- 7%
   }
   sets.midcast.healing_self = {
-    neck = "Phalaina Locket",  -- 4% self
-    lring = 'Kunaji Ring',     -- 5% self
-    rring = 'Asklepian Ring',  -- 3% self
-  }                            -- (30% cap)
+    neck="Phalaina Locket",      -- 4% self
+    left_ring='Kunaji Ring',     -- 5% self
+    waist="Gishdubar Sash"       -- 10% self
+  }
   sets.midcast.convert = set_combine(sets.midcast.healing, sets.midcast.healing_self, {
   })
   -- Cursna chance to clear doom affected by Healing Magic and Cursna Effect+ gear
   sets.midcast.cursna = {
-    neck = "Colossus's Torque",
-    rear = "Mendicant's Earring",
-    lring = "Ephedra Ring",
-    rring = "Ephedra Ring",
-    feet = "Vanya Clogs"
+    ammo="Sapience Orb",
+    head="Vanya Hood",
+    body="Vanya Robe",
+    hands="Kaykaus Cuffs +1",
+    legs="Vanya Slops",
+    feet="Vanya Clogs",
+    neck="Malison Medallion",
+    waist="Witful Belt",
+    left_ear="Loquac. Earring",
+    right_ear="Etiolation Earring",
+    left_ring="Haoma's Ring",
+    right_ring="Haoma's Ring",
+    back="Oretan. Cape +1",
   }
 end
 
@@ -512,11 +527,11 @@ function self_command(commandArgs)
   elseif command == 'Scission' then send_command('input /p Opening - Scission [Earth] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Fire" <t>;wait 5.3;input /p Closing - Scission [Earth] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Stone" <t>;')
   elseif command == 'Reverberation' then send_command('input /p Opening - Reverberation [Water] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Stone" <t>;wait 5.3;input /p Closing - Reverberation [Water] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Water" <t>;')
   elseif command == 'Induration' then send_command('input /p Opening - Induration [Ice] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Water" <t>;wait 5.3;input /p Closing - Induration [Ice] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Blizzard" <t>;')
-  elseif command == 'Transfixion' then send_command('input /p Opening - Transfixion [Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Noctohelix" <t>;wait 5.3;input /p Closing - Transfixion [Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Luminohelix" <t>;')				
+  elseif command == 'Transfixion' then send_command('input /p Opening - Transfixion [Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Noctohelix" <t>;wait 5.3;input /p Closing - Transfixion [Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Luminohelix" <t>;')
   elseif command == 'Compression' then send_command('input /p Opening - Compression [Dark] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Blizzard" <t>;wait 5.3;input /p Closing - Compression [Dark] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Noctohelix" <t>;')
   elseif command == 'Fusion' then send_command('input /p Opening - Fusion [Fire/Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Fire" <t>;wait 4.8;input /p Closing - Fusion [Fire/Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Thunder" <t>;')
-  elseif command == 'Fragmentation' then send_command('input /p Opening - Fragmentation [Wind/Thunder] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Blizzard" <t>;wait 5.3;input /p Closing - Fragmentation [Wind/Thunder] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Water" <t>;') 
-  elseif command == 'Gravitation' then send_command('input /p Opening - Gravitation [Earth/Dark] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Aero" <t>;wait 5.3;input /p Closing - Gravitation [Earth/Dark] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Noctohelix" <t>;') 
+  elseif command == 'Fragmentation' then send_command('input /p Opening - Fragmentation [Wind/Thunder] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Blizzard" <t>;wait 5.3;input /p Closing - Fragmentation [Wind/Thunder] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Water" <t>;')
+  elseif command == 'Gravitation' then send_command('input /p Opening - Gravitation [Earth/Dark] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Aero" <t>;wait 5.3;input /p Closing - Gravitation [Earth/Dark] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Noctohelix" <t>;')
   elseif command == 'Distortion' then send_command('input /p Opening - Distortion [Water/Ice] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Luminohelix" <t>;wait 5.3;input /p Closing - Distortion [Water/Ice] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Stone" <t>;')
   elseif command == 'Tfusion' then send_command('input /p Opening - Liquefaction [Fire] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Stone" <t>;wait 5.3;input /p Closing - Liquefaction [Fire] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Fire" <t>;wait 4.8;input /p Closing - Fusion [Fire/Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Thunder" <t>;')
 

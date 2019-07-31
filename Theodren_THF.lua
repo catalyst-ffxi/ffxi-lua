@@ -50,9 +50,9 @@ function get_sets()
   }
   sets.modes = {}
   sets.modes.Normal = {
-    -- ammo="Ginsen",
-    ranged="Exalted Crossbow +1",
-    ammo="Gashing Bolt",
+    ammo="Ginsen",
+    -- ranged="Exalted Crossbow +1",
+    -- ammo="Gashing Bolt",
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
     hands=augments.herc.hands.triple,
@@ -67,26 +67,28 @@ function get_sets()
     back=gear.toutatis.tp,
   }
   sets.modes.Hybrid = {
-    -- ammo="Staunch Tathlum +1",
-    ranged="Exalted Crossbow +1",
-    ammo="Gashing Bolt",
+    ammo="Staunch Tathlum +1",
+    -- ranged="Exalted Crossbow +1",
+    -- ammo="Gashing Bolt",
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
     hands=augments.herc.hands.triple,    -- 2 PDT
     legs="Meg. Chausses +2",             -- 6 PDT
     feet=augments.herc.feet.triple,      -- 2 PDT
     neck="Loricate Torque +1",           -- 6 DT
-    waist="Flume Belt +1",               -- 4 PDT
-    left_ear="Suppanomimi",
+    -- waist="Flume Belt +1",               -- 4 PDT
+    waist="Reiki Yotai",
+    -- left_ear="Suppanomimi",
+    left_ear="Brutal Earring",
     right_ear="Sherida Earring",
     left_ring="Defending Ring",          -- 10 PDT
     right_ring="Moonbeam Ring",          -- 4 DT
     back=gear.toutatis.tp,               -- 10 PDT
-  }                                      -- 47 PDT
+  }                                      -- 43 PDT
   sets.modes.FullTH = {
-    -- ammo="Ginsen",
-    ranged="Exalted Crossbow +1",
-    ammo="Gashing Bolt",
+    ammo="Ginsen",
+    -- ranged="Exalted Crossbow +1",
+    -- ammo="Gashing Bolt",
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
     hands="Plunderer's Armlets +1",
@@ -105,7 +107,7 @@ function get_sets()
   --
   sets.WS = {}
   sets.WS.Rudra = {
-    -- ammo="Falcon Eye",
+    ammo="Falcon Eye",
     head=augments.herc.head.dimi,
     body="Meg. Cuirie +2",
     hands="Meg. Gloves +2",
@@ -122,7 +124,7 @@ function get_sets()
   -- sets.WS['Exenterator'] = {
   -- }
   sets.WS['Evisceration'] = {
-    -- ammo="Yetshila",
+    ammo="Yetshila",
     head="Adhemar Bonnet",
     neck="Fotia Gorget",
     left_ear="Moonshade Earring",
@@ -163,7 +165,7 @@ function get_sets()
     back=gear.toutatis.ws,
     waist="Eschan Stone",
     legs=augments.herc.legs.magic,
-    feet= augments.herc.feet.mab
+    feet= augments.herc.feet.dimi
   }
   sets.WS['Circle Blade'] = {
     -- ammo="Falcon Eye",
@@ -206,7 +208,7 @@ function get_sets()
   sets.MA = {}
   sets.MA.FastCast = {
     -- ammo="Impatiens",
-    head=augments.herc.head.fc,         -- 12
+    head="Herculean Helm",              -- 7
     neck="Orunmila's Torque",           -- 5
     body="Taeon Tabard",                -- 8
     hands="Leyline Gloves",             -- 7

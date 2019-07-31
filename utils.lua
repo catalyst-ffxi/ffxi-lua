@@ -7,8 +7,8 @@ function buff_change(buff, gain, bufftable)
       send_command('input /item "Holy Water" <me>')
     else
       unlock_set(sets.Doom)
-      -- send_command("input /echo DOOM OFF - Removed doom gear")
-      send_command("input /party Doom OFF!")
+      send_command("input /echo DOOM OFF - Removed doom gear")
+      -- send_command("input /party Doom OFF!")
     end
   end
 end

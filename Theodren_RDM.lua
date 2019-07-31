@@ -96,8 +96,8 @@ function get_sets()
   -- Engaged sets
   sets.Engaged = {}
   sets.Engaged.Normal = {
-    -- main="Vitiation Sword",
-    main="Naegling",
+    main="Vitiation Sword",
+    -- main="Naegling",
     sub="Ammurapi Shield",
     ammo="Ginsen",
     head=augments.taeon.head.tp,
@@ -114,8 +114,8 @@ function get_sets()
     back=gear.sucellos.melee
   }
   sets.Engaged.Hybrid = {
-    -- main="Vitiation Sword",
-    main="Naegling",
+    main="Vitiation Sword",
+    -- main="Naegling",
     sub="Ammurapi Shield",
     ammo="Staunch Tathlum +1",      -- 3 DT
     head="Aya. Zucchetto +2",       -- 3 DT
@@ -132,8 +132,8 @@ function get_sets()
     back=gear.sucellos.melee        -- 10 PDT
   }                                 -- 48 PDT
   sets.Engaged.Accuracy = {
-    -- main="Vitiation Sword",
-    main="Naegling",
+    main="Vitiation Sword",
+    -- main="Naegling",
     sub="Ammurapi Shield",
     ammo="Ginsen",
     head="Aya. Zucchetto +2",
@@ -141,8 +141,7 @@ function get_sets()
     hands="Aya. Manopolas +2",
     legs="Carmine Cuisses +1",
     feet="Carmine Greaves +1",
-    -- neck="Sanctity Necklace",
-    neck="Lissome Necklace",
+    neck="Sanctity Necklace",
     waist="Reiki Yotai",
     left_ear="Telos Earring",
     right_ear="Digni. Earring",
@@ -183,7 +182,7 @@ function get_sets()
     neck="Loricate Torque +1",       -- DT
     -- lear="Halasz Earring",           -- 5
     rear="Magnetic Earring",         -- 8
-    hands="Chironic Gloves",         -- 20
+    -- hands="Chironic Gloves",         -- 20
     left_ring="Gelatinous Ring +1",      -- DT
     right_ring="Defending Ring",      -- PDT
     waist="Rumination Sash",         -- 10
@@ -193,31 +192,41 @@ function get_sets()
 
   -- Heals
   sets.Magic.Healing = {
-    ammo="Regal Gem",
-    head="Vanya Hood",
-    body="Vanya Robe",
-    hands="Kaykaus Cuffs +1",
-    legs="Atrophy Tights +2",
-    feet="Vanya Clogs",
-    neck="Incanter's Torque",
-    waist="Luminary Sash",
-    left_ear="Regal Earring",
-    right_ear="Mendi. Earring",
-    left_ring="Haoma's Ring",
-    right_ring="Haoma's Ring",
-    back=gear.sucellos.enfeeble
+    ammo="Regal Gem",           -- MND
+    head="Vanya Hood",          -- 10%, Skill
+    body="Vanya Robe",          -- Skill
+    hands="Kaykaus Cuffs +1",   -- 11%, MND
+    legs="Atrophy Tights +3",   -- 12%, Skill
+    feet="Vanya Clogs",         -- 5%
+    neck="Incanter's Torque",   -- Skill
+    waist="Luminary Sash",      -- MND
+    left_ear="Regal Earring",   -- MND
+    right_ear="Mendi. Earring", -- 5%
+    left_ring="Haoma's Ring",   -- Skill
+    right_ring="Haoma's Ring",  -- Skill
+    back=gear.sucellos.enfeeble -- 10%
   }
   sets.Magic.HealingSelf = {
-    neck="Phalaina Locket",      -- 4% self
-    left_ring='Kunaji Ring',     -- 5% self
-    waist="Gishdubar Sash"       -- 10% self
+    ammo="Regal Gem",           -- MND
+    head="Vanya Hood",          -- 10%, Skill
+    body="Vanya Robe",          -- Skill
+    hands="Kaykaus Cuffs +1",   -- 11%, MND
+    legs="Atrophy Tights +3",   -- 12%, Skill
+    feet="Vanya Clogs",         -- 5%
+    neck="Phalaina Locket",     -- 4% self
+    waist="Gishdubar Sash",     -- 10% self
+    left_ear="Regal Earring",   -- MND
+    right_ear="Mendi. Earring", -- 5%
+    left_ring='Kunaji Ring',    -- 5% self
+    right_ring="Haoma's Ring",  -- Skill
+    back=gear.sucellos.enfeeble -- 10%
   }
   sets.Magic.Cursna = {
     ammo="Sapience Orb",
     head="Vanya Hood",
     body="Vanya Robe",
     hands="Leyline Gloves",  -- Pick up some vanya cuffs for healing skill
-    legs="Atrophy Tights +2",
+    legs="Atrophy Tights +3",
     feet="Vanya Clogs",
     neck="Malison Medallion",
     waist="Witful Belt",
@@ -231,7 +240,8 @@ function get_sets()
   -- Enhancing
   sets.Magic.EnhancingDuration = {
     -- main="Vitiation Sword",
-    main="Naegling",
+    -- main="Naegling",
+    main=augments.colada.enhancing,
     sub="Ammurapi Shield",
     head="Telchine Cap",
     neck="Duelist's Torque +1",
@@ -243,7 +253,8 @@ function get_sets()
   }
   sets.Magic.EnhancingComposure = {
     -- main="Vitiation Sword",
-    main="Naegling",
+    -- main="Naegling",
+    main=augments.colada.enhancing,
     sub="Ammurapi Shield",
     head="Lethargy Chappel +1",
     neck="Duelist's Torque +1",
@@ -254,21 +265,21 @@ function get_sets()
     feet="Lethargy Houseaux +1"
   }
   sets.Magic.Refresh = {
-    head="Amalric Coif",
+    head="Amalric Coif +1",
     body="Atrophy Tabard +3",
     legs="Lethargy Fuseau +1"
   }
   sets.Magic.RefreshSelf = {
     waist="Gishdubar sash",
   }
-  sets.Magic.Regen = { -- Full set of telchine regen gear would be nice to have
+  sets.Magic.Regen = {
     body="Telchine Chasuble"
   }
   sets.Magic.EnhancingSkill = {
     head="Befouled Crown",
     body="Viti. Tabard +3",
     hands="Viti. Gloves +3",
-    legs="Atrophy Tights +2",
+    legs="Atrophy Tights +3",
     feet="Leth. Houseaux +1",
     neck="Incanter's Torque",
     waist="Olympus Sash",
@@ -286,7 +297,7 @@ function get_sets()
     feet=augments.taeon.feet.phalanx
   })
   sets.Magic.Aquaveil = {
-    head="Amalric Coif"
+    head="Amalric Coif +1"
   }
   sets.Magic.Stoneskin = {
     neck="Nodens Gorget",
@@ -298,11 +309,11 @@ function get_sets()
 
   -- Enfeebles
   sets.Magic.EnfeebleAccuracy = {
-    -- main="Vitiation Sword",
     main="Naegling",
     sub="Ammurapi Shield",
     ammo="Regal Gem",
-    head="Viti. Chapeau +3",
+    -- ranged="Kaja Bow",
+    head="Atrophy Chapeau +3",
     body="Atrophy Tabard +3",
     hands="Kaykaus Cuffs +1",
     legs="Chironic Hose",
@@ -315,29 +326,34 @@ function get_sets()
     right_ring="Stikini Ring",
     back=gear.sucellos.enfeeble
   }
+  sets.Magic.EnfeebleDuration = set_combine(sets.Magic.EnfeebleAccuracy, {
+    left_ring="Kishar Ring"
+  })
   sets.Magic.EnfeeblePotency = set_combine(sets.Magic.EnfeebleAccuracy, {
+    ammo="Regal Gem",
     body="Lethargy Sayon +1"
   })
-  sets.Magic.FrazzleDistract3 = set_combine(sets.Magic.EnfeebleAccuracy, {
+  sets.Magic.EnfeebleSkill = set_combine(sets.Magic.EnfeeblePotency, {
     main=augments.grio.enfeeble,
     sub="Mephitis Grip",
-    body="Lethargy Sayon +1",
+    head="Vitiation Chapeau +3",
     hands="Leth. Gantherots +1",
     legs="Psycloth Lappas"
   })
-  sets.Magic.EnfeebleDuration = set_combine(sets.Magic.EnfeebleAccuracy, {
+  sets.Magic.Dia = set_combine(sets.Magic.EnfeeblePotency, {
+    head="Vitiation Chapeau +3",
     left_ring="Kishar Ring"
   })
 
   -- Nukes
   sets.Magic.Elemental = {}
   sets.Magic.Elemental.Normal = {
-    main=augments.grio.nuke,
-    sub="Enki Strap",
-    ammo="Ombre Tathlum +1",
-    head=augments.merlinic.hood.nuke,
+    main="Maxentius",
+    sub="Ammurapi Shield",
+    ammo="Pemphredo Tathlum",
+    head="Jhakri Coronal +2",
     body="Merlinic Jubbah",
-    hands=augments.chironic.gloves.nuke,
+    hands="Amalric Gages",
     legs=augments.merlinic.shalwar.macc,
     feet="Vitiation Boots +3",
     neck="Sanctity Necklace",
@@ -361,24 +377,29 @@ function get_sets()
 
   -- Dark
   sets.Magic.Stun = {
-    -- main="Vitiation Sword",
-    main="Naegling",
+    main="Vitiation Sword",
     sub="Ammurapi Shield",
-    ammo="Regal Gem",  -- Ambu bow actually provides more MACC if you have it
-    head="Atrophy Chapeau +2",
+    -- ranged="Kaja Bow",
+    ammo="Regal Gem",
+    head="Atrophy Chapeau +3",
     body="Atrophy Tabard +3",
     hands="Kaykaus Cuffs +1",
-    legs="Chironic Hose",  -- MACC augments
-    feet=augments.merlinic.crackows.nuke, -- MACC augmwnts
+    legs="Chironic Hose",
+    feet="Vitiation Boots +3",
     neck="Erra Pendant",
-    waist="Eschan Stone",
+    waist="Luminary Sash",
     left_ear="Regal Earring",
     right_ear="Digni. Earring",
     left_ring="Stikini Ring",
     right_ring="Stikini Ring",
-    back=gear.sucellos.nuke -- MACC augmwnts
+    back=gear.sucellos.nuke
   }
-  sets.Magic['Bio III'] = {}  -- TODO
+  sets.Magic.Bio = { -- DOT depends on dark magic still, but attack down is static
+    neck="Erra Pendant",
+    left_ring="Stikini Ring",
+    right_ring="Stikini Ring",
+    back="Perimede Cape"
+  }
 
   -- Enmity...?!
   --
@@ -498,17 +519,13 @@ function precast_cancelations(spell)
 end
 
 function midcast(spell)
-  if spell.action_type == 'Magic' then
-    equip(sets.Magic.SpellInterrupt)
-  end
-
   eng = spell.english
 
-  if string.find(eng, 'Cure') or string.find(eng, 'Curaga') then
+  if string.find(eng, 'Cure') and spell.target.type == 'SELF' then
+    equip(sets.Magic.HealingSelf)
+
+  elseif string.find(eng, 'Cure') or string.find(eng, 'Curaga') then
     equip(sets.Magic.Healing)
-    if spell.target.type == 'SELF' then
-      equip(sets.Magic.HealingSelf)
-    end
 
   elseif spell.skill == 'Enhancing Magic' then
     if spell.target.type ~= 'SELF' and buffactive['Composure'] then
@@ -540,24 +557,33 @@ function midcast(spell)
     end
 
   elseif spell.skill == 'Enfeebling Magic' then
-    if S{'Paralyze', 'Slow II', 'Addle II', 'Dia III'}:contains(eng) then
+    if S{'Paralyze', 'Paralyze II', 'Slow', 'Slow II', 'Addle', 'Addle II'}:contains(eng) then
       equip(sets.Magic.EnfeeblePotency)
     elseif S{'Distract III', 'Frazzle III'}:contains(eng) then
-      equip(sets.Magic.FrazzleDistract3)
+      equip(sets.Magic.EnfeebleSkill)
+    elseif S{'Dia', 'Dia II', 'Dia III'}:contains(eng) then
+      equip(sets.Magic.Dia)
     elseif S{'Sleep', 'Sleep II', 'Sleepga'}:contains(eng) then
       equip(sets.Magic.EnfeebleDuration)
     else
       equip(sets.Magic.EnfeebleAccuracy)
     end
-    if buffactive['Saboteur'] then -- Empy gloves enhance spells when Sabo is up
+    if buffactive['Saboteur'] and S{'Dispel', 'Silence'}:contains(eng) == false then
+      -- Empy gloves enhance spells when Sabo is up
       equip(sets.JAs.Saboteur)
     end
 
   elseif spell.skill == 'Elemental Magic' then
     equip(sets.Magic.Elemental[NukingMode.current])
 
+  elseif S{'Bio', 'Bio II', 'Bio III'}:contains(eng) then
+    equip(sets.Magic.Bio)
+
   elseif sets.Magic[spell.name] then
     equip(sets.Magic[spell.name])
+
+  elseif spell.action_type == 'Magic' then
+    equip(sets.Magic.SpellInterrupt)
   end
 end
 
@@ -571,6 +597,16 @@ end
 
 function status_change(new, old)
   equip(set_for_current_mode())
+
+  -- if new == 'Engaged' then
+  --   disable('main')
+  --   disable('sub')
+  --   disable('ranged')
+  -- else
+  --   enable('main')
+  --   enable('sub')
+  --   enable('ranged')
+  -- end
 end
 
 function self_command(commandArgs)
@@ -600,10 +636,10 @@ function self_command(commandArgs)
     if WeaponLock == true then
       equip(set_for_engaged())
       add_to_chat(122, 'Weapons Locked')
-      disable('main', 'sub')
+      disable('main', 'sub', 'ranged')
     else
       add_to_chat(122, 'Weapons Unlocked')
-      enable('main', 'sub')
+      enable('main', 'sub', 'ranged')
     end
 
   elseif command == 'run' then

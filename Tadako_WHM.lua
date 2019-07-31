@@ -64,14 +64,14 @@ function get_sets()
   sets.Magic.Healing = {
     main="Queller Rod",
     head="Kaykaus Mitra",
-    -- neck="Henic Torque",
+    neck="Incanter's Torque",
     left_ear="Novia Earring",
     right_ear="Mendicant's Earring",
     body="Vanya Robe",
     hands="Kaykaus Cuffs",
     left_ring="Lebeche Ring",
     right_ring="Haoma's Ring",
-    -- back=gear.cape.enmity,
+    back="Oretan. Cape +1",
     waist="Pythia Sash",
     legs="Kaykaus Tights",
     feet="Vanya Clogs"
@@ -98,6 +98,7 @@ function get_sets()
     feet="Vanya Clogs"                       -- Cursna/Skill
   }
   sets.Magic.Enhancing = {
+    main="Gada",
     head=augments.telchine.head.enhancing,
     hands=augments.telchine.gloves.enhancing,
     body=augments.telchine.body.enhancing,

@@ -72,17 +72,17 @@ function get_sets()
     main = "Lathi",
     sub = "Enki Strap",
     ammo = "Pemphredo Tathlum",
-    head = augments.merlinic.hood.nuke,
+    head = "Amalric Coif +1",
     neck = "Sanctity Necklace",
-    lear = "Strophadic Earring",
+    lear = "Friomisi Earring",
     rear = "Barkarole Earring",
-    body = augments.merlinic.jubbah,
+    body = "Amalric Doublet",
     hands = "Amalric Gages",
     lring = "Shiva Ring",
     rring = "Strendu Ring",
     back = gear.taranus.nuke,
     waist = "Refoccilation Stone",
-    legs = augments.merlinic.shalwar.burst,
+    legs = "Amalric Slops",
     feet = augments.merlinic.crackows.nuke
   }
   sets.aftercast = {}
@@ -92,7 +92,7 @@ function get_sets()
     neck = "Loricate Torque +1",
     left_ear = "Etiolation Earring",
     right_ear="Genmei Earring",
-    body = "Jhakri Robe +2",
+    body = "Amalric Doublet",
     lring = "Gelatinous Ring +1",
     rring = "Defending Ring",
     back = "Solemnity Cape",
@@ -106,7 +106,7 @@ function get_sets()
 
   sets.base.fast_cast = {
     ammo="Sapience Orb",                -- 2
-    head = augments.merlinic.hood.nuke,   -- 13
+    head = "Amalric Coif +1",   -- 11
     neck="Orunmila's Torque",           -- 5
     lear = "Loquacious earring",   -- 2
     rear = "Magnetic earring",
@@ -121,7 +121,6 @@ function get_sets()
   }
   sets.base.quick_cast = {
     ammo = "Impatiens",
-    lring = "Weatherspoon Ring",
     waist = "Witful Belt"
   }
   sets.base.auto_refresh = {
@@ -145,7 +144,7 @@ function get_sets()
     neck = "Fotia Gorget"
   }
   sets.ws.Myrkr = {
-    ammo = "Ombre Tathlum +1",
+    ammo = "Quartz Tathlum +1",
     -- head = "Kaabnax Hat",
     head = "Pixie Hairpin +1",
     neck = "Sanctity Necklace",
@@ -153,9 +152,12 @@ function get_sets()
     rear = "Moonshade Earring",
     body = "Amalric Doublet",
     hands = "Otomi Gloves",
-    lring = "Etana Ring",
-    rring = "Bifrost Ring",
-    back = "Bane Cape",
+    -- lring = "Etana Ring", -- stored
+    -- rring = "Bifrost Ring",
+    left_ring="Supershear Ring",
+    right_ring="Prolix Ring",
+    -- back = "Bane Cape", -- stored
+    back="Merciful Cape",
     waist = "Luminary Sash",
     legs = "Spae. Tonban +2",
     feet = "Medium's sabots"
@@ -171,7 +173,7 @@ function get_sets()
     main = "Lathi",
     sub = "Enki Strap",
     ammo = "Pemphredo Tathlum",
-    head = "Amalric Coif",
+    head = "Amalric Coif +1",
     -- head = "Pixie Hairpin +1",
     neck = "Erra Pendant",
     lear = "Digni. Earring",
@@ -192,43 +194,23 @@ function get_sets()
     feet = augments.merlinic.crackows.nuke
   })
   sets.midcast.stun = {                   -- FC  | Haste
-    main=augments.grio.nuke,              -- 4%  |
-    sub="Clerisy Strap",
+    -- main=augments.grio.nuke,              -- 4%  |
+    main="Lathi",
+    sub = "Enki Strap",
     ammo="Pemphredo Tathlum",
-    head=augments.merlinic.hood.nuke,     -- 4%
+    head="Amalric Coif +1",
     body=augments.merlinic.jubbah,
     hands=augments.merlinic.dastanas,
     legs="Spae. Tonban +2",
     feet=augments.merlinic.crackows.nuke,
     neck="Erra Pendant",
-    -- waist="Witful Belt",
-    waist="Eschan Stone",
+    waist="Luminary Sash",
     left_ear="Digni. Earring",
     right_ear="Regal Earring",
     left_ring="Kishar Ring",
     right_ring="Stikini Ring",
     back=gear.taranus.fastCast,
   }
-  -- sets.midcast.stun = {                   -- FC  | Haste
-  --   main=augments.grio.nuke,              -- 4%  |
-  --   sub="Enki Strap",
-  --   ammo="Pemphredo Tathlum",
-  --   head=augments.merlinic.hood.nuke,     -- 4%
-  --   body="Spaekona's Coat +2",
-  --   hands="Jhakri Cuffs +2",   -- change
-  --   legs="Spae. Tonban +2",
-  --   feet="Jhakri Pigaches +2", -- change
-  --   neck="Erra Pendant",
-  --   waist="Eschan Stone",
-  --   left_ear="Digni. Earring",
-  --   right_ear="Regal Earring",
-  --   left_ring="Stikini Ring",
-  --   right_ring="Stikini Ring",
-  --   back=gear.taranus.nuke,
-  -- }
-  -- sets.midcast.stun = set_combine(sets.midcast.dark, {
-
-  -- })
 
   -- Elemental magic
   --
@@ -237,9 +219,9 @@ function get_sets()
     main="Lathi",
     sub = "Enki Strap",
     ammo = "Pemphredo Tathlum",
-    head = augments.merlinic.hood.nuke,
+    head = "Jhakri Coronal +2",
     neck = "Sanctity Necklace",
-    lear = "Strophadic Earring",
+    lear = "Friomisi Earring",
     -- rear = "Friomisi earring",
     rear = "Barkarole Earring",
     body = augments.merlinic.jubbah,
@@ -280,16 +262,16 @@ function get_sets()
   sets.midcast.enfeebling = {
     -- main = augments.grio.enfeeble,
     ammo = "Quartz Tathlum +1",
-    head = augments.merlinic.hood.nuke,
+    head = "Amalric Coif +1",
     neck = "Incanter's torque",
     lear = "Digni. Earring",
     rear = "Regal Earring",
     body = "Vanya Robe",
     hands = "Jhakri Cuffs +2",
-    lring = "Weatherspoon Ring",
-    rring = "Globidonta Ring",
+    lring = "Stikini Ring",
+    rring = "Stikini Ring",
     back = gear.taranus.nuke,
-    waist = "Rumination Sash",
+    waist = "Luminary Sash",
     legs = augments.merlinic.shalwar.macc,
     feet = "Medium's Sabots"
   }
@@ -307,11 +289,11 @@ function get_sets()
   }
   sets.midcast.enhancing_regen = {}
   sets.midcast.enhancing_refresh = {
-    head = "Amalric Coif"
+    head = "Amalric Coif +1"
   }
   sets.midcast.enhancing_refresh_self = {
     waist = "Gishdubar sash",
-    feet = "Inspirited Boots"
+    -- feet = "Inspirited Boots"
   }
   sets.midcast.enhancing_stoneskin = {
     neck = "Nodens Gorget",
@@ -329,31 +311,42 @@ function get_sets()
   -- Healing Sets
   --
   sets.midcast.healing = {
-    -- main = "Serenity",            -- 25%
-    -- sub = "Mephitis Grip",
-    neck = "Colossus's Torque",
-    rear = "Mendicant's Earring", -- 5%
-    body = "Vanya Robe",          -- 7%
-    hands = "Telchine Gloves",    -- 18%
-    lring = "Ephedra Ring",
-    rring = "Ephedra Ring",
-    legs = "Vanya Slops",
-    feet = "Vanya Clogs"          -- 5%
+    ammo="Quartz Tathlum +1",
+    head="Vanya Hood",
+    body="Vanya Robe",
+    hands="Telchine Gloves",
+    legs="Vanya Slops",
+    feet="Vanya Clogs",
+    neck="Incanter's Torque",
+    waist="Luminary Sash",
+    left_ear="Regal Earring",
+    right_ear="Mendi. Earring",
+    left_ring="Haoma's Ring",
+    right_ring="Haoma's Ring",
+    back="Solemnity Cape"       -- 7
   }
   sets.midcast.healing_self = {
-    neck = "Phalaina Locket",  -- 4% self
-    lring = 'Kunaji Ring',     -- 5% self
-    rring = 'Asklepian Ring',  -- 3% self
-  }                            -- (30% cap)
+    neck="Phalaina Locket",      -- 4% self
+    left_ring='Kunaji Ring',     -- 5% self
+    waist="Gishdubar Sash"       -- 10% self
+  }
   sets.midcast.convert = set_combine(sets.midcast.healing, sets.midcast.healing_self, {
   })
   -- Cursna chance to clear doom affected by Healing Magic and Cursna Effect+ gear
   sets.midcast.cursna = {
-    neck = "Colossus's Torque",
-    rear = "Mendicant's Earring",
-    lring = "Ephedra Ring",
-    rring = "Ephedra Ring",
-    feet = "Vanya Clogs"
+    ammo="Sapience Orb",
+    head="Vanya Hood",
+    body="Vanya Robe",
+    hands="Kaykaus Cuffs +1",
+    legs="Vanya Slops",
+    feet="Vanya Clogs",
+    neck="Malison Medallion",
+    waist="Witful Belt",
+    left_ear="Loquac. Earring",
+    right_ear="Etiolation Earring",
+    left_ring="Haoma's Ring",
+    right_ring="Haoma's Ring",
+    back="Oretan. Cape +1",
   }
 end
 

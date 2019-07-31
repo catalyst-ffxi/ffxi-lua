@@ -17,7 +17,8 @@ augments = {
   colada = {
     stp={ name="Colada", augments={'"Store TP"+3','STR+15','Accuracy+16','Attack+14','DMG:+16',}},
     crit={ name="Colada", augments={'Crit.hit rate+2','DEX+4','Accuracy+13','Attack+4','DMG:+9',}},
-    dbl={ name="Colada", augments={'Attack+25','"Dbl.Atk."+2','DMG:+13',}}
+    dbl={ name="Colada", augments={'Attack+25','"Dbl.Atk."+2','DMG:+13',}},
+    enhancing={ name="Colada", augments={'Enh. Mag. eff. dur. +3','Mag. Acc.+3','DMG:+5',}},
   },
 
   helios = {
@@ -79,6 +80,20 @@ augments = {
     crackows = {
       nuke = "Merlinic Crackows"
     }
+  },
+
+  odyssean = {
+    head = {
+      wsd = { name="Odyssean Helm", augments={'Weapon skill damage +2%','VIT+14',}},
+    },
+    body = {},
+    hands = {
+      wsd = { name="Odyssean Gauntlets", augments={'Accuracy+19','Weapon skill damage +2%','VIT+14','Attack+4',}},
+    },
+    legs = {
+      wsd = { name="Odyssean Cuisses", augments={'Accuracy+25 Attack+25','Weapon skill damage +1%','VIT+14',}},
+    },
+    feet = {}
   },
 
   taeon = {

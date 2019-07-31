@@ -126,7 +126,7 @@ function get_sets()
   sets.Magic = {}
   sets.Magic.Precast = {
     ammo="Sapience Orb",                -- 2
-    head=augments.herc.head.fc,         -- 12
+    head="Herculean Helm",              -- 7
     neck="Orunmila's Torque",           -- 5
     body="Taeon Tabard",                -- 8
     hands="Leyline Gloves",             -- 7

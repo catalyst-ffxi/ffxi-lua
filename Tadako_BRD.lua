@@ -136,7 +136,7 @@ function get_sets()
   })
   sets.Songs.Dummy = {
     ranged="Daurdabla",
-    neck="Moonbow Whistle +1",
+    -- neck="Moonbow Whistle +1",
     body="Fili Hongreline +1",
     legs="Inyanga Shalwar +2",
     feet="Brioso Slippers +3"

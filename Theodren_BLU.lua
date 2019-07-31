@@ -4,11 +4,13 @@ include('augments.lua')
 
 function define_modes()
   PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'HybridLight', 'HybridHeavy'}
+  AutoRefresh = M(false, 'Auto Refresh')
 end
 
 function define_binds()
   -- Modes
   send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
+  send_command("alias g15v2_m1g2 gs c cycle AutoRefresh")
 end
 
 function get_sets()
@@ -53,7 +55,7 @@ function get_sets()
     hands=augments.herc.hands.triple,
     legs="Samnuha Tights",
     feet=augments.herc.feet.triple,
-    neck="Lissome Necklace", -- Mirage Stole +1
+    neck="Mirage Stole +1",
     waist="Reiki Yotai",
     left_ear="Telos Earring",
     right_ear="Suppanomimi",
@@ -91,7 +93,21 @@ function get_sets()
     right_ring="Gelatinous Ring +1",   -- 7 PDT
     back=gear.rosmerta.tp              -- 10 PDT
   }                                    -- 50 PDT
-  sets.Idle = { legs="Carmine Cuisses +1" }
+  sets.Idle = {
+    body="Assimilator's Jubbah +3",
+    legs="Carmine Cuisses +1",
+    -- neck="Loricate Torque +1",
+    waist="Fucho-no-Obi",
+    -- left_ring="Defending Ring",
+    -- right_ring="Gelatinous Ring +1",
+  }
+
+  sets.AutoRefresh = {
+    body="Assimilator's Jubbah +3",
+    waist="Fucho-no-Obi",
+    -- left_ring="Stikini Ring +1",
+    -- right_ring="Stikini Ring +1"
+  }
 
   -- JAs
   sets.JAs = {}
@@ -100,7 +116,8 @@ function get_sets()
   sets.Magic = {}
   sets.Magic.FastCast = {
     ammo="Impatiens",             -- 2 Quick
-    head=augments.herc.head.fc,   -- 12
+    -- head=augments.herc.head.fc,   -- 12
+    head="Carmine Mask",          -- 9
     neck="Orunmila's Torque",     -- 5
     lear="Loquacious earring",    -- 2
     rear="Etiolation Earring",    -- 1
@@ -112,7 +129,7 @@ function get_sets()
     waist="Witful Belt",          -- 3, 3 Quick
     legs="Aya. Cosciales +2",     -- 6
     feet="Carmine Greaves +1"     -- 8
-                                  -- 65 FastCast, 6 QuickCast
+                                  -- 62 FastCast, 6 QuickCast
   }
   sets.Magic.SpellInterrupt = {
     ammo="Staunch Tathlum +1",       -- 11
@@ -161,7 +178,7 @@ function get_sets()
     left_ear="Regal Earring",
     right_ear="Friomisi Earring",
     left_ring="Strendu Ring",
-    right_ring="Acumen Ring",
+    right_ring="Arvina Ringlet +1",
     back=gear.rosmerta.mab
   }
   sets.BlueMagic.Physical = {
@@ -212,13 +229,14 @@ function get_sets()
     waist="Gishdubar Sash",          --     10% self
     left_ear="Odnowa Earring +1",    -- 100 HP
     right_ear="Mendi. Earring",      -- 5%
-    left_ring="Etana Ring",          -- 60 HP
+    -- left_ring="Etana Ring",          -- 60 HP (stored)
+    left_ring="Kunaji ring",
     right_ring="Ilabrat Ring",       -- 60 HP
     back="Aenoth. Mantle +1"         -- 120 HP  -- Moonbeam Cape 250 HP
                              -- Total: +50% Cure Potency
   }
   sets.BlueMagic['Battery Charge'] = {
-    head="Amalric Coif",
+    head="Amalric Coif +1",
     waist="Gishdubar Sash"
   }
   sets.BlueMagic['Tenebral Crush'] = set_combine(sets.BlueMagic.Mab, {
@@ -252,7 +270,7 @@ function get_sets()
   sets.WS.Melee = {
     ammo="Floestone",
     head=augments.herc.head.wsd,
-    neck="Fotia Gorget",
+    neck="Mirage Stole +1",
     left_ear="Ishvara Earring",
     right_ear="Moonshade Earring",
     body="Assimilator's Jubbah +3",
@@ -265,8 +283,6 @@ function get_sets()
     feet="Jhakri Pigaches +2",
   }
   sets.WS['Requiescat'] = set_combine(sets.WS.Melee, { })
-  -- sets.WS['Savage Blade'] = set_combine(sets.WS.Melee, { })
-  sets.WS['Savage Blade'] = sets.Magic.FastCast
   -- sets.WS['Flat Blade'] = {}
   sets.WS['Chant du Cygne'] = set_combine(sets.WS.Melee, {
     ammo="Yetshila",
@@ -310,14 +326,16 @@ end
 function precast(spell)
   precast_cancelations(spell)
 
-  if sets.JAs[spell.english] then
+  if spell.type == 'WeaponSkill' then
+    equip(set_for_ws(spell.english))
+    -- equip(sets.WS.Melee)
+    -- equip(sets.WS[spell.english] or sets.WS.Melee)
+
+  elseif sets.JAs[spell.english] then
     equip(sets.JAs[spell.english])
 
   elseif spell.action_type == 'Magic' then
     equip(sets.Magic.FastCast)
-
-  elseif spell.type == 'WeaponSkill' then
-    equip(sets.WS[spell.english] or sets.WS.Melee)
   end
 end
 
@@ -360,24 +378,59 @@ function midcast(spell)
 end
 
 function aftercast(spell)
-  if player.in_combat then
-    equip(sets.modes[PrimaryMode.current])
-  else
-    equip(set_combine(
-      sets.modes[PrimaryMode.current],
-      sets.Idle
-    ))
-  end
+  equip(set_for_current_mode())
+  -- local set = sets.modes[PrimaryMode.current]
+  -- if player.in_combat == false then
+  --   set = set_combine(set, sets.Idle)
+  -- end
+  -- if player.mpp <= 66 and AutoRefresh.value then
+  --   set = set_combine(set, sets.AutoRefresh)
+  -- end
+  -- equip(set)
+  -- if player.in_combat then
+  --   equip(sets.modes[PrimaryMode.current])
+  -- else
+    -- equip(set_combine(
+    --   sets.modes[PrimaryMode.current],
+    --   sets.Idle
+    -- ))
+  -- end
+  -- if player.mpp <= 66 and AutoRefresh.value then
+  --   equip(sets.AutoRefresh)
+  -- end
 end
 
 function status_change(new, old)
-  if new == 'Engaged' then
-    equip(sets.modes[PrimaryMode.current])
+  equip(set_for_current_mode())
+  -- if new == 'Engaged' then
+  --   equip(sets.modes[PrimaryMode.current])
+  -- else
+  --   equip(set_combine(
+  --     sets.modes[PrimaryMode.current],
+  --     sets.Idle
+  --   ))
+  -- end
+  -- if player.mpp <= 66 and AutoRefresh.value then
+  --   equip(sets.AutoRefresh)
+  -- end
+end
+
+function set_for_ws(named)
+  if sets.WS[named] then
+    return sets.WS[named]
   else
-    equip(set_combine(
+    return sets.WS.Melee
+  end
+end
+
+function set_for_current_mode()
+  if player.status=='Engaged' then
+    return sets.modes[PrimaryMode.current]
+  else
+    return set_combine(
       sets.modes[PrimaryMode.current],
       sets.Idle
-    ))
+    )
   end
 end
 
@@ -392,8 +445,10 @@ function self_command(commandArgs)
   command = commandArgs[1]
 
   if command == 'run' then
-    equip(sets.Idle)
+    -- equip(sets.Idle)
+    equip(set_for_current_mode())
   elseif command == "mode" then
+    -- equip(set_for_current_mode())
     equip(sets.modes[PrimaryMode.current])
   elseif command == 'cycle' then
     local mode = _G[commandArgs[2]]

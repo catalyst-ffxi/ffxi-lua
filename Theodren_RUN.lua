@@ -311,7 +311,7 @@ function get_sets()
   sets.Enmity = {
     ammo="Sapience Orb",           -- 2
     head="Halitus Helm",           -- 8
-    neck="Moonlight Necklace",     -- 15
+    neck="Moonlight Necklace",     -- 15f
     left_ear="Trux Earring",       -- 5
     right_ear="Cryptic Earring",   -- 4
     body="Emet Harness +1",        -- 10
@@ -398,9 +398,9 @@ function midcast(spell)
 end
 
 function aftercast(spell)
-  if player.in_combat or PrimaryMode.current == 'Tank' then
+  -- if player.in_combat or PrimaryMode.current == 'Tank' then
     equip_set_for_current_mode()
-  end
+  -- end
   maintain_reraise_equip()
 end
 

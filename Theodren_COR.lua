@@ -4,7 +4,7 @@ include('augments.lua')
 include('utils.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Hybrid', 'Accuracy'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'HybridLight', 'Hybrid', 'Accuracy'}
   Luzaf = M(true, 'Luzaf')
   Compensator = M(true, 'Compensator')
   Weapons = M{
@@ -72,6 +72,20 @@ function get_sets()
     right_ring="Epona's Ring",
     back=gear.camulus.meleeTp,
   }
+  sets.modes.HybridLight = {
+    head="Adhemar Bonnet +1",
+    body="Adhemar Jacket +1",
+    hands=augments.herc.hands.triple,
+    legs="Meg. Chausses +2",
+    feet=augments.herc.feet.triple,
+    neck="Loricate Torque +1",
+    waist="Windbuffet Belt +1",
+    left_ear="Telos Earring",
+    right_ear="Suppanomimi",
+    left_ring="Defending Ring",
+    right_ring="Epona's Ring",
+    back=gear.camulus.meleeTp,
+  }
   sets.modes.Hybrid = {
     -- Lanun:                         -- 8 DT
     head="Adhemar Bonnet +1",
@@ -83,8 +97,8 @@ function get_sets()
     waist="Windbuffet Belt +1",
     left_ear="Telos Earring",
     right_ear="Suppanomimi",
-    left_ring="Gelatinous Ring +1",   -- 7 PDT
-    right_ring="Defending Ring",      -- 10 DT
+    left_ring="Defending Ring",   -- 7 PDT
+    right_ring="Gelatinous Ring +1",      -- 10 DT
     back=gear.camulus.meleeTp,        -- 5 DT
   }                                   -- 52 PDT | 29 MDT
   sets.modes.Accuracy = {
@@ -116,11 +130,6 @@ function get_sets()
     right_ring="Karieyh Ring +1",
     back=gear.camulus.meleeTp,
   }
-
-  -- sets.Idle = set_combine(
-  --   sets.modes.Normal,
-  --   { left_ring="Karieyh Ring +1" }
-  -- )
 
   -- Shooting
   sets.Preshot = {                           -- Snap | Rapid
@@ -156,7 +165,8 @@ function get_sets()
   -- Magic
   sets.Magic = {}
   sets.Magic.FastCast = {
-    head=augments.herc.head.fc,         -- 12
+    -- head=augments.herc.head.fc,         -- 12
+    head="Carmine Mask",                -- 9
     neck="Orunmila's Torque",           -- 5
     body="Taeon Tabard",                -- 8
     hands="Leyline Gloves",             -- 7
@@ -253,7 +263,7 @@ function get_sets()
     right_ear="Moonshade Earring",
     body="Lanun Frac +3",
     hands="Carmine Fin. Ga. +1",
-    left_ring="Acumen Ring",
+    left_ring="Arvina Ringlet +1",
     right_ring="Dingir Ring",
     back=gear.camulus.rangedWsMagic,
     waist="Eschan Stone",
@@ -269,7 +279,7 @@ function get_sets()
     head=augments.herc.head.mab,
     neck="Sanctity Necklace",
     left_ear="Friomisi Earring",
-    right_ear="Strophadic Earring",
+    right_ear="Dignitary's Earring",
     body="Lanun Frac +3",
     hands="Carmine Fin. Ga. +1",
     left_ring="Arvina Ringlet +1",

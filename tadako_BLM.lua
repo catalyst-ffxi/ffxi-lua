@@ -28,19 +28,18 @@ function get_sets()
   sets.Idle = {
     main="Gada",
     sub="Genbu's Shield",
-    head=augments.telchine.head.enhancing,
-    hands=augments.telchine.gloves.enhancing,
-    body=augments.telchine.body.enhancing,
-    legs=augments.telchine.legs.enhancing,
-    feet=augments.telchine.feet.enhancing,
+    head="Jhakri Coronal +1",
+    body="Jhakri Robe +1",
+    hands="Jhakri Cuffs +1",
+    legs="Jhakri Slops +1",
+    feet="Jhakri Pigaches +1",
     neck="Loricate Torque +1",
     waist="Fucho-no-Obi",
     left_ear="Flashward Earring",
     right_ear="Etiolation Earring",
     left_ring="Gelatinous Ring +1",
     right_ring="Warden's Ring",
-    back="Aptitude Mantle +1"
-    -- back="Solemnity Cape"
+    back="Solemnity Cape"
   }
   sets.Engaged = {
 
@@ -111,6 +110,22 @@ function get_sets()
     back="Lugh's Cape"
   }
   sets.Magic.Enfeebling = {}
+  sets.Magic.Elemental = {
+    main={ name="Gada", augments={'Enh. Mag. eff. dur. +3','VIT+5','"Mag.Atk.Bns."+7',}},
+    sub="Genbu's Shield",
+    head="Jhakri Coronal +1",
+    body="Jhakri Robe +1",
+    hands="Jhakri Cuffs +1",
+    legs="Jhakri Slops +1",
+    feet="Jhakri Pigaches +1",
+    neck="Sanctity Necklace",
+    waist="Luminary Sash",
+    left_ear="Digni. Earring",
+    right_ear="Regal Earring",
+    left_ring="Stikini Ring",
+    right_ring="Stikini Ring",
+    back="Solemnity Cape",
+  }
 
   -- Abilities
   sets.JobAbility = {}
@@ -189,6 +204,9 @@ function midcast(spell)
   -- Enfeebles
   elseif spell.skill == 'Enfeebling Magic' then
     equip(sets.Magic.Enfeebling)
+
+  elseif spell.skill == 'Elemental Magic' then
+    equip(sets.Magic.Elemental)
   end
 
   maintain_reraise_equip()
