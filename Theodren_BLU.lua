@@ -4,13 +4,11 @@ include('augments.lua')
 
 function define_modes()
   PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'HybridLight', 'HybridHeavy'}
-  AutoRefresh = M(false, 'Auto Refresh')
 end
 
 function define_binds()
   -- Modes
   send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
-  send_command("alias g15v2_m1g2 gs c cycle AutoRefresh")
 end
 
 function get_sets()
@@ -28,18 +26,35 @@ function get_sets()
     }
   }
 
+  sets.Idle = {
+    ammo="Staunch Tathlum +1",         -- 3 DT
+    head="Malignance Chapeau",         -- 6 DT
+    body="Assimilator's Jubbah +3",    -- Refresh
+    hands=augments.herc.hands.triple,  -- 2 PDT
+    legs="Carmine Cuisses +1",         -- Zoomies
+    feet="Malignance Boots",           -- 4 DT
+    neck="Loricate Torque +1",         -- 6 DT
+    waist="Fucho-no-Obi",              -- Refresh
+    left_ear="Genmei Earring",         -- 2 PDT
+    right_ear="Etiolation Earring",    -- 3 MDT
+    left_ring="Defending Ring",        -- 10 DT
+    right_ring="Gelatinous Ring +1",   -- 7 PDT
+    back=gear.rosmerta.tp              -- 10 PDT
+  }                                    -- 50 PDT
+
   -- DW Traits:
-  -- Delta Thrust + Barbed Crescent
-  -- Molting Plumage
-  -- Total DW: DW II
+  -- Delta Thrust + Barbed Crescent = 1
+  -- Molting Plumage = 1
+  -- Job Points = 2
+  -- Total DW: DW IV
   --
-  -- DW gear needed to cap with DW II:
+  -- DW gear needed to cap with DW IV:
   -- Haste DW
-  -- 0    59
-  -- 10   55
-  -- 15   52   (Single Haste or March)
-  -- 30   41   (Haste II)
-  -- Cap  21   (Double March or Haste + March)
+  -- 0    44
+  -- 10   40
+  -- 15   37   (Single Haste or March)
+  -- 30   26   (Haste II)
+  -- Cap  6   (Double March or Haste + March)
   --
   -- Various gear bonuses:
   -- Adhemar Jacket +1: 6 DW
@@ -49,82 +64,78 @@ function get_sets()
 
   sets.modes = {}
   sets.modes.Normal = {
-    ammo="Ginsen",
+    ammo="Aurgelmir Orb",
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
     hands=augments.herc.hands.triple,
     legs="Samnuha Tights",
     feet=augments.herc.feet.triple,
     neck="Mirage Stole +1",
-    waist="Reiki Yotai",
+    -- waist="Reiki Yotai",
+    waist="Windbuffet Belt +1",
     left_ear="Telos Earring",
-    right_ear="Suppanomimi",
+    -- right_ear="Suppanomimi",
+    right_ear="Dedition Earring",
     left_ring="Hetairoi Ring",
     right_ring="Epona's Ring",
     back=gear.rosmerta.tp
   }
   sets.modes.HybridLight = {
-    ammo="Staunch Tathlum +1",         -- 3 DT
+    ammo="Aurgelmir Orb",
     head="Adhemar Bonnet +1",
-    body="Ayanmo Corazza +2",          -- 6 PDT
+    body="Malignance Tabard",          -- 9 DT
     hands=augments.herc.hands.triple,  -- 2 PDT
     legs="Samnuha Tights",
     feet=augments.herc.feet.triple,    -- 2 PDT
-    neck="Loricate Torque +1",         -- 6 PDT
+    neck="Mirage Stole +1",
     waist="Reiki Yotai",
     left_ear="Telos Earring",
-    right_ear="Suppanomimi",
+    right_ear="Dedition Earring",
     left_ring="Defending Ring",        -- 10 DT
     right_ring="Epona's Ring",
     back=gear.rosmerta.tp              -- 10 PDT
-  }                                    -- 39 PDT
+  }                                    -- 33 PDT
   sets.modes.HybridHeavy = {
     ammo="Staunch Tathlum +1",         -- 3 DT
-    head="Adhemar Bonnet +1",
-    body="Ayanmo Corazza +2",          -- 6 PDT
+    head="Malignance Chapeau",         -- 6 DT
+    body="Malignance Tabard",          -- 9 DT
     hands=augments.herc.hands.triple,  -- 2 PDT
-    legs="Samnuha Tights",
-    feet=augments.herc.feet.triple,    -- 2 PDT
-    neck="Loricate Torque +1",         -- 6 DT
-    waist="Flume Belt +1",             -- 4 PDT
+    legs="Malignance Tights",          -- 7 DT
+    feet="Malignance Boots",           -- 4 DT
+    neck="Mirage Stole +1",
+    waist="Reiki Yotai",
     left_ear="Telos Earring",
-    right_ear="Suppanomimi",
+    -- right_ear="Suppanomimi",
+    right_ear="Dedition Earring",
     left_ring="Defending Ring",        -- 10 DT
-    right_ring="Gelatinous Ring +1",   -- 7 PDT
+    right_ring="Epona's Ring",
     back=gear.rosmerta.tp              -- 10 PDT
-  }                                    -- 50 PDT
-  sets.Idle = {
-    body="Assimilator's Jubbah +3",
-    legs="Carmine Cuisses +1",
-    -- neck="Loricate Torque +1",
-    waist="Fucho-no-Obi",
-    -- left_ring="Defending Ring",
-    -- right_ring="Gelatinous Ring +1",
-  }
-
-  sets.AutoRefresh = {
-    body="Assimilator's Jubbah +3",
-    waist="Fucho-no-Obi",
-    -- left_ring="Stikini Ring +1",
-    -- right_ring="Stikini Ring +1"
-  }
+  }                                    -- 51 PDT
 
   -- JAs
   sets.JAs = {}
+  sets.JAs.Provoke = { -- Enmity+ Set
+    ammo="Sapience Orb",
+    body="Emet Harness +1",
+    waist="Kasiri Belt",
+    left_ear="Trux Earring",
+    right_ear="Cryptic Earring",
+    left_ring="Supershear Ring",
+    right_ring="Eihwaz Ring",
+  }
 
   -- Magic
   sets.Magic = {}
   sets.Magic.FastCast = {
     ammo="Impatiens",             -- 2 Quick
-    -- head=augments.herc.head.fc,   -- 12
     head="Carmine Mask",          -- 9
     neck="Orunmila's Torque",     -- 5
     lear="Loquacious earring",    -- 2
     rear="Etiolation Earring",    -- 1
     body="Taeon Tabard",          -- 8
     hands="Leyline Gloves",       -- 7
-    left_ring="Kishar Ring",          -- 4
-    right_ring="Prolix Ring",          -- 2
+    left_ring="Kishar Ring",      -- 4
+    right_ring="Rahab Ring",      -- 2
     back=gear.rosmerta.fast,      -- 10
     waist="Witful Belt",          -- 3, 3 Quick
     legs="Aya. Cosciales +2",     -- 6
@@ -137,7 +148,7 @@ function get_sets()
     neck="Loricate Torque +1",       -- DT
     lear="Odnowa Earring +1",        -- MDT/HP
     rear="Magnetic Earring",         -- 8
-    body="Ayanmo Corazza +2",        -- PDT
+    body="Malignance Tabard",        -- PDT
     hands="Rawhide Gloves",          -- 15
     left_ring="Defending Ring",      -- DT
     right_ring="Gelatinous Ring +1", -- PDT
@@ -153,8 +164,8 @@ function get_sets()
   sets.BlueMagic = {}
   sets.BlueMagic.Macc = {
     ammo="Pemphredo Tathlum",
-    head="Jhakri Coronal +2",
-    body="Jhakri Robe +2",
+    head="Amalric Coif +1",
+    body="Amalric Doublet +1",
     hands="Jhakri Cuffs +2",
     legs="Jhakri Slops +2",
     feet="Jhakri Pigaches +2",
@@ -162,19 +173,20 @@ function get_sets()
     waist="Eschan Stone",
     left_ear="Regal Earring",
     right_ear="Digni. Earring",
-    left_ring="Stikini Ring",
-    right_ring="Stikini Ring",
+    left_ring="Stikini Ring +1",
+    right_ring="Stikini Ring +1",
     back=gear.rosmerta.mab
   }
   sets.BlueMagic.Mab = {
     ammo="Pemphredo Tathlum",
     head="Jhakri Coronal +2",
-    body="Amalric Doublet",
-    hands="Amalric Gages",
-    legs="Amalric Slops",
+    body="Amalric Doublet +1",
+    hands="Amalric Gages +1",
+    legs="Amalric Slops +1",
     feet="Jhakri Pigaches +2",
     neck="Sanctity Necklace",
-    waist="Eschan Stone",
+    -- waist="Eschan Stone",
+    waist="Orpheus's Sash",
     left_ear="Regal Earring",
     right_ear="Friomisi Earring",
     left_ring="Strendu Ring",
@@ -182,7 +194,7 @@ function get_sets()
     back=gear.rosmerta.mab
   }
   sets.BlueMagic.Physical = {
-    ammo="Falcon Eye",
+    -- ammo="Falcon Eye", -- Stored
     head="Jhakri Coronal +2",
     body="Jhakri Robe +2",
     hands="Jhakri Cuffs +2",
@@ -207,8 +219,8 @@ function get_sets()
     waist="Luminary Sash",           -- MND
     left_ear="Regal Earring",        -- MND
     right_ear="Mendi. Earring",      -- 5%
-    left_ring="Stikini Ring",        -- 5 skill 5 MND
-    right_ring="Stikini Ring",       -- 5 skill 5 MND
+    left_ring="Stikini Ring +1",     -- 5 skill 5 MND
+    right_ring="Stikini Ring +1",    -- 5 skill 5 MND
     back=gear.rosmerta.fast,         -- MND
                              -- Total: +50% Cure Potency
   }
@@ -219,7 +231,7 @@ function get_sets()
                                  -- Total: 19%
   })
   sets.BlueMagic['White Wind'] = {
-    ammo="Falcon Eye",               -- 10 HP
+    -- ammo="Falcon Eye",               -- 10 HP, Stored
     head="Carmine Mask",             -- 98 HP
     body="Vrikodara Jupon",          -- 13%
     hands="Telchine Gloves",         -- 18%
@@ -229,10 +241,10 @@ function get_sets()
     waist="Gishdubar Sash",          --     10% self
     left_ear="Odnowa Earring +1",    -- 100 HP
     right_ear="Mendi. Earring",      -- 5%
-    -- left_ring="Etana Ring",          -- 60 HP (stored)
     left_ring="Kunaji ring",
     right_ring="Ilabrat Ring",       -- 60 HP
-    back="Aenoth. Mantle +1"         -- 120 HP  -- Moonbeam Cape 250 HP
+    back=gear.rosmerta.fast
+    -- back="Aenoth. Mantle +1"         -- 120 HP  -- Moonbeam Cape 250 HP
                              -- Total: +50% Cure Potency
   }
   sets.BlueMagic['Battery Charge'] = {
@@ -260,6 +272,7 @@ function get_sets()
                                      -- 8 Merit
                                      -- 81 Total
   }
+  sets.BlueMagic.Jettatura = sets.JAs.Provoke
   sets.BlueMagic.Diffusion = {
     feet="Luhlaza Charuqs"
   }
@@ -267,9 +280,9 @@ function get_sets()
   -- Weapon Skills
   --
   sets.WS = {}
-  sets.WS.Melee = {
+  sets.WS['Savage Blade'] = {
     ammo="Floestone",
-    head=augments.herc.head.wsd,
+    head=augments.herc.head.wsStr,
     neck="Mirage Stole +1",
     left_ear="Ishvara Earring",
     right_ear="Moonshade Earring",
@@ -279,16 +292,25 @@ function get_sets()
     right_ring="Shukuyu Ring",
     back=gear.rosmerta.ws,
     waist="Fotia Belt",
-    legs=augments.herc.legs.ws,
+    legs=augments.herc.legs.wsDex,
     feet="Jhakri Pigaches +2",
   }
-  sets.WS['Requiescat'] = set_combine(sets.WS.Melee, { })
-  -- sets.WS['Flat Blade'] = {}
-  sets.WS['Chant du Cygne'] = set_combine(sets.WS.Melee, {
-    ammo="Yetshila",
+  sets.WS['Requiescat'] = {}
+  sets.WS['Chant du Cygne'] = { -- yes this set needs work!
+    ammo="Yetshila +1",
+    head="Adhemar Bonnet +1",
+    body="Ayanmo Corazza +2",
+    hands="Jhakri Cuffs +2",
+    legs="Samnuha Tights",
     feet="Thereoid Greaves",
-    right_ring="Ramuh Ring",
-  })
+    neck="Fotia Gorget",
+    waist="Fotia Belt",
+    left_ear="Moonshade Earring",
+    right_ear="Brutal Earring",
+    left_ring="Ilabrat Ring",
+    right_ring="Epona's Ring",
+    back=gear.rosmerta.tp
+  }
   sets.WS['Shining Blade'] = {}
   sets.WS['Circle Blade'] = {}
   sets.WS['Burning Blade'] = {}
@@ -298,13 +320,13 @@ function get_sets()
     neck="Sanctity Necklace",
     lear="Regal Earring",
     rear="Friomisi earring",
-    body="Amalric Doublet",
+    body="Amalric Doublet +1",
     hands="Jhakri Cuffs +2",
     lring="Archon Ring",
     rring="Karieyh Ring +1",
     back=gear.rosmerta.mab,
     waist="Eschan Stone",
-    legs="Jhakri slops +2",
+    legs="Amalric Slops +1",
     feet="Jhakri Pigaches +2",
   }
 
@@ -328,8 +350,6 @@ function precast(spell)
 
   if spell.type == 'WeaponSkill' then
     equip(set_for_ws(spell.english))
-    -- equip(sets.WS.Melee)
-    -- equip(sets.WS[spell.english] or sets.WS.Melee)
 
   elseif sets.JAs[spell.english] then
     equip(sets.JAs[spell.english])
@@ -368,6 +388,9 @@ function midcast(spell)
       equip(sets.BlueMagic.Healing)
     end
 
+  elseif spell.skill == 'Enfeebling Magic' then
+    equip(sets.BlueMagic.Macc)
+
   elseif spell.action_type == 'Magic' then
     equip(sets.Magic.SpellInterrupt)
   end
@@ -379,58 +402,25 @@ end
 
 function aftercast(spell)
   equip(set_for_current_mode())
-  -- local set = sets.modes[PrimaryMode.current]
-  -- if player.in_combat == false then
-  --   set = set_combine(set, sets.Idle)
-  -- end
-  -- if player.mpp <= 66 and AutoRefresh.value then
-  --   set = set_combine(set, sets.AutoRefresh)
-  -- end
-  -- equip(set)
-  -- if player.in_combat then
-  --   equip(sets.modes[PrimaryMode.current])
-  -- else
-    -- equip(set_combine(
-    --   sets.modes[PrimaryMode.current],
-    --   sets.Idle
-    -- ))
-  -- end
-  -- if player.mpp <= 66 and AutoRefresh.value then
-  --   equip(sets.AutoRefresh)
-  -- end
 end
 
 function status_change(new, old)
   equip(set_for_current_mode())
-  -- if new == 'Engaged' then
-  --   equip(sets.modes[PrimaryMode.current])
-  -- else
-  --   equip(set_combine(
-  --     sets.modes[PrimaryMode.current],
-  --     sets.Idle
-  --   ))
-  -- end
-  -- if player.mpp <= 66 and AutoRefresh.value then
-  --   equip(sets.AutoRefresh)
-  -- end
-end
-
-function set_for_ws(named)
-  if sets.WS[named] then
-    return sets.WS[named]
-  else
-    return sets.WS.Melee
-  end
 end
 
 function set_for_current_mode()
   if player.status=='Engaged' then
     return sets.modes[PrimaryMode.current]
   else
-    return set_combine(
-      sets.modes[PrimaryMode.current],
-      sets.Idle
-    )
+    return sets.Idle
+  end
+end
+
+function set_for_ws(named)
+  if sets.WS[named] then
+    return sets.WS[named]
+  else
+    return sets.WS['Savage Blade']
   end
 end
 
@@ -445,10 +435,8 @@ function self_command(commandArgs)
   command = commandArgs[1]
 
   if command == 'run' then
-    -- equip(sets.Idle)
-    equip(set_for_current_mode())
+    equip(sets.Idle)
   elseif command == "mode" then
-    -- equip(set_for_current_mode())
     equip(sets.modes[PrimaryMode.current])
   elseif command == 'cycle' then
     local mode = _G[commandArgs[2]]

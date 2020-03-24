@@ -71,7 +71,7 @@ function get_sets()
     left_ear="Genmei Earring",
     right_ear="Etiolation Earring",
     body="Jhakri Robe +2",
-    hands="Amalric Gages",
+    hands="Amalric Gages +1",
     left_ring="Gelatinous Ring +1",
     right_ring="Defending Ring",
     back="Solemnity Cape",
@@ -79,71 +79,44 @@ function get_sets()
     legs="Assid. Pants +1",
     feet="Chironic Slippers"
   }
-  -- sets.modes = {}
-  -- sets.modes.Caster = {
-  --   -- main = "Akademos",
-  --   main=augments.grio.nuke,
-  --   sub = "Enki Strap",
-  --   ammo = "Ombre Tathlum +1",
-  --   head = augments.merlinic.hood.nuke,
-  --   neck = "Sanctity Necklace",
-  --   lear = "Strophadic Earring",
-  --   rear = "Barkarole Earring",
-  --   body = augments.merlinic.jubbah,
-  --   hands = "Amalric Gages",
-  --   lring = "Shiva Ring",
-  --   rring = "Strendu Ring",
-  --   back = "Lugh's Cape",
-  --   waist = "Refoccilation Stone",
-  --   legs = augments.merlinic.shalwar.burst,
-  --   feet = augments.merlinic.crackows.nuke
-  -- }
-  -- sets.aftercast = {}
-  -- sets.aftercast.Caster = set_combine(sets.modes.Caster, {
-  --   ammo = "Homiliary",
-  --   head = "Befouled Crown",
-  --   neck = "Loricate Torque +1",
-  --   body = "Jhakri Robe +1",
-  --   lring = "Gelatinous Ring +1",
-  --   rring = "Defending Ring",
-  --   back = "Solemnity Cape",
-  --   -- waist = "Fucho-no-Obi",
-  --   waist = "Flume Belt +1",
-  --   legs = "Assid. Pants +1"
-  -- })
 
   -- Base Sets
   --
   sets.base = {}
 
   sets.base.fast_cast = {
-    ammo="Sapience Orb",                -- 2
-    head = "Amalric Coif +1",   -- 11
-    neck="Orunmila's Torque",           -- 5
-    lear = "Loquacious earring",   -- 2
-    rear = "Magnetic earring",
-    body = augments.merlinic.jubbah,  -- 6
-    hands = "Helios Gloves",       -- 5
-    lring = "Kishar Ring",   -- 4
-    rring = "Prolix Ring",         -- 2
+    ammo="Sapience Orb",       -- 2
+    head="Amalric Coif +1",    -- 11
+    neck="Orunmila's Torque",  -- 5
+    lear="Loquacious earring", -- 2
+    rear="Etiolation earring", -- 1
+    body="Vrikodara Jupon",    -- 5
+    hands="Helios Gloves",     -- 5
+    lring="Kishar Ring",       -- 4
+    rring="Rahab Ring",        -- 2
     back="Perimede Cape",
-    waist = "Witful Belt",         -- 3
-    legs = "Lengo Pants", -- 5
-    feet = augments.merlinic.crackows.nuke -- 5
+    waist="Embla Sash",        -- 5
+    legs="Telchine Braconi",   -- 4
+    feet=augments.merlinic.crackows.nuke -- 5
   }
 
-  -- sets.base.fast_cast = {
-  --   head = "Amalric Coif +1",        -- 11
-  --   lear = "Loquacious earring",       -- 2
-  --   rear = "Magnetic earring",
-  --   body = augments.merlinic.jubbah,       -- 6
-  --   hands = "Helios Gloves",           -- 5
-  --   rring = "Prolix Ring",             -- 2
-  --   -- -- back = "Swith Cape", -- 3
-  --   legs = "Lengo Pants",              -- 5
-  --   feet = augments.merlinic.crackows.nuke -- 5
-  --                               -- TOTAL: 36
-  -- }
+
+  sets.base.fast_cast = {
+    ammo="Sapience Orb",                -- 2
+    head="Amalric Coif +1",   -- 11
+    neck="Orunmila's Torque",           -- 5
+    lear="Loquacious earring",   -- 2
+    rear="Magnetic earring",
+    body="Amalric Doublet +1",  -- 6
+    hands="Helios Gloves",       -- 5
+    lring="Kishar Ring",   -- 4
+    rring="Rahab Ring",         -- 2
+    back="Perimede Cape",
+    waist="Embla Sash",
+    legs="Lengo Pants", -- 5
+    feet=augments.merlinic.crackows.nuke -- 5
+  }
+
   sets.base.quick_cast = {
     ammo = "Impatiens",
     waist = "Witful Belt"             -- 3
@@ -172,12 +145,13 @@ function get_sets()
     neck = "Sanctity Necklace",
     lear = "Etiolation Earring",
     rear = "Moonshade Earring",
-    body = "Amalric Doublet",
-    hands = "Otomi Gloves",
+    body = "Amalric Doublet +1",
+    -- hands = "Otomi Gloves", -- stored
+    hands="Helios Gloves",
     -- lring = "Etana Ring", -- stored
     -- rring = "Bifrost Ring",
     left_ring="Supershear Ring",
-    right_ring="Prolix Ring",
+    right_ring="Rahab Ring",
     back = "Merciful Cape",
     waist = "Luminary Sash",
     legs = "Chironic Hose",
@@ -200,13 +174,13 @@ function get_sets()
     neck = "Erra Pendant",
     lear = "Digni. Earring",
     rear = "Regal Earring",
-    body = augments.merlinic.jubbah,
-    hands = "Amalric Gages",
-    lring = "Stikini Ring",
-    rring = "Stikini Ring",
+    body = "Amalric Doublet +1",
+    hands = "Amalric Gages +1",
+    lring = "Stikini Ring +1",
+    rring = "Stikini Ring +1",
     back = "Lugh's Cape",
     waist = "Refoccilation Stone",
-    legs = augments.merlinic.shalwar.macc,
+    legs="Amalric Slops +1",
     feet = augments.merlinic.crackows.nuke
   }
   sets.midcast.drain_aspir = set_combine(sets.midcast.dark, {
@@ -223,30 +197,29 @@ function get_sets()
   --
   sets.midcast.elemental = {}
   sets.midcast.elemental.Normal = {
-    ammo = "Pemphredo Tathlum",
-    head = "Jhakri Coronal +2",
-    neck = "Sanctity Necklace",
-    lear = "Friomisi Earring",
-    rear = "Barkarole Earring",
-    body = augments.merlinic.jubbah,
-    hands = "Amalric Gages",
-    lring = "Shiva Ring",
-    rring = "Strendu Ring",
-    back = "Lugh's Cape",
-    waist = "Refoccilation Stone",
-    legs = augments.merlinic.shalwar.macc,
-    feet = augments.merlinic.crackows.nuke
+    ammo="Pemphredo Tathlum",
+    head="Jhakri Coronal +2",
+    neck="Sanctity Necklace",
+    lear="Regal Earring",
+    rear="Malignance Earring",
+    body="Amalric Doublet +1",
+    hands="Amalric Gages +1",
+    lring="Shiva Ring +1",
+    rring="Strendu Ring",
+    back="Lugh's Cape",
+    waist="Refoccilation Stone",
+    legs="Amalric Slops +1",
+    feet=augments.merlinic.crackows.nuke
   }
   sets.midcast.elemental.MagicBurst = set_combine(sets.midcast.elemental.Normal, {
     neck = "Mizu. Kubikazari",           -- MB +10
-    body = augments.merlinic.jubbah,     -- MB +3
-    hands = "Amalric Gages",             -- MB II +5
+    hands = "Amalric Gages +1",          -- MB II +6
     lring = "Mujin Band",                -- MB II +5
     rring = "Locus Ring",                -- MB +5
     feet = "Jhakri Pigaches +2"          -- MB +7
   })                                     -- TOTALS
-                                         -- MB +30 (Caps at 40%)
-                                         -- MB II +10
+                                         -- MB +27 (Caps at 40%)
+                                         -- MB II +11
 
   -- Enfeebling Magic
   --
@@ -258,11 +231,11 @@ function get_sets()
     rear = "Regal Earring",
     body = "Vanya Robe",
     hands = "Jhakri Cuffs +2",
-    lring = "Stikini Ring",
-    rring = "Stikini Ring",
+    lring = "Stikini Ring +1",
+    rring = "Stikini Ring +1",
     back = "Lugh's Cape",
     waist = "Luminary Sash",
-    legs = augments.merlinic.shalwar.macc,
+    legs="Amalric Slops +1",
     feet = "Medium's Sabots"
   }
 
@@ -279,6 +252,7 @@ function get_sets()
     hands="Telchine Gloves",
     legs="Telchine Braconi",
     feet="Telchine Pigaches",
+    waist="Embla Sash",
     back="Lugh's Cape",
   }
   sets.midcast.enhancing_regen = {
@@ -307,6 +281,8 @@ function get_sets()
   -- Healing Sets
   --
   sets.midcast.healing = {
+    main="Daybreak",
+    sub="Ammurapi Shield",
     ammo="Quartz Tathlum +1",
     head="Vanya Hood",
     body="Vanya Robe",

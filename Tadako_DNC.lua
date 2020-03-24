@@ -63,11 +63,11 @@ function get_sets()
 
   -- Melee
   sets.WeaponSkill = {
-    head="Mummu Bonnet +1",
+    head="Mummu Bonnet +2",
     body="Adhemar Jacket",
-    hands="Meg. Gloves +1",
-    legs="Mummu Kecks +1",
-    feet="Mummu Gamashes +1",
+    hands="Meg. Gloves +2",
+    legs="Mummu Kecks +2",
+    feet="Mummu Gamashes +2",
     neck="Sanctity Necklace",
     waist="Windbuffet Belt",
     left_ear="Sherida Earring",

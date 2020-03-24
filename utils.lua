@@ -1,10 +1,11 @@
+-- Auto equip doom sets
 function buff_change(buff, gain, bufftable)
   if buff:lower() == "doom" then
     if gain then
       lock_set(sets.Doom)
       send_command("input /echo DOOM ON - Equipping doom gear")
       -- send_command("input /party Help, I'm DOOMED!")
-      send_command('input /item "Holy Water" <me>')
+      -- send_command('input /item "Holy Water" <me>')
     else
       unlock_set(sets.Doom)
       send_command("input /echo DOOM OFF - Removed doom gear")
@@ -13,6 +14,7 @@ function buff_change(buff, gain, bufftable)
   end
 end
 
+-- Disable all slots in a given set
 function lock_set(set)
   equip(set)
   for k, _ in pairs(set) do
@@ -20,8 +22,51 @@ function lock_set(set)
   end
 end
 
+-- Enable all slots in a given set
 function unlock_set(set)
   for k, _ in pairs(set) do
     enable(k)
+  end
+end
+
+-- Calculate total elemental intensity taking weather and day into account
+function get_total_element_intensity(element)
+  local intensity = 0
+
+  if element == world.weather_element then
+    intensity = intensity + world.weather_intensity
+  elseif elements.strong_to[element] == world.weather_element then
+    intensity = intensity - world.weather_intensity
+  end
+
+  if element == world.day_element then
+    intensity = intensity + 1
+  elseif elements.strong_to[element] == world.day_element then
+    intensity = intensity - 1
+  end
+
+  return intensity
+end
+
+-- spell.target.distance < 15 - spell.target.model_size
+
+-- Equip Orpheus Sash or Hachirin-no-Obi depending on elemental factors
+function equip_elemental_waist(spell)
+  local intensity = get_total_element_intensity(spell.element)
+  local distance_to_center = spell.target.distance + spell.target.model_size
+
+  -- add_to_chat('Calculate Orpheus/Hachirin:')
+  -- add_to_chat('* Element: ' .. spell.element)
+  -- add_to_chat('* Intensity: ' .. intensity)
+  -- add_to_chat('* Distance: ' .. distance_to_center)
+
+  if intensity >= 2 or (intensity == 1 and distance_to_center > 8) then
+    equip({ waist="Hachirin-no-Obi" })
+    -- add_to_chat('RESULT: Hachirin-no-Obi')
+  elseif distance_to_center <= 15 then
+    equip({ waist="Orpheus's Sash" })
+    -- add_to_chat('RESULT: Orpheus Shash')
+  else
+    -- add_to_chat('RESULT: n/a')
   end
 end

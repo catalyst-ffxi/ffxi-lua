@@ -70,7 +70,8 @@ function get_sets()
   -- Magic
   sets.Magic = {}
   sets.Magic.Precast = {
-    left_ring = "Prolix Ring",
+    left_ring = "Rahab Ring",
+    right_ring = "Kishar Ring",
     waist = "Witful Belt"
   }
   sets.Magic.Healing = {

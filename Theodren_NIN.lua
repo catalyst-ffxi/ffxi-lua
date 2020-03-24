@@ -97,11 +97,11 @@ function get_sets()
   sets.WS = {}
   sets.WS.Normal = {
     ammo="Falcon Eye",
-    head=augments.herc.head.dimi,
+    head=augments.herc.head.wsDex,
     body="Meghanada Cuirie +2",
     hands="Meg. Gloves +2",
-    legs=augments.herc.legs.ws,
-    feet=augments.herc.feet.dimi,
+    legs=augments.herc.legs.wsDex,
+    feet=augments.herc.feet.wsDex,
     neck="Fotia Gorget",
     waist="Fotia Belt",
     left_ear="Moonshade Earring",
@@ -133,7 +133,7 @@ function get_sets()
     lear="Loquacious earring",          -- 2
     rear="Etiolation Earring",          -- 1
     lring="Kishar Ring",                -- 4
-    rring="Prolix Ring",                -- 2
+    rring="Rahab Ring",                -- 2
     legs=augments.taeon.legs.phalanx,   -- 3
   }
   sets.Magic.SpellInterrupt = {
@@ -147,7 +147,7 @@ function get_sets()
     left_ring="Defending Ring",      -- DT
     right_ring="Gelatinous Ring +1", -- PDT
     -- back="",
-    waist="Flume Belt +1"            -- PDT
+    waist="Flume Belt +1",            -- PDT
     -- legs="",
     feet=augments.taeon.feet.phalanx -- 9
   }

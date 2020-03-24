@@ -75,9 +75,9 @@ function get_sets()
     body="Pillager's Vest +3",
     hands="Plunderer's Armlets +1",
     legs="Samnuha Tights",
-    feet=augments.herc.feet.tp,
+    feet=augments.herc.feet.th,
     neck="Iskur Gorget",
-    waist="Chaac Belt",
+    waist="Sarissapho. Belt",
     left_ear="Suppanomimi",
     right_ear="Sherida Earring",
     left_ring="Hetairoi Ring",
@@ -90,12 +90,26 @@ function get_sets()
 
   -- Weapon Skills
   sets.WS = {}
+  -- sets.Ws.SneakAttack = {
+  --   head=augments.herc.head.ws,
+  --   body="Plunderer's Vest +3",
+  --   hands="Meg. Gloves +2",
+  --   legs=augments.herc.legs.crit,
+  --   feet=augments.herc.feet.crit,
+  --   neck="Caro Necklace",
+  --   waist="Grunfeld Rope",
+  --   left_ear="Moonshade Earring",
+  --   right_ear="Sherida Earring",
+  --   left_ring="Ramuh Ring",
+  --   right_ring="Apate Ring",
+  --   back=gear.toutatis.ws,
+  -- }
   sets.WS.Rudra = {
     head=augments.herc.head.ws,
     body="Plunderer's Vest +3",
     hands="Meg. Gloves +2",
-    legs=augments.herc.legs.crit,
-    feet=augments.herc.feet.crit,
+    legs=augments.herc.legs.ws,
+    feet=augments.herc.feet.ws,
     neck="Caro Necklace",
     waist="Grunfeld Rope",
     left_ear="Moonshade Earring",
@@ -106,8 +120,8 @@ function get_sets()
   }
   sets.WS.Evisceration = {
     head="Adhemar bonnet",
-    body=augments.herc.body.ws,
-    hands="Mummu wrists +2",
+    body="Plunderer's Vest +3",
+    hands="Meg. Gloves +2",
     legs=augments.herc.legs.crit,
     feet=augments.herc.feet.crit,
     neck="Soil Gorget",
@@ -136,26 +150,26 @@ function get_sets()
   -- Abilities
   sets.JobAbility = {}
   sets.Preshot = {
-    -- head="Taeon Chapeau",
+    head=augments.taeon.head.snapshot,
     body="Pursuer's Doublet",
-    -- hands="Taeon Gloves",
-    -- legs="Adhemar Kecks",
+    hands=augments.taeon.hands.snapshot,
+    legs="Adhemar Kecks",
     feet="Meg. Jam. +2",
     -- waist="Yemaya Belt",
-    -- back="Toutatis's Cape"
+    -- back="Camulus's Mantle"
   }
   sets.Ranged = {
-    head="Mummu Bonnet +2",
+    head="Meghanada Visor +2",
     body="Mummu Jacket +2",
     hands="Meg. Gloves +2",
     legs="Meg. Chausses +2",
     feet="Meg. Jam. +2",
     neck="Iskur Gorget",
     waist="Eschan Stone",
-    left_ear="Suppanomimi",
+    left_ear="Digni. Earring",
     right_ear="Sherida Earring",
     left_ring="Mummu Ring",
-    right_ring="Petrov Ring",
+    right_ring="Dingir Ring",
     back=gear.toutatis.tp
   }
 
@@ -181,7 +195,11 @@ function precast(spell)
     equip(sets.Magic.Precast)
 
   elseif spell.type == 'WeaponSkill' then
-    equip(sets.WS[spell.english] or sets.WS.Rudra)
+    -- if buffactive['Sneak Attack'] then
+    --   equip(sets.WS.SneakAttack)
+    -- else
+      equip(sets.WS[spell.english] or sets.WS.Rudra)
+    -- end
 
   elseif spell.english == "Ranged" then
     equip(sets.Preshot)
@@ -212,6 +230,11 @@ end
 function aftercast(spell)
   if player.status=='Engaged' then
     equip(sets.Engaged[PrimaryMode.current])
+  else
+    equip(set_combine(
+      equip(sets.Engaged[PrimaryMode.current]),
+      sets.Idle
+    ))
   end
 end
 

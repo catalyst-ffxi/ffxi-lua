@@ -2,11 +2,10 @@ include('Mote-Mappings.lua')
 include('Modes.lua')
 include('augments.lua')
 include('utils.lua')
--- include('organizer-lib')
 
 function define_modes()
   PrimaryMode = M{['description'] = 'Primary Mode', 'Tank', 'HybridHeavy', 'HybridLight', 'FullDD'}
-  WeaponMode = M{['description'] = 'Weapon Mode', 'Tank', 'Hybrid', 'DD'}
+  WeaponMode = M{['description'] = 'Weapon Mode', 'Epeo', 'Lionheart', 'Hepatizon'}
 
   Runes = {
     current = 1,
@@ -37,9 +36,9 @@ function define_binds()
   send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
   send_command("alias g15v2_m1g2 gs c cycle WeaponMode")
   send_command("alias g15v2_m1g3 gs c cycle_rune")
-  send_command('bind !f9 input /item "Echo Drops" <me>')
-  send_command('bind !f10 input /item "Remedy" <me>')
-  send_command('bind !f11 input /item "Holy Water" <me>')
+  -- send_command('bind !f9 input /item "Echo Drops" <me>')
+  -- send_command('bind !f10 input /item "Remedy" <me>')
+  -- send_command('bind !f11 input /item "Holy Water" <me>')
 end
 
 function define_gear()
@@ -63,24 +62,28 @@ function get_sets()
 
   -- Weapons
   --
-  sets.weapons = {}
-  sets.weapons.DD = {
-    main="Lionheart",
-    sub="Utu Grip"
+  sets.weapons = {
+    Lionheart = { main="Lionheart" },
+    Epeo = { main="Epeolatry" },
+    Hepatizon = { main="Hepatizon Axe +1" }
   }
-  sets.weapons.Hybrid = {
-    main="Epeolatry",
-    sub="Utu Grip"
-  }
-  sets.weapons.Tank = {
-    main="Epeolatry",
-    sub="Alber Strap"
-  }
+  -- sets.weapons.Lionheart = {
+  --   main="Lionheart",
+  --   -- sub="Utu Grip"
+  -- }
+  -- sets.weapons.Epeo = {
+  --   main="Epeolatry",
+  --   -- sub="Alber Strap"
+  -- }
+  -- sets.weapons.Hepatizon = {
+  --   main="Hepatizon Axe +1"
+  -- }
 
   -- Modes
   --
   sets.modes = {}
   sets.modes.FullDD = {
+    sub="Utu Grip",
     ammo="Yamarang",
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
@@ -96,6 +99,7 @@ function get_sets()
     back=gear.ogma.tp
   }
   sets.modes.HybridLight = {
+    sub="Utu Grip",
     ammo="Yamarang",
     head="Adhemar Bonnet +1",
     body="Ayanmo Corazza +2",          -- 6 PDT
@@ -106,38 +110,40 @@ function get_sets()
     waist="Ioskeha Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
-    left_ring="Defending Ring",        -- 10 DT
-    right_ring="Epona's Ring",
+    left_ring="Moonlight Ring",        -- 5 DT
+    right_ring="Moonlight Ring",       -- 5 DT
     back=gear.ogma.tp                  -- 10 PDT
   }                                    -- 43 PDT
   sets.modes.HybridHeavy = {
+    sub="Utu Grip",
     ammo="Staunch Tathlum +1",         -- 3 DT
     head="Aya. Zucchetto +2",          -- 3 DT
     body="Ayanmo Corazza +2",          -- 6 PDT
     hands="Turms Mittens +1",
     legs="Meg. Chausses +2",           -- 6 PDT
-    feet="Turms Leggings",
+    feet="Turms Leggings +1",
     neck="Loricate Torque +1",         -- 6 PDT
     waist="Ioskeha Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
     left_ring="Defending Ring",        -- 10 DT
-    right_ring="Moonbeam Ring",        -- 4 DT
+    right_ring="Moonlight Ring",        -- 4 DT
     back=gear.ogma.tp                  -- 10 PDT
-  }                                    -- 48 PDT
+  }                                    -- 49 PDT
   sets.modes.Tank = {
+    sub="Alber Strap",
     ammo="Staunch Tathlum +1",
-    head="Turms Cap",
+    head="Turms Cap +1",
     body="Futhark Coat +3",
     hands="Turms Mittens +1",
     legs="Eri. Leg Guards +1",
-    feet="Turms Leggings",
+    feet="Turms Leggings +1",
 		neck="Loricate Torque +1",
     waist="Flume Belt +1",
     left_ear="Odnowa Earring +1",
     right_ear="Etiolation Earring",
     left_ring="Defending Ring",
-    right_ring="Moonbeam Ring",
+    right_ring="Moonlight Ring",
     back=gear.ogma.tank
   }
 
@@ -152,9 +158,9 @@ function get_sets()
   sets.WS = {}
   sets.WS.Resolution = {
     ammo="Knobkierrie",
-    head="Adhemar Bonnet",
+    head=augments.herc.head.reso,
     body=augments.herc.body.reso,
-    hands=augments.herc.hands.triple,
+    hands=augments.herc.hands.reso,
     legs="Meg. Chausses +2",
     feet=augments.herc.feet.triple,
     neck="Fotia Gorget",
@@ -167,13 +173,13 @@ function get_sets()
   }
   sets.WS.Dimidiation = {
     ammo="Knobkierrie",
-    head=augments.herc.head.dimi,
+    head=augments.herc.head.wsDex,
     body="Meghanada cuirie +2",
     hands="Meg. Gloves +2",
-    legs=augments.herc.legs.ws,
-    feet=augments.herc.feet.dimi,
-    neck="Fotia Gorget",
-    waist="Fotia Belt",
+    legs=augments.herc.legs.wsDex,
+    feet=augments.herc.feet.wsDex,
+    neck="Caro Necklace",
+    waist="Grunfeld Rope",
     left_ear="Moonshade Earring",
     right_ear="Sherida Earring",
     left_ring="Niqmaddu Ring",
@@ -185,7 +191,7 @@ function get_sets()
     head=augments.herc.head.reso,
     body=augments.herc.body.reso,
     hands="Meg. Gloves +2",
-    legs=augments.herc.legs.ws,
+    legs=augments.herc.legs.wsDex,
     feet=augments.herc.feet.reso,
     neck="Fotia Gorget",
     waist="Fotia Belt",
@@ -195,11 +201,36 @@ function get_sets()
     right_ring="Karieyh Ring +1",
     back=gear.ogma.reso
   }
-  sets.WS.Shockwave = set_combine(sets.Enmity, {
-    neck="Fotia Gorget",
-    left_ear="Moonshade Earring",
-    waist="Fotia Belt"
-  })
+  sets.WS.Shockwave = {
+    ammo="Yamarang",
+    head="Aya. Zucchetto +2",
+    body="Ayanmo Corazza +2",
+    hands="Aya. Manopolas +2",
+    legs="Aya. Cosciales +2",
+    feet="Aya. Gambieras +2",
+    neck="Sanctity Necklace",
+    waist="Eschan Stone",
+    left_ear="Dignitary's Earring",
+    right_ear="Moonshade Earring",
+    left_ring="Flamma Ring",
+    right_ring="Karieyh Ring +1",
+    back=gear.ogma.tank
+  }
+  sets.WS['Armor Break'] = {
+    ammo="Pemphredo Tathlum",
+    head="Aya. Zucchetto +2",
+    body="Ayanmo Corazza +2",
+    hands="Aya. Manopolas +2",
+    legs="Aya. Cosciales +2",
+    feet="Aya. Gambieras +2",
+    neck="Sanctity Necklace",
+    waist="Eschan Stone",
+    left_ear="Dignitary's Earring",
+    right_ear="Moonshade Earring",
+    left_ring="Stikini Ring +1",
+    right_ring="Karieyh Ring +1",
+    back=gear.ogma.tank
+  }
 
   -- Job Abilities
   --
@@ -209,20 +240,32 @@ function get_sets()
   sets.JAs.Pflug = { feet="Runeist Bottes +1" }
   sets.JAs.Gambit = { hands="Runeist's Mitons +2" }
   sets.JAs.Rayke = { feet="Futhark Boots" }
-  sets.JAs.Battuta = { head="Futhark Bandeau +1" }
+  sets.JAs.Battuta = { head="Futhark Bandeau +2" }
   sets.JAs.Liement = { head="Futhark Coat +3" }
   sets.JAs['Elemental Sforzo'] = { body="Futhark Coat +3" }
   sets.JAs['Vivacious Pulse'] = {
     head="Erilaz Galea +1",
     neck="Incanter's Torque",
-    left_ring="Stikini Ring",
-    right_ring="Stikini Ring",
+    left_ring="Stikini Ring +1",
+    right_ring="Stikini Ring +1",
     back="Altruistic Cape",
     legs="Runeist Trousers"
   }
-  sets.JAs['One for All'] = set_combine(sets.modes.Tank, {
-    -- maximize hp
-  })
+  sets.JAs['One for All'] = {
+    ammo="Staunch Tathlum +1",
+    head={ name="Carmine Mask", augments={'HP+60','STR+10','INT+10',}},
+    body={ name="Futhark Coat +3", augments={'Enhances "Elemental Sforzo" effect',}},
+    hands="Turms Mittens +1",
+    legs={ name="Carmine Cuisses +1", augments={'HP+80','STR+12','INT+12',}},
+    feet="Turms Leggings +1",
+    neck="Sanctity Necklace",
+    waist="Kasiri Belt",
+    left_ear="Odnowa Earring +1",
+    right_ear="Etiolation Earring",
+    left_ring="Eihwaz Ring",
+    right_ring="Moonlight Ring",
+    back=gear.ogma.tank
+  }
 
   -- Magic
   --
@@ -235,8 +278,8 @@ function get_sets()
     rear="Etiolation Earring",          -- 1
     body="Taeon Tabard",                -- 8
     hands="Leyline Gloves",             -- 7
-    lring="Kishar Ring",                -- 4
-    rring="Prolix Ring",                -- 2
+    lring="Rahab Ring",                 -- 2
+    rring="Kishar Ring",                -- 4
     back=gear.ogma.tank,                -- 10
     waist="Kasiri Belt",                -- HP
     legs="Aya. Cosciales +2",           -- 6
@@ -248,21 +291,55 @@ function get_sets()
     legs="Futhark Trousers +3"       -- 15
                                      -- 85
   })
+  -- head=augments.taeon.head.SID,    -- 7
+  sets.Magic.SpellInterrupt = {
+    ammo="Staunch Tathlum +1",       -- 11, 3 DT
+    head="Futhark Bandeau +2",       -- 5 PDT
+    neck="Moonlight Necklace",       -- 15
+    lear="Odnowa Earring +1",        -- MDT/HP
+    rear="Magnetic Earring",         -- 8
+    body="Futhark Coat +3",          -- 9 DT
+    hands="Rawhide Gloves",          -- 15
+    left_ring="Defending Ring",      -- 10 DT
+    right_ring="Moonlight Ring",     -- 5 DT
+    back=gear.ogma.enmity,           -- 10
+    waist="Audumbla Sash",           -- 10 SID, 4 PDT
+    legs="Carmine Cuisses +1",       -- 20
+    feet=augments.taeon.feet.phalanx -- 9
+                                      -- 8 Merit
+                                      -- 106 Total
+                                      -- 36 PDT
+  }
+  sets.Magic.Utsusemi = { -- mix of FC, SID, and DT
+    ammo="Staunch Tathlum +1",          -- 11 SID, 3 DT
+    head="Runeist's Bandeau +2",        -- 12 FC
+    neck="Moonlight Necklace",          -- 15 SID
+    lear="Loquacious earring",          -- 2 FC
+    rear="Magnetic Earring",            -- 8 SID
+    body="Taeon Tabard",                -- 8 FC
+    hands="Leyline Gloves",             -- 7 FC
+    lring="Defending Ring",             -- 10 DT
+    right_ring="Kishar Ring",           -- 4 FC
+    back=gear.ogma.tank,                -- 10 FC, 5 DT
+    waist="Audumbla Sash",              -- 10 SID, 4 PDT
+    legs="Carmine Cuisses +1",          -- 20 SID
+    feet="Carmine Greaves +1"           -- 8 FC
+  }
   sets.Magic.EnhancingSkill = {
     head="Carmine Mask",            -- 10
     neck="Incanter's Torque",       -- 10
     left_ear="Andoaa Earring",      -- 5
-    right_ear="Augment. Earring",   -- 3
+    right_ear="Mimir Earring",      -- 10
     body="Manasa Chasuble",         -- 12
     hands="Runeist's Mitons +2",    -- 17
-    left_ring="Stikini Ring",       -- 5
-    right_ring="Stikini Ring",      -- 5
+    left_ring="Stikini Ring +1",    -- 8
+    right_ring="Stikini Ring +1",   -- 8
     back="Merciful Cape",           -- 5
     waist="Olympus Sash",           -- 5
     legs="Carmine Cuisses +1"       -- 18
   }
   sets.Magic.Phalanx = set_combine(sets.Magic.EnhancingSkill, {
-    head="Futhark Bandeau +1",
+    head="Futhark Bandeau +2",
     body=augments.herc.body.phalanx,
     hands=augments.taeon.hands.phalanx,
     legs=augments.taeon.legs.phalanx,
@@ -285,25 +362,6 @@ function get_sets()
     head="Runeist's Bandeau +2"
   })
 
-  -- head=augments.taeon.head.SID,    -- 7
-  sets.Magic.SpellInterrupt = {
-    ammo="Staunch Tathlum +1",       -- 11
-    head="Meghanada Visor +2",       -- PDT
-    neck="Moonlight Necklace",       -- 15
-    lear="Odnowa Earring +1",        -- MDT/HP
-    rear="Magnetic Earring",         -- 8
-    body="Futhark Coat +3",          -- DT
-    hands="Rawhide Gloves",          -- 15
-    left_ring="Defending Ring",      -- DT
-    right_ring="Moonbeam Ring",      -- PDT
-    back=gear.ogma.enmity,           -- 10
-    waist="Rumination Sash",         -- 10
-    legs="Carmine Cuisses +1",       -- 20
-    feet=augments.taeon.feet.phalanx -- 9
-                                     -- 8 Merit
-                                     -- 106 Total
-  }
-
   -- Upgrades:
   --
   -- feet="Ahosi Leggings"       -- 7
@@ -311,7 +369,7 @@ function get_sets()
   sets.Enmity = {
     ammo="Sapience Orb",           -- 2
     head="Halitus Helm",           -- 8
-    neck="Moonlight Necklace",     -- 15f
+    neck="Moonlight Necklace",     -- 15
     left_ear="Trux Earring",       -- 5
     right_ear="Cryptic Earring",   -- 4
     body="Emet Harness +1",        -- 10
@@ -389,6 +447,9 @@ function midcast(spell)
 
     elseif spell.skill == 'Enhancing Magic' then
       equip(sets.Magic.EnhancingDuration)
+
+    elseif string.find(spell.english, 'Utsusemi') then
+      equip(sets.Magic.Utsusemi)
     end
 
     if buffactive['Embolden'] then
@@ -398,9 +459,7 @@ function midcast(spell)
 end
 
 function aftercast(spell)
-  -- if player.in_combat or PrimaryMode.current == 'Tank' then
-    equip_set_for_current_mode()
-  -- end
+  equip_set_for_current_mode()
   maintain_reraise_equip()
 end
 

@@ -3,10 +3,7 @@ include('Modes.lua')
 include('augments.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Hybrid', 'FullTH'}
-  TreasureHunter = M(false, 'Treasure Hunter')
-  -- Capacity = M(false, 'Capacity Mantle')
-  -- DamageDown = M(false, 'Damage Down')
+  PrimaryMode = M{['description'] = 'Primary Mode', 'FullTH', 'HybridTH', 'FullDD', 'HybridDD'}
 
   Abyssea = {
     current = 0,
@@ -26,7 +23,6 @@ end
 
 function define_binds()
   send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
-  send_command("alias g15v2_m1g2 gs c cycle TreasureHunter")
   send_command("alias g15v2_m1g5 gs c abbyweapon")
 end
 
@@ -49,46 +45,10 @@ function get_sets()
   sets.idle = {
   }
   sets.modes = {}
-  sets.modes.Normal = {
-    ammo="Ginsen",
-    -- ranged="Exalted Crossbow +1",
-    -- ammo="Gashing Bolt",
-    head="Adhemar Bonnet +1",
-    body="Adhemar Jacket +1",
-    hands=augments.herc.hands.triple,
-    legs="Samnuha Tights",
-    feet=augments.herc.feet.triple,
-    neck="Iskur Gorget",
-    waist="Reiki Yotai",
-    left_ear="Brutal Earring",
-    right_ear="Sherida Earring",
-    left_ring="Hetairoi Ring",
-    right_ring="Epona's Ring",
-    back=gear.toutatis.tp,
-  }
-  sets.modes.Hybrid = {
-    ammo="Staunch Tathlum +1",
-    -- ranged="Exalted Crossbow +1",
-    -- ammo="Gashing Bolt",
-    head="Adhemar Bonnet +1",
-    body="Adhemar Jacket +1",
-    hands=augments.herc.hands.triple,    -- 2 PDT
-    legs="Meg. Chausses +2",             -- 6 PDT
-    feet=augments.herc.feet.triple,      -- 2 PDT
-    neck="Loricate Torque +1",           -- 6 DT
-    -- waist="Flume Belt +1",               -- 4 PDT
-    waist="Reiki Yotai",
-    -- left_ear="Suppanomimi",
-    left_ear="Brutal Earring",
-    right_ear="Sherida Earring",
-    left_ring="Defending Ring",          -- 10 PDT
-    right_ring="Moonbeam Ring",          -- 4 DT
-    back=gear.toutatis.tp,               -- 10 PDT
-  }                                      -- 43 PDT
   sets.modes.FullTH = {
-    ammo="Ginsen",
-    -- ranged="Exalted Crossbow +1",
-    -- ammo="Gashing Bolt",
+    -- ammo="Aurgelmir Orb",
+    ranged="Exalted Crossbow +1",
+    ammo="Gashing Bolt",
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
     hands="Plunderer's Armlets +1",
@@ -102,17 +62,69 @@ function get_sets()
     right_ring="Epona's Ring",
     back=gear.toutatis.tp,
   }
+  sets.modes.HybridTH = {
+    -- ammo="Yamarang",
+    ranged="Exalted Crossbow +1",
+    ammo="Gashing Bolt",
+    head="Malignance Chapeau",           -- 6 DT
+    body="Malignance Tabard",            -- 9 DT
+    hands="Plunderer's Armlets +1",
+    legs="Malignance Tights",            -- 7 DT
+    feet=augments.herc.feet.th2,         -- 2 PDT
+    neck="Loricate Torque +1",           -- 6 DT
+    waist="Reiki Yotai",
+    left_ear="Suppanomimi",
+    right_ear="Sherida Earring",
+    left_ring="Moonlight Ring",          -- 5 DT
+    right_ring="Moonlight Ring",         -- 5 DT
+    back=gear.toutatis.tp,               -- 10 PDT
+  }                                      -- 50 PDT
+  sets.modes.FullDD = {
+    -- ammo="Aurgelmir Orb",
+    ranged="Exalted Crossbow +1",
+    ammo="Gashing Bolt",
+    head="Adhemar Bonnet +1",
+    body="Adhemar Jacket +1",
+    hands=augments.herc.hands.triple,
+    legs="Samnuha Tights",
+    feet=augments.herc.feet.triple,
+    neck="Iskur Gorget",
+    waist="Reiki Yotai",
+    left_ear="Brutal Earring",
+    right_ear="Sherida Earring",
+    left_ring="Hetairoi Ring",
+    right_ring="Epona's Ring",
+    back=gear.toutatis.tp,
+  }
+  sets.modes.HybridDD = {
+    -- ammo="Yamarang",
+    ranged="Exalted Crossbow +1",
+    ammo="Gashing Bolt",
+    head="Malignance Chapeau",           -- 6 DT
+    body="Malignance Tabard",            -- 9 DT
+    hands=augments.herc.hands.triple,    -- 2 PDT
+    legs="Malignance Tights",            -- 7 DT
+    feet=augments.herc.feet.triple,      -- 2 PDT
+    neck="Loricate Torque +1",           -- 6 DT
+    waist="Reiki Yotai",
+    left_ear="Suppanomimi",
+    right_ear="Sherida Earring",
+    left_ring="Moonlight Ring",          -- 5 DT
+    right_ring="Moonlight Ring",         -- 5 DT
+    back=gear.toutatis.tp,               -- 10 PDT
+  }                                      -- 52 PDT
 
   -- Weapon Skills
   --
   sets.WS = {}
   sets.WS.Rudra = {
-    ammo="Falcon Eye",
-    head=augments.herc.head.dimi,
+    -- ammo="Falcon Eye", -- stored
+    -- ammo="Floestone",
+    head=augments.herc.head.wsDex,
     body="Meg. Cuirie +2",
     hands="Meg. Gloves +2",
-    legs=augments.herc.legs.ws,
-    feet=augments.herc.feet.dimi,
+    legs=augments.herc.legs.wsDex,
+    feet=augments.herc.feet.wsDex,
     neck="Caro Necklace",
     waist="Grunfeld Rope",
     left_ear="Moonshade Earring",
@@ -124,33 +136,19 @@ function get_sets()
   -- sets.WS['Exenterator'] = {
   -- }
   sets.WS['Evisceration'] = {
-    ammo="Yetshila",
-    head="Adhemar Bonnet",
+    -- ammo="Yetshila +1",
+    head="Adhemar Bonnet +1",
+    body="Meg. Cuirie +2",
+    hands="Meg. Gloves +2",
+    legs=augments.herc.legs.wsDex,
+    feet=augments.herc.feet.wsDex,
     neck="Fotia Gorget",
+    waist="Fotia Belt",
     left_ear="Moonshade Earring",
     right_ear="Sherida Earring",
-    body="Meg. Cuirie +2",
-    hands="Meg. Gloves +2",
     left_ring="Regal Ring",
     right_ring="Ilabrat Ring",
-    back=gear.toutatis.ws,
-    waist="Fotia Belt",
-    legs=augments.herc.legs.ws,
-    feet=augments.herc.feet.dimi
-  }
-  sets.WS['Savage Blade'] = {
-    head=augments.herc.head.wsd,
-    neck="Fotia Gorget",
-    left_ear="Ishvara Earring",
-    right_ear="Moonshade Earring",
-    body="Meg. Cuirie +2",
-    hands="Meg. Gloves +2",
-    left_ring="Karieyh Ring +1",
-    right_ring="Regal Ring",
-    back=gear.toutatis.ws,
-    waist="Prosilio Belt +1",
-    legs=augments.herc.legs.ws,
-    feet=augments.herc.feet.triple
+    back=gear.toutatis.ws
   }
   sets.WS['Aeolian Edge'] =  {
     -- ammo="Ombre Tathlum +1",
@@ -161,11 +159,11 @@ function get_sets()
     body="Samnuha Coat",
     hands="Leyline Gloves",
     left_ring="Dingir Ring",
-    right_ring="Karieyh Ring +1",
+    right_ring="Shiva Ring +1",
     back=gear.toutatis.ws,
     waist="Eschan Stone",
     legs=augments.herc.legs.magic,
-    feet= augments.herc.feet.dimi
+    feet= augments.herc.feet.wsDex
   }
   sets.WS['Circle Blade'] = {
     -- ammo="Falcon Eye",
@@ -189,17 +187,6 @@ function get_sets()
   sets.JAs.Waltz = {
     lring = 'Asklepian Ring'
   }
-  sets.TreasureHunter = {
-    hands="Plunderer's Armlets +1",
-    waist="Chaac Belt",
-    legs=augments.herc.legs.treasure
-  }
-  sets.DamageDown = {
-    neck = "Loricate Torque +1",
-    lring = "Gelatinous Ring +1",
-    rring = "Defending Ring",
-    waist = "Flume Belt +1",
-  }
   sets.run = {
     feet = "Fajin boots"
   }
@@ -215,7 +202,7 @@ function get_sets()
     lear="Loquacious earring",          -- 2
     rear="Etiolation Earring",          -- 1
     lring="Kishar Ring",                -- 4
-    rring="Prolix Ring",                -- 2
+    rring="Rahab Ring",                -- 2
     legs=augments.taeon.legs.phalanx,   -- 3
   }
   sets.MA.SpellInterrupt = {
@@ -230,7 +217,6 @@ function get_sets()
     waist="Flume Belt +1",
     feet=augments.taeon.feet.phalanx -- 9
   }
-
   sets.Preshot = {                           -- Snap | Rapid
     head=augments.taeon.head.snapshot,       --   8    0
     legs=augments.adhemar.kecks.rapidShot,   --   9    10
@@ -238,11 +224,13 @@ function get_sets()
     waist="Yemaya Belt",                     --   0    5
   }
   sets.Ranged = {
-    head="Meghanada Visor +2",
-    body="Meg. Cuirie +2",
+    ranged="Exalted Crossbow +1",
+    ammo="Gashing Bolt",
+    head="Malignance Chapeau",
+    body="Malignance Tabard",
     hands="Meg. Gloves +2",
-    legs="Meg. Chausses +2",
-    feet="Meg. Jam. +2",
+    legs="Malignance Tights",
+    feet="Malignance Boots",
     neck="Iskur Gorget",
     waist="Yemaya Belt",
     left_ear="Telos Earring",
@@ -286,9 +274,9 @@ function midcast(spell)
 end
 
 function aftercast(spell)
-  if player.in_combat then
+  -- if player.in_combat then
     equip_set_for_current_mode()
-  end
+  -- end
   maintain_reraise_equip()
 end
 
@@ -332,9 +320,7 @@ end
 
 function set_for_engaged()
   local set = sets.modes[PrimaryMode.current]
-  if TreasureHunter.value then
-    set = set_combine(set, sets.TreasureHunter)
-  end
+
   return set
 end
 

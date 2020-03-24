@@ -26,21 +26,21 @@ function get_sets()
 
   -- Modes
   sets.Idle = {
-    main="Gada",
+    ammo="Kalboron Stone",
+    main="Bolelabunga",
     sub="Genbu's Shield",
-    head=augments.telchine.head.enhancing,
-    hands=augments.telchine.gloves.enhancing,
-    body=augments.telchine.body.enhancing,
-    legs=augments.telchine.legs.enhancing,
-    feet=augments.telchine.feet.enhancing,
+    head="Acad. Mortar. +1",
+    hands="Arbatel Bracers +1",
+    body="Jhakri Robe +2",
+    legs="Assiduity Pants",
+    feet="Vanya Clogs",
     neck="Loricate Torque +1",
     waist="Fucho-no-Obi",
     left_ear="Flashward Earring",
     right_ear="Etiolation Earring",
     left_ring="Gelatinous Ring +1",
-    right_ring="Warden's Ring",
-    back="Aptitude Mantle +1"
-    -- back="Solemnity Cape"
+    right_ring="Purity Ring",
+    back="Solemnity Cape"
   }
   sets.Engaged = {
 
@@ -49,33 +49,35 @@ function get_sets()
   -- Magic
   sets.Magic = {}
   sets.Magic.Precast = {
-    -- main=gear.kali.refresh,
-    head="Kaykaus Mitra",
-    neck="Orunmila's torque",
-    -- body="Inyanga Jubbah +2",
-    hands=augments.telchine.gloves.fastCast,
-    left_ring="Weatherspoon Ring",
-    right_ring="Kishar Ring",
-    left_ear="Loquacious earring",
-    right_ear="Etiolation Earring",
-    legs="Kaykaus Tights",
-    -- back=gear.cape.fastCast,
-    waist="Witful Belt"
-  }
+    ammo="Sapience Orb",                      -- 2 FC
+    head="Merlinic Hood",                     -- 8 FC
+    --body="",
+    hands=augments.telchine.gloves.enhancing, -- 4 FC
+    legs="Kaykaus Tights",                    -- 6 FC
+    feet="Merlinic Crackows",                 -- 5 FC
+    neck="Orunmila's torque",                 -- 5 FC
+    waist="Witful Belt",                      -- 3 FC
+    left_ear="Loquacious earring",            -- 2 FC
+    right_ear="Etiolation Earring",           -- 1 FC
+    left_ring="Weatherspoon Ring",            -- 5 FC
+    right_ring="Kishar Ring",                 -- 4 FC
+    back="Lugh's Cape",                       -- 10 FC
+  }                                           -- 55 FC
   sets.Magic.Healing = {
-    head="Kaykaus Mitra",
-    -- neck="Henic Torque",
+    main="Gada",                     -- 18
+    head="Kaykaus Mitra",            -- 10
+    neck="Incanter's Torque",
     left_ear="Novia Earring",
-    right_ear="Mendicant's Earring",
-    body="Vanya Robe",
-    hands="Kaykaus Cuffs",
-    left_ring="Lebeche Ring",
+    right_ear="Regal Earring",
+    body="Vanya Robe",               -- 7
+    hands="Kaykaus Cuffs",           -- 10
+    left_ring="Haoma's Ring",
     right_ring="Haoma's Ring",
-    -- back=gear.cape.enmity,
+    back="Lugh's Cape", -- todo: augment
     waist="Pythia Sash",
-    legs="Kaykaus Tights",
-    feet="Vanya Clogs"
-  }
+    legs="Kaykaus Tights",           -- 10
+    feet="Vanya Clogs"               -- 5
+  }                                  -- 60 (over capped)
   sets.Magic.HealingPrecast = {
     head="Kaykaus Mitra",
     right_ear="Mendicant's Earring",
@@ -103,10 +105,11 @@ function get_sets()
     hands=augments.telchine.gloves.enhancing,
     body=augments.telchine.body.enhancing,
     legs=augments.telchine.legs.enhancing,
-    feet=augments.telchine.feet.enhancing
+    feet=augments.telchine.feet.enhancing,
+    waist="Embla Sash"
   }
   sets.Magic.EnhancingRegen = {
-    -- main="Bolelabunga",
+    main="Bolelabunga",
     head="Arbatel Bonnet",
     back="Lugh's Cape"
   }
@@ -195,14 +198,14 @@ function midcast(spell)
 end
 
 function aftercast(spell)
-  if player.status=='Engaged' then
-    equip(sets.Engaged)
-  else
+  -- if player.status=='Engaged' then
+  --   equip(sets.Engaged)
+  -- else
     equip(sets.Idle)
-  end
-  if Capacity.value then
-    equip({back = "Aptitude Mantle +1"})
-  end
+  -- end
+  -- if Capacity.value then
+  --   equip({back = "Aptitude Mantle +1"})
+  -- end
 end
 
 function status_change(new, old)
@@ -250,11 +253,11 @@ function self_command(commandArgs)
   elseif command == 'Scission' then send_command('input /p Opening - Scission [Earth] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Fire" <t>;wait 5.3;input /p Closing - Scission [Earth] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Stone" <t>;')
   elseif command == 'Reverberation' then send_command('input /p Opening - Reverberation [Water] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Stone" <t>;wait 5.3;input /p Closing - Reverberation [Water] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Water" <t>;')
   elseif command == 'Induration' then send_command('input /p Opening - Induration [Ice] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Water" <t>;wait 5.3;input /p Closing - Induration [Ice] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Blizzard" <t>;')
-  elseif command == 'Transfixion' then send_command('input /p Opening - Transfixion [Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Noctohelix" <t>;wait 5.3;input /p Closing - Transfixion [Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Luminohelix" <t>;')				
+  elseif command == 'Transfixion' then send_command('input /p Opening - Transfixion [Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Noctohelix" <t>;wait 5.3;input /p Closing - Transfixion [Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Luminohelix" <t>;')
   elseif command == 'Compression' then send_command('input /p Opening - Compression [Dark] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Blizzard" <t>;wait 5.3;input /p Closing - Compression [Dark] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Noctohelix" <t>;')
   elseif command == 'Fusion' then send_command('input /p Opening - Fusion [Fire/Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Fire" <t>;wait 4.8;input /p Closing - Fusion [Fire/Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Thunder" <t>;')
-  elseif command == 'Fragmentation' then send_command('input /p Opening - Fragmentation [Wind/Thunder] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Blizzard" <t>;wait 5.3;input /p Closing - Fragmentation [Wind/Thunder] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Water" <t>;') 
-  elseif command == 'Gravitation' then send_command('input /p Opening - Gravitation [Earth/Dark] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Aero" <t>;wait 5.3;input /p Closing - Gravitation [Earth/Dark] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Noctohelix" <t>;') 
+  elseif command == 'Fragmentation' then send_command('input /p Opening - Fragmentation [Wind/Thunder] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Blizzard" <t>;wait 5.3;input /p Closing - Fragmentation [Wind/Thunder] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Water" <t>;')
+  elseif command == 'Gravitation' then send_command('input /p Opening - Gravitation [Earth/Dark] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Aero" <t>;wait 5.3;input /p Closing - Gravitation [Earth/Dark] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Noctohelix" <t>;')
   elseif command == 'Distortion' then send_command('input /p Opening - Distortion [Water/Ice] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Luminohelix" <t>;wait 5.3;input /p Closing - Distortion [Water/Ice] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Stone" <t>;')
   -- elseif command == 'Tfusion' then send_command('input /p Opening - Liquefaction [Fire] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Stone" <t>;wait 5.3;input /p Closing - Liquefaction [Fire] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Fire" <t>;wait 4.8;input /p Closing - Fusion [Fire/Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Thunder" <t>;')
   elseif command == 'Tfusion' then perform_tfusion()

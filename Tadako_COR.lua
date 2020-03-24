@@ -19,38 +19,45 @@ function get_sets()
   define_modes()
   define_aliases()
 
-  gear = {}
+  gear = {
+    camulus = {
+      tp={ name="Camulus's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','"Store TP"+10','Phys. dmg. taken-10%',}},
+      ws={ name="Camulus's Mantle", augments={'AGI+20','Mag. Acc+20 /Mag. Dmg.+20','AGI+10','Weapon skill damage +10%',}},
+      rangedTp={ name="Camulus's Mantle", augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','"Store TP"+10',}},
+    }
+  }
 
   -- Modes
   sets.Engaged = {}
   sets.Engaged.Normal = {
-    -- main="Aeneas",
-    -- sub="Sandung",
-    ranged="Compensator",
-    -- ammo="Gashing Bolt",
-    head="Skormoth Mask",
-    body="Pillager's Vest +3",
+    main="Naegling",
+    -- sub="Nusku Shield",
+    -- ranged="Compensator",
+    ammo="Orichalc. Bullet",
+    head="Adhemar Bonnet",
+    body="Adhemar Jacket",
     hands=augments.herc.hands.tp,
     legs="Samnuha Tights",
     feet=augments.herc.feet.tp,
-    neck="Anu Torque",
+    neck="Iskur Gorget",
     waist="Sarissapho. Belt",
     left_ear="Suppanomimi",
-    right_ear="Sherida Earring",
+    right_ear="Digni. Earring",
     left_ring="Hetairoi Ring",
     right_ring="Petrov Ring",
-    back="Camulus's Mantle"
+    back=gear.camulus.tp
   }
   sets.Engaged.Hybrid = sets.Engaged.Normal
 
   sets.Idle = {
-    main="Mafic Cudgel",
+    main="Naegling",
     sub="Nusku Shield",
-    range="Compensator",
+    -- ranged="Compensator",
+    ammo="Orichalc. Bullet",
     head="Mummu Bonnet +2",
     body="Mummu Jacket +2",
     hands="Mummu Wrists +2",
-    legs="Meg. Chausses +2",
+    legs="Mummu Kecks +2",
     feet="Mummu Gamash. +2",
     neck="Loricate Torque +1",
     waist="Flume Belt",
@@ -58,16 +65,62 @@ function get_sets()
     right_ear="Etiolation Earring",
     left_ring="Gelatinous Ring +1",
     right_ring="Purity Ring",
-    back="Camulus's Mantle"
+    back="Aptitude Mantle +1"
   }
 
   -- Weapon Skills
   sets.WS = {}
+  sets.WS.Wildfire = {
+    head=augments.herc.head.magic,
+    body="Samnuha Coat",
+    hands=augments.herc.hands.magic,
+    legs=augments.herc.legs.magic,
+    feet=augments.herc.feet.magic,
+    neck="Sanctity Necklace",
+    waist="Eschan Stone",
+    left_ear="Friomisi Earring",
+    right_ear="Ishvara Earring",
+    left_ring="Acumen Ring",
+    right_ring="Dingir Ring",
+    back=gear.camulus.ws
+  }
+  sets.WS['Leaden Salute'] = set_combine(sets.WS.Wildfire, {
+    -- head="Pixie Hairpin +1",
+    right_ear="Moonshade Earring",
+  })
+  sets.WS['Last Stand'] = {
+    head="Meghanada Visor +2",
+    body="Meg. Cuirie +2",
+    hands="Meg. Gloves +2",
+    legs="Meg. Chausses +2",
+    feet="Meg. Jam. +2",
+    neck="Iskur Gorget",
+    waist="Eschan Stone",
+    left_ear="Suppanomimi",
+    right_ear="Digni. Earring",
+    left_ring="Mummu Ring",
+    right_ring="Dingir Ring",
+    back=gear.camulus.ws
+  }
+  sets.WS['Savage Blade'] = {
+    head="Meghanada Visor +2",
+    body="Meg. Cuirie +2",
+    hands="Meg. Gloves +2",
+    legs="Meg. Chausses +2",
+    feet="Meg. Jam. +2",
+    neck="Caro Necklace",
+    waist="Grunfeld Rope",
+    left_ear="Ishvara Earring",
+    right_ear="Moonshade Earring",
+    left_ring="Apate Ring",
+    right_ring="Petrov Ring",
+    back=gear.camulus.ws
+  }
 
   -- Abilities
   sets.JA = {}
   sets.JA.PhantomRoll = {
-    ranged="Compensator",
+    -- ranged="Compensator",
     head="Lanun Tricorne",
     neck="Regal Necklace",
     hands="Navarch's gants +1",
@@ -78,44 +131,45 @@ function get_sets()
   sets.JA['Random Deal'] = { body = "Lanun Frac" }
   sets.JA['Wild Card'] = { feet = "Lanun Bottes" }
 
-  sets.JA.QuickDraw = {
-    head=augments.herc.head.magic,
-    body=augments.herc.body.magic,
-    hands=augments.herc.hands.magic,
-    legs=augments.herc.legs.magic,
-    feet=augments.herc.feet.magic,
+  sets.JA.QuickDraw = { -- MACC+ Gear
+    ammo="Orichalc. Bullet",
+    head="Mummu Bonnet +2",
+    body="Mummu Jacket +2",
+    hands="Mummu Wrists +2",
+    legs="Mummu Kecks +2",
+    feet="Mummu Gamash. +2",
     neck="Sanctity Necklace",
     waist="Eschan Stone",
-    left_ear="Digni. Earring",
-    right_ear="Friomisi Earring",
-    left_ring="Weatherspoon Ring",
-    right_ring="Acumen Ring",
-    back="Camulus's Mantle",
+    left_ear="Gwati Earring",
+    right_ear="Digni. Earring",
+    left_ring="Weather. Ring",
+    right_ring="Stikini Ring",
+    back=gear.camulus.ws
   }
 
   -- Ranged Attacks
   sets.Preshot = {
-    -- head="Taeon Chapeau",
+    head=augments.taeon.head.snapshot,
     body="Pursuer's Doublet",
-    -- hands="Taeon Gloves",
-    -- legs="Adhemar Kecks",
+    hands=augments.taeon.hands.snapshot,
+    legs="Adhemar Kecks",
     feet="Meg. Jam. +2",
     -- waist="Yemaya Belt",
-    -- back="Toutatis's Cape"
+    -- back="Camulus's Mantle"
   }
   sets.Ranged = {
-    head="Mummu Bonnet +2",
+    head="Meghanada Visor +2",
     body="Mummu Jacket +2",
     hands="Meg. Gloves +2",
     legs="Meg. Chausses +2",
     feet="Meg. Jam. +2",
-    neck="Sanctity Necklace",
+    neck="Iskur Gorget",
     waist="Eschan Stone",
     left_ear="Suppanomimi",
-    right_ear="Sherida Earring",
+    right_ear="Digni. Earring",
     left_ring="Mummu Ring",
-    right_ring="Petrov Ring",
-    back="Camulus's Mantle"
+    right_ring="Dingir Ring",
+    back=gear.camulus.rangedTp
   }
 
   -- Magic
@@ -125,6 +179,7 @@ function get_sets()
     hands="Leyline Gloves",
     neck="Orunmila's torque",
     left_ring="Weatherspoon Ring",
+    right_ring="Kishar Ring",
     left_ear="Loquacious earring",
     right_ear="Etiolation Earring"
   }
@@ -203,11 +258,7 @@ function self_command(commandArgs)
   command = commandArgs[1]
 
   if command == 'mode' then
-    if player.status=='Engaged' then
-      equip(sets.Engaged[PrimaryMode.current])
-    else
-      equip(sets.Idle)
-    end
+    equip(sets.Engaged[PrimaryMode.current])
   elseif command == 'cycle' then
     local mode = _G[commandArgs[2]]
     if mode ~= nil and mode._class == 'mode' then

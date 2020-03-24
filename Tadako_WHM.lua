@@ -52,7 +52,7 @@ function get_sets()
     head="Kaykaus Mitra",
     neck="Orunmila's torque",
     body="Inyanga Jubbah +2",
-    hands=augments.telchine.gloves.fastCast,
+    hands=augments.telchine.gloves.enhancing,
     left_ring="Weatherspoon Ring",
     right_ring="Kishar Ring",
     left_ear="Loquacious earring",

@@ -12,14 +12,14 @@ function define_aliases()
   send_command('bind !f6 phalanx')
   send_command('bind !f7 blink')
   send_command('bind !f8 aquaveil')
-  send_command('bind !f9 input /item "Echo Drops" <me>')
-  send_command('bind !f10 input /item "Remedy" <me>')
-  send_command('bind !f11 input /item "Holy Water" <me>')
+  -- send_command('bind !f9 input /item "Echo Drops" <me>')
+  -- send_command('bind !f10 input /item "Remedy" <me>')
+  -- send_command('bind !f11 input /item "Holy Water" <me>')
 end
 
 function get_sets()
   send_command('lua load setlist')
-  -- send_command('lua load dressup')
+  send_command('lua load dressup')
   define_modes()
   define_aliases()
 
@@ -57,19 +57,22 @@ function get_sets()
   -- Magic
   sets.Magic = {}
   sets.Magic.Precast = {
-    main=gear.kali.refresh,
-    head="Kaykaus Mitra",
-    neck="Orunmila's torque",
-    body="Inyanga Jubbah +2",
-    hands="Leyline Gloves",
-    left_ring="Weatherspoon Ring",
-    right_ring="Kishar Ring",
-    left_ear="Loquacious earring",
-    right_ear="Etiolation Earring",
-    legs="Kaykaus Tights",
-    back=gear.cape.fastCast,
-    waist="Witful Belt"
+    head=augments.chironic.head.fastCast, -- 6
+    neck="Orunmila's torque",             -- 5
+    body="Inyanga Jubbah +2",             -- 14
+    hands="Leyline Gloves",               -- 8
+    left_ring="Weatherspoon Ring",        -- 5
+    right_ring="Kishar Ring",             -- 4
+    left_ear="Loquacious earring",        -- 2
+    right_ear="Etiolation Earring",       -- 1
+    legs="Kaykaus Tights",                -- 6
+    back=gear.cape.fastCast,              -- 10
+    waist="Witful Belt"                   -- 3
+                                          -- 54 Total
   }
+  sets.Magic.HealingPrecast = set_combine(sets.Magic.Precast, {
+    right_ear="Mendicant's Earring",
+  })
   sets.Magic.Healing = {
     head="Kaykaus Mitra",
     neck="Incanter's Torque",
@@ -84,13 +87,9 @@ function get_sets()
     legs="Kaykaus Tights",
     feet="Vanya Clogs"
   }
-  sets.Magic.HealingPrecast = {
-    head="Kaykaus Mitra",
-    right_ear="Mendicant's Earring",
-  }
-  sets.Magic.HealingSelf = {
+  sets.Magic.HealingSelf = set_combine(sets.Magic.Healing, {
     waist="Chuq'aba belt"
-  }
+  })
   sets.Magic.Cursna = {
     head="Kaykaus Mitra",                -- Skill
     neck="Malison Medallion",            -- Cursna
@@ -110,7 +109,8 @@ function get_sets()
     hands=augments.telchine.gloves.enhancing,
     body=augments.telchine.body.enhancing,
     legs=augments.telchine.legs.enhancing,
-    feet=augments.telchine.feet.enhancing
+    feet=augments.telchine.feet.enhancing,
+    waist="Embla Sash"
   }
   sets.Magic.Enfeebling = {
     main=gear.kali.refresh,
@@ -155,10 +155,6 @@ function get_sets()
     neck="Moonbow Whistle +1",
     back=gear.cape.fastCast
   })
-  -- sets.Songs.Dummy = set_combine(sets.Songs.Buffs, {
-  --   ranged="Daurdabla",
-  --   feet="Fili Cothurnes +1"
-  -- })
   sets.Songs.Ballad = set_combine(sets.Songs.Buffs, { legs="Fili Rhingrave" })
   sets.Songs.Carol = set_combine(sets.Songs.Buffs, { hands="Mousai Gages" })
   sets.Songs.Madrigal = set_combine(sets.Songs.Buffs, { head="Fili Calot" })
@@ -218,31 +214,47 @@ function get_sets()
   sets.Engaged = {
     main="Aeneas",
     sub="Genbu's Shield",
-    head="Aya. Zucchetto +2",
-    body="Ayanmo Corazza +2",
-    hands=augments.chironic.gloves.tp,
-    legs=augments.telchine.legs.enhancing,
-    feet=augments.chironic.feet.tp,
+    head="Aya. Zucchetto +2",              -- 6%
+    body="Ayanmo Corazza +2",              -- 4%
+    hands=augments.chironic.gloves.tp,     -- 3%
+    legs="Ayanmo Cosciales +2",            -- 9%
+    feet=augments.chironic.feet.tp,        -- 3%
     neck="Bard's Charm",
-    waist="Sarissapho. Belt",
+    waist="Sarissapho. Belt",              -- 3%
     left_ear="Digni. Earring",
     right_ear="Brutal Earring",
     left_ring="Hetairoi Ring",
     right_ring="Petrov Ring",
     back=gear.cape.melee
-  }
+  }                                        -- 25% Haste
+  sets.Hybrid = {
+    main="Aeneas",
+    sub="Genbu's Shield",            -- 10 PDT
+    head="Aya. Zucchetto +2",        -- 3 DT
+    body="Ayanmo Corazza +2",        -- 6 DT
+    hands="Ayanmo Manopolas +2",     -- 3 DT
+    legs="Ayanmo Cosciales +2",      -- 5 DT
+    feet="Ayanmo Gambieras +2",      -- 3 DT
+    neck="Bard's Charm",
+    waist="Flume Belt",              -- 4 PDT
+    left_ear="Digni. Earring",
+    right_ear="Brutal Earring",
+    left_ring="Hetairoi Ring",
+    right_ring="Gelatinous Ring +1", -- 7 PDT (+1 MDT)
+    back=gear.cape.melee             -- 10 PDT
+  }                                  -- 51 PDT, 19 MDT
   sets.WeaponSkill = {
-    head="Aya. Zucchetto +2",
-    body="Ayanmo Corazza +2", -- bihu +2!
-    hands=augments.chironic.gloves.tp,
-    legs=augments.telchine.legs.enhancing,
-    feet=augments.chironic.feet.tp,
+    head="Aya. Zucchetto +2",             -- Lustratio
+    body="Ayanmo Corazza +2",             -- Bihu +2/3
+    hands="Ayanmo Manopolas +2",          -- Lustratio
+    legs="Ayanmo Cosciales +2",           -- Lustratio
+    feet="Ayanmo Gambieras +2",           -- Lustratio
     neck="Caro Necklace",
     waist="Grunfeld Rope",
-    left_ear="Ishvara Earring",
-    right_ear="Moonshade Earring",
+    left_ear="Moonshade Earring",
+    right_ear="Ishvara Earring",
     left_ring="Ramuh Ring",
-    right_ring="Apate Ring",
+    right_ring="Apate Ring",              -- Ilabrat
     back=gear.cape.ws
   }
 end
@@ -260,9 +272,10 @@ function precast(spell)
     end
 
   elseif spell.action_type == 'Magic' then
-    equip(sets.Magic.Precast)
     if string.find(spell.english, 'Cure') or string.find(spell.english, 'Curaga') then
       equip(sets.Magic.HealingPrecast)
+    else
+      equip(sets.Magic.Precast)
     end
 
   elseif spell.type == 'WeaponSkill' then
@@ -295,9 +308,10 @@ function midcast(spell)
       equip(sets.Magic.Cursna)
 
     elseif string.find(eng, 'Cure') or string.find(eng, 'Curaga') then
-      equip(sets.Magic.Healing)
       if spell.target.type == 'SELF' then
         equip(sets.Magic.HealingSelf)
+      else
+        equip(sets.Magic.Healing)
       end
     end
 

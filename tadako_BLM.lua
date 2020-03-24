@@ -48,19 +48,20 @@ function get_sets()
   -- Magic
   sets.Magic = {}
   sets.Magic.Precast = {
-    -- main=gear.kali.refresh,
-    head="Kaykaus Mitra",
-    neck="Orunmila's torque",
-    -- body="Inyanga Jubbah +2",
-    hands=augments.telchine.gloves.fastCast,
-    left_ring="Weatherspoon Ring",
-    right_ring="Kishar Ring",
-    left_ear="Loquacious earring",
-    right_ear="Etiolation Earring",
-    legs="Kaykaus Tights",
-    -- back=gear.cape.fastCast,
-    waist="Witful Belt"
-  }
+    ammo="Sapience Orb",                      -- 2 FC
+    head="Merlinic Hood",                     -- 8 FC ** TODO
+    --body="",
+    hands=augments.telchine.gloves.enhancing, -- 4 FC
+    legs="Lengo Tights",                      -- 5 FC ** IN STORAGE
+    feet="Merlinic Crackows",                 -- 5 FC
+    neck="Orunmila's torque",                 -- 5 FC
+    waist="Witful Belt",                      -- 3 FC
+    left_ear="Loquacious earring",            -- 2 FC
+    right_ear="Etiolation Earring",           -- 1 FC
+    left_ring="Weatherspoon Ring",            -- 5 FC
+    right_ring="Kishar Ring",                 -- 4 FC
+    -- back="Taranus's Cape",                 -- 10 FC ** TODO
+  }      
   sets.Magic.Healing = {
     head="Kaykaus Mitra",
     -- neck="Henic Torque",

@@ -4,26 +4,20 @@ include('augments.lua')
 include('utils.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'HybridLight', 'Hybrid', 'Accuracy'}
-  Luzaf = M(true, 'Luzaf')
+  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'HybridLight', 'HybridHeavy', 'Accuracy'}
   Compensator = M(true, 'Compensator')
   Weapons = M{
     ['description'] = 'Weapons',
+    'DeathPenalty',
     'Fomalhaut',
-    'HollidayMagic',
-    -- 'HollidayPhys',
-    'Anarchy',
+    'Anarchy'
   }
 end
 
 function define_binds()
   -- Modes
   send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
-  send_command("alias g15v2_m1g3 gs c cycle Luzaf")
   send_command("alias g15v2_m1g4 gs c weapon")
-  send_command('bind !f9 input /item "Echo Drops" <me>')
-  send_command('bind !f10 input /item "Remedy" <me>')
-  send_command('bind !f11 input /item "Holy Water" <me>')
 end
 
 function define_gear()
@@ -45,18 +39,30 @@ function get_sets()
       snapShot = { name="Camulus's Mantle", augments={'"Snapshot"+10',}}
     },
     weapons = {
-      HollidayMagic = { name="Holliday", augments={'"Mag.Atk.Bns."+21','Potency of "Cure" effect received+7%','Mag. Acc.+20 "Mag.Atk.Bns."+20','DMG:+5',}},
-      -- HollidayPhys = { name="Holliday", augments={'"Store TP"+6','Rng.Acc.+28','Rng.Atk.+18','DMG:+28',}},
       Fomalhaut = "Fomalhaut",
       Anarchy = "Anarchy +2",
+      DeathPenalty = "Death Penalty"
     },
     bullets = {
-      quickDraw = "Animikii Bullet",
-      rangedAtt = "Chrono Bullet",
-      magicWs = "Orichalc. Bullet"
+      ratt = "Chrono Bullet",
+      magic = "Living Bullet"
     }
   }
 
+  sets.Idle = {
+    head="Malignance Chapeau",        -- 6 DT
+    body="Malignance Tabard",         -- 9 DT
+    hands=augments.herc.hands.triple, -- 2 PDT
+    legs="Carmine Cuisses +1",
+    feet="Malignance Boots",          -- 4 DT
+    neck="Loricate Torque +1",        -- 6 DT
+    waist="Flume Belt +1",            -- 4 PDT
+    left_ear="Etiolation Earring",    -- 3 MDT
+    right_ear="Odnowa Earring +1",    -- 2 MDT
+    left_ring="Defending Ring",       -- 10 DT
+    right_ring="Gelatinous Ring +1",  -- 7 PDT, -1 MDT
+    back=gear.camulus.meleeTp,        -- 5 DT
+  }                                   -- 53 PDT | 44 MDT
   sets.modes = {}
   sets.modes.Normal = {
     head="Adhemar Bonnet +1",
@@ -73,40 +79,40 @@ function get_sets()
     back=gear.camulus.meleeTp,
   }
   sets.modes.HybridLight = {
-    head="Adhemar Bonnet +1",
+    head="Malignance Chapeau",        -- 6 DT
     body="Adhemar Jacket +1",
-    hands=augments.herc.hands.triple,
-    legs="Meg. Chausses +2",
-    feet=augments.herc.feet.triple,
-    neck="Loricate Torque +1",
-    waist="Windbuffet Belt +1",
-    left_ear="Telos Earring",
-    right_ear="Suppanomimi",
-    left_ring="Defending Ring",
-    right_ring="Epona's Ring",
-    back=gear.camulus.meleeTp,
-  }
-  sets.modes.Hybrid = {
-    -- Lanun:                         -- 8 DT
-    head="Adhemar Bonnet +1",
-    body="Lanun Frac +3",             -- 6 PDT
     hands=augments.herc.hands.triple, -- 2 PDT
-    legs="Meg. Chausses +2",          -- 6 PDT
-    feet=augments.herc.feet.triple,   -- 2 PDT
+    legs="Meg. Chausses +2",
+    feet="Malignance Boots",          -- 4 DT
     neck="Loricate Torque +1",        -- 6 DT
     waist="Windbuffet Belt +1",
-    left_ear="Telos Earring",
+    left_ear="Brutal Earring",
     right_ear="Suppanomimi",
-    left_ring="Defending Ring",   -- 7 PDT
-    right_ring="Gelatinous Ring +1",      -- 10 DT
+    left_ring="Defending Ring",       -- 10 DT
+    right_ring="Epona's Ring",
     back=gear.camulus.meleeTp,        -- 5 DT
-  }                                   -- 52 PDT | 29 MDT
+  }                                   -- 33 PDT | 31 MDT
+  sets.modes.HybridHeavy = {
+    head="Malignance Chapeau",        -- 6 DT
+    body="Malignance Tabard",         -- 9 DT
+    hands=augments.herc.hands.triple, -- 2 PDT
+    legs="Malignance Tights",         -- 7 DT
+    feet="Malignance Boots",          -- 4 DT
+    neck="Loricate Torque +1",        -- 6 DT
+    waist="Windbuffet Belt +1",
+    left_ear="Brutal Earring",
+    right_ear="Suppanomimi",
+    left_ring="Defending Ring",        -- 10 DT
+    right_ring="Epona's Ring",
+    back=gear.camulus.meleeTp,        -- 5 DT
+  }                                   -- 49 PDT | 47 MDT
+                                      -- Lanun knife provides +4/roll if equipped
   sets.modes.Accuracy = {
-    head="Meghanada Visor +2",
-    body="Meg. Cuirie +2",
+    head="Malignance Chapeau",
+    body="Malignance Tabard",
     hands="Meg. Gloves +2",
-    legs="Meg. Chausses +2",
-    feet="Meg. Jam. +2",
+    legs="Malignance Tights",
+    feet="Malignance Boots",
     neck="Sanctity Necklace",
     waist="Reiki Yotai",
     left_ear="Telos Earring",
@@ -114,21 +120,6 @@ function get_sets()
     left_ring="Regal Ring",
     right_ring="Ilabrat Ring",
     back=gear.camulus.meleeTp
-  }
-
-  sets.Idle = {
-    head="Adhemar Bonnet +1",
-    body="Lanun Frac +3",
-    hands=augments.herc.hands.triple,
-    legs="Meg. Chausses +2",
-    feet=augments.herc.feet.triple,
-    neck="Loricate Torque +1",
-    waist="Flume Belt +1",
-    left_ear="Genmei Earring",
-    right_ear="Etiolation Earring",
-    left_ring="Defending Ring",
-    right_ring="Karieyh Ring +1",
-    back=gear.camulus.meleeTp,
   }
 
   -- Shooting
@@ -147,12 +138,12 @@ function get_sets()
     -- body="Chasseur's Frac"
   }
   sets.Ranged = {
-    ammo=gear.bullets.rangedAtt,
-    head="Meghanada Visor +2",
-    body="Nisroch Jerkin",
+    ammo=gear.bullets.ratt,
+    head="Malignance Chapeau",
+    body="Malignance Tabard",
     hands="Meg. Gloves +2",
-    legs="Meg. Chausses +2",
-    feet="Meg. Jam. +2",
+    legs="Malignance Tights",
+    feet="Malignance Boots",
     neck="Iskur Gorget",
     waist="Yemaya Belt",
     left_ear="Telos Earring",
@@ -165,15 +156,14 @@ function get_sets()
   -- Magic
   sets.Magic = {}
   sets.Magic.FastCast = {
-    -- head=augments.herc.head.fc,         -- 12
     head="Carmine Mask",                -- 9
     neck="Orunmila's Torque",           -- 5
     body="Taeon Tabard",                -- 8
     hands="Leyline Gloves",             -- 7
-    lear="Loquacious earring",          -- 2
-    rear="Etiolation Earring",          -- 1
+    lear="Etiolation earring",          -- 1
+    rear="Loquacious Earring",          -- 2
     lring="Kishar Ring",                -- 4
-    rring="Prolix Ring",                -- 2
+    rring="Rahab Ring",                 -- 2
     legs=augments.taeon.legs.phalanx,   -- 3
     feet="Carmine Greaves +1"           -- 8
   }
@@ -184,8 +174,8 @@ function get_sets()
     rear="Magnetic earring",         -- 8
     body="Lanun Frac +3",
     hands="Rawhide Gloves",          -- 15
-    left_ring="Gelatinous Ring +1",
-    right_ring="Defending Ring",
+    left_ring="Defending Ring",
+    right_ring="Gelatinous Ring +1",
     back=gear.camulus.meleeTp,
     waist="Flume Belt +1",
     legs="Carmine Cuisses +1",       -- 20
@@ -195,8 +185,8 @@ function get_sets()
   -- Weapon Skills
   --
   sets.WS = {}
-  sets.WS.RangedPhys = {
-    ammo=gear.bullets.rangedAtt,
+  sets.WS['Last Stand'] = {
+    ammo=gear.bullets.ratt,
     head="Meghanada Visor +2",
     neck="Fotia Gorget",
     left_ear="Ishvara Earring",
@@ -210,8 +200,23 @@ function get_sets()
     legs="Meg. Chausses +2",
     feet="Lanun Bottes +3"
   }
-  sets.WS.RangedMagic = {
-    ammo=gear.bullets.magicWs,
+  sets.WS['Leaden Salute'] = {
+    ammo=gear.bullets.magic,
+    head="Pixie Hairpin +1",
+    neck="Commodore Charm +1",
+    left_ear="Friomisi Earring",
+    right_ear="Moonshade Earring",
+    body="Lanun Frac +3",
+    hands="Carmine Fin. Ga. +1",
+    left_ring="Archon Ring",
+    right_ring="Dingir Ring",
+    back=gear.camulus.rangedWsMagic,
+    waist="Svelt. Gouriz +1"
+    legs=augments.herc.legs.magic,
+    feet="Lanun Bottes +3"
+  }
+  sets.WS['Wildfire'] = {
+    ammo=gear.bullets.magic,
     head=augments.herc.head.mab,
     neck="Commodore Charm +1",
     left_ear="Friomisi Earring",
@@ -225,8 +230,8 @@ function get_sets()
     legs=augments.herc.legs.magic,
     feet="Lanun Bottes +3"
   }
-  sets.WS.Melee = {
-    head=augments.herc.head.wsd,
+  sets.WS['Savage Blade'] = {
+    head=augments.herc.head.wsStr,
     neck="Fotia Gorget",
     left_ear="Ishvara Earring",
     right_ear="Moonshade Earring",
@@ -236,46 +241,35 @@ function get_sets()
     right_ring="Regal Ring",
     back=gear.camulus.meleeWs,
     waist="Prosilio Belt +1",
-    legs=augments.herc.legs.ws,
+    legs=augments.herc.legs.wsDex,
     feet="Lanun Bottes +3"
   }
-
-  -- WS Specific
-  sets.WS['Leaden Salute'] = set_combine(sets.WS.RangedMagic, {
-    head="Pixie Hairpin +1",
-    right_ear="Moonshade Earring",
-    left_ring="Archon Ring",
-    waist="Svelt. Gouriz +1"
-  })
-  sets.WS['Wildfire'] = sets.WS.RangedMagic
-  sets.WS['Last Stand'] = sets.WS.RangedPhys
-  sets.WS['Detonator'] = sets.WS.RangedPhys
-  sets.WS['Slug Shot'] = sets.WS.RangedPhys
-  sets.WS['Requiescat'] = sets.WS.Melee
-  sets.WS['Savage Blade'] = sets.WS.Melee
-  sets.WS['Circle Blade'] = sets.WS.Melee
-  sets.WS['Evisceration'] = sets.WS.Melee
   sets.WS['Aeolian Edge'] = {
-    ammo=gear.bullets.quickDraw,
+    ammo=gear.bullets.magic,
     head=augments.herc.head.mab,
     neck="Sanctity Necklace",
     left_ear="Friomisi Earring",
     right_ear="Moonshade Earring",
     body="Lanun Frac +3",
     hands="Carmine Fin. Ga. +1",
-    left_ring="Arvina Ringlet +1",
+    left_ring="Shiva Ring +1",
     right_ring="Dingir Ring",
     back=gear.camulus.rangedWsMagic,
     waist="Eschan Stone",
     legs=augments.herc.legs.magic,
     feet="Lanun Bottes +3"
   }
+  sets.WS['Detonator'] = sets.WS['Last Stand']
+  sets.WS['Slug Shot'] = sets.WS['Last Stand']
+  sets.WS['Requiescat'] = sets.WS['Savage Blade']
+  sets.WS['Circle Blade'] = sets.WS['Savage Blade']
+  sets.WS['Evisceration'] = sets.WS['Savage Blade']
 
   -- Quick Draw
   --
   sets.JAs = {}
   sets.JAs.QuickDrawMab = {
-    ammo=gear.bullets.quickDraw,
+    ammo=gear.bullets.magic,
     head=augments.herc.head.mab,
     neck="Sanctity Necklace",
     left_ear="Friomisi Earring",
@@ -289,23 +283,8 @@ function get_sets()
     feet="Lanun Bottes +3",
     waist="Eschan Stone"
   }
-  sets.JAs.QuickDrawSTP = {
-    ammo=gear.bullets.quickDraw,
-    -- head=augments.herc.head.mab,
-    neck="Iskur Gorget",
-    -- left_ear="Friomisi Earring",
-    -- right_ear="Strophadic Earring",
-    -- body="Lanun Frac +3",
-    -- hands="Carmine Fin. Ga. +1",
-    -- left_ring="Arvina Ringlet +1",
-    -- right_ring="Dingir Ring",
-    back=gear.camulus.rangedTp,
-    -- legs=augments.herc.legs.magic,
-    -- feet="Lanun Bottes +3",
-    -- waist="Eschan Stone"
-  }
   sets.JAs.QuickDrawAcc = {
-    ammo=gear.bullets.quickDraw,
+    ammo=gear.bullets.magic,
     head=augments.herc.head.mab,
     neck="Sanctity Necklace",
     left_ear="Dignitary's Earring",
@@ -313,7 +292,7 @@ function get_sets()
     body="Lanun Frac +3",
     hands="Leyline Gloves ",
     left_ring="Arvina Ringlet +1",
-    right_ring="Stikini Ring",
+    right_ring="Stikini Ring +1",
     back=gear.camulus.rangedWsMagic,
     legs=augments.herc.legs.magic,
     feet="Lanun Bottes +3",
@@ -327,14 +306,13 @@ function get_sets()
     head="Lanun Tricorne +1",
     neck="Regal Necklace",
     hands="Chasseur's Gants +1",
-    -- rring = "Luzaf's Ring",  -- See precast
+    rring="Luzaf's Ring",
     back="Camulus's Mantle",
     legs="Desultor Tassets"
   }
   sets.JAs['Snake Eye'] = { legs = "Lanun Trews" }
   sets.JAs['Random Deal'] = { body = "Lanun Frac +3" }
   sets.JAs['Wild Card'] = { feet = "Lanun Bottes +3" }
-  sets.JAs.Waltz = { lring = 'Asklepian Ring' }
 
   sets.Doom = {
     neck="Nicander's Necklace",
@@ -349,9 +327,6 @@ function precast(spell)
 
   if spell.type == 'CorsairRoll' or spell.english == "Double-Up" then
     equip(sets.JAs.PhantomRoll)
-    if Luzaf.value then
-      equip({rring = "Luzaf's Ring"})
-    end
     -- if Compensator.value
     --     and player.tp < 1000
     --     and player.status ~= 'Engaged'
@@ -367,11 +342,12 @@ function precast(spell)
       equip(sets.JAs.QuickDrawAcc)
     else
       equip(sets.JAs.QuickDrawMab)
+      equip_elemental_waist(spell)
     end
 
   elseif spell.english == "Ranged" then
     equip(sets.Preshot)
-    equip({ammo = gear.bullets.rangedAtt})
+    equip({ammo = gear.bullets.ratt})
 
     if buffactive['Triple Shot'] then
       equip(sets.TripleShot)
@@ -383,15 +359,10 @@ function precast(spell)
   elseif spell.type == 'WeaponSkill' then
     equip(sets.WS[spell.english])
 
-    if spell.english == "Leaden Salute" then
-      -- Replace moonshade earring if tp is capped
-      if player.tp > 2900 then
-        equip({ right_ear="Ishvara Earring" })
-      end
-      -- Equip elemental obi in dark weather
-      if world.weather_element == "Dark" or world.day_element == "Dark" then
-        equip({ waist = "Anrin Obi" })
-      end
+    if spell.english == "Leaden Salute" or
+       spell.english == "Wildfire" or
+       spell.english == "Aeolian Edge" then
+       equip_elemental_waist(spell)
     end
   end
 end
@@ -415,23 +386,18 @@ function midcast(spell)
 end
 
 function aftercast(spell)
-  if player.in_combat then
-    if player.status == 'Engaged' then
-      equip(set_for_engaged())
-    else
-      -- equip(sets.Idle)
-    end
+  if player.status == 'Engaged' then
+    equip(set_for_engaged())
+  else
+    equip(sets.Idle)
   end
-  -- if Compensator.value and player.equipment.ranged == 'Compensator' then
-  --   equip({ ranged = gear.weapons[Weapons.current] })
-  -- end
 end
 
 function status_change(new, old)
   if new == 'Engaged' then
     equip(set_for_engaged())
   else
-    -- equip(sets.Idle)
+    equip(sets.Idle)
   end
 end
 
@@ -446,7 +412,7 @@ function self_command(commandArgs)
   command = commandArgs[1]
 
   if command == 'run' then
-    equip({ legs="Carmine Cuisses +1" })
+    equip(sets.Idle)
   elseif command == "mode" then
     equip(set_for_engaged())
   elseif command == 'weapon' then

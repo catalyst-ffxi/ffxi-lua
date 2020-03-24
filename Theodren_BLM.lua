@@ -1,5 +1,6 @@
 include('Modes.lua')
 include('augments.lua')
+include('utils.lua')
 
 function define_modes()
   PrimaryMode = M{['description'] = 'Primary Mode', 'Caster'}
@@ -74,66 +75,81 @@ function get_sets()
     ammo = "Pemphredo Tathlum",
     head = "Amalric Coif +1",
     neck = "Sanctity Necklace",
-    lear = "Friomisi Earring",
-    rear = "Barkarole Earring",
-    body = "Amalric Doublet",
-    hands = "Amalric Gages",
-    lring = "Shiva Ring",
+    lear = "Malignance Earring",
+    rear = "Regal Earring",
+    body = "Amalric Doublet +1",
+    hands = "Amalric Gages +1",
+    lring = "Shiva Ring +1",
     rring = "Strendu Ring",
     back = gear.taranus.nuke,
     waist = "Refoccilation Stone",
-    legs = "Amalric Slops",
+    legs = "Amalric Slops +1",
     feet = augments.merlinic.crackows.nuke
   }
-  sets.aftercast = {}
-  sets.aftercast.Caster = set_combine(sets.modes.Caster, {
-    ammo="Staunch Tathlum +1",
-    head = "Befouled Crown",
-    neck = "Loricate Torque +1",
-    left_ear = "Etiolation Earring",
-    right_ear="Genmei Earring",
-    body = "Amalric Doublet",
-    lring = "Gelatinous Ring +1",
-    rring = "Defending Ring",
-    back = "Solemnity Cape",
-    waist = "Fucho-no-Obi",
-    legs = "Assid. Pants +1"
-  })
+  -- sets.aftercast = {}
+  -- sets.aftercast.Caster = set_combine(sets.modes.Caster, {
+  --   ammo="Staunch Tathlum +1",
+  --   head = "Befouled Crown",
+  --   neck = "Loricate Torque +1",
+  --   left_ear = "Etiolation Earring",
+  --   right_ear="Genmei Earring",
+  --   body = "Amalric Doublet +1",
+  --   lring = "Gelatinous Ring +1",
+  --   rring = "Defending Ring",
+  --   back = "Solemnity Cape",
+  --   waist = "Fucho-no-Obi",
+  --   legs = "Assid. Pants +1"
+  -- })
 
   -- Base Sets
   --
   sets.base = {}
 
   sets.base.fast_cast = {
-    ammo="Sapience Orb",                -- 2
-    head = "Amalric Coif +1",   -- 11
-    neck="Orunmila's Torque",           -- 5
-    lear = "Loquacious earring",   -- 2
-    rear = "Magnetic earring",
-    body = augments.merlinic.jubbah,  -- 6
-    hands = "Helios Gloves",       -- 5
-    lring = "Kishar Ring",   -- 4
-    rring = "Prolix Ring",         -- 2
-    back=gear.taranus.fastCast,
-    -- waist = "Witful Belt",         -- 3
-    legs = "Lengo Pants", -- 5
-    feet = augments.merlinic.crackows.nuke -- 5
-  }
+    ammo="Sapience Orb",       -- 2
+    head="Amalric Coif +1",    -- 11
+    neck="Orunmila's Torque",  -- 5
+    lear="Loquacious earring", -- 2
+    rear="Etiolation earring", -- 1
+    body="Vrikodara Jupon",    -- 5
+    hands="Helios Gloves",     -- 5
+    lring="Kishar Ring",       -- 4
+    rring="Rahab Ring",        -- 2
+    back=gear.taranus.fastCast,-- 10
+    waist="Embla Sash",        -- 5
+    legs="Telchine Braconi",   -- 4
+    feet=augments.merlinic.crackows.nuke -- 5
+  }                            -- 61 fc
   sets.base.quick_cast = {
     ammo = "Impatiens",
     waist = "Witful Belt"
   }
   sets.base.auto_refresh = {
-    body = "Jhakri Robe +2"
+    body = "Amalric Doublet +1",
   }
   sets.base.move_speed = {
     legs = "Track Pants +1"
   }
-  sets.base.idle = set_combine(sets.modes.Caster, {
-  })
+  sets.base.idle = {
+    main="Lathi",
+    sub="Enki Strap",
+    ammo="Staunch Tathlum +1",
+    head= "Befouled Crown",
+    neck = "Loricate Torque +1",
+    left_ear = "Etiolation Earring",
+    right_ear="Genmei Earring",
+    body = "Amalric Doublet +1",
+    hands = "Amalric Gages +1",
+    lring = "Gelatinous Ring +1",
+    rring = "Defending Ring",
+    back = gear.taranus.nuke,
+    waist = "Fucho-no-Obi",
+    legs = "Assid. Pants +1",
+    feet = augments.merlinic.crackows.nuke
+  }
   sets.base.resting = set_combine(sets.modes.Caster, {
     head = "Befouled Crown",
-    body = "Jhakri Robe +2",
+    body = "Amalric Doublet +1",
     waist = "Fucho-no-Obi",
     legs = "Assid. Pants +1"
   })
@@ -150,12 +166,13 @@ function get_sets()
     neck = "Sanctity Necklace",
     lear = "Etiolation Earring",
     rear = "Moonshade Earring",
-    body = "Amalric Doublet",
-    hands = "Otomi Gloves",
+    body = "Amalric Doublet +1",
+    -- hands = "Otomi Gloves", -- stored
+    hands="Helios Gloves",
     -- lring = "Etana Ring", -- stored
     -- rring = "Bifrost Ring",
     left_ring="Supershear Ring",
-    right_ring="Prolix Ring",
+    right_ring="Rahab Ring",
     -- back = "Bane Cape", -- stored
     back="Merciful Cape",
     waist = "Luminary Sash",
@@ -178,10 +195,10 @@ function get_sets()
     neck = "Erra Pendant",
     lear = "Digni. Earring",
     rear = "Regal Earring",
-    body = augments.merlinic.jubbah,
-    hands = "Amalric Gages",
-    lring = "Stikini Ring",
-    rring = "Stikini Ring",
+    body = "Amalric Doublet +1",
+    hands = "Amalric Gages +1",
+    lring = "Stikini Ring +1",
+    rring = "Stikini Ring +1",
     back = gear.taranus.nuke,
     waist = "Eschan Stone",
     legs = "Spaekona's Tonban +2",
@@ -196,11 +213,11 @@ function get_sets()
   sets.midcast.stun = {                   -- FC  | Haste
     -- main=augments.grio.nuke,              -- 4%  |
     main="Lathi",
-    sub = "Enki Strap",
+    sub="Enki Strap",
     ammo="Pemphredo Tathlum",
     head="Amalric Coif +1",
-    body=augments.merlinic.jubbah,
-    hands=augments.merlinic.dastanas,
+    body="Amalric Doublet +1",
+    hands="Amalric Gages +1",
     legs="Spae. Tonban +2",
     feet=augments.merlinic.crackows.nuke,
     neck="Erra Pendant",
@@ -208,7 +225,7 @@ function get_sets()
     left_ear="Digni. Earring",
     right_ear="Regal Earring",
     left_ring="Kishar Ring",
-    right_ring="Stikini Ring",
+    right_ring="Stikini Ring +1",
     back=gear.taranus.fastCast,
   }
 
@@ -217,21 +234,20 @@ function get_sets()
   sets.midcast.elemental = {}
   sets.midcast.elemental.Normal = {
     main="Lathi",
-    sub = "Enki Strap",
-    ammo = "Pemphredo Tathlum",
-    head = "Jhakri Coronal +2",
-    neck = "Sanctity Necklace",
-    lear = "Friomisi Earring",
-    -- rear = "Friomisi earring",
-    rear = "Barkarole Earring",
-    body = augments.merlinic.jubbah,
-    hands = "Amalric Gages",
-    lring = "Shiva Ring",
-    rring = "Strendu Ring",
-    back = gear.taranus.nuke,
-    waist = "Refoccilation Stone",
-    legs = augments.merlinic.shalwar.macc,
-    feet = augments.merlinic.crackows.nuke
+    sub="Enki Strap",
+    ammo="Pemphredo Tathlum",
+    head="Jhakri Coronal +2",
+    body="Amalric Doublet +1",
+    hands="Amalric Gages +1",
+    legs="Amalric Slops +1",
+    feet=augments.merlinic.crackows.nuke,
+    neck="Sanctity Necklace",
+    waist="Refoccilation Stone",
+    left_ear="Malignance Earring",
+    right_ear="Regal Earring",
+    left_ring="Shiva Ring +1",
+    right_ring="Strendu Ring",
+    back=gear.taranus.nuke
   }
   sets.midcast.elemental.MagicBurst = {
     main="Lathi",
@@ -239,10 +255,10 @@ function get_sets()
     ammo="Pemphredo Tathlum",
     head="Ea Hat",              -- MB +6 | MB II +6
     neck="Mizu. Kubikazari",    -- MB +10|
-    lear="Friomisi Earring",
-    rear="Barkarole Earring",
+    lear="Malignance Earring",
+    rear="Regal Earring",
     body="Ea Houppelande",      -- MB +8 | MB II +8
-    hands="Amalric Gages",      --       | MB II +5
+    hands="Amalric Gages +1",   --       | MB II +6
     lring="Mujin Band",         --       | MB II +5
     rring="Locus Ring",         -- MB +5 |
     back=gear.taranus.nuke,     -- MB +5 |
@@ -261,19 +277,19 @@ function get_sets()
   --
   sets.midcast.enfeebling = {
     -- main = augments.grio.enfeeble,
-    ammo = "Quartz Tathlum +1",
-    head = "Amalric Coif +1",
-    neck = "Incanter's torque",
-    lear = "Digni. Earring",
-    rear = "Regal Earring",
-    body = "Vanya Robe",
-    hands = "Jhakri Cuffs +2",
-    lring = "Stikini Ring",
-    rring = "Stikini Ring",
-    back = gear.taranus.nuke,
-    waist = "Luminary Sash",
-    legs = augments.merlinic.shalwar.macc,
-    feet = "Medium's Sabots"
+    ammo="Quartz Tathlum +1",
+    head="Amalric Coif +1",
+    neck="Incanter's torque",
+    lear="Digni. Earring",
+    rear="Regal Earring",
+    body="Vanya Robe",
+    hands="Jhakri Cuffs +2",
+    lring="Stikini Ring +1",
+    rring="Stikini Ring +1",
+    back=gear.taranus.nuke,
+    waist="Luminary Sash",
+    legs="Amalric Slops +1",
+    feet="Medium's Sabots"
   }
 
   -- Enhancing Magic
@@ -286,6 +302,7 @@ function get_sets()
     hands="Telchine Gloves",
     legs="Telchine Braconi",
     feet="Telchine Pigaches",
+    waist="Embla Sash"
   }
   sets.midcast.enhancing_regen = {}
   sets.midcast.enhancing_refresh = {
@@ -450,15 +467,12 @@ function midcast_magic(spell)
   -- Stuns
   elseif spell.english == 'Stun' then
     equip(sets.midcast.stun)
-    -- if world.weather_element == "Lightning" or world.day_element == "Lightning" then
-    --   equip({ waist = "Rairin Obi" })
-    -- end
 
   -- Drain/Aspir
   elseif string.find(spell.english, 'Drain') or string.find(spell.english, 'Aspir') then
     equip(sets.midcast.drain_aspir)
     if world.weather_element == "Dark" or world.day_element == "Dark" then
-      equip({ waist = "Anrin Obi" })
+      equip({ waist = "Hachirin-no-Obi" })
     end
 
   elseif spell.skill == 'Dark Magic' then
@@ -471,13 +485,10 @@ function midcast_magic(spell)
   -- Nukes
   elseif spell.skill == 'Elemental Magic' then
     equip(sets.midcast.elemental[NukingMode.current])
+    equip_elemental_waist(spell)
     if should_use_spaekonas() then
       equip({ body = "Spaekona's coat +2" })
     end
-  end
-
-  if should_use_capacity_mantle() then
-    equip({back = "Mecistopins Mantle"})
   end
 end
 
@@ -486,17 +497,18 @@ function chat(msg)
 end
 
 function aftercast(spell)
-  if spell.english == 'Convert' then
-    send_command('/ma "Cure IV" <me>')
-  end
-  if player.in_combat then
-    equip(sets.aftercast[PrimaryMode.current])
-  else
-    -- equip(sets.modes[PrimaryMode.current])
-  end
-  if Capacity.value then
-    equip({back = "Mecistopins Mantle"})
-  end
+  equip(sets.base.idle)
+  -- if spell.english == 'Convert' then
+  --   send_command('/ma "Cure IV" <me>')
+  -- end
+  -- if player.in_combat then
+  --   equip(sets.aftercast[PrimaryMode.current])
+  -- else
+  --   -- equip(sets.modes[PrimaryMode.current])
+  -- end
+  -- if Capacity.value then
+  --   equip({back = "Mecistopins Mantle"})
+  -- end
 end
 
 -- function handle_caster_aftercast()
@@ -545,7 +557,8 @@ function self_command(commandArgs)
     equip(sets.base.idle)
   elseif command == 'run' then
     -- equip_set_for_current_mode()
-    equip(sets.base.move_speed)
+    -- equip(sets.base.move_speed)
+    equip(sets.base.idle)
   -- elseif command == 'exec' then
   --   local fn = _G[commandArgs[2]]
   --   if fn ~= nil then
@@ -553,15 +566,6 @@ function self_command(commandArgs)
   --   end
   elseif command == 'auto_aspir' then
     auto_aspir()
-  end
-end
-
-function should_use_capacity_mantle()
-  -- return true
-  if Capacity.value and player.target.hpp ~= nil and player.target.hpp < 50 then
-    return true
-  else
-    return false
   end
 end
 

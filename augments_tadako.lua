@@ -18,6 +18,9 @@ augments = {
       }
     },
     chironic = {
+      head = {
+        fastCast = { name="Chironic Hat", augments={'"Fast Cast"+6','"Mag.Atk.Bns."+14','Accuracy+2 Attack+2','Mag. Acc.+7 "Mag.Atk.Bns."+7',}},
+      },
       gloves = {
         tp = { name="Chironic Gloves", augments={'Accuracy+11 Attack+11','"Dbl.Atk."+3','Attack+12',}}
       },
@@ -49,6 +52,15 @@ augments = {
         ws = { name="Herculean Boots", augments={'Accuracy+8','Weapon skill damage +2%','DEX+10','Attack+15',}},
         magic = { name="Herculean Boots", augments={'Weapon skill damage +4%','INT+9','"Mag.Atk.Bns."+9',}},
         crit = { name="Herculean Boots", augments={'Accuracy+24 Attack+24','Crit. hit damage +2%','DEX+13','Accuracy+7','Attack+4',}},
+        th = { name="Herculean Boots", augments={'"Cure" potency +4%','Pet: Accuracy+27 Pet: Rng. Acc.+27','"Treasure Hunter"+2',}},
       }
-    }  
+    },
+    taeon = {
+      head = {
+        snapshot = { name="Taeon Chapeau", augments={'"Snapshot"+5','"Snapshot"+5',}},
+      },
+      hands = {
+        snapshot = { name="Taeon Gloves", augments={'"Snapshot"+3','"Snapshot"+5',}},
+      }
+    }
 }
