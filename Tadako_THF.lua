@@ -2,7 +2,7 @@ include('Modes.lua')
 include('augments_tadako.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'Hybrid', 'FullTH'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'FullTH', 'FullDD', 'Hybrid'}
   Capacity = M(false, 'Capacity Mantle')
 end
 
@@ -29,7 +29,25 @@ function get_sets()
 
   -- Modes
   sets.Engaged = {}
-  sets.Engaged.Normal = {
+  sets.Engaged.FullTH = {
+    main="Aeneas",
+    sub="Taming Sari",
+    ranged="Exalted Crossbow +1",
+    ammo="Gashing Bolt",
+    head="Skormoth Mask",
+    body="Pillager's Vest +3",
+    hands="Plunderer's Armlets +1",
+    legs="Samnuha Tights",
+    feet=augments.herc.feet.th,
+    neck="Iskur Gorget",
+    waist="Sailfi Belt +1",
+    left_ear="Suppanomimi",
+    right_ear="Sherida Earring",
+    left_ring="Gere Ring",
+    right_ring="Hetairoi Ring",
+    back=gear.toutatis.tp
+  }
+  sets.Engaged.FullDD = {
     main="Aeneas",
     sub="Taming Sari",
     -- sub="Sandung",
@@ -41,11 +59,11 @@ function get_sets()
     legs="Samnuha Tights",
     feet=augments.herc.feet.tp,
     neck="Iskur Gorget",
-    waist="Sarissapho. Belt",
+    waist="Sailfi Belt +1",
     left_ear="Suppanomimi",
     right_ear="Sherida Earring",
-    left_ring="Hetairoi Ring",
-    right_ring="Petrov Ring",
+    left_ring="Gere Ring",
+    right_ring="Hetairoi Ring",
     back=gear.toutatis.tp
   }
   sets.Engaged.Hybrid = {
@@ -62,27 +80,9 @@ function get_sets()
     waist="Flume Belt",
     left_ear="Suppanomimi",
     right_ear="Sherida Earring",
-    left_ring="Hetairoi Ring",
+    left_ring="Gere Ring",
     right_ring="Gelatinous Ring +1",
     back=gear.toutatis.tp,
-  }
-  sets.Engaged.FullTH = {
-    main="Aeneas",
-    sub="Taming Sari",
-    ranged="Exalted Crossbow +1",
-    ammo="Gashing Bolt",
-    head="Skormoth Mask",
-    body="Pillager's Vest +3",
-    hands="Plunderer's Armlets +1",
-    legs="Samnuha Tights",
-    feet=augments.herc.feet.th,
-    neck="Iskur Gorget",
-    waist="Sarissapho. Belt",
-    left_ear="Suppanomimi",
-    right_ear="Sherida Earring",
-    left_ring="Hetairoi Ring",
-    right_ring="Petrov Ring",
-    back=gear.toutatis.tp
   }
   sets.Idle = {
     feet="Fajin Boots"
@@ -90,20 +90,6 @@ function get_sets()
 
   -- Weapon Skills
   sets.WS = {}
-  -- sets.Ws.SneakAttack = {
-  --   head=augments.herc.head.ws,
-  --   body="Plunderer's Vest +3",
-  --   hands="Meg. Gloves +2",
-  --   legs=augments.herc.legs.crit,
-  --   feet=augments.herc.feet.crit,
-  --   neck="Caro Necklace",
-  --   waist="Grunfeld Rope",
-  --   left_ear="Moonshade Earring",
-  --   right_ear="Sherida Earring",
-  --   left_ring="Ramuh Ring",
-  --   right_ring="Apate Ring",
-  --   back=gear.toutatis.ws,
-  -- }
   sets.WS.Rudra = {
     head=augments.herc.head.ws,
     body="Plunderer's Vest +3",
@@ -114,7 +100,7 @@ function get_sets()
     waist="Grunfeld Rope",
     left_ear="Moonshade Earring",
     right_ear="Sherida Earring",
-    left_ring="Ramuh Ring",
+    left_ring="Ilabrat Ring",
     right_ring="Apate Ring",
     back=gear.toutatis.ws,
   }
@@ -128,8 +114,8 @@ function get_sets()
     waist="Shadow Belt",
     left_ear="Moonshade Earring",
     right_ear="Sherida Earring",
-    left_ring="Mummu Ring",
-    right_ring="Apate Ring",
+    left_ring="Ilabrat Ring",
+    right_ring="Begrudging Ring",
     back=gear.toutatis.ws,
   }
   sets.WS['Aeolian Edge'] = {
@@ -139,7 +125,7 @@ function get_sets()
     legs=augments.herc.legs.magic,
     feet=augments.herc.feet.magic,
     neck="Sanctity Necklace",
-    waist="Eschan Stone",
+    waist="Orpheus's Sash",
     left_ear="Moonshade Earring",
     right_ear="Friomisi Earring",
     left_ring="Vertigo Ring",

@@ -93,7 +93,7 @@ function get_sets()
     body="Vrikodara Jupon",    -- 5
     hands="Helios Gloves",     -- 5
     lring="Kishar Ring",       -- 4
-    rring="Rahab Ring",        -- 2
+    rring="Weatherspoon Ring +1",        -- 2
     back="Perimede Cape",
     waist="Embla Sash",        -- 5
     legs="Telchine Braconi",   -- 4
@@ -110,10 +110,10 @@ function get_sets()
     body="Amalric Doublet +1",  -- 6
     hands="Helios Gloves",       -- 5
     lring="Kishar Ring",   -- 4
-    rring="Rahab Ring",         -- 2
+    rring="Weatherspoon Ring +1",         -- 2
     back="Perimede Cape",
     waist="Embla Sash",
-    legs="Lengo Pants", -- 5
+    legs="Telchine Braconi",   -- 4
     feet=augments.merlinic.crackows.nuke -- 5
   }
 
@@ -151,7 +151,7 @@ function get_sets()
     -- lring = "Etana Ring", -- stored
     -- rring = "Bifrost Ring",
     left_ring="Supershear Ring",
-    right_ring="Rahab Ring",
+    right_ring="Weatherspoon Ring +1",
     back = "Merciful Cape",
     waist = "Luminary Sash",
     legs = "Chironic Hose",
@@ -179,7 +179,7 @@ function get_sets()
     lring = "Stikini Ring +1",
     rring = "Stikini Ring +1",
     back = "Lugh's Cape",
-    waist = "Refoccilation Stone",
+    waist = "Eschan Stone",
     legs="Amalric Slops +1",
     feet = augments.merlinic.crackows.nuke
   }
@@ -205,9 +205,9 @@ function get_sets()
     body="Amalric Doublet +1",
     hands="Amalric Gages +1",
     lring="Shiva Ring +1",
-    rring="Strendu Ring",
+    rring="Freke Ring",
     back="Lugh's Cape",
-    waist="Refoccilation Stone",
+    waist="Eschan Stone",
     legs="Amalric Slops +1",
     feet=augments.merlinic.crackows.nuke
   }
@@ -338,8 +338,6 @@ function precast(spell)
       equip(sets.ws)
     end
   end
-
-  maintain_reraise_equip()
 end
 
 function precast_cancelations(spell)
@@ -368,7 +366,6 @@ function midcast(spell)
   if spell.action_type == 'Magic' then
     midcast_magic(spell)
   end
-  maintain_reraise_equip()
 end
 
 function midcast_magic(spell)
@@ -539,17 +536,6 @@ function spell_affected_by_skill(spell_name)
     'Stoneskin', 'Phalanx'
   }
   return array_contains(spells, spell_name)
-end
-
--- If currently wearing an RR earing, keep it on to avoid reseting the countdown
---
-function maintain_reraise_equip()
-  if player.equipment.rear == 'Reraise Earring' then
-    equip({rear = 'Reraise Earring'})
-  end
-  if player.equipment.lear == 'Reraise Earring' then
-    equip({lear = 'Reraise Earring'})
-  end
 end
 
 -- Determine which idle set should be worn at this time

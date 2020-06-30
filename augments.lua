@@ -1,12 +1,5 @@
 augments = {
 
-  adhemar = {
-    kecks = {
-      rapidShot = { name="Adhemar Kecks", augments={'AGI+10','"Rapid Shot"+10','Enmity-5',}},
-      racc = {}
-    }
-  },
-
   chironic = {
     gloves = {
       nuke = { name="Chironic Gloves", augments={'Pet: Attack+11 Pet: Rng.Atk.+11','"Mag.Atk.Bns."+30','Mag. Acc.+20 "Mag.Atk.Bns."+20',}},
@@ -19,12 +12,6 @@ augments = {
     crit={ name="Colada", augments={'Crit.hit rate+2','DEX+4','Accuracy+13','Attack+4','DMG:+9',}},
     dbl={ name="Colada", augments={'Attack+25','"Dbl.Atk."+2','DMG:+13',}},
     enhancing={ name="Colada", augments={'Enh. Mag. eff. dur. +3','Mag. Acc.+3','DMG:+5',}},
-  },
-
-  helios = {
-    hands = {
-      fastCast = { name="Helios Gloves", augments={'Mag. Evasion+11','"Fast Cast"+5',}}
-    }
   },
 
   herc = {
@@ -56,12 +43,6 @@ augments = {
     }
   },
 
-  carmine = {
-    hands = {
-      magic = { name="Carmine Fin. Ga.", augments={'Rng.Atk.+15','"Mag.Atk.Bns."+10','"Store TP"+5',}}
-    }
-  },
-
   grio = {
     nuke = { name="Grioavolr", augments={'Enmity-1','INT+10','Mag. Acc.+25','"Mag.Atk.Bns."+29','Magic Damage +6',}},
     enfeeble = { name="Grioavolr", augments={'Enfb.mag. skill +15','MND+4','Mag. Acc.+24','"Mag.Atk.Bns."+16','Magic Damage +6',}}
@@ -90,30 +71,33 @@ augments = {
     },
     body = {},
     hands = {
-      wsd = { name="Odyssean Gauntlets", augments={'Accuracy+19','Weapon skill damage +2%','VIT+14','Attack+4',}},
+      -- wsd = { name="Odyssean Gauntlets", augments={'Accuracy+27','Weapon skill damage +4%','VIT+11',}},
+      -- wsd = { name="Odyssean Gauntlets", augments={'Accuracy+19','Weapon skill damage +2%','VIT+14','Attack+4',}},
+      wsd = { name="Odyssean Gauntlets", augments={'Weapon skill damage +3%','VIT+15','Accuracy+11','Attack+14',}},
     },
     legs = {
-      wsd = { name="Odyssean Cuisses", augments={'Accuracy+24','Weapon skill damage +3%','VIT+10','Attack+13',}},
+      -- wsd = { name="Odyssean Cuisses", augments={'Accuracy+24','Weapon skill damage +3%','VIT+10','Attack+13',}},
+      wsd = { name="Odyssean Cuisses", augments={'Attack+21','Weapon skill damage +3%','VIT+15',}},
     },
     feet = {}
   },
 
   taeon = {
     head = {
-      snapshot = { name="Taeon Chapeau", augments={'"Snapshot"+5','"Snapshot"+3',}},
+      snapshot = { name="Taeon Chapeau", augments={'"Snapshot"+5','"Snapshot"+5',}},
       SID = { name="Taeon Chapeau", augments={'Spell interruption rate down -7%','Phalanx +3',}},
       tp = { name="Taeon Chapeau", augments={'Accuracy+19 Attack+19','"Triple Atk."+2','DEX+8',}}
     },
     hands = {
-      phalanx = { name="Taeon Gloves", augments={'Phalanx +3',}},
+      phalanx = { name="Taeon Gloves", augments={'Mag. Evasion+11','Spell interruption rate down -5%','Phalanx +3',}},
       tp = { name="Taeon Gloves", augments={'Accuracy+19 Attack+19','"Triple Atk."+2','DEX+9',}}
     },
     legs = {
-      phalanx = { name="Taeon Tights", augments={'Accuracy+19','"Fast Cast"+3','Phalanx +3',}},
-      tp = { name="Taeon Tights", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','STR+7 DEX+7',}},
+      phalanx = { name="Taeon Tights", augments={'Mag. Evasion+13','"Fast Cast"+4','Phalanx +3',}},
+      tp = { name="Taeon Tights", augments={'Accuracy+18 Attack+18','"Triple Atk."+2','STR+7 DEX+7',}}
     },
     feet = {
-      phalanx = { name="Taeon Boots", augments={'Accuracy+22','Spell interruption rate down -9%','Phalanx +3',}}
+      phalanx = { name="Taeon Boots", augments={'Mag. Evasion+19','Spell interruption rate down -10%','Phalanx +3',}}
     }
   },
 
@@ -121,8 +105,8 @@ augments = {
     mask = {
       stp = {name = "Valorous Mask", augments = {'Accuracy+9 Attack+9','"Store TP"+5','DEX+10','Accuracy+4','Attack+8',}},
       da = { name="Valorous Mask", augments={'Accuracy+22','"Dbl.Atk."+4','VIT+1',}},
-      ws1 = { name="Valorous Mask", augments={'"Mag.Atk.Bns."+30','Enmity+3','Weapon skill damage +6%','Accuracy+16 Attack+16','Mag. Acc.+3 "Mag.Atk.Bns."+3',}},
-      ws2 = { name="Valorous Mask", augments={'Accuracy+15','Weapon skill damage +3%','STR+11','Attack+14',}},
+      ws2 = { name="Valorous Mask", augments={'"Mag.Atk.Bns."+30','Enmity+3','Weapon skill damage +6%','Accuracy+16 Attack+16','Mag. Acc.+3 "Mag.Atk.Bns."+3',}},
+      ws = { name="Valorous Mask", augments={'Accuracy+15','Weapon skill damage +3%','STR+11','Attack+14',}},
       waltz = { name="Valorous Mask", augments={'"Waltz" potency +10%','Accuracy+7','Accuracy+8 Attack+8',}},
       treasure = { name="Valorous Mask", augments={'INT+2','Pet: Attack+5 Pet: Rng.Atk.+5','"Treasure Hunter"+2','Accuracy+5 Attack+5',}},
     },
@@ -133,12 +117,14 @@ augments = {
     },
     hose = {
       quad = { name="Valor. Hose", augments={'STR+12','VIT+6','Quadruple Attack +3',}},
-      dt = { name="Valor. Hose", augments={'STR+5','AGI+2','Damage taken-2%','Accuracy+20 Attack+20',}}
+      dt = { name="Valor. Hose", augments={'STR+5','AGI+2','Damage taken-2%','Accuracy+20 Attack+20',}},
+      crit = { name="Valor. Hose", augments={'Accuracy+10','Crit. hit damage +2%','VIT+15','Attack+12',}},
+      crit2 = { name="Valor. Hose", augments={'Crit. hit damage +3%','VIT+15',}},
     },
     greaves = {
       da = { name="Valorous Greaves", augments={'"Dbl.Atk."+4','INT+8','Accuracy+18 Attack+18',}},
-      ws = { name="Valorous Greaves", augments={'Accuracy+24','Weapon skill damage +4%','DEX+8','Attack+3',}},
-      ws2 = { name="Valorous Greaves", augments={'Weapon skill damage +3%','STR+14','Accuracy+3',}},
+      ws2 = { name="Valorous Greaves", augments={'Accuracy+24','Weapon skill damage +4%','DEX+8','Attack+3',}},
+      ws = { name="Valorous Greaves", augments={'Weapon skill damage +3%','STR+14','Accuracy+3',}},
       crit = { name="Valorous Greaves", augments={'Accuracy+20','Crit. hit damage +4%','VIT+14','Attack+5',}},
     }
   },

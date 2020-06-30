@@ -45,6 +45,7 @@ function get_sets()
     left_ear="Flashward Earring",
     right_ear="Etiolation Earring", -- 3 MDT
     body="Inyanga Jubbah +2",       -- 8 MDT
+    -- body="Annointed Kalasiris",
     hands="Inyanga Dastanas +2",    -- 4 MDT
     left_ring="Gelatinous Ring +1", -- 7 PDT
     right_ring="Inyanga Ring",      -- 2 MDT
@@ -144,7 +145,7 @@ function get_sets()
 
   -- Song Buffs
   --
-  sets.Songs.Buffs = set_combine(sets.Idle, {
+  sets.Songs.Buffs = {
     main=gear.kali.skill,
     ranged="Gjallarhorn",
     head="Brioso Roundlet +2",
@@ -154,7 +155,7 @@ function get_sets()
     feet="Brioso Slippers +3",
     neck="Moonbow Whistle +1",
     back=gear.cape.fastCast
-  })
+  }
   sets.Songs.Ballad = set_combine(sets.Songs.Buffs, { legs="Fili Rhingrave" })
   sets.Songs.Carol = set_combine(sets.Songs.Buffs, { hands="Mousai Gages" })
   sets.Songs.Madrigal = set_combine(sets.Songs.Buffs, { head="Fili Calot" })
@@ -220,29 +221,13 @@ function get_sets()
     legs="Ayanmo Cosciales +2",            -- 9%
     feet=augments.chironic.feet.tp,        -- 3%
     neck="Bard's Charm",
-    waist="Sarissapho. Belt",              -- 3%
+    waist="Sailfi Belt +1",                -- 9%
     left_ear="Digni. Earring",
     right_ear="Brutal Earring",
     left_ring="Hetairoi Ring",
     right_ring="Petrov Ring",
     back=gear.cape.melee
-  }                                        -- 25% Haste
-  sets.Hybrid = {
-    main="Aeneas",
-    sub="Genbu's Shield",            -- 10 PDT
-    head="Aya. Zucchetto +2",        -- 3 DT
-    body="Ayanmo Corazza +2",        -- 6 DT
-    hands="Ayanmo Manopolas +2",     -- 3 DT
-    legs="Ayanmo Cosciales +2",      -- 5 DT
-    feet="Ayanmo Gambieras +2",      -- 3 DT
-    neck="Bard's Charm",
-    waist="Flume Belt",              -- 4 PDT
-    left_ear="Digni. Earring",
-    right_ear="Brutal Earring",
-    left_ring="Hetairoi Ring",
-    right_ring="Gelatinous Ring +1", -- 7 PDT (+1 MDT)
-    back=gear.cape.melee             -- 10 PDT
-  }                                  -- 51 PDT, 19 MDT
+  }                                        -- 31% Haste
   sets.WeaponSkill = {
     head="Aya. Zucchetto +2",             -- Lustratio
     body="Ayanmo Corazza +2",             -- Bihu +2/3
@@ -253,8 +238,8 @@ function get_sets()
     waist="Grunfeld Rope",
     left_ear="Moonshade Earring",
     right_ear="Ishvara Earring",
-    left_ring="Ramuh Ring",
-    right_ring="Apate Ring",              -- Ilabrat
+    left_ring="Ilabrat Ring",
+    right_ring="Apate Ring",
     back=gear.cape.ws
   }
 end
@@ -357,6 +342,7 @@ function set_for_song(spell)
     return sets.Songs.HonorMarch
 
   elseif ForceHarpNext or DummySongs:contains(spell.english) then
+    ForceHarpNext = false
     return sets.Songs.Dummy
 
   elseif string.find(spell.english, 'Lullaby') then
@@ -420,12 +406,6 @@ function self_command(commandArgs)
     else
       equip(sets.Idle)
     end
-  elseif command == 'cycle' then
-    -- local mode = _G[commandArgs[2]]
-    -- if mode ~= nil and mode._class == 'mode' then
-    --   mode:cycle()
-    --   add_to_chat(122, 'SET [' .. mode.description .. '] to ' .. mode.current)
-    -- end
   elseif command == 'idle' then
     equip(sets.Idle)
   elseif command == 'harp' then

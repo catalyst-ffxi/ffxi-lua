@@ -3,8 +3,7 @@ include('Modes.lua')
 include('augments.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'FullDD', 'HybridLight', 'HybridHeavy'}
-  TreasureHunter = M(false, 'Treasure Hunter')
+  PrimaryMode = M{['description'] = 'Primary Mode', 'FullDD', 'Hybrid', 'CritRate'}
 
   Abyssea = {
     current = 0,
@@ -13,7 +12,7 @@ function define_modes()
       { name="Wax Sword", ws="Red Lotus Blade=Fire, Seraph Blade=Light" },
       { name="Ash Club", ws="Seraph Strike=Light" },
       { name="Uchigatana", ws="Tachi Jinpu=Wind, Koki=Light" },
-      { name="Bronze Dagger", ws="Cyclone=Wind, Energy Drain=Dark" },
+      { name="Qutrub Knife", ws="Cyclone=Wind, Energy Drain=Dark" },
       { name="Kunai", ws="Blade: Ei=Dark" },
       { name="Lost Sickle", ws="Shadow of Death=Dark" },
       { name="Lament", ws="Freezebite=Ice" },
@@ -23,8 +22,8 @@ function define_modes()
 end
 
 function define_binds()
-  -- send_command("alias g15v2_m1g3 gs c abbyweapon")
-  -- send_command("alias g15v2_m1g4 gs c cycle TreasureHunter")
+  send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
+  send_command("alias g15v2_m1g3 gs c abbyweapon")
 end
 
 function define_gear()
@@ -39,52 +38,62 @@ function get_sets()
   gear = {
   }
 
+  sets.weapons = {
+    main="Heishi Shorinken",
+    sub="ochu"
+  }
+
   sets.modes = {}
   sets.modes.FullDD = {
-    ammo="Yamarang",
+    -- main="Heishi Shorinken",
+    -- sub="Ochu",
+    ammo="Aurgelmir Orb +1",
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
     hands=augments.herc.hands.triple,
     legs="Samnuha Tights",
     feet=augments.herc.feet.triple,
     neck="Iskur Gorget",
-    waist="Windbuffet Belt +1",
+    waist="Reiki Yotai",
     left_ear="Telos Earring",
     right_ear="Brutal Earring",
-    left_ring="Hetairoi Ring",
-    right_ring="Epona's Ring",
-    back="Yokaze Mantle"
+    left_ring="Epona's Ring",
+    right_ring="Gere Ring",
+    back="Andartia's Mantle"
   }
-  sets.modes.HybridLight = {
+  sets.modes.Hybrid = {
+    -- main="Heishi Shorinken",
+    -- sub="Ochu",
     ammo="Staunch Tathlum +1",
-    head="Adhemar Bonnet +1",
-    body="Adhemar Jacket +1",
+    head="Malignance Chapeau",
+    body="Malignance Tabard",
     hands=augments.herc.hands.triple,
-    legs="Samnuha Tights",
-    feet=augments.herc.feet.triple,
+    legs="Malignance Tights",
+    feet="Malignance Boots",
     neck="Loricate Torque +1",
-    waist="Flume Belt +1",
+    waist="Reiki Yotai",
     left_ear="Telos Earring",
     right_ear="Brutal Earring",
     left_ring="Defending Ring",
-    right_ring="Epona's Ring",
-    back="Yokaze Mantle"
+    right_ring="Gere Ring",
+    back="Andartia's Mantle"
   }
-  sets.modes.HybridHeavy = {
-    ammo="Staunch Tathlum +1",
+  sets.modes.CritRate = {
+    -- main="Heishi Shorinken",
+    -- sub="Ochu",
+    ammo="Aurgelmir Orb +1",
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
-    hands=augments.herc.hands.triple,
-    -- legs="Mummu Kecks +2", -- dont have
+    hands="Mummu Wrists +2",
     legs="Samnuha Tights",
     feet=augments.herc.feet.triple,
-    neck="Loricate Torque +1",
-    waist="Flume Belt +1",
-    left_ear="Telos Earring",
+    neck="Iskur Gorget",
+    waist="Reiki Yotai",
+    left_ear="Suppanomimi",
     right_ear="Brutal Earring",
-    left_ring="Defending Ring",
-    right_ring="Gelatinous Ring +1",
-    back="Yokaze Mantle"
+    left_ring="Epona's Ring",
+    right_ring="Gere Ring",
+    back="Andartia's Mantle"
   }
 
   sets.TreasureHunter = {
@@ -95,36 +104,46 @@ function get_sets()
   -- Weapon Skills
   --
   sets.WS = {}
-  sets.WS.Normal = {
-    ammo="Falcon Eye",
+  sets.WS['Blade: Ten'] = { -- 30 DEX / 30 STR, 1 hit, dmg varies w/ TP
+    ammo="Aurgelmir Orb +1",
     head=augments.herc.head.wsDex,
-    body="Meghanada Cuirie +2",
-    hands="Meg. Gloves +2",
+    body="Adhemar Jacket +1",
+    hands=augments.herc.hands.triple,
     legs=augments.herc.legs.wsDex,
     feet=augments.herc.feet.wsDex,
-    neck="Fotia Gorget",
-    waist="Fotia Belt",
+    neck="Caro Necklace",
+    waist="Sailfi Belt +1",
     left_ear="Moonshade Earring",
     right_ear="Ishvara Earring",
     left_ring="Regal Ring",
-    right_ring="Karieyh Ring +1",
-    back="Yokaze Mantle",
+    right_ring="Epaminondas's Ring",
+    back="Andartia's Mantle",
   }
-  sets.WS['Blade: Ten'] = set_combine(sets.WS.Normal, {
+  sets.WS['Blade: Shun'] = { -- 85 DEX, 5 hit, attack varies w/ TP
+    ammo="Aurgelmir Orb +1",
+    head="Adhemar Bonnet +1",
+    -- body="Ken. Samue +1",
+    body="Adhemar Jacket +1",
+    hands=augments.herc.hands.triple,
+    -- legs="Ken. Hakama +1",
+    legs="Samnuha Tights",
+    feet=augments.herc.feet.triple,
     neck="Caro Necklace",
-    waist="Grunfeld Rope"
-  })
+    waist="Fotia Belt",
+    left_ear="Moonshade Earring",
+    right_ear="Brutal Earring",
+    left_ring="Regal Ring",
+    right_ring="Gere Ring",
+    back="Andartia's Mantle",
+  }
 
   -- Job Abilities
   --
   sets.JAs = {}
-  sets.Waltz = {
-    lring = 'Asklepian Ring'
-  }
 
   -- Magic
   sets.Magic = {}
-  sets.Magic.Precast = {
+  sets.Magic.FastCast = {
     ammo="Sapience Orb",                -- 2
     head="Herculean Helm",              -- 7
     neck="Orunmila's Torque",           -- 5
@@ -133,7 +152,7 @@ function get_sets()
     lear="Loquacious earring",          -- 2
     rear="Etiolation Earring",          -- 1
     lring="Kishar Ring",                -- 4
-    rring="Rahab Ring",                -- 2
+    rring="Weatherspoon Ring +1",                -- 2
     legs=augments.taeon.legs.phalanx,   -- 3
   }
   sets.Magic.SpellInterrupt = {
@@ -165,15 +184,9 @@ end
 
 function precast(spell)
   if spell.type == 'WeaponSkill' then
-    if sets.WS[spell.english] then
-      equip(sets.WS[spell.english])
-    else
-      equip(sets.WS.Normal)
-    end
+    equip(sets.WS[spell.english] or sets.WS['Blade: Ten'])
   elseif spell.type == 'JobAbility' then
-    if sets.JAs[spell.english] then
-      equip(sets.JAs[spell.english])
-    end
+    equip(sets.JAs[spell.english])
   elseif spell.action_type == 'Magic' then
     equip(sets.Magic.FastCast)
     if spell.english == 'Utsusemi: Ichi' and (
@@ -186,8 +199,6 @@ function precast(spell)
   elseif spell.english == 'Spectral Jig' then
     cast_delay(0.5)
     send_command('@cancel 71;')
-  elseif spell.english == 'Curing Waltz II' or spell.english == 'Curing Waltz III' then
-    equip(sets.Waltz)
   elseif spell.english == 'Ranged' then
     equip(sets.Ranged)
   end
@@ -200,9 +211,7 @@ function midcast(spell)
 end
 
 function aftercast(spell)
-  if player.in_combat then
-    equip_set_for_current_mode()
-  end
+  equip_set_for_current_mode()
 end
 
 function status_change(new, old)
@@ -246,15 +255,9 @@ function self_command(commandArgs)
 end
 
 function set_for_engaged()
-  local set = sets.modes[get_primary_mode()]
-  if TreasureHunter.value then
-    set = set_combine(set, sets.TreasureHunter)
-  end
-  return set
-end
+  local set = sets.modes[PrimaryMode.current]
 
-function get_primary_mode()
-	return PrimaryMode.current
+  return set
 end
 
 function equip_set_for_current_mode()
@@ -263,21 +266,14 @@ end
 
 function cycle_weapon()
   Abyssea.current = Abyssea.current + 1
-  local len = tablelength(Abyssea.weapons)
 
   if Abyssea.current > #Abyssea.weapons then
     add_to_chat(122, '*** DD Weapons Equiped ***')
-    equip({ main = "Kanaria", sub = "Ochu" })
+    equip({ main = "Heishi Shorinken", sub = "Ochu" })
     Abyssea.current = 0
   else
     local set = Abyssea.weapons[Abyssea.current]
     add_to_chat(122, 'Switching to ' .. set.name ..'. Use weapon skills: ' .. set.ws)
-    equip({ main = set.name, sub = '-' })
+    equip({ main = set.name })
   end
-end
-
-function tablelength(T)
-  local count = 0
-  for _ in pairs(T) do count = count + 1 end
-  return count
 end

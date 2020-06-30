@@ -1,7 +1,7 @@
 include('Modes.lua')
+include('augments_tadako.lua')
 
 function define_modes()
-  Capacity = M(false, 'Capacity Mantle')
 end
 
 function define_aliases()
@@ -20,49 +20,106 @@ function get_sets()
 
   -- Modes
   sets.Idle = {
-    main={ name="Solstice", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},
+    main="Solstice",
     sub="Genbu's Shield",
     range="Dunna",
-    head="Jhakri Coronal",
-    body="Jhakri Robe",
-    hands="Jhakri Cuffs",
-    legs="Jhakri Slops",
-    feet="Jhakri Pigaches",
+    head="Merlinic Hood",
+    body="Jhakri Robe +2",
+    hands="Jhakri Cuffs +1",
+    legs="Assiduity Pants",
+    feet="Vanya Clogs",
     neck="Loricate Torque +1",
-    waist="Witful Belt",
+    waist="Fucho-no-Obi",
     left_ear="Flashward Earring",
-    right_ear="Novia Earring",
-    left_ring="Fortified Ring",
-    right_ring="Vertigo Ring",
-    back="Solemnity Cape",
+    right_ear="Etiolation Earring",
+    left_ring="Gelatinous Ring +1",
+    right_ring="Purity Ring",
+    back="Nantosuelta's Cape"
   }
   sets.Engaged = {
   }
 
   -- Magic
---   sets.Magic = {}
---   sets.Magic.Precast = {
---     main = "Kali",
---     body = "Inyanga Jubbah",
---     hands = { name="Telchine Gloves", augments={'"Fast Cast"+4',}},
---     left_ring = "Prolix Ring",
---     legs = "Kaykaus Tights",
---     back = "Intarabus's Cape",
---     waist = "Witful Belt"
---   }
---   sets.Magic.Healing = {
---     hands={ name="Telchine Gloves", augments={'"Cure" potency +5%',}},
---     legs = "Kaykaus Tights"
---   }
---   sets.Magic.HealingSelf = {
+  sets.Magic = {}
+  sets.Magic.Precast = {
+    main="Solstice",                          -- 5 FC
+    sub="Genbu's Shield",
+    -- ammo="Sapience Orb",                      -- 2 FC
+    head="Merlinic Hood",                     -- 8 FC
+    --body="",
+    hands=augments.telchine.gloves.enhancing, -- 4 FC
+    -- legs="Kaykaus Tights",                    -- 6 FC
+    feet="Merlinic Crackows",                 -- 5 FC
+    neck="Orunmila's torque",                 -- 5 FC
+    waist="Witful Belt",                      -- 3 FC
+    left_ear="Loquacious earring",            -- 2 FC
+    right_ear="Etiolation Earring",           -- 1 FC
+    left_ring="Weatherspoon Ring",            -- 5 FC
+    right_ring="Kishar Ring",                 -- 4 FC
+    -- back="Nantosuelta's Cape",                -- 10 FC
+  }                                           -- 55 FC
+  sets.Magic.Healing = {
+    main="Gada",                     -- 18
+    -- head="Kaykaus Mitra",            -- 10
+    neck="Incanter's Torque",
+    left_ear="Novia Earring",
+    right_ear="Regal Earring",
+    body="Vanya Robe",               -- 7
+    -- hands="Kaykaus Cuffs",           -- 10
+    left_ring="Haoma's Ring",
+    right_ring="Haoma's Ring",
+    -- back="Lugh's Cape",
+    waist="Pythia Sash",
+    -- legs="Kaykaus Tights",           -- 10
+    feet="Vanya Clogs"               -- 5
+  }
+  sets.Magic.HealingPrecast = {
+    -- head="Kaykaus Mitra",
+    right_ear="Mendicant's Earring",
+  }
+  sets.Magic.HealingSelf = {
+    waist="Chuq'aba belt"
+  }
+  sets.Magic.Cursna = {
+    -- head="Kaykaus Mitra",                    -- Cursna/Skill
+    neck="Malison Medallion",                -- Cursna
+    left_ear="Loquacious earring",           -- FC
+    right_ear="Etiolation Earring",          -- FC
+    -- body="Inyanga Jubbah +2",                -- FC
+    hands=augments.telchine.gloves.enhancing,-- FC
+    left_ring="Haoma's Ring",                -- Cursna/Skill
+    right_ring="Haoma's Ring",               -- Cursna/Skill
+    back="Oretan. Cape +1",                  -- Cursna
+    waist="Witful Belt",                     -- FC
+    -- legs="Kaykaus Tights",                   -- FC
+    feet="Vanya Clogs"                       -- Cursna/Skill
+  }
+  sets.Magic.Enhancing = {
+    main="Gada",
+    head=augments.telchine.head.enhancing,
+    hands=augments.telchine.gloves.enhancing,
+    body=augments.telchine.body.enhancing,
+    legs=augments.telchine.legs.enhancing,
+    feet=augments.telchine.feet.enhancing,
+    waist="Embla Sash"
+  }
+  sets.Magic.EnhancingRegen = {
+    main="Bolelabunga"
+  }
+  sets.Magic.Enfeebling = {
 
---   }
---   sets.Magic.Enhancing = {
+  }
+  sets.Magic.Geomancy = {
+    main="Solstice",
+    sub="Genbu's Shield",
+    range="Dunna",
+    feet="Medium's Sabots",
+    neck="Incanter's Torque",
+    left_ring="Stikini Ring",
+    right_ring="Stikini Ring",
+    back="Lifestream Cape"
+  }
 
---   }
---   sets.Magic.Enfeebling = {
-
---   }
 
   -- Abilities
   sets.JobAbility = {}
@@ -86,7 +143,6 @@ function precast(spell)
   end
 
   precast_cancelations(spell)
-  maintain_reraise_equip()
 end
 
 function precast_cancelations(spell)
@@ -137,9 +193,11 @@ function midcast(spell)
   -- Enfeebles
   elseif spell.skill == 'Enfeebling Magic' then
     equip(sets.Magic.Enfeebling)
-  end
 
-  maintain_reraise_equip()
+  -- Geomancy
+  elseif spell.skill == 'Geomancy' then
+    equip(sets.Magic.Geomancy)
+  end
 end
 
 function aftercast(spell)
@@ -147,10 +205,6 @@ function aftercast(spell)
     equip(sets.Engaged)
   else
     equip(sets.Idle)
-  end
-  -- if Capacity.value then
-  if true then
-    equip({back = "Aptitude Mantle +1"})
   end
 end
 
@@ -191,16 +245,5 @@ function self_command(commandArgs)
     equip(sets.Idle)
   elseif command == 'run' then
     equip(sets.MoveSpeed)
-  end
-end
-
--- If currently wearing an RR earing, keep it on to avoid reseting the countdown
---
-function maintain_reraise_equip()
-  if player.equipment.rear == 'Reraise Earring' then
-    equip({rear = 'Reraise Earring'})
-  end
-  if player.equipment.lear == 'Reraise Earring' then
-    equip({lear = 'Reraise Earring'})
   end
 end

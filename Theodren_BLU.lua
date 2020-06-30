@@ -64,7 +64,7 @@ function get_sets()
 
   sets.modes = {}
   sets.modes.Normal = {
-    ammo="Aurgelmir Orb",
+    ammo="Aurgelmir Orb +1",
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
     hands=augments.herc.hands.triple,
@@ -81,7 +81,7 @@ function get_sets()
     back=gear.rosmerta.tp
   }
   sets.modes.HybridLight = {
-    ammo="Aurgelmir Orb",
+    ammo="Aurgelmir Orb +1",
     head="Adhemar Bonnet +1",
     body="Malignance Tabard",          -- 9 DT
     hands=augments.herc.hands.triple,  -- 2 PDT
@@ -128,19 +128,19 @@ function get_sets()
   sets.Magic = {}
   sets.Magic.FastCast = {
     ammo="Impatiens",             -- 2 Quick
-    head="Carmine Mask",          -- 9
+    head=augments.herc.head.fc,   -- 12
     neck="Orunmila's Torque",     -- 5
     lear="Loquacious earring",    -- 2
     rear="Etiolation Earring",    -- 1
-    body="Taeon Tabard",          -- 8
+    body="Taeon Tabard",          -- 9
     hands="Leyline Gloves",       -- 7
     left_ring="Kishar Ring",      -- 4
-    right_ring="Rahab Ring",      -- 2
+    right_ring="Weatherspoon Ring +1",      -- 2
     back=gear.rosmerta.fast,      -- 10
     waist="Witful Belt",          -- 3, 3 Quick
     legs="Aya. Cosciales +2",     -- 6
     feet="Carmine Greaves +1"     -- 8
-                                  -- 62 FastCast, 6 QuickCast
+                                  -- 65 FastCast, 6 QuickCast
   }
   sets.Magic.SpellInterrupt = {
     ammo="Staunch Tathlum +1",       -- 11
@@ -185,13 +185,14 @@ function get_sets()
     legs="Amalric Slops +1",
     feet="Jhakri Pigaches +2",
     neck="Sanctity Necklace",
-    -- waist="Eschan Stone",
     waist="Orpheus's Sash",
     left_ear="Regal Earring",
     right_ear="Friomisi Earring",
-    left_ring="Strendu Ring",
-    right_ring="Arvina Ringlet +1",
-    back=gear.rosmerta.mab
+    left_ring="Defending Ring",
+    right_ring="Shiva Ring +1",
+    -- right_ring="Strendu Ring",
+    -- right_ring="Stikini Ring +1",
+    back=gear.rosmerta.mab -- INT/MAB/Macc/Mdmg
   }
   sets.BlueMagic.Physical = {
     -- ammo="Falcon Eye", -- Stored
@@ -201,7 +202,7 @@ function get_sets()
     legs="Jhakri Slops +2",
     feet="Jhakri Pigaches +2",
     neck="Caro Necklace",
-    waist="Prosilio Belt +1",
+    waist="Sailfi Belt +1",
     left_ear="Telos Earring",
     right_ear="Dignitary's Earring",
     left_ring="Ilabrat Ring",
@@ -209,7 +210,7 @@ function get_sets()
     back=gear.rosmerta.ws
   }
   sets.BlueMagic.Healing = {
-    ammo="Quartz Tathlum +1",        -- MND
+    -- ammo="Quartz Tathlum +1",        -- MND
     head="Aya. Zucchetto +2",        -- MND/VIT
     body="Vrikodara Jupon",          -- 13%
     hands="Telchine Gloves",         -- 18%
@@ -219,8 +220,8 @@ function get_sets()
     waist="Luminary Sash",           -- MND
     left_ear="Regal Earring",        -- MND
     right_ear="Mendi. Earring",      -- 5%
-    left_ring="Stikini Ring +1",     -- 5 skill 5 MND
-    right_ring="Stikini Ring +1",    -- 5 skill 5 MND
+    left_ring="Stikini Ring +1",     -- 11 skill 8 MND
+    right_ring="Stikini Ring +1",    -- 11 skill 8 MND
     back=gear.rosmerta.fast,         -- MND
                              -- Total: +50% Cure Potency
   }
@@ -231,8 +232,8 @@ function get_sets()
                                  -- Total: 19%
   })
   sets.BlueMagic['White Wind'] = {
-    -- ammo="Falcon Eye",               -- 10 HP, Stored
-    head="Carmine Mask",             -- 98 HP
+    -- ammo="Falcon Eye",            -- 10 HP, Stored
+    head="Carmine Mask +1",          -- 118 HP
     body="Vrikodara Jupon",          -- 13%
     hands="Telchine Gloves",         -- 18%
     legs="Carmine Cuisses +1",       -- 130 HP
@@ -241,11 +242,12 @@ function get_sets()
     waist="Gishdubar Sash",          --     10% self
     left_ear="Odnowa Earring +1",    -- 100 HP
     right_ear="Mendi. Earring",      -- 5%
-    left_ring="Kunaji ring",
+    left_ring="Kunaji ring",         --     5% self
     right_ring="Ilabrat Ring",       -- 60 HP
     back=gear.rosmerta.fast
     -- back="Aenoth. Mantle +1"         -- 120 HP  -- Moonbeam Cape 250 HP
-                             -- Total: +50% Cure Potency
+                             -- Total: 50% Cure Potency
+                             --        19% Self
   }
   sets.BlueMagic['Battery Charge'] = {
     head="Amalric Coif +1",
@@ -257,12 +259,12 @@ function get_sets()
   })
   sets.BlueMagic['Dream Flower'] = {
     ammo="Staunch Tathlum +1",       -- 11
-    head="Jhakri Coronal +2",
+    head="Malignance Chapeau",
     neck="Loricate Torque +1",       -- DT
-    left_ear="Regal Earring",
+    left_ear="Genmei Earring",
     right_ear="Magnetic Earring",    -- 8
-    body="Jhakri Robe +2",
-    hands="Rawhide Gloves",          -- 15
+    body="Malignance Tabard",
+    hands=augments.herc.hands.triple,
     left_ring="Defending Ring",      -- DT
     right_ring="Gelatinous Ring +1", -- PDT
     back=gear.rosmerta.mab,
@@ -281,17 +283,17 @@ function get_sets()
   --
   sets.WS = {}
   sets.WS['Savage Blade'] = {
-    ammo="Floestone",
+    ammo="Aurgelmir Orb +1",
     head=augments.herc.head.wsStr,
     neck="Mirage Stole +1",
     left_ear="Ishvara Earring",
     right_ear="Moonshade Earring",
     body="Assimilator's Jubbah +3",
     hands="Jhakri Cuffs +2",
-    left_ring="Karieyh Ring +1",
+    left_ring="Epaminondas's Ring",
     right_ring="Shukuyu Ring",
     back=gear.rosmerta.ws,
-    waist="Fotia Belt",
+    waist="Sailfi Belt +1",
     legs=augments.herc.legs.wsDex,
     feet="Jhakri Pigaches +2",
   }
@@ -308,7 +310,7 @@ function get_sets()
     left_ear="Moonshade Earring",
     right_ear="Brutal Earring",
     left_ring="Ilabrat Ring",
-    right_ring="Epona's Ring",
+    right_ring="Begrudging Ring",
     back=gear.rosmerta.tp
   }
   sets.WS['Shining Blade'] = {}
@@ -323,7 +325,7 @@ function get_sets()
     body="Amalric Doublet +1",
     hands="Jhakri Cuffs +2",
     lring="Archon Ring",
-    rring="Karieyh Ring +1",
+    rring="Epaminondas's Ring",
     back=gear.rosmerta.mab,
     waist="Eschan Stone",
     legs="Amalric Slops +1",

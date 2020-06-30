@@ -137,7 +137,6 @@ function precast(spell)
   end
 
   precast_cancelations(spell)
-  maintain_reraise_equip()
 end
 
 function precast_cancelations(spell)
@@ -193,8 +192,6 @@ function midcast(spell)
   elseif spell.skill == 'Enfeebling Magic' then
     equip(sets.Magic.Enfeebling)
   end
-
-  maintain_reraise_equip()
 end
 
 function aftercast(spell)
@@ -347,15 +344,4 @@ function perform_skillchain(name, spells)
 
   SCRunning = false
   send_command('input /echo Skillchain Complete!')
-end
-
--- If currently wearing an RR earing, keep it on to avoid reseting the countdown
---
-function maintain_reraise_equip()
-  if player.equipment.rear == 'Reraise Earring' then
-    equip({rear = 'Reraise Earring'})
-  end
-  if player.equipment.lear == 'Reraise Earring' then
-    equip({lear = 'Reraise Earring'})
-  end
 end

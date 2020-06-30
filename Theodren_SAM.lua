@@ -3,15 +3,13 @@ include('Modes.lua')
 include('augments.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'HybridLight', 'HybridHeavy', 'Accuracy'}
-  TreasureHunter = M(false, 'Treasure Hunter')
+  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'HybridLight', 'HybridHeavy', 'FullPDT'}
 end
 
 function define_binds()
   -- Modes
   send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
   send_command('alias g15v2_m1g2 input /equip main "Dojikiri Yasutsuna"; @wait 0.5; input /equip sub "Utu Grip"')
-  send_command("alias g15v2_m1g3 gs c cycle TreasureHunter")
 end
 
 function get_sets()
@@ -20,19 +18,6 @@ function get_sets()
   define_binds()
 
   gear = {
-    valorous = {
-      mask = {
-        ws = { name="Valorous Mask", augments={'Accuracy+15','Weapon skill damage +3%','STR+11','Attack+14',}},
-        treasure = { name="Valorous Mask", augments={'INT+2','Pet: Attack+5 Pet: Rng.Atk.+5','"Treasure Hunter"+2','Accuracy+5 Attack+5',}},
-      },
-      mitts = {
-        ws = { name="Valorous Mitts", augments={'Weapon skill damage +4%','STR+11','Accuracy+1','Attack+11',}},
-        treasure = { name="Valorous Mitts", augments={'Attack+5','Pet: STR+6','"Treasure Hunter"+2','Accuracy+14 Attack+14','Mag. Acc.+9 "Mag.Atk.Bns."+9',}}
-      },
-      greaves = {
-        ws = { name="Valorous Greaves", augments={'Weapon skill damage +3%','STR+14','Accuracy+3',}}
-      }
-    },
     smertrios = {
       ws = { name="Smertrios's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
       tp = { name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
@@ -43,43 +28,53 @@ function get_sets()
   sets.modes.Normal = {
     main="Dojikiri Yasutsuna",    -- 10 STP
     sub="Utu Grip",
-    ammo="Aurgelmir Orb",         -- 4 STP
+    ammo="Aurgelmir Orb +1",         -- 4 STP
     head="Flam. Zucchetto +2",    -- 6 STP
     neck="Samurai's Nodowa +1",   -- 11 STP
     lear="Dedition Earring",      -- 8 STP
     rear="Brutal Earring",        -- 1 STP
     body="Ken. Samue +1",
     hands="Wakido Kote +3",       -- 7 STP
-    lring="Flamma Ring",          -- 5 STP
+    lring="Chirich Ring +1",      -- 6 STP
     rring="Niqmaddu Ring",
     back=gear.smertrios.tp,
     waist="Ioskeha Belt +1",
     legs="Ken. Hakama +1",
     feet="Ryuo Sune-Ate +1"       -- 5 STP
-  }                               -- 57 STP
+  }                               -- 58 STP
   sets.modes.HybridLight = set_combine(sets.modes.Normal, {
     rring="Defending Ring",       -- 10 DT
   })                              -- 20 PDT
   sets.modes.HybridHeavy = set_combine(sets.modes.Normal, {
     ammo="Staunch Tathlum +1",    -- 3 DT
     neck="Loricate Torque +1",    -- 6 DT
+    rring="Defending Ring",       -- 10 DT
+  })                              -- 29 PDT
+  sets.modes.FullPDT = set_combine(sets.modes.Normal, {
+    ammo="Staunch Tathlum +1",    -- 3 DT
+    neck="Loricate Torque +1",    -- 6 DT
     lring="Gelatinous Ring +1",   -- 7 PDT
     rring="Defending Ring",       -- 10 DT
-    waist="Flume Belt +1"         -- 4 PDT
-  })                              -- 40 PDT
-  sets.modes.Accuracy = set_combine(sets.modes.Normal, {
-    lear="Telos Earring",
-    rear="Dignitary's Earring",
-    rring="Regal Ring",
-    feet="Flam. Gambieras +2"
-  })
-
-  -- Modifiers
-  sets.TreasureHunter = {
-    head=augments.valorous.mask.treasure,
-    hands=augments.valorous.mitts.treasure,
-    waist="Chaac belt"
-  }
+    waist="Flume Belt +1",        -- 4 PDT
+    left_ear="Genmei Earring"     -- 2 PDT
+  })                              -- 42 PDT
+  sets.modes.SB = {
+    main="Dojikiri Yasutsuna",
+    sub="Utu Grip",
+    ammo="Aurgelmir Orb +1",
+    head="Flam. Zucchetto +2",
+    body="Ken. Samue +1",          -- 12 SB
+    hands="Wakido Kote +3",
+    legs="Ken. Hakama +1",         -- 10 SB
+    feet="Ryuo Sune-Ate +1",       -- 8 SB
+    neck="Samurai's Nodowa +1",
+    waist="Ioskeha Belt +1",
+    left_ear="Telos Earring",
+    right_ear="Brutal Earring",
+    left_ring="Chirich ring +1",   -- 10 SB
+    right_ring="Niqmaddu Ring",    -- 5 SB II
+    back=gear.smertrios.tp
+  }                                -- Auspice: 10 SB
 
   -- Weapon Skills
   --
@@ -93,9 +88,9 @@ function get_sets()
     body="Sakonji Domaru +3",
     hands=augments.valorous.mitts.ws,
     lring="Regal Ring",
-    rring="Karieyh Ring +1",
+    rring="Niqmaddu Ring",
     back=gear.smertrios.ws,
-    waist="Fotia Belt",
+    waist="Sailfi Belt +1",
     legs="Wakido Haidate +3",
     feet=augments.valorous.greaves.ws
   }
@@ -107,10 +102,10 @@ function get_sets()
     rear="Moonshade earring",
     body="Sakonji Domaru +3",
     hands=augments.valorous.mitts.ws,
-    lring="Flamma Ring",
+    lring="Regal Ring",
     rring="Niqmaddu Ring",
     back=gear.smertrios.ws,
-    waist="Fotia Belt",
+    waist="Sailfi Belt +1",
     legs="Wakido Haidate +3",
     feet="Flam. Gambieras +2"
   }
@@ -125,8 +120,8 @@ function get_sets()
     waist="Eschan Stone",
     left_ear="Dignitary's Earring",
     right_ear="Moonshade Earring",
-    left_ring="Flamma Ring",
-    right_ring="Karieyh Ring +1",
+    left_ring="Stikini Ring +1",
+    right_ring="Stikini Ring +1",
     back=gear.smertrios.ws,
   }
 
@@ -161,7 +156,7 @@ function get_sets()
     hands="Leyline Gloves",             -- 7
     lear="Loquacious earring",          -- 2
     rear="Etiolation Earring",          -- 1
-    rring="Rahab Ring",                -- 2
+    rring="Weatherspoon Ring +1",                 -- 2
   }
   sets.Doom = {
     neck="Nicander's Necklace",
@@ -244,9 +239,6 @@ end
 
 function set_for_engaged()
   local set = sets.modes[PrimaryMode.current]
-  if TreasureHunter.value then
-    set = set_combine(set, sets.TreasureHunter)
-  end
   if buffactive.Doom then
     set = set_combine(set, sets.Doom)
   end

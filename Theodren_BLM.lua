@@ -80,9 +80,9 @@ function get_sets()
     body = "Amalric Doublet +1",
     hands = "Amalric Gages +1",
     lring = "Shiva Ring +1",
-    rring = "Strendu Ring",
+    rring = "Freke Ring",
     back = gear.taranus.nuke,
-    waist = "Refoccilation Stone",
+    waist = "Eschan Stone",
     legs = "Amalric Slops +1",
     feet = augments.merlinic.crackows.nuke
   }
@@ -114,7 +114,7 @@ function get_sets()
     body="Vrikodara Jupon",    -- 5
     hands="Helios Gloves",     -- 5
     lring="Kishar Ring",       -- 4
-    rring="Rahab Ring",        -- 2
+    rring="Weatherspoon Ring +1",        -- 2
     back=gear.taranus.fastCast,-- 10
     waist="Embla Sash",        -- 5
     legs="Telchine Braconi",   -- 4
@@ -172,7 +172,7 @@ function get_sets()
     -- lring = "Etana Ring", -- stored
     -- rring = "Bifrost Ring",
     left_ring="Supershear Ring",
-    right_ring="Rahab Ring",
+    right_ring="Weatherspoon Ring +1",
     -- back = "Bane Cape", -- stored
     back="Merciful Cape",
     waist = "Luminary Sash",
@@ -242,11 +242,11 @@ function get_sets()
     legs="Amalric Slops +1",
     feet=augments.merlinic.crackows.nuke,
     neck="Sanctity Necklace",
-    waist="Refoccilation Stone",
+    waist="Eschan Stone",
     left_ear="Malignance Earring",
     right_ear="Regal Earring",
     left_ring="Shiva Ring +1",
-    right_ring="Strendu Ring",
+    right_ring="Freke Ring",
     back=gear.taranus.nuke
   }
   sets.midcast.elemental.MagicBurst = {
@@ -262,7 +262,7 @@ function get_sets()
     lring="Mujin Band",         --       | MB II +5
     rring="Locus Ring",         -- MB +5 |
     back=gear.taranus.nuke,     -- MB +5 |
-    waist="Refoccilation Stone",
+    waist="Eschan Stone",
     legs="Ea Slops",            -- MB +7 | MB II +7
     feet=augments.merlinic.crackows.nuke
   }                             -- MB +41| MB II +31
@@ -384,7 +384,6 @@ function precast(spell)
     end
   end
 
-  maintain_reraise_equip()
 end
 
 function precast_cancelations(spell)
@@ -421,7 +420,6 @@ function midcast(spell)
   if spell.action_type == 'Magic' then
     midcast_magic(spell)
   end
-  maintain_reraise_equip()
 end
 
 function midcast_magic(spell)
@@ -566,17 +564,6 @@ function self_command(commandArgs)
   --   end
   elseif command == 'auto_aspir' then
     auto_aspir()
-  end
-end
-
--- If currently wearing an RR earing, keep it on to avoid reseting the countdown
---
-function maintain_reraise_equip()
-  if player.equipment.rear == 'Reraise Earring' then
-    equip({rear = 'Reraise Earring'})
-  end
-  if player.equipment.lear == 'Reraise Earring' then
-    equip({lear = 'Reraise Earring'})
   end
 end
 

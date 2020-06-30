@@ -1,13 +1,21 @@
+include('Mote-Mappings.lua')
+
 -- Auto equip doom sets
 function buff_change(buff, gain, bufftable)
+  local doom_set = {
+    neck="Nicander's Necklace",
+    left_ring="Purity Ring",
+    right_ring="Blenmot's Ring",
+    waist="Gishdubar Sash"
+  }
   if buff:lower() == "doom" then
     if gain then
-      lock_set(sets.Doom)
+      lock_set(doom_set)
       send_command("input /echo DOOM ON - Equipping doom gear")
       -- send_command("input /party Help, I'm DOOMED!")
       -- send_command('input /item "Holy Water" <me>')
     else
-      unlock_set(sets.Doom)
+      unlock_set(doom_set)
       send_command("input /echo DOOM OFF - Removed doom gear")
       -- send_command("input /party Doom OFF!")
     end
@@ -48,17 +56,18 @@ function get_total_element_intensity(element)
   return intensity
 end
 
--- spell.target.distance < 15 - spell.target.model_size
-
 -- Equip Orpheus Sash or Hachirin-no-Obi depending on elemental factors
 function equip_elemental_waist(spell)
   local intensity = get_total_element_intensity(spell.element)
-  local distance_to_center = spell.target.distance + spell.target.model_size
+  local distance_to_center = spell.target.distance
+  -- local distance_to_center = spell.target.distance - spell.target.model_size
 
   -- add_to_chat('Calculate Orpheus/Hachirin:')
   -- add_to_chat('* Element: ' .. spell.element)
   -- add_to_chat('* Intensity: ' .. intensity)
-  -- add_to_chat('* Distance: ' .. distance_to_center)
+  -- add_to_chat('* Distance: ' .. spell.target.distance)
+  -- add_to_chat('* Model Size: ' .. spell.target.model_size)
+  -- add_to_chat('* Effective: ' .. distance_to_center)
 
   if intensity >= 2 or (intensity == 1 and distance_to_center > 8) then
     equip({ waist="Hachirin-no-Obi" })

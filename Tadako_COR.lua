@@ -32,7 +32,8 @@ function get_sets()
   sets.Engaged.Normal = {
     main="Naegling",
     -- sub="Nusku Shield",
-    -- ranged="Compensator",
+    -- ranged="Molybdosis",
+    ranged="Compensator",
     ammo="Orichalc. Bullet",
     head="Adhemar Bonnet",
     body="Adhemar Jacket",
@@ -40,24 +41,43 @@ function get_sets()
     legs="Samnuha Tights",
     feet=augments.herc.feet.tp,
     neck="Iskur Gorget",
-    waist="Sarissapho. Belt",
+    waist="Sailfi Belt +1",
     left_ear="Suppanomimi",
     right_ear="Digni. Earring",
     left_ring="Hetairoi Ring",
     right_ring="Petrov Ring",
     back=gear.camulus.tp
   }
-  sets.Engaged.Hybrid = sets.Engaged.Normal
+  sets.Engaged.Hybrid = {
+    main="Naegling",
+    -- sub="Nusku Shield",
+    -- ranged="Molybdosis",
+    ranged="Compensator",
+    ammo="Orichalc. Bullet",
+    head="Adhemar Bonnet",
+    body="Adhemar Jacket",
+    hands=augments.herc.hands.tp,
+    legs="Meg. Chausses +2",
+    feet=augments.herc.feet.tp,
+    neck="Loricate Torque +1",
+    waist="Flume Belt",
+    left_ear="Suppanomimi",
+    right_ear="Digni. Earring",
+    left_ring="Hetairoi Ring",
+    right_ring="Gelatinous Ring +1",
+    back=gear.camulus.tp
+  }
 
   sets.Idle = {
     main="Naegling",
-    sub="Nusku Shield",
-    -- ranged="Compensator",
+    -- sub="Nusku Shield",
+    ranged="Compensator",
+    -- ranged="Molybdosis",
     ammo="Orichalc. Bullet",
     head="Mummu Bonnet +2",
     body="Mummu Jacket +2",
     hands="Mummu Wrists +2",
-    legs="Mummu Kecks +2",
+    legs="Carmine Cuisses +1",
     feet="Mummu Gamash. +2",
     neck="Loricate Torque +1",
     waist="Flume Belt",
@@ -65,12 +85,41 @@ function get_sets()
     right_ear="Etiolation Earring",
     left_ring="Gelatinous Ring +1",
     right_ring="Purity Ring",
-    back="Aptitude Mantle +1"
+    back=gear.camulus.tp
+    -- back="Aptitude Mantle +1"
   }
 
   -- Weapon Skills
   sets.WS = {}
-  sets.WS.Wildfire = {
+  sets.WS['Last Stand'] = {
+    head="Meghanada Visor +2",
+    body="Meg. Cuirie +2",
+    hands="Meg. Gloves +2",
+    legs="Meg. Chausses +2",
+    feet="Meg. Jam. +2",
+    neck="Iskur Gorget",
+    waist="Eschan Stone",
+    left_ear="Ishvara Earring",
+    right_ear="Moonshade earring",
+    left_ring="Mummu Ring",
+    right_ring="Dingir Ring",
+    back=gear.camulus.ws
+  }
+  sets.WS['Leaden Salute'] = {
+    head=augments.herc.head.magic,
+    body="Samnuha Coat",
+    hands=augments.herc.hands.magic,
+    legs=augments.herc.legs.magic,
+    feet=augments.herc.feet.magic,
+    neck="Sanctity Necklace",
+    waist="Eschan Stone",
+    left_ear="Friomisi Earring",
+    right_ear="Moonshade Earring",
+    left_ring="Acumen Ring",
+    right_ring="Dingir Ring",
+    back=gear.camulus.ws
+  }
+  sets.WS['Wildfire'] = {
     head=augments.herc.head.magic,
     body="Samnuha Coat",
     hands=augments.herc.hands.magic,
@@ -81,24 +130,6 @@ function get_sets()
     left_ear="Friomisi Earring",
     right_ear="Ishvara Earring",
     left_ring="Acumen Ring",
-    right_ring="Dingir Ring",
-    back=gear.camulus.ws
-  }
-  sets.WS['Leaden Salute'] = set_combine(sets.WS.Wildfire, {
-    -- head="Pixie Hairpin +1",
-    right_ear="Moonshade Earring",
-  })
-  sets.WS['Last Stand'] = {
-    head="Meghanada Visor +2",
-    body="Meg. Cuirie +2",
-    hands="Meg. Gloves +2",
-    legs="Meg. Chausses +2",
-    feet="Meg. Jam. +2",
-    neck="Iskur Gorget",
-    waist="Eschan Stone",
-    left_ear="Suppanomimi",
-    right_ear="Digni. Earring",
-    left_ring="Mummu Ring",
     right_ring="Dingir Ring",
     back=gear.camulus.ws
   }
@@ -120,10 +151,10 @@ function get_sets()
   -- Abilities
   sets.JA = {}
   sets.JA.PhantomRoll = {
-    -- ranged="Compensator",
+    ranged="Compensator",
     head="Lanun Tricorne",
     neck="Regal Necklace",
-    hands="Navarch's gants +1",
+    hands="Chasseur's Gants +1",
     right_ring="Luzaf's Ring",
     back="Camulus's Mantle",
   }
@@ -266,7 +297,7 @@ function self_command(commandArgs)
       add_to_chat(122, 'SET [' .. mode.description .. '] to ' .. mode.current)
       equip(sets.Engaged[mode.current])
     end
-  elseif command == 'idle' then
+  elseif command == 'run' then
     equip(sets.Idle)
   end
 end

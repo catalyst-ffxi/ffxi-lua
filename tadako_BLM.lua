@@ -52,7 +52,7 @@ function get_sets()
     head="Merlinic Hood",                     -- 8 FC ** TODO
     --body="",
     hands=augments.telchine.gloves.enhancing, -- 4 FC
-    legs="Lengo Tights",                      -- 5 FC ** IN STORAGE
+    legs="Lengo Pants",                      -- 5 FC ** IN STORAGE
     feet="Merlinic Crackows",                 -- 5 FC
     neck="Orunmila's torque",                 -- 5 FC
     waist="Witful Belt",                      -- 3 FC
@@ -61,7 +61,7 @@ function get_sets()
     left_ring="Weatherspoon Ring",            -- 5 FC
     right_ring="Kishar Ring",                 -- 4 FC
     -- back="Taranus's Cape",                 -- 10 FC ** TODO
-  }      
+  }
   sets.Magic.Healing = {
     head="Kaykaus Mitra",
     -- neck="Henic Torque",
@@ -103,7 +103,8 @@ function get_sets()
     hands=augments.telchine.gloves.enhancing,
     body=augments.telchine.body.enhancing,
     legs=augments.telchine.legs.enhancing,
-    feet=augments.telchine.feet.enhancing
+    feet=augments.telchine.feet.enhancing,
+    waist="Embla Sash"
   }
   sets.Magic.EnhancingRegen = {
     -- main="Bolelabunga",
@@ -115,15 +116,15 @@ function get_sets()
     main={ name="Gada", augments={'Enh. Mag. eff. dur. +3','VIT+5','"Mag.Atk.Bns."+7',}},
     sub="Genbu's Shield",
     head="Jhakri Coronal +1",
-    body="Jhakri Robe +1",
+    body="Jhakri Robe +2",
     hands="Jhakri Cuffs +1",
     legs="Jhakri Slops +1",
     feet="Jhakri Pigaches +1",
     neck="Sanctity Necklace",
     waist="Luminary Sash",
-    left_ear="Digni. Earring",
+    left_ear="Friomisi Earring",
     right_ear="Regal Earring",
-    left_ring="Stikini Ring",
+    left_ring="Acumen Ring",
     right_ring="Stikini Ring",
     back="Solemnity Cape",
   }
@@ -150,7 +151,6 @@ function precast(spell)
   end
 
   precast_cancelations(spell)
-  maintain_reraise_equip()
 end
 
 function precast_cancelations(spell)
@@ -209,8 +209,6 @@ function midcast(spell)
   elseif spell.skill == 'Elemental Magic' then
     equip(sets.Magic.Elemental)
   end
-
-  maintain_reraise_equip()
 end
 
 function aftercast(spell)
@@ -269,11 +267,11 @@ function self_command(commandArgs)
   elseif command == 'Scission' then send_command('input /p Opening - Scission [Earth] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Fire" <t>;wait 5.3;input /p Closing - Scission [Earth] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Stone" <t>;')
   elseif command == 'Reverberation' then send_command('input /p Opening - Reverberation [Water] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Stone" <t>;wait 5.3;input /p Closing - Reverberation [Water] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Water" <t>;')
   elseif command == 'Induration' then send_command('input /p Opening - Induration [Ice] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Water" <t>;wait 5.3;input /p Closing - Induration [Ice] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Blizzard" <t>;')
-  elseif command == 'Transfixion' then send_command('input /p Opening - Transfixion [Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Noctohelix" <t>;wait 5.3;input /p Closing - Transfixion [Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Luminohelix" <t>;')				
+  elseif command == 'Transfixion' then send_command('input /p Opening - Transfixion [Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Noctohelix" <t>;wait 5.3;input /p Closing - Transfixion [Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Luminohelix" <t>;')
   elseif command == 'Compression' then send_command('input /p Opening - Compression [Dark] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Blizzard" <t>;wait 5.3;input /p Closing - Compression [Dark] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Noctohelix" <t>;')
   elseif command == 'Fusion' then send_command('input /p Opening - Fusion [Fire/Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Fire" <t>;wait 4.8;input /p Closing - Fusion [Fire/Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Thunder" <t>;')
-  elseif command == 'Fragmentation' then send_command('input /p Opening - Fragmentation [Wind/Thunder] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Blizzard" <t>;wait 5.3;input /p Closing - Fragmentation [Wind/Thunder] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Water" <t>;') 
-  elseif command == 'Gravitation' then send_command('input /p Opening - Gravitation [Earth/Dark] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Aero" <t>;wait 5.3;input /p Closing - Gravitation [Earth/Dark] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Noctohelix" <t>;') 
+  elseif command == 'Fragmentation' then send_command('input /p Opening - Fragmentation [Wind/Thunder] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Blizzard" <t>;wait 5.3;input /p Closing - Fragmentation [Wind/Thunder] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Water" <t>;')
+  elseif command == 'Gravitation' then send_command('input /p Opening - Gravitation [Earth/Dark] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Aero" <t>;wait 5.3;input /p Closing - Gravitation [Earth/Dark] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Noctohelix" <t>;')
   elseif command == 'Distortion' then send_command('input /p Opening - Distortion [Water/Ice] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Luminohelix" <t>;wait 5.3;input /p Closing - Distortion [Water/Ice] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Stone" <t>;')
   -- elseif command == 'Tfusion' then send_command('input /p Opening - Liquefaction [Fire] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Stone" <t>;wait 5.3;input /p Closing - Liquefaction [Fire] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Fire" <t>;wait 4.8;input /p Closing - Fusion [Fire/Light] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Thunder" <t>;')
   elseif command == 'Tfusion' then perform_tfusion()
@@ -363,15 +361,4 @@ function perform_skillchain(name, spells)
 
   SCRunning = false
   send_command('input /echo Skillchain Complete!')
-end
-
--- If currently wearing an RR earing, keep it on to avoid reseting the countdown
---
-function maintain_reraise_equip()
-  if player.equipment.rear == 'Reraise Earring' then
-    equip({rear = 'Reraise Earring'})
-  end
-  if player.equipment.lear == 'Reraise Earring' then
-    equip({lear = 'Reraise Earring'})
-  end
 end

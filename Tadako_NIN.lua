@@ -44,7 +44,7 @@ function get_sets()
     legs="Samnuha Tights",
     feet=augments.herc.feet.tp,
     neck="Sanctity Necklace",
-    waist="Sarissapho. Belt",
+    waist="Sailfi Belt +1",
     left_ear="Suppanomimi",
     right_ear="Brutal Earring",
     left_ring="Hetairoi Ring",
@@ -59,7 +59,7 @@ function get_sets()
     legs="Samnuha Tights",
     feet=augments.herc.feet.tp,
     neck="Sanctity Necklace",
-    waist="Sarissapho. Belt",
+    waist="Sailfi Belt +1",
     left_ear="Suppanomimi",
     right_ear="Brutal Earring",
     left_ring="Hetairoi Ring",
@@ -70,7 +70,7 @@ function get_sets()
   -- Magic
   sets.Magic = {}
   sets.Magic.Precast = {
-    left_ring = "Rahab Ring",
+    left_ring = "Weatherspoon Ring +1",
     right_ring = "Kishar Ring",
     waist = "Witful Belt"
   }
@@ -120,7 +120,6 @@ function precast(spell)
   end
 
   precast_cancelations(spell)
-  maintain_reraise_equip()
 end
 
 function precast_cancelations(spell)
@@ -172,8 +171,6 @@ function midcast(spell)
   elseif spell.skill == 'Enfeebling Magic' then
     equip(sets.Magic.Enfeebling)
   end
-
-  maintain_reraise_equip()
 end
 
 function aftercast(spell)
@@ -227,17 +224,6 @@ function self_command(commandArgs)
     equip(sets.MoveSpeed)
   elseif command == 'abbyweapon' then
     cycle_weapon()
-  end
-end
-
--- If currently wearing an RR earing, keep it on to avoid reseting the countdown
---
-function maintain_reraise_equip()
-  if player.equipment.rear == 'Reraise Earring' then
-    equip({rear = 'Reraise Earring'})
-  end
-  if player.equipment.lear == 'Reraise Earring' then
-    equip({lear = 'Reraise Earring'})
   end
 end
 

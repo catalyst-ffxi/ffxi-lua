@@ -46,24 +46,24 @@ function get_sets()
   }
   sets.modes = {}
   sets.modes.FullTH = {
-    -- ammo="Aurgelmir Orb",
+    -- ammo="Aurgelmir Orb +1",
     ranged="Exalted Crossbow +1",
     ammo="Gashing Bolt",
     head="Adhemar Bonnet +1",
-    body="Adhemar Jacket +1",
+    body="Adhemar Jacket +1", -- 6
     hands="Plunderer's Armlets +1",
     legs="Samnuha Tights",
     feet=augments.herc.feet.th2,
     neck="Iskur Gorget",
-    waist="Reiki Yotai",
+    waist="Reiki Yotai",   -- 7
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
-    left_ring="Hetairoi Ring",
+    left_ring="Gere Ring",
     right_ring="Epona's Ring",
     back=gear.toutatis.tp,
   }
   sets.modes.HybridTH = {
-    -- ammo="Yamarang",
+    -- ammo="Aurgelmir Orb +1",
     ranged="Exalted Crossbow +1",
     ammo="Gashing Bolt",
     head="Malignance Chapeau",           -- 6 DT
@@ -80,7 +80,7 @@ function get_sets()
     back=gear.toutatis.tp,               -- 10 PDT
   }                                      -- 50 PDT
   sets.modes.FullDD = {
-    -- ammo="Aurgelmir Orb",
+    -- ammo="Aurgelmir Orb +1",
     ranged="Exalted Crossbow +1",
     ammo="Gashing Bolt",
     head="Adhemar Bonnet +1",
@@ -97,7 +97,7 @@ function get_sets()
     back=gear.toutatis.tp,
   }
   sets.modes.HybridDD = {
-    -- ammo="Yamarang",
+    -- ammo="Aurgelmir Orb +1",
     ranged="Exalted Crossbow +1",
     ammo="Gashing Bolt",
     head="Malignance Chapeau",           -- 6 DT
@@ -129,8 +129,8 @@ function get_sets()
     waist="Grunfeld Rope",
     left_ear="Moonshade Earring",
     right_ear="Sherida Earring",
-    left_ring="Ilabrat Ring",
-    right_ring="Karieyh Ring +1",
+    left_ring="Regal Ring",
+    right_ring="Ilabrat Ring",
     back=gear.toutatis.ws
   }
   -- sets.WS['Exenterator'] = {
@@ -147,7 +147,7 @@ function get_sets()
     left_ear="Moonshade Earring",
     right_ear="Sherida Earring",
     left_ring="Regal Ring",
-    right_ring="Ilabrat Ring",
+    right_ring="Begrudging Ring",
     back=gear.toutatis.ws
   }
   sets.WS['Aeolian Edge'] =  {
@@ -165,21 +165,6 @@ function get_sets()
     legs=augments.herc.legs.magic,
     feet= augments.herc.feet.wsDex
   }
-  sets.WS['Circle Blade'] = {
-    -- ammo="Falcon Eye",
-    head={ name="Herculean Helm", augments={'Rng.Atk.+18','Weapon skill damage +4%','MND+10','Rng.Acc.+13',}},
-    body="Herculean Vest",
-    hands="Meg. Gloves +2",
-    legs={ name="Herculean Trousers", augments={'Accuracy+25 Attack+25','Weapon skill damage +3%','DEX+7',}},
-    feet={ name="Herculean Boots", augments={'Mag. Acc.+18','Weapon skill damage +2%','INT+4','"Mag.Atk.Bns."+10',}},
-    neck="Fotia Gorget",
-    waist="Caudata Belt",
-    left_ear="Ishvara Earring",
-    right_ear="Moonshade Earring",
-    left_ring="Ilabrat Ring",
-    right_ring="Karieyh Ring +1",
-    back={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
-  }
 
   -- Job Abilities
   --
@@ -195,14 +180,14 @@ function get_sets()
   sets.MA = {}
   sets.MA.FastCast = {
     -- ammo="Impatiens",
-    head="Herculean Helm",              -- 7
+    head=augments.herc.head.fc,            -- 12
     neck="Orunmila's Torque",           -- 5
     body="Taeon Tabard",                -- 8
     hands="Leyline Gloves",             -- 7
     lear="Loquacious earring",          -- 2
     rear="Etiolation Earring",          -- 1
     lring="Kishar Ring",                -- 4
-    rring="Rahab Ring",                -- 2
+    rring="Weatherspoon Ring +1",                -- 2
     legs=augments.taeon.legs.phalanx,   -- 3
   }
   sets.MA.SpellInterrupt = {
@@ -218,8 +203,8 @@ function get_sets()
     feet=augments.taeon.feet.phalanx -- 9
   }
   sets.Preshot = {                           -- Snap | Rapid
-    head=augments.taeon.head.snapshot,       --   8    0
-    legs=augments.adhemar.kecks.rapidShot,   --   9    10
+    head=augments.taeon.head.snapshot,       --  10    0
+    legs="Adhemar Kecks",                    --   9    10
     feet="Meg. Jam. +2",                     --  10    0
     waist="Yemaya Belt",                     --   0    5
   }
@@ -261,8 +246,6 @@ function precast(spell)
   elseif spell.english == 'Curing Waltz II' or spell.english == 'Curing Waltz III' then
     equip(sets.JAs.Waltz)
   end
-
-  maintain_reraise_equip()
 end
 
 function midcast(spell)
@@ -274,16 +257,16 @@ function midcast(spell)
 end
 
 function aftercast(spell)
-  -- if player.in_combat then
-    equip_set_for_current_mode()
-  -- end
-  maintain_reraise_equip()
+  equip_set_for_current_mode()
+
+  if player.status == 'Idle' then
+    equip(sets.run)
+  end
 end
 
 function status_change(new, old)
   if new == 'Engaged' then
     equip_set_for_current_mode()
-    maintain_reraise_equip()
   elseif new == 'Idle' then
     equip(sets.run)
   end
@@ -326,16 +309,6 @@ end
 
 function equip_set_for_current_mode()
   equip(set_for_engaged())
-  maintain_reraise_equip()
-end
-
-function maintain_reraise_equip()
-  if player.equipment.rear == 'Reraise Earring' then
-    equip({rear = 'Reraise Earring'})
-  end
-  if player.equipment.lear == 'Reraise Earring' then
-    equip({lear = 'Reraise Earring'})
-  end
 end
 
 function cycle_weapon()

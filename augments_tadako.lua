@@ -62,5 +62,20 @@ augments = {
       hands = {
         snapshot = { name="Taeon Gloves", augments={'"Snapshot"+3','"Snapshot"+5',}},
       }
+    },
+    valorous = {
+      mask = {
+        wsd = { name="Valorous Mask", augments={'Accuracy+13','Weapon skill damage +3%','STR+11','Attack+14',}}
+      },
+      mail = {
+        stp = { name="Valorous Mail", augments={'"Store TP"+7','DEX+7','Accuracy+10','Attack+11',}},
+        da = { name="Valorous Mail", augments={'Attack+17','"Dbl.Atk."+4','STR+6','Accuracy+15',}},
+      },
+      legs = {
+        stp = { name="Valor. Hose", augments={'Accuracy+23 Attack+23','"Store TP"+7','Accuracy+11','Attack+4',}},
+      },
+      greaves = {
+        crit = { name="Valorous Greaves", augments={'Crit. hit damage +3%','STR+8','Attack+14',}}
+      }
     }
 }
