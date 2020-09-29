@@ -51,7 +51,7 @@ function get_sets()
   sets.Magic.Precast = {
     ammo="Sapience Orb",                      -- 2 FC
     head="Merlinic Hood",                     -- 8 FC
-    --body="",
+    body="Shango Robe",
     hands=augments.telchine.gloves.enhancing, -- 4 FC
     legs="Kaykaus Tights",                    -- 6 FC
     feet="Merlinic Crackows",                 -- 5 FC

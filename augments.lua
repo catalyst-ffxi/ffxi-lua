@@ -74,6 +74,7 @@ augments = {
       -- wsd = { name="Odyssean Gauntlets", augments={'Accuracy+27','Weapon skill damage +4%','VIT+11',}},
       -- wsd = { name="Odyssean Gauntlets", augments={'Accuracy+19','Weapon skill damage +2%','VIT+14','Attack+4',}},
       wsd = { name="Odyssean Gauntlets", augments={'Weapon skill damage +3%','VIT+15','Accuracy+11','Attack+14',}},
+      -- wsd = { name="Odyssean Gauntlets", augments={'Magic burst dmg.+7%','INT+7','Weapon skill damage +10%','Accuracy+20 Attack+20',}},
     },
     legs = {
       -- wsd = { name="Odyssean Cuisses", augments={'Accuracy+24','Weapon skill damage +3%','VIT+10','Attack+13',}},

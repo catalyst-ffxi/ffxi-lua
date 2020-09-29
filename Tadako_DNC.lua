@@ -1,15 +1,10 @@
 include('Modes.lua')
 
 function define_modes()
-  Capacity = M(false, 'Capacity Mantle')
+  PrimaryMode = M{['description'] = 'Primary Mode', 'FullDD', 'Hybrid'}
 end
 
 function define_aliases()
-  -- Self Buffs
-  send_command('bind !f5 stoneskin')
-  send_command('bind !f6 phalanx')
-  send_command('bind !f7 blink')
-  send_command('bind !f8 aquaveil')
 end
 
 function get_sets()
@@ -19,65 +14,96 @@ function get_sets()
   gear = {}
 
   -- Modes
-  sets.Engaged = {
-    ammo="Jukukik Feather",
-    main={ name="Skinflayer", augments={'Crit.hit rate+2','DEX+12','Accuracy+13','Attack+13','DMG:+6',}},
-    sub={ name="Enchufla", augments={'DMG:+15','STR+15','Accuracy+10',}},
+  sets.Idle = {}
+  sets.Engaged = {}
+  sets.Engaged.FullDD = {
+    main="Aeneas",
+    sub="Taming Sari",
+    ammo="Aurgelmir Orb",
     head="Skormoth Mask",
     body="Adhemar Jacket",
     hands=augments.herc.hands.tp,
     legs="Samnuha Tights",
     feet=augments.herc.feet.tp,
-    neck="Anu Torque",
+    neck="Iskur Gorget",
     waist="Sailfi Belt +1",
-    left_ear="Sherida Earring",
-    right_ear="Brutal Earring",
-    left_ring="Hetairoi Ring",
-    right_ring="Petrov Ring",
+    left_ear="Suppanomimi",
+    right_ear="Sherida Earring",
+    left_ring="Gere Ring",
+    right_ring="Hetairoi Ring",
     back="Senuna's mantle",
   }
-  sets.Idle = sets.Engaged
+  sets.Engaged.Hybrid = {
+    main="Aeneas",
+    sub="Taming Sari",
+    ammo="Aurgelmir Orb",
+    head="Skormoth Mask",
+    body="Adhemar Jacket",
+    hands=augments.herc.hands.tp,  -- 2 PDT
+    legs="Meg. Chausses +2",       -- 6 PDT
+    feet=augments.herc.feet.tp,    -- 2 PDT
+    neck="Loricate Torque +1",     -- 6 DT
+    waist="Sailfi Belt +1",
+    left_ear="Suppanomimi",
+    right_ear="Sherida Earring",
+    left_ring="Gere Ring",
+    right_ring="Moonbeam Ring",    -- 4 DT
+    back="Senuna's mantle",        -- 10 PDT
+  }                                -- 30 PDT
 
   -- Magic
   sets.Magic = {}
   sets.Magic.Precast = {
+    body="Samnuha Coat",
+    hands="Leyline Gloves",
     neck="Orunmila's torque",
     left_ring="Weatherspoon Ring",
     left_ear="Loquacious earring",
     right_ear="Etiolation Earring"
   }
-  sets.Magic.Healing = {
-  }
-  sets.Magic.HealingSelf = {
-
-  }
-  sets.Magic.Enhancing = {
-
-  }
-  sets.Magic.Enfeebling = {
-
+  sets.Magic.SpellInterrupt = {
+    hands="Herculean Gloves",
+    legs="Meg. Chausses +2",
+    feet="Herculean Boots",
+    neck="Loricate Torque +1",
+    waist="Flume Belt",
+    left_ring="Gelatinous Ring +1",
+    right_ring="Moonbeam Ring",
+    back="Senuna's mantle",
   }
 
   -- Abilities
   sets.JobAbility = {}
 
   -- Melee
-  sets.WeaponSkill = {
-    head="Mummu Bonnet +2",
-    body="Adhemar Jacket",
+  sets.WS = {}
+  sets.WS.Rudra = {
+    head=augments.herc.head.ws,
+    body="Meg. Cuirie +1",
     hands="Meg. Gloves +2",
-    legs="Mummu Kecks +2",
-    feet="Mummu Gamashes +2",
-    neck="Sanctity Necklace",
-    waist="Windbuffet Belt",
-    left_ear="Sherida Earring",
-    right_ear="Brutal Earring",
-    left_ring="Mummu Ring",
-    right_ring="Petrov Ring",
+    legs=augments.herc.legs.ws,
+    feet=augments.herc.feet.ws,
+    neck="Caro Necklace",
+    waist="Grunfeld Rope",
+    left_ear="Moonshade Earring",
+    right_ear="Sherida Earring",
+    left_ring="Ilabrat Ring",
+    right_ring="Apate Ring",
     back="Senuna's mantle",
   }
-  sets.WeaponSkill['Evisceration'] = {
-
+  sets.WS.Evisceration = {
+    head="Adhemar bonnet",
+    body="Meg. Cuirie +1",
+    hands="Meg. Gloves +2",
+    legs=augments.herc.legs.crit,
+    feet=augments.herc.feet.crit,
+    neck="Soil Gorget",
+    waist="Shadow Belt",
+    left_ear="Moonshade Earring",
+    right_ear="Sherida Earring",
+    left_ring="Ilabrat Ring",
+    right_ring="Begrudging Ring",
+    back="Senuna's mantle",
   }
 end
 
@@ -89,8 +115,10 @@ function precast(spell)
     equip(sets.Magic.Precast)
 
   elseif spell.type == 'WeaponSkill' then
-    equip(sets.WeaponSkill)
-    equip(sets.WeaponSkill[spell.english])
+    equip(sets.WS[spell.english] or sets.WS.Rudra)
+
+  elseif spell.english == "Ranged" then
+    equip(sets.Preshot)
   end
 
   precast_cancelations(spell)
@@ -107,63 +135,25 @@ function precast_cancelations(spell)
 end
 
 function midcast(spell)
-  eng = spell.english
+  if spell.english == 'Ranged' then
+    equip(sets.Ranged)
 
-  -- Cures
-  if spell.skill == 'Healing Magic' then
-    if eng == "Cursna" then
-      equip(sets.Magic.Cursna)
-
-    elseif string.find(eng, 'Cure') or string.find(eng, 'Curaga') then
-      equip(sets.Magic.Healing)
-      if spell.target.type == 'SELF' then
-        equip(sets.Magic.HealingSelf)
-      end
-    end
-
-  -- Buffs
-  elseif spell.skill == 'Enhancing Magic' then
-    equip(sets.Magic.Enhancing)
-
-    if eng == 'Stoneskin' then
-      equip(sets.Magic.EnhancingStoneskin)
-
-    elseif eng == 'Phalanx' then
-      equip(sets.Magic.EnhancingPhalanx)
-
-    elseif string.find(eng, 'Regen') then
-      equip(sets.Magic.EnhancingRegen)
-
-    elseif eng == 'Refresh' then
-      equip(sets.Magic.EnhancingRefresh)
-      if spell.target.type == 'SELF' then
-        equip(sets.Magic.EnhancingRefreshSelf)
-      end
-    end
-
-  -- Enfeebles
-  elseif spell.skill == 'Enfeebling Magic' then
-    equip(sets.Magic.Enfeebling)
+  elseif spell.action_type == 'Magic' then
+    equip(sets.Magic.SpellInterrupt)
   end
 end
 
 function aftercast(spell)
-  if player.status=='Engaged' then
-    equip(sets.Engaged)
+  if player.status == 'Engaged' then
+    equip(sets.Engaged[PrimaryMode.current])
   else
-    -- equip(sets.Idle)
+    equip(sets.Idle)
   end
-  -- if Capacity.value then
---   if true then
---     equip({back = "Aptitude Mantle +1"})
---   end
 end
 
 function status_change(new, old)
-  if new == 'Resting' then
-    equip(sets.Resting)
-  elseif new == 'Engaged' then
-    equip(sets.Engaged)
+  if new == 'Engaged' then
+    equip(sets.Engaged[PrimaryMode.current])
   else
     equip(sets.Idle)
   end
@@ -186,12 +176,12 @@ function self_command(commandArgs)
       equip(sets.Idle)
     end
   elseif command == 'cycle' then
-    -- local mode = _G[commandArgs[2]]
-    -- if mode ~= nil and mode._class == 'mode' then
-    --   mode:cycle()
-    --   add_to_chat(122, 'SET [' .. mode.description .. '] to ' .. mode.current)
-    -- end
-    equip(sets.Idle)
+    local mode = _G[commandArgs[2]]
+    if mode ~= nil and mode._class == 'mode' then
+      mode:cycle()
+      add_to_chat(122, 'SET [' .. mode.description .. '] to ' .. mode.current)
+      equip(sets.Engaged[mode.current])
+    end
   elseif command == 'idle' then
     equip(sets.Idle)
   elseif command == 'run' then

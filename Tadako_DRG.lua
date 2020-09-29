@@ -3,7 +3,7 @@ include('Modes.lua')
 include('augments_tadako.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'HybridLight', 'HybridHeavy'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'FullDD', 'HybridLight', 'HybridHeavy'}
   send_command("alias g15v2_m2g1 gs c cycle PrimaryMode")
 end
 
@@ -20,29 +20,23 @@ function get_sets()
   }
 
   sets.modes = {}
-  sets.modes.Normal = {
+  sets.modes.FullDD = {
     main="Trishula",
     sub="Bloodrain Strap",
     ammo="Aurgelmir Orb",
     head="Flam. Zucchetto +2",
-    body=augments.valorous.mail.stp,
-    hands="Acro Gauntlets",
+    body=augments.valorous.mail.da,
+    hands="Sulev. Gauntlets +2",
     legs=augments.valorous.legs.stp,
     feet="Flam. Gambieras +2",
-    neck="Anu Torque",
+    neck="Dgn. Collar +2",
     waist="Sailfi Belt +1",
-    left_ear="Dedition Earring",
+    left_ear="Brutal Earring",
     right_ear="Sherida Earring",
-    left_ring="Petrov Ring",
+    left_ring="Dreki Ring",
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.tp
   }
-  sets.modes.Normal_SAM_ROLL = set_combine(sets.modes.Normal, {
-    body=augments.valorous.mail.da,
-    hands="Sulev. Gauntlets +2",
-    neck="Dgn. Collar +1",
-    left_ear="Brutal Earring"
-  })
   sets.modes.HybridLight = {
     main="Trishula",
     sub="Bloodrain Strap",
@@ -52,11 +46,12 @@ function get_sets()
     hands="Sulev. Gauntlets +2",     -- 5 DT
     legs=augments.valorous.legs.stp, -- 2 PDT
     feet="Flam. Gambieras +2",
-    neck="Dgn. Collar +1",           -- Wyvern 20 DT
+    neck="Dgn. Collar +2",           -- Wyvern 20 DT
     waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
-    left_ring="Moonbeam Ring",       -- 4 DT
+    -- left_ring="Moonbeam Ring",       -- 4 DT
+    left_ring="Dreki Ring",
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.tp           -- 10 PDT
   }                                  -- 33 PDT
@@ -69,11 +64,12 @@ function get_sets()
     hands="Sulev. Gauntlets +2",     -- 5 DT
     legs=augments.valorous.legs.stp, -- 2 PDT
     feet="Flam. Gambieras +2",
-    neck="Dgn. Collar +1",           -- Wyvern 20 DT
+    neck="Dgn. Collar +2",           -- Wyvern 20 DT
     waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
-    left_ring="Moonbeam Ring",       -- 4 DT
+    -- left_ring="Moonbeam Ring",       -- 4 DT
+    left_ring="Dreki Ring",
     right_ring="Gelatinous Ring +1", -- 7 PDT
     back=gear.ambuscape.tp           -- 10 PDT
   }                                  -- 50 PDT
@@ -101,7 +97,7 @@ function get_sets()
     ammo="Angon",
     hands="Ptero. Fin. G. +3"
   }
-  sets.JAs.Jump = set_combine(sets.modes.Normal, {
+  sets.JAs.Jump = set_combine(sets.modes.FullDD, {
     body="Vishap Mail +2",      -- All Jumps TP Bonus   TODO
     hands="Vis. Fng. Gaunt. +2" -- All Jumps TP Bonus
     -- feet="Ostro Greaves"     TODO
@@ -117,7 +113,7 @@ function get_sets()
     hands="Despair Fin. Gaunt.", -- TODO
     feet="Ptero. Greaves +3",    -- TODO
     -- neck="Chanoix's Gorget",     -- TODO
-    neck="Dgn. Collar +1",
+    neck="Dgn. Collar +2",
     left_ear="Anastasi Earring", -- TODO
     right_ear="Lancer's Earring",-- TODO
     legs="Vishap Brais +3",
@@ -138,7 +134,7 @@ function get_sets()
     -- hands="Despair Fin. Gaunt.", -- TODO
     legs="Vishap Brais +3",
     feet="Ptero. Greaves",          -- TODO: +1/2/3 these
-    neck="Dgn. Collar +1",
+    neck="Dgn. Collar +2",
     -- left_ear="Anastasi Earring", -- TODO
     -- right_ear="Lancer's Earring",-- TODO
     -- left_ring="Dreki Ring",      -- TODO
@@ -179,12 +175,12 @@ function get_sets()
     waist="Fotia Belt",
     left_ear="Moonshade Earring",
     right_ear="Sherida Earring",
-    left_ring="Petrov Ring",       -- TODO: Regal or Ifrit+1
+    left_ring="Shukuyu Ring",       -- TODO: Regal Ring
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.stardiver
   }
   sets.WS['Penta Thrust'] = set_combine(sets.WS.Stardiver, {
-    neck="Dgn. Collar +1",
+    neck="Dgn. Collar +2",
     waist="Sailfi Belt +1",
     left_ear="Brutal Earring"
   })
@@ -196,10 +192,10 @@ function get_sets()
     legs="Vishap Brais +3",
     feet="Sulev. Leggings +2",
     neck="Fotia Gorget",
-    waist="Fotia Belt",
-    left_ear="Ishvara Earring",
-    right_ear="Thrud Earring",
-    left_ring="Apate Ring",     -- TODO: Regal or Ifrit+1
+    waist="Sailfi Belt +1",
+    left_ear="Thrud Earring",
+    right_ear="Ishvara Earring",
+    left_ring="Shukuyu Ring",     -- TODO: Regal Ring
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.wsd
   }
@@ -214,10 +210,10 @@ function get_sets()
     hands="Flam. Manopolas +2",
     legs="Sulev. Cuisses +2",       -- TODO: Empy legs
     feet=augments.valorous.greaves.crit,
-    neck="Dgn. Collar +1",
+    neck="Dgn. Collar +2",
     waist="Sailfi Belt +1",
-    left_ear="Moonshade Earring",
-    right_ear="Thrud Earring",
+    left_ear="Thrud Earring",
+    right_ear="Sherida Earring",
     left_ring="Begrudging Ring",
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.crit
@@ -279,11 +275,7 @@ function set_for_current_mode()
 end
 
 function set_for_engaged()
-  if buffactive['Samurai Roll'] and sets.modes[PrimaryMode.current..'_SAM_ROLL'] then
-    return sets.modes[PrimaryMode.current..'_SAM_ROLL']
-  else
-    return sets.modes[PrimaryMode.current]
-  end
+  return sets.modes[PrimaryMode.current]
 end
 
 function self_command(commandArgs)
@@ -342,7 +334,9 @@ function auto_jump()
     add_to_chat(122, 'Sorry - No jumps available!')
   else
     local target = windower.ffxi.get_mob_by_target('t')
-    add_to_chat(122, string.format('>>>---(%s)--->>> %s', jump_name, target.name))
-    send_command(string.format('@input /ja "%s" <t>', jump_name))
+    if target ~= nil then
+      add_to_chat(122, string.format('>>>---(%s)--->>> %s', jump_name, target.name))
+      send_command(string.format('@input /ja "%s" <t>', jump_name))
+    end
   end
 end

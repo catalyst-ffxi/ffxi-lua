@@ -50,7 +50,7 @@ function get_sets()
     ammo="Aurgelmir Orb +1",
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
-    hands=augments.herc.hands.triple,
+    hands="Adhemar Wristbands +1",
     legs="Samnuha Tights",
     feet=augments.herc.feet.triple,
     neck="Iskur Gorget",
@@ -67,12 +67,12 @@ function get_sets()
     ammo="Staunch Tathlum +1",
     head="Malignance Chapeau",
     body="Malignance Tabard",
-    hands=augments.herc.hands.triple,
+    hands="Malignance Gloves",
     legs="Malignance Tights",
     feet="Malignance Boots",
-    neck="Loricate Torque +1",
+    neck="Iskur Gorget",
     waist="Reiki Yotai",
-    left_ear="Telos Earring",
+    left_ear="Cessance Earring",
     right_ear="Brutal Earring",
     left_ring="Defending Ring",
     right_ring="Gere Ring",
@@ -108,7 +108,7 @@ function get_sets()
     ammo="Aurgelmir Orb +1",
     head=augments.herc.head.wsDex,
     body="Adhemar Jacket +1",
-    hands=augments.herc.hands.triple,
+    hands="Adhemar Wristbands +1",
     legs=augments.herc.legs.wsDex,
     feet=augments.herc.feet.wsDex,
     neck="Caro Necklace",
@@ -124,7 +124,7 @@ function get_sets()
     head="Adhemar Bonnet +1",
     -- body="Ken. Samue +1",
     body="Adhemar Jacket +1",
-    hands=augments.herc.hands.triple,
+    hands="Adhemar Wristbands +1",
     -- legs="Ken. Hakama +1",
     legs="Samnuha Tights",
     feet=augments.herc.feet.triple,
@@ -159,7 +159,7 @@ function get_sets()
     ammo="Staunch Tathlum +1",       -- 11
     -- head="",
     neck="Loricate Torque +1",       -- PDT
-    lear="Genmei Earring",           -- PDT
+    lear="Odnowa Earring +1",           -- PDT
     rear="Magnetic Earring",         -- 8
     -- body="",
     hands="Rawhide Gloves",          -- 15

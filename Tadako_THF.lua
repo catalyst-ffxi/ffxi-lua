@@ -77,11 +77,11 @@ function get_sets()
     legs="Meg. Chausses +2",
     feet=augments.herc.feet.tp,
     neck="Loricate Torque +1",
-    waist="Flume Belt",
+    waist="Sailfi Belt +1",
     left_ear="Suppanomimi",
     right_ear="Sherida Earring",
     left_ring="Gere Ring",
-    right_ring="Gelatinous Ring +1",
+    right_ring="Moonbeam Ring",
     back=gear.toutatis.tp,
   }
   sets.Idle = {
@@ -170,6 +170,14 @@ function get_sets()
     right_ear="Etiolation Earring"
   }
   sets.Magic.SpellInterrupt = {
+    hands="Herculean Gloves",
+    legs="Meg. Chausses +2",
+    feet="Herculean Boots",
+    neck="Loricate Torque +1",
+    waist="Flume Belt",
+    left_ring="Gelatinous Ring +1",
+    right_ring="Moonbeam Ring",
+    back=gear.toutatis.tp,
   }
 end
 
@@ -181,11 +189,7 @@ function precast(spell)
     equip(sets.Magic.Precast)
 
   elseif spell.type == 'WeaponSkill' then
-    -- if buffactive['Sneak Attack'] then
-    --   equip(sets.WS.SneakAttack)
-    -- else
-      equip(sets.WS[spell.english] or sets.WS.Rudra)
-    -- end
+    equip(sets.WS[spell.english] or sets.WS.Rudra)
 
   elseif spell.english == "Ranged" then
     equip(sets.Preshot)

@@ -4,7 +4,9 @@ include('augments.lua')
 include('utils.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'HybridLight', 'HybridHeavy', 'Accuracy', 'Oddy'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'HybridLight', 'HybridHeavy',
+  -- 'Odyssey'
+  }
   Weapons = M{
     ['description'] = 'Weapons',
     'DeathPenalty',
@@ -51,7 +53,7 @@ function get_sets()
   sets.Idle = {
     head="Malignance Chapeau",        -- 6 DT
     body="Malignance Tabard",         -- 9 DT
-    hands=augments.herc.hands.triple, -- 2 PDT
+    hands="Malignance Gloves",        -- 5 DT
     legs="Carmine Cuisses +1",
     feet="Malignance Boots",          -- 4 DT
     neck="Loricate Torque +1",        -- 6 DT
@@ -59,28 +61,28 @@ function get_sets()
     left_ear="Etiolation Earring",    -- 3 MDT
     right_ear="Odnowa Earring +1",    -- 2 MDT
     left_ring="Defending Ring",       -- 10 DT
-    right_ring="Gelatinous Ring +1",  -- 7 PDT, -1 MDT
-    back=gear.camulus.meleeTp,        -- 5 DT
-  }                                   -- 53 PDT | 44 MDT
+    right_ring="Purity Ring",         -- 4 MDT, 10 Meva
+    back=gear.camulus.meleeTp,        -- 10 PDT
+  }                                   --
   sets.modes = {}
   sets.modes.Normal = {
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
-    hands=augments.herc.hands.triple,
+    hands="Adhemar Wristbands +1",
     legs="Samnuha Tights",
     feet=augments.herc.feet.triple,
     neck="Iskur Gorget",
     waist="Windbuffet Belt +1",
     left_ear="Telos Earring",
     right_ear="Suppanomimi",
-    left_ring="Petrov Ring",
+    left_ring="Chirich Ring +1",
     right_ring="Epona's Ring",
     back=gear.camulus.meleeTp,
   }
   sets.modes.HybridLight = {
     head="Malignance Chapeau",        -- 6 DT
     body="Adhemar Jacket +1",
-    hands=augments.herc.hands.triple, -- 2 PDT
+    hands="Adhemar Wristbands +1", -- 2 PDT
     legs="Meg. Chausses +2",
     feet="Malignance Boots",          -- 4 DT
     neck="Loricate Torque +1",        -- 6 DT
@@ -89,46 +91,32 @@ function get_sets()
     right_ear="Suppanomimi",
     left_ring="Defending Ring",       -- 10 DT
     right_ring="Epona's Ring",
-    back=gear.camulus.meleeTp,        -- 5 DT
+    back=gear.camulus.meleeTp,        -- 10 PDT
   }                                   -- 33 PDT | 31 MDT
   sets.modes.HybridHeavy = {
     head="Malignance Chapeau",        -- 6 DT
     body="Malignance Tabard",         -- 9 DT
-    hands=augments.herc.hands.triple, -- 2 PDT
+    hands="Malignance Gloves",        -- 5 DT
     legs="Malignance Tights",         -- 7 DT
     feet="Malignance Boots",          -- 4 DT
-    neck="Loricate Torque +1",        -- 6 DT
+    neck="Iskur Gorget",
     waist="Windbuffet Belt +1",
     left_ear="Brutal Earring",
     right_ear="Suppanomimi",
     left_ring="Defending Ring",        -- 10 DT
     right_ring="Epona's Ring",
-    back=gear.camulus.meleeTp,        -- 5 DT
-  }                                   -- 49 PDT | 47 MDT
+    back=gear.camulus.meleeTp,        -- 10 PDT
+  }                                   -- 52 PDT | 47 MDT
                                       -- Lanun knife provides +4/roll if equipped
-  sets.modes.Accuracy = {
+  sets.modes.Odyssey = {
     head="Malignance Chapeau",
     body="Malignance Tabard",
-    hands="Meg. Gloves +2",
-    legs="Malignance Tights",
-    feet="Malignance Boots",
-    neck="Sanctity Necklace",
-    waist="Reiki Yotai",
-    left_ear="Telos Earring",
-    right_ear="Digni. Earring",
-    left_ring="Ilabrat Ring",
-    right_ring="Regal Ring",
-    back=gear.camulus.meleeTp
-  }
-  sets.modes.Oddy = {
-    head="Malignance Chapeau",
-    body="Malignance Tabard",
-    hands=augments.herc.hands.triple,
+    hands="Malignance Gloves",
     legs="Malignance Tights",
     feet=augments.herc.feet.th2,
     neck="Iskur Gorget",
     waist="Windbuffet Belt +1",
-    left_ear="Telos Earring",
+    left_ear="Brutal Earring",
     right_ear="Suppanomimi",
     left_ring="Defending Ring",
     right_ring="Epona's Ring",
@@ -155,7 +143,7 @@ function get_sets()
     ammo=gear.bullets.ratt,
     head="Malignance Chapeau",
     body="Malignance Tabard",
-    hands="Meg. Gloves +2",
+    hands="Malignance Gloves",
     legs="Malignance Tights",
     feet="Malignance Boots",
     neck="Iskur Gorget",
@@ -182,18 +170,18 @@ function get_sets()
     feet="Carmine Greaves +1"           -- 8
   }                                     -- 54
   sets.Magic.SpellInterrupt = {
-    head=augments.taeon.head.SID,    -- 7
+    head=augments.taeon.head.SID,
+    body="Malignance Tabard",
+    hands="Malignance Gloves",
+    legs="Carmine Cuisses +1",
+    feet=augments.taeon.feet.phalanx,
     neck="Loricate Torque +1",
-    -- lear="Halasz Earring",           -- 5
-    rear="Magnetic earring",         -- 8
-    body="Lanun Frac +3",
-    hands="Rawhide Gloves",          -- 15
+    waist="Flume Belt +1",
+    left_ear="Odnowa Earring +1",
+    right_ear="Magnetic Earring",
     left_ring="Defending Ring",
     right_ring="Gelatinous Ring +1",
-    back=gear.camulus.meleeTp,
-    waist="Flume Belt +1",
-    legs="Carmine Cuisses +1",       -- 20
-    feet=augments.taeon.feet.phalanx -- 9
+    back=gear.camulus.meleeTp
   }
 
   -- Weapon Skills
@@ -201,7 +189,7 @@ function get_sets()
   sets.WS = {}
   sets.WS['Last Stand'] = {
     ammo=gear.bullets.ratt,
-    head="Lanun Tricorne +2",
+    head="Lanun Tricorne +3",
     body="Laksamana's Frac +3",
     hands="Meg. Gloves +2",
     legs="Meg. Chausses +2",
@@ -316,7 +304,7 @@ function get_sets()
   -- Job Abilities
   --
   sets.JAs.PhantomRoll = {
-    head="Lanun Tricorne +2",
+    head="Lanun Tricorne +3",
     neck="Regal Necklace",
     hands="Chasseur's Gants +1",
     rring="Luzaf's Ring",

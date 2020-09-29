@@ -42,10 +42,10 @@ function get_sets()
     left_ear="Dedition Earring"
   })                               -- 40 PDT, 101% DA, 61 STP, 25 haste
   sets.modes.HybridHeavy = set_combine(sets.modes.Normal, {
+    ammo="Seething Bomblet +1",
     head="Hjarrandi Helm",         -- 10 DT
     body="Hjarrandi Breast.",      -- 12 DT
-    waist="Tempus Fugit"
-  })                               -- 52 PDT, 90% DA, 64 STP, 27 Haste
+  })                               -- 52 PDT, 99% DA, 64 STP, 26 Haste
 
   -- Misc
   sets.Idle = {
@@ -101,7 +101,7 @@ function get_sets()
     legs="Pummeler's Cuisses +3",   -- 4 PDT
     neck="Moonlight Necklace",      -- 15 SID
     waist="Audumbla Sash",          -- 10 SID, 4 PDT
-    left_ear="Genmei Earring",      -- 2 PDT
+    left_ear="Odnowa Earring +1",   -- 3 DT
     right_ear="Magnetic Earring",   -- 8 SID
     left_ring="Defending Ring",     -- 10 DT
     right_ring="Moonlight Ring",    -- 5 DT
@@ -238,6 +238,7 @@ end
 
 function precast(spell)
   if spell.type == 'WeaponSkill' then
+    send_command('input /echo Weapon Skill TP: <tp>')
     equip(set_for_ws(spell.english))
 
   elseif sets.JAs[spell.english] then
@@ -268,6 +269,10 @@ end
 
 function aftercast(spell)
   equip(set_for_current_mode())
+
+  if spell.type == 'WeaponSkill' then
+    send_command('wait 0.2; input /echo TP Return: <tp>')
+  end
 end
 
 function status_change(new, old)

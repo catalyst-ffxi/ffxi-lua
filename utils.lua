@@ -76,6 +76,6 @@ function equip_elemental_waist(spell)
     equip({ waist="Orpheus's Sash" })
     -- add_to_chat('RESULT: Orpheus Shash')
   else
-    -- add_to_chat('RESULT: n/a')
+    -- add_to_chat('RESULT: Keep current waist')
   end
 end

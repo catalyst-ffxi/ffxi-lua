@@ -30,17 +30,17 @@ function get_sets()
     ammo="Staunch Tathlum +1",         -- 3 DT
     head="Malignance Chapeau",         -- 6 DT
     body="Assimilator's Jubbah +3",    -- Refresh
-    hands=augments.herc.hands.triple,  -- 2 PDT
+    hands="Malignance Gloves",          -- 5 DT
     legs="Carmine Cuisses +1",         -- Zoomies
     feet="Malignance Boots",           -- 4 DT
     neck="Loricate Torque +1",         -- 6 DT
     waist="Fucho-no-Obi",              -- Refresh
-    left_ear="Genmei Earring",         -- 2 PDT
+    left_ear="Eabani Earring",         -- Meva
     right_ear="Etiolation Earring",    -- 3 MDT
-    left_ring="Defending Ring",        -- 10 DT
-    right_ring="Gelatinous Ring +1",   -- 7 PDT
+    left_ring="Stikini Ring +1",       -- Refresh
+    right_ring="Stikini Ring +1",      -- Refresh
     back=gear.rosmerta.tp              -- 10 PDT
-  }                                    -- 50 PDT
+  }                                    -- 31 PDT
 
   -- DW Traits:
   -- Delta Thrust + Barbed Crescent = 1
@@ -67,14 +67,12 @@ function get_sets()
     ammo="Aurgelmir Orb +1",
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
-    hands=augments.herc.hands.triple,
+    hands="Adhemar Wristbands +1",
     legs="Samnuha Tights",
     feet=augments.herc.feet.triple,
     neck="Mirage Stole +1",
-    -- waist="Reiki Yotai",
     waist="Windbuffet Belt +1",
     left_ear="Telos Earring",
-    -- right_ear="Suppanomimi",
     right_ear="Dedition Earring",
     left_ring="Hetairoi Ring",
     right_ring="Epona's Ring",
@@ -83,30 +81,29 @@ function get_sets()
   sets.modes.HybridLight = {
     ammo="Aurgelmir Orb +1",
     head="Adhemar Bonnet +1",
-    body="Malignance Tabard",          -- 9 DT
-    hands=augments.herc.hands.triple,  -- 2 PDT
+    body="Malignance Tabard",       -- 9 DT
+    hands="Adhemar Wristbands +1",  -- 2 PDT
     legs="Samnuha Tights",
     feet=augments.herc.feet.triple,    -- 2 PDT
     neck="Mirage Stole +1",
-    waist="Reiki Yotai",
+    waist="Windbuffet Belt +1",
     left_ear="Telos Earring",
-    right_ear="Dedition Earring",
+    right_ear="Suppanomimi",
     left_ring="Defending Ring",        -- 10 DT
     right_ring="Epona's Ring",
     back=gear.rosmerta.tp              -- 10 PDT
   }                                    -- 33 PDT
   sets.modes.HybridHeavy = {
-    ammo="Staunch Tathlum +1",         -- 3 DT
+    ammo="Aurgelmir Orb +1",
     head="Malignance Chapeau",         -- 6 DT
     body="Malignance Tabard",          -- 9 DT
-    hands=augments.herc.hands.triple,  -- 2 PDT
+    hands="Malignance Gloves",         -- 5 DT
     legs="Malignance Tights",          -- 7 DT
     feet="Malignance Boots",           -- 4 DT
     neck="Mirage Stole +1",
-    waist="Reiki Yotai",
-    left_ear="Telos Earring",
-    -- right_ear="Suppanomimi",
-    right_ear="Dedition Earring",
+    waist="Windbuffet Belt +1",
+    left_ear="Brutal Earring",
+    right_ear="Suppanomimi",
     left_ring="Defending Ring",        -- 10 DT
     right_ring="Epona's Ring",
     back=gear.rosmerta.tp              -- 10 PDT
@@ -188,10 +185,8 @@ function get_sets()
     waist="Orpheus's Sash",
     left_ear="Regal Earring",
     right_ear="Friomisi Earring",
-    left_ring="Defending Ring",
-    right_ring="Shiva Ring +1",
-    -- right_ring="Strendu Ring",
-    -- right_ring="Stikini Ring +1",
+    left_ring="Shiva Ring +1",
+    right_ring="Stikini Ring +1",
     back=gear.rosmerta.mab -- INT/MAB/Macc/Mdmg
   }
   sets.BlueMagic.Physical = {
@@ -261,10 +256,10 @@ function get_sets()
     ammo="Staunch Tathlum +1",       -- 11
     head="Malignance Chapeau",
     neck="Loricate Torque +1",       -- DT
-    left_ear="Genmei Earring",
+    -- left_ear="Genmei Earring",
     right_ear="Magnetic Earring",    -- 8
     body="Malignance Tabard",
-    hands=augments.herc.hands.triple,
+    hands="Malignance Gloves",
     left_ring="Defending Ring",      -- DT
     right_ring="Gelatinous Ring +1", -- PDT
     back=gear.rosmerta.mab,
@@ -298,7 +293,7 @@ function get_sets()
     feet="Jhakri Pigaches +2",
   }
   sets.WS['Requiescat'] = {}
-  sets.WS['Chant du Cygne'] = { -- yes this set needs work!
+  sets.WS['Chant du Cygne'] = {
     ammo="Yetshila +1",
     head="Adhemar Bonnet +1",
     body="Ayanmo Corazza +2",
@@ -307,10 +302,10 @@ function get_sets()
     feet="Thereoid Greaves",
     neck="Fotia Gorget",
     waist="Fotia Belt",
-    left_ear="Moonshade Earring",
+    left_ear="Mache Earring +1",
     right_ear="Brutal Earring",
     left_ring="Ilabrat Ring",
-    right_ring="Begrudging Ring",
+    right_ring="Epona's Ring",
     back=gear.rosmerta.tp
   }
   sets.WS['Shining Blade'] = {}
@@ -327,7 +322,7 @@ function get_sets()
     lring="Archon Ring",
     rring="Epaminondas's Ring",
     back=gear.rosmerta.mab,
-    waist="Eschan Stone",
+    waist="Orpheus's Sash",
     legs="Amalric Slops +1",
     feet="Jhakri Pigaches +2",
   }

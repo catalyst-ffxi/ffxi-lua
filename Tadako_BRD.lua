@@ -24,32 +24,28 @@ function get_sets()
   define_aliases()
 
   gear = {
-    kali = {
-      skill={ name="Kali", augments={'Mag. Acc.+15','String instrument skill +10','Wind instrument skill +10',}},
-      refresh={ name="Kali", augments={'MP+60','Mag. Acc.+20','"Refresh"+1',}}
-    },
     cape = {
-      fastCast = { name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Phys. dmg. taken-10%',}},
+      macc = { name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Phys. dmg. taken-10%',}},
       enmity = { name="Intarabus's Cape", augments={'MND+10','Enmity-10',}},
       melee = { name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}},
-      ws = { name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}}
+      ws = { name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
+      mordant = { name="Intarabus's Cape", augments={'CHR+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
     }
   }
 
   -- Modes
   sets.Idle = {
-    main=gear.kali.refresh,
+    main="Carnwenhan",
     sub="Genbu's Shield",           -- 10 PDT
     head="Inyanga Tiara +2",        -- 4 MDT
     neck="Loricate Torque +1",      -- 6 DT
     left_ear="Flashward Earring",
     right_ear="Etiolation Earring", -- 3 MDT
     body="Inyanga Jubbah +2",       -- 8 MDT
-    -- body="Annointed Kalasiris",
     hands="Inyanga Dastanas +2",    -- 4 MDT
     left_ring="Gelatinous Ring +1", -- 7 PDT
     right_ring="Inyanga Ring",      -- 2 MDT
-    back=gear.cape.fastCast,        -- 10 PDT
+    back=gear.cape.macc,            -- 10 PDT
     waist="Flume Belt",             -- 4 PDT
     legs="Inyanga Shalwar +2",      -- 6 MDT
     feet="Fili Cothurnes +1"
@@ -58,7 +54,7 @@ function get_sets()
   -- Magic
   sets.Magic = {}
   sets.Magic.Precast = {
-    head=augments.chironic.head.fastCast, -- 6
+    head=augments.chironic.head.macc, -- 6
     neck="Orunmila's torque",             -- 5
     body="Inyanga Jubbah +2",             -- 14
     hands="Leyline Gloves",               -- 8
@@ -67,9 +63,9 @@ function get_sets()
     left_ear="Loquacious earring",        -- 2
     right_ear="Etiolation Earring",       -- 1
     legs="Kaykaus Tights",                -- 6
-    back=gear.cape.fastCast,              -- 10
+    back=gear.cape.macc,                  -- 10
     waist="Witful Belt"                   -- 3
-                                          -- 54 Total
+                                          -- 64 Total
   }
   sets.Magic.HealingPrecast = set_combine(sets.Magic.Precast, {
     right_ear="Mendicant's Earring",
@@ -97,7 +93,7 @@ function get_sets()
     left_ear="Loquacious earring",       -- FC
     right_ear="Etiolation Earring",      -- FC
     body="Inyanga Jubbah +2",            -- FC
-    hands=augments.telchine.gloves.enhancing,-- FC
+    hands="Leyline Gloves",              -- FC
     left_ring="Haoma's Ring",            -- Cursna/Skill
     right_ring="Haoma's Ring",           -- Cursna/Skill
     back="Oretan. Cape +1",              -- Cursna
@@ -114,7 +110,7 @@ function get_sets()
     waist="Embla Sash"
   }
   sets.Magic.Enfeebling = {
-    main=gear.kali.refresh,
+    main="Carnwenhan",
     head="Brioso Roundlet +2",
     body="Brioso Justaucorps +2",
     hands="Inyanga Dastanas +2",
@@ -126,7 +122,7 @@ function get_sets()
     left_ring="Stikini Ring",
     right_ring="Stikini Ring",
     waist="Luminary Sash",
-    back=gear.cape.fastCast,
+    back=gear.cape.macc,
   }
 
   -- Songs
@@ -136,17 +132,18 @@ function get_sets()
     feet=augments.telchine.feet.enhancing
   })
   sets.Songs.Dummy = {
+    main="Carnwenhan",
     ranged="Daurdabla",
-    -- neck="Moonbow Whistle +1",
+    neck="Moonbow Whistle +1",
     body="Fili Hongreline +1",
-    legs="Inyanga Shalwar +2",
+    -- legs="Inyanga Shalwar +2",
     feet="Brioso Slippers +3"
   }
 
   -- Song Buffs
   --
   sets.Songs.Buffs = {
-    main=gear.kali.skill,
+    main="Carnwenhan",
     ranged="Gjallarhorn",
     head="Brioso Roundlet +2",
     body="Fili Hongreline +1",
@@ -154,21 +151,21 @@ function get_sets()
     legs="Inyanga Shalwar +2",
     feet="Brioso Slippers +3",
     neck="Moonbow Whistle +1",
-    back=gear.cape.fastCast
+    back=gear.cape.macc
   }
   sets.Songs.Ballad = set_combine(sets.Songs.Buffs, { legs="Fili Rhingrave" })
-  sets.Songs.Carol = set_combine(sets.Songs.Buffs, { hands="Mousai Gages" })
+  sets.Songs.Carol = set_combine(sets.Songs.Buffs, { hands="Mousai Gages +1" })
   sets.Songs.Madrigal = set_combine(sets.Songs.Buffs, { head="Fili Calot" })
   sets.Songs.March = set_combine(sets.Songs.Buffs, { hands="Fili Manchettes" })
   sets.Songs.HonorMarch = set_combine(sets.Songs.March, { ranged="Marsyas" })
-  sets.Songs.Minne = set_combine(sets.Songs.Buffs, { legs="Mousai Seraweels" })
+  sets.Songs.Minne = set_combine(sets.Songs.Buffs, { legs="Mousai Seraweels +1" })
   sets.Songs.Minuet = set_combine(sets.Songs.Buffs, { body="Fili Hongreline +1" })
   sets.Songs.Scherzo = set_combine(sets.Songs.Buffs, { feet="Fili Cothurnes +1" })
 
   -- Song Debuffs
   --
   sets.Songs.DebuffAccuracy = {
-    main=gear.kali.skill,
+    main="Carnwenhan",
     ranged="Gjallarhorn",
     head="Brioso Roundlet +2",
     body="Brioso Justaucorps +2",
@@ -181,10 +178,10 @@ function get_sets()
     left_ring="Stikini Ring",
     right_ring="Stikini Ring",
     waist="Luminary Sash",
-    back=gear.cape.fastCast
+    back=gear.cape.macc
   }
   sets.Songs.DebuffDuration = {
-    main=gear.kali.skill,
+    main="Carnwenhan",
     ranged="Gjallarhorn",
     head="Brioso Roundlet +2",
     body="Fili Hongreline +1",
@@ -197,12 +194,12 @@ function get_sets()
     left_ring="Stikini Ring",
     right_ring="Stikini Ring",
     waist="Luminary Sash",
-    back=gear.cape.fastCast
+    back=gear.cape.macc
   }
   sets.Songs.Lullaby = set_combine(sets.Songs.DebuffDuration,
     { ranged="Daurdabla", hands="Brioso Cuffs +2" }
   )
-  sets.Songs.Threnody = set_combine(sets.Songs.DebuffDuration,
+  sets.Songs.Threnody = set_combine(sets.Songs.DebuffAccuracy,
     { body="Mousai Manteel" }
   )
 
@@ -210,10 +207,11 @@ function get_sets()
   sets.JobAbility = {}
   sets.JobAbility.Troubadour = { body="Bihu Justaucorps", feet="Bihu Slippers" }
   sets.JobAbility.Nightingale = { body="Bihu Justaucorps", feet="Bihu Slippers" }
+  -- sets.JobAbility['Soul Voice'] = { legs = 'Bihu Cannions' }
 
   -- Melee
   sets.Engaged = {
-    main="Aeneas",
+    main="Carnwenhan",
     sub="Genbu's Shield",
     head="Aya. Zucchetto +2",              -- 6%
     body="Ayanmo Corazza +2",              -- 4%
@@ -222,25 +220,40 @@ function get_sets()
     feet=augments.chironic.feet.tp,        -- 3%
     neck="Bard's Charm",
     waist="Sailfi Belt +1",                -- 9%
-    left_ear="Digni. Earring",
+    left_ear="Dedition Earring",
     right_ear="Brutal Earring",
     left_ring="Hetairoi Ring",
     right_ring="Petrov Ring",
     back=gear.cape.melee
   }                                        -- 31% Haste
-  sets.WeaponSkill = {
+  sets.WS = {}
+  sets.WS.Rudra = {
     head="Aya. Zucchetto +2",             -- Lustratio
     body="Ayanmo Corazza +2",             -- Bihu +2/3
     hands="Ayanmo Manopolas +2",          -- Lustratio
     legs="Ayanmo Cosciales +2",           -- Lustratio
-    feet="Ayanmo Gambieras +2",           -- Lustratio
-    neck="Caro Necklace",
+    feet="Lustratio Leggings +1",
+    neck="Bard's Charm",
     waist="Grunfeld Rope",
     left_ear="Moonshade Earring",
     right_ear="Ishvara Earring",
     left_ring="Ilabrat Ring",
     right_ring="Apate Ring",
     back=gear.cape.ws
+  }
+  sets.WS['Mordant Rime'] = {
+    head="Brioso Roundlet +2",
+    body="Bihu Justaucorps",
+    hands="Brioso Cuffs +2",
+    legs="Brioso Cannions +2",
+    feet="Brioso Slippers +3",
+    neck="Bard's Charm",
+    waist="Grunfeld Rope",
+    left_ear="Regal Earring",
+    right_ear="Ishvara Earring",
+    left_ring="Ilabrat Ring",
+    right_ring="Begrudging Ring",
+    back=gear.cape.mordant
   }
 end
 
@@ -264,7 +277,7 @@ function precast(spell)
     end
 
   elseif spell.type == 'WeaponSkill' then
-    equip(sets.WeaponSkill)
+    equip(sets.WS[spell.english] or sets.WS.Rudra)
   end
 
   precast_cancelations(spell)
@@ -335,6 +348,9 @@ function aftercast(spell)
       equip({waist = "Fucho-no-Obi"})
     end
   end
+  if ForceHarpNext == true then
+    ForceHarpNext = false
+  end
 end
 
 function set_for_song(spell)
@@ -342,7 +358,6 @@ function set_for_song(spell)
     return sets.Songs.HonorMarch
 
   elseif ForceHarpNext or DummySongs:contains(spell.english) then
-    ForceHarpNext = false
     return sets.Songs.Dummy
 
   elseif string.find(spell.english, 'Lullaby') then

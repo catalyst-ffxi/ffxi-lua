@@ -68,13 +68,13 @@ function get_sets()
     ammo="Homiliary",
     head="Befouled Crown",
     neck="Loricate Torque +1",
-    left_ear="Genmei Earring",
+    left_ear="Odnowa Earring +1",
     right_ear="Etiolation Earring",
     body="Jhakri Robe +2",
     hands="Amalric Gages +1",
     left_ring="Gelatinous Ring +1",
     right_ring="Defending Ring",
-    back="Solemnity Cape",
+    back="Lugh's Cape",
     waist="Fucho-no-Obi",
     legs="Assid. Pants +1",
     feet="Chironic Slippers"
@@ -122,16 +122,6 @@ function get_sets()
     waist = "Witful Belt"             -- 3
                                -- TOTAL: 46
   }
-  -- sets.base.move_speed = {
-  -- }
-  -- sets.base.idle = set_combine(sets.modes.Caster, {
-  -- })
-  -- sets.base.resting = set_combine(sets.modes.Caster, {
-  --   head = "Befouled Crown",
-  --   body = "Jhakri Robe +1",
-  --   waist = "Fucho-no-Obi",
-  --   legs = "Assid. Pants +1"
-  -- })
 
   -- Weapon Skills
   --
@@ -198,7 +188,7 @@ function get_sets()
   sets.midcast.elemental = {}
   sets.midcast.elemental.Normal = {
     ammo="Pemphredo Tathlum",
-    head="Jhakri Coronal +2",
+    head="C. Palug Crown",
     neck="Sanctity Necklace",
     lear="Regal Earring",
     rear="Malignance Earring",
@@ -209,13 +199,12 @@ function get_sets()
     back="Lugh's Cape",
     waist="Eschan Stone",
     legs="Amalric Slops +1",
-    feet=augments.merlinic.crackows.nuke
+    feet="Jhakri pigaches +2"
   }
   sets.midcast.elemental.MagicBurst = set_combine(sets.midcast.elemental.Normal, {
     neck = "Mizu. Kubikazari",           -- MB +10
     hands = "Amalric Gages +1",          -- MB II +6
     lring = "Mujin Band",                -- MB II +5
-    rring = "Locus Ring",                -- MB +5
     feet = "Jhakri Pigaches +2"          -- MB +7
   })                                     -- TOTALS
                                          -- MB +27 (Caps at 40%)

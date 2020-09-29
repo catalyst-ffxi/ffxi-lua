@@ -42,20 +42,65 @@ function get_sets()
     }
   }
 
-  sets.idle = {
+  sets.Idle = {
+    ranged="Exalted Crossbow +1",
+    ammo="Gashing Bolt",
+    head="Malignance Chapeau",        -- 6 DT
+    body="Malignance Tabard",         -- 9 DT
+    hands="Malignance Gloves",        -- 5 DT
+    legs="Malignance Tights",         -- 7 DT
+    feet="Fajin boots",
+    neck="Loricate Torque +1",        -- 6 DT
+    waist="Reiki Yotai",
+    left_ear="Suppanomimi",
+    right_ear="Sherida Earring",
+    left_ring="Gere Ring",
+    right_ring="Defending Ring",      -- 10 DT
+    back=gear.toutatis.tp,            -- 10 PDT
   }
   sets.modes = {}
-  sets.modes.FullTH = {
-    -- ammo="Aurgelmir Orb +1",
+  sets.modes.FullDD = {
     ranged="Exalted Crossbow +1",
     ammo="Gashing Bolt",
     head="Adhemar Bonnet +1",
-    body="Adhemar Jacket +1", -- 6
+    body="Adhemar Jacket +1",
+    hands="Adhemar Wristbands +1",
+    legs="Samnuha Tights",
+    feet=augments.herc.feet.triple,
+    neck="Iskur Gorget",
+    waist="Windbuffet Belt +1",
+    left_ear="Brutal Earring",
+    right_ear="Sherida Earring",
+    left_ring="Gere Ring",
+    right_ring="Epona's Ring",
+    back=gear.toutatis.tp,
+  }
+  sets.modes.HybridDD = {
+    ranged="Exalted Crossbow +1",
+    ammo="Gashing Bolt",
+    head="Malignance Chapeau",        -- 6 DT
+    body="Malignance Tabard",         -- 9 DT
+    hands="Malignance Gloves",        -- 5 DT
+    legs="Malignance Tights",         -- 7 DT
+    feet="Malignance Boots",          -- 4 DT
+    neck="Iskur Gorget",
+    waist="Windbuffet Belt +1",
+    left_ear="Suppanomimi",
+    right_ear="Sherida Earring",
+    left_ring="Gere Ring",
+    right_ring="Defending Ring",      -- 10 DT
+    back=gear.toutatis.tp,            -- 10 PDT
+  }                                   -- 51 PDT
+  sets.modes.FullTH = {
+    ranged="Exalted Crossbow +1",
+    ammo="Gashing Bolt",
+    head="Adhemar Bonnet +1",
+    body="Adhemar Jacket +1",
     hands="Plunderer's Armlets +1",
     legs="Samnuha Tights",
     feet=augments.herc.feet.th2,
     neck="Iskur Gorget",
-    waist="Reiki Yotai",   -- 7
+    waist="Windbuffet Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
     left_ring="Gere Ring",
@@ -63,56 +108,21 @@ function get_sets()
     back=gear.toutatis.tp,
   }
   sets.modes.HybridTH = {
-    -- ammo="Aurgelmir Orb +1",
     ranged="Exalted Crossbow +1",
     ammo="Gashing Bolt",
-    head="Malignance Chapeau",           -- 6 DT
-    body="Malignance Tabard",            -- 9 DT
+    head="Malignance Chapeau",        -- 6 DT
+    body="Malignance Tabard",         -- 9 DT
     hands="Plunderer's Armlets +1",
-    legs="Malignance Tights",            -- 7 DT
-    feet=augments.herc.feet.th2,         -- 2 PDT
-    neck="Loricate Torque +1",           -- 6 DT
-    waist="Reiki Yotai",
+    legs="Malignance Tights",         -- 7 DT
+    feet=augments.herc.feet.th2,      -- 2 PDT
+    neck="Loricate Torque +1",        -- 6 DT
+    waist="Windbuffet Belt +1",
     left_ear="Suppanomimi",
     right_ear="Sherida Earring",
-    left_ring="Moonlight Ring",          -- 5 DT
-    right_ring="Moonlight Ring",         -- 5 DT
-    back=gear.toutatis.tp,               -- 10 PDT
-  }                                      -- 50 PDT
-  sets.modes.FullDD = {
-    -- ammo="Aurgelmir Orb +1",
-    ranged="Exalted Crossbow +1",
-    ammo="Gashing Bolt",
-    head="Adhemar Bonnet +1",
-    body="Adhemar Jacket +1",
-    hands=augments.herc.hands.triple,
-    legs="Samnuha Tights",
-    feet=augments.herc.feet.triple,
-    neck="Iskur Gorget",
-    waist="Reiki Yotai",
-    left_ear="Brutal Earring",
-    right_ear="Sherida Earring",
-    left_ring="Hetairoi Ring",
-    right_ring="Epona's Ring",
-    back=gear.toutatis.tp,
-  }
-  sets.modes.HybridDD = {
-    -- ammo="Aurgelmir Orb +1",
-    ranged="Exalted Crossbow +1",
-    ammo="Gashing Bolt",
-    head="Malignance Chapeau",           -- 6 DT
-    body="Malignance Tabard",            -- 9 DT
-    hands=augments.herc.hands.triple,    -- 2 PDT
-    legs="Malignance Tights",            -- 7 DT
-    feet=augments.herc.feet.triple,      -- 2 PDT
-    neck="Loricate Torque +1",           -- 6 DT
-    waist="Reiki Yotai",
-    left_ear="Suppanomimi",
-    right_ear="Sherida Earring",
-    left_ring="Moonlight Ring",          -- 5 DT
-    right_ring="Moonlight Ring",         -- 5 DT
-    back=gear.toutatis.tp,               -- 10 PDT
-  }                                      -- 52 PDT
+    left_ring="Gere Ring",
+    right_ring="Defending Ring",      -- 10 DT
+    back=gear.toutatis.tp,            -- 10 PDT
+  }                                   -- 50 PDT
 
   -- Weapon Skills
   --
@@ -147,7 +157,7 @@ function get_sets()
     left_ear="Moonshade Earring",
     right_ear="Sherida Earring",
     left_ring="Regal Ring",
-    right_ring="Begrudging Ring",
+    right_ring="Ilabrat Ring",
     back=gear.toutatis.ws
   }
   sets.WS['Aeolian Edge'] =  {
@@ -213,7 +223,7 @@ function get_sets()
     ammo="Gashing Bolt",
     head="Malignance Chapeau",
     body="Malignance Tabard",
-    hands="Meg. Gloves +2",
+    hands="Malignance Gloves",
     legs="Malignance Tights",
     feet="Malignance Boots",
     neck="Iskur Gorget",
@@ -293,7 +303,7 @@ function self_command(commandArgs)
       equip_set_for_current_mode()
     end
   elseif command == 'idle' then
-    equip(sets.idle)
+    equip(sets.Idle)
   elseif command == 'run' then
     equip(sets.run)
   elseif command == 'abbyweapon' then

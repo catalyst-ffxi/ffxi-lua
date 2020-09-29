@@ -143,7 +143,7 @@ function get_sets()
     waist="Grunfeld Rope",
     left_ear="Ishvara Earring",
     right_ear="Moonshade Earring",
-    left_ring="Apate Ring",
+    left_ring="Shukuyu Ring",
     right_ring="Petrov Ring",
     back=gear.camulus.ws
   }

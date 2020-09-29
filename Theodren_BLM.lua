@@ -70,8 +70,8 @@ function get_sets()
   --
   sets.modes = {}
   sets.modes.Caster = {
-    main = "Lathi",
-    sub = "Enki Strap",
+    main = "Maxentius",
+    sub = "Ammurapi Shield",
     ammo = "Pemphredo Tathlum",
     head = "Amalric Coif +1",
     neck = "Sanctity Necklace",
@@ -86,20 +86,6 @@ function get_sets()
     legs = "Amalric Slops +1",
     feet = augments.merlinic.crackows.nuke
   }
-  -- sets.aftercast = {}
-  -- sets.aftercast.Caster = set_combine(sets.modes.Caster, {
-  --   ammo="Staunch Tathlum +1",
-  --   head = "Befouled Crown",
-  --   neck = "Loricate Torque +1",
-  --   left_ear = "Etiolation Earring",
-  --   right_ear="Genmei Earring",
-  --   body = "Amalric Doublet +1",
-  --   lring = "Gelatinous Ring +1",
-  --   rring = "Defending Ring",
-  --   back = "Solemnity Cape",
-  --   waist = "Fucho-no-Obi",
-  --   legs = "Assid. Pants +1"
-  -- })
 
   -- Base Sets
   --
@@ -114,7 +100,7 @@ function get_sets()
     body="Vrikodara Jupon",    -- 5
     hands="Helios Gloves",     -- 5
     lring="Kishar Ring",       -- 4
-    rring="Weatherspoon Ring +1",        -- 2
+    rring="Weatherspoon Ring +1",-- 2
     back=gear.taranus.fastCast,-- 10
     waist="Embla Sash",        -- 5
     legs="Telchine Braconi",   -- 4
@@ -131,13 +117,13 @@ function get_sets()
     legs = "Track Pants +1"
   }
   sets.base.idle = {
-    main="Lathi",
-    sub="Enki Strap",
+    main="Maxentius",
+    sub="Ammurapi Shield",
     ammo="Staunch Tathlum +1",
     head= "Befouled Crown",
     neck = "Loricate Torque +1",
     left_ear = "Etiolation Earring",
-    right_ear="Genmei Earring",
+    right_ear="Eabani Earring",
     body = "Amalric Doublet +1",
     hands = "Amalric Gages +1",
     lring = "Gelatinous Ring +1",
@@ -187,8 +173,8 @@ function get_sets()
   --
   sets.midcast = {}
   sets.midcast.dark = {
-    main = "Lathi",
-    sub = "Enki Strap",
+    main = "Maxentius",
+    sub = "Ammurapi Shield",
     ammo = "Pemphredo Tathlum",
     head = "Amalric Coif +1",
     -- head = "Pixie Hairpin +1",
@@ -212,8 +198,8 @@ function get_sets()
   })
   sets.midcast.stun = {                   -- FC  | Haste
     -- main=augments.grio.nuke,              -- 4%  |
-    main="Lathi",
-    sub="Enki Strap",
+    main="Maxentius",
+    sub="Ammurapi Shield",
     ammo="Pemphredo Tathlum",
     head="Amalric Coif +1",
     body="Amalric Doublet +1",
@@ -233,14 +219,14 @@ function get_sets()
   --
   sets.midcast.elemental = {}
   sets.midcast.elemental.Normal = {
-    main="Lathi",
-    sub="Enki Strap",
+    main="Maxentius",
+    sub="Ammurapi Shield",
     ammo="Pemphredo Tathlum",
-    head="Jhakri Coronal +2",
+    head="C. Palug Crown",
     body="Amalric Doublet +1",
     hands="Amalric Gages +1",
     legs="Amalric Slops +1",
-    feet=augments.merlinic.crackows.nuke,
+    feet="Jhakri pigaches +2",
     neck="Sanctity Necklace",
     waist="Eschan Stone",
     left_ear="Malignance Earring",
@@ -250,8 +236,8 @@ function get_sets()
     back=gear.taranus.nuke
   }
   sets.midcast.elemental.MagicBurst = {
-    main="Lathi",
-    sub="Enki Strap",
+    main="Maxentius",           -- MB +4
+    sub="Ammurapi Shield",
     ammo="Pemphredo Tathlum",
     head="Ea Hat",              -- MB +6 | MB II +6
     neck="Mizu. Kubikazari",    -- MB +10|
@@ -260,11 +246,11 @@ function get_sets()
     body="Ea Houppelande",      -- MB +8 | MB II +8
     hands="Amalric Gages +1",   --       | MB II +6
     lring="Mujin Band",         --       | MB II +5
-    rring="Locus Ring",         -- MB +5 |
+    rring="Freke Ring",
     back=gear.taranus.nuke,     -- MB +5 |
     waist="Eschan Stone",
     legs="Ea Slops",            -- MB +7 | MB II +7
-    feet=augments.merlinic.crackows.nuke
+    feet="Jhakri pigaches +2"
   }                             -- MB +41| MB II +31
 
   -- Death
@@ -276,7 +262,8 @@ function get_sets()
   -- Enfeebling Magic
   --
   sets.midcast.enfeebling = {
-    -- main = augments.grio.enfeeble,
+    main="Maxentius",
+    sub="Ammurapi Shield",
     ammo="Quartz Tathlum +1",
     head="Amalric Coif +1",
     neck="Incanter's torque",
@@ -297,6 +284,7 @@ function get_sets()
   sets.midcast.enhancing_skill = {
   }
   sets.midcast.enhancing_duration = {
+    sub="Ammurapi Shield",
     head="Telchine Cap",
     body="Telchine Chasuble",
     hands="Telchine Gloves",
@@ -328,6 +316,8 @@ function get_sets()
   -- Healing Sets
   --
   sets.midcast.healing = {
+    main="Daybreak",
+    sub="Ammurapi Shield",
     ammo="Quartz Tathlum +1",
     head="Vanya Hood",
     body="Vanya Robe",

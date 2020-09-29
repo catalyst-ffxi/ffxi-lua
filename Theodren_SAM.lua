@@ -3,7 +3,7 @@ include('Modes.lua')
 include('augments.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'HybridLight', 'HybridHeavy', 'FullPDT'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'FullDD', 'HybridLight', 'HybridHeavy'}
 end
 
 function define_binds()
@@ -25,56 +25,39 @@ function get_sets()
   }
 
   sets.modes = {}
-  sets.modes.Normal = {
-    main="Dojikiri Yasutsuna",    -- 10 STP
-    sub="Utu Grip",
-    ammo="Aurgelmir Orb +1",         -- 4 STP
-    head="Flam. Zucchetto +2",    -- 6 STP
-    neck="Samurai's Nodowa +1",   -- 11 STP
-    lear="Dedition Earring",      -- 8 STP
-    rear="Brutal Earring",        -- 1 STP
-    body="Ken. Samue +1",
-    hands="Wakido Kote +3",       -- 7 STP
-    lring="Chirich Ring +1",      -- 6 STP
-    rring="Niqmaddu Ring",
-    back=gear.smertrios.tp,
-    waist="Ioskeha Belt +1",
-    legs="Ken. Hakama +1",
-    feet="Ryuo Sune-Ate +1"       -- 5 STP
-  }                               -- 58 STP
-  sets.modes.HybridLight = set_combine(sets.modes.Normal, {
-    rring="Defending Ring",       -- 10 DT
-  })                              -- 20 PDT
-  sets.modes.HybridHeavy = set_combine(sets.modes.Normal, {
-    ammo="Staunch Tathlum +1",    -- 3 DT
-    neck="Loricate Torque +1",    -- 6 DT
-    rring="Defending Ring",       -- 10 DT
-  })                              -- 29 PDT
-  sets.modes.FullPDT = set_combine(sets.modes.Normal, {
-    ammo="Staunch Tathlum +1",    -- 3 DT
-    neck="Loricate Torque +1",    -- 6 DT
-    lring="Gelatinous Ring +1",   -- 7 PDT
-    rring="Defending Ring",       -- 10 DT
-    waist="Flume Belt +1",        -- 4 PDT
-    left_ear="Genmei Earring"     -- 2 PDT
-  })                              -- 42 PDT
-  sets.modes.SB = {
+  sets.modes.FullDD = {
     main="Dojikiri Yasutsuna",
     sub="Utu Grip",
     ammo="Aurgelmir Orb +1",
     head="Flam. Zucchetto +2",
-    body="Ken. Samue +1",          -- 12 SB
+    body="Ken. Samue +1",
     hands="Wakido Kote +3",
-    legs="Ken. Hakama +1",         -- 10 SB
-    feet="Ryuo Sune-Ate +1",       -- 8 SB
+    legs="Ken. Hakama +1",
+    feet="Ken. Sune-Ate +1",
     neck="Samurai's Nodowa +1",
     waist="Ioskeha Belt +1",
-    left_ear="Telos Earring",
-    right_ear="Brutal Earring",
-    left_ring="Chirich ring +1",   -- 10 SB
-    right_ring="Niqmaddu Ring",    -- 5 SB II
+    left_ear="Brutal Earring",
+    right_ear="Dedition Earring",
+    left_ring="Chirich Ring +1",
+    right_ring="Niqmaddu Ring",
     back=gear.smertrios.tp
-  }                                -- Auspice: 10 SB
+  }
+  sets.modes.HybridLight = set_combine(sets.modes.FullDD, {
+    head="Ken. Jinpachi +1",
+    body="Wakido Domaru +3",       -- 8 DT
+    right_ear="Odnowa Earring +1", -- 3 DT
+    right_ring="Defending Ring",   -- 10 DT
+  })                               -- 31 PDT
+  sets.modes.HybridHeavy = set_combine(sets.modes.FullDD, {
+    ammo="Staunch Tathlum +1",     -- 3 DT
+    head="Ken. Jinpachi +1",
+    body="Wakido Domaru +3",       -- 8 DT
+    neck="Loricate Torque +1",     -- 6 DT
+    waist="Flume Belt +1",         -- 4 PDT
+    right_ear="Odnowa Earring +1", -- 3 DT
+    left_ring="Gelatinous Ring +1",-- 7 PDT
+    right_ring="Defending Ring",   -- 10 DT
+  })                               -- 50 PDT
 
   -- Weapon Skills
   --
@@ -124,6 +107,25 @@ function get_sets()
     right_ring="Stikini Ring +1",
     back=gear.smertrios.ws,
   }
+  sets.WS['Tachi: Jinpu'] = {
+    ammo="Pemphredo Tathlum",
+    head=augments.valorous.mask.ws,
+    body="Sakonji Domaru +3",
+    hands="Founder's Gauntlets",
+    legs="Wakido Haidate +3",
+    feet="Founder's Greaves",
+    neck="Sanctity Necklace",
+    waist="Orpheus's Sash",
+    left_ear="Friomisi earring",
+    right_ear="Moonshade earring",
+    left_ring="Regal Ring",
+    right_ring="Epaminondas's Ring",
+    back=gear.smertrios.ws
+  }
+  sets.WS['Tachi: Kagero'] = sets.WS['Tachi: Jinpu']
+  sets.WS['Tachi: Koki'] = set_combine(sets.WS['Tachi: Kagero'], {
+    left_ring="Weatherspoon Ring +1"
+  })
 
   -- Job Abilities
   --
@@ -156,7 +158,7 @@ function get_sets()
     hands="Leyline Gloves",             -- 7
     lear="Loquacious earring",          -- 2
     rear="Etiolation Earring",          -- 1
-    rring="Weatherspoon Ring +1",                 -- 2
+    rring="Weatherspoon Ring +1",       -- 6
   }
   sets.Doom = {
     neck="Nicander's Necklace",
