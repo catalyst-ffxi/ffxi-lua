@@ -79,11 +79,11 @@ function get_sets()
     neck="Loricate Torque +1",      -- 6 DT
     waist="Flume Belt +1",          -- 4 PDT
     left_ear="Eabani Earring",      -- Meva
-    right_ear="Etiolation Earring", -- 3 MDT
+    right_ear="Odnowa Earring +1",  -- 2 MDT, 3 DT
     left_ring="Defending Ring",     -- 10 DT
     right_ring="Gelatinous Ring +1",-- 7 PDT
     back=gear.sucellos.enfeeble,    -- 10 PDT
-  }                                 -- 8 Refresh, 46 PDT, 27 MDT
+  }                                 -- 8 Refresh, 49 PDT, 27 MDT
 
   -- Engaged sets
   sets.Engaged = {}
@@ -107,6 +107,7 @@ function get_sets()
   sets.Engaged.PhysicalTP = {
     main="Naegling",
     sub="Machaera +2",
+    -- sub="Ternion Dagger +1",  if acc is a problem I swap to this
     ammo="Aurgelmir Orb +1",
     head="Malignance Chapeau",
     body="Malignance Tabard",
@@ -352,7 +353,7 @@ function get_sets()
     body="Amalric Doublet +1",
     hands="Amalric Gages +1",
     legs="Amalric Slops +1",
-    feet="Vitiation Boots +3",
+    feet="Amalric Nails +1",
     neck="Sanctity Necklace",
     waist="Eschan Stone",
     left_ear="Regal Earring",
@@ -466,6 +467,10 @@ function get_sets()
     right_ring="Epaminondas's Ring",
     back=gear.sucellos.savage
   }
+  sets.WS['Circle Blade'] = {
+    right_ear="Moonshade Earring"
+  }
+  -- sets.WS['Circle Blade'] = sets.WS['Savage Blade']
   sets.WS.Requiescat = {
     ammo="Regal Gem",
     head="Viti. Chapeau +3",
@@ -503,7 +508,8 @@ function get_sets()
     body="Amalric Doublet +1",
     hands="Jhakri Cuffs +2",
     legs="Amalric Slops +1",
-    feet="Vitiation Boots +3",
+    -- feet="Vitiation Boots +3",
+    feet="Amalric Nails +1",
     neck="Sanctity Necklace",
     waist="Orpheus's Sash",
     left_ear="Regal Earring",
@@ -518,7 +524,8 @@ function get_sets()
     body="Amalric Doublet +1",
     hands="Jhakri Cuffs +2",
     legs="Amalric Slops +1",
-    feet="Vitiation Boots +3",
+    -- feet="Vitiation Boots +3",
+    feet="Amalric Nails +1",
     neck="Sanctity Necklace",
     waist="Orpheus's Sash",
     left_ear="Malignance Earring",

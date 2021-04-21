@@ -3,7 +3,7 @@ include('Modes.lua')
 include('augments.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'FullDD', 'Hybrid', 'CritRate'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'FullDD', 'Hybrid'}
 
   Abyssea = {
     current = 0,
@@ -54,7 +54,7 @@ function get_sets()
     legs="Samnuha Tights",
     feet=augments.herc.feet.triple,
     neck="Iskur Gorget",
-    waist="Reiki Yotai",
+    waist="Sailfi Belt +1",
     left_ear="Telos Earring",
     right_ear="Brutal Earring",
     left_ring="Epona's Ring",
@@ -71,27 +71,10 @@ function get_sets()
     legs="Malignance Tights",
     feet="Malignance Boots",
     neck="Iskur Gorget",
-    waist="Reiki Yotai",
+    waist="Sailfi Belt +1",
     left_ear="Cessance Earring",
     right_ear="Brutal Earring",
     left_ring="Defending Ring",
-    right_ring="Gere Ring",
-    back="Andartia's Mantle"
-  }
-  sets.modes.CritRate = {
-    -- main="Heishi Shorinken",
-    -- sub="Ochu",
-    ammo="Aurgelmir Orb +1",
-    head="Adhemar Bonnet +1",
-    body="Adhemar Jacket +1",
-    hands="Mummu Wrists +2",
-    legs="Samnuha Tights",
-    feet=augments.herc.feet.triple,
-    neck="Iskur Gorget",
-    waist="Reiki Yotai",
-    left_ear="Suppanomimi",
-    right_ear="Brutal Earring",
-    left_ring="Epona's Ring",
     right_ring="Gere Ring",
     back="Andartia's Mantle"
   }

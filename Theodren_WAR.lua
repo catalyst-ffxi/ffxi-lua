@@ -92,7 +92,7 @@ function get_sets()
     neck="Orunmila's Torque",       -- 5
     left_ear="Loquacious earring",  -- 2
     right_ear="Etiolation Earring", -- 1
-    left_ring="Weatherspoon Ring +1",         -- 2
+    left_ring="Weatherspoon Ring +1",-- 2
   }
   sets.Magic.SpellInterrupt = {
     ammo="Staunch Tathlum +1",      -- 11 SID, 3 DT
@@ -124,7 +124,7 @@ function get_sets()
     right_ear="Moonshade Earring",
     left_ring="Niqmaddu Ring",
     right_ring="Gelatinous Ring +1",
-    back=gear.ambuscape.wsVit
+    back=gear.ambuscape.wsVit -- vit/acc/att/wsd
   }
   sets.WS.Upheaval_MS = {
     ammo="Yetshila +1",

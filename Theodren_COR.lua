@@ -136,9 +136,10 @@ function get_sets()
     back=gear.camulus.snapShot               --  10    0
                                       -- Total:  50    44
   }
-  sets.TripleShot = {
-    -- body="Chasseur's Frac"
-  }
+  sets.TripleShot = set_combine(sets.Preshot, {
+    body="Chasseur's Frac +1",
+    hands="Lanun Gants +3"
+  })
   sets.Ranged = {
     ammo=gear.bullets.ratt,
     head="Malignance Chapeau",
@@ -150,7 +151,7 @@ function get_sets()
     waist="Yemaya Belt",
     left_ear="Telos Earring",
     right_ear="Enervating Earring",
-    left_ring="Regal Ring",
+    left_ring="Ilabrat Ring",
     right_ring="Dingir Ring",
     back=gear.camulus.rangedTp
   }
@@ -210,7 +211,8 @@ function get_sets()
     legs=augments.herc.legs.magic,
     feet="Lanun Bottes +3",
     neck="Commodore Charm +1",
-    waist="Svelt. Gouriz +1",
+    -- waist="Svelt. Gouriz +1",
+    waist="Eschan Stone",
     left_ear="Friomisi Earring",
     right_ear="Moonshade Earring",
     left_ring="Archon Ring",
@@ -289,8 +291,8 @@ function get_sets()
     ammo=gear.bullets.magic,
     head=augments.herc.head.mab,
     neck="Sanctity Necklace",
-    left_ear="Dignitary's Earring",
-    right_ear="Gwati Earring",
+    -- left_ear="Gwait Earring",
+    right_ear="Dignitary's Earring",
     body="Lanun Frac +3",
     hands="Leyline Gloves ",
     left_ring="Stikini Ring +1",
@@ -304,6 +306,7 @@ function get_sets()
   -- Job Abilities
   --
   sets.JAs.PhantomRoll = {
+    -- ranged="Compensator",
     head="Lanun Tricorne +3",
     neck="Regal Necklace",
     hands="Chasseur's Gants +1",
@@ -326,8 +329,14 @@ end
 function precast(spell)
   precast_cancelations(spell)
 
-  if spell.type == 'CorsairRoll' or spell.english == "Double-Up" then
+  if spell.type == 'CorsairRoll' then
     equip(sets.JAs.PhantomRoll)
+    if spell.english == "Tactician's Roll" then
+      equip({ body="Chasseur's Frac +1" })
+    end
+
+  elseif spell.english == "Double-Up" then
+    equip({ rring="Luzaf's Ring" })
 
   elseif sets.JAs[spell.english] then
     equip(sets.JAs[spell.english])
@@ -341,10 +350,10 @@ function precast(spell)
     end
 
   elseif spell.english == "Ranged" then
-    equip(sets.Preshot)
-
     if buffactive['Triple Shot'] then
       equip(sets.TripleShot)
+    else
+      equip(sets.Preshot)
     end
 
   elseif spell.action_type == 'Magic' then

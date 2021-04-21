@@ -255,6 +255,7 @@ function get_sets()
     right_ring="Begrudging Ring",
     back=gear.cape.mordant
   }
+  sets.WS['Aeolian Edge'] = {}
 end
 
 function precast(spell)
