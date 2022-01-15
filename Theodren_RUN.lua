@@ -4,12 +4,12 @@ include('augments.lua')
 include('utils.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Tank', 'HybridHeavy', 'HybridLight', 'FullDD'}
-  WeaponMode = M{['description'] = 'Weapon Mode', 'Epeo', 'Lionheart'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'Tank', 'HybridDD', 'FullDD'}
+  WeaponMode = M{['description'] = 'Weapon Mode', 'Epeo', 'Lionheart'} -- 'Hepi'
   IdleMode = M(false, 'IdleMode')
 
   Runes = {
-    current = 1,
+    current = 8,
     runes = {
       { name="Ignis", ele="Fire", resist="Ice" },
       { name="Gelus", ele="Ice", resist="Wind" },
@@ -37,7 +37,6 @@ function define_binds()
   send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
   send_command("alias g15v2_m1g2 gs c cycle WeaponMode")
   send_command("alias g15v2_m1g3 gs c cycle_rune")
-  send_command("alias g15v2_m1g4 gs c cycle IdleMode")
   -- send_command('bind !f9 input /item "Echo Drops" <me>')
   -- send_command('bind !f10 input /item "Remedy" <me>')
   -- send_command('bind !f11 input /item "Holy Water" <me>')
@@ -66,7 +65,25 @@ function get_sets()
   --
   sets.weapons = {
     Lionheart = { main="Lionheart" },
-    Epeo = { main="Epeolatry" }
+    Epeo = { main="Epeolatry" },
+    Hepi = { main="Hepatizon Axe +1" }
+  }
+
+  sets.Idle = {
+    sub="Utu Grip",
+    ammo="Staunch Tathlum +1",    -- 3
+    head="Nyame Helm",            -- 7
+    body="Runeist's Coat +3",   
+    hands="Nyame Gauntlets",      -- 7
+    legs="Carmine Cuisses +1",
+    feet="Nyame Sollerets",       -- 7
+		neck="Futhark Torque +2",     -- 7
+    waist="Flume Belt +1",        -- 4
+    left_ear="Odnowa Earring +1", -- 3
+    right_ear="Eabani Earring",
+    left_ring="Defending Ring",   -- 10
+    right_ring="Gelatinous Ring +1",-- 7
+    back=gear.ogma.tank           -- 10
   }
 
   -- Modes
@@ -86,43 +103,27 @@ function get_sets()
     right_ear="Eabani Earring",
     left_ring="Defending Ring",
     right_ring="Gelatinous Ring +1",
-    back=gear.ogma.tank -- HP/MEVA/PDT
+    back=gear.ogma.tank
   }
-  sets.modes.HybridHeavy = {
+  sets.modes.HybridDD = {
     sub="Utu Grip",
-    ammo="Staunch Tathlum +1",         -- 3 DT
-    head="Aya. Zucchetto +2",          -- 3 DT
-    body="Ayanmo Corazza +2",          -- 6 PDT
-    hands="Turms Mittens +1",
-    legs="Meg. Chausses +2",           -- 6 PDT
-    feet="Turms Leggings +1",
-    neck="Futhark Torque +2",          -- 7 DT
-    waist="Ioskeha Belt +1",
+    ammo="Coiste Bodhar",
+    head="Nyame Helm",
+    body="Ayanmo Corazza +2",
+    hands="Nyame Gauntlets",
+    legs="Meg. Chausses +2",
+    feet="Nyame Sollerets",
+    neck="Anu Torque",
+    waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
-    left_ring="Defending Ring",        -- 10 DT
-    right_ring="Moonlight Ring",       -- 5 DT
-    back=gear.ogma.tp                  -- 10 PDT
-  }                                    -- 50 PDT
-  sets.modes.HybridLight = {
-    sub="Utu Grip",
-    ammo="Aurgelmir Orb +1",
-    head="Adhemar Bonnet +1",
-    body="Ayanmo Corazza +2",          -- 6 PDT
-    hands="Adhemar Wristbands +1",
-    legs="Meg. Chausses +2",           -- 6 PDT
-    feet=augments.herc.feet.triple,    -- 2 PDT
-    neck="Futhark Torque +2",          -- 7 DT
-    waist="Ioskeha Belt +1",
-    left_ear="Brutal Earring",
-    right_ear="Sherida Earring",
-    left_ring="Moonlight Ring",        -- 5 DT
-    right_ring="Moonlight Ring",       -- 5 DT
-    back=gear.ogma.tp                  -- 10 PDT
-  }                                    -- 41 PDT
+    left_ring="Moonlight Ring",
+    right_ring="Moonlight Ring",
+    back=gear.ogma.tp
+  }
   sets.modes.FullDD = {
     sub="Utu Grip",
-    ammo="Aurgelmir Orb +1",
+    ammo="Coiste Bodhar",
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
     hands="Adhemar Wristbands +1",
@@ -137,30 +138,13 @@ function get_sets()
     back=gear.ogma.tp
   }
 
-  -- Idle Sets
-  sets.Idle = {
-    ammo="Staunch Tathlum +1",
-    head="Futhark Bandeau +3 ",
-    body="Runeist's Coat +3",
-    hands="Turms Mittens +1",
-    legs="Carmine Cuisses +1",
-    feet="Turms Leggings +1",
-    neck="Futhark Torque +2",
-    waist="Flume Belt +1",
-    left_ear="Odnowa Earring +1",
-    right_ear="Eabani Earring",
-    left_ring="Defending Ring",
-    right_ring="Gelatinous Ring +1",
-    back=gear.ogma.tank
-  }
-
   -- Weapon Skills
   --
   sets.WS = {}
   sets.WS.Resolution = {
-    ammo="Knobkierrie",
-    head=augments.herc.head.reso,
-    body=augments.herc.body.reso,
+    ammo="Coiste Bodhar",
+    head="Nyame Helm",
+    body="Nyame Mail",
     hands=augments.herc.hands.reso,
     legs="Meg. Chausses +2",
     feet=augments.herc.feet.triple,
@@ -174,26 +158,26 @@ function get_sets()
   }
   sets.WS.Dimidiation = {
     ammo="Knobkierrie",
-    head=augments.herc.head.wsDex,
-    body="Meghanada cuirie +2",
+    head="Nyame Helm",
+    body="Nyame Mail",
     hands="Meg. Gloves +2",
-    legs=augments.herc.legs.wsDex,
-    feet=augments.herc.feet.wsDex,
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
     neck="Caro Necklace",
     waist="Grunfeld Rope",
     left_ear="Moonshade Earring",
     right_ear="Sherida Earring",
-    left_ring="Regal Ring",
-    right_ring="Ilabrat Ring",
+    left_ring="Epaminondas's Ring",
+    right_ring="Regal Ring",
     back=gear.ogma.dimi
   }
   sets.WS['Ground Strike'] = {
     ammo="Knobkierrie",
-    head=augments.herc.head.reso,
-    body=augments.herc.body.reso,
+    head="Nyame Helm",
+    body="Nyame Mail",
     hands="Meg. Gloves +2",
-    legs=augments.herc.legs.wsDex,
-    feet=augments.herc.feet.reso,
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
     neck="Fotia Gorget",
     waist="Fotia Belt",
     left_ear="Moonshade Earring",
@@ -204,11 +188,11 @@ function get_sets()
   }
   sets.WS.Shockwave = {
     ammo="Pemphredo Tathlum",
-    head="Aya. Zucchetto +2",
-    body="Ayanmo Corazza +2",
-    hands="Aya. Manopolas +2",
-    legs="Aya. Cosciales +2",
-    feet="Aya. Gambieras +2",
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
     neck="Sanctity Necklace",
     waist="Eschan Stone",
     left_ear="Dignitary's Earring",
@@ -219,11 +203,11 @@ function get_sets()
   }
   sets.WS['Armor Break'] = {
     ammo="Pemphredo Tathlum",
-    head="Aya. Zucchetto +2",
-    body="Ayanmo Corazza +2",
-    hands="Aya. Manopolas +2",
-    legs="Aya. Cosciales +2",
-    feet="Aya. Gambieras +2",
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
     neck="Sanctity Necklace",
     waist="Eschan Stone",
     left_ear="Dignitary's Earring",
@@ -234,11 +218,11 @@ function get_sets()
   }
   sets.WS['Savage Blade'] = {
     ammo="Knobkierrie",
-    head=augments.herc.head.reso,
-    body=augments.herc.body.reso,
-    hands=augments.herc.hands.reso,
-    legs="Meg. Chausses +2",
-    feet=augments.herc.feet.triple,
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Meg. Gloves +2",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
     neck="Caro Necklace",
     waist="Sailfi Belt +1",
     left_ear="Moonshade Earring",
@@ -282,6 +266,22 @@ function get_sets()
     right_ring="Gelatinous Ring +1",
     back=gear.ogma.enmity
   }
+  sets.JAs.Lunge = {
+    ammo="Pemphredo Tathlum",
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
+    neck="Sanctity Necklace",
+    waist="Orpheus's Sash",
+    left_ear="Trux Earring",
+    right_ear="Friomisi Earring",
+    left_ring="Mujin Band",
+    right_ring="Shiva Ring +1",
+    back=gear.ogma.enmity
+  }
+  sets.JAs['Swipe'] = sets.JAs['Lunge']
 
   -- 2533, 2812
 
@@ -367,15 +367,12 @@ function get_sets()
     left_ring="Defending Ring",
     right_ring="Gelatinous Ring +1"
   })
-  sets.Magic.EnhancingDuration = {
+  sets.Magic.EnhancingDuration = set_combine(sets.Magic.SpellInterrupt, {
     head="Erilaz Galea +1",
     hands="Regal Gauntlets",
     legs="Futhark Trousers +3"
-  }
-  sets.Magic.Barspell = set_combine(
-    sets.Magic.EnhancingSkill,
-    sets.Magic.EnhancingDuration
-  )
+  })
+  sets.Magic.Barspell = sets.Magic.EnhancingSkill
   sets.Magic.Refresh = set_combine(sets.Magic.EnhancingDuration, {
     head="Erilaz Galea +1",
     waist="Gishdubar Sash"
@@ -481,12 +478,24 @@ function midcast(spell)
 end
 
 function aftercast(spell)
-  equip_set_for_current_mode()
+  if player.status == 'Engaged' then
+    equip_set_for_current_mode()
+  else
+    equip(sets.Idle)
+  end
+
+  -- if new == 'Engaged' then
+  --   equip_set_for_current_mode()
+  -- end
+
+  -- equip_set_for_current_mode()
 end
 
 function status_change(new, old)
   if new == 'Engaged' then
     equip_set_for_current_mode()
+  else
+    equip(sets.Idle)
   end
 end
 

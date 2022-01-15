@@ -22,7 +22,7 @@ function get_sets()
   sets.modes = {}
   sets.modes.FullDD = {
     main="Trishula",
-    sub="Bloodrain Strap",
+    sub="Utu Grip",
     ammo="Aurgelmir Orb",
     head="Flam. Zucchetto +2",
     body=augments.valorous.mail.da,
@@ -33,31 +33,13 @@ function get_sets()
     waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
-    left_ring="Dreki Ring",
+    left_ring="Hetairoi Ring",
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.tp
   }
   sets.modes.HybridLight = {
     main="Trishula",
-    sub="Bloodrain Strap",
-    ammo="Aurgelmir Orb",
-    head="Hjarrandi Helm",           -- 10 DT
-    body=augments.valorous.mail.da,  -- 2 PDT
-    hands="Sulev. Gauntlets +2",     -- 5 DT
-    legs=augments.valorous.legs.stp, -- 2 PDT
-    feet="Flam. Gambieras +2",
-    neck="Dgn. Collar +2",           -- Wyvern 20 DT
-    waist="Sailfi Belt +1",
-    left_ear="Brutal Earring",
-    right_ear="Sherida Earring",
-    -- left_ring="Moonbeam Ring",       -- 4 DT
-    left_ring="Dreki Ring",
-    right_ring="Niqmaddu Ring",
-    back=gear.ambuscape.tp           -- 10 PDT
-  }                                  -- 33 PDT
-  sets.modes.HybridHeavy = {
-    main="Trishula",
-    sub="Bloodrain Strap",
+    sub="Utu Grip",
     ammo="Aurgelmir Orb",
     head="Hjarrandi Helm",           -- 10 DT
     body="Hjarrandi Breast.",        -- 12 DT
@@ -68,9 +50,25 @@ function get_sets()
     waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
-    -- left_ring="Moonbeam Ring",       -- 4 DT
-    left_ring="Dreki Ring",
-    right_ring="Gelatinous Ring +1", -- 7 PDT
+    left_ring="Hetairoi Ring",
+    right_ring="Niqmaddu Ring",
+    back=gear.ambuscape.tp           -- 10 PDT
+  }                                  -- 39 PDT
+  sets.modes.HybridHeavy = {
+    main="Trishula",
+    sub="Utu Grip",
+    ammo="Aurgelmir Orb",
+    head="Hjarrandi Helm",           -- 10 DT
+    body="Hjarrandi Breast.",        -- 12 DT
+    hands="Sulev. Gauntlets +2",     -- 5 DT
+    legs="Nyame Flanchard",          -- 8 DT
+    feet="Nyame Sollerets",          -- 7 DT
+    neck="Dgn. Collar +2",           -- Wyvern 20 DT
+    waist="Sailfi Belt +1",
+    left_ear="Brutal Earring",
+    right_ear="Sherida Earring",
+    left_ring="Hetairoi Ring",
+    right_ring="Niqmaddu Ring",  
     back=gear.ambuscape.tp           -- 10 PDT
   }                                  -- 50 PDT
 
@@ -191,14 +189,15 @@ function get_sets()
     hands="Ptero. Fin. G. +3",
     legs="Vishap Brais +3",
     feet="Sulev. Leggings +2",
-    neck="Fotia Gorget",
+    neck="Dgn. Collar +2",
     waist="Sailfi Belt +1",
     left_ear="Thrud Earring",
-    right_ear="Ishvara Earring",
+    right_ear="Moonshade Earring",
     left_ring="Shukuyu Ring",     -- TODO: Regal Ring
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.wsd
   }
+  sets.WS['Savage Blade'] = sets.WS["Camlann's Torment"]
   sets.WS['Wheeling Thrust'] = sets.WS["Camlann's Torment"] -- 80% STR, 1 hit, ignore defense varies w/ TP
   sets.WS['Sonic Thrust'] = set_combine(sets.WS["Camlann's Torment"], { -- 40 STR / 40 DEX, 1 hit CONAL, damage varies w/ TP
     left_ear="Moonshade Earring"

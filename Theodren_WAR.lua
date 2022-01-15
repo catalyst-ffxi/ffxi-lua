@@ -4,8 +4,19 @@ include('augments.lua')
 include('utils.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'HybridLight', 'HybridHeavy'}
+  PrimaryMode = M{['description'] = 'Primary Mode',
+    'Normal',
+    'HybridLight',
+    'HybridHeavy'
+  }
+  WeaponMode = M{['description'] = 'Weapon Mode',
+    'Chango',
+    'ShiningOne',
+    'Naegling',
+    'Loxotic'
+  }
   send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
+  send_command("alias g15v2_m1g2 gs c cycle WeaponMode")
 end
 
 function get_sets()
@@ -19,33 +30,76 @@ function get_sets()
     }
   }
 
+  -- Weapons
+  --
+  sets.weapons = {
+    Chango = { main="Chango", sub="Utu Grip" },
+    ShiningOne = { main="Shining One", sub="Utu Grip" },
+    Naegling = { main="Naegling", sub="Blurred Shield +1" },
+    Loxotic = { main="Loxotic Mace +1", sub="Blurred Shield +1" }
+  }
+
   sets.modes = {}
   sets.modes.Normal = {
-    main="Chango",
-    sub="Utu Grip",
-    ammo="Aurgelmir Orb +1",
-    head="Flam. Zucchetto +2",     --         4 haste
-    body="Agoge Lorica +3",        --         4 haste
-    hands="Sulev. Gauntlets +2",   -- 5 DT    3 haste
-    legs="Pummeler's Cuisses +3",  -- 5 PDT   6 haste
-    feet="Pummeler's Calligae +3", --         4 haste
+    ammo="Coiste Bodhar",
+    head="Flam. Zucchetto +2",
+    body="Sakpata's Breastplate",
+    hands="Sakpata's gauntlets",
+    legs="Pummeler's Cuisses +3",
+    feet="Pummeler's Calligae +3", 
     neck="War. Beads +2",
-    waist="Ioskeha Belt +1",       --         8 haste
-    left_ear="Brutal Earring",
-    right_ear="Cessance Earring",
-    left_ring="Moonlight Ring",    -- 5 DT
-    right_ring="Moonlight Ring",   -- 5 DT
-    back=gear.ambuscape.tp         -- DEX/Acc/Att/Dbl/PDT
-  }                                -- 30 PDT, 100% DA, 52 STP, 29 Haste
-  sets.modes.HybridLight = set_combine(sets.modes.Normal, {
-    head="Hjarrandi Helm",         -- 10 DT
-    left_ear="Dedition Earring"
-  })                               -- 40 PDT, 101% DA, 61 STP, 25 haste
-  sets.modes.HybridHeavy = set_combine(sets.modes.Normal, {
-    ammo="Seething Bomblet +1",
-    head="Hjarrandi Helm",         -- 10 DT
-    body="Hjarrandi Breast.",      -- 12 DT
-  })                               -- 52 PDT, 99% DA, 64 STP, 26 Haste
+    waist="Sailfi Belt +1",
+    left_ear="Schere Earring",
+    right_ear="Telos Earring",
+    left_ring="Niqmaddu Ring", 
+    right_ring="Petrov Ring",
+    back=gear.ambuscape.tp
+  }
+  sets.modes.HybridLight = {
+    ammo="Coiste Bodhar",
+    head="Hjarrandi Helm",
+    body="Sakpata's Breastplate",
+    hands="Sakpata's gauntlets",
+    legs="Pummeler's Cuisses +3",
+    feet="Pummeler's Calligae +3", 
+    neck="War. Beads +2",
+    waist="Sailfi Belt +1",
+    left_ear="Cessance Earring",
+    right_ear="Dedition Earring",
+    left_ring="Niqmaddu Ring", 
+    right_ring="Moonlight Ring",
+    back=gear.ambuscape.tp
+  }
+  sets.modes.HybridHeavy = {
+    ammo="Coiste Bodhar",
+    head="Sakpata's Helm",
+    body="Sakpata's Breastplate",
+    hands="Sakpata's gauntlets",
+    legs="Sakpata's Cuisses",
+    feet="Sakpata's Leggings", 
+    neck="War. Beads +2",
+    waist="Sailfi Belt +1",
+    left_ear="Schere Earring",
+    right_ear="Dedition Earring",
+    left_ring="Niqmaddu Ring", 
+    right_ring="Chirich Ring +1",
+    back=gear.ambuscape.tp
+  }
+  sets.modes.GlassCannon = {
+    ammo="Coiste Bodhar",
+    head="Flam. Zucchetto +2",
+    body="Sakpata's Breastplate",
+    hands="Tatenashi Gote +1",
+    legs="Tatenashi Haidate +1",
+    feet="Tatenashi Sune-Ate +1", 
+    neck="War. Beads +2",
+    waist="Sailfi Belt +1",
+    left_ear="Schere Earring",
+    right_ear="Telos Earring",
+    left_ring="Moonlight Ring", 
+    right_ring="Moonlight Ring",
+    back=gear.ambuscape.tp
+  }
 
   -- Misc
   sets.Idle = {
@@ -65,6 +119,7 @@ function get_sets()
   -- sets.JAs.Defender = { hands="Agoge Mufflers +1" }
   sets.JAs['Mighty Strikes'] = { hands="Agoge Mufflers +1" }
   sets.JAs.Warcry = { head="Agoge Mask +3" }
+  sets.JAs['Blood Rage'] = { body="Boii Lorica" }
 
   -- This is useless - mufflers must be on during TP which just isn't worth doing.
   -- https://www.ffxiah.com/forum/topic/17977/restraint-and-ravager-mufflers-2#1116664
@@ -115,37 +170,23 @@ function get_sets()
     ammo="Knobkierrie",
     head="Agoge Mask +3",
     body="Pumm. Lorica +3",
-    hands=augments.odyssean.hands.wsd, -- vit/acc/att/wsd
-    legs=augments.odyssean.legs.wsd,   -- vit/acc/att/wsd
-    feet="Sulev. Leggings +2",
+    hands="Sakpata's Gauntlets",
+    legs="Sakpata's Cuisses",
+    feet="Nyame Sollerets",
     neck="War. Beads +2",
     waist="Ioskeha Belt +1",
     left_ear="Thrud Earring",
     right_ear="Moonshade Earring",
     left_ring="Niqmaddu Ring",
-    right_ring="Gelatinous Ring +1",
+    right_ring="",
+    -- right_ring="Gelatinous Ring +1",
     back=gear.ambuscape.wsVit -- vit/acc/att/wsd
-  }
-  sets.WS.Upheaval_MS = {
-    ammo="Yetshila +1",
-    head="Agoge Mask +3",
-    body="Pumm. Lorica +3",
-    hands=augments.odyssean.hands.wsd,   -- TODO: Crit augments
-    legs=augments.valorous.hose.crit,    -- vit/acc/att/critdmg
-    feet=augments.valorous.greaves.crit, -- vit/acc/att/critdmg
-    neck="War. Beads +2",
-    waist="Ioskeha Belt +1",
-    left_ear="Brutal Earring",
-    right_ear="Moonshade Earring",
-    left_ring="Niqmaddu Ring",
-    right_ring="Gelatinous Ring +1",
-    back=gear.ambuscape.wsVit
   }
   sets.WS["King's Justice"] = { -- 3-Hit : 50% STR
     ammo="Knobkierrie",
     head="Agoge Mask +3",
     body="Pumm. Lorica +3",
-    hands=augments.valorous.mitts.ws,
+    hands="Nyame Gauntlets",
     legs="Pummeler's Cuisses +3",
     feet="Sulev. Leggings +2",
     neck="War. Beads +2",
@@ -190,7 +231,7 @@ function get_sets()
     ammo="Knobkierrie",
     head="Agoge Mask +3",
     body="Pumm. Lorica +3",
-    hands=augments.valorous.mitts.ws,
+    hands="Nyame Gauntlets",
     legs=augments.odyssean.legs.wsd,
     feet="Sulev. Leggings +2",
     neck="Fotia Gorget",
@@ -205,7 +246,7 @@ function get_sets()
     ammo="Knobkierrie",
     head="Agoge Mask +3",
     body="Pumm. Lorica +3",
-    hands=augments.valorous.mitts.ws,
+    hands="Nyame Gauntlets",
     legs=augments.odyssean.legs.wsd,
     feet="Sulev. Leggings +2",
     neck="War. Beads +2",
@@ -219,10 +260,10 @@ function get_sets()
   sets.WS['Full Break'] = {   -- Single Hit : 50% STR / 50% VIT
     ammo="Pemphredo Tathlum", -- Focus on M.Acc+ for additional effect
     head="Flam. Zucchetto +2",
-    body="Flamma Korazin +2",
+    body="Sakpata's Breastplate",
     hands="Flam. Manopolas +2",
-    legs="Flamma Dirs +2",
-    feet="Flam. Gambieras +2",
+    legs="Sakpata's Cuisses",
+    feet="Sakpata's Leggings", 
     neck="Sanctity Necklace",
     waist="Eschan Stone",
     left_ear="Dignitary's Earring",
@@ -234,6 +275,41 @@ function get_sets()
   sets.WS['Armor Break'] = sets.WS['Full Break']
   sets.WS['Weapon Break'] = sets.WS['Full Break']
   sets.WS['Shield Break'] = sets.WS['Full Break']
+
+  -- Non-gaxe weapon skills
+  sets.WS['Savage Blade'] = {
+    ammo="Knobkierrie",
+    head="Agoge Mask +3",
+    body="Sakpata's Breastplate",
+    hands="Nyame Gauntlets",
+    legs="Sakpata's Cuisses",
+    feet="Sulev. Leggings +2",
+    neck="War. Beads +2",
+    waist="Sailfi Belt +1",
+    left_ear="Thrud Earring",
+    right_ear="Moonshade Earring",
+    left_ring="Niqmaddu Ring",
+    right_ring="Epaminondas's Ring",
+    back=gear.ambuscape.wsStr
+  }
+  sets.WS.Judgment = sets.WS['Savage Blade']
+  sets.WS['Impulse Drive'] = sets.WS['Savage Blade']
+
+  sets.WS['Flash Nova'] = {
+    ammo="Knobkierrie",
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
+    neck="Sanctity Necklace",
+    waist="Orpheus's Sash",
+    left_ear="Moonshade Earring",
+    right_ear="Friomisi Earring",
+    left_ring="Weatherspoon Ring +1",
+    right_ring="Epaminondas's Ring",
+    back=gear.ambuscape.wsStr
+  }
 end
 
 function precast(spell)
@@ -268,36 +344,46 @@ function midcast(spell)
 end
 
 function aftercast(spell)
-  equip(set_for_current_mode())
+  equip(set_for_engaged())
 
   if spell.type == 'WeaponSkill' then
     send_command('wait 0.2; input /echo TP Return: <tp>')
   end
+
+  if player.status == 'Idle' then
+    equip(sets.Idle)
+  end
 end
 
 function status_change(new, old)
-  equip(set_for_current_mode())
+  equip(set_for_engaged())
+  if player.status == 'Idle' then
+    equip(sets.Idle)
+  end
 end
 
 function set_for_ws(named)
-  if named == 'Upheaval' and buffactive['Mighty Strikes'] then
-    return sets.WS.Upheaval_MS
-  elseif sets.WS[named] then
-    return sets.WS[named]
+  if buffactive['Mighty Strikes'] then
+    return set_combine(sets.WS[named], {
+      ammo="Yetshila +1"
+    })
   else
-    return sets.WS.Upheaval
+    return sets.WS[named]
   end
+  -- if named == 'Upheaval' and buffactive['Mighty Strikes'] then
+  --   return sets.WS.Upheaval_MS
+  -- elseif sets.WS[named] then
+  --   return sets.WS[named]
+  -- else
+  --   return sets.WS.Upheaval
+  -- end
 end
 
-function set_for_current_mode()
-  if player.status == 'Engaged' then
-    return sets.modes[PrimaryMode.current]
-  else
-    return set_combine(
+function set_for_engaged()
+  return set_combine(
       sets.modes[PrimaryMode.current],
-      sets.Idle
+      sets.weapons[WeaponMode.current]
     )
-  end
 end
 
 function self_command(commandArgs)
@@ -310,13 +396,15 @@ function self_command(commandArgs)
   end
   command = commandArgs[1]
   if command == 'mode' then
-    equip(sets.modes[PrimaryMode.current])
+    equip(set_for_engaged())
   elseif command == 'cycle' then
     local mode = _G[commandArgs[2]]
     if mode ~= nil and mode._class == 'mode' then
       mode:cycle()
       add_to_chat(122, 'SET [' .. mode.description .. '] to ' .. mode.current)
     end
-    equip(sets.modes[PrimaryMode.current])
+    equip(set_for_engaged())
+  elseif command == 'run' then
+    equip(sets.Idle)
   end
 end

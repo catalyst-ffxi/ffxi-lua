@@ -68,23 +68,39 @@ function get_sets()
 
   -- Mode Sets
   --
-  sets.modes = {}
-  sets.modes.Caster = {
-    main = "Maxentius",
-    sub = "Ammurapi Shield",
-    ammo = "Pemphredo Tathlum",
-    head = "Amalric Coif +1",
-    neck = "Sanctity Necklace",
-    lear = "Malignance Earring",
-    rear = "Regal Earring",
-    body = "Amalric Doublet +1",
-    hands = "Amalric Gages +1",
-    lring = "Shiva Ring +1",
-    rring = "Freke Ring",
-    back = gear.taranus.nuke,
-    waist = "Eschan Stone",
-    legs = "Amalric Slops +1",
-    feet = augments.merlinic.crackows.nuke
+  sets.Idle = {
+    main="Maxentius",
+    sub="Ammurapi Shield",
+    ammo="Homiliary",
+    head="Befouled Crown",
+    body="Amalric Doublet +1",
+    hands="Nyame Gauntlets",
+    legs="Assid. Pants +1",
+    feet="Nyame Sollerets",
+    neck="Loricate Torque +1",
+    waist="Fucho-no-Obi",
+    left_ear="Odnowa Earring +1",
+    right_ear="Etiolation Earring",
+    left_ring="Defending Ring",
+    right_ring="Gelatinous Ring +1",
+    back="Taranus's Cape"
+  }
+  sets.Engaged = {
+    main="Maxentius",
+    sub="Ammurapi Shield",
+    ammo="Homiliary",
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
+    neck="Sanctity Necklace",
+    waist="Windbuffet Belt +1",
+    left_ear="Brutal Earring",
+    right_ear="Telos Earring",
+    left_ring="Hetairoi Ring",
+    right_ring="Chirich Ring +1",
+    back="Taranus's Cape"
   }
 
   -- Base Sets
@@ -116,36 +132,11 @@ function get_sets()
   sets.base.move_speed = {
     legs = "Track Pants +1"
   }
-  sets.base.idle = {
-    main="Maxentius",
-    sub="Ammurapi Shield",
-    ammo="Staunch Tathlum +1",
-    head= "Befouled Crown",
-    neck = "Loricate Torque +1",
-    left_ear = "Etiolation Earring",
-    right_ear="Eabani Earring",
-    body = "Amalric Doublet +1",
-    hands = "Amalric Gages +1",
-    lring = "Gelatinous Ring +1",
-    rring = "Defending Ring",
-    back = gear.taranus.nuke,
-    waist = "Fucho-no-Obi",
-    legs = "Assid. Pants +1",
-    feet = augments.merlinic.crackows.nuke
-  }
-  sets.base.resting = set_combine(sets.modes.Caster, {
-    head = "Befouled Crown",
-    body = "Amalric Doublet +1",
-    waist = "Fucho-no-Obi",
-    legs = "Assid. Pants +1"
-  })
 
   -- Weapon Skills
   --
-  sets.ws = {
-    neck = "Fotia Gorget"
-  }
-  sets.ws.Myrkr = {
+  sets.WS = {}
+  sets.WS.Myrkr = {
     ammo = "Quartz Tathlum +1",
     -- head = "Kaabnax Hat",
     head = "Pixie Hairpin +1",
@@ -164,6 +155,23 @@ function get_sets()
     waist = "Luminary Sash",
     legs = "Spae. Tonban +2",
     feet = "Medium's sabots"
+  }
+  sets.WS['Black Halo'] = {
+    main="Maxentius",
+    sub="Ammurapi Shield",
+    ammo="Homiliary",
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
+    neck="Caro Necklace",
+    waist="Grunfeld Rope",
+    left_ear="Brutal Earring",
+    right_ear="Moonshade Earring",
+    left_ring="Shukuyu Ring",
+    right_ring="Epaminondas's Ring",
+    back="Taranus's Cape"
   }
 
   -- MIDCAST
@@ -360,17 +368,15 @@ end
 function precast(spell)
   precast_cancelations(spell)
 
-  if spell.type == 'JobAbility' then
-    precast_ja(spell)
-
-  elseif spell.action_type == 'Magic' then
-    precast_magic(spell)
+  if spell.action_type == 'Magic' then
+    equip(sets.base.fast_cast)
+    if not (spell.skill == 'Elemental Magic' and NukingMode.current == 'MagicBurst') then
+      equip(sets.base.quick_cast)
+    end
 
   elseif spell.type == 'WeaponSkill' then
-    if sets.ws[spell.english] then
-      equip(sets.ws[spell.english])
-    else
-      equip(sets.ws)
+    if sets.WS[spell.english] then
+      equip(sets.WS[spell.english])
     end
   end
 
@@ -387,22 +393,6 @@ function precast_cancelations(spell)
   elseif spell.english == 'Spectral Jig' then
     cast_delay(0.25)
     send_command('@cancel 71;')
-  end
-end
-
-function precast_ja(spell)
-  if spell.english == 'Convert' then
-    equip(sets.midcast.convert)
-  end
-end
-
-function precast_magic(spell)
-  equip(sets.base.fast_cast)
-  -- add_to_chat(122, spell.skill)
-  -- add_to_chat(122, NukingMode.current)
-  if not (spell.skill == 'Elemental Magic' and NukingMode.current == 'MagicBurst') then
-    -- add_to_chat(122, 'Using quick cast set')
-    equip(sets.base.quick_cast)
   end
 end
 
@@ -485,35 +475,18 @@ function chat(msg)
 end
 
 function aftercast(spell)
-  equip(sets.base.idle)
-  -- if spell.english == 'Convert' then
-  --   send_command('/ma "Cure IV" <me>')
-  -- end
-  -- if player.in_combat then
-  --   equip(sets.aftercast[PrimaryMode.current])
-  -- else
-  --   -- equip(sets.modes[PrimaryMode.current])
-  -- end
-  -- if Capacity.value then
-  --   equip({back = "Mecistopins Mantle"})
-  -- end
+  if player.status == 'Engaged' then
+    equip(sets.Engaged)
+  else
+    equip(sets.Idle)
+  end
 end
-
--- function handle_caster_aftercast()
---   equip(sets.aftercast.Caster)
---   if player.mpp <= 50 then
---     equip({waist = "Fucho-no-Obi"})
---   end
--- end
 
 function status_change(new, old)
   if new == 'Resting' then
-    equip(sets.base.resting)
+    equip(sets.Idle)
   elseif new == 'Engaged' then
-    equip(sets.modes[PrimaryMode.current])
-    if DamageDown.current then
-      equip(sets.modes.DamageDown)
-    end
+    equip(sets.Engaged)
   end
 end
 
@@ -528,7 +501,7 @@ function self_command(commandArgs)
   command = commandArgs[1]
 
   if command == 'mode' then
-    equip_set_for_current_mode()
+    equip(sets.Idle)
   elseif command == 'cycle' then
 
     local mode = _G[commandArgs[2]]
@@ -542,25 +515,12 @@ function self_command(commandArgs)
       end
     end
   elseif command == 'idle' then
-    equip(sets.base.idle)
+    equip(sets.Idle)
   elseif command == 'run' then
-    -- equip_set_for_current_mode()
-    -- equip(sets.base.move_speed)
-    equip(sets.base.idle)
-  -- elseif command == 'exec' then
-  --   local fn = _G[commandArgs[2]]
-  --   if fn ~= nil then
-  --     fn()
-  --   end
+    equip(sets.Idle)
   elseif command == 'auto_aspir' then
     auto_aspir()
   end
-end
-
--- Determine which idle set should be worn at this time
---
-function equip_set_for_current_mode()
-  equip(sets.modes[PrimaryMode.current])
 end
 
 function auto_aspir()

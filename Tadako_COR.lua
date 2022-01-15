@@ -27,18 +27,35 @@ function get_sets()
     }
   }
 
-  -- Modes
+  sets.Idle = {
+    main="Naegling",
+    sub="Gleti's Knife",
+    ranged="Molybdosis",
+    ammo="Orichalc. Bullet",
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Carmine Cuisses +1",
+    feet="Nyame Sollerets",
+    neck="Loricate Torque +1",
+    waist="Flume Belt",
+    left_ear="Flashward Earring",
+    right_ear="Etiolation Earring",
+    left_ring="Gelatinous Ring +1",
+    right_ring="Purity Ring",
+    back=gear.camulus.tp
+  }
+
   sets.Engaged = {}
   sets.Engaged.Normal = {
     main="Naegling",
-    -- sub="Nusku Shield",
-    -- ranged="Molybdosis",
-    ranged="Compensator",
+    sub="Gleti's Knife",
+    ranged="Molybdosis",
     ammo="Orichalc. Bullet",
     head="Adhemar Bonnet",
     body="Adhemar Jacket",
     hands=augments.herc.hands.tp,
-    legs="Samnuha Tights",
+    legs="Meg. Chausses +2",
     feet=augments.herc.feet.tp,
     neck="Iskur Gorget",
     waist="Sailfi Belt +1",
@@ -50,9 +67,8 @@ function get_sets()
   }
   sets.Engaged.Hybrid = {
     main="Naegling",
-    -- sub="Nusku Shield",
-    -- ranged="Molybdosis",
-    ranged="Compensator",
+    sub="Gleti's Knife",
+    ranged="Molybdosis",
     ammo="Orichalc. Bullet",
     head="Adhemar Bonnet",
     body="Adhemar Jacket",
@@ -68,27 +84,6 @@ function get_sets()
     back=gear.camulus.tp
   }
 
-  sets.Idle = {
-    main="Naegling",
-    -- sub="Nusku Shield",
-    ranged="Compensator",
-    -- ranged="Molybdosis",
-    ammo="Orichalc. Bullet",
-    head="Mummu Bonnet +2",
-    body="Mummu Jacket +2",
-    hands="Mummu Wrists +2",
-    legs="Carmine Cuisses +1",
-    feet="Mummu Gamash. +2",
-    neck="Loricate Torque +1",
-    waist="Flume Belt",
-    left_ear="Flashward Earring",
-    right_ear="Etiolation Earring",
-    left_ring="Gelatinous Ring +1",
-    right_ring="Purity Ring",
-    back=gear.camulus.tp
-    -- back="Aptitude Mantle +1"
-  }
-
   -- Weapon Skills
   sets.WS = {}
   sets.WS['Last Stand'] = {
@@ -97,8 +92,8 @@ function get_sets()
     hands="Meg. Gloves +2",
     legs="Meg. Chausses +2",
     feet="Meg. Jam. +2",
-    neck="Iskur Gorget",
-    waist="Eschan Stone",
+    neck="Fotia Gorget",
+    waist="Fotia Belt",
     left_ear="Ishvara Earring",
     right_ear="Moonshade earring",
     left_ring="Mummu Ring",
@@ -106,41 +101,41 @@ function get_sets()
     back=gear.camulus.ws
   }
   sets.WS['Leaden Salute'] = {
-    head=augments.herc.head.magic,
-    body="Samnuha Coat",
-    hands=augments.herc.hands.magic,
-    legs=augments.herc.legs.magic,
-    feet=augments.herc.feet.magic,
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Meg. Gloves +2",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
     neck="Sanctity Necklace",
     waist="Eschan Stone",
     left_ear="Friomisi Earring",
     right_ear="Moonshade Earring",
-    left_ring="Acumen Ring",
+    left_ring="Ilabrat Ring",
     right_ring="Dingir Ring",
     back=gear.camulus.ws
   }
   sets.WS['Wildfire'] = {
-    head=augments.herc.head.magic,
-    body="Samnuha Coat",
-    hands=augments.herc.hands.magic,
-    legs=augments.herc.legs.magic,
-    feet=augments.herc.feet.magic,
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Meg. Gloves +2",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
     neck="Sanctity Necklace",
     waist="Eschan Stone",
     left_ear="Friomisi Earring",
-    right_ear="Ishvara Earring",
-    left_ring="Acumen Ring",
+    right_ear="Moonshade Earring",
+    left_ring="Ilabrat Ring",
     right_ring="Dingir Ring",
     back=gear.camulus.ws
   }
   sets.WS['Savage Blade'] = {
-    head="Meghanada Visor +2",
-    body="Meg. Cuirie +2",
+    head="Nyame Helm",
+    body="Nyame Mail",
     hands="Meg. Gloves +2",
-    legs="Meg. Chausses +2",
-    feet="Meg. Jam. +2",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
     neck="Caro Necklace",
-    waist="Grunfeld Rope",
+    waist="Sailfi Belt +1",
     left_ear="Ishvara Earring",
     right_ear="Moonshade Earring",
     left_ring="Shukuyu Ring",
@@ -159,7 +154,7 @@ function get_sets()
     back="Camulus's Mantle",
   }
   sets.JA['Snake Eye'] = { legs = "Lanun Trews" }
-  sets.JA['Random Deal'] = { body = "Lanun Frac" }
+  sets.JA['Random Deal'] = { body = "Commodore Frac" }
   sets.JA['Wild Card'] = { feet = "Lanun Bottes" }
 
   sets.JA.QuickDraw = { -- MACC+ Gear

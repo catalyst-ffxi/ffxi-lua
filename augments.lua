@@ -117,10 +117,10 @@ augments = {
       treasure = { name="Valorous Mitts", augments={'Attack+5','Pet: STR+6','"Treasure Hunter"+2','Accuracy+14 Attack+14','Mag. Acc.+9 "Mag.Atk.Bns."+9',}}
     },
     hose = {
-      quad = { name="Valor. Hose", augments={'STR+12','VIT+6','Quadruple Attack +3',}},
-      dt = { name="Valor. Hose", augments={'STR+5','AGI+2','Damage taken-2%','Accuracy+20 Attack+20',}},
-      crit = { name="Valor. Hose", augments={'Accuracy+10','Crit. hit damage +2%','VIT+15','Attack+12',}},
-      crit2 = { name="Valor. Hose", augments={'Crit. hit damage +3%','VIT+15',}},
+      quad = { name="Valorous Hose", augments={'STR+12','VIT+6','Quadruple Attack +3',}},
+      dt = { name="Valorous Hose", augments={'STR+5','AGI+2','Damage taken-2%','Accuracy+20 Attack+20',}},
+      crit = { name="Valorous Hose", augments={'Accuracy+10','Crit. hit damage +2%','VIT+15','Attack+12',}},
+      crit2 = { name="Valorous Hose", augments={'Crit. hit damage +3%','VIT+15',}},
     },
     greaves = {
       da = { name="Valorous Greaves", augments={'"Dbl.Atk."+4','INT+8','Accuracy+18 Attack+18',}},

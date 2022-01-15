@@ -3,13 +3,19 @@ include('Modes.lua')
 include('augments.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'FullDD', 'HybridLight', 'HybridHeavy'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'FullDD', 'HybridLight', 'HybridHeavy', 'HybridSB', 'Tatenashi'}
+  WeaponMode = M{['description'] = 'Weapon Mode',
+  'Dojikiri Yasutsuna',
+  'Shining One',
+  'Amanomurakumo'
+}
 end
 
 function define_binds()
   -- Modes
   send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
-  send_command('alias g15v2_m1g2 input /equip main "Dojikiri Yasutsuna"; @wait 0.5; input /equip sub "Utu Grip"')
+  send_command("alias g15v2_m1g2 gs c cycle WeaponMode")
+  -- send_command('alias g15v2_m1g2 input /equip main "Dojikiri Yasutsuna"; @wait 0.5; input /equip sub "Utu Grip"')
 end
 
 function get_sets()
@@ -26,79 +32,126 @@ function get_sets()
 
   sets.modes = {}
   sets.modes.FullDD = {
-    main="Dojikiri Yasutsuna",
     sub="Utu Grip",
-    ammo="Aurgelmir Orb +1",
+    ammo="Coiste Bodhar",
     head="Flam. Zucchetto +2",
     body="Ken. Samue +1",
     hands="Wakido Kote +3",
     legs="Ken. Hakama +1",
     feet="Ken. Sune-Ate +1",
-    neck="Samurai's Nodowa +1",
-    waist="Ioskeha Belt +1",
-    left_ear="Brutal Earring",
+    neck="Sam. Nodowa +2",
+    waist="Sailfi Belt +1",
+    left_ear="Schere Earring",
     right_ear="Dedition Earring",
     left_ring="Chirich Ring +1",
     right_ring="Niqmaddu Ring",
     back=gear.smertrios.tp
   }
-  sets.modes.HybridLight = set_combine(sets.modes.FullDD, {
-    head="Ken. Jinpachi +1",
+  sets.modes.HybridLight = {
+    sub="Utu Grip",
+    ammo="Coiste Bodhar",
+    head="Mpaca's Cap",            -- 7 PDT
     body="Wakido Domaru +3",       -- 8 DT
-    right_ear="Odnowa Earring +1", -- 3 DT
-    right_ring="Defending Ring",   -- 10 DT
-  })                               -- 31 PDT
-  sets.modes.HybridHeavy = set_combine(sets.modes.FullDD, {
-    ammo="Staunch Tathlum +1",     -- 3 DT
-    head="Ken. Jinpachi +1",
+    hands="Wakido Kote +3",
+    legs="Ken. Hakama +1",
+    feet="Ken. Sune-Ate +1",
+    neck="Sam. Nodowa +2",
+    waist="Sailfi Belt +1",
+    left_ear="Schere Earring",
+    right_ear="Dedition Earring",
+    left_ring="Defending Ring",    -- 10 DT
+    right_ring="Niqmaddu Ring",
+    back=gear.smertrios.tp         -- 10 PDT
+  }                                -- 35 PDT
+  sets.modes.HybridHeavy = {
+    sub="Utu Grip",
+    ammo="Coiste Bodhar",
+    head="Mpaca's Cap",            -- 7 PDT
     body="Wakido Domaru +3",       -- 8 DT
-    neck="Loricate Torque +1",     -- 6 DT
-    waist="Flume Belt +1",         -- 4 PDT
-    right_ear="Odnowa Earring +1", -- 3 DT
-    left_ring="Gelatinous Ring +1",-- 7 PDT
-    right_ring="Defending Ring",   -- 10 DT
-  })                               -- 50 PDT
+    hands="Wakido Kote +3",
+    legs="Mpaca's Hose",           -- 9 DT
+    feet="Mpaca's Boots",          -- 6 DT
+    neck="Sam. Nodowa +2",
+    waist="Sailfi Belt +1",
+    left_ear="Schere Earring",
+    right_ear="Dedition Earring",
+    left_ring="Defending Ring",    -- 10 DT
+    right_ring="Niqmaddu Ring",
+    back=gear.smertrios.tp         -- 10 PDT
+  }                                -- 50 PDT
+  sets.modes.HybridSB = {
+    sub="Utu Grip",
+    ammo="Staunch Tathlum +1",
+    head="Kendatsuba Jinpachi +1",
+    body="Wakido Domaru +3",
+    hands="Wakido Kote +3",
+    legs="Mpaca's Hose",
+    feet="Kendatsuba Sune-Ate +1",
+    neck="Sam. Nodowa +2",
+    waist="Sailfi Belt +1",
+    left_ear="Schere Earring",
+    right_ear="Dedition Earring",
+    left_ring="Defending Ring",
+    right_ring="Niqmaddu Ring",
+    back=gear.smertrios.tp
+  }
+  sets.modes.Tatenashi = {
+    sub="Utu Grip",
+    ammo="Coiste Bodhar",
+    head="Flam. Zucchetto +2",
+    body="Ken. Samue +1",
+    hands="Wakido Kote +3",
+    legs="Tatena. Haidate +1",
+    feet="Ryuo Sune-Ate +1",
+    neck="Sam. Nodowa +2",
+    waist="Sailfi Belt +1",
+    left_ear="Schere Earring",
+    right_ear="Dedition Earring",
+    left_ring="Chirich Ring +1",
+    right_ring="Niqmaddu Ring",
+    back=gear.smertrios.tp
+  }
 
   -- Weapon Skills
   --
   sets.WS = {}
   sets.WS['Tachi: Fudo'] = {
     ammo="Knobkierrie",
-    head=augments.valorous.mask.ws,
-    neck="Samurai's Nodowa +1",
+    head="Mpaca's Cap",
+    neck="Sam. Nodowa +2",
     lear="Thrud Earring",
     rear="Moonshade earring",
     body="Sakonji Domaru +3",
-    hands=augments.valorous.mitts.ws,
-    lring="Regal Ring",
-    rring="Niqmaddu Ring",
+    hands="Nyame Gauntlets",
+    lring="Epaminondas's Ring",
+    rring="Regal Ring",
     back=gear.smertrios.ws,
     waist="Sailfi Belt +1",
     legs="Wakido Haidate +3",
-    feet=augments.valorous.greaves.ws
+    feet="Nyame Sollerets"
   }
   sets.WS['Tachi: Shoha'] = {
     ammo="Knobkierrie",
-    head="Flam. Zucchetto +2",
-    neck="Samurai's Nodowa +1",
+    head="Mpaca's Cap",
+    neck="Sam. Nodowa +2",
     lear="Thrud Earring",
     rear="Moonshade earring",
     body="Sakonji Domaru +3",
-    hands=augments.valorous.mitts.ws,
-    lring="Regal Ring",
-    rring="Niqmaddu Ring",
+    hands="Nyame Gauntlets",
+    lring="Epaminondas's Ring",
+    rring="Regal Ring",
     back=gear.smertrios.ws,
     waist="Sailfi Belt +1",
     legs="Wakido Haidate +3",
-    feet="Flam. Gambieras +2"
+    feet="Nyame Sollerets"
   }
   sets.WS['Tachi: Ageha'] = {
     ammo="Pemphredo Tathlum",
-    head="Flam. Zucchetto +2",
-    body="Flamma Korazin +2",
-    hands="Flam. Manopolas +2",
-    legs="Flamma Dirs +2",
-    feet="Flam. Gambieras +2",
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
     neck="Sanctity Necklace",
     waist="Eschan Stone",
     left_ear="Dignitary's Earring",
@@ -108,24 +161,41 @@ function get_sets()
     back=gear.smertrios.ws,
   }
   sets.WS['Tachi: Jinpu'] = {
-    ammo="Pemphredo Tathlum",
-    head=augments.valorous.mask.ws,
-    body="Sakonji Domaru +3",
-    hands="Founder's Gauntlets",
-    legs="Wakido Haidate +3",
-    feet="Founder's Greaves",
-    neck="Sanctity Necklace",
+    ammo="Knobkierrie",
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
+    neck="Sam. Nodowa +2",
     waist="Orpheus's Sash",
     left_ear="Friomisi earring",
     right_ear="Moonshade earring",
-    left_ring="Regal Ring",
-    right_ring="Epaminondas's Ring",
+    left_ring="Epaminondas's Ring",
+    right_ring="Regal Ring",
     back=gear.smertrios.ws
   }
   sets.WS['Tachi: Kagero'] = sets.WS['Tachi: Jinpu']
-  sets.WS['Tachi: Koki'] = set_combine(sets.WS['Tachi: Kagero'], {
+  sets.WS['Tachi: Goten'] = sets.WS['Tachi: Jinpu']
+  sets.WS['Tachi: Koki'] = set_combine(sets.WS['Tachi: Jinpu'], {
     left_ring="Weatherspoon Ring +1"
   })
+  sets.WS['Tachi: Kaiten'] = sets.WS['Tachi: Fudo']
+  sets.WS['Impulse Drive'] = sets.WS['Tachi: Fudo']
+  sets.WS['Empyreal Arrow'] = {
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Wakido Haidate +3",
+    feet="Nyame Sollerets",
+    neck="Sam. Nodowa +2",
+    waist="Fotia Belt",
+    left_ear="Thrud earring",
+    right_ear="Moonshade earring",
+    left_ring="Regal Ring",
+    right_ring="Epaminondas's Ring",
+    back=gear.smertrios.ws  
+  }
 
   -- Job Abilities
   --
@@ -241,10 +311,14 @@ end
 
 function set_for_engaged()
   local set = sets.modes[PrimaryMode.current]
+
   if buffactive.Doom then
     set = set_combine(set, sets.Doom)
   end
-  return set
+
+  return set_combine(
+    set, { main = WeaponMode.current }
+  )
 end
 
 function set_for_ws(named)

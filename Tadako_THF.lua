@@ -2,7 +2,7 @@ include('Modes.lua')
 include('augments_tadako.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'FullTH', 'FullDD', 'Hybrid'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'FullDD', 'FullTH', 'Hybrid'}
   Capacity = M(false, 'Capacity Mantle')
 end
 
@@ -51,8 +51,9 @@ function get_sets()
     main="Aeneas",
     sub="Taming Sari",
     -- sub="Sandung",
-    ranged="Exalted Crossbow +1",
-    ammo="Gashing Bolt",
+    -- ranged="Exalted Crossbow +1",
+    -- ammo="Gashing Bolt",
+    ammo="Aurgelmir Orb",
     head="Skormoth Mask",
     body="Pillager's Vest +3",
     hands=augments.herc.hands.tp,
@@ -122,14 +123,14 @@ function get_sets()
     head=augments.herc.head.magic,
     body=augments.herc.body.magic,
     hands=augments.herc.hands.magic,
-    legs=augments.herc.legs.magic,
+    legs="Nyame Flanchard",
     feet=augments.herc.feet.magic,
     neck="Sanctity Necklace",
     waist="Orpheus's Sash",
     left_ear="Moonshade Earring",
     right_ear="Friomisi Earring",
     left_ring="Vertigo Ring",
-    right_ring="Acumen Ring",
+    right_ring="Mummu Ring",
     back=gear.toutatis.magic,
   }
 
@@ -189,7 +190,8 @@ function precast(spell)
     equip(sets.Magic.Precast)
 
   elseif spell.type == 'WeaponSkill' then
-    equip(sets.WS[spell.english] or sets.WS.Rudra)
+    -- equip(sets.WS[spell.english] or sets.WS.Rudra)
+    equip(sets.WS[spell.english])
 
   elseif spell.english == "Ranged" then
     equip(sets.Preshot)

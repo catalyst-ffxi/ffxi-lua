@@ -4,20 +4,9 @@ include('augments.lua')
 include('utils.lua')
 
 function define_modes()
-  -- PrimaryMode = M{
-  --   ['description'] = 'Primary Mode',
-  --   'EnspellTP',
-  --   'PhysicalTP',
-  --   'MaxentiusTP',
-  --   'EnspellDaggerTP'
-  -- }
-
   PrimaryMode = M{
     ['description'] = 'Primary Mode',
-    'CrocDaybreak',
-    'CrocTauret',
-    'Naegling',
-    'Maxentius'
+    'PhysicalTP'
   }
 
   NukingMode = M{['description'] = 'Nuking Mode', 'Normal', 'MagicBurst'}
@@ -62,6 +51,7 @@ function define_aliases()
 end
 
 function get_sets()
+  send_command('lua load debuffed')
   define_modes()
   define_aliases()
 
@@ -96,9 +86,9 @@ function get_sets()
 
   -- Engaged sets
   sets.Engaged = {}
-  sets.Engaged.Naegling = {
+  sets.Engaged.PhysicalTP = {
     main="Naegling",
-    sub="Machaera +2",
+    sub="Tauret",
     ammo="Coiste Bodhar",
     head="Malignance Chapeau",
     body="Malignance Tabard",
@@ -112,22 +102,6 @@ function get_sets()
     left_ring="Hetairoi Ring",
     right_ring="Chirich Ring +1",
     back=gear.sucellos.dualWield
-  }
-  sets.Engaged.Maxentius = set_combine(sets.Engaged.Naegling, {
-    main="Maxentius"
-  })
-  sets.Engaged.CrocDaybreak = set_combine(sets.Engaged.Naegling, {
-    main="Crocea Mors",
-    sub="Daybreak",
-    hands="Aya. Manopolas +2",
-    waist="Orpheus's Sash"
-  })
-  sets.Engaged.CrocTauret = set_combine(sets.Engaged.CrocDaybreak, {
-    sub="Tauret"
-  })
-
-  sets.Hybrid = {
-    left_ring="Defending Ring"
   }
 
   -- Job Abilities
@@ -165,7 +139,7 @@ function get_sets()
   sets.Magic.Healing = {
     ammo="Regal Gem",             -- MND
     head="Vanya Hood",            -- 10%, Skill
-    body="Kaykaus Bliaut +1",     -- CP II
+    body="Viti. Tabard +3",       -- Skill
     hands="Kaykaus Cuffs +1",     -- 11%, MND
     legs="Atrophy Tights +3",     -- 12%, Skill
     feet="Vanya Clogs",           -- 5%, Skill
@@ -180,14 +154,14 @@ function get_sets()
   sets.Magic.HealingSelf = {
     ammo="Regal Gem",           -- MND
     head="Vanya Hood",          -- 10%, Skill
-    body="Kaykaus Bliaut +1",   -- CP II
+    body="Viti. Tabard +3",     -- Skill
     hands="Kaykaus Cuffs +1",   -- 11%, MND
     legs="Atrophy Tights +3",   -- 12%, Skill
     feet="Vanya Clogs",         -- 5%, Skill
     neck="Phalaina Locket",     -- 4% self
     waist="Gishdubar Sash",     -- 10% self
     left_ear="Regal Earring",   -- MND
-    right_ear="Mendi. Earring", -- 5%
+    right_ear="Malignance Earring",-- MND
     left_ring='Kunaji Ring',    -- 5% self
     right_ring="Stikini Ring +1",-- Skill, MND
     back=gear.sucellos.enfeeble -- 10%
@@ -300,13 +274,11 @@ function get_sets()
     legs="Chironic Hose",
     feet="Vitiation Boots +3",
     neck="Duelist's Torque +2",
-    -- waist="Luminary Sash",
-    waist="Obstinate Sash",
+    waist="Luminary Sash",
     left_ear="Snotra Earring",
     right_ear="Regal Earring",
     left_ring="Stikini Ring +1",
-    right_ring="Kishar Ring",
-    -- right_ring="Stikini Ring +1",
+    right_ring="Stikini Ring +1",
     back=gear.sucellos.enfeeble -- MND+20/Macc+30
   }
   -- Slow2/Paralyze2/Addle2/Blind2:
@@ -328,26 +300,13 @@ function get_sets()
     back=gear.sucellos.enfeeble
   }
   -- Distract3/Frazzle3:
-  -- sets.Magic.EnfeebleSkill = set_combine(sets.Magic.EnfeeblePotency, {
-  --   main="Contemplator +1",
-  --   sub="Mephitis Grip",
-  --   waist="Rumination Sash",
-  --   right_ear="Vor Earring"
-  -- })
-  -- Frazzle III skill cap is 625
-  sets.Magic.Frazzle3 = set_combine(sets.Magic.EnfeeblePotency, {
+  sets.Magic.EnfeebleSkill = set_combine(sets.Magic.EnfeeblePotency, {
     main="Contemplator +1",
     sub="Mephitis Grip",
+    legs="Psycloth Lappas",
     waist="Rumination Sash",
     right_ear="Vor Earring"
   })
-  -- Distract III skill cap is 610
-  sets.Magic.Distract3 = set_combine(sets.Magic.EnfeeblePotency, {
-    main="Contemplator +1",
-    sub="Enki Strap",
-    waist="Rumination Sash"
-  })
-
   -- Dia (maximize duration):
   sets.Magic.EnfeebleDia = {
     ammo="Regal Gem",
@@ -435,30 +394,17 @@ function get_sets()
     back="Perimede Cape"
   }
 
-  -- Enmity...?! Why not!
-  --
-  sets.Enmity = {
-    ammo="Sapience Orb",           -- 2
-    head="Halitus Helm",           -- 8
-    left_ear="Trux Earring",       -- 5
-    right_ear="Friomisi Earring",  -- 2
-    body="Emet Harness +1",        -- 10
-    left_ring="Supershear Ring",   -- 5
-    right_ring="Eihwaz Ring",      -- 5
-    waist="Kasiri Belt",           -- 3
-  }
-  sets.Magic['Kurayami: Ichi'] = sets.Enmity
-  sets.Magic['Hojo: Ichi'] = sets.Enmity
-  sets.Magic['Dokumori: Ichi'] = sets.Enmity
-  sets.Magic['Jubaku: Ichi'] = sets.Enmity
-
   -- Weapon Skill
   sets.WS = {}
   sets.WS['Savage Blade'] = {
     ammo="Coiste Bodhar",
-    head="Nyame Helm",
+    head="Viti. Chapeau +3",
+    -- body="Viti. Tabard +3",
+    -- hands="Atrophy Gloves +3",
+    -- legs="Jhakri slops +2",
+    -- feet="Jhakri pigaches +2",
     body="Nyame Mail",
-    hands="Nyame Gauntlets",
+    hands="Atrophy Gloves +3",
     legs="Nyame Flanchard",
     feet="Nyame Sollerets",
     neck="Duelist's Torque +2",
@@ -470,10 +416,15 @@ function get_sets()
     back=gear.sucellos.savage
   }
   sets.WS['Black Halo'] = {
-    ammo="Coiste Bodhar",
-    head="Nyame Helm",
+    ammo="Regal Gem",
+    head="Viti. Chapeau +3",
+    -- body="Viti. Tabard +3",
+    -- hands="Atrophy Gloves +3",
+    -- legs="Jhakri slops +2",
+    -- feet="Jhakri pigaches +2",
+    -- head="Nyame Helm",
     body="Nyame Mail",
-    hands="Nyame Gauntlets",
+    hands="Atrophy Gloves +3",
     legs="Nyame Flanchard",
     feet="Nyame Sollerets",
     neck="Duelist's Torque +2",
@@ -484,7 +435,10 @@ function get_sets()
     right_ring="Epaminondas's Ring",
     back=gear.sucellos.savage
   }
-  sets.WS['Circle Blade'] = sets.WS['Savage Blade']
+  sets.WS['Circle Blade'] = {
+    right_ear="Moonshade Earring"
+  }
+  -- sets.WS['Circle Blade'] = sets.WS['Savage Blade']
   sets.WS.Requiescat = {
     ammo="Regal Gem",
     head="Viti. Chapeau +3",
@@ -502,10 +456,10 @@ function get_sets()
   }
   sets.WS['Chant du Cygne'] = {
     ammo="Yetshila +1",
-    head="Malignance Chapeau",     -- Blistering Sallet +1 augmented
+    head="Malignance Chapeau",
     body="Ayanmo Corazza +2",
     hands="Malignance Gloves",
-    legs="Ayanmo Cosciales +2",    -- Zoar Subligar +1 augmented
+    legs="Ayanmo Cosciales +2",
     feet="Thereoid Greaves",
     neck="Fotia Gorget",
     waist="Fotia Belt",
@@ -524,7 +478,24 @@ function get_sets()
     legs="Nyame Flanchard",
     feet="Nyame Sollerets",
     neck="Sanctity Necklace",
-    waist="Orpheus's Sash",
+    -- waist="Orpheus's Sash",
+    waist="Eschan Stone",
+    left_ear="Regal Earring",
+    right_ear="Malignance Earring",
+    left_ring="Freke Ring",
+    right_ring="Archon Ring",
+    back=gear.sucellos.sanguine
+  }
+  sets.WS['Sanguine Blade'] = {
+    ammo="Pemphredo Tathlum",
+    head="Pixie Hairpin +1",
+    body="Amalric Doublet +1",
+    hands="Jhakri Cuffs +2",
+    legs="Amalric Slops +1",
+    feet="Amalric Nails +1",
+    neck="Sanctity Necklace",
+    -- waist="Orpheus's Sash",
+    waist="Eschan Stone",
     left_ear="Regal Earring",
     right_ear="Malignance Earring",
     left_ring="Freke Ring",
@@ -533,11 +504,11 @@ function get_sets()
   }
   sets.WS['Seraph Blade'] = {
     ammo="Pemphredo Tathlum",
-    head="Nyame Helm",
-    body="Nyame Mail",
+    head="C. Palug Crown",
+    body="Amalric Doublet +1",
     hands="Jhakri Cuffs +2",
-    legs="Nyame Flanchard",
-    feet="Nyame Sollerets",
+    legs="Amalric Slops +1",
+    feet="Amalric Nails +1",
     neck="Sanctity Necklace",
     waist="Orpheus's Sash",
     left_ear="Malignance Earring",
@@ -549,20 +520,20 @@ function get_sets()
   sets.WS['Red Lotus Blade'] = set_combine(sets.WS['Seraph Blade'], { right_ring="Epaminondas's Ring" })
   sets.WS['Burning Blade'] = sets.WS['Red Lotus Blade']
   sets.WS['Aeolian Edge'] = sets.WS['Red Lotus Blade']
-  sets.WS['Death Blossom'] = sets.WS['Savage Blade']
-  sets.WS['Empyreal Arrow'] = {
-    head="Nyame Helm",
-    body="Nyame Mail",
-    hands="Nyame Gauntlets",
-    legs="Nyame Flanchard",
-    feet="Nyame Sollerets",
-    neck="Fotia Gorget",
-    waist="Fotia Belt",
-    left_ear="Telos Earring",
-    right_ear="Enervating Earring",
-    left_ring="Epaminondas's Ring",
-    right_ring="Ilabrat Ringlet",
-    back=gear.sucellos.savage
+  sets.WS['Death Blossom'] = {  -- Macc+ build
+    ammo="Regal Gem",
+    head="Viti. Chapeau +3",
+    body="Atrophy Tabard +3",
+    hands="Jhakri Cuffs +2",
+    legs="Chironic Hose",
+    feet="Vitiation Boots +3",
+    neck="Dls. Torque +1",
+    waist="Luminary Sash",
+    left_ear="Regal Earring",
+    right_ear="Moonshade Earring",
+    left_ring="Stikini Ring +1",
+    right_ring="Stikini Ring +1",
+    back=gear.sucellos.sanguine,
   }
 end
 
@@ -571,13 +542,6 @@ function precast(spell)
 
   if spell.type == 'WeaponSkill' then
     equip(sets.WS[spell.english] or sets.WS['Savage Blade'])
-
-    if spell.english == 'Sanguine Blade' or
-       spell.english == 'Seraph Blade' or
-       spell.english == 'Red Lotus Blade' or
-       spell.english == 'Burning Blade' then
-      equip_elemental_waist(spell)
-    end
 
   elseif spell.type == "JobAbility" then
     equip(sets.JAs[spell.english])
@@ -610,15 +574,9 @@ function midcast(spell)
 
   if string.find(eng, 'Cure') and spell.target.type == 'SELF' then
     equip(sets.Magic.HealingSelf)
-    if get_total_element_intensity('Light') > 0 then
-      equip({waist="Hachirin-no-Obi"})
-    end
 
   elseif string.find(eng, 'Cure') or string.find(eng, 'Curaga') then
     equip(sets.Magic.Healing)
-    if get_total_element_intensity('Light') > 0 then
-      equip({waist="Hachirin-no-Obi"})
-    end
 
   elseif spell.skill == 'Enhancing Magic' then
     local set
@@ -646,11 +604,7 @@ function midcast(spell)
     elseif eng == 'Phalanx' then
       equip(sets.Magic.Phalanx)
     elseif starts_with(eng, 'En') or string.find(eng, 'Temper') then
-      if dual_wield_job() == true then
-        equip(set_combine(sets.Magic.EnhancingSkill, { sub="Pukulatmuj" }))
-      else
-        equip(sets.Magic.EnhancingSkill)
-      end
+      equip(sets.Magic.EnhancingSkill)
     end
 
   elseif spell.skill == 'Enfeebling Magic' then
@@ -690,17 +644,13 @@ function set_for_enfeeble(name)
   if S{'Dia', 'Dia II', 'Dia III'}:contains(name) then
     set = sets.Magic.EnfeebleDia
 
-  -- Dispelga (Macc + Daybreak)
-  elseif name == 'Dispelga' then
-    set = set_combine(sets.Magic.EnfeebleAccuracy, { main = "Daybreak", sub = "Ammurapi Shield" })
+  -- -- Dispelga (Macc + Daybreak)
+  -- elseif name == 'Dispelga' then
+  --   set = set_combine(sets.Magic.EnfeebleAccuracy, { main = "Daybreak", sub = "Ammurapi Shield" })
 
-  -- Frazzle skill cap
-  elseif S{'Frazzle III', 'Poison II'}:contains(name) then
-    set = sets.Magic.Frazzle3
-
-  -- Distract skill cap
-  elseif name == 'Distract III' then
-    set = sets.Magic.Distract3
+  -- Spells affected by skill
+  elseif S{'Distract III', 'Frazzle III', 'Poison II'}:contains(name) then
+    set = sets.Magic.EnfeebleSkill
 
   -- General potency spells
   elseif S{'Paralyze', 'Paralyze II', 'Slow', 'Slow II', 'Addle', 'Addle II', 'Blind', 'Blind II'}:contains(name) then
@@ -717,9 +667,9 @@ function set_for_enfeeble(name)
   end
 
   -- Equip shield of not able to dual wield
-  if dual_wield_job() == false and set.sub == 'Daybreak' then
-    set.sub = 'Ammurapi Shield'
-  end
+  -- if dual_wield_job() == false and set.sub == 'Daybreak' then
+  --   set.sub = 'Ammurapi Shield'
+  -- end
 
   return set
 end
@@ -760,15 +710,6 @@ function self_command(commandArgs)
 
   elseif command == 'run' then
     equip(set_for_current_mode())
-
-  elseif command == 'savage_black_halo' then
-    if player.equipment.main == 'Maxentius' then
-      send_command('@input /ws "Black Halo" <t>')
-      -- add_to_chat(122, 'Black Halo')
-    else
-      send_command('@input /ws "Savage Blade" <t>')
-      -- add_to_chat(122, 'Savage Blade')
-    end
   end
 end
 
@@ -780,9 +721,6 @@ function set_for_current_mode()
     if player.mpp < 50 then
       set.waist = 'Fucho-no-Obi'
     end
-    -- if player.equipment.ranged ~= 'Ullr' then
-      set.ammo = 'Homiliary'
-    -- end
     return set
   end
 end
@@ -790,29 +728,29 @@ end
 function set_for_engaged()
   local set = sets.Engaged[PrimaryMode.current]
 
-  -- Equip shield and back if single wielding
-  if dual_wield_job() == false then
-    set = set_combine(set, {
-      sub="Ammurapi Shield",
-      back=gear.sucellos.singleWield
-    })
-  end
+  -- -- Equip shield and back if single wielding
+  -- if dual_wield_job() == false then
+  --   set = set_combine(set, {
+  --     sub="Ammurapi Shield",
+  --     back=gear.sucellos.singleWield
+  --   })
+  -- end
 
-  -- Equip additional DT gear
-  if Hybrid.value == true then
-    set = set_combine(set, sets.Hybrid)
-  end
+  -- -- Equip additional DT gear
+  -- if Hybrid.value == true then
+  --   set = set_combine(set, sets.Hybrid)
+  -- end
 
-  -- Equip elemental obi if enspell matches day/weather
-  if set.waist == "Orpheus's Sash" then
-    local element = active_enspell()
-    if element ~= nil then
-      local intensity = get_total_element_intensity(element)
-      if intensity >= 2 then
-        set.waist = "Hachirin-no-Obi"
-      end
-    end
-  end
+  -- -- Equip elemental obi if enspell matches day/weather
+  -- if set.waist == "Orpheus's Sash" then
+  --   local element = active_enspell()
+  --   if element ~= nil then
+  --     local intensity = get_total_element_intensity(element)
+  --     if intensity >= 2 then
+  --       set.waist = "Hachirin-no-Obi"
+  --     end
+  --   end
+  -- end
 
   return set
 end

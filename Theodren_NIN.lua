@@ -47,7 +47,7 @@ function get_sets()
   sets.modes.FullDD = {
     -- main="Heishi Shorinken",
     -- sub="Ochu",
-    ammo="Aurgelmir Orb +1",
+    ammo="Coiste Bodhar",
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
     hands="Adhemar Wristbands +1",
@@ -88,12 +88,12 @@ function get_sets()
   --
   sets.WS = {}
   sets.WS['Blade: Ten'] = { -- 30 DEX / 30 STR, 1 hit, dmg varies w/ TP
-    ammo="Aurgelmir Orb +1",
-    head=augments.herc.head.wsDex,
+    ammo="Coiste Bodhar",
+    head="Nyame Helm",
     body="Adhemar Jacket +1",
     hands="Adhemar Wristbands +1",
-    legs=augments.herc.legs.wsDex,
-    feet=augments.herc.feet.wsDex,
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
     neck="Caro Necklace",
     waist="Sailfi Belt +1",
     left_ear="Moonshade Earring",
@@ -103,7 +103,7 @@ function get_sets()
     back="Andartia's Mantle",
   }
   sets.WS['Blade: Shun'] = { -- 85 DEX, 5 hit, attack varies w/ TP
-    ammo="Aurgelmir Orb +1",
+    ammo="Coiste Bodhar",
     head="Adhemar Bonnet +1",
     -- body="Ken. Samue +1",
     body="Adhemar Jacket +1",

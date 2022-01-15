@@ -34,68 +34,71 @@ function get_sets()
   sets.modes = {}
   sets.modes.FullDD = {
     main="Godhands",
-    ammo="Aurgelmir Orb +1",
+    ammo="Coiste Bodhar",
     head="Adhemar Bonnet +1",
     body="Ken. Samue +1",
     hands="Adhemar Wristbands +1",
     legs="Ken. Hakama +1",
     feet="Anch. Gaiters +3",
     neck="Anu Torque",
-    waist="Moonbow Belt",
+    waist="Moonbow Belt +1",
     left_ear="Sherida Earring",
-    right_ear="Brutal Earring",
+    right_ear="Schere Earring",
     left_ring="Gere Ring",
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.tp
   }
   sets.modes.HybridLight = {
     main="Godhands",
-    ammo="Aurgelmir Orb +1",
+    ammo="Coiste Bodhar",
     head="Ken. Jinpachi +1",
     body="Ken. Samue +1",
     hands="Malignance Gloves",  -- 5 DT
-    legs="Malignance Tights",   -- 7 DT
-    feet="Ken. Sune-Ate +1",
+    legs="Mpaca's Hose",        -- 9 PDT
+    feet="Malignance Boots",    -- 4 DT
     neck="Anu Torque",
-    waist="Moonbow Belt",       -- 5 DT
+    waist="Moonbow Belt +1",    -- 6 DT
     left_ear="Sherida Earring",
-    right_ear="Brutal Earring",
+    right_ear="Schere Earring",
     left_ring="Gere Ring",
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.tp      -- 10 PDT
-  }                             -- 27 PDT
+  }                             -- 34 PDT
   sets.modes.HybridHeavy = {
     main="Godhands",
-    ammo="Staunch Tathlum +1",  -- 3 DT
+    ammo="Coiste Bodhar",
     head="Ken. Jinpachi +1",
     body="Ken. Samue +1",
     hands="Malignance Gloves",  -- 5 DT
-    legs="Malignance Tights",   -- 7 DT
-    feet="Ken. Sune-Ate +1",
-    neck="Anu Torque",
-    waist="Moonbow Belt",       -- 5 DT
+    legs="Mpaca's Hose",        -- 9 PDT
+    feet="Malignance Boots",    -- 4 DT
+    neck="Loricate Torque +1",  -- 6 DT
+    waist="Moonbow Belt +1",    -- 6 DT
     left_ear="Sherida Earring",
-    right_ear="Brutal Earring",
-    left_ring="Defending Ring", -- 10 DT
-    right_ring="Niqmaddu Ring",
+    right_ear="Schere Earring",
+    left_ring="Gere Ring",
+    right_ring="Defending Ring",-- 10 DT
     back=gear.ambuscape.tp      -- 10 PDT
-  }                             -- 40 PDT
+  }                             -- 50 PDT
   
   -- Misc
+  -- sets.Idle = {
+  --   ammo="Staunch Tathlum +1",     -- 3 DT
+  --   head="Malignance Chapeau",     -- 6 DT
+  --   body="Malignance Tabard",      -- 9 DT
+  --   hands="Malignance Gloves",     -- 5 DT
+  --   legs="Malignance Tights",      -- 7 DT
+  --   feet="Hermes' Sandals",        -- Movement speed
+  --   neck="Loricate Torque +1",     -- 6 DT
+  --   waist="Moonbow Belt +1",          -- 5 DT
+  --   left_ear="Eabani Earring",     -- 8 Meva
+  --   right_ear="Odnowa Earring +1", -- 2 MDT, 3 DT
+  --   left_ring="Defending Ring",    -- 10 DT
+  --   right_ring="Purity Ring",      -- 4 MDT, 10 Meva
+  --   back=gear.ambuscape.tp         -- 10 PDT
+  -- }
   sets.Idle = {
-    ammo="Staunch Tathlum +1",     -- 3 DT
-    head="Malignance Chapeau",     -- 6 DT
-    body="Malignance Tabard",      -- 9 DT
-    hands="Malignance Gloves",     -- 5 DT
-    legs="Malignance Tights",      -- 7 DT
-    feet="Hermes' Sandals",        -- Movement speed
-    neck="Loricate Torque +1",     -- 6 DT
-    waist="Moonbow Belt",          -- 5 DT
-    left_ear="Eabani Earring",     -- 8 Meva
-    right_ear="Odnowa Earring +1", -- 2 MDT, 3 DT
-    left_ring="Defending Ring",    -- 10 DT
-    right_ring="Purity Ring",      -- 4 MDT, 10 Meva
-    back=gear.ambuscape.tp         -- 10 PDT
+    feet="Hermes' Sandals"
   }
 
   -- JAs
@@ -131,7 +134,7 @@ function get_sets()
     legs="Malignance Tights",
     feet=augments.taeon.feet.phalanx,
     neck="Loricate Torque +1",
-    waist="Moonbow Belt",
+    waist="Moonbow Belt +1",
     left_ear="Odnowa Earring +1",
     right_ear="Magnetic Earring",
     left_ring="Defending Ring",
@@ -154,7 +157,7 @@ function get_sets()
     legs="Ken. Hakama +1",
     feet=augments.herc.feet.triple,
     neck="Fotia Gorget",
-    waist="Moonbow Belt",
+    waist="Moonbow Belt +1",
     left_ear="Sherida Earring",
     right_ear="Moonshade Earring",
     left_ring="Gere Ring",
@@ -163,13 +166,13 @@ function get_sets()
   }
   sets.WS['Raging Fists'] = { -- 30% STR & DEX, 5-hit, Damage varies
     ammo="Knobkierrie",
-    head=augments.herc.head.reso,
+    head="Mpaca's Cap",
     body="Ken. Samue +1",
-    hands=augments.herc.hands.reso,
-    legs="Ken. Hakama +1",
-    feet=augments.herc.feet.triple,
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
     neck="Fotia Gorget",
-    waist="Moonbow Belt",
+    waist="Moonbow Belt +1",
     left_ear="Sherida Earring",
     right_ear="Moonshade Earring",
     left_ring="Gere Ring",
@@ -184,7 +187,7 @@ function get_sets()
     legs="Ken. Hakama +1",
     feet="Ken. Sune-Ate +1",
     neck="Fotia Gorget",
-    waist="Moonbow Belt",
+    waist="Moonbow Belt +1",
     left_ear="Sherida Earring",
     right_ear="Mache Earring +1",
     left_ring="Ilabrat Ring",
@@ -193,13 +196,13 @@ function get_sets()
   }
   sets.WS['Howling Fist'] = { -- 50% VIT / 20% STR, 2-hit, Damage varies
     ammo="Knobkierrie",
-    head=augments.herc.head.reso,  -- Todo: Relic +2/3
-    body="Ken. Samue +1",
-    hands=augments.herc.hands.reso,
-    legs="Ken. Hakama +1",
-    feet=augments.herc.feet.triple,
+    head="Mpaca's Cap",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
     neck="Fotia Gorget",
-    waist="Moonbow Belt",
+    waist="Moonbow Belt +1",
     left_ear="Sherida Earring",
     right_ear="Moonshade Earring",
     left_ring="Gere Ring",
@@ -208,13 +211,13 @@ function get_sets()
   }
   sets.WS['Tornado Kick'] = { -- 40% STR & VIT, 3-hit, Damage varies
     ammo="Knobkierrie",
-    head=augments.herc.head.reso, -- Todo: Relic +2/3
-    body="Ken. Samue +1",
-    hands=augments.herc.hands.reso,
-    legs="Ken. Hakama +1",
+    head="Mpaca's Cap",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
     feet="Anch. Gaiters +3",
     neck="Fotia Gorget",
-    waist="Moonbow Belt",
+    waist="Moonbow Belt +1",
     left_ear="Sherida Earring",
     right_ear="Moonshade Earring",
     left_ring="Gere Ring",
@@ -224,7 +227,7 @@ function get_sets()
   sets.WS['Dragon Kick'] = sets.WS['Tornado Kick'] -- 50% STR & VIT, Damage varies
 
   -- sets.WS['Asuran Fists'] = { -- 15% STR & VIT, 8-hit, Accuracy varies
-  --   ammo="Aurgelmir Orb +1",
+  --   ammo="Coiste Bodhar",
   --   head="Ken. Jinpachi +1",
   --   body="Ken. Samue +1",
   --   hands="Ken. Tekko +1",

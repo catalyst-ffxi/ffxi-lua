@@ -130,11 +130,11 @@ function get_sets()
   sets.WS.Rudra = {
     -- ammo="Falcon Eye", -- stored
     -- ammo="Floestone",
-    head=augments.herc.head.wsDex,
+    head="Nyame Helm",
     body="Meg. Cuirie +2",
     hands="Meg. Gloves +2",
-    legs=augments.herc.legs.wsDex,
-    feet=augments.herc.feet.wsDex,
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
     neck="Caro Necklace",
     waist="Grunfeld Rope",
     left_ear="Moonshade Earring",
@@ -150,8 +150,8 @@ function get_sets()
     head="Adhemar Bonnet +1",
     body="Meg. Cuirie +2",
     hands="Meg. Gloves +2",
-    legs=augments.herc.legs.wsDex,
-    feet=augments.herc.feet.wsDex,
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
     neck="Fotia Gorget",
     waist="Fotia Belt",
     left_ear="Moonshade Earring",
@@ -162,7 +162,7 @@ function get_sets()
   }
   sets.WS['Aeolian Edge'] =  {
     -- ammo="Ombre Tathlum +1",
-    head=augments.herc.head.mab,
+    head="Nyame Helm",
     neck="Sanctity Necklace",
     left_ear="Friomisi Earring",
     right_ear="Moonshade Earring",
@@ -172,8 +172,8 @@ function get_sets()
     right_ring="Shiva Ring +1",
     back=gear.toutatis.ws,
     waist="Eschan Stone",
-    legs=augments.herc.legs.magic,
-    feet= augments.herc.feet.wsDex
+    legs="Nyame Flanchard",
+    feet= "Nyame Sollerets"
   }
 
   -- Job Abilities

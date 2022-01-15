@@ -4,6 +4,12 @@ include('augments_tadako.lua')
 function define_modes()
   DummySongs = S{"Vivacious Etude", "Bewitching Etude", "Enchanting Etude", "Spirited Etude", "Vital Etude"}
   ForceHarpNext = false
+
+  WeaponMode = M{['description'] = 'Weapon Mode',
+    'Naegling',
+    'Aeneas',
+    'Carn'
+  }
 end
 
 function define_aliases()
@@ -12,9 +18,6 @@ function define_aliases()
   send_command('bind !f6 phalanx')
   send_command('bind !f7 blink')
   send_command('bind !f8 aquaveil')
-  -- send_command('bind !f9 input /item "Echo Drops" <me>')
-  -- send_command('bind !f10 input /item "Remedy" <me>')
-  -- send_command('bind !f11 input /item "Holy Water" <me>')
 end
 
 function get_sets()
@@ -28,15 +31,25 @@ function get_sets()
       macc = { name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Phys. dmg. taken-10%',}},
       enmity = { name="Intarabus's Cape", augments={'MND+10','Enmity-10',}},
       melee = { name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}},
-      ws = { name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
-      mordant = { name="Intarabus's Cape", augments={'CHR+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
+      wsStr = { name="Intarabus's Cape", augments={'STR+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
+      wsChr = { name="Intarabus's Cape", augments={'CHR+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
+    },
+    linos = {
+      tp = { name="Linos", augments={'Accuracy+15','"Store TP"+3','Quadruple Attack +3',}},
+      ws = { name="Linos", augments={'Attack+11','Weapon skill damage +1%','STR+8',}}
     }
+  }
+
+  sets.weapons = {
+    Naegling = { main="Naegling", sub="Fusetto +2" },
+    Aeneas =  { main="Aeneas", sub="Fusetto +2" },
+    Carn = { main="Carnwenhan", sub="Gleti's Knife" }
   }
 
   -- Modes
   sets.Idle = {
-    main="Carnwenhan",
-    sub="Genbu's Shield",           -- 10 PDT
+    -- main="Carnwenhan",
+    -- sub="Genbu's Shield",           -- 10 PDT
     head="Inyanga Tiara +2",        -- 4 MDT
     neck="Loricate Torque +1",      -- 6 DT
     left_ear="Flashward Earring",
@@ -54,7 +67,7 @@ function get_sets()
   -- Magic
   sets.Magic = {}
   sets.Magic.Precast = {
-    head=augments.chironic.head.macc, -- 6
+    head=augments.chironic.head.fastCast, -- 6
     neck="Orunmila's torque",             -- 5
     body="Inyanga Jubbah +2",             -- 14
     hands="Leyline Gloves",               -- 8
@@ -133,6 +146,7 @@ function get_sets()
   })
   sets.Songs.Dummy = {
     main="Carnwenhan",
+    -- sub="Kali",
     ranged="Daurdabla",
     neck="Moonbow Whistle +1",
     body="Fili Hongreline +1",
@@ -144,6 +158,7 @@ function get_sets()
   --
   sets.Songs.Buffs = {
     main="Carnwenhan",
+    -- sub="Kali",
     ranged="Gjallarhorn",
     head="Brioso Roundlet +2",
     body="Fili Hongreline +1",
@@ -160,12 +175,15 @@ function get_sets()
   sets.Songs.HonorMarch = set_combine(sets.Songs.March, { ranged="Marsyas" })
   sets.Songs.Minne = set_combine(sets.Songs.Buffs, { legs="Mousai Seraweels +1" })
   sets.Songs.Minuet = set_combine(sets.Songs.Buffs, { body="Fili Hongreline +1" })
-  sets.Songs.Scherzo = set_combine(sets.Songs.Buffs, { feet="Fili Cothurnes +1" })
+  sets.Songs.Scherzo = set_combine(sets.Songs.Buffs, {
+    -- feet="Fili Cothurnes +1"
+  })
 
   -- Song Debuffs
   --
   sets.Songs.DebuffAccuracy = {
     main="Carnwenhan",
+    -- sub="Kali",
     ranged="Gjallarhorn",
     head="Brioso Roundlet +2",
     body="Brioso Justaucorps +2",
@@ -182,6 +200,7 @@ function get_sets()
   }
   sets.Songs.DebuffDuration = {
     main="Carnwenhan",
+    -- sub="Kali",
     ranged="Gjallarhorn",
     head="Brioso Roundlet +2",
     body="Fili Hongreline +1",
@@ -205,57 +224,82 @@ function get_sets()
 
   -- Abilities
   sets.JobAbility = {}
-  sets.JobAbility.Troubadour = { body="Bihu Justaucorps", feet="Bihu Slippers" }
-  sets.JobAbility.Nightingale = { body="Bihu Justaucorps", feet="Bihu Slippers" }
+  sets.JobAbility.Troubadour = { body="Bihu Justaucorps +3", feet="Bihu Slippers" }
+  sets.JobAbility.Nightingale = { body="Bihu Justaucorps +3", feet="Bihu Slippers" }
   -- sets.JobAbility['Soul Voice'] = { legs = 'Bihu Cannions' }
+
+  -- main="Carnwenhan",
+  -- sub="Genbu's Shield",
+  -- sub="Gleti's Knife",
 
   -- Melee
   sets.Engaged = {
-    main="Carnwenhan",
-    sub="Genbu's Shield",
-    head="Aya. Zucchetto +2",              -- 6%
-    body="Ayanmo Corazza +2",              -- 4%
-    hands=augments.chironic.gloves.tp,     -- 3%
-    legs="Ayanmo Cosciales +2",            -- 9%
-    feet=augments.chironic.feet.tp,        -- 3%
+    ranged=gear.linos.tp, -- acc/stp/qa
+    head="Aya. Zucchetto +2",
+    body="Ayanmo Corazza +2",
+    hands="Bunzi's Gloves",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
     neck="Bard's Charm",
-    waist="Sailfi Belt +1",                -- 9%
-    left_ear="Dedition Earring",
+    waist="Sailfi Belt +1",
+    left_ear="Suppanomimi",
     right_ear="Brutal Earring",
     left_ring="Hetairoi Ring",
     right_ring="Petrov Ring",
-    back=gear.cape.melee
-  }                                        -- 31% Haste
+    back=gear.cape.melee -- acc/att/dex/da
+  }
   sets.WS = {}
-  sets.WS.Rudra = {
-    head="Aya. Zucchetto +2",             -- Lustratio
-    body="Ayanmo Corazza +2",             -- Bihu +2/3
-    hands="Ayanmo Manopolas +2",          -- Lustratio
-    legs="Ayanmo Cosciales +2",           -- Lustratio
-    feet="Lustratio Leggings +1",
+  sets.WS["Rudra's Storm"] = {
+    ranged=gear.linos.ws,
+    head="Nyame Helm",
+    body="Bihu Justaucorps +3",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    -- feet="Nyame Sollerets",
+    feet="Lustra. Leggings +1",
     neck="Bard's Charm",
     waist="Grunfeld Rope",
     left_ear="Moonshade Earring",
     right_ear="Ishvara Earring",
     left_ring="Ilabrat Ring",
     right_ring="Apate Ring",
-    back=gear.cape.ws
+    back=gear.cape.wsStr
   }
   sets.WS['Mordant Rime'] = {
-    head="Brioso Roundlet +2",
-    body="Bihu Justaucorps",
-    hands="Brioso Cuffs +2",
-    legs="Brioso Cannions +2",
-    feet="Brioso Slippers +3",
+    ranged=gear.linos.ws,
+    head="Nyame Helm",
+    body="Bihu Justaucorps +3",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
     neck="Bard's Charm",
     waist="Grunfeld Rope",
     left_ear="Regal Earring",
     right_ear="Ishvara Earring",
     left_ring="Ilabrat Ring",
-    right_ring="Begrudging Ring",
-    back=gear.cape.mordant
+    right_ring="Shukuyu Ring",
+    back=gear.cape.wsChr
   }
   sets.WS['Aeolian Edge'] = {}
+  sets.WS['Savage Blade'] = {
+    ranged=gear.linos.ws,
+    head="Nyame Helm",
+    body="Bihu Justaucorps +3",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
+    neck="Bard's Charm",
+    waist="Sailfi Belt +1",
+    left_ear="Moonshade Earring",
+    right_ear="Ishvara Earring",
+    left_ring="Apate Ring",
+    right_ring="Shukuyu Ring",
+    back=gear.cape.wsStr
+  }
+end
+
+function dual_wield_job()
+  return player.sub_job == 'NIN' or player.sub_job == 'DNC'
 end
 
 function precast(spell)
@@ -278,7 +322,8 @@ function precast(spell)
     end
 
   elseif spell.type == 'WeaponSkill' then
-    equip(sets.WS[spell.english] or sets.WS.Rudra)
+    equip(sets.WS[spell.english])
+    --  or sets.WS.Rudra
   end
 
   precast_cancelations(spell)
@@ -300,6 +345,9 @@ function midcast(spell)
   -- Bard Songs
   if spell.type == 'BardSong' then
     equip(set_for_song(spell))
+    if dual_wield_job() == true then
+      equip({ sub = 'Kali' })
+    end
 
   -- Cures
   elseif spell.skill == 'Healing Magic' then
@@ -340,16 +388,27 @@ function midcast(spell)
   end
 end
 
+function set_for_engaged()
+  set = set_combine(
+    sets.Engaged,
+    sets.weapons[WeaponMode.current]
+  )
+  if dual_wield_job() == false then
+    set = set_combine(set, { sub = "Genbu's Shield" })
+  end
+  return set
+end
+
 function aftercast(spell)
-  if player.status=='Engaged' then
-    equip(sets.Engaged)
+  if player.status == 'Engaged' then
+    equip(set_for_engaged())
   else
     equip(sets.Idle)
     if player.mpp <= 50 then
       equip({waist = "Fucho-no-Obi"})
     end
   end
-  if ForceHarpNext == true then
+  if spell.type == 'BardSong' and ForceHarpNext == true then
     ForceHarpNext = false
   end
 end
@@ -401,7 +460,7 @@ end
 
 function status_change(new, old)
   if new == 'Engaged' then
-    equip(sets.Engaged)
+    equip(set_for_engaged())
   else
     equip(sets.Idle)
   end
@@ -418,10 +477,17 @@ function self_command(commandArgs)
   command = commandArgs[1]
   if command == 'mode' then
     if player.status=='Engaged' then
-      equip(sets.Engaged)
+      equip(set_for_engaged())
     else
       equip(sets.Idle)
     end
+  elseif command == 'cycle' then
+    local mode = _G[commandArgs[2]]
+    if mode ~= nil and mode._class == 'mode' then
+      mode:cycle()
+      add_to_chat(122, 'SET [' .. mode.description .. '] to ' .. mode.current)
+    end
+    equip(set_for_engaged())
   elseif command == 'idle' then
     equip(sets.Idle)
   elseif command == 'harp' then

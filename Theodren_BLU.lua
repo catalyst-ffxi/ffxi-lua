@@ -3,7 +3,7 @@ include('Modes.lua')
 include('augments.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'HybridLight', 'HybridHeavy'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'HybridHeavy', 'Normal', 'HybridLight'}
 end
 
 function define_binds()
@@ -28,19 +28,20 @@ function get_sets()
 
   sets.Idle = {
     ammo="Staunch Tathlum +1",         -- 3 DT
-    head="Malignance Chapeau",         -- 6 DT
+    head="Nyame Helm",                 -- 7 DT
     body="Assimilator's Jubbah +3",    -- Refresh
-    hands="Malignance Gloves",          -- 5 DT
+    hands="Nyame Gauntlets",           -- 7 DT
     legs="Carmine Cuisses +1",         -- Zoomies
-    feet="Malignance Boots",           -- 4 DT
+    -- legs="Nyame Flanchard",
+    feet="Nyame Sollerets",            -- 7 DT
     neck="Loricate Torque +1",         -- 6 DT
     waist="Fucho-no-Obi",              -- Refresh
     left_ear="Eabani Earring",         -- Meva
-    right_ear="Etiolation Earring",    -- 3 MDT
+    right_ear="Odnowa Earring +1",     -- 3 DT
     left_ring="Stikini Ring +1",       -- Refresh
     right_ring="Stikini Ring +1",      -- Refresh
     back=gear.rosmerta.tp              -- 10 PDT
-  }                                    -- 31 PDT
+  }                                    -- 39 PDT
 
   -- DW Traits:
   -- Delta Thrust + Barbed Crescent = 1
@@ -64,7 +65,7 @@ function get_sets()
 
   sets.modes = {}
   sets.modes.Normal = {
-    ammo="Aurgelmir Orb +1",
+    ammo="Coiste Bodhar",
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
     hands="Adhemar Wristbands +1",
@@ -79,7 +80,7 @@ function get_sets()
     back=gear.rosmerta.tp
   }
   sets.modes.HybridLight = {
-    ammo="Aurgelmir Orb +1",
+    ammo="Coiste Bodhar",
     head="Adhemar Bonnet +1",
     body="Malignance Tabard",       -- 9 DT
     hands="Adhemar Wristbands +1",  -- 2 PDT
@@ -94,7 +95,7 @@ function get_sets()
     back=gear.rosmerta.tp              -- 10 PDT
   }                                    -- 33 PDT
   sets.modes.HybridHeavy = {
-    ammo="Aurgelmir Orb +1",
+    ammo="Coiste Bodhar",
     head="Malignance Chapeau",         -- 6 DT
     body="Malignance Tabard",          -- 9 DT
     hands="Malignance Gloves",         -- 5 DT
@@ -163,18 +164,18 @@ function get_sets()
     ammo="Pemphredo Tathlum",
     head="Amalric Coif +1",
     body="Amalric Doublet +1",
-    hands="Jhakri Cuffs +2",
-    legs="Jhakri Slops +2",
-    feet="Jhakri Pigaches +2",
-    neck="Sanctity Necklace",
-    waist="Eschan Stone",
+    hands="Malignance Gloves",
+    legs="Malignance Tights",
+    feet="Malignance Boots",
+    neck="Mirage Stole +1",
+    waist="Luminary Sash",
     left_ear="Regal Earring",
     right_ear="Digni. Earring",
     left_ring="Stikini Ring +1",
     right_ring="Stikini Ring +1",
-    back=gear.rosmerta.mab
+    back=gear.rosmerta.magic
   }
-  sets.BlueMagic.Mab = {
+  sets.BlueMagic.magic = {
     ammo="Pemphredo Tathlum",
     head="Jhakri Coronal +2",
     body="Amalric Doublet +1",
@@ -187,7 +188,7 @@ function get_sets()
     right_ear="Friomisi Earring",
     left_ring="Shiva Ring +1",
     right_ring="Stikini Ring +1",
-    back=gear.rosmerta.mab -- INT/MAB/Macc/Mdmg
+    back=gear.rosmerta.magic -- INT/MAB/Macc/Mdmg
   }
   sets.BlueMagic.Physical = {
     -- ammo="Falcon Eye", -- Stored
@@ -248,7 +249,7 @@ function get_sets()
     head="Amalric Coif +1",
     waist="Gishdubar Sash"
   }
-  sets.BlueMagic['Tenebral Crush'] = set_combine(sets.BlueMagic.Mab, {
+  sets.BlueMagic['Tenebral Crush'] = set_combine(sets.BlueMagic.magic, {
     head="Pixie Hairpin +1",
     right_ring="Archon Ring"
   })
@@ -262,7 +263,7 @@ function get_sets()
     hands="Malignance Gloves",
     left_ring="Defending Ring",      -- DT
     right_ring="Gelatinous Ring +1", -- PDT
-    back=gear.rosmerta.mab,
+    back=gear.rosmerta.magic,
     waist="Rumination Sash",         -- 10
     legs="Carmine Cuisses +1",       -- 20
     feet=augments.taeon.feet.phalanx -- 9
@@ -278,8 +279,8 @@ function get_sets()
   --
   sets.WS = {}
   sets.WS['Savage Blade'] = {
-    ammo="Aurgelmir Orb +1",
-    head=augments.herc.head.wsStr,
+    ammo="Coiste Bodhar",
+    head="Nyame Helm",
     neck="Mirage Stole +1",
     left_ear="Ishvara Earring",
     right_ear="Moonshade Earring",
@@ -289,7 +290,7 @@ function get_sets()
     right_ring="Shukuyu Ring",
     back=gear.rosmerta.ws,
     waist="Sailfi Belt +1",
-    legs=augments.herc.legs.wsDex,
+    legs="Nyame Flanchard",
     feet="Jhakri Pigaches +2",
   }
   sets.WS['Requiescat'] = {}
@@ -321,7 +322,7 @@ function get_sets()
     hands="Jhakri Cuffs +2",
     lring="Archon Ring",
     rring="Epaminondas's Ring",
-    back=gear.rosmerta.mab,
+    back=gear.rosmerta.magic,
     waist="Orpheus's Sash",
     legs="Amalric Slops +1",
     feet="Jhakri Pigaches +2",
@@ -373,7 +374,7 @@ function midcast(spell)
     equip(sets.BlueMagic.Macc)
 
   elseif BlueMagic_Mab:contains(spell.english) then
-    equip(sets.BlueMagic.Mab)
+    equip(sets.BlueMagic.magic)
 
   elseif BlueMagic_Physical:contains(spell.english) then
     equip(sets.BlueMagic.Physical)
@@ -448,7 +449,7 @@ end
 function define_blue_magic()
   BlueMagic_Macc = S{
     'Blitzstrahl','Frypan','Head Butt','Sudden Lunge','Tail slap','Temporal Shift',
-    'Thunderbolt','Whirl of Rage',
+    'Thunderbolt','Whirl of Rage', 'Silent Storm', 'Tourbillion', 'Cesspool',
     '1000 Needles','Absolute Terror','Actinic Burst','Auroral Drape','Awful Eye',
     'Blank Gaze','Blistering Roar','Blood Drain','Blood Saber','Chaotic Eye',
     'Cimicine Discharge','Cold Wave','Digest','Corrosive Ooze','Demoralizing Roar',
@@ -463,7 +464,7 @@ function define_blue_magic()
     'Acrid Stream','Dark Orb','Droning Whirlwind','Embalming Earth','Evryone. Grudge',
     'Firespit','Foul Waters','Gates of Hades','Leafstorm','Magic Hammer',
     'Regurgitation','Rending Deluge','Tem. Upheaval','Thermal Pulse','Water Bomb','Subduction','Retinal Glare',
-    'Searing Tempest','Spectral Floe','Silent Storm','Entomb','Anvil Lightning','Scouring Spate',
+    'Searing Tempest','Spectral Floe','Entomb','Anvil Lightning','Scouring Spate',
     'Blinding Fulgor','Tenebral Crush','Diffusion Ray',
     'Bad Breath','Flying Hip PrePress','Final Sting','Frost Breath','Heat Breath',
     'Magnetite Cloud','Poison Breath','Radiant Breath','Self Destruct','Thunder Breath',
@@ -474,7 +475,7 @@ function define_blue_magic()
     'Asuran Claws','Bludgeon','Feather Storm','Mandibular Bite',
     'Queasyshroom','Ram Charge', 'Spinal Cleave','Spiral Spin','Terror Touch',
     'Battle Dance','Bloodrake','Death Scissors','Dimensional Death','Empty Thrash',
-    'Heavy Strike','Quadrastrike','Uppercut','Tourbillion','Vertical Cleave',
+    'Heavy Strike','Quadrastrike','Uppercut','Vertical Cleave',
     'Whirl of Rage', 'Power Attack', 'Smite of Rage', 'Screwdriver',
     'Amorphic Spikes','Barbed Crescent','Claw Cyclone','Disseverment','Foot Kick',
     'Frenetic Rip','Goblin Rush','Hysteric Barrage','Paralyzing Triad','Seedspray',

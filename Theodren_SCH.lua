@@ -1,12 +1,10 @@
 include('Modes.lua')
 include('augments.lua')
+include('utils.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Caster'}
   NukingMode = M{['description'] = 'Nuking Mode', 'Normal', 'MagicBurst'}
-  DamageDown = M(false, 'Damage Down')
   Element = M{['description'] = 'Primary Element', 'Thunder', 'Blizzard', 'Fire', 'Aero', 'Water', 'Stone'}
-  Capacity = M(false, 'Capacity Mantle')
 end
 
 function define_aliases()
@@ -43,8 +41,6 @@ function define_aliases()
   send_command('bind !f8 aquaveil')
 
   -- Modes
-  send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
-  -- send_command("alias g15v2_m1g2 gs c cycle EnfeebleMode")
   send_command("alias g15v2_m1g3 gs c cycle NukingMode")
   send_command("alias g15v2_m1g4 gs c cycle Element")
   send_command("alias g15v2_m1g5 lightarts")
@@ -57,184 +53,160 @@ function get_sets()
   define_modes()
   define_aliases()
 
-  gear = {
-  }
-
   -- Mode Sets
   --
   sets.Idle = {
-    main="Maxentius",
+    main="Daybreak",
     sub="Ammurapi Shield",
     ammo="Homiliary",
     head="Befouled Crown",
     neck="Loricate Torque +1",
     left_ear="Odnowa Earring +1",
     right_ear="Etiolation Earring",
-    body="Jhakri Robe +2",
-    hands="Amalric Gages +1",
-    left_ring="Gelatinous Ring +1",
-    right_ring="Defending Ring",
-    back="Lugh's Cape",
+    body="Agwu's Robe",
+    hands="Nyame Gauntlets",
+    left_ring="Stikini Ring +1",
+    right_ring="Stikini Ring +1",
+    -- back="Lugh's Cape",
+    back="Mecisto. Mantle",
     waist="Fucho-no-Obi",
     legs="Assid. Pants +1",
-    feet="Chironic Slippers"
+    feet="Nyame Sollerets"
   }
+  sets.Idle_Submlimation = set_combine(sets.Idle, {
+    waist="Embla Sash"
+  })
 
   -- Base Sets
   --
-  sets.base = {}
-
-  sets.base.fast_cast = {
-    ammo="Sapience Orb",       -- 2
-    head="Amalric Coif +1",    -- 11
-    neck="Orunmila's Torque",  -- 5
-    lear="Loquacious earring", -- 2
-    rear="Etiolation earring", -- 1
-    body="Vrikodara Jupon",    -- 5
-    hands="Helios Gloves",     -- 5
-    lring="Kishar Ring",       -- 4
-    rring="Weatherspoon Ring +1",        -- 2
-    back="Perimede Cape",
-    waist="Embla Sash",        -- 5
-    legs="Telchine Braconi",   -- 4
-    feet=augments.merlinic.crackows.nuke -- 5
-  }
-
-
-  sets.base.fast_cast = {
-    ammo="Sapience Orb",                -- 2
+  sets.Magic = {}
+  sets.Magic.FastCast = {
+    ammo="Sapience Orb",      -- 2
     head="Amalric Coif +1",   -- 11
-    neck="Orunmila's Torque",           -- 5
-    lear="Loquacious earring",   -- 2
-    rear="Magnetic earring",
-    body="Amalric Doublet +1",  -- 6
-    hands="Helios Gloves",       -- 5
-    lring="Kishar Ring",   -- 4
-    rring="Weatherspoon Ring +1",         -- 2
-    back="Perimede Cape",
-    waist="Embla Sash",
-    legs="Telchine Braconi",   -- 4
-    feet=augments.merlinic.crackows.nuke -- 5
-  }
-
-  sets.base.quick_cast = {
-    ammo = "Impatiens",
-    waist = "Witful Belt"             -- 3
-                               -- TOTAL: 46
-  }
-
-  -- Weapon Skills
-  --
-  sets.ws = {
-    neck = "Fotia Gorget"
-  }
-  sets.ws.Myrkr = {
-    ammo = "Quartz Tathlum +1",
-    -- head = "Kaabnax Hat",
-    head = "Pixie Hairpin +1",
-    neck = "Sanctity Necklace",
-    lear = "Etiolation Earring",
-    rear = "Moonshade Earring",
-    body = "Amalric Doublet +1",
-    -- hands = "Otomi Gloves", -- stored
-    hands="Helios Gloves",
-    -- lring = "Etana Ring", -- stored
-    -- rring = "Bifrost Ring",
-    left_ring="Supershear Ring",
-    right_ring="Weatherspoon Ring +1",
-    back = "Merciful Cape",
-    waist = "Luminary Sash",
-    legs = "Chironic Hose",
-    feet = "Medium's sabots"
-  }
-
-  -- MIDCAST
-  --
+    body="Agwu's Robe",       -- 8
+    hands="Agwu's Gages",     -- 6
+    legs="Agwu's Slops",      -- 7
+    feet="Amalric Nails +1",  -- 6
+    neck="Orunmila's Torque", -- 5
+    waist="Embla Sash",       -- 5
+    lear="Loquacious earring",-- 2
+    rear="Etiolation earring",-- 1
+    lring="Kishar Ring",      -- 4
+    rring="Weatherspoon Ring +1",-- 6
+    back="Perimede Cape"
+  }                           -- 61
 
   -- Dark Magic
   --
-  sets.midcast = {}
-  sets.midcast.dark = {
-    -- main = "Akademos",
-    -- main=augments.grio.nuke,
-    -- sub = "Enki Strap",
-    ammo = "Pemphredo Tathlum",
-    head = "Amalric Coif +1",
-    -- head = "Pixie Hairpin +1",
-    neck = "Erra Pendant",
-    lear = "Digni. Earring",
-    rear = "Regal Earring",
-    body = "Amalric Doublet +1",
-    hands = "Amalric Gages +1",
-    lring = "Stikini Ring +1",
-    rring = "Stikini Ring +1",
-    back = "Lugh's Cape",
-    waist = "Eschan Stone",
+  sets.Magic.Dark = {
+    main="Maxentius",
+    sub="Ammurapi Shield",
+    ammo="Pemphredo Tathlum",
+    head="Amalric Coif +1",
+    neck="Erra Pendant",
+    lear="Digni. Earring",
+    rear="Regal Earring",
+    body="Amalric Doublet +1",
+    hands="Amalric Gages +1",
+    lring="Stikini Ring +1",
+    rring="Stikini Ring +1",
+    back="Lugh's Cape",
+    waist="Eschan Stone",
     legs="Amalric Slops +1",
-    feet = augments.merlinic.crackows.nuke
+    feet="Amalric Nails +1"
   }
-  sets.midcast.drain_aspir = set_combine(sets.midcast.dark, {
-    neck = "Erra Pendant",
-    hands = augments.merlinic.dastanas,
-    waist = "Fucho-no-Obi",
-    feet = augments.merlinic.crackows.nuke
-  })
-  sets.midcast.stun = set_combine(sets.midcast.dark, {
-
+  sets.Magic.DrainAspir = set_combine(sets.Magic.Dark, {
+    neck="Erra Pendant",
+    waist="Fucho-no-Obi"
   })
 
   -- Elemental magic
   --
-  sets.midcast.elemental = {}
-  sets.midcast.elemental.Normal = {
+  sets.Magic.elemental = {}
+  sets.Magic.elemental.Normal = {
+    main={ name="Mpaca's Staff", priority=2 },
+    sub={ name="Enki Strap", priority=1 }, 
     ammo="Pemphredo Tathlum",
     head="C. Palug Crown",
-    neck="Sanctity Necklace",
-    lear="Regal Earring",
-    rear="Malignance Earring",
     body="Amalric Doublet +1",
     hands="Amalric Gages +1",
-    lring="Shiva Ring +1",
-    rring="Freke Ring",
-    back="Lugh's Cape",
-    waist="Eschan Stone",
     legs="Amalric Slops +1",
-    feet="Jhakri pigaches +2"
+    feet="Amalric Nails +1",
+    neck="Sanctity Necklace",
+    waist="Eschan Stone",
+    left_ear="Regal Earring",
+    right_ear="Malignance Earring",
+    left_ring="Freke Ring",
+    right_ring="Shiva Ring +1",
+    back="Lugh's Cape"
   }
-  sets.midcast.elemental.MagicBurst = set_combine(sets.midcast.elemental.Normal, {
-    neck = "Mizu. Kubikazari",           -- MB +10
-    hands = "Amalric Gages +1",          -- MB II +6
-    lring = "Mujin Band",                -- MB II +5
-    feet = "Jhakri Pigaches +2"          -- MB +7
-  })                                     -- TOTALS
-                                         -- MB +27 (Caps at 40%)
-                                         -- MB II +11
+
+  sets.Magic.elemental.MagicBurst = set_combine(sets.Magic.elemental.Normal, {
+    main={ name="Mpaca's Staff", priority=2 },-- MB2 +2
+    sub={ name="Enki Strap", priority=1 }, 
+    head="Peda. M.Board +3",               -- MB2 +4
+    body="Agwu's Robe",                    -- MB +10
+    hands="Agwu's Gages",                  -- MB +8, MB2 +1
+    legs="Agwu's Slops",                   -- MB +9
+    feet="Agwu's Pigaches",                -- MB +7
+    neck="Argute Stole +1",                -- MB +7
+    right_ring="Mujin Band"                -- MB2 +5
+  })                                       -- TOTALS
+                                           -- MB +41 (over)
+                                           -- MB2 +11
+
+  -- sets.Magic.elemental.MagicBurst = set_combine(sets.Magic.elemental.Normal, {
+  --   main={ name="Mpaca's Staff", priority=2 },-- MB2 +2
+  --   sub={ name="Enki Strap", priority=1 }, 
+  --   head="Agwu's Cap",                     -- MB +7
+  --   body="Agwu's Robe",                    -- MB +10
+  --   hands="Amalric Gages +1",              -- MB2 +6
+  --   legs="Agwu's Slops",                   -- MB +9
+  --   feet="Agwu's Pigaches",                -- MB +7
+  --   neck="Argute Stole +1",                -- MB +7
+  --   right_ring="Mujin Band"                -- MB2 +5
+  -- })                                       -- TOTALS
+  --                                          -- MB +40
+  --                                          -- MB2 +13
+
+  -- sets.Magic.elemental.MagicBurst = set_combine(sets.Magic.elemental.Normal, {
+  --   main={ name="Mpaca's Staff", priority=1 },-- MB2 +2
+  --   sub={ name="Enki Strap", priority=2 }, 
+  --   head="Agwu's Cap",                     -- MB +7
+  --   body="Agwu's Robe",                    -- MB +10
+  --   hands="Amalric Gages +1",              -- MB2 +6
+  --   legs="Agwu's Slops",                   -- MB +9
+  --   feet="Agwu's Pigaches",                -- MB +7
+  --   neck="Mizu. Kubikazari",               -- MB +10
+  --   right_ring="Mujin Band"                -- MB2 +5
+  -- })                                       -- TOTALS
+  --                                          -- MB +43
+  --                                          -- MB2 +13
 
   -- Enfeebling Magic
   --
-  sets.midcast.enfeebling = {
-    ammo = "Quartz Tathlum +1",
-    head = "Amalric Coif +1",
-    neck = "Incanter's torque",
-    lear = "Digni. Earring",
-    rear = "Regal Earring",
-    body = "Vanya Robe",
-    hands = "Jhakri Cuffs +2",
-    lring = "Stikini Ring +1",
-    rring = "Stikini Ring +1",
-    back = "Lugh's Cape",
-    waist = "Luminary Sash",
-    legs="Amalric Slops +1",
-    feet = "Medium's Sabots"
+  sets.Magic.Enfeebling = {
+    main="Daybreak",
+    sub="Ammurapi Shield",
+    ammo="Pemphredo Tathlum",
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Kaykaus Cuffs +1",
+    legs="Chironic Hose",
+    feet="Medium's Sabots",
+    neck="Incanter's torque",
+    waist="Luminary Sash",
+    lear="Digni. Earring",
+    rear="Regal Earring",
+    lring="Stikini Ring +1",
+    rring="Stikini Ring +1",
+    back="Lugh's Cape"
   }
 
   -- Enhancing Magic
   --
-  sets.midcast.enhancing_skill = {
-  }
-  sets.midcast.enhancing_duration = {
-    -- main="Oranyan",
-    main="Maxentius",
+  sets.Magic.EnhancingDuration = {
+    main="Gada",
     sub="Ammurapi Shield",
     head="Telchine Cap",
     body="Telchine Chasuble",
@@ -244,62 +216,70 @@ function get_sets()
     waist="Embla Sash",
     back="Lugh's Cape",
   }
-  sets.midcast.enhancing_regen = {
+  sets.Magic.EnhancingRegen = {
     back="Lugh's Cape",
   }
-  sets.midcast.enhancing_refresh = {
-    head = "Amalric Coif +1"
+  sets.Magic.EnhancingRefresh = {
+    head="Amalric Coif +1"
   }
-  sets.midcast.enhancing_refresh_self = {
-    waist = "Gishdubar sash",
-    -- feet = "Inspirited Boots"
+  sets.Magic.EnhancingRefreshSelf = {
+    waist="Gishdubar Sash"
   }
-  sets.midcast.enhancing_stoneskin = {
-    neck = "Nodens Gorget",
-    waist = "Siegel Sash"
+  sets.Magic.EnhancingStoneskin = {
+    neck="Nodens Gorget",
+    waist="Siegel Sash"
   }
-  sets.midcast.enhancing_phalanx_self = {
-    head = augments.merlinic.hood.phalanx
+  sets.Magic.EnhancingPhalanx = {
+    body="Chironic Doublet"
   }
-
-  -- Precast Magic
-  --
-  -- sets.midcast.stun = {
-  -- }
+  sets.Magic.Embrava = {
+    main="Gada",
+    sub="Ammurapi Shield",
+    head="Telchine Cap",
+    body="Telchine Chasuble",
+    hands="Telchine Gloves",
+    legs="Telchine Braconi",
+    feet="Telchine Pigaches",
+    neck="Incanter's torque",
+    waist="Embla Sash",
+    left_ear="Andoaa Earring",
+    right_ear="Mimir Earring",
+    left_ring="Stikini Ring +1",
+    right_ring="Stikini Ring +1",
+    back="Perimede Cape"
+  }
 
   -- Healing Sets
   --
-  sets.midcast.healing = {
-    main="Daybreak",
-    sub="Ammurapi Shield",
-    ammo="Quartz Tathlum +1",
-    head="Vanya Hood",
-    body="Vanya Robe",
-    hands="Telchine Gloves",
-    legs="Vanya Slops",
-    feet="Vanya Clogs",
-    neck="Incanter's Torque",
-    waist="Luminary Sash",
-    left_ear="Regal Earring",
-    right_ear="Mendi. Earring",
-    left_ring="Haoma's Ring",
-    right_ring="Haoma's Ring",
-    back="Solemnity Cape"       -- 7%
+  sets.Magic.Healing = {
+    main="Daybreak",              -- MND
+    sub="Ammurapi Shield",        -- MND
+    ammo="Quartz Tathlum +1",     -- MND
+    head="Vanya Hood",            -- 10%, Skill
+    body="Kaykaus Bliaut +1",     -- CP II
+    hands="Kaykaus Cuffs +1",     -- 11%, MND
+    legs="Chironic Hose",         -- 8%
+    feet="Vanya Clogs",           -- 5%, Skill
+    neck="Incanter's Torque",     -- Skill
+    waist="Luminary Sash",        -- MND
+    left_ear="Regal Earring",     -- MND
+    right_ear="Mendi. Earring",   -- 5%
+    left_ring="Stikini Ring +1",  -- Skill, MND
+    right_ring="Stikini Ring +1", -- Skill, MND
+    back="Lugh's Cape"
   }
-  sets.midcast.healing_self = {
+  sets.Magic.HealingSelf = {
     neck="Phalaina Locket",      -- 4% self
     left_ring='Kunaji Ring',     -- 5% self
     waist="Gishdubar Sash"       -- 10% self
   }
-  sets.midcast.convert = set_combine(sets.midcast.healing, sets.midcast.healing_self, {
-  })
   -- Cursna chance to clear doom affected by Healing Magic and Cursna Effect+ gear
-  sets.midcast.cursna = {
+  sets.Magic.Cursna = {
     ammo="Sapience Orb",
     head="Vanya Hood",
-    body="Vanya Robe",
+    -- body="",
     hands="Kaykaus Cuffs +1",
-    legs="Vanya Slops",
+    -- legs="",
     feet="Vanya Clogs",
     neck="Malison Medallion",
     waist="Witful Belt",
@@ -309,23 +289,80 @@ function get_sets()
     right_ring="Haoma's Ring",
     back="Oretan. Cape +1",
   }
+
+  -- Job Abilities
+  --
+  sets.JA = {}
+  sets.JA['Tabula Rasa'] = { legs="Pedagogy pants" }
+
+  -- Weapon Skills
+  --
+  sets.WS = {}
+  sets.WS.Myrkr = {
+    ammo="Pemphredo Tathlum",
+    head="Pixie Hairpin +1",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Amalric Slops +1",
+    feet="Nyame Sollerets",
+    neck="Sanctity Necklace",
+    waist="Luminary Sash",
+    left_ear="Moonshade Earring",
+    right_ear="Etiolation Earring",
+    left_ring="Supershear Ring",
+    right_ring="Weather. Ring +1",
+    back="Merciful Cape"
+    -- hands="Otomi Gloves", -- stored
+    -- lring="Etana Ring", -- stored
+    -- rring="Bifrost Ring",
+  }
+  sets.WS['Black Halo'] = {
+    main="Maxentius",
+    sub="Ammurapi Shield",
+    ammo="Homiliary",
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
+    neck="Caro Necklace",
+    waist="Grunfeld Rope",
+    left_ear="Brutal Earring",
+    right_ear="Moonshade Earring",
+    left_ring="Shukuyu Ring",
+    right_ring="Epaminondas's Ring",
+    back="Lugh's Cape"
+  }
+  sets.Engaged = {
+    main="Maxentius",
+    sub="Ammurapi Shield",
+    ammo="Homiliary",
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
+    neck="Sanctity Necklace",
+    waist="Windbuffet Belt +1",
+    left_ear="Brutal Earring",
+    right_ear="Telos Earring",
+    left_ring="Hetairoi Ring",
+    right_ring="Chirich Ring +1",
+    back="Lugh's Cape"
+  }
 end
 
 function precast(spell)
   precast_cancelations(spell)
 
   if spell.type == 'JobAbility' then
-    precast_ja(spell)
+    equip(sets.JA[spell.english])
 
   elseif spell.action_type == 'Magic' then
-    precast_magic(spell)
+    equip(sets.Magic.FastCast)
 
   elseif spell.type == 'WeaponSkill' then
-    if sets.ws[spell.english] then
-      equip(sets.ws[spell.english])
-    else
-      equip(sets.ws)
-    end
+    equip(sets.WS[spell.english])
   end
 end
 
@@ -338,91 +375,61 @@ function precast_cancelations(spell)
   end
 end
 
-function precast_ja(spell)
-  if spell.english == 'Convert' then
-    equip(sets.midcast.convert)
-  end
-end
-
-function precast_magic(spell)
-  equip(sets.base.fast_cast)
-  if not (spell.skill == 'Elemental Magic' and NukingMode.current == 'MagicBurst') then
-    equip(sets.base.quick_cast)
-  end
-end
-
 function midcast(spell)
-  if spell.action_type == 'Magic' then
-    midcast_magic(spell)
-  end
-end
-
-function midcast_magic(spell)
   -- Cures and Buffs
   if spell.skill == 'Healing Magic' or spell.skill == 'Enhancing Magic' then
     eng = spell.english
 
     -- Cursna Potency
     if eng == "Cursna" then
-      equip(sets.midcast.cursna)
+      equip(sets.Magic.Cursna)
 
     -- Cure Potency
     elseif string.find(eng, 'Cur') then
-      equip(sets.midcast.healing)
+      equip(sets.Magic.Healing)
       if spell.target.type == 'SELF' then
-        equip(sets.midcast.healing_self)
-        if player.mpp >= 98 then
-          equip(sets.midcast.convert)
-        end
+        equip(sets.Magic.HealingSelf)
       end
 
     -- Enhancing Spells
     elseif spell.skill == 'Enhancing Magic' then
-      if eng == 'Stoneskin' then
-        equip(sets.midcast.enhancing_stoneskin)
-      elseif spell_affected_by_skill(eng) then
-        equip(sets.midcast.enhancing_skill)
-        if eng == 'Phalanx' then
-          equip(sets.midcast.enhancing_phalanx_self)
-        end
+      if eng == 'Embrava' then
+        equip(sets.Magic.Embrava)
+      elseif eng == 'Stoneskin' then
+        equip(sets.Magic.EnhancingStoneskin)
+      elseif eng == 'Phalanx' then
+        equip(sets.Magic.EnhancingPhalanx)
       else
-        equip(sets.midcast.enhancing_duration)
+        equip(sets.Magic.EnhancingDuration)
         if string.find(eng, 'Regen') then
-          equip(sets.midcast.enhancing_regen)
+          equip(sets.Magic.EnhancingRegen)
         elseif eng == 'Refresh' then
-          equip(sets.midcast.enhancing_refresh)
+          equip(sets.Magic.EnhancingRefresh)
           if spell.target.type == 'SELF' then
-            equip(sets.midcast.enhancing_refresh_self)
+            equip(sets.Magic.EnhancingRefreshSelf)
           end
         end
       end
       if buffactive['Perpetuance'] then
-        equip({ hands = "Arbatel Bracers +1" })
+        equip({ hands="Arbatel Bracers +1" })
       end
     end
 
-  -- Stuns
-  elseif spell.english == 'Stun' then
-    equip(sets.midcast.stun)
-
   -- Drain/Aspir
   elseif string.find(spell.english, 'Drain') or string.find(spell.english, 'Aspir') then
-    equip(sets.midcast.drain_aspir)
+    equip(sets.Magic.DrainAspir)
 
   elseif spell.skill == 'Dark Magic' then
-    equip(sets.midcast.dark)
+    equip(sets.Magic.Dark)
 
   -- Enfeebles
   elseif spell.skill == 'Enfeebling Magic' then
-    equip(sets.midcast.enfeebling)
+    equip(sets.Magic.Enfeebling)
 
   -- Nukes
   elseif spell.skill == 'Elemental Magic' then
-    equip(sets.midcast.elemental[NukingMode.current])
-  end
-
-  if should_use_capacity_mantle() then
-    equip({back = "Mecistopins Mantle"})
+    equip(sets.Magic.elemental[NukingMode.current])
+    -- equip_elemental_waist(spell)
   end
 end
 
@@ -431,22 +438,32 @@ function chat(msg)
 end
 
 function aftercast(spell)
-  -- if player.in_combat then
-  --   equip(sets.aftercast[PrimaryMode.current])
-  -- end
+  if player.status == 'Engaged' then
+    equip(sets.Engaged)
+  else
+    equip_set_for_current_idle()
+  end
+end
 
-  equip(sets.Idle)
+function buff_change(buff, gain, bufftable)
+  if buff == 'Sublimation: Complete' and gain then
+    send_command('input /echo <<<<<<<<<<- Submimation Ready! ->>>>>>>>>>')
+  end
 
-  if spell.english == "Sublimation" then
-    if buffactive['Sublimation: Activated'] or buffactive['Sublimation: Complete'] then
-      send_command('@wait 30; input /echo | ****** Sublimation Ready! ****** |')
+  if buff == 'Sublimation: Activated' then
+    if gain then
+      equip(sets.Idle_Submlimation)
+    else
+      equip(sets.Idle)
     end
   end
 end
 
 function status_change(new, old)
-  if new == 'Resting' then
-    equip(sets.Idle)
+  if player.status == 'Engaged' then
+    equip(sets.Engaged)
+  else
+    equip_set_for_current_idle()
   end
 end
 
@@ -461,25 +478,16 @@ function self_command(commandArgs)
   command = commandArgs[1]
 
   if command == 'mode' then
-    equip_set_for_current_mode()
+    equip_set_for_current_idle()
   elseif command == 'cycle' then
-
     local mode = _G[commandArgs[2]]
     if mode ~= nil and mode._class == 'mode' then
       mode:cycle()
       add_to_chat(122, 'SET [' .. mode.description .. '] to ' .. mode.current)
-      if mode.description == 'Primary Mode' then
-        equip(sets.modes[mode.current])
-      elseif mode.description == 'Primary Element' then
+      if mode.description == 'Primary Element' then
         define_aliases()
       end
     end
-  elseif command == 'idle' then
-    equip(sets.Idle)
-  elseif command == 'idle' then
-    equip(sets.Idle)
-  elseif command == 'run' then
-    equip(sets.Idle)
   elseif command == 'auto_aspir' then
     auto_aspir()
 
@@ -500,38 +508,14 @@ function self_command(commandArgs)
   end
 end
 
-function should_use_capacity_mantle()
-  -- return true
-  if Capacity.value and player.target.hpp ~= nil and player.target.hpp < 50 then
-    return true
-  else
-    return false
-  end
-end
-
-function array_contains(arr, value)
-  for k, v in pairs(arr) do
-    if value == v then
-      return true
-    end
-  end
-  return false
-end
-
--- Return true for enhancing spells that are skill based
---
-function spell_affected_by_skill(spell_name)
-  local spells = {
-    'Stoneskin', 'Phalanx'
-  }
-  return array_contains(spells, spell_name)
-end
-
 -- Determine which idle set should be worn at this time
 --
-function equip_set_for_current_mode()
-  -- equip(sets.modes[PrimaryMode.current])
-  equip(sets.Idle)
+function equip_set_for_current_idle()
+  if buffactive['Sublimation: Activated'] then
+    equip(sets.Idle_Submlimation)
+  else
+    equip(sets.Idle)
+  end
 end
 
 function auto_aspir()
