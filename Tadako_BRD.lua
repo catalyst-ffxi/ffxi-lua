@@ -238,7 +238,8 @@ function get_sets()
     head="Aya. Zucchetto +2",
     body="Ayanmo Corazza +2",
     hands="Bunzi's Gloves",
-    legs="Nyame Flanchard",
+    -- legs="Nyame Flanchard",
+    legs="Telchine Braconi",
     feet="Nyame Sollerets",
     neck="Bard's Charm",
     waist="Sailfi Belt +1",
@@ -255,8 +256,7 @@ function get_sets()
     body="Bihu Justaucorps +3",
     hands="Nyame Gauntlets",
     legs="Nyame Flanchard",
-    -- feet="Nyame Sollerets",
-    feet="Lustra. Leggings +1",
+    feet="Nyame Sollerets",
     neck="Bard's Charm",
     waist="Grunfeld Rope",
     left_ear="Moonshade Earring",
@@ -326,6 +326,11 @@ function precast(spell)
     --  or sets.WS.Rudra
   end
 
+  -- If engaged, don't allow weapons to swap
+  if player.status == 'Engaged' then
+    equip({ main=player.equipment.main, sub=player.equipment.sub })
+  end
+
   precast_cancelations(spell)
 end
 
@@ -385,6 +390,11 @@ function midcast(spell)
   -- Enfeebles
   elseif spell.skill == 'Enfeebling Magic' then
     equip(sets.Magic.Enfeebling)
+  end
+
+  -- If engaged, don't allow weapons to swap
+  if player.status == 'Engaged' then
+    equip({ main=player.equipment.main, sub=player.equipment.sub })
   end
 end
 

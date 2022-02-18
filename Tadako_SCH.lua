@@ -30,10 +30,10 @@ function get_sets()
     main="Bolelabunga",
     sub="Genbu's Shield",
     head="Acad. Mortar. +1",
-    hands="Arbatel Bracers +1",
+    hands="Nyame Gauntlets",
     body="Jhakri Robe +2",
     legs="Assiduity Pants",
-    feet="Vanya Clogs",
+    feet="Nyame Sollerets",
     neck="Loricate Torque +1",
     waist="Fucho-no-Obi",
     left_ear="Flashward Earring",
@@ -51,7 +51,7 @@ function get_sets()
   sets.Magic.Precast = {
     ammo="Sapience Orb",                      -- 2 FC
     head="Merlinic Hood",                     -- 8 FC
-    body="Shango Robe",
+    body="Shango Robe",                       -- 8 FC
     hands=augments.telchine.gloves.enhancing, -- 4 FC
     legs="Kaykaus Tights",                    -- 6 FC
     feet="Merlinic Crackows",                 -- 5 FC
@@ -62,7 +62,7 @@ function get_sets()
     left_ring="Weatherspoon Ring",            -- 5 FC
     right_ring="Kishar Ring",                 -- 4 FC
     back="Lugh's Cape",                       -- 10 FC
-  }                                           -- 55 FC
+  }                                           -- 63 FC
   sets.Magic.Healing = {
     main="Gada",                     -- 18
     head="Kaykaus Mitra",            -- 10
@@ -79,7 +79,6 @@ function get_sets()
     feet="Vanya Clogs"               -- 5
   }                                  -- 60 (over capped)
   sets.Magic.HealingPrecast = {
-    head="Kaykaus Mitra",
     right_ear="Mendicant's Earring",
   }
   sets.Magic.HealingSelf = {
@@ -106,13 +105,14 @@ function get_sets()
     body=augments.telchine.body.enhancing,
     legs=augments.telchine.legs.enhancing,
     feet=augments.telchine.feet.enhancing,
-    waist="Embla Sash"
-  }
-  sets.Magic.EnhancingRegen = {
-    main="Bolelabunga",
-    head="Arbatel Bonnet",
+    waist="Embla Sash",
     back="Lugh's Cape"
   }
+  -- sets.Magic.EnhancingRegen = {
+  --   main="Bolelabunga",
+  --   head="Arbatel Bonnet",
+  --   back="Lugh's Cape"
+  -- }
   sets.Magic.Enfeebling = {}
 
   -- Abilities
@@ -174,8 +174,8 @@ function midcast(spell)
     elseif eng == 'Phalanx' then
       equip(sets.Magic.EnhancingPhalanx)
 
-    elseif string.find(eng, 'Regen') then
-      equip(sets.Magic.EnhancingRegen)
+    -- elseif string.find(eng, 'Regen') then
+    --   equip(sets.Magic.EnhancingRegen)
 
     elseif eng == 'Refresh' then
       equip(sets.Magic.EnhancingRefresh)

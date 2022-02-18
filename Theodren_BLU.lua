@@ -175,7 +175,7 @@ function get_sets()
     right_ring="Stikini Ring +1",
     back=gear.rosmerta.magic
   }
-  sets.BlueMagic.magic = {
+  sets.BlueMagic.Mab = {
     ammo="Pemphredo Tathlum",
     head="Jhakri Coronal +2",
     body="Amalric Doublet +1",
@@ -249,7 +249,7 @@ function get_sets()
     head="Amalric Coif +1",
     waist="Gishdubar Sash"
   }
-  sets.BlueMagic['Tenebral Crush'] = set_combine(sets.BlueMagic.magic, {
+  sets.BlueMagic['Tenebral Crush'] = set_combine(sets.BlueMagic.Mab, {
     head="Pixie Hairpin +1",
     right_ring="Archon Ring"
   })
@@ -374,7 +374,7 @@ function midcast(spell)
     equip(sets.BlueMagic.Macc)
 
   elseif BlueMagic_Mab:contains(spell.english) then
-    equip(sets.BlueMagic.magic)
+    equip(sets.BlueMagic.Mab)
 
   elseif BlueMagic_Physical:contains(spell.english) then
     equip(sets.BlueMagic.Physical)

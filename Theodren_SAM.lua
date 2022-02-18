@@ -3,11 +3,16 @@ include('Modes.lua')
 include('augments.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'FullDD', 'HybridLight', 'HybridHeavy', 'HybridSB', 'Tatenashi'}
+  PrimaryMode = M{['description'] = 'Primary Mode',
+    'FullDD', 'HybridLight', 'HybridHeavy'
+    -- 'HybridSB'
+    -- 'Tatenashi'
+  }
   WeaponMode = M{['description'] = 'Weapon Mode',
   'Dojikiri Yasutsuna',
-  'Shining One',
-  'Amanomurakumo'
+  'Shining One' --,
+  -- 'Soboro Sukehiro' 
+  -- 'Amanomurakumo'
 }
 end
 
@@ -69,8 +74,8 @@ function get_sets()
     head="Mpaca's Cap",            -- 7 PDT
     body="Wakido Domaru +3",       -- 8 DT
     hands="Wakido Kote +3",
-    legs="Mpaca's Hose",           -- 9 DT
-    feet="Mpaca's Boots",          -- 6 DT
+    legs="Mpaca's Hose",           -- 9 PDT
+    feet="Mpaca's Boots",          -- 6 PDT
     neck="Sam. Nodowa +2",
     waist="Sailfi Belt +1",
     left_ear="Schere Earring",
@@ -178,8 +183,10 @@ function get_sets()
   sets.WS['Tachi: Kagero'] = sets.WS['Tachi: Jinpu']
   sets.WS['Tachi: Goten'] = sets.WS['Tachi: Jinpu']
   sets.WS['Tachi: Koki'] = set_combine(sets.WS['Tachi: Jinpu'], {
-    left_ring="Weatherspoon Ring +1"
+    right_ring="Weatherspoon Ring +1"
   })
+  sets.WS['Raiden Thrust'] = sets.WS['Tachi: Jinpu']
+  sets.WS['Thunder Thrust'] = sets.WS['Tachi: Jinpu']
   sets.WS['Tachi: Kaiten'] = sets.WS['Tachi: Fudo']
   sets.WS['Impulse Drive'] = sets.WS['Tachi: Fudo']
   sets.WS['Empyreal Arrow'] = {
@@ -240,7 +247,9 @@ end
 
 function precast(spell)
   if spell.type == 'WeaponSkill' then
-    equip(set_for_ws(spell.english))
+    if player.equipment.main ~= 'Soboro Sukehiro' then
+      equip(set_for_ws(spell.english))
+    end
   elseif spell.type == 'JobAbility' then
     if sets.JAs[spell.english] then
       equip(sets.JAs[spell.english])

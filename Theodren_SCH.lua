@@ -56,8 +56,8 @@ function get_sets()
   -- Mode Sets
   --
   sets.Idle = {
-    main="Daybreak",
-    sub="Ammurapi Shield",
+    -- main="Daybreak",
+    -- sub="Ammurapi Shield",
     ammo="Homiliary",
     head="Befouled Crown",
     neck="Loricate Torque +1",
@@ -67,11 +67,12 @@ function get_sets()
     hands="Nyame Gauntlets",
     left_ring="Stikini Ring +1",
     right_ring="Stikini Ring +1",
-    -- back="Lugh's Cape",
-    back="Mecisto. Mantle",
+    back="Lugh's Cape",
+    -- back="Mecisto. Mantle",
     waist="Fucho-no-Obi",
     legs="Assid. Pants +1",
     feet="Nyame Sollerets"
+    -- feet="Herald's Gaiters"
   }
   sets.Idle_Submlimation = set_combine(sets.Idle, {
     waist="Embla Sash"
@@ -195,7 +196,7 @@ function get_sets()
     legs="Chironic Hose",
     feet="Medium's Sabots",
     neck="Incanter's torque",
-    waist="Luminary Sash",
+    waist="Obstinate Sash",
     lear="Digni. Earring",
     rear="Regal Earring",
     lring="Stikini Ring +1",
@@ -261,7 +262,7 @@ function get_sets()
     legs="Chironic Hose",         -- 8%
     feet="Vanya Clogs",           -- 5%, Skill
     neck="Incanter's Torque",     -- Skill
-    waist="Luminary Sash",        -- MND
+    waist="Obstinate Sash",      -- MND
     left_ear="Regal Earring",     -- MND
     right_ear="Mendi. Earring",   -- 5%
     left_ring="Stikini Ring +1",  -- Skill, MND
@@ -390,6 +391,9 @@ function midcast(spell)
       if spell.target.type == 'SELF' then
         equip(sets.Magic.HealingSelf)
       end
+      if get_total_element_intensity('Light') > 0 then
+        equip({waist="Hachirin-no-Obi"})
+      end
 
     -- Enhancing Spells
     elseif spell.skill == 'Enhancing Magic' then
@@ -429,7 +433,7 @@ function midcast(spell)
   -- Nukes
   elseif spell.skill == 'Elemental Magic' then
     equip(sets.Magic.elemental[NukingMode.current])
-    -- equip_elemental_waist(spell)
+    equip_elemental_waist(spell)
   end
 end
 

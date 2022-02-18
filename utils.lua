@@ -57,10 +57,11 @@ function get_total_element_intensity(element)
 end
 
 -- Equip Orpheus Sash or Hachirin-no-Obi depending on elemental factors
+--
 function equip_elemental_waist(spell)
   local intensity = get_total_element_intensity(spell.element)
   local distance_to_center = spell.target.distance
-  -- local distance_to_center = spell.target.distance - spell.target.model_size
+  local is_helix_spell = (string.find(spell.name, 'helix') ~= nil)
 
   -- add_to_chat('Calculate Orpheus/Hachirin:')
   -- add_to_chat('* Element: ' .. spell.element)
@@ -68,8 +69,9 @@ function equip_elemental_waist(spell)
   -- add_to_chat('* Distance: ' .. spell.target.distance)
   -- add_to_chat('* Model Size: ' .. spell.target.model_size)
   -- add_to_chat('* Effective: ' .. distance_to_center)
+  -- add_to_chat('* Helix?: ' .. (is_helix_spell and 'Yes' or 'No'))
 
-  if intensity >= 2 or (intensity == 1 and distance_to_center > 8) then
+  if is_helix_spell == false and (intensity >= 2 or (intensity == 1 and distance_to_center > 8)) then
     equip({ waist="Hachirin-no-Obi" })
     -- add_to_chat('RESULT: Hachirin-no-Obi')
   elseif distance_to_center <= 15 then

@@ -4,7 +4,12 @@ include('augments_tadako.lua')
 
 function define_modes()
   PrimaryMode = M{['description'] = 'Primary Mode', 'FullDD', 'HybridLight', 'HybridHeavy'}
+  WeaponMode = M{['description'] = 'Weapon Mode',
+    'Trishula',
+    'Naegling'
+  }
   send_command("alias g15v2_m2g1 gs c cycle PrimaryMode")
+  send_command("alias g15v2_m2g2 gs c cycle WeaponMode")
 end
 
 function get_sets()
@@ -19,10 +24,15 @@ function get_sets()
     }
   }
 
+  sets.weapons = {
+    Trishula = { main="Trishula", sub="Utu Grip" },
+    Naegling = { main="Naegling" }
+  }
+
   sets.modes = {}
   sets.modes.FullDD = {
-    main="Trishula",
-    sub="Utu Grip",
+    -- main="Trishula",
+    -- sub="Utu Grip",
     ammo="Aurgelmir Orb",
     head="Flam. Zucchetto +2",
     body=augments.valorous.mail.da,
@@ -38,8 +48,8 @@ function get_sets()
     back=gear.ambuscape.tp
   }
   sets.modes.HybridLight = {
-    main="Trishula",
-    sub="Utu Grip",
+    -- main="Trishula",
+    -- sub="Utu Grip",
     ammo="Aurgelmir Orb",
     head="Hjarrandi Helm",           -- 10 DT
     body="Hjarrandi Breast.",        -- 12 DT
@@ -55,8 +65,8 @@ function get_sets()
     back=gear.ambuscape.tp           -- 10 PDT
   }                                  -- 39 PDT
   sets.modes.HybridHeavy = {
-    main="Trishula",
-    sub="Utu Grip",
+    -- main="Trishula",
+    -- sub="Utu Grip",
     ammo="Aurgelmir Orb",
     head="Hjarrandi Helm",           -- 10 DT
     body="Hjarrandi Breast.",        -- 12 DT
@@ -156,7 +166,7 @@ function get_sets()
   -- Skillchains
   --
   -- Penta Thrust → Stardiver = Transfixion → Sonic Thrust = Distortion → Stardiver = Dark → Stardiver = Umbra
-  -- Stardiver → Camlann's Torment = Fragmentation → Drakesbane = Light → Camlann's Torment = Radiance
+  -- Stardiver → Camlann's Torment = Fragmentation → (Drakesbane|Wheeling) = Light → Camlann's Torment = Radiance
   --
 
   -- Weapon Skills
@@ -184,8 +194,8 @@ function get_sets()
   })
   sets.WS["Camlann's Torment"] = { -- 60 STR / 60 VIT, 1 hit (triple dmg), ignore defense varies w/ TP
     ammo="Knobkierrie",
-    head=augments.valorous.mask.wsd,
-    body="Sulevia's Plate. +2",
+    head="Nyame Helm",
+    body="Nyame Mail",
     hands="Ptero. Fin. G. +3",
     legs="Vishap Brais +3",
     feet="Sulev. Leggings +2",
@@ -274,7 +284,11 @@ function set_for_current_mode()
 end
 
 function set_for_engaged()
-  return sets.modes[PrimaryMode.current]
+  -- return sets.modes[PrimaryMode.current]
+  return set_combine(
+    sets.modes[PrimaryMode.current],
+    sets.weapons[WeaponMode.current]
+  )
 end
 
 function self_command(commandArgs)

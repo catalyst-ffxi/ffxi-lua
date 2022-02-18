@@ -251,10 +251,10 @@ function get_sets()
   }
   sets.WS['Savage Blade'] = {
     head="Nyame Helm",
-    hands="Meg. Gloves +2",
+    hands="Nyame Gauntlets",
     body="Nyame Mail",
     legs="Nyame Flanchard",
-    feet="Lanun Bottes +3",
+    feet="Nyame Sollerets",
     neck="Commodore Charm +1",
     waist="Sailfi Belt +1",
     left_ear="Ishvara Earring",

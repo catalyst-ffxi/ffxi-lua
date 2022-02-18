@@ -74,6 +74,10 @@ function get_sets()
       cdc = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Crit.hit rate+10',}},
       savage = { name="Sucellos's Cape", augments={'STR+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
       sanguine = { name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','Weapon skill damage +10%',}},
+    },
+    stikini = {
+      left = { name="Stikini Ring +1", bag="wardrobe1" },
+      right = { name="Stikini Ring +1", bag="wardrobe2" }
     }
   }
 
@@ -170,11 +174,11 @@ function get_sets()
     legs="Atrophy Tights +3",     -- 12%, Skill
     feet="Vanya Clogs",           -- 5%, Skill
     neck="Incanter's Torque",     -- Skill
-    waist="Luminary Sash",        -- MND
+    waist="Obstinate Sash",       -- MND
     left_ear="Regal Earring",     -- MND
     right_ear="Mendi. Earring",   -- 5%
-    left_ring="Stikini Ring +1",  -- Skill, MND
-    right_ring="Stikini Ring +1", -- Skill, MND
+    left_ring=gear.stikini.left,  -- Skill, MND
+    right_ring=gear.stikini.right,-- Skill, MND
     back=gear.sucellos.enfeeble   -- 10%
   }
   sets.Magic.HealingSelf = {
@@ -189,7 +193,7 @@ function get_sets()
     left_ear="Regal Earring",   -- MND
     right_ear="Mendi. Earring", -- 5%
     left_ring='Kunaji Ring',    -- 5% self
-    right_ring="Stikini Ring +1",-- Skill, MND
+    right_ring=gear.stikini.right,-- Skill, MND
     back=gear.sucellos.enfeeble -- 10%
   }
   sets.Magic.Cursna = {
@@ -265,8 +269,8 @@ function get_sets()
     waist="Olympus Sash",
     left_ear="Mimir Earring",
     right_ear="Andoaa Earring",
-    left_ring="Stikini Ring +1",
-    right_ring="Stikini Ring +1",
+    left_ring=gear.stikini.left,
+    right_ring=gear.stikini.right,
     back="Ghostfyre Cape",
   }
   sets.Magic.Phalanx = set_combine(sets.Magic.EnhancingSkill, {
@@ -300,13 +304,11 @@ function get_sets()
     legs="Chironic Hose",
     feet="Vitiation Boots +3",
     neck="Duelist's Torque +2",
-    -- waist="Luminary Sash",
     waist="Obstinate Sash",
     left_ear="Snotra Earring",
     right_ear="Regal Earring",
-    left_ring="Stikini Ring +1",
-    right_ring="Kishar Ring",
-    -- right_ring="Stikini Ring +1",
+    left_ring=gear.stikini.left,
+    right_ring=gear.stikini.right,
     back=gear.sucellos.enfeeble -- MND+20/Macc+30
   }
   -- Slow2/Paralyze2/Addle2/Blind2:
@@ -320,11 +322,11 @@ function get_sets()
     legs="Chironic Hose",
     feet="Vitiation Boots +3",
     neck="Duelist's Torque +2",
-    waist="Luminary Sash",
+    waist="Obstinate Sash",
     left_ear="Snotra Earring",
     right_ear="Regal Earring",
-    left_ring="Stikini Ring +1",
-    right_ring="Stikini Ring +1",
+    left_ring=gear.stikini.left,
+    right_ring=gear.stikini.right,
     back=gear.sucellos.enfeeble
   }
   -- Distract3/Frazzle3:
@@ -338,14 +340,12 @@ function get_sets()
   sets.Magic.Frazzle3 = set_combine(sets.Magic.EnfeeblePotency, {
     main="Contemplator +1",
     sub="Mephitis Grip",
-    waist="Rumination Sash",
     right_ear="Vor Earring"
   })
   -- Distract III skill cap is 610
   sets.Magic.Distract3 = set_combine(sets.Magic.EnfeeblePotency, {
     main="Contemplator +1",
-    sub="Enki Strap",
-    waist="Rumination Sash"
+    sub="Enki Strap"
   })
 
   -- Dia (maximize duration):
@@ -401,11 +401,11 @@ function get_sets()
     legs="Chironic Hose",
     feet="Vitiation Boots +3",
     neck="Erra Pendant",
-    waist="Luminary Sash",
+    waist="Obstinate Sash",
     left_ear="Regal Earring",
     right_ear="Malignance Earring",-- 4 fc
-    left_ring="Stikini Ring +1",
-    right_ring="Stikini Ring +1",
+    left_ring=gear.stikini.left,
+    right_ring=gear.stikini.right,
     back=gear.sucellos.nuke
   }                             -- 40 + 30 + 8 = 78 fc
   sets.Magic['Absorb-TP'] = sets.Magic.Stun
@@ -423,15 +423,15 @@ function get_sets()
     waist="Fucho-no-Obi",
     left_ear="Regal Earring",
     right_ear="Malignance Earring",
-    left_ring="Stikini Ring +1",
-    right_ring="Stikini Ring +1",
+    left_ring=gear.stikini.left,
+    right_ring=gear.stikini.right,
     back=gear.sucellos.nuke
   }
   sets.Magic.Drain = sets.Magic.Aspir
   sets.Magic.Bio = { -- DOT depends on dark magic skill, but attack down is static
     neck="Erra Pendant",
-    left_ring="Stikini Ring +1",
-    right_ring="Stikini Ring +1",
+    left_ring=gear.stikini.left,
+    right_ring=gear.stikini.right,
     back="Perimede Cape"
   }
 
@@ -496,8 +496,8 @@ function get_sets()
     waist="Fotia Belt",
     left_ear="Regal Earring",
     right_ear="Moonshade Earring",
-    left_ring="Stikini Ring +1",
-    right_ring="Stikini Ring +1",
+    left_ring=gear.stikini.left,
+    right_ring=gear.stikini.right,
     back=gear.sucellos.enfeeble
   }
   sets.WS['Chant du Cygne'] = {
@@ -546,6 +546,7 @@ function get_sets()
     right_ring="Weatherspoon Ring +1",
     back=gear.sucellos.sanguine
   }
+  sets.WS['Flash Nova'] = sets.WS['Seraph Blade']
   sets.WS['Red Lotus Blade'] = set_combine(sets.WS['Seraph Blade'], { right_ring="Epaminondas's Ring" })
   sets.WS['Burning Blade'] = sets.WS['Red Lotus Blade']
   sets.WS['Aeolian Edge'] = sets.WS['Red Lotus Blade']
@@ -657,11 +658,8 @@ function midcast(spell)
     equip(set_for_enfeeble(eng))
 
   elseif spell.skill == 'Elemental Magic' then
-    if eng == 'Stone' then
-    else
-      equip(sets.Magic.Elemental[NukingMode.current])
-      equip_elemental_waist(spell)
-    end
+    equip(sets.Magic.Elemental[NukingMode.current])
+    equip_elemental_waist(spell)
 
   elseif S{'Bio', 'Bio II', 'Bio III'}:contains(eng) then
     equip(sets.Magic.Bio)
@@ -781,7 +779,7 @@ function set_for_current_mode()
       set.waist = 'Fucho-no-Obi'
     end
     -- if player.equipment.ranged ~= 'Ullr' then
-      set.ammo = 'Homiliary'
+      -- set.ammo = 'Homiliary'
     -- end
     return set
   end

@@ -108,11 +108,11 @@ function get_sets()
   sets.modes.HybridDD = {
     sub="Utu Grip",
     ammo="Coiste Bodhar",
-    head="Nyame Helm",
+    head="Adhemar Bonnet +1",
     body="Ayanmo Corazza +2",
-    hands="Nyame Gauntlets",
+    hands="Adhemar Wristbands +1",
     legs="Meg. Chausses +2",
-    feet="Nyame Sollerets",
+    feet=augments.herc.feet.triple,
     neck="Anu Torque",
     waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
@@ -121,6 +121,22 @@ function get_sets()
     right_ring="Moonlight Ring",
     back=gear.ogma.tp
   }
+  -- sets.modes.HybridDD = {
+  --   sub="Utu Grip",
+  --   ammo="Coiste Bodhar",
+  --   head="Nyame Helm",
+  --   body="Ayanmo Corazza +2",
+  --   hands="Nyame Gauntlets",
+  --   legs="Meg. Chausses +2",
+  --   feet="Nyame Sollerets",
+  --   neck="Anu Torque",
+  --   waist="Sailfi Belt +1",
+  --   left_ear="Brutal Earring",
+  --   right_ear="Sherida Earring",
+  --   left_ring="Moonlight Ring",
+  --   right_ring="Moonlight Ring",
+  --   back=gear.ogma.tp
+  -- }
   sets.modes.FullDD = {
     sub="Utu Grip",
     ammo="Coiste Bodhar",
