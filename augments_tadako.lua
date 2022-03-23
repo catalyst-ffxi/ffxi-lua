@@ -11,10 +11,11 @@ augments = {
         healing = { name="Telchine Gloves", augments={'"Cure" potency +5%',}}
       },
       legs={
-        enhancing={ name="Telchine Braconi", augments={'Accuracy+20','"Store TP"+6','Enh. Mag. eff. dur. +9',}},
+        enhancing={ name="Telchine Braconi", augments={'Enh. Mag. eff. dur. +10',}},
+        tp={ name="Telchine Braconi", augments={'Accuracy+20','"Store TP"+6','DEX+9',}}
       },
       feet = {
-        enhancing ={ name="Telchine Pigaches", augments={'Song spellcasting time -7%','Enh. Mag. eff. dur. +7',}}
+        enhancing ={ name="Telchine Pigaches", augments={'Song spellcasting time -7%','Enh. Mag. eff. dur. +10',}}
       }
     },
     chironic = {

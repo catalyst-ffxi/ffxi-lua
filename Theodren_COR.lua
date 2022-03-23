@@ -81,16 +81,16 @@ function get_sets()
     head="Malignance Chapeau",        -- 6 DT
     body="Adhemar Jacket +1",
     hands="Adhemar Wristbands +1",    -- 2 PDT
-    legs="Meg. Chausses +2",
+    legs="Meg. Chausses +2",          -- 6 PDT
     feet="Malignance Boots",          -- 4 DT
-    neck="Loricate Torque +1",        -- 6 DT
+    neck="Iskur Gorget",
     waist="Windbuffet Belt +1",
     left_ear="Brutal Earring",
     right_ear="Suppanomimi",
     left_ring="Defending Ring",       -- 10 DT
     right_ring="Epona's Ring",
     back=gear.camulus.meleeTp,        -- 10 PDT
-  }                                   -- 33 PDT | 31 MDT
+  }                                   -- 38 PDT | 31 MDT
   sets.modes.HybridHeavy = {
     head="Malignance Chapeau",        -- 6 DT
     body="Malignance Tabard",         -- 9 DT
@@ -105,7 +105,6 @@ function get_sets()
     right_ring="Epona's Ring",
     back=gear.camulus.meleeTp,        -- 10 PDT
   }                                   -- 52 PDT | 47 MDT
-                                      -- Lanun knife provides +4/roll if equipped
 
   sets.modes.HighAcc = {
     head="Malignance Chapeau",
@@ -321,7 +320,7 @@ function get_sets()
   -- Job Abilities
   --
   sets.JAs.PhantomRoll = {
-    -- ranged="Compensator",
+    ranged="Compensator",
     head="Lanun Tricorne +3",
     neck="Regal Necklace",
     hands="Chasseur's Gants +1",

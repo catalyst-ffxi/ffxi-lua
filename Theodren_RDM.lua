@@ -17,7 +17,8 @@ function define_modes()
     'CrocDaybreak',
     'CrocTauret',
     'Naegling',
-    'Maxentius'
+    'Maxentius',
+    'Tauret'
   }
 
   NukingMode = M{['description'] = 'Nuking Mode', 'Normal', 'MagicBurst'}
@@ -119,6 +120,10 @@ function get_sets()
   }
   sets.Engaged.Maxentius = set_combine(sets.Engaged.Naegling, {
     main="Maxentius"
+  })
+  sets.Engaged.Tauret = set_combine(sets.Engaged.Naegling, {
+    main="Tauret",
+    sub="Gleti's Knife"
   })
   sets.Engaged.CrocDaybreak = set_combine(sets.Engaged.Naegling, {
     main="Crocea Mors",
@@ -259,7 +264,7 @@ function get_sets()
   }
   sets.Magic.EnhancingSkill = {
     main="Pukulatmuj +1",
-    sub="Ammurapi Shield",
+    sub="Forfend +1",
     head="Befouled Crown",
     body="Viti. Tabard +3",
     hands="Viti. Gloves +3",
@@ -309,7 +314,7 @@ function get_sets()
     right_ear="Regal Earring",
     left_ring=gear.stikini.left,
     right_ring=gear.stikini.right,
-    back=gear.sucellos.enfeeble -- MND+20/Macc+30
+    back="Aurist's Cape +1"
   }
   -- Slow2/Paralyze2/Addle2/Blind2:
   sets.Magic.EnfeeblePotency = {
@@ -325,7 +330,7 @@ function get_sets()
     waist="Obstinate Sash",
     left_ear="Snotra Earring",
     right_ear="Regal Earring",
-    left_ring=gear.stikini.left,
+    left_ring="Metamorph Ring +1",
     right_ring=gear.stikini.right,
     back=gear.sucellos.enfeeble
   }
@@ -340,12 +345,14 @@ function get_sets()
   sets.Magic.Frazzle3 = set_combine(sets.Magic.EnfeeblePotency, {
     main="Contemplator +1",
     sub="Mephitis Grip",
-    right_ear="Vor Earring"
+    right_ear="Vor Earring",
+    left_ring=gear.stikini.left
   })
   -- Distract III skill cap is 610
   sets.Magic.Distract3 = set_combine(sets.Magic.EnfeeblePotency, {
     main="Contemplator +1",
-    sub="Enki Strap"
+    sub="Enki Strap",
+    left_ring=gear.stikini.left
   })
 
   -- Dia (maximize duration):
@@ -465,7 +472,7 @@ function get_sets()
     waist="Sailfi Belt +1",
     left_ear="Regal Earring",
     right_ear="Moonshade Earring",
-    left_ring="Shukuyu Ring",
+    left_ring="Metamorph Ring +1",
     right_ring="Epaminondas's Ring",
     back=gear.sucellos.savage
   }
@@ -480,7 +487,7 @@ function get_sets()
     waist="Sailfi Belt +1",
     left_ear="Regal Earring",
     right_ear="Moonshade Earring",
-    left_ring="Shukuyu Ring",
+    left_ring="Metamorph Ring +1",
     right_ring="Epaminondas's Ring",
     back=gear.sucellos.savage
   }
@@ -504,7 +511,7 @@ function get_sets()
     ammo="Yetshila +1",
     head="Malignance Chapeau",     -- Blistering Sallet +1 augmented
     body="Ayanmo Corazza +2",
-    hands="Malignance Gloves",
+    hands="Bunzi's Gloves",
     legs="Ayanmo Cosciales +2",    -- Zoar Subligar +1 augmented
     feet="Thereoid Greaves",
     neck="Fotia Gorget",
@@ -527,9 +534,9 @@ function get_sets()
     waist="Orpheus's Sash",
     left_ear="Regal Earring",
     right_ear="Malignance Earring",
-    left_ring="Freke Ring",
+    left_ring="Metamorph Ring +1",
     right_ring="Archon Ring",
-    back=gear.sucellos.sanguine
+    back=gear.sucellos.cdc
   }
   sets.WS['Seraph Blade'] = {
     ammo="Pemphredo Tathlum",
@@ -542,7 +549,7 @@ function get_sets()
     waist="Orpheus's Sash",
     left_ear="Malignance Earring",
     right_ear="Moonshade earring",
-    left_ring="Freke Ring",
+    left_ring="Metamorph Ring +1",
     right_ring="Weatherspoon Ring +1",
     back=gear.sucellos.sanguine
   }
@@ -647,11 +654,7 @@ function midcast(spell)
     elseif eng == 'Phalanx' then
       equip(sets.Magic.Phalanx)
     elseif starts_with(eng, 'En') or string.find(eng, 'Temper') then
-      if dual_wield_job() == true then
-        equip(set_combine(sets.Magic.EnhancingSkill, { sub="Pukulatmuj" }))
-      else
-        equip(sets.Magic.EnhancingSkill)
-      end
+      equip(sets.Magic.EnhancingSkill)
     end
 
   elseif spell.skill == 'Enfeebling Magic' then
@@ -762,10 +765,10 @@ function self_command(commandArgs)
   elseif command == 'savage_black_halo' then
     if player.equipment.main == 'Maxentius' then
       send_command('@input /ws "Black Halo" <t>')
-      -- add_to_chat(122, 'Black Halo')
+    elseif player.equipment.main == 'Tauret' then
+      send_command('@input /ws "Evisceration" <t>')
     else
       send_command('@input /ws "Savage Blade" <t>')
-      -- add_to_chat(122, 'Savage Blade')
     end
   end
 end

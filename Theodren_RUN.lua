@@ -470,9 +470,9 @@ function midcast(spell)
 
     elseif spell.english == "Temper" then
       equip(sets.Magic.EnhancingSkill)
-      if player.status ~= 'Engaged' and player.tp < 1000 then
-        equip({main = "Pukulatmuj +1"})
-      end
+      -- if player.status ~= 'Engaged' and player.tp < 1000 then
+      --   equip({main = "Pukulatmuj +1"})
+      -- end
 
     elseif string.find(spell.english, 'Bar') then
       equip(sets.Magic.Barspell)

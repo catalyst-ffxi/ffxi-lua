@@ -3,7 +3,7 @@ include('Modes.lua')
 include('augments.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'HybridHeavy', 'Normal', 'HybridLight'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'HybridHeavy', 'Normal', 'HybridLight', 'Accuracy'}
 end
 
 function define_binds()
@@ -85,15 +85,15 @@ function get_sets()
     body="Malignance Tabard",       -- 9 DT
     hands="Adhemar Wristbands +1",  -- 2 PDT
     legs="Samnuha Tights",
-    feet=augments.herc.feet.triple,    -- 2 PDT
+    feet=augments.herc.feet.triple, -- 2 PDT
     neck="Mirage Stole +1",
     waist="Windbuffet Belt +1",
     left_ear="Telos Earring",
     right_ear="Suppanomimi",
-    left_ring="Defending Ring",        -- 10 DT
+    left_ring="Defending Ring",     -- 10 DT
     right_ring="Epona's Ring",
-    back=gear.rosmerta.tp              -- 10 PDT
-  }                                    -- 33 PDT
+    back=gear.rosmerta.tp           -- 10 PDT
+  }                                 -- 33 PDT
   sets.modes.HybridHeavy = {
     ammo="Coiste Bodhar",
     head="Malignance Chapeau",         -- 6 DT
@@ -109,6 +109,23 @@ function get_sets()
     right_ring="Epona's Ring",
     back=gear.rosmerta.tp              -- 10 PDT
   }                                    -- 51 PDT
+  sets.modes.Accuracy = {
+    ammo="Coiste Bodhar",
+    head="Malignance Chapeau",
+    body="Adhemar Jacket +1",
+    hands="Adhemar Wristbands +1",
+    legs="Malignance Tights",
+    feet=augments.herc.feet.triple,
+    neck="Mirage Stole +1",
+    waist="Windbuffet Belt +1",
+    left_ear="Telos Earring",
+    right_ear="Digni. Earring",
+    left_ring="Chirich Ring +1",
+    right_ring="Epona's Ring",
+    back=gear.rosmerta.tp
+  }
+
+  -- Reiki Yotai
 
   -- JAs
   sets.JAs = {}
@@ -169,11 +186,11 @@ function get_sets()
     feet="Malignance Boots",
     neck="Mirage Stole +1",
     waist="Luminary Sash",
-    left_ear="Regal Earring",
+    left_ear="Gwati Earring",
     right_ear="Digni. Earring",
     left_ring="Stikini Ring +1",
     right_ring="Stikini Ring +1",
-    back=gear.rosmerta.magic
+    back=gear.rosmerta.mab
   }
   sets.BlueMagic.Mab = {
     ammo="Pemphredo Tathlum",

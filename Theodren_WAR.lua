@@ -169,16 +169,16 @@ function get_sets()
   sets.WS.Upheaval = { -- 4-Hit : 85% VIT
     ammo="Knobkierrie",
     head="Agoge Mask +3",
-    body="Pumm. Lorica +3",
+    body="Nyame Mail",
     hands="Sakpata's Gauntlets",
     legs="Sakpata's Cuisses",
     feet="Nyame Sollerets",
     neck="War. Beads +2",
-    waist="Ioskeha Belt +1",
+    waist="Sailfi Belt +1",
     left_ear="Thrud Earring",
     right_ear="Moonshade Earring",
     left_ring="Niqmaddu Ring",
-    right_ring="",
+    right_ring="Regal Ring",
     -- right_ring="Gelatinous Ring +1",
     back=gear.ambuscape.wsVit -- vit/acc/att/wsd
   }
@@ -250,7 +250,7 @@ function get_sets()
     legs=augments.odyssean.legs.wsd,
     feet="Sulev. Leggings +2",
     neck="War. Beads +2",
-    waist="Ioskeha Belt +1",
+    waist="Sailfi Belt +1",
     left_ear="Thrud Earring",
     right_ear="Moonshade Earring",
     left_ring="Niqmaddu Ring",

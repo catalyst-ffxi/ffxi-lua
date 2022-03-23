@@ -53,11 +53,18 @@ function get_sets()
   define_modes()
   define_aliases()
 
+  gear = {
+    stikini = {
+      left = { name="Stikini Ring +1", bag="wardrobe1" },
+      right = { name="Stikini Ring +1", bag="wardrobe2" }
+    }
+  }
+
   -- Mode Sets
   --
   sets.Idle = {
-    -- main="Daybreak",
-    -- sub="Ammurapi Shield",
+    main="Daybreak",
+    sub="Ammurapi Shield",
     ammo="Homiliary",
     head="Befouled Crown",
     neck="Loricate Torque +1",
@@ -65,10 +72,9 @@ function get_sets()
     right_ear="Etiolation Earring",
     body="Agwu's Robe",
     hands="Nyame Gauntlets",
-    left_ring="Stikini Ring +1",
-    right_ring="Stikini Ring +1",
+    left_ring=gear.stikini.left,
+    right_ring=gear.stikini.right,
     back="Lugh's Cape",
-    -- back="Mecisto. Mantle",
     waist="Fucho-no-Obi",
     legs="Assid. Pants +1",
     feet="Nyame Sollerets"
@@ -109,8 +115,8 @@ function get_sets()
     rear="Regal Earring",
     body="Amalric Doublet +1",
     hands="Amalric Gages +1",
-    lring="Stikini Ring +1",
-    rring="Stikini Ring +1",
+    left_ring=gear.stikini.left,
+    right_ring=gear.stikini.right,
     back="Lugh's Cape",
     waist="Eschan Stone",
     legs="Amalric Slops +1",
@@ -199,8 +205,8 @@ function get_sets()
     waist="Obstinate Sash",
     lear="Digni. Earring",
     rear="Regal Earring",
-    lring="Stikini Ring +1",
-    rring="Stikini Ring +1",
+    left_ring=gear.stikini.left,
+    right_ring=gear.stikini.right,
     back="Lugh's Cape"
   }
 
@@ -245,8 +251,8 @@ function get_sets()
     waist="Embla Sash",
     left_ear="Andoaa Earring",
     right_ear="Mimir Earring",
-    left_ring="Stikini Ring +1",
-    right_ring="Stikini Ring +1",
+    left_ring=gear.stikini.left,
+    right_ring=gear.stikini.right,
     back="Perimede Cape"
   }
 
@@ -265,8 +271,8 @@ function get_sets()
     waist="Obstinate Sash",      -- MND
     left_ear="Regal Earring",     -- MND
     right_ear="Mendi. Earring",   -- 5%
-    left_ring="Stikini Ring +1",  -- Skill, MND
-    right_ring="Stikini Ring +1", -- Skill, MND
+    left_ring=gear.stikini.left,  -- Skill, MND
+    right_ring=gear.stikini.right,-- Skill, MND
     back="Lugh's Cape"
   }
   sets.Magic.HealingSelf = {

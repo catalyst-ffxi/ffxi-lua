@@ -33,7 +33,7 @@ function get_sets()
   sets.modes.FullDD = {
     -- main="Trishula",
     -- sub="Utu Grip",
-    ammo="Aurgelmir Orb",
+    ammo="Coiste Bodhar",
     head="Flam. Zucchetto +2",
     body=augments.valorous.mail.da,
     hands="Sulev. Gauntlets +2",
@@ -50,7 +50,7 @@ function get_sets()
   sets.modes.HybridLight = {
     -- main="Trishula",
     -- sub="Utu Grip",
-    ammo="Aurgelmir Orb",
+    ammo="Coiste Bodhar",
     head="Hjarrandi Helm",           -- 10 DT
     body="Hjarrandi Breast.",        -- 12 DT
     hands="Sulev. Gauntlets +2",     -- 5 DT
@@ -67,7 +67,7 @@ function get_sets()
   sets.modes.HybridHeavy = {
     -- main="Trishula",
     -- sub="Utu Grip",
-    ammo="Aurgelmir Orb",
+    ammo="Coiste Bodhar",
     head="Hjarrandi Helm",           -- 10 DT
     body="Hjarrandi Breast.",        -- 12 DT
     hands="Sulev. Gauntlets +2",     -- 5 DT
@@ -173,13 +173,14 @@ function get_sets()
   --
   sets.WS = {}
   sets.WS.Stardiver = { -- 85% STR, 4-hit, dmg varies w/ TP
-    ammo="Knobkierrie",
+    ammo="Coiste Bodhar",
     head="Ptero. Armet +3",
     body=augments.valorous.mail.da,
     hands="Sulev. Gauntlets +2",
     legs="Sulev. Cuisses +2",
     feet="Lustratio Leggings +1",
-    neck="Fotia Gorget",
+    neck="Dgn. Collar +2",
+    -- neck="Fotia Gorget",
     waist="Fotia Belt",
     left_ear="Moonshade Earring",
     right_ear="Sherida Earring",
@@ -213,8 +214,8 @@ function get_sets()
     left_ear="Moonshade Earring"
   })
   sets.WS['Drakesbane'] = { -- 50% STR, 4 hit, crit varies w/ TP
-    ammo="Knobkierrie",
-    head="Ptero. Armet +3",
+    ammo="Coiste Bodhar",
+    head="Blistering Sallet +1"
     body="Hjarrandi Breast.",
     hands="Flam. Manopolas +2",
     legs="Sulev. Cuisses +2",       -- TODO: Empy legs

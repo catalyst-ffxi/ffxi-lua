@@ -4,14 +4,14 @@ include('augments.lua')
 
 function define_modes()
   PrimaryMode = M{['description'] = 'Primary Mode',
-    'FullDD', 'HybridLight', 'HybridHeavy'
-    -- 'HybridSB'
+    'FullDD', 'HybridLight', 'HybridHeavy',
+    'HybridSB'
     -- 'Tatenashi'
   }
   WeaponMode = M{['description'] = 'Weapon Mode',
   'Dojikiri Yasutsuna',
-  'Shining One' --,
-  -- 'Soboro Sukehiro' 
+  'Shining One',
+  'Soboro Sukehiro' 
   -- 'Amanomurakumo'
 }
 end
@@ -43,7 +43,8 @@ function get_sets()
     body="Ken. Samue +1",
     hands="Wakido Kote +3",
     legs="Ken. Hakama +1",
-    feet="Ken. Sune-Ate +1",
+    -- feet="Ken. Sune-Ate +1",
+    feet="Ryuo Sune-Ate +1",
     neck="Sam. Nodowa +2",
     waist="Sailfi Belt +1",
     left_ear="Schere Earring",
@@ -86,12 +87,12 @@ function get_sets()
   }                                -- 50 PDT
   sets.modes.HybridSB = {
     sub="Utu Grip",
-    ammo="Staunch Tathlum +1",
+    ammo="Coiste Bodhar",
     head="Kendatsuba Jinpachi +1",
     body="Wakido Domaru +3",
     hands="Wakido Kote +3",
     legs="Mpaca's Hose",
-    feet="Kendatsuba Sune-Ate +1",
+    feet="Ryuo Sune-Ate +1",
     neck="Sam. Nodowa +2",
     waist="Sailfi Belt +1",
     left_ear="Schere Earring",
@@ -193,7 +194,7 @@ function get_sets()
     head="Nyame Helm",
     body="Nyame Mail",
     hands="Nyame Gauntlets",
-    legs="Wakido Haidate +3",
+    legs="Nyame Flanchard",
     feet="Nyame Sollerets",
     neck="Sam. Nodowa +2",
     waist="Fotia Belt",
