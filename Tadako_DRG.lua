@@ -215,7 +215,7 @@ function get_sets()
   })
   sets.WS['Drakesbane'] = { -- 50% STR, 4 hit, crit varies w/ TP
     ammo="Coiste Bodhar",
-    head="Blistering Sallet +1"
+    head="Blistering Sallet +1",
     body="Hjarrandi Breast.",
     hands="Flam. Manopolas +2",
     legs="Sulev. Cuisses +2",       -- TODO: Empy legs

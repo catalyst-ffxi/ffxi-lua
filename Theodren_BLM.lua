@@ -45,12 +45,8 @@ function define_aliases()
 
   -- Modes
   send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
-  -- send_command("alias g15v2_m1g2 gs c cycle EnfeebleMode")
   send_command("alias g15v2_m1g3 gs c cycle NukingMode")
   send_command("alias g15v2_m1g4 gs c cycle Element")
-  send_command("alias g15v2_m1g5 lightarts")
-  send_command("alias g15v2_m1g6 darkarts")
-
   send_command("alias auto_aspir gs c auto_aspir")
 end
 

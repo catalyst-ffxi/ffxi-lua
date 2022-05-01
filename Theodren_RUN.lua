@@ -4,8 +4,10 @@ include('augments.lua')
 include('utils.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Tank', 'HybridDD', 'FullDD'}
-  WeaponMode = M{['description'] = 'Weapon Mode', 'Epeo', 'Lionheart'} -- 'Hepi'
+  PrimaryMode = M{['description'] = 'Primary Mode', 'Tank', 'NyameTank', 'HybridDD', 'FullDD'}
+  WeaponMode = M{['description'] = 'Weapon Mode', 
+    'Epeolatry', 'Lionheart', 'Hepatizon Axe +1'
+  }
   IdleMode = M(false, 'IdleMode')
 
   Runes = {
@@ -57,33 +59,26 @@ function get_sets()
       reso={ name="Ogma's cape", augments={'STR+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}},
       dimi={ name="Ogma's cape", augments={'DEX+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
       enmity={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10','Spell interruption rate down-10%',}},
-      tank={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','"Fast Cast"+10','Phys. dmg. taken-10%',}},
+      tank={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Phys. dmg. taken-10%',}},
+      fastCast={ name="Ogma's Cape", augments={'HP+60','HP+20','"Fast Cast"+10',}},
     }
-  }
-
-  -- Weapons
-  --
-  sets.weapons = {
-    Lionheart = { main="Lionheart" },
-    Epeo = { main="Epeolatry" },
-    Hepi = { main="Hepatizon Axe +1" }
   }
 
   sets.Idle = {
     sub="Utu Grip",
-    ammo="Staunch Tathlum +1",    -- 3
-    head="Nyame Helm",            -- 7
+    ammo="Staunch Tathlum +1",
+    head="Nyame Helm",
     body="Runeist's Coat +3",   
-    hands="Nyame Gauntlets",      -- 7
+    hands="Nyame Gauntlets",
     legs="Carmine Cuisses +1",
-    feet="Nyame Sollerets",       -- 7
-		neck="Futhark Torque +2",     -- 7
-    waist="Flume Belt +1",        -- 4
-    left_ear="Odnowa Earring +1", -- 3
+    feet="Nyame Sollerets",
+		neck="Futhark Torque +2",
+    waist="Flume Belt +1",
+    left_ear="Odnowa Earring +1",
     right_ear="Eabani Earring",
-    left_ring="Defending Ring",   -- 10
-    right_ring="Gelatinous Ring +1",-- 7
-    back=gear.ogma.tank           -- 10
+    left_ring="Moonlight Ring",
+    right_ring="Warden's Ring +1",
+    back=gear.ogma.tank
   }
 
   -- Modes
@@ -103,6 +98,38 @@ function get_sets()
     right_ear="Eabani Earring",
     left_ring="Defending Ring",
     right_ring="Gelatinous Ring +1",
+    back=gear.ogma.tank
+  }
+  sets.modes.NyameTank = {
+    sub="Utu Grip",
+    ammo="Staunch Tathlum +1",
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Turms Mittens +1",
+    legs="Nyame Flanchard",
+    feet="Turms Leggings +1",
+		neck="Futhark Torque +2",
+    waist="Engraved Belt",
+    left_ear="Odnowa Earring +1",
+    right_ear="Eabani Earring",
+    left_ring="Defending Ring",
+    right_ring="Shadow Ring",
+    back=gear.ogma.tank
+  }
+  sets.modes.NyameTank2 = {
+    sub="Utu Grip",
+    ammo="Staunch Tathlum +1",
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Turms Mittens +1",
+    legs="Nyame Flanchard",
+    feet="Turms Leggings +1",
+		neck="Futhark Torque +2",
+    waist="Engraved Belt",
+    left_ear="Odnowa Earring +1",
+    right_ear="Eabani Earring",
+    left_ring="Gelatinous Ring +1",
+    right_ring="Warden's Ring",
     back=gear.ogma.tank
   }
   sets.modes.HybridDD = {
@@ -314,7 +341,7 @@ function get_sets()
     hands="Leyline Gloves",             -- 7
     lring="Weatherspoon Ring +1",       -- 6
     rring="Kishar Ring",                -- 4
-    back=gear.ogma.tank,                -- 10
+    back=gear.ogma.fastCast,            -- 10
     waist="Kasiri Belt",                -- HP
     legs="Aya. Cosciales +2",           -- 6
     feet="Carmine Greaves +1"           -- 8
@@ -553,14 +580,15 @@ function self_command(commandArgs)
   elseif command == 'cycle_rune' then
     cycle_current_rune()
   elseif command == 'run' then
-    equip({ legs="Carmine Cuisses +1" })
+    equip(sets.Idle)
+    -- equip({ legs="Carmine Cuisses +1" })
   end
 end
 
 function set_for_engaged()
   local set = set_combine(
     sets.modes[PrimaryMode.current],
-    sets.weapons[WeaponMode.current]
+    { main = WeaponMode.current }
   )
   -- if player.status ~= 'Engaged' then
   --   set = set_combine(set, sets.Idle)

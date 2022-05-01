@@ -110,17 +110,17 @@ function get_sets()
     sub="Ammurapi Shield",
     ammo="Pemphredo Tathlum",
     head="Amalric Coif +1",
-    neck="Erra Pendant",
+    neck="Argute Stole +1",
     lear="Digni. Earring",
-    rear="Regal Earring",
+    rear="Gwati Earring",
     body="Amalric Doublet +1",
-    hands="Amalric Gages +1",
+    hands="Nyame Gauntlets",
     left_ring=gear.stikini.left,
     right_ring=gear.stikini.right,
     back="Lugh's Cape",
-    waist="Eschan Stone",
-    legs="Amalric Slops +1",
-    feet="Amalric Nails +1"
+    waist="Obstinate Sash",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets"
   }
   sets.Magic.DrainAspir = set_combine(sets.Magic.Dark, {
     neck="Erra Pendant",
@@ -351,7 +351,7 @@ function get_sets()
     feet="Nyame Sollerets",
     neck="Sanctity Necklace",
     waist="Windbuffet Belt +1",
-    left_ear="Brutal Earring",
+    left_ear="Cessance Earring",
     right_ear="Telos Earring",
     left_ring="Hetairoi Ring",
     right_ring="Chirich Ring +1",

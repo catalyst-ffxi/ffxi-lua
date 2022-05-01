@@ -3,7 +3,7 @@ include('Modes.lua')
 include('augments.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'FullTH', 'HybridTH', 'FullDD', 'HybridDD'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'FullTH', 'HybridTH', 'FullDD', 'HybridDD', 'Accuracy'}
 
   Abyssea = {
     current = 0,
@@ -60,8 +60,7 @@ function get_sets()
   }
   sets.modes = {}
   sets.modes.FullDD = {
-    ranged="Exalted Crossbow +1",
-    ammo="Gashing Bolt",
+    ammo="Coiste Bodhar",
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
     hands="Adhemar Wristbands +1",
@@ -76,8 +75,7 @@ function get_sets()
     back=gear.toutatis.tp,
   }
   sets.modes.HybridDD = {
-    ranged="Exalted Crossbow +1",
-    ammo="Gashing Bolt",
+    ammo="Coiste Bodhar",
     head="Malignance Chapeau",        -- 6 DT
     body="Malignance Tabard",         -- 9 DT
     hands="Malignance Gloves",        -- 5 DT
@@ -92,8 +90,7 @@ function get_sets()
     back=gear.toutatis.tp,            -- 10 PDT
   }                                   -- 51 PDT
   sets.modes.FullTH = {
-    ranged="Exalted Crossbow +1",
-    ammo="Gashing Bolt",
+    ammo="Coiste Bodhar",
     head="Adhemar Bonnet +1",
     body="Adhemar Jacket +1",
     hands="Plunderer's Armlets +1",
@@ -108,8 +105,7 @@ function get_sets()
     back=gear.toutatis.tp,
   }
   sets.modes.HybridTH = {
-    ranged="Exalted Crossbow +1",
-    ammo="Gashing Bolt",
+    ammo="Coiste Bodhar",
     head="Malignance Chapeau",        -- 6 DT
     body="Malignance Tabard",         -- 9 DT
     hands="Plunderer's Armlets +1",
@@ -123,15 +119,29 @@ function get_sets()
     right_ring="Defending Ring",      -- 10 DT
     back=gear.toutatis.tp,            -- 10 PDT
   }                                   -- 50 PDT
+  sets.modes.Accuracy = {
+    ammo="Coiste Bodhar",
+    head="Malignance Chapeau",
+    body="Adhemar Jacket +1",
+    hands="Adhemar Wristbands +1",
+    legs="Meg. Chausses +2",
+    feet=augments.herc.feet.triple,
+    neck="Sanctity Necklace",
+    waist="Windbuffet Belt +1",
+    left_ear="Telos Earring",
+    right_ear="Cessance Earring",
+    left_ring="Gere Ring",
+    right_ring="Chirich Ring +1",
+    back=gear.toutatis.tp,
+  }
 
   -- Weapon Skills
   --
   sets.WS = {}
   sets.WS.Rudra = {
-    -- ammo="Falcon Eye", -- stored
-    -- ammo="Floestone",
+    ammo="Coiste Bodhar",
     head="Nyame Helm",
-    body="Meg. Cuirie +2",
+    body="Nyame Mail",
     hands="Meg. Gloves +2",
     legs="Nyame Flanchard",
     feet="Nyame Sollerets",
@@ -143,14 +153,15 @@ function get_sets()
     right_ring="Ilabrat Ring",
     back=gear.toutatis.ws
   }
-  -- sets.WS['Exenterator'] = {
-  -- }
   sets.WS['Evisceration'] = {
-    -- ammo="Yetshila +1",
+    ammo="Yetshila +1",
     head="Adhemar Bonnet +1",
     body="Meg. Cuirie +2",
+    -- hands=augments.herc.hands.reso,
+    legs="Meg. Chausses +2",
+    -- feet=augments.herc.feet.triple,
     hands="Meg. Gloves +2",
-    legs="Nyame Flanchard",
+    -- legs="Nyame Flanchard",
     feet="Nyame Sollerets",
     neck="Fotia Gorget",
     waist="Fotia Belt",
@@ -174,6 +185,21 @@ function get_sets()
     waist="Eschan Stone",
     legs="Nyame Flanchard",
     feet= "Nyame Sollerets"
+  }
+  sets.WS['Savage Blade'] = {
+    ammo="Coiste Bodhar",
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Meg. Gloves +2",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
+    neck="Caro Necklace",
+    waist="Sailfi Belt +1",
+    left_ear="Moonshade Earring",
+    right_ear="Ishvara Earring",
+    left_ring="Gere Ring",
+    right_ring="Regal Ring",
+    back=gear.toutatis.ws
   }
 
   -- Job Abilities

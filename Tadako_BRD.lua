@@ -145,7 +145,7 @@ function get_sets()
   }
   sets.Magic.Enfeebling = {
     main="Carnwenhan",
-    head="Brioso Roundlet +2",
+    head="Brioso Roundlet +3",
     body="Brioso Justaucorps +2",
     hands="Inyanga Dastanas +2",
     legs="Brioso Cannions +2",
@@ -181,7 +181,7 @@ function get_sets()
     main="Carnwenhan",
     -- sub="Kali",
     ranged="Gjallarhorn",
-    head="Brioso Roundlet +2",
+    head="Brioso Roundlet +3",
     body="Fili Hongreline +1",
     hands="Inyanga Dastanas +2",
     legs="Inyanga Shalwar +2",
@@ -208,7 +208,7 @@ function get_sets()
     main="Carnwenhan",
     -- sub="Kali",
     ranged="Gjallarhorn",
-    head="Brioso Roundlet +2",
+    head="Brioso Roundlet +3",
     body="Brioso Justaucorps +2",
     hands="Inyanga Dastanas +2",
     legs="Brioso Cannions +2",
@@ -225,7 +225,7 @@ function get_sets()
     main="Carnwenhan",
     -- sub="Kali",
     ranged="Gjallarhorn",
-    head="Brioso Roundlet +2",
+    head="Brioso Roundlet +3",
     body="Fili Hongreline +1",
     hands="Inyanga Dastanas +2",
     legs="Inyanga Shalwar +2",
@@ -249,11 +249,7 @@ function get_sets()
   sets.JobAbility = {}
   sets.JobAbility.Troubadour = { body="Bihu Justaucorps +3", feet="Bihu Slippers" }
   sets.JobAbility.Nightingale = { body="Bihu Justaucorps +3", feet="Bihu Slippers" }
-  -- sets.JobAbility['Soul Voice'] = { legs = 'Bihu Cannions' }
-
-  -- main="Carnwenhan",
-  -- sub="Genbu's Shield",
-  -- sub="Gleti's Knife",
+  sets.JobAbility['Soul Voice'] = { legs = 'Bihu Cannions' }
 
   -- Melee
   sets.Engaged = {

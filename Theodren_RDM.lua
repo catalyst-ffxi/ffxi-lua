@@ -40,10 +40,10 @@ function define_aliases()
 
   -- Function Key Shortcuts
   -- Nukes
-  send_command('bind ^f1 tier2')
-  send_command('bind ^f2 tier3')
-  send_command('bind ^f3 tier4')
-  send_command('bind ^f4 tier5')
+  -- send_command('bind ^f1 tier2')
+  -- send_command('bind ^f2 tier3')
+  -- send_command('bind ^f3 tier4')
+  -- send_command('bind ^f4 tier5')
 
   -- Self Buffs
   send_command('bind ^f5 gain')
@@ -69,7 +69,7 @@ function get_sets()
   gear = {
     sucellos = {
       nuke = { name="Sucellos's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10',}},
-      enfeeble = { name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Cure" potency +10%','Phys. dmg. taken-10%',}},
+      enfeeble = { name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','Enmity-10','Phys. dmg. taken-10%'}},
       singleWield = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
       dualWield = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dual Wield"+10',}},
       cdc = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Crit.hit rate+10',}},
@@ -172,35 +172,28 @@ function get_sets()
   -- Heals
   --
   sets.Magic.Healing = {
-    ammo="Regal Gem",             -- MND
-    head="Vanya Hood",            -- 10%, Skill
-    body="Kaykaus Bliaut +1",     -- CP II
-    hands="Kaykaus Cuffs +1",     -- 11%, MND
-    legs="Atrophy Tights +3",     -- 12%, Skill
-    feet="Vanya Clogs",           -- 5%, Skill
-    neck="Incanter's Torque",     -- Skill
-    waist="Obstinate Sash",       -- MND
-    left_ear="Regal Earring",     -- MND
-    right_ear="Mendi. Earring",   -- 5%
-    left_ring=gear.stikini.left,  -- Skill, MND
-    right_ring=gear.stikini.right,-- Skill, MND
-    back=gear.sucellos.enfeeble   -- 10%
+    ammo="Regal Gem",
+    head="Kaykaus Mitra +1",
+    body="Kaykaus Bliaut +1",
+    hands="Kaykaus Cuffs +1",
+    legs="Kaykaus Tights +1", 
+    feet="Kaykaus Boots +1", 
+    neck="Incanter's Torque",
+    waist="Luminary Sash",
+    left_ear="Regal Earring",
+    right_ear="Meili Earring",
+    left_ring=gear.stikini.left,
+    right_ring=gear.stikini.right,
+    back=gear.sucellos.enfeeble
   }
-  sets.Magic.HealingSelf = {
-    ammo="Regal Gem",           -- MND
-    head="Vanya Hood",          -- 10%, Skill
-    body="Kaykaus Bliaut +1",   -- CP II
-    hands="Kaykaus Cuffs +1",   -- 11%, MND
-    legs="Atrophy Tights +3",   -- 12%, Skill
-    feet="Vanya Clogs",         -- 5%, Skill
-    neck="Phalaina Locket",     -- 4% self
-    waist="Gishdubar Sash",     -- 10% self
-    left_ear="Regal Earring",   -- MND
-    right_ear="Mendi. Earring", -- 5%
-    left_ring='Kunaji Ring',    -- 5% self
-    right_ring=gear.stikini.right,-- Skill, MND
-    back=gear.sucellos.enfeeble -- 10%
-  }
+  sets.Magic.HealingSelf = set_combine(
+    sets.Magic.Healing, {
+      neck="Phalaina Locket",     -- 4% self
+      waist="Gishdubar Sash",     -- 10% self
+      left_ring='Kunaji Ring',    -- 5% self
+    }
+  )
+
   sets.Magic.Cursna = {
     ammo="Sapience Orb",
     head="Vanya Hood",
@@ -391,7 +384,7 @@ function get_sets()
     head="Ea Hat",              -- MB +6 | MB II +6
     neck="Mizu. Kubikazari",    -- MB +10|
     body="Ea Houppelande",      -- MB +8 | MB II +8
-    hands="Amalric Gages +1",   --       | MB II +5
+    hands="Amalric Gages +1",   --       | MB II +6
     rring="Mujin Band",         --       | MB II +5
     legs="Ea Slops",            -- MB +7 | MB II +7
     feet="Jhakri Pigaches +2",  -- MB +7
@@ -407,7 +400,7 @@ function get_sets()
     hands="Kaykaus Cuffs +1",
     legs="Chironic Hose",
     feet="Vitiation Boots +3",
-    neck="Erra Pendant",
+    neck="Duelist's Torque +2",
     waist="Obstinate Sash",
     left_ear="Regal Earring",
     right_ear="Malignance Earring",-- 4 fc

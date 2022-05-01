@@ -119,7 +119,7 @@ function get_sets()
   -- sets.JAs.Defender = { hands="Agoge Mufflers +1" }
   sets.JAs['Mighty Strikes'] = { hands="Agoge Mufflers +1" }
   sets.JAs.Warcry = { head="Agoge Mask +3" }
-  sets.JAs['Blood Rage'] = { body="Boii Lorica" }
+  sets.JAs['Blood Rage'] = { body="Boii Lorica +1" }
 
   -- This is useless - mufflers must be on during TP which just isn't worth doing.
   -- https://www.ffxiah.com/forum/topic/17977/restraint-and-ravager-mufflers-2#1116664
@@ -244,11 +244,11 @@ function get_sets()
   }
   sets.WS['Fell Cleave'] = {  -- Single Hit : 60% STR
     ammo="Knobkierrie",
-    head="Agoge Mask +3",
-    body="Pumm. Lorica +3",
+    head="Nyame Helm",
+    body="Nyame Mail",
     hands="Nyame Gauntlets",
-    legs=augments.odyssean.legs.wsd,
-    feet="Sulev. Leggings +2",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
     neck="War. Beads +2",
     waist="Sailfi Belt +1",
     left_ear="Thrud Earring",
@@ -294,6 +294,22 @@ function get_sets()
   }
   sets.WS.Judgment = sets.WS['Savage Blade']
   sets.WS['Impulse Drive'] = sets.WS['Savage Blade']
+
+  -- sets.WS['Impulse Drive'] = {
+  --   ammo="Yetshila +1",
+  --   head="Agoge Mask +3",
+  --   body="Hjarrandi Breast.",
+  --   hands="Nyame Gauntlets",
+  --   legs="Sakpata's Cuisses",
+  --   feet="Sulev. Leggings +2",
+  --   neck="War. Beads +2",
+  --   waist="Sailfi Belt +1",
+  --   left_ear="Thrud Earring",
+  --   right_ear="Moonshade Earring",
+  --   left_ring="Niqmaddu Ring",
+  --   right_ring="Epaminondas's Ring",
+  --   back=gear.ambuscape.wsStr
+  -- }
 
   sets.WS['Flash Nova'] = {
     ammo="Knobkierrie",

@@ -5,18 +5,33 @@ include('utils.lua')
 
 function define_modes()
   PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'HybridLight', 'HybridHeavy', 'HighAcc'}
-  Weapons = M{
-    ['description'] = 'Weapons',
-    'DeathPenalty',
-    'Fomalhaut',
-    'Anarchy'
+  MainWeapon = M{
+    ['description'] = 'Main Weapons',
+    'Naegling',
+    'Kustawi +1',
+    'Lanun Knife'
+  }
+  SubWeapon = M{
+    ['description'] = 'Sub Weapons',
+    "Gleti's Knife",
+    'Tauret',
+    'Nusku Shield'
+  }
+  RangedWeapon = M{
+    ['description'] = 'Ranged Weapons',
+    'Anarchy +2',
+    'Death Penalty',
+    'Fomalhaut'
   }
 end
 
 function define_binds()
   -- Modes
   send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
-  send_command("alias g15v2_m1g2 gs c weapon")
+  send_command("alias g15v2_m1g2 gs c cycle RangedWeapon")
+  send_command("alias g15v2_m1g3 gs c cycle MainWeapon")
+  send_command("alias g15v2_m1g4 gs c cycle SubWeapon")
+  
 end
 
 function define_gear()
@@ -36,11 +51,6 @@ function get_sets()
       rangedWsPhys = { name="Camulus's Mantle", augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','Weapon skill damage +10%',}},
       meleeWs = { name="Camulus's Mantle", augments={'STR+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
       snapShot = { name="Camulus's Mantle", augments={'"Snapshot"+10',}}
-    },
-    weapons = {
-      Fomalhaut = "Fomalhaut",
-      Anarchy = "Anarchy +2",
-      DeathPenalty = "Death Penalty"
     },
     bullets = {
       ratt = "Chrono Bullet",
@@ -130,7 +140,7 @@ function get_sets()
     neck="Commodore Charm +1",               --   3
     body="Laksamana's Frac +3",              --   0    18
     hands="Carmine Fin. Ga. +1",             --   8    11
-    legs="Adhemar Kecks",                    --   9    10
+    legs="Adhemar Kecks +1",                 --   9    10
     feet="Meg. Jam. +2",                     --  10    0
     waist="Yemaya Belt",                     --   0    5
     back=gear.camulus.snapShot               --  10    0
@@ -143,7 +153,7 @@ function get_sets()
   sets.Ranged = {
     ammo=gear.bullets.ratt,
     head="Malignance Chapeau",
-    body="Malignance Tabard",
+    body="Ikenga's Vest",
     hands="Malignance Gloves",
     legs="Malignance Tights",
     feet="Malignance Boots",
@@ -191,7 +201,7 @@ function get_sets()
   sets.WS['Last Stand'] = {
     ammo=gear.bullets.ratt,
     head="Nyame Helm",
-    body="Laksamana's Frac +3",
+    body="Ikenga's Vest",
     hands="Meg. Gloves +2",
     legs="Nyame Flanchard",
     feet="Lanun Bottes +3",
@@ -251,7 +261,8 @@ function get_sets()
   sets.WS['Savage Blade'] = {
     head="Nyame Helm",
     hands="Nyame Gauntlets",
-    body="Nyame Mail",
+    -- body="Nyame Mail",
+    body="Ikenga's Vest",
     legs="Nyame Flanchard",
     feet="Nyame Sollerets",
     neck="Commodore Charm +1",
@@ -321,6 +332,7 @@ function get_sets()
   --
   sets.JAs.PhantomRoll = {
     ranged="Compensator",
+    main="Rostam",
     head="Lanun Tricorne +3",
     neck="Regal Necklace",
     hands="Chasseur's Gants +1",
@@ -433,10 +445,6 @@ function self_command(commandArgs)
     equip(sets.Idle)
   elseif command == "mode" then
     equip(set_for_engaged())
-  elseif command == 'weapon' then
-    Weapons:cycle()
-    add_to_chat(122, 'SET [Weapon] to ' .. Weapons.current)
-    equip({ ranged = gear.weapons[Weapons.current] })
   elseif command == 'cycle' then
     local mode = _G[commandArgs[2]]
     if mode ~= nil and mode._class == 'mode' then
@@ -448,8 +456,20 @@ function self_command(commandArgs)
 end
 
 function set_for_engaged()
-  return set_combine(
+  set = set_combine(
     sets.modes[PrimaryMode.current],
-    { ranged = gear.weapons[Weapons.current] }
+    { main = MainWeapon.current },
+    { sub = SubWeapon.current },
+    { ranged = RangedWeapon.current }
   )
+
+  if dual_wield_job() == false then
+    set = set_combine(set, { sub = "Nusku Shield" })
+  end
+
+  return set
+end
+
+function dual_wield_job()
+  return (player.sub_job == 'NIN' or player.sub_job == 'DNC') and player.sub_job_level > 0
 end

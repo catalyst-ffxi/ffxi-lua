@@ -31,17 +31,17 @@ function get_sets()
     head="Nyame Helm",                 -- 7 DT
     body="Assimilator's Jubbah +3",    -- Refresh
     hands="Nyame Gauntlets",           -- 7 DT
-    legs="Carmine Cuisses +1",         -- Zoomies
-    -- legs="Nyame Flanchard",
+    -- legs="Carmine Cuisses +1",         -- Zoomies
+    legs="Nyame Flanchard",
     feet="Nyame Sollerets",            -- 7 DT
     neck="Loricate Torque +1",         -- 6 DT
-    waist="Fucho-no-Obi",              -- Refresh
+    waist="Flume Belt +1",             -- 4 PDT
     left_ear="Eabani Earring",         -- Meva
     right_ear="Odnowa Earring +1",     -- 3 DT
     left_ring="Stikini Ring +1",       -- Refresh
     right_ring="Stikini Ring +1",      -- Refresh
     back=gear.rosmerta.tp              -- 10 PDT
-  }                                    -- 39 PDT
+  }                                    -- 47 PDT
 
   -- DW Traits:
   -- Delta Thrust + Barbed Crescent = 1
@@ -190,7 +190,7 @@ function get_sets()
     right_ear="Digni. Earring",
     left_ring="Stikini Ring +1",
     right_ring="Stikini Ring +1",
-    back=gear.rosmerta.mab
+    back="Aurist's Cape +1"
   }
   sets.BlueMagic.Mab = {
     ammo="Pemphredo Tathlum",
