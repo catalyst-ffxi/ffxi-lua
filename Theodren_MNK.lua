@@ -17,7 +17,7 @@ Empy Body: Impetus TP, Impetus Victory Smite
 
 function define_modes()
   PrimaryMode = M{['description'] = 'Primary Mode', 'FullDD', 'HybridLight', 'HybridHeavy'}
-  send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
+  send_command("bind ^f1 gs c cycle PrimaryMode")
 end
 
 function get_sets()

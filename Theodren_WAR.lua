@@ -15,8 +15,8 @@ function define_modes()
     'Naegling',
     'Loxotic'
   }
-  send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
-  send_command("alias g15v2_m1g2 gs c cycle WeaponMode")
+  send_command("bind ^f1 gs c cycle PrimaryMode")
+  send_command("bind ^f2 gs c cycle WeaponMode")
 end
 
 function get_sets()

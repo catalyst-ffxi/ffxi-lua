@@ -8,8 +8,8 @@ function define_modes()
     'Trishula',
     'Naegling'
   }
-  send_command("alias g15v2_m2g1 gs c cycle PrimaryMode")
-  send_command("alias g15v2_m2g2 gs c cycle WeaponMode")
+  send_command("bind ^f1 gs c cycle PrimaryMode")
+  send_command("bind ^f2 gs c cycle WeaponMode")
 end
 
 function get_sets()

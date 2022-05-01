@@ -9,24 +9,22 @@ function define_modes()
     -- 'Tatenashi'
   }
   WeaponMode = M{['description'] = 'Weapon Mode',
-  'Dojikiri Yasutsuna',
-  'Shining One',
-  'Soboro Sukehiro' 
-  -- 'Amanomurakumo'
-}
+    'Dojikiri Yasutsuna',
+    'Shining One',
+    'Soboro Sukehiro' 
+    -- 'Amanomurakumo'
+  }
 end
 
-function define_binds()
-  -- Modes
-  send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
-  send_command("alias g15v2_m1g2 gs c cycle WeaponMode")
-  -- send_command('alias g15v2_m1g2 input /equip main "Dojikiri Yasutsuna"; @wait 0.5; input /equip sub "Utu Grip"')
+function define_aliases()
+  send_command("bind ^f1 gs c cycle PrimaryMode")
+  send_command("bind ^f2 gs c cycle WeaponMode")
 end
 
 function get_sets()
 
   define_modes()
-  define_binds()
+  define_aliases()
 
   gear = {
     smertrios = {

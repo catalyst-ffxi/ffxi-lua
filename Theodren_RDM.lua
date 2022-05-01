@@ -46,20 +46,20 @@ function define_aliases()
   -- send_command('bind ^f4 tier5')
 
   -- Self Buffs
-  send_command('bind ^f5 gain')
-  send_command('bind ^f6 temper2')
-  send_command('bind ^f7 enspell')
-  send_command('bind !f5 stoneskin')
-  send_command('bind !f6 phalanx')
-  send_command('bind !f7 blink')
-  send_command('bind !f8 aquaveil')
+  -- send_command('bind ^f5 gain')
+  -- send_command('bind ^f6 temper2')
+  -- send_command('bind ^f7 enspell')
+  -- send_command('bind !f5 stoneskin')
+  -- send_command('bind !f6 phalanx')
+  -- send_command('bind !f7 blink')
+  -- send_command('bind !f8 aquaveil')
 
   -- Modes
-  send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
-  send_command("alias g15v2_m1g2 gs c cycle Hybrid")
-  send_command("alias g15v2_m1g3 gs c cycle NukingMode")
-  send_command("alias g15v2_m1g4 gs c cycle Element")
-  send_command("alias g15v2_m1g5 gs c cycle WeaponLock")
+  send_command("bind ^f1 gs c cycle PrimaryMode")
+  send_command("bind ^f2 gs c cycle Hybrid")
+  send_command("bind ^f3 gs c cycle NukingMode")
+  send_command("bind ^f4 gs c cycle Element")
+  send_command("bind ^f5 gs c cycle WeaponLock")
 end
 
 function get_sets()
@@ -134,7 +134,6 @@ function get_sets()
   sets.Engaged.CrocTauret = set_combine(sets.Engaged.CrocDaybreak, {
     sub="Tauret"
   })
-
   sets.Hybrid = {
     left_ring="Defending Ring"
   }

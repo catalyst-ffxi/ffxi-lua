@@ -34,11 +34,11 @@ function define_spells()
   }
 end
 
-function define_binds()
+function define_aliases()
   -- Modes
-  send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
-  send_command("alias g15v2_m1g2 gs c cycle WeaponMode")
-  send_command("alias g15v2_m1g3 gs c cycle_rune")
+  send_command("bind ^f1 gs c cycle PrimaryMode")
+  send_command("bind ^f2 gs c cycle WeaponMode")
+  send_command("bind ^f3 gs c cycle_rune")
   -- send_command('bind !f9 input /item "Echo Drops" <me>')
   -- send_command('bind !f10 input /item "Remedy" <me>')
   -- send_command('bind !f11 input /item "Holy Water" <me>')
@@ -50,7 +50,7 @@ end
 
 function get_sets()
   define_modes()
-  define_binds()
+  define_aliases()
   define_spells()
 
   gear = {

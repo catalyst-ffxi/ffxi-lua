@@ -12,7 +12,7 @@ function define_aliases()
   send_command('bind !f6 phalanx')
   send_command('bind !f7 blink')
   send_command('bind !f8 aquaveil')
-  send_command("alias g15v2_m2g1 gs c cycle PrimaryMode")
+  send_command("bind ^f1 gs c cycle PrimaryMode")
 end
 
 function get_sets()

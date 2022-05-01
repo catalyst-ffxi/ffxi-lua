@@ -44,9 +44,9 @@ function define_aliases()
   send_command('bind !f8 aquaveil')
 
   -- Modes
-  send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
-  send_command("alias g15v2_m1g3 gs c cycle NukingMode")
-  send_command("alias g15v2_m1g4 gs c cycle Element")
+  send_command("bind ^f1 gs c cycle PrimaryMode")
+  send_command("bind ^f3 gs c cycle NukingMode")
+  send_command("bind ^f4 gs c cycle Element")
   send_command("alias auto_aspir gs c auto_aspir")
 end
 

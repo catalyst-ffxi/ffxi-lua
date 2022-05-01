@@ -21,9 +21,9 @@ function define_modes()
   }
 end
 
-function define_binds()
-  send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
-  send_command("alias g15v2_m1g3 gs c abbyweapon")
+function define_aliases()
+  send_command("bind ^f1 gs c cycle PrimaryMode")
+  send_command("bind ^f3 gs c abbyweapon")
 end
 
 function define_gear()
@@ -33,7 +33,7 @@ end
 function get_sets()
 
   define_modes()
-  define_binds()
+  define_aliases()
 
   gear = {
   }

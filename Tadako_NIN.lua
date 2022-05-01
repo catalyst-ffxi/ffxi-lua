@@ -25,8 +25,8 @@ function define_aliases()
   send_command('bind !f6 phalanx')
   send_command('bind !f7 blink')
   send_command('bind !f8 aquaveil')
-  send_command("alias g15v2_m1g5")
-  send_command("alias g15v2_m1g6 gs c abbyweapon")
+  send_command("bind ^f5")
+  send_command("bind ^f6 gs c abbyweapon")
 end
 
 function get_sets()

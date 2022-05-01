@@ -25,12 +25,12 @@ function define_modes()
   }
 end
 
-function define_binds()
+function define_aliases()
   -- Modes
-  send_command("alias g15v2_m1g1 gs c cycle PrimaryMode")
-  send_command("alias g15v2_m1g2 gs c cycle RangedWeapon")
-  send_command("alias g15v2_m1g3 gs c cycle MainWeapon")
-  send_command("alias g15v2_m1g4 gs c cycle SubWeapon")
+  send_command("bind ^f1 gs c cycle PrimaryMode")
+  send_command("bind ^f2 gs c cycle RangedWeapon")
+  send_command("bind ^f3 gs c cycle MainWeapon")
+  send_command("bind ^f4 gs c cycle SubWeapon")
   
 end
 
@@ -41,7 +41,7 @@ end
 function get_sets()
 
   define_modes()
-  define_binds()
+  define_aliases()
 
   gear = {
     camulus = {
