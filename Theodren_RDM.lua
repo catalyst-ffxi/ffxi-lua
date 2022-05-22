@@ -271,6 +271,7 @@ function get_sets()
     back="Ghostfyre Cape",
   }
   sets.Magic.Phalanx = set_combine(sets.Magic.EnhancingSkill, {
+    main="Sakpata's Sword",
     head=augments.taeon.head.SID,
     body="Chironic Doublet",
     hands=augments.taeon.hands.phalanx,
@@ -808,10 +809,6 @@ function set_for_engaged()
   end
 
   return set
-end
-
-function dual_wield_job()
-  return player.sub_job == 'NIN' or player.sub_job == 'DNC'
 end
 
 function active_enspell()

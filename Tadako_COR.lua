@@ -25,7 +25,7 @@ function get_sets()
   sets.Idle = {
     main="Naegling",
     sub="Gleti's Knife",
-    ranged="Molybdosis",
+    ranged="Compensator",
     ammo="Orichalc. Bullet",
     head="Nyame Helm",
     body="Nyame Mail",
@@ -45,7 +45,7 @@ function get_sets()
   sets.Engaged.Normal = {
     main="Naegling",
     sub="Gleti's Knife",
-    ranged="Molybdosis",
+    ranged="Compensator",
     ammo="Orichalc. Bullet",
     -- head="Adhemar Bonnet",
     head="Blistering Sallet +1",
@@ -70,7 +70,7 @@ function get_sets()
   sets.Engaged.Hybrid = {
     main="Naegling",
     sub="Gleti's Knife",
-    ranged="Molybdosis",
+    ranged="Compensator",
     ammo="Orichalc. Bullet",
     head="Adhemar Bonnet",
     body="Adhemar Jacket",

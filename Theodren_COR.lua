@@ -94,7 +94,7 @@ function get_sets()
     legs="Meg. Chausses +2",          -- 6 PDT
     feet="Malignance Boots",          -- 4 DT
     neck="Iskur Gorget",
-    waist="Windbuffet Belt +1",
+    waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
     right_ear="Suppanomimi",
     left_ring="Defending Ring",       -- 10 DT
@@ -122,14 +122,14 @@ function get_sets()
     hands="Adhemar Wristbands +1",
     legs="Meg. Chausses +2",
     feet="Malignance Boots",
-    -- neck="Sanctity Necklace",
-    neck="Iskur Gorget",
-    waist="Windbuffet Belt +1",
+    neck="Sanctity Necklace",
+    -- neck="Iskur Gorget",
+    waist="Sailfi Belt +1",
     left_ear="Telos Earring",
     right_ear="Suppanomimi",
     left_ring="Chirich Ring +1",
-    -- right_ring="Ilabrat Ring",
-    right_ring="Epona's Ring",
+    right_ring="Ilabrat Ring",
+    -- right_ring="Epona's Ring",
     back=gear.camulus.meleeTp,
   }
 
@@ -468,8 +468,4 @@ function set_for_engaged()
   end
 
   return set
-end
-
-function dual_wield_job()
-  return (player.sub_job == 'NIN' or player.sub_job == 'DNC') and player.sub_job_level > 0
 end

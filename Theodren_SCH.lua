@@ -9,30 +9,29 @@ end
 
 function define_aliases()
   -- Elements
-  send_command('alias tier1 input /ma "'..Element.current..'" <t>')
-  send_command('alias tier2 input /ma "'..Element.current..' II" <t>')
-  send_command('alias tier3 input /ma "'..Element.current..' III" <t>')
-  send_command('alias tier4 input /ma "'..Element.current..' IV" <t>')
-  send_command('alias tier5 input /ma "'..Element.current..' V" <t>')
-  send_command('alias tier6 input /ma "'..Element.current..' VI" <t>')
-  send_command('alias enspell input /ma "En'..Element.current:lower()..'" <me>')
-  storms = {
-    Thunder = 'Thunderstorm II',
-    Blizzard = 'Hailstorm II',
-    Fire = 'Firestorm II',
-    Aero = 'Windstorm II',
-    Water = 'Rainstorm II',
-    Stone = 'Sandstorm II'
-  }
-  send_command('alias storm input /ma "'..storms[Element.current]..'" <me>')
-
+  -- send_command('alias tier1 input /ma "'..Element.current..'" <t>')
+  -- send_command('alias tier2 input /ma "'..Element.current..' II" <t>')
+  -- send_command('alias tier3 input /ma "'..Element.current..' III" <t>')
+  -- send_command('alias tier4 input /ma "'..Element.current..' IV" <t>')
+  -- send_command('alias tier5 input /ma "'..Element.current..' V" <t>')
+  -- send_command('alias tier6 input /ma "'..Element.current..' VI" <t>')
+  -- send_command('alias enspell input /ma "En'..Element.current:lower()..'" <me>')
+  -- storms = {
+  --   Thunder = 'Thunderstorm II',
+  --   Blizzard = 'Hailstorm II',
+  --   Fire = 'Firestorm II',
+  --   Aero = 'Windstorm II',
+  --   Water = 'Rainstorm II',
+  --   Stone = 'Sandstorm II'
+  -- }
+  -- send_command('alias storm input /ma "'..storms[Element.current]..'" <me>')
   -- Function Key Shortcuts
   -- Nukes
-  send_command('bind ^f1 tier2')
-  send_command('bind ^f2 tier3')
-  send_command('bind ^f3 tier4')
-  send_command('bind ^f4 tier5')
-  send_command('bind ^f5 tier6')
+  -- send_command('bind ^f1 tier2')
+  -- send_command('bind ^f2 tier3')
+  -- send_command('bind ^f3 tier4')
+  -- send_command('bind ^f4 tier5')
+  -- send_command('bind ^f5 tier6')
 
   -- Self Buffs
   send_command('bind !f5 stoneskin')
@@ -54,6 +53,10 @@ function get_sets()
   define_aliases()
 
   gear = {
+    cape = {
+      nuke = { name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Magic Damage +10','"Mag.Atk.Bns."+10','Phys. dmg. taken-10%',}},
+      fastCast = { name="Lugh's Cape", augments={'"Fast Cast"+10',}}
+    },
     stikini = {
       left = { name="Stikini Ring +1", bag="wardrobe1" },
       right = { name="Stikini Ring +1", bag="wardrobe2" }
@@ -63,22 +66,22 @@ function get_sets()
   -- Mode Sets
   --
   sets.Idle = {
-    main="Daybreak",
-    sub="Ammurapi Shield",
+    main="Mpaca's Staff",
+    sub="Khonsu",
     ammo="Homiliary",
     head="Befouled Crown",
-    neck="Loricate Torque +1",
-    left_ear="Odnowa Earring +1",
-    right_ear="Etiolation Earring",
     body="Agwu's Robe",
     hands="Nyame Gauntlets",
-    left_ring=gear.stikini.left,
-    right_ring=gear.stikini.right,
-    back="Lugh's Cape",
-    waist="Fucho-no-Obi",
     legs="Assid. Pants +1",
-    feet="Nyame Sollerets"
-    -- feet="Herald's Gaiters"
+    feet="Nyame Sollerets",
+    neck="Loricate Torque +1",
+    waist="Fucho-no-Obi",
+    left_ear="Odnowa Earring +1",
+    right_ear="Etiolation Earring",
+    -- left_ring=gear.stikini.left,
+    left_ring="Defending Ring",
+    right_ring=gear.stikini.right,
+    back=gear.cape.nuke
   }
   sets.Idle_Submlimation = set_combine(sets.Idle, {
     waist="Embla Sash"
@@ -88,6 +91,8 @@ function get_sets()
   --
   sets.Magic = {}
   sets.Magic.FastCast = {
+    main="Mpaca's Staff",     -- 5
+    sub="Clerisy Strap",      -- 2
     ammo="Sapience Orb",      -- 2
     head="Amalric Coif +1",   -- 11
     body="Agwu's Robe",       -- 8
@@ -100,14 +105,17 @@ function get_sets()
     rear="Etiolation earring",-- 1
     lring="Kishar Ring",      -- 4
     rring="Weatherspoon Ring +1",-- 6
-    back="Perimede Cape"
-  }                           -- 61
+    back=gear.cape.fastCast   -- 10
+  }                           -- 78
+  sets.Magic.GrimoireFastCast = {
+    head="Peda. M.Board +3" -- 13
+  }
 
   -- Dark Magic
   --
   sets.Magic.Dark = {
-    main="Maxentius",
-    sub="Ammurapi Shield",
+    main="Musa",
+    sub="Khonsu",
     ammo="Pemphredo Tathlum",
     head="Amalric Coif +1",
     neck="Argute Stole +1",
@@ -117,7 +125,7 @@ function get_sets()
     hands="Nyame Gauntlets",
     left_ring=gear.stikini.left,
     right_ring=gear.stikini.right,
-    back="Lugh's Cape",
+    back=gear.cape.nuke,
     waist="Obstinate Sash",
     legs="Nyame Flanchard",
     feet="Nyame Sollerets"
@@ -145,7 +153,7 @@ function get_sets()
     right_ear="Malignance Earring",
     left_ring="Freke Ring",
     right_ring="Shiva Ring +1",
-    back="Lugh's Cape"
+    back=gear.cape.nuke,
   }
 
   sets.Magic.elemental.MagicBurst = set_combine(sets.Magic.elemental.Normal, {
@@ -161,34 +169,6 @@ function get_sets()
   })                                       -- TOTALS
                                            -- MB +41 (over)
                                            -- MB2 +11
-
-  -- sets.Magic.elemental.MagicBurst = set_combine(sets.Magic.elemental.Normal, {
-  --   main={ name="Mpaca's Staff", priority=2 },-- MB2 +2
-  --   sub={ name="Enki Strap", priority=1 }, 
-  --   head="Agwu's Cap",                     -- MB +7
-  --   body="Agwu's Robe",                    -- MB +10
-  --   hands="Amalric Gages +1",              -- MB2 +6
-  --   legs="Agwu's Slops",                   -- MB +9
-  --   feet="Agwu's Pigaches",                -- MB +7
-  --   neck="Argute Stole +1",                -- MB +7
-  --   right_ring="Mujin Band"                -- MB2 +5
-  -- })                                       -- TOTALS
-  --                                          -- MB +40
-  --                                          -- MB2 +13
-
-  -- sets.Magic.elemental.MagicBurst = set_combine(sets.Magic.elemental.Normal, {
-  --   main={ name="Mpaca's Staff", priority=1 },-- MB2 +2
-  --   sub={ name="Enki Strap", priority=2 }, 
-  --   head="Agwu's Cap",                     -- MB +7
-  --   body="Agwu's Robe",                    -- MB +10
-  --   hands="Amalric Gages +1",              -- MB2 +6
-  --   legs="Agwu's Slops",                   -- MB +9
-  --   feet="Agwu's Pigaches",                -- MB +7
-  --   neck="Mizu. Kubikazari",               -- MB +10
-  --   right_ring="Mujin Band"                -- MB2 +5
-  -- })                                       -- TOTALS
-  --                                          -- MB +43
-  --                                          -- MB2 +13
 
   -- Enfeebling Magic
   --
@@ -207,14 +187,14 @@ function get_sets()
     rear="Regal Earring",
     left_ring=gear.stikini.left,
     right_ring=gear.stikini.right,
-    back="Lugh's Cape"
+    back=gear.cape.nuke,
   }
 
   -- Enhancing Magic
   --
   sets.Magic.EnhancingDuration = {
-    main="Gada",
-    sub="Ammurapi Shield",
+    main="Musa",
+    sub="Khonsu",
     head="Telchine Cap",
     body="Telchine Chasuble",
     hands="Telchine Gloves",
@@ -240,8 +220,8 @@ function get_sets()
     body="Chironic Doublet"
   }
   sets.Magic.Embrava = {
-    main="Gada",
-    sub="Ammurapi Shield",
+    main="Musa",
+    sub="Khonsu",
     head="Telchine Cap",
     body="Telchine Chasuble",
     hands="Telchine Gloves",
@@ -259,42 +239,63 @@ function get_sets()
   -- Healing Sets
   --
   sets.Magic.Healing = {
-    main="Daybreak",              -- MND
-    sub="Ammurapi Shield",        -- MND
-    ammo="Quartz Tathlum +1",     -- MND
-    head="Vanya Hood",            -- 10%, Skill
-    body="Kaykaus Bliaut +1",     -- CP II
-    hands="Kaykaus Cuffs +1",     -- 11%, MND
-    legs="Chironic Hose",         -- 8%
-    feet="Vanya Clogs",           -- 5%, Skill
-    neck="Incanter's Torque",     -- Skill
-    waist="Obstinate Sash",      -- MND
-    left_ear="Regal Earring",     -- MND
-    right_ear="Mendi. Earring",   -- 5%
-    left_ring=gear.stikini.left,  -- Skill, MND
-    right_ring=gear.stikini.right,-- Skill, MND
-    back="Lugh's Cape"
+    -- main="Daybreak",
+    -- sub="Ammurapi Shield",
+    -- main="",
+    -- sub="",
+    ammo="Impatiens",
+    head="Kaykaus Mitra +1",
+    body="Kaykaus Bliaut +1",
+    hands="Kaykaus Cuffs +1",
+    legs="Kaykaus Tights +1", 
+    feet="Kaykaus Boots +1", 
+    neck="Incanter's Torque",
+    waist="Luminary Sash",
+    left_ear="Regal Earring",
+    right_ear="Meili Earring",
+    left_ring=gear.stikini.left,
+    right_ring=gear.stikini.right,
+    back=gear.cape.fastCast
   }
-  sets.Magic.HealingSelf = {
-    neck="Phalaina Locket",      -- 4% self
-    left_ring='Kunaji Ring',     -- 5% self
-    waist="Gishdubar Sash"       -- 10% self
-  }
+  sets.Magic.HealingSelf = set_combine(
+    sets.Magic.Healing, {
+      neck="Phalaina Locket",     -- 4% self
+      waist="Gishdubar Sash",     -- 10% self
+      left_ring='Kunaji Ring',    -- 5% self
+    }
+  )
   -- Cursna chance to clear doom affected by Healing Magic and Cursna Effect+ gear
   sets.Magic.Cursna = {
+    main="Gada",
+    sub="Ammurapi Shield",
     ammo="Sapience Orb",
     head="Vanya Hood",
-    -- body="",
+    body="Kaykaus Bliaut +1",
     hands="Kaykaus Cuffs +1",
-    -- legs="",
+    legs="Kaykaus Tights +1", 
     feet="Vanya Clogs",
     neck="Malison Medallion",
     waist="Witful Belt",
     left_ear="Loquac. Earring",
-    right_ear="Etiolation Earring",
+    right_ear="Meili Earring",
     left_ring="Haoma's Ring",
     right_ring="Haoma's Ring",
     back="Oretan. Cape +1",
+  }
+  sets.Magic.SpellInterrupt = {
+    ammo="Staunch Tathlum +1",       -- 11
+    -- head=augments.taeon.head.SID,    -- 7
+    -- body="Malignance Tabard",        -- DT
+    -- hands="Malignance Gloves",       -- DT
+    -- legs="Carmine Cuisses +1",       -- 20
+    -- feet=augments.taeon.feet.phalanx,-- 9
+    neck="Loricate Torque +1",       -- DT
+    waist="Rumination Sash",         -- 10
+    left_ear="Odnowa Earring +1",    -- DT
+    right_ear="Magnetic Earring",    -- 8
+    left_ring="Defending Ring",      -- DT
+    right_ring="Gelatinous Ring +1", -- DT
+    back=gear.cape.nuke              -- DT
   }
 
   -- Job Abilities
@@ -367,6 +368,10 @@ function precast(spell)
 
   elseif spell.action_type == 'Magic' then
     equip(sets.Magic.FastCast)
+    if (spell.type == 'WhiteMagic' and buffactive['Light Arts']) or
+       (spell.type == 'BlackMagic' and buffactive['Dark Arts']) then
+      equip(sets.Magic.GrimoireFastCast)
+    end
 
   elseif spell.type == 'WeaponSkill' then
     equip(sets.WS[spell.english])
@@ -393,9 +398,10 @@ function midcast(spell)
 
     -- Cure Potency
     elseif string.find(eng, 'Cur') then
-      equip(sets.Magic.Healing)
       if spell.target.type == 'SELF' then
         equip(sets.Magic.HealingSelf)
+      else
+        equip(sets.Magic.Healing)
       end
       if get_total_element_intensity('Light') > 0 then
         equip({waist="Hachirin-no-Obi"})

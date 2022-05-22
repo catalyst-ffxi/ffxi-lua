@@ -81,3 +81,7 @@ function equip_elemental_waist(spell)
     -- add_to_chat('RESULT: Keep current waist')
   end
 end
+
+function dual_wield_job()
+  return (player.sub_job == 'NIN' or player.sub_job == 'DNC') and player.sub_job_level > 0
+end

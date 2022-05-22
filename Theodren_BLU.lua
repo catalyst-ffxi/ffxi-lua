@@ -150,14 +150,14 @@ function get_sets()
     body="Taeon Tabard",          -- 9
     hands="Leyline Gloves",       -- 7
     left_ring="Kishar Ring",      -- 4
-    right_ring="Weatherspoon Ring +1",      -- 2
+    right_ring="Weatherspoon Ring +1",  -- 2
     back=gear.rosmerta.fast,      -- 10
     waist="Witful Belt",          -- 3, 3 Quick
     legs="Aya. Cosciales +2",     -- 6
     feet="Carmine Greaves +1"     -- 8
                                   -- 65 FastCast, 6 QuickCast
   }
-  sets.Magic.SpellInterrupt = {
+sets.Magic.SpellInterrupt = {
     ammo="Staunch Tathlum +1",       -- 11
     head="Aya. Zucchetto +2",        -- PDT
     neck="Loricate Torque +1",       -- DT

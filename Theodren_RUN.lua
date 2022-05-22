@@ -305,7 +305,7 @@ function get_sets()
   sets.Magic.FastCast = {
     ammo="Sapience Orb",                -- 2
     head={ name="Runeist's Bandeau +3", priority=5 }, -- 14
-    body="Taeon Tabard",                -- 8
+    body="Taeon Tabard",                -- 9
     hands="Leyline Gloves",             -- 7
     legs="Agwu's Slops",                -- 6
     feet={ name="Carmine Greaves +1", priority=5 }, -- 8
@@ -316,7 +316,7 @@ function get_sets()
     lring="Weatherspoon Ring +1",       -- 6
     rring="Kishar Ring",                -- 4
     back=gear.ogma.fastCast,            -- 10
-                                        -- 71
+                                        -- 72
   }
   sets.Magic.FastCastEnhancing = set_combine(sets.Magic.FastCast, {
     waist="Siegel Sash",             -- 9
