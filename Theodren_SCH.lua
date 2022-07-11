@@ -3,7 +3,7 @@ include('augments.lua')
 include('utils.lua')
 
 function define_modes()
-  NukingMode = M{['description'] = 'Nuking Mode', 'Normal', 'MagicBurst'}
+  NukingMode = M{['description'] = 'Nuking Mode', 'MagicBurst', 'Normal'}
   Element = M{['description'] = 'Primary Element', 'Thunder', 'Blizzard', 'Fire', 'Aero', 'Water', 'Stone'}
 end
 
@@ -173,18 +173,18 @@ function get_sets()
   -- Enfeebling Magic
   --
   sets.Magic.Enfeebling = {
-    main="Daybreak",
-    sub="Ammurapi Shield",
+    main="Musa",
+    sub="Khonsu",
     ammo="Pemphredo Tathlum",
-    head="Nyame Helm",
-    body="Nyame Mail",
+    head="Amalric Coif +1",
+    body="Amalric Doublet +1",
     hands="Kaykaus Cuffs +1",
     legs="Chironic Hose",
-    feet="Medium's Sabots",
-    neck="Incanter's torque",
+    feet="Jhakri Pigaches +2",
+    neck="Argute Stole +1",
     waist="Obstinate Sash",
     lear="Digni. Earring",
-    rear="Regal Earring",
+    rear="Crep. Earring",
     left_ring=gear.stikini.left,
     right_ring=gear.stikini.right,
     back=gear.cape.nuke,
@@ -413,8 +413,6 @@ function midcast(spell)
         equip(sets.Magic.Embrava)
       elseif eng == 'Stoneskin' then
         equip(sets.Magic.EnhancingStoneskin)
-      elseif eng == 'Phalanx' then
-        equip(sets.Magic.EnhancingPhalanx)
       else
         equip(sets.Magic.EnhancingDuration)
         if string.find(eng, 'Regen') then

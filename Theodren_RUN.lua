@@ -6,13 +6,12 @@ include('utils.lua')
 function define_modes()
   PrimaryMode = M{['description'] = 'Primary Mode',
     -- 'Tank',
-    'NyamePhysical', 'NyameMagic',
+    'ParryTank', 'MagicTank',
     'HybridDD', 'FullDD'
   }
   WeaponMode = M{['description'] = 'Weapon Mode', 
     'Epeolatry', 'Lionheart', 'Hepatizon Axe +1'
   }
-  IdleMode = M(false, 'IdleMode')
 
   Runes = {
     current = 8,
@@ -89,7 +88,7 @@ function get_sets()
   -- Modes
   --
   sets.modes = {}
-  sets.modes.NyamePhysical = {
+  sets.modes.ParryTank = {
     sub="Utu Grip",
     ammo="Staunch Tathlum +1",
     head="Nyame Helm",
@@ -105,22 +104,23 @@ function get_sets()
     right_ring={ name="Gelatinous Ring +1", priority=5 },
     back=gear.ogma.parry
   }
-  sets.modes.NyameMagic = {
+  sets.modes.MagicTank = {
     sub="Utu Grip",
     ammo="Staunch Tathlum +1",
     head="Nyame Helm",
-    body="Nyame Mail",
-    hands="Turms Mittens +1",
+    body="Runeist's Coat +3",
+    hands="Nyame Gauntlets",
     legs="Nyame Flanchard",
-    feet="Turms Leggings +1",
+    feet="Nyame Sollerets",
 		neck="Warder's Charm +1",
     waist="Engraved Belt",
     left_ear={ name="Odnowa Earring +1", priority=5 },
     right_ear="Eabani Earring",
-    left_ring="Defending Ring",
+    left_ring="Moonlight Ring",
     right_ring="Shadow Ring",
     back=gear.ogma.tank
   }
+
   sets.modes.HybridDD = {
     sub="Utu Grip",
     ammo="Coiste Bodhar",
@@ -176,7 +176,7 @@ function get_sets()
     ammo="Knobkierrie",
     head="Nyame Helm",
     body="Nyame Mail",
-    hands="Meg. Gloves +2",
+    hands="Nyame Gauntlets",
     legs="Nyame Flanchard",
     feet="Nyame Sollerets",
     neck="Caro Necklace",
@@ -405,8 +405,24 @@ function get_sets()
     waist="Gishdubar Sash"
   })
   sets.Magic['Regen IV'] = set_combine(sets.Magic.EnhancingDuration, {
-    head="Runeist's Bandeau +3"
+    head="Runeist's Bandeau +3",
+    waist="Sroda Belt"
   })
+  sets.Magic['Healing Breeze'] = {
+    ammo="Staunch Tathlum +1",       -- 11 sird, 3 DT
+    head="Agwu's Cap",               -- 10 sird
+    body="Vrikodara Jupon",          -- 13 cure
+    hands="Regal Gauntlets",         -- 10 sird
+    legs="Carmine Cuisses +1",       -- 20 sird
+    feet="Taeon Boots",              -- 10 sird
+    neck="Phalaina Locket",          -- 4 cure (+4 rec)
+    waist="Sroda Belt",              -- 35 cure
+    left_ear="Mendi. Earring",       -- 5 cure
+    right_ear="Magnetic Earring",    -- 8 sird
+    left_ring="Defending Ring",      -- 10 DT
+    right_ring="Gelatinous Ring +1", -- 7 PDT
+    back=gear.ogma.enmity            -- 10 sird
+  }
   sets.Enmity = {
     ammo="Sapience Orb",
     head="Halitus Helm",

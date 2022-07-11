@@ -5,7 +5,10 @@ function define_modes()
   DummySongs = S{"Vivacious Etude", "Bewitching Etude", "Enchanting Etude", "Spirited Etude", "Vital Etude"}
   ForceHarpNext = false
   BadSongNext = false
-
+  PrimaryMode = M{['description'] = 'Primary Mode',
+    'Normal',
+    'Hybrid'
+  }
   WeaponMode = M{['description'] = 'Weapon Mode',
     'NaeglingFusetto',
     'NaeglingGleti',
@@ -164,7 +167,7 @@ function get_sets()
     main="Carnwenhan",
     -- sub="Kali",
     ranged="Daurdabla",
-    neck="Moonbow Whistle +1",
+    -- neck="Moonbow Whistle +1",
     -- body="Fili Hongreline +1",
     -- legs="Inyanga Shalwar +2",
     -- feet="Brioso Slippers +3"
@@ -247,12 +250,28 @@ function get_sets()
   sets.JobAbility['Soul Voice'] = { legs = 'Bihu Cannions' }
 
   -- Melee
-  sets.Engaged = {
+  sets.modes = {}
+  sets.modes.Normal = {
     ranged=gear.linos.tp, -- acc/stp/qa
     head="Blistering Sallet +1",
     body="Ayanmo Corazza +2",
     hands="Bunzi's Gloves",
-    legs=augments.telchine.legs.tp,
+    legs=augments.telchine.legs.tp, -- acc/stp/dex
+    feet="Nyame Sollerets",
+    neck="Bard's Charm +2",
+    waist="Sailfi Belt +1",
+    left_ear="Dignitary's Earring",
+    right_ear="Cessance Earring",
+    left_ring="Chirich Ring +1",
+    right_ring="Chirich Ring +1",
+    back=gear.cape.melee -- acc/att/dex/da
+  }
+  sets.modes.Hybrid = {
+    ranged=gear.linos.tp, -- acc/stp/qa
+    head="Nyame Helm",
+    body="Ayanmo Corazza +2",
+    hands="Bunzi's Gloves",
+    legs="Nyame Flanchard",
     feet="Nyame Sollerets",
     neck="Bard's Charm +2",
     waist="Sailfi Belt +1",
@@ -429,7 +448,7 @@ end
 
 function set_for_engaged()
   set = set_combine(
-    sets.Engaged,
+    sets.modes[PrimaryMode.current],
     sets.weapons[WeaponMode.current]
   )
   if dual_wield_job() == false then
@@ -526,11 +545,7 @@ function self_command(commandArgs)
   end
   command = commandArgs[1]
   if command == 'mode' then
-    if player.status=='Engaged' then
-      equip(set_for_engaged())
-    else
-      equip(set_for_idle())
-    end
+    equip(set_for_engaged())
   elseif command == 'cycle' then
     local mode = _G[commandArgs[2]]
     if mode ~= nil and mode._class == 'mode' then

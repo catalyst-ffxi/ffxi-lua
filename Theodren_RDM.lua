@@ -363,15 +363,15 @@ function get_sets()
   -- Nukes
   sets.Magic.Elemental = {}
   sets.Magic.Elemental.Normal = {
-    main={ name="Daybreak", priority=2 },
-    sub={ name="Ammurapi Shield", priority=1 },
+    main="Bunzi's Rod",
+    sub="Ammurapi Shield",
     ammo="Pemphredo Tathlum",
     head="C. Palug Crown",
     body="Amalric Doublet +1",
     hands="Amalric Gages +1",
     legs="Amalric Slops +1",
     feet="Amalric Nails +1",
-    neck="Sanctity Necklace",
+    neck="Sibyl Scarf",
     waist="Eschan Stone",
     left_ear="Regal Earring",
     right_ear="Malignance Earring",
@@ -379,16 +379,23 @@ function get_sets()
     right_ring="Shiva Ring +1",
     back=gear.sucellos.nuke
   }
-  sets.Magic.Elemental.MagicBurst = set_combine(sets.Magic.Elemental.Normal, {
-    main="Maxentius",           -- MB +4
+  sets.Magic.Elemental.MagicBurst = {
+    main="Bunzi's Rod",         -- MB +10
+    sub="Ammurapi Shield",
+    ammo="Pemphredo Tathlum",
     head="Ea Hat",              -- MB +6 | MB II +6
-    neck="Mizu. Kubikazari",    -- MB +10|
     body="Ea Houppelande",      -- MB +8 | MB II +8
-    hands="Amalric Gages +1",   --       | MB II +6
-    rring="Mujin Band",         --       | MB II +5
+    hands="Bunzi's Gloves",     -- MB +8 | MB II +4
     legs="Ea Slops",            -- MB +7 | MB II +7
     feet="Jhakri Pigaches +2",  -- MB +7
-  })                            -- MB +42| MB II +31
+    neck="Sibyl Scarf",
+    waist="Eschan Stone",
+    left_ear="Regal Earring",
+    right_ear="Malignance Earring",
+    left_ring="Freke Ring",
+    right_ring="Mujin Band",    --       | MB II +5
+    back=gear.sucellos.nuke
+  }
 
   -- Dark
   sets.Magic.Stun = {
@@ -461,7 +468,7 @@ function get_sets()
     hands="Nyame Gauntlets",
     legs="Nyame Flanchard",
     feet="Nyame Sollerets",
-    neck="Duelist's Torque +2",
+    neck="Rep. Plat. Medal",
     waist="Sailfi Belt +1",
     left_ear="Regal Earring",
     right_ear="Moonshade Earring",
@@ -621,6 +628,9 @@ function midcast(spell)
       equip({waist="Hachirin-no-Obi"})
     end
 
+  elseif string.find(eng, 'Raise') then
+    equip(set_combine(sets.Magic.SpellInterrupt, sets.Magic.FastCast))
+
   elseif spell.skill == 'Enhancing Magic' then
     local set
 
@@ -656,6 +666,9 @@ function midcast(spell)
   elseif spell.skill == 'Elemental Magic' then
     equip(sets.Magic.Elemental[NukingMode.current])
     equip_elemental_waist(spell)
+    if spell.element == 'Earth' then
+      equip({neck = 'Quanpur Necklace'})
+    end
 
   elseif S{'Bio', 'Bio II', 'Bio III'}:contains(eng) then
     equip(sets.Magic.Bio)

@@ -59,11 +59,11 @@ function get_sets()
   }
 
   sets.Idle = {
-    head="Malignance Chapeau",        -- 6 DT
-    body="Malignance Tabard",         -- 9 DT
-    hands="Malignance Gloves",        -- 5 DT
+    head="Nyame Helm",               -- 7 DT
+    body="Nyame Mail",               -- 9 DT
+    hands="Nyame Gauntlets",         -- 7 DT
     legs="Carmine Cuisses +1",
-    feet="Malignance Boots",          -- 4 DT
+    feet="Nyame Sollerets",           -- 7 DT
     neck="Loricate Torque +1",        -- 6 DT
     waist="Flume Belt +1",            -- 4 PDT
     left_ear="Etiolation Earring",    -- 3 MDT
@@ -90,7 +90,7 @@ function get_sets()
   sets.modes.HybridLight = {
     head="Malignance Chapeau",        -- 6 DT
     body="Adhemar Jacket +1",
-    hands="Adhemar Wristbands +1",    -- 2 PDT
+    hands="Adhemar Wristbands +1",
     legs="Meg. Chausses +2",          -- 6 PDT
     feet="Malignance Boots",          -- 4 DT
     neck="Iskur Gorget",
@@ -100,7 +100,7 @@ function get_sets()
     left_ring="Defending Ring",       -- 10 DT
     right_ring="Epona's Ring",
     back=gear.camulus.meleeTp,        -- 10 PDT
-  }                                   -- 38 PDT | 31 MDT
+  }                                   -- 36 PDT | 31 MDT
   sets.modes.HybridHeavy = {
     head="Malignance Chapeau",        -- 6 DT
     body="Malignance Tabard",         -- 9 DT
@@ -153,7 +153,8 @@ function get_sets()
   sets.Ranged = {
     ammo=gear.bullets.ratt,
     head="Malignance Chapeau",
-    body="Ikenga's Vest",
+    -- body="Ikenga's Vest",
+    body="Malignance Tabard",
     hands="Malignance Gloves",
     legs="Malignance Tights",
     feet="Malignance Boots",
@@ -244,19 +245,19 @@ function get_sets()
     back=gear.camulus.rangedWsMagic
   }
   sets.WS['Hot Shot'] = {
-    ammo=gear.bullets.magic,
+    ammo=gear.bullets.ratt,
     head="Nyame Helm",
     body="Nyame Mail",
     hands="Nyame Gauntlets",
     legs="Nyame Flanchard",
-    feet="Nyame Sollerets",
+    feet="Lanun Bottes +3",
     neck="Fotia Gorget",
     waist="Fotia Belt",
     left_ear="Friomisi Earring",
     right_ear="Moonshade Earring",
     left_ring="Epaminondas's Ring",
     right_ring="Dingir Ring",
-    back=gear.camulus.rangedWsMagic
+    back=gear.camulus.rangedWsPhys
   }
   sets.WS['Savage Blade'] = {
     head="Nyame Helm",
@@ -265,7 +266,7 @@ function get_sets()
     body="Ikenga's Vest",
     legs="Nyame Flanchard",
     feet="Nyame Sollerets",
-    neck="Commodore Charm +1",
+    neck="Rep. Plat. Medal",
     waist="Sailfi Belt +1",
     left_ear="Ishvara Earring",
     right_ear="Moonshade Earring",

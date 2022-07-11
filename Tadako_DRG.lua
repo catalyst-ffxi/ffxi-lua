@@ -43,7 +43,8 @@ function get_sets()
     waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
-    left_ring="Hetairoi Ring",
+    -- left_ring="Hetairoi Ring",
+    left_ring="Petrov Ring",
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.tp
   }
@@ -60,7 +61,8 @@ function get_sets()
     waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
-    left_ring="Hetairoi Ring",
+    -- left_ring="Hetairoi Ring",
+    left_ring="Petrov Ring",
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.tp           -- 10 PDT
   }                                  -- 39 PDT
@@ -77,7 +79,8 @@ function get_sets()
     waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
-    left_ring="Hetairoi Ring",
+    -- left_ring="Hetairoi Ring",
+    left_ring="Petrov Ring",
     right_ring="Niqmaddu Ring",  
     back=gear.ambuscape.tp           -- 10 PDT
   }                                  -- 50 PDT
@@ -105,11 +108,21 @@ function get_sets()
     ammo="Angon",
     hands="Ptero. Fin. G. +3"
   }
-  sets.JAs.Jump = set_combine(sets.modes.FullDD, {
-    body="Vishap Mail +2",      -- All Jumps TP Bonus   TODO
-    hands="Vis. Fng. Gaunt. +2" -- All Jumps TP Bonus
-    -- feet="Ostro Greaves"     TODO
-  })
+  sets.JAs.Jump = {
+    ammo="Coiste Bodhar",
+    head="Flam. Zucchetto +2",
+    body="Vishap Mail +2",      -- TP Bonus
+    hands="Vis. Fng. Gaunt. +2",-- TP Bonus
+    legs=augments.valorous.legs.stp,
+    feet="Ostro Greaves",       -- TP Bonus
+    neck="Dgn. Collar +2",
+    waist="Sailfi Belt +1",
+    left_ear="Brutal Earring",
+    right_ear="Sherida Earring",
+    left_ring="Petrov Ring",
+    right_ring="Niqmaddu Ring",
+    back=gear.ambuscape.tp
+  }
   sets.JAs['High Jump'] = set_combine(sets.JAs.Jump, {
     legs="Vishap Brais +3"      -- High Jump Enmity Reduction+
   })
@@ -145,7 +158,7 @@ function get_sets()
     neck="Dgn. Collar +2",
     -- left_ear="Anastasi Earring", -- TODO
     -- right_ear="Lancer's Earring",-- TODO
-    -- left_ring="Dreki Ring",      -- TODO
+    left_ring="Dreki Ring",
     -- back="Updraft Mantle"        -- TODO
   }
 
@@ -175,7 +188,7 @@ function get_sets()
   sets.WS.Stardiver = { -- 85% STR, 4-hit, dmg varies w/ TP
     ammo="Coiste Bodhar",
     head="Ptero. Armet +3",
-    body=augments.valorous.mail.da,
+    body="Gleti's Cuirass",
     hands="Sulev. Gauntlets +2",
     legs="Sulev. Cuisses +2",
     feet="Lustratio Leggings +1",
