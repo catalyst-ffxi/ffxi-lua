@@ -8,31 +8,6 @@ function define_modes()
 end
 
 function define_aliases()
-  -- Elements
-  -- send_command('alias tier1 input /ma "'..Element.current..'" <t>')
-  -- send_command('alias tier2 input /ma "'..Element.current..' II" <t>')
-  -- send_command('alias tier3 input /ma "'..Element.current..' III" <t>')
-  -- send_command('alias tier4 input /ma "'..Element.current..' IV" <t>')
-  -- send_command('alias tier5 input /ma "'..Element.current..' V" <t>')
-  -- send_command('alias tier6 input /ma "'..Element.current..' VI" <t>')
-  -- send_command('alias enspell input /ma "En'..Element.current:lower()..'" <me>')
-  -- storms = {
-  --   Thunder = 'Thunderstorm II',
-  --   Blizzard = 'Hailstorm II',
-  --   Fire = 'Firestorm II',
-  --   Aero = 'Windstorm II',
-  --   Water = 'Rainstorm II',
-  --   Stone = 'Sandstorm II'
-  -- }
-  -- send_command('alias storm input /ma "'..storms[Element.current]..'" <me>')
-  -- Function Key Shortcuts
-  -- Nukes
-  -- send_command('bind ^f1 tier2')
-  -- send_command('bind ^f2 tier3')
-  -- send_command('bind ^f3 tier4')
-  -- send_command('bind ^f4 tier5')
-  -- send_command('bind ^f5 tier6')
-
   -- Self Buffs
   send_command('bind !f5 stoneskin')
   send_command('bind !f6 phalanx')
@@ -66,8 +41,8 @@ function get_sets()
   -- Mode Sets
   --
   sets.Idle = {
-    main="Mpaca's Staff",
-    sub="Khonsu",
+    -- main="Mpaca's Staff",
+    -- sub="Khonsu",
     ammo="Homiliary",
     head="Befouled Crown",
     body="Agwu's Robe",
@@ -91,8 +66,8 @@ function get_sets()
   --
   sets.Magic = {}
   sets.Magic.FastCast = {
-    main="Mpaca's Staff",     -- 5
-    sub="Clerisy Strap",      -- 2
+    -- main="Musa",              --
+    -- sub="Clerisy Strap",      -- 2
     ammo="Sapience Orb",      -- 2
     head="Amalric Coif +1",   -- 11
     body="Agwu's Robe",       -- 8
@@ -118,7 +93,7 @@ function get_sets()
     sub="Khonsu",
     ammo="Pemphredo Tathlum",
     head="Amalric Coif +1",
-    neck="Argute Stole +1",
+    neck="Argute Stole +2",
     lear="Digni. Earring",
     rear="Gwati Earring",
     body="Amalric Doublet +1",
@@ -139,8 +114,10 @@ function get_sets()
   --
   sets.Magic.elemental = {}
   sets.Magic.elemental.Normal = {
-    main={ name="Mpaca's Staff", priority=2 },
-    sub={ name="Enki Strap", priority=1 }, 
+    -- main={ name="Mpaca's Staff", priority=2 },
+    -- sub={ name="Enki Strap", priority=1 }, 
+    main="Bunzi's Rod",
+    sub="Ammurapi Shield",
     ammo="Pemphredo Tathlum",
     head="C. Palug Crown",
     body="Amalric Doublet +1",
@@ -157,14 +134,16 @@ function get_sets()
   }
 
   sets.Magic.elemental.MagicBurst = set_combine(sets.Magic.elemental.Normal, {
-    main={ name="Mpaca's Staff", priority=2 },-- MB2 +2
-    sub={ name="Enki Strap", priority=1 }, 
+    -- main={ name="Mpaca's Staff", priority=2 },-- MB2 +2
+    -- sub={ name="Enki Strap", priority=1 }, 
+    main="Bunzi's Rod",
+    sub="Ammurapi Shield",
     head="Peda. M.Board +3",               -- MB2 +4
     body="Agwu's Robe",                    -- MB +10
     hands="Agwu's Gages",                  -- MB +8, MB2 +1
     legs="Agwu's Slops",                   -- MB +9
     feet="Agwu's Pigaches",                -- MB +7
-    neck="Argute Stole +1",                -- MB +7
+    neck="Argute Stole +2",                -- MB +7
     right_ring="Mujin Band"                -- MB2 +5
   })                                       -- TOTALS
                                            -- MB +41 (over)
@@ -181,7 +160,7 @@ function get_sets()
     hands="Kaykaus Cuffs +1",
     legs="Chironic Hose",
     feet="Jhakri Pigaches +2",
-    neck="Argute Stole +1",
+    neck="Argute Stole +2",
     waist="Obstinate Sash",
     lear="Digni. Earring",
     rear="Crep. Earring",
@@ -217,7 +196,20 @@ function get_sets()
     waist="Siegel Sash"
   }
   sets.Magic.EnhancingPhalanx = {
-    body="Chironic Doublet"
+    main="Musa",
+    sub="Khonsu",
+    head="Telchine Cap",
+    body="Telchine Chasuble",
+    hands="Telchine Gloves",
+    legs="Telchine Braconi",
+    feet="Telchine Pigaches",
+    neck="Incanter's Torque",
+    waist="Embla Sash",
+    left_ear="Mimir Earring",
+    right_ear="Andoaa Earring",
+    left_ring=gear.stikini.left,
+    right_ring=gear.stikini.right,
+    back="Lugh's Cape",
   }
   sets.Magic.Embrava = {
     main="Musa",
@@ -413,6 +405,8 @@ function midcast(spell)
         equip(sets.Magic.Embrava)
       elseif eng == 'Stoneskin' then
         equip(sets.Magic.EnhancingStoneskin)
+      elseif eng == 'Phalanx' then
+        equip(sets.Magic.EnhancingPhalanx)
       else
         equip(sets.Magic.EnhancingDuration)
         if string.find(eng, 'Regen') then

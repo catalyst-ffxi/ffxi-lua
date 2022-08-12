@@ -35,7 +35,7 @@ function get_sets()
     -- sub="Utu Grip",
     ammo="Coiste Bodhar",
     head="Flam. Zucchetto +2",
-    body=augments.valorous.mail.da,
+    body="Gleti's Cuirass",
     hands="Sulev. Gauntlets +2",
     legs=augments.valorous.legs.stp,
     feet="Flam. Gambieras +2",
@@ -43,7 +43,6 @@ function get_sets()
     waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
-    -- left_ring="Hetairoi Ring",
     left_ring="Petrov Ring",
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.tp
@@ -53,25 +52,25 @@ function get_sets()
     -- sub="Utu Grip",
     ammo="Coiste Bodhar",
     head="Hjarrandi Helm",           -- 10 DT
-    body="Hjarrandi Breast.",        -- 12 DT
+    body="Gleti's Cuirass",          -- 9 PDT
     hands="Sulev. Gauntlets +2",     -- 5 DT
-    legs=augments.valorous.legs.stp, -- 2 PDT
+    -- legs="Nyame Flanchard",          -- 8 DT
+    legs=augments.valorous.legs.stp,
     feet="Flam. Gambieras +2",
     neck="Dgn. Collar +2",           -- Wyvern 20 DT
     waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
-    -- left_ring="Hetairoi Ring",
     left_ring="Petrov Ring",
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.tp           -- 10 PDT
-  }                                  -- 39 PDT
+  }                                  -- 42 PDT
   sets.modes.HybridHeavy = {
     -- main="Trishula",
     -- sub="Utu Grip",
     ammo="Coiste Bodhar",
     head="Hjarrandi Helm",           -- 10 DT
-    body="Hjarrandi Breast.",        -- 12 DT
+    body="Gleti's Cuirass",          -- 9 PDT
     hands="Sulev. Gauntlets +2",     -- 5 DT
     legs="Nyame Flanchard",          -- 8 DT
     feet="Nyame Sollerets",          -- 7 DT
@@ -79,11 +78,10 @@ function get_sets()
     waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
-    -- left_ring="Hetairoi Ring",
     left_ring="Petrov Ring",
     right_ring="Niqmaddu Ring",  
     back=gear.ambuscape.tp           -- 10 PDT
-  }                                  -- 50 PDT
+  }                                  -- 49 PDT
 
   -- Misc
   sets.Idle = {
@@ -124,7 +122,7 @@ function get_sets()
     back=gear.ambuscape.tp
   }
   sets.JAs['High Jump'] = set_combine(sets.JAs.Jump, {
-    legs="Vishap Brais +3"      -- High Jump Enmity Reduction+
+    legs="Vishap Brais +2"      -- High Jump Enmity Reduction+
   })
   sets.JAs['Spirit Jump'] = sets.JAs.Jump
   sets.JAs['Soul Jump'] = sets.JAs.Jump

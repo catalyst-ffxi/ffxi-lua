@@ -2,8 +2,6 @@ include('Modes.lua')
 include('augments_tadako.lua')
 
 function define_modes()
-  Capacity = M(false, 'Capacity Mantle')
-  DummyIndex = 0
   SCRunning = false
 end
 
@@ -108,11 +106,6 @@ function get_sets()
     waist="Embla Sash",
     back="Lugh's Cape"
   }
-  -- sets.Magic.EnhancingRegen = {
-  --   main="Bolelabunga",
-  --   head="Arbatel Bonnet",
-  --   back="Lugh's Cape"
-  -- }
   sets.Magic.Enfeebling = {}
 
   -- Abilities
@@ -195,14 +188,7 @@ function midcast(spell)
 end
 
 function aftercast(spell)
-  -- if player.status=='Engaged' then
-  --   equip(sets.Engaged)
-  -- else
-    equip(sets.Idle)
-  -- end
-  -- if Capacity.value then
-  --   equip({back = "Aptitude Mantle +1"})
-  -- end
+  equip(sets.Idle)
 end
 
 function status_change(new, old)

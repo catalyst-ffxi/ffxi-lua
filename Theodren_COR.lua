@@ -97,7 +97,8 @@ function get_sets()
     waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
     right_ear="Suppanomimi",
-    left_ring="Defending Ring",       -- 10 DT
+    -- left_ring="Defending Ring",       -- 10 DT
+    left_ring="Chirich Ring +1",
     right_ring="Epona's Ring",
     back=gear.camulus.meleeTp,        -- 10 PDT
   }                                   -- 36 PDT | 31 MDT
@@ -328,6 +329,21 @@ function get_sets()
     feet="Lanun Bottes +3",
     waist="Eschan Stone"
   }
+  sets.JAs.QuickDrawStp = {
+    ammo=gear.bullets.magic,
+    head="Malignance Chapeau",
+    body="Malignance Tabard",
+    hands="Malignance Gloves",
+    legs="Malignance Tights",
+    feet="Malignance Boots",
+    neck="Iskur Gorget",
+    waist="Yemaya Belt",
+    left_ear="Telos Earring",
+    right_ear="Dedition Earring",
+    left_ring="Chirich Ring +1",
+    right_ring="Ilabrat Ring",
+    back=gear.camulus.meleeTp,
+  }
 
   -- Job Abilities
   --
@@ -371,6 +387,8 @@ function precast(spell)
   elseif spell.type == 'CorsairShot' then
     if spell.english == 'Light Shot' or spell.english == 'Dark Shot' then
       equip(sets.JAs.QuickDrawAcc)
+    elseif player.equipment.ranged == 'Anarchy +2' then
+      equip(sets.JAs.QuickDrawStp)
     else
       equip(sets.JAs.QuickDrawMab)
       equip_elemental_waist(spell)

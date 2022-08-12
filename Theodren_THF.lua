@@ -142,7 +142,7 @@ function get_sets()
     ammo="Coiste Bodhar",
     head="Nyame Helm",
     body="Nyame Mail",
-    hands="Meg. Gloves +2",
+    hands="Nyame Gauntlets",
     legs="Nyame Flanchard",
     feet="Nyame Sollerets",
     neck="Caro Necklace",
