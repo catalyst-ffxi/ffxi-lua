@@ -58,7 +58,7 @@ function get_sets()
     body="Inyanga Jubbah +2",       -- refresh
     hands="Inyanga Dastanas +2",    -- refresh
     legs="Inyanga Shalwar +2",      -- refresh
-    feet="Fili Cothurnes +1",
+    feet="Fili Cothurnes +2",
     neck="Loricate Torque +1",      -- 6 DT
     waist="Flume Belt",             -- PDT
     left_ear="Flashward Earring",
@@ -72,7 +72,7 @@ function get_sets()
     body="Nyame Mail",              -- 9 DT
     hands="Nyame Gauntlets",        -- 7 DT
     legs="Nyame Flanchard",         -- 8 DT
-    feet="Fili Cothurnes +1",
+    feet="Fili Cothurnes +2",
     neck="Loricate Torque +1",      -- 6 DT
     waist="Flume Belt",             -- 4 PDT
     left_ear="Flashward Earring",
@@ -89,7 +89,7 @@ function get_sets()
     body="Inyanga Jubbah +2",             -- 14
     hands="Leyline Gloves",               -- 8
     legs="Kaykaus Tights",                -- 6
-    feet="Chironic Slippers",             -- 5
+    feet="Fili Cothurnes +2",             -- 10
     neck="Orunmila's torque",             -- 5
     left_ear="Loquacious earring",        -- 2
     right_ear="Etiolation Earring",       -- 1
@@ -97,7 +97,7 @@ function get_sets()
     left_ring="Weatherspoon Ring",        -- 5
     right_ring="Kishar Ring",             -- 4
     back=gear.cape.macc                   -- 10
-                                          -- 73 Total
+                                          -- 78 Total
   }
   sets.Magic.HealingPrecast = set_combine(sets.Magic.Precast, {
     right_ear="Mendicant's Earring",
@@ -160,7 +160,7 @@ function get_sets()
   -- Songs
   sets.Songs = {}
   sets.Songs.Precast = set_combine(sets.Magic.Precast, {
-    head="Fili Calot",
+    head="Fili Calot +2",
     feet=augments.telchine.feet.enhancing
   })
   sets.Songs.Dummy = {
@@ -168,7 +168,7 @@ function get_sets()
     -- sub="Kali",
     ranged="Daurdabla",
     -- neck="Moonbow Whistle +1",
-    -- body="Fili Hongreline +1",
+    -- body="Fili Hongreline +2",
     -- legs="Inyanga Shalwar +2",
     -- feet="Brioso Slippers +3"
   }
@@ -180,7 +180,7 @@ function get_sets()
     -- sub="Kali",
     ranged="Gjallarhorn",
     head="Brioso Roundlet +3",
-    body="Fili Hongreline +1",
+    body="Fili Hongreline +2",
     hands="Inyanga Dastanas +2",
     legs="Inyanga Shalwar +2",
     feet="Brioso Slippers +3",
@@ -189,16 +189,17 @@ function get_sets()
     right_ring="Stikini Ring",
     back=gear.cape.macc
   }
-  sets.Songs.Ballad = set_combine(sets.Songs.Buffs, { legs="Fili Rhingrave" })
+  sets.Songs.Ballad = set_combine(sets.Songs.Buffs, { legs="Fili Rhingrave +2" })
   sets.Songs.Carol = set_combine(sets.Songs.Buffs, { hands="Mousai Gages +1" })
-  sets.Songs.Madrigal = set_combine(sets.Songs.Buffs, { head="Fili Calot" })
-  sets.Songs.March = set_combine(sets.Songs.Buffs, { hands="Fili Manchettes" })
+  sets.Songs.Madrigal = set_combine(sets.Songs.Buffs, { head="Fili Calot +2" })
+  sets.Songs.March = set_combine(sets.Songs.Buffs, { hands="Fili Manchettes +2" })
   sets.Songs.HonorMarch = set_combine(sets.Songs.March, { ranged="Marsyas" })
   sets.Songs.Minne = set_combine(sets.Songs.Buffs, { legs="Mousai Seraweels +1" })
-  sets.Songs.Minuet = set_combine(sets.Songs.Buffs, { body="Fili Hongreline +1" })
+  sets.Songs.Minuet = set_combine(sets.Songs.Buffs, { body="Fili Hongreline +2" })
   sets.Songs.Scherzo = set_combine(sets.Songs.Buffs, {
-    -- feet="Fili Cothurnes +1"
+    -- feet="Fili Cothurnes +2"
   })
+  sets.Songs.Etude = set_combine(sets.Songs.Buffs, { head="Mousai Turban +1" })
 
   -- Song Debuffs
   --
@@ -224,7 +225,7 @@ function get_sets()
     -- sub="Kali",
     ranged="Gjallarhorn",
     head="Brioso Roundlet +3",
-    body="Fili Hongreline +1",
+    body="Fili Hongreline +2",
     hands="Inyanga Dastanas +2",
     legs="Inyanga Shalwar +2",
     feet="Brioso Slippers +3",
@@ -237,7 +238,7 @@ function get_sets()
     back=gear.cape.macc
   }
   sets.Songs.Lullaby = set_combine(sets.Songs.DebuffDuration,
-    { ranged="Daurdabla", hands="Brioso Cuffs +3" }
+    { ranged="Blurred Harp +1", hands="Brioso Cuffs +3" }
   )
   sets.Songs.Threnody = set_combine(sets.Songs.DebuffAccuracy,
     { body="Mousai Manteel" }
@@ -521,6 +522,9 @@ function set_for_song(spell)
 
   elseif string.find(spell.english, 'Scherzo') then
     return sets.Songs.Scherzo
+
+  elseif string.find(spell.english, 'Etude') then
+    return sets.Songs.Etude
 
   else
     return sets.Songs.Buffs

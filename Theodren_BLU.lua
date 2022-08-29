@@ -3,7 +3,9 @@ include('Modes.lua')
 include('augments.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'HybridHeavy', 'Normal', 'HybridLight', 'Accuracy'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'HybridLight', 'HybridHeavy',
+  -- 'Accuracy'
+  }
 end
 
 function define_aliases()
@@ -67,12 +69,12 @@ function get_sets()
   sets.modes.Normal = {
     ammo="Coiste Bodhar",
     head="Adhemar Bonnet +1",
-    body="Adhemar Jacket +1",
+    body="Gleti's Cuirass",
     hands="Adhemar Wristbands +1",
     legs="Samnuha Tights",
     feet=augments.herc.feet.triple,
     neck="Mirage Stole +1",
-    waist="Windbuffet Belt +1",
+    waist="Reiki Yotai",
     left_ear="Telos Earring",
     right_ear="Dedition Earring",
     left_ring="Hetairoi Ring",
@@ -81,43 +83,43 @@ function get_sets()
   }
   sets.modes.HybridLight = {
     ammo="Coiste Bodhar",
-    head="Adhemar Bonnet +1",
-    body="Malignance Tabard",       -- 9 DT
-    hands="Adhemar Wristbands +1",  -- 2 PDT
-    legs="Samnuha Tights",
+    head="Malignance Chapeau",      -- 6 DT
+    body="Gleti's Cuirass",         -- 9 PDT
+    hands="Adhemar Wristbands +1",
+    legs="Malignance Tights",       -- 7 DT
     feet=augments.herc.feet.triple, -- 2 PDT
     neck="Mirage Stole +1",
-    waist="Windbuffet Belt +1",
+    waist="Reiki Yotai",
     left_ear="Telos Earring",
-    right_ear="Suppanomimi",
+    right_ear="Dedition Earring",
     left_ring="Defending Ring",     -- 10 DT
     right_ring="Epona's Ring",
     back=gear.rosmerta.tp           -- 10 PDT
-  }                                 -- 33 PDT
+  }                                 -- 44 PDT
   sets.modes.HybridHeavy = {
     ammo="Coiste Bodhar",
-    head="Malignance Chapeau",         -- 6 DT
-    body="Malignance Tabard",          -- 9 DT
-    hands="Malignance Gloves",         -- 5 DT
-    legs="Malignance Tights",          -- 7 DT
-    feet="Malignance Boots",           -- 4 DT
+    head="Malignance Chapeau",      -- 6 DT
+    body="Gleti's Cuirass",         -- 9 PDT
+    hands="Malignance Gloves",      -- 5 DT
+    legs="Malignance Tights",       -- 7 DT
+    feet="Malignance Boots",        -- 4 DT
     neck="Mirage Stole +1",
     waist="Reiki Yotai",
     left_ear="Telos Earring",
     right_ear="Cessance Earring",
-    left_ring="Defending Ring",        -- 10 DT
+    left_ring="Defending Ring",     -- 10 DT
     right_ring="Epona's Ring",
-    back=gear.rosmerta.tp              -- 10 PDT
-  }                                    -- 51 PDT
+    back=gear.rosmerta.tp           -- 10 PDT
+  }                                 -- 51 PDT
   sets.modes.Accuracy = {
     ammo="Coiste Bodhar",
     head="Malignance Chapeau",
-    body="Adhemar Jacket +1",
+    body="Gleti's Cuirass",
     hands="Adhemar Wristbands +1",
     legs="Malignance Tights",
     feet=augments.herc.feet.triple,
     neck="Mirage Stole +1",
-    waist="Windbuffet Belt +1",
+    waist="Reiki Yotai",
     left_ear="Telos Earring",
     right_ear="Digni. Earring",
     left_ring="Chirich Ring +1",
@@ -186,7 +188,22 @@ sets.Magic.SpellInterrupt = {
     feet="Malignance Boots",
     neck="Mirage Stole +1",
     waist="Luminary Sash",
-    left_ear="Gwati Earring",
+    left_ear="Crep. Earring",
+    right_ear="Digni. Earring",
+    left_ring="Stikini Ring +1",
+    right_ring="Stikini Ring +1",
+    back="Aurist's Cape +1"
+  }
+  sets.BlueMagic.FastMacc = {
+    ammo="Pemphredo Tathlum",
+    head="Amalric Coif +1",
+    body="Amalric Doublet +1",
+    hands="Malignance Gloves",
+    legs="Aya. Cosciales +2",
+    feet="Malignance Boots",
+    neck="Mirage Stole +1",
+    waist="Luminary Sash",
+    left_ear="Crep. Earring",
     right_ear="Digni. Earring",
     left_ring="Stikini Ring +1",
     right_ring="Stikini Ring +1",
@@ -205,7 +222,7 @@ sets.Magic.SpellInterrupt = {
     right_ear="Friomisi Earring",
     left_ring="Shiva Ring +1",
     right_ring="Stikini Ring +1",
-    back=gear.rosmerta.magic -- INT/MAB/Macc/Mdmg
+    back=gear.rosmerta.mab -- INT/MAB/Macc/Mdmg
   }
   sets.BlueMagic.Physical = {
     -- ammo="Falcon Eye", -- Stored

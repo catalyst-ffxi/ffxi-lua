@@ -5,13 +5,13 @@ include('augments.lua')
 function define_modes()
   PrimaryMode = M{['description'] = 'Primary Mode',
     'FullDD', 'HybridLight', 'HybridHeavy',
-    'HybridSB'
+    -- 'HybridSB'
     -- 'Tatenashi'
   }
   WeaponMode = M{['description'] = 'Weapon Mode',
     'Dojikiri Yasutsuna',
     'Shining One',
-    'Soboro Sukehiro' 
+    -- 'Soboro Sukehiro',
     -- 'Amanomurakumo'
   }
 end
@@ -38,11 +38,10 @@ function get_sets()
     sub="Utu Grip",
     ammo="Coiste Bodhar",
     head="Flam. Zucchetto +2",
-    body="Ken. Samue +1",
-    hands="Wakido Kote +3",
-    legs="Ken. Hakama +1",
-    -- feet="Ken. Sune-Ate +1",
-    feet="Ryuo Sune-Ate +1",
+    body="Kasuga Domaru +2",
+    hands="Tatena. Gote +1",
+    legs="Kasuga Haidate +2",
+    feet="Tatena. Sune. +1",
     neck="Sam. Nodowa +2",
     waist="Sailfi Belt +1",
     left_ear="Schere Earring",
@@ -55,66 +54,34 @@ function get_sets()
     sub="Utu Grip",
     ammo="Coiste Bodhar",
     head="Mpaca's Cap",            -- 7 PDT
-    body="Wakido Domaru +3",       -- 8 DT
-    hands="Wakido Kote +3",
-    legs="Ken. Hakama +1",
-    feet="Ken. Sune-Ate +1",
-    neck="Sam. Nodowa +2",
-    waist="Sailfi Belt +1",
-    left_ear="Schere Earring",
-    right_ear="Dedition Earring",
-    left_ring="Defending Ring",    -- 10 DT
-    right_ring="Niqmaddu Ring",
-    back=gear.smertrios.tp         -- 10 PDT
-  }                                -- 35 PDT
-  sets.modes.HybridHeavy = {
-    sub="Utu Grip",
-    ammo="Coiste Bodhar",
-    head="Mpaca's Cap",            -- 7 PDT
-    body="Wakido Domaru +3",       -- 8 DT
-    hands="Wakido Kote +3",
-    legs="Mpaca's Hose",           -- 9 PDT
-    feet="Mpaca's Boots",          -- 6 PDT
-    neck="Sam. Nodowa +2",
-    waist="Sailfi Belt +1",
-    left_ear="Schere Earring",
-    right_ear="Dedition Earring",
-    left_ring="Defending Ring",    -- 10 DT
-    right_ring="Niqmaddu Ring",
-    back=gear.smertrios.tp         -- 10 PDT
-  }                                -- 50 PDT
-  sets.modes.HybridSB = {
-    sub="Utu Grip",
-    ammo="Coiste Bodhar",
-    head="Kendatsuba Jinpachi +1",
-    body="Wakido Domaru +3",
-    hands="Wakido Kote +3",
-    legs="Mpaca's Hose",
-    feet="Ryuo Sune-Ate +1",
-    neck="Sam. Nodowa +2",
-    waist="Sailfi Belt +1",
-    left_ear="Schere Earring",
-    right_ear="Dedition Earring",
-    left_ring="Defending Ring",
-    right_ring="Niqmaddu Ring",
-    back=gear.smertrios.tp
-  }
-  sets.modes.Tatenashi = {
-    sub="Utu Grip",
-    ammo="Coiste Bodhar",
-    head="Flam. Zucchetto +2",
-    body="Ken. Samue +1",
-    hands="Wakido Kote +3",
-    legs="Tatena. Haidate +1",
-    feet="Ryuo Sune-Ate +1",
+    body="Kasuga Domaru +2",       -- 13 DT
+    hands="Tatena. Gote +1",
+    legs="Kasuga Haidate +2",      -- 10 DT
+    feet="Tatena. Sune. +1",
     neck="Sam. Nodowa +2",
     waist="Sailfi Belt +1",
     left_ear="Schere Earring",
     right_ear="Dedition Earring",
     left_ring="Chirich Ring +1",
     right_ring="Niqmaddu Ring",
-    back=gear.smertrios.tp
-  }
+    back=gear.smertrios.tp         -- 10 PDT
+  }                                -- 40 PDT
+  sets.modes.HybridHeavy = {
+    sub="Utu Grip",
+    ammo="Coiste Bodhar",
+    head="Ken. Jinpachi +1",       -- Meva
+    body="Kasuga Domaru +2",       -- 13 DT
+    hands="Mpaca's Gloves",        -- 8 PDT
+    legs="Kasuga Haidate +2",      -- 10 DT
+    feet="Ken. Sune-Ate +1",       -- Meva
+    neck="Sam. Nodowa +2",
+    waist="Sailfi Belt +1",
+    left_ear="Schere Earring",
+    right_ear="Dedition Earring",
+    left_ring="Defending Ring",    -- 10 DT
+    right_ring="Niqmaddu Ring",
+    back=gear.smertrios.tp         -- 10 PDT
+  }                                -- 51 PDT
 
   -- Weapon Skills
   --

@@ -86,7 +86,7 @@ function get_sets()
   sets.Idle = {
     ammo="Homiliary",               -- 1 Refresh
     head="Viti. Chapeau +3",        -- 3 Refresh
-    body="Atrophy Tabard +3",       -- 3 Refresh
+    body="Lethargy Sayon +2",       -- 3 Refresh, 13 DT
     hands="Nyame Gauntlets",        -- 7 DT
     legs="Carmine Cuisses +1",      -- Zoomies
     feet="Nyame Sollerets",         -- 7
@@ -202,8 +202,8 @@ function get_sets()
     feet="Vanya Clogs",
     neck="Malison Medallion",
     waist="Witful Belt",
-    left_ear="Loquac. Earring",
-    right_ear="Etiolation Earring",
+    left_ear="Malignance Earring",
+    right_ear="Lethargy Earring",
     left_ring="Haoma's Ring",
     right_ring="Haoma's Ring",
     back="Oretan. Cape +1",
@@ -218,11 +218,11 @@ function get_sets()
     body="Vitiation Tabard +3",
     hands="Atrophy Gloves +3",
     legs="Telchine Braconi",
-    feet="Lethargy Houseaux +1",
+    feet="Lethargy Houseaux +2",
     neck="Duelist's Torque +2",
     waist="Embla Sash",
-    left_ear="Loquac. Earring",
-    right_ear="Malignance Earring",
+    left_ear="Malignance Earring",
+    right_ear="Lethargy Earring",
     left_ring="Kishar Ring",
     right_ring="Weatherspoon Ring +1",
     back="Ghostfyre Cape"
@@ -232,14 +232,14 @@ function get_sets()
     sub="Ammurapi Shield",
     ammo="Sapience orb",
     head="Lethargy Chappel +1",
-    body="Lethargy Sayon +1",
+    body="Lethargy Sayon +2",
     hands="Atrophy Gloves +3",
-    legs="Lethargy Fuseau +1",
-    feet="Lethargy Houseaux +1",
+    legs="Lethargy Fuseau +2",
+    feet="Lethargy Houseaux +2",
     neck="Duelist's Torque +2",
     waist="Embla Sash",
-    left_ear="Loquac. Earring",
-    right_ear="Malignance Earring",
+    left_ear="Malignance Earring",
+    right_ear="Lethargy Earring",
     left_ring="Kishar Ring",
     right_ring="Weatherspoon Ring +1",
     back="Ghostfyre Cape"
@@ -247,7 +247,7 @@ function get_sets()
   sets.Magic.Refresh = {
     head="Amalric Coif +1",
     body="Atrophy Tabard +3",
-    legs="Lethargy Fuseau +1"
+    legs="Lethargy Fuseau +2"
   }
   sets.Magic.RefreshSelf = {
     waist="Gishdubar sash",
@@ -265,7 +265,8 @@ function get_sets()
     neck="Incanter's Torque",
     waist="Olympus Sash",
     left_ear="Mimir Earring",
-    right_ear="Andoaa Earring",
+    right_ear="Lethargy Earring",
+    -- right_ear="Andoaa Earring",
     left_ring=gear.stikini.left,
     right_ring=gear.stikini.right,
     back="Ghostfyre Cape",
@@ -294,11 +295,12 @@ function get_sets()
   -- Silence/Dispel/Gravity/Sleep/Frazzle2:
   sets.Magic.EnfeebleAccuracy = {
     main="Crocea Mors",
+    -- sub="Bunzi's Rod",
     sub="Daybreak",
-    ammo="Regal Gem",
+    ranged="Ullr",
     head="Atrophy Chapeau +3",
     body="Atrophy Tabard +3",
-    hands="Kaykaus Cuffs +1",
+    hands="Lethargy Gantherots +2",
     legs="Chironic Hose",
     feet="Vitiation Boots +3",
     neck="Duelist's Torque +2",
@@ -311,12 +313,12 @@ function get_sets()
   }
   -- Slow2/Paralyze2/Addle2/Blind2:
   sets.Magic.EnfeeblePotency = {
-    main="Naegling",
+    main="Bunzi's Rod",
     sub="Daybreak",
     ammo="Regal Gem",
     head="Vitiation Chapeau +3",
-    body="Lethargy Sayon +1",
-    hands="Kaykaus Cuffs +1",
+    body="Lethargy Sayon +2",
+    hands="Lethargy Gantherots +2",
     legs="Chironic Hose",
     feet="Vitiation Boots +3",
     neck="Duelist's Torque +2",
@@ -327,35 +329,28 @@ function get_sets()
     right_ring=gear.stikini.right,
     back=gear.sucellos.enfeeble
   }
-  -- Distract3/Frazzle3:
-  -- sets.Magic.EnfeebleSkill = set_combine(sets.Magic.EnfeeblePotency, {
-  --   main="Contemplator +1",
-  --   sub="Mephitis Grip",
-  --   waist="Rumination Sash",
-  --   right_ear="Vor Earring"
-  -- })
   -- Frazzle III skill cap is 625
   sets.Magic.Frazzle3 = set_combine(sets.Magic.EnfeeblePotency, {
     main="Contemplator +1",
-    sub="Mephitis Grip",
-    right_ear="Vor Earring",
+    sub="Enki Strap",
+    -- right_ear="Vor Earring",
     left_ring=gear.stikini.left
   })
   -- Distract III skill cap is 610
   sets.Magic.Distract3 = set_combine(sets.Magic.EnfeeblePotency, {
     main="Contemplator +1",
-    sub="Enki Strap",
-    left_ring=gear.stikini.left
+    sub="Enki Strap"
+    -- left_ring=gear.stikini.left
   })
 
   -- Dia (maximize duration):
   sets.Magic.EnfeebleDia = {
     ammo="Regal Gem",
     head="Lethargy Chappel +1",
-    body="Lethargy Sayon +1",
-    hands="Lethargy Gantherots +1",
-    legs="Lethargy Fuseau +1",
-    feet="Lethargy Houseaux +1",
+    body="Lethargy Sayon +2",
+    hands="Lethargy Gantherots +2",
+    legs="Lethargy Fuseau +2",
+    feet="Lethargy Houseaux +2",
     waist="Obstin. Sash",
     left_ring="Kishar Ring"
   }
@@ -719,13 +714,18 @@ function set_for_enfeeble(name)
   end
 
   -- Sabotuer bonus
-  if buffactive['Saboteur'] then
-    set = set_combine(set, { hands="Lethargy Gantherots +1" })
-  end
+  -- if buffactive['Saboteur'] then
+  --   set = set_combine(set, { hands="Lethargy Gantherots +2" })
+  -- end
 
   -- Equip shield of not able to dual wield
-  if dual_wield_job() == false and set.sub == 'Daybreak' then
+  if dual_wield_job() == false and set.main ~= 'Contemplator +1' then
     set.sub = 'Ammurapi Shield'
+  end
+
+  if set.ranged == 'Ullr' and WeaponLock.value and player.status == 'Engaged' then
+    set.ranged = ''
+    set.ammo = 'Regal Gem'
   end
 
   return set
@@ -787,8 +787,9 @@ function set_for_current_mode()
     if player.mpp < 50 then
       set.waist = 'Fucho-no-Obi'
     end
-    -- if player.equipment.ranged ~= 'Ullr' then
-      -- set.ammo = 'Homiliary'
+    -- if player.equipment.ranged == 'Ullr' then
+    --   set.ranged = 'Ullr'
+    --   set.ammo = nil
     -- end
     return set
   end

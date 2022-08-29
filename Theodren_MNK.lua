@@ -36,7 +36,8 @@ function get_sets()
     main="Godhands",
     ammo="Coiste Bodhar",
     head="Adhemar Bonnet +1",
-    body="Ken. Samue +1",
+    -- body="Ken. Samue +1",
+    body="Mpaca's Doublet",
     hands="Adhemar Wristbands +1",
     legs="Ken. Hakama +1",
     -- feet="Anch. Gaiters +3",
@@ -53,7 +54,8 @@ function get_sets()
     main="Godhands",
     ammo="Coiste Bodhar",
     head="Ken. Jinpachi +1",
-    body="Ken. Samue +1",
+    -- body="Ken. Samue +1",
+    body="Mpaca's Doublet",
     hands="Malignance Gloves",  -- 5 DT
     legs="Mpaca's Hose",        -- 9 PDT
     feet="Malignance Boots",    -- 4 DT
@@ -69,7 +71,8 @@ function get_sets()
     main="Godhands",
     ammo="Coiste Bodhar",
     head="Ken. Jinpachi +1",
-    body="Ken. Samue +1",
+    -- body="Ken. Samue +1",
+    body="Mpaca's Doublet",
     hands="Malignance Gloves",  -- 5 DT
     legs="Mpaca's Hose",        -- 9 PDT
     feet="Malignance Boots",    -- 4 DT
@@ -196,7 +199,6 @@ function get_sets()
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.tp
   }
-
   sets.WS['Howling Fist'] = { -- 50% VIT / 20% STR, 2-hit, Damage varies
     ammo="Coiste Bodhar",
     head="Mpaca's Cap",

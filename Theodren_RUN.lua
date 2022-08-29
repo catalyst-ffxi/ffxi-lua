@@ -94,7 +94,7 @@ function get_sets()
     head="Nyame Helm",
     body="Nyame Mail",
     hands="Turms Mittens +1",
-    legs="Nyame Flanchard",
+    legs="Eri. Leg Guards +2",
     feet="Turms Leggings +1",
 		neck="Futhark Torque +2",
     waist="Flume Belt +1",
@@ -135,6 +135,7 @@ function get_sets()
     right_ear="Sherida Earring",
     left_ring={ name="Moonlight Ring", priority=5 },
     right_ring={ name="Moonlight Ring", priority=5 },
+    -- right_ring={ name="Gelatinous Ring +1", priority=5 },
     back=gear.ogma.tp
   }
   sets.modes.FullDD = {
@@ -260,7 +261,7 @@ function get_sets()
   sets.JAs.Liement = { body="Futhark Coat +3" }
   sets.JAs['Elemental Sforzo'] = { body="Futhark Coat +3" }
   sets.JAs['Vivacious Pulse'] = {
-    head="Erilaz Galea +1",
+    head="Erilaz Galea +2",
     neck="Incanter's Torque",
     left_ring="Stikini Ring +1",
     right_ring="Stikini Ring +1",
@@ -329,7 +330,7 @@ function get_sets()
   -- legs={ name="Carmine Cuisses +1", priority=5 }, -- 18
   sets.Magic.Temper = {
     ammo="Staunch Tathlum +1",
-    head="Erilaz Galea +1",          -- 15% duration
+    head="Erilaz Galea +2",          -- 15% duration
     body="Manasa Chasuble",          -- 12    
     hands={ name="Regal Gauntlets", priority=5 }, -- 20% duration
     legs="Futhark Trousers +3",      -- 30% duration
@@ -343,6 +344,7 @@ function get_sets()
     waist="Olympus Sash",            -- 5
     back="Merciful Cape"             -- 5
   }
+  -- This hits enhancing skill cap (500) at ML30
   sets.Magic.Phalanx = {
     ammo="Staunch Tathlum +1",
     head="Futhark Bandeau +3",
@@ -360,7 +362,7 @@ function get_sets()
   }
   sets.Magic.SpellInterrupt = {
     ammo="Staunch Tathlum +1",       -- 11, 3 DT
-    head="Agwu's Cap",               -- 10
+    head="Erilaz Galea +2",          -- 15
     body="Nyame Mail",               -- 9 DT
     hands="Regal Gauntlets",         -- 10
     legs="Carmine Cuisses +1",       -- 20
@@ -373,12 +375,12 @@ function get_sets()
     right_ring="Gelatinous Ring +1", -- 7 PDT
     back=gear.ogma.enmity            -- 10
                                      -- 8 Merit
-                                     -- 102 Total SID
+                                     -- 107 Total SID
                                      -- 43 PDT
   }
   sets.Magic.EnhancingDuration = {
     ammo="Staunch Tathlum +1",       -- 11 SID, 3 DT
-    head="Erilaz Galea +1",          -- 15%
+    head="Erilaz Galea +2",          -- 15%
     hands={ name="Regal Gauntlets", priority=5 }, -- 20%, 10 SID
     body="Nyame Mail",               -- 9 DT
     legs="Futhark Trousers +3",      -- 30%
@@ -401,34 +403,34 @@ function get_sets()
     right_ring="Stikini Ring +1",    -- 8 skill
   })
   sets.Magic.Refresh = set_combine(sets.Magic.EnhancingDuration, {
-    head="Erilaz Galea +1",
+    head="Erilaz Galea +2",
     waist="Gishdubar Sash"
   })
   sets.Magic['Regen IV'] = set_combine(sets.Magic.EnhancingDuration, {
     head="Runeist's Bandeau +3",
     waist="Sroda Belt"
   })
-  sets.Magic['Healing Breeze'] = {
-    ammo="Staunch Tathlum +1",       -- 11 sird, 3 DT
-    head="Agwu's Cap",               -- 10 sird
-    body="Vrikodara Jupon",          -- 13 cure
-    hands="Regal Gauntlets",         -- 10 sird
-    legs="Carmine Cuisses +1",       -- 20 sird
-    feet="Taeon Boots",              -- 10 sird
-    neck="Phalaina Locket",          -- 4 cure (+4 rec)
-    waist="Sroda Belt",              -- 35 cure
-    left_ear="Mendi. Earring",       -- 5 cure
-    right_ear="Magnetic Earring",    -- 8 sird
-    left_ring="Defending Ring",      -- 10 DT
-    right_ring="Gelatinous Ring +1", -- 7 PDT
-    back=gear.ogma.enmity            -- 10 sird
-  }
+  -- sets.Magic['Healing Breeze'] = {
+  --   ammo="Staunch Tathlum +1",       -- 11 sird, 3 DT
+  --   head="Agwu's Cap",               -- 10 sird
+  --   body="Vrikodara Jupon",          -- 13 cure
+  --   hands="Regal Gauntlets",         -- 10 sird
+  --   legs="Carmine Cuisses +1",       -- 20 sird
+  --   feet="Taeon Boots",              -- 10 sird
+  --   neck="Phalaina Locket",          -- 4 cure (+4 rec)
+  --   waist="Sroda Belt",              -- 35 cure
+  --   left_ear="Mendi. Earring",       -- 5 cure
+  --   right_ear="Magnetic Earring",    -- 8 sird
+  --   left_ring="Defending Ring",      -- 10 DT
+  --   right_ring="Gelatinous Ring +1", -- 7 PDT
+  --   back=gear.ogma.enmity            -- 10 sird
+  -- }
   sets.Enmity = {
     ammo="Sapience Orb",
     head="Halitus Helm",
     body="Emet Harness +1",
     hands="Kurys Gloves",
-    legs={ name="Eri. Leg Guards +1", priority=3 },
+    legs={ name="Eri. Leg Guards +2", priority=3 },
     feet="Erilaz Greaves +1",
     neck="Moonlight Necklace",
     waist={ name="Kasiri Belt", priority=4 },
