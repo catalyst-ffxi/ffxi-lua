@@ -53,7 +53,7 @@ function get_sets()
   sets.modes.HybridLight = {
     sub="Utu Grip",
     ammo="Coiste Bodhar",
-    head="Mpaca's Cap",            -- 7 PDT
+    head="Kasuga Kabuto +2",       -- 9 DT
     body="Kasuga Domaru +2",       -- 13 DT
     hands="Tatena. Gote +1",
     legs="Kasuga Haidate +2",      -- 10 DT
@@ -65,11 +65,11 @@ function get_sets()
     left_ring="Chirich Ring +1",
     right_ring="Niqmaddu Ring",
     back=gear.smertrios.tp         -- 10 PDT
-  }                                -- 40 PDT
+  }                                -- 42 PDT
   sets.modes.HybridHeavy = {
     sub="Utu Grip",
     ammo="Coiste Bodhar",
-    head="Ken. Jinpachi +1",       -- Meva
+    head="Kasuga Kabuto +2",       -- 9 DT
     body="Kasuga Domaru +2",       -- 13 DT
     hands="Mpaca's Gloves",        -- 8 PDT
     legs="Kasuga Haidate +2",      -- 10 DT
@@ -78,10 +78,10 @@ function get_sets()
     waist="Sailfi Belt +1",
     left_ear="Schere Earring",
     right_ear="Dedition Earring",
-    left_ring="Defending Ring",    -- 10 DT
+    left_ring="Chirich Ring +1",
     right_ring="Niqmaddu Ring",
     back=gear.smertrios.tp         -- 10 PDT
-  }                                -- 51 PDT
+  }                                -- 50 PDT
 
   -- Weapon Skills
   --

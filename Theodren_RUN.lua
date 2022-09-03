@@ -111,7 +111,8 @@ function get_sets()
     body="Runeist's Coat +3",
     hands="Nyame Gauntlets",
     legs="Nyame Flanchard",
-    feet="Nyame Sollerets",
+    -- feet="Nyame Sollerets",
+    feet="Erilaz Greaves +2",
 		neck="Warder's Charm +1",
     waist="Engraved Belt",
     left_ear={ name="Odnowa Earring +1", priority=5 },
@@ -120,7 +121,6 @@ function get_sets()
     right_ring="Shadow Ring",
     back=gear.ogma.tank
   }
-
   sets.modes.HybridDD = {
     sub="Utu Grip",
     ammo="Coiste Bodhar",
@@ -134,8 +134,7 @@ function get_sets()
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
     left_ring={ name="Moonlight Ring", priority=5 },
-    right_ring={ name="Moonlight Ring", priority=5 },
-    -- right_ring={ name="Gelatinous Ring +1", priority=5 },
+    right_ring={ name="Gelatinous Ring +1", priority=5 },
     back=gear.ogma.tp
   }
   sets.modes.FullDD = {
@@ -431,7 +430,7 @@ function get_sets()
     body="Emet Harness +1",
     hands="Kurys Gloves",
     legs={ name="Eri. Leg Guards +2", priority=3 },
-    feet="Erilaz Greaves +1",
+    feet="Erilaz Greaves +2",
     neck="Moonlight Necklace",
     waist={ name="Kasiri Belt", priority=4 },
     left_ear="Trux Earring",

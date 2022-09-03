@@ -405,8 +405,8 @@ function midcast(spell)
         equip(sets.Magic.Embrava)
       elseif eng == 'Stoneskin' then
         equip(sets.Magic.EnhancingStoneskin)
-      elseif eng == 'Phalanx' then
-        equip(sets.Magic.EnhancingPhalanx)
+      -- elseif eng == 'Phalanx' then
+      --   equip(sets.Magic.EnhancingPhalanx)
       else
         equip(sets.Magic.EnhancingDuration)
         if string.find(eng, 'Regen') then
@@ -419,7 +419,7 @@ function midcast(spell)
         end
       end
       if buffactive['Perpetuance'] then
-        equip({ hands="Arbatel Bracers +1" })
+        equip({ hands="Arbatel Bracers +2" })
       end
     end
 

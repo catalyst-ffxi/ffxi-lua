@@ -32,7 +32,8 @@ function get_sets()
     cape = {
       macc = { name="Intarabus's Cape", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Phys. dmg. taken-10%',}},
       healing = { name="Intarabus's Cape", augments={'MND+10','Cure Potency +10%',}},
-      melee = { name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}},
+      singleWield = { name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}},
+      dualWield = { name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dual Wield"+10','Phys. dmg. taken-10%',}},
       wsStr = { name="Intarabus's Cape", augments={'STR+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
       wsChr = { name="Intarabus's Cape", augments={'CHR+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
       wsDex = { name="Intarabus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
@@ -261,27 +262,27 @@ function get_sets()
     feet="Nyame Sollerets",
     neck="Bard's Charm +2",
     waist="Sailfi Belt +1",
-    left_ear="Dignitary's Earring",
+    left_ear="Telos Earring",
     right_ear="Cessance Earring",
-    left_ring="Chirich Ring +1",
+    left_ring="Moonlight Ring",
     right_ring="Chirich Ring +1",
-    back=gear.cape.melee -- acc/att/dex/da
+    back=gear.cape.dualWield -- acc/att/dex/dw
   }
   sets.modes.Hybrid = {
     ranged=gear.linos.tp, -- acc/stp/qa
-    head="Nyame Helm",
-    body="Ayanmo Corazza +2",
-    hands="Bunzi's Gloves",
-    legs="Nyame Flanchard",
-    feet="Nyame Sollerets",
+    head="Nyame Helm",             -- 7 DT
+    body="Ayanmo Corazza +2",      -- 6 DT
+    hands="Bunzi's Gloves",        -- 8 DT
+    legs="Nyame Flanchard",        -- 8 DT
+    feet="Nyame Sollerets",        -- 7 DT
     neck="Bard's Charm +2",
     waist="Sailfi Belt +1",
-    left_ear="Dignitary's Earring",
+    left_ear="Telos Earring",
     right_ear="Cessance Earring",
-    left_ring="Chirich Ring +1",
+    left_ring="Moonlight Ring",    -- 5 DT
     right_ring="Chirich Ring +1",
-    back=gear.cape.melee -- acc/att/dex/da
-  }
+    back=gear.cape.dualWield       -- 10 PDT
+  }                                -- 51 PDT
   sets.WS = {}
   sets.WS["Rudra's Storm"] = {
     ranged=gear.linos.ws,
@@ -453,7 +454,7 @@ function set_for_engaged()
     sets.weapons[WeaponMode.current]
   )
   if dual_wield_job() == false then
-    set = set_combine(set, { sub = "Genbu's Shield" })
+    set = set_combine(set, { sub = "Genbu's Shield", back = gear.cape.singleWield })
   end
   return set
 end

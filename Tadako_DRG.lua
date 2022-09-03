@@ -31,57 +31,51 @@ function get_sets()
 
   sets.modes = {}
   sets.modes.FullDD = {
-    -- main="Trishula",
-    -- sub="Utu Grip",
     ammo="Coiste Bodhar",
     head="Flam. Zucchetto +2",
     body="Gleti's Cuirass",
-    hands="Sulev. Gauntlets +2",
+    hands="Pel. Vambraces +2",
     legs=augments.valorous.legs.stp,
     feet="Flam. Gambieras +2",
     neck="Dgn. Collar +2",
     waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
-    left_ring="Petrov Ring",
+    left_ring="Moonlight Ring",
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.tp
   }
   sets.modes.HybridLight = {
-    -- main="Trishula",
-    -- sub="Utu Grip",
     ammo="Coiste Bodhar",
     head="Hjarrandi Helm",           -- 10 DT
     body="Gleti's Cuirass",          -- 9 PDT
-    hands="Sulev. Gauntlets +2",     -- 5 DT
-    -- legs="Nyame Flanchard",          -- 8 DT
-    legs=augments.valorous.legs.stp,
+    hands="Pel. Vambraces +2",       -- 10 DT
+    legs=augments.valorous.legs.stp, -- 2 PDT
+    -- legs="Flamma dirs +2",
     feet="Flam. Gambieras +2",
     neck="Dgn. Collar +2",           -- Wyvern 20 DT
     waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
-    left_ring="Petrov Ring",
+    left_ring="Moonlight Ring",      -- 5 DT
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.tp           -- 10 PDT
-  }                                  -- 42 PDT
+  }                                  -- 46 PDT
   sets.modes.HybridHeavy = {
-    -- main="Trishula",
-    -- sub="Utu Grip",
     ammo="Coiste Bodhar",
     head="Hjarrandi Helm",           -- 10 DT
     body="Gleti's Cuirass",          -- 9 PDT
-    hands="Sulev. Gauntlets +2",     -- 5 DT
+    hands="Pel. Vambraces +2",       -- 10 DT
     legs="Nyame Flanchard",          -- 8 DT
-    feet="Nyame Sollerets",          -- 7 DT
+    feet="Flam. Gambieras +2",
     neck="Dgn. Collar +2",           -- Wyvern 20 DT
     waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
-    left_ring="Petrov Ring",
+    left_ring="Moonlight Ring",      -- 5 DT
     right_ring="Niqmaddu Ring",  
     back=gear.ambuscape.tp           -- 10 PDT
-  }                                  -- 49 PDT
+  }                                  -- 52 PDT
 
   -- Misc
   sets.Idle = {
@@ -96,7 +90,7 @@ function get_sets()
   }
   sets.JAs['Spirit Link'] = {
     head='Vishap Armet +2',
-    hands="Pel. Vambraces +1", -- TODO
+    hands="Pel. Vambraces +2",
     feet='Ptero. Greaves',
     left_ear="Pratik Earring"  -- TODO
   }

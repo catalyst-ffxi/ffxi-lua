@@ -91,46 +91,42 @@ function get_sets()
     head="Malignance Chapeau",        -- 6 DT
     body="Adhemar Jacket +1",
     hands="Adhemar Wristbands +1",
-    legs="Meg. Chausses +2",          -- 6 PDT
+    legs="Chasseur's Culottes +2",    -- 11 DT
+    feet=augments.herc.feet.triple,   -- 2 PDT
+    neck="Iskur Gorget",
+    waist="Sailfi Belt +1",
+    left_ear="Brutal Earring",
+    right_ear="Suppanomimi",
+    left_ring="Defending Ring",       -- 10 DT
+    right_ring="Epona's Ring",
+    back=gear.camulus.meleeTp,        -- 10 PDT
+  }                                   -- 39 PDT
+  sets.modes.HybridHeavy = {
+    head="Malignance Chapeau",        -- 6 DT
+    body="Malignance Tabard",         -- 9 DT
+    hands="Malignance Gloves",        -- 5 DT
+    legs="Chasseur's Culottes +2",    -- 11 DT
     feet="Malignance Boots",          -- 4 DT
     neck="Iskur Gorget",
     waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
     right_ear="Suppanomimi",
-    -- left_ring="Defending Ring",       -- 10 DT
-    left_ring="Chirich Ring +1",
+    left_ring="Gelatinous Ring +1",   -- 7 DT
     right_ring="Epona's Ring",
     back=gear.camulus.meleeTp,        -- 10 PDT
-  }                                   -- 36 PDT | 31 MDT
-  sets.modes.HybridHeavy = {
-    head="Malignance Chapeau",        -- 6 DT
-    body="Malignance Tabard",         -- 9 DT
-    hands="Malignance Gloves",        -- 5 DT
-    legs="Malignance Tights",         -- 7 DT
-    feet="Malignance Boots",          -- 4 DT
-    neck="Iskur Gorget",
-    waist="Windbuffet Belt +1",
-    left_ear="Brutal Earring",
-    right_ear="Suppanomimi",
-    left_ring="Defending Ring",        -- 10 DT
-    right_ring="Epona's Ring",
-    back=gear.camulus.meleeTp,        -- 10 PDT
-  }                                   -- 52 PDT | 47 MDT
-
+  }                                   -- 52 PDT
   sets.modes.HighAcc = {
     head="Malignance Chapeau",
     body="Adhemar Jacket +1",
     hands="Adhemar Wristbands +1",
-    legs="Meg. Chausses +2",
+    legs="Chasseur's Culottes +2",
     feet="Malignance Boots",
     neck="Sanctity Necklace",
-    -- neck="Iskur Gorget",
     waist="Sailfi Belt +1",
     left_ear="Telos Earring",
     right_ear="Suppanomimi",
     left_ring="Chirich Ring +1",
     right_ring="Ilabrat Ring",
-    -- right_ring="Epona's Ring",
     back=gear.camulus.meleeTp,
   }
 
@@ -311,7 +307,7 @@ function get_sets()
     right_ring="Dingir Ring",
     back=gear.camulus.rangedWsMagic,
     legs="Nyame Flanchard",
-    feet="Lanun Bottes +3",
+    feet="Chasseur's Bottes +2",
     waist="Eschan Stone"
   }
   sets.JAs.QuickDrawAcc = {
@@ -326,7 +322,7 @@ function get_sets()
     right_ring="Stikini Ring +1",
     back=gear.camulus.rangedWsMagic,
     legs="Nyame Flanchard",
-    feet="Lanun Bottes +3",
+    feet="Chasseur's Bottes +2",
     waist="Eschan Stone"
   }
   sets.JAs.QuickDrawStp = {

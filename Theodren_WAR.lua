@@ -40,21 +40,6 @@ function get_sets()
   }
 
   sets.modes = {}
-  -- sets.modes.Normal = {
-  --   ammo="Coiste Bodhar",
-  --   head="Flam. Zucchetto +2",
-  --   body="Sakpata's Breastplate",
-  --   hands="Sakpata's gauntlets",
-  --   legs="Pummeler's Cuisses +3",
-  --   feet="Pummeler's Calligae +3", 
-  --   neck="War. Beads +2",
-  --   waist="Sailfi Belt +1",
-  --   left_ear="Schere Earring",
-  --   right_ear="Telos Earring",
-  --   left_ring="Niqmaddu Ring", 
-  --   right_ring="Petrov Ring",
-  --   back=gear.ambuscape.tp
-  -- }
   sets.modes.Normal = {
     ammo="Coiste Bodhar",
     head="Flam. Zucchetto +2",
@@ -85,21 +70,6 @@ function get_sets()
     right_ring="Petrov Ring",
     back=gear.ambuscape.tp
   }
-  -- sets.modes.HybridLight = {
-  --   ammo="Coiste Bodhar",
-  --   head="Hjarrandi Helm",
-  --   body="Sakpata's Breastplate",
-  --   hands="Sakpata's gauntlets",
-  --   legs="Pummeler's Cuisses +3",
-  --   feet="Pummeler's Calligae +3", 
-  --   neck="War. Beads +2",
-  --   waist="Sailfi Belt +1",
-  --   left_ear="Cessance Earring",
-  --   right_ear="Dedition Earring",
-  --   left_ring="Niqmaddu Ring", 
-  --   right_ring="Moonlight Ring",
-  --   back=gear.ambuscape.tp
-  -- }
   sets.modes.HybridHeavy = {
     ammo="Coiste Bodhar",
     head="Sakpata's Helm",
@@ -113,21 +83,6 @@ function get_sets()
     right_ear="Dedition Earring",
     left_ring="Niqmaddu Ring", 
     right_ring="Chirich Ring +1",
-    back=gear.ambuscape.tp
-  }
-  sets.modes.GlassCannon = {
-    ammo="Coiste Bodhar",
-    head="Flam. Zucchetto +2",
-    body="Sakpata's Breastplate",
-    hands="Tatenashi Gote +1",
-    legs="Tatenashi Haidate +1",
-    feet="Tatenashi Sune-Ate +1", 
-    neck="War. Beads +2",
-    waist="Sailfi Belt +1",
-    left_ear="Schere Earring",
-    right_ear="Telos Earring",
-    left_ring="Moonlight Ring", 
-    right_ring="Moonlight Ring",
     back=gear.ambuscape.tp
   }
 

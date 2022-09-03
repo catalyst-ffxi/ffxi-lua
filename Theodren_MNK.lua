@@ -36,12 +36,10 @@ function get_sets()
     main="Godhands",
     ammo="Coiste Bodhar",
     head="Adhemar Bonnet +1",
-    -- body="Ken. Samue +1",
     body="Mpaca's Doublet",
     hands="Adhemar Wristbands +1",
-    legs="Ken. Hakama +1",
-    -- feet="Anch. Gaiters +3",
-    feet='Ken. Sune-Ate +1',
+    legs="Bhikku Hose +2",
+    feet="Anch. Gaiters +3",
     neck="Anu Torque",
     waist="Moonbow Belt",
     left_ear="Sherida Earring",
@@ -53,37 +51,35 @@ function get_sets()
   sets.modes.HybridLight = {
     main="Godhands",
     ammo="Coiste Bodhar",
-    head="Ken. Jinpachi +1",
-    -- body="Ken. Samue +1",
-    body="Mpaca's Doublet",
-    hands="Malignance Gloves",  -- 5 DT
-    legs="Mpaca's Hose",        -- 9 PDT
-    feet="Malignance Boots",    -- 4 DT
+    head="Adhemar Bonnet +1",
+    body="Mpaca's Doublet",     -- 10 PDT
+    hands="Mpaca's Gloves",     -- 8 PDT
+    legs="Bhikku Hose +2",      -- 13 DT
+    feet="Anch. Gaiters +3",
     neck="Anu Torque",
-    waist="Moonbow Belt",       -- 5 DT
+    waist="Moonbow Belt",
     left_ear="Sherida Earring",
     right_ear="Schere Earring",
     left_ring="Gere Ring",
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.tp      -- 10 PDT
-  }                             -- 33 PDT
+  }                             -- 41 PDT
   sets.modes.HybridHeavy = {
     main="Godhands",
     ammo="Coiste Bodhar",
     head="Ken. Jinpachi +1",
-    -- body="Ken. Samue +1",
-    body="Mpaca's Doublet",
-    hands="Malignance Gloves",  -- 5 DT
-    legs="Mpaca's Hose",        -- 9 PDT
-    feet="Malignance Boots",    -- 4 DT
-    neck="Loricate Torque +1",  -- 6 DT
-    waist="Moonbow Belt",       -- 5 DT
+    body="Mpaca's Doublet",     -- 10 PDT
+    hands="Mpaca's Gloves",     -- 8 PDT
+    legs="Bhikku Hose +2",      -- 13 DT
+    feet="Ken. Sune-Ate +1",
+    neck="Anu Torque",
+    waist="Moonbow Belt",
     left_ear="Sherida Earring",
     right_ear="Schere Earring",
     left_ring="Gere Ring",
     right_ring="Defending Ring",-- 10 DT
     back=gear.ambuscape.tp      -- 10 PDT
-  }                             -- 49 PDT
+  }                             -- 51 PDT
   
   -- Misc
   -- sets.Idle = {
@@ -230,6 +226,7 @@ function get_sets()
     back=gear.ambuscape.wsd
   }
   sets.WS['Dragon Kick'] = sets.WS['Tornado Kick'] -- 50% STR & VIT, Damage varies
+  sets.WS['Spinning Attack'] = sets.WS['Howling Fist'] 
 
   -- sets.WS['Asuran Fists'] = { -- 15% STR & VIT, 8-hit, Accuracy varies
   --   ammo="Coiste Bodhar",
