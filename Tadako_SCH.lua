@@ -178,7 +178,7 @@ function midcast(spell)
     end
 
     if buffactive['Perpetuance'] then
-      equip({ hands = "Arbatel Bracers +1" })
+      equip({ hands = "Arbatel Bracers +2" })
     end
 
   -- Enfeebles

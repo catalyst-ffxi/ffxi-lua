@@ -76,7 +76,7 @@ function get_sets()
     hands="Nyame Gauntlets",
     legs="Carmine Cuisses +1",
     feet="Nyame Sollerets",
-		neck="Futhark Torque +2",
+    neck="Futhark Torque +2",
     waist="Flume Belt +1",
     left_ear={ name="Odnowa Earring +1", priority=5 },
     right_ear="Eabani Earring",
@@ -96,7 +96,7 @@ function get_sets()
     hands="Turms Mittens +1",
     legs="Eri. Leg Guards +2",
     feet="Turms Leggings +1",
-		neck="Futhark Torque +2",
+    neck="Futhark Torque +2",
     waist="Flume Belt +1",
     left_ear={ name="Odnowa Earring +1", priority=5 },
     right_ear="Eabani Earring",
@@ -113,7 +113,7 @@ function get_sets()
     legs="Nyame Flanchard",
     -- feet="Nyame Sollerets",
     feet="Erilaz Greaves +2",
-		neck="Warder's Charm +1",
+    neck="Warder's Charm +1",
     waist="Engraved Belt",
     left_ear={ name="Odnowa Earring +1", priority=5 },
     right_ear="Eabani Earring",
@@ -305,7 +305,7 @@ function get_sets()
   sets.Magic.FastCast = {
     ammo="Sapience Orb",                -- 2
     head={ name="Runeist's Bandeau +3", priority=5 }, -- 14
-    body="Taeon Tabard",                -- 9
+    body={ name="Erilaz Surcoat +2", priority=5 }, -- 10
     hands="Leyline Gloves",             -- 7
     legs="Agwu's Slops",                -- 6
     feet={ name="Carmine Greaves +1", priority=5 }, -- 8
@@ -316,7 +316,7 @@ function get_sets()
     lring="Weatherspoon Ring +1",       -- 6
     rring="Kishar Ring",                -- 4
     back=gear.ogma.fastCast,            -- 10
-                                        -- 72
+                                        -- 73
   }
   sets.Magic.FastCastEnhancing = set_combine(sets.Magic.FastCast, {
     waist="Siegel Sash",             -- 9

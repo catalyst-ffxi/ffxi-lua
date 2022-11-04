@@ -25,7 +25,7 @@ function get_sets()
   sets.Idle = {
     main="Naegling",
     sub="Gleti's Knife",
-    ranged="Compensator",
+    ranged="Molybdosis",
     ammo="Orichalc. Bullet",
     head="Nyame Helm",
     body="Nyame Mail",
@@ -45,7 +45,7 @@ function get_sets()
   sets.Engaged.Normal = {
     main="Naegling",
     sub="Gleti's Knife",
-    ranged="Compensator",
+    ranged="Molybdosis",
     ammo="Orichalc. Bullet",
     head="Blistering Sallet +1",
     body="Adhemar Jacket",
@@ -63,7 +63,7 @@ function get_sets()
   sets.Engaged.Hybrid = {
     main="Naegling",
     sub="Gleti's Knife",
-    ranged="Compensator",
+    ranged="Molybdosis",
     ammo="Orichalc. Bullet",
     head="Nyame Helm",
     body="Nyame Mail",
@@ -144,7 +144,7 @@ function get_sets()
     ranged="Compensator",
     head="Lanun Tricorne",
     neck="Regal Necklace",
-    hands="Chasseur's Gants +1",
+    hands="Chasseur's Gants +2",
     right_ring="Luzaf's Ring",
     back="Camulus's Mantle",
   }
@@ -209,8 +209,11 @@ function get_sets()
 end
 
 function precast(spell)
-  if spell.type == 'CorsairRoll' or spell.english == "Double-Up" then
+  if spell.type == 'CorsairRoll' then
     equip(sets.JA.PhantomRoll)
+
+  elseif spell.english == "Double-Up" then
+    equip({ rring="Luzaf's Ring" })
 
   elseif spell.type == 'CorsairShot' then
     equip(sets.JA.QuickDraw)

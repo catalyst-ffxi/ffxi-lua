@@ -33,15 +33,32 @@ function get_sets()
     }
   }
 
+  sets.Idle = {
+    sub="Utu Grip",
+    ammo="Staunch Tathlum +1",     -- 3 DT
+    head="Wakido Kabuto +3",       -- Regain
+    body="Nyame Mail",             -- 9 DT
+    hands="Nyame Gauntlets",       -- 7 DT
+    legs="Nyame Flanchard",        -- 8 DT
+    feet="Nyame Sollerets",        -- 7 DT
+    neck="Warder's Charm +1",      -- Resists
+    waist="Flume Belt +1",         -- 4 PDT
+    left_ear="Eabani Earring",     -- 8 Meva
+    right_ear="Odnowa Earring +1", -- 3 DT
+    left_ring="Gelatinous Ring +1",-- 7 PDT
+    right_ring="Purity Ring",      -- 10 Meva
+    back=gear.smertrios.tp         -- 10 PDT
+  }
+
   sets.modes = {}
   sets.modes.FullDD = {
     sub="Utu Grip",
     ammo="Coiste Bodhar",
     head="Flam. Zucchetto +2",
-    body="Kasuga Domaru +2",
+    body="Kasuga Domaru +3",
     hands="Tatena. Gote +1",
     legs="Kasuga Haidate +2",
-    feet="Tatena. Sune. +1",
+    feet="Ryuo Sune-Ate +1",
     neck="Sam. Nodowa +2",
     waist="Sailfi Belt +1",
     left_ear="Schere Earring",
@@ -54,10 +71,10 @@ function get_sets()
     sub="Utu Grip",
     ammo="Coiste Bodhar",
     head="Kasuga Kabuto +2",       -- 9 DT
-    body="Kasuga Domaru +2",       -- 13 DT
+    body="Kasuga Domaru +3",       -- 14 DT
     hands="Tatena. Gote +1",
     legs="Kasuga Haidate +2",      -- 10 DT
-    feet="Tatena. Sune. +1",
+    feet="Ryuo Sune-Ate +1",
     neck="Sam. Nodowa +2",
     waist="Sailfi Belt +1",
     left_ear="Schere Earring",
@@ -65,12 +82,12 @@ function get_sets()
     left_ring="Chirich Ring +1",
     right_ring="Niqmaddu Ring",
     back=gear.smertrios.tp         -- 10 PDT
-  }                                -- 42 PDT
+  }                                -- 43 PDT
   sets.modes.HybridHeavy = {
     sub="Utu Grip",
     ammo="Coiste Bodhar",
     head="Kasuga Kabuto +2",       -- 9 DT
-    body="Kasuga Domaru +2",       -- 13 DT
+    body="Kasuga Domaru +3",       -- 14 DT
     hands="Mpaca's Gloves",        -- 8 PDT
     legs="Kasuga Haidate +2",      -- 10 DT
     feet="Ken. Sune-Ate +1",       -- Meva
@@ -81,7 +98,7 @@ function get_sets()
     left_ring="Chirich Ring +1",
     right_ring="Niqmaddu Ring",
     back=gear.smertrios.tp         -- 10 PDT
-  }                                -- 50 PDT
+  }                                -- 51 PDT
 
   -- Weapon Skills
   --
@@ -174,12 +191,12 @@ function get_sets()
   --
   sets.JAs = {}
   sets.JAs.Meditate = {
-    head="Wakido Kabuto +1",
+    head="Wakido Kabuto +3",
     hands="Sakonji Kote +3",
     back=gear.smertrios.tp
   }
   sets.JAs['Warding Circle'] = {
-    head="Wakido Kabuto +1"
+    head="Wakido Kabuto +3"
   }
   sets.JAs.Provoke = {
     ammo="Sapience Orb",           -- 2

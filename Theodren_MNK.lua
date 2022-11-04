@@ -41,7 +41,7 @@ function get_sets()
     legs="Bhikku Hose +2",
     feet="Anch. Gaiters +3",
     neck="Anu Torque",
-    waist="Moonbow Belt",
+    waist="Moonbow Belt +1",
     left_ear="Sherida Earring",
     right_ear="Schere Earring",
     left_ring="Gere Ring",
@@ -57,7 +57,7 @@ function get_sets()
     legs="Bhikku Hose +2",      -- 13 DT
     feet="Anch. Gaiters +3",
     neck="Anu Torque",
-    waist="Moonbow Belt",
+    waist="Moonbow Belt +1",
     left_ear="Sherida Earring",
     right_ear="Schere Earring",
     left_ring="Gere Ring",
@@ -73,7 +73,7 @@ function get_sets()
     legs="Bhikku Hose +2",      -- 13 DT
     feet="Ken. Sune-Ate +1",
     neck="Anu Torque",
-    waist="Moonbow Belt",
+    waist="Moonbow Belt +1",
     left_ear="Sherida Earring",
     right_ear="Schere Earring",
     left_ring="Gere Ring",
@@ -90,7 +90,7 @@ function get_sets()
   --   legs="Malignance Tights",      -- 7 DT
   --   feet="Hermes' Sandals",        -- Movement speed
   --   neck="Loricate Torque +1",     -- 6 DT
-  --   waist="Moonbow Belt",          -- 5 DT
+  --   waist="Moonbow Belt +1",          -- 5 DT
   --   left_ear="Eabani Earring",     -- 8 Meva
   --   right_ear="Odnowa Earring +1", -- 2 MDT, 3 DT
   --   left_ring="Defending Ring",    -- 10 DT
@@ -134,7 +134,7 @@ function get_sets()
     legs="Malignance Tights",
     feet=augments.taeon.feet.phalanx,
     neck="Loricate Torque +1",
-    waist="Moonbow Belt",
+    waist="Moonbow Belt +1",
     left_ear="Odnowa Earring +1",
     right_ear="Magnetic Earring",
     left_ring="Defending Ring",
@@ -158,7 +158,7 @@ function get_sets()
     legs="Mpaca's Hose",
     feet=augments.herc.feet.triple,
     neck="Fotia Gorget",
-    waist="Moonbow Belt",
+    waist="Moonbow Belt +1",
     left_ear="Sherida Earring",
     right_ear="Schere Earring",
     left_ring="Gere Ring",
@@ -173,7 +173,7 @@ function get_sets()
     legs="Mpaca's Hose",
     feet=augments.herc.feet.triple,
     neck="Fotia Gorget",
-    waist="Moonbow Belt",
+    waist="Moonbow Belt +1",
     left_ear="Sherida Earring",
     right_ear="Moonshade Earring",
     left_ring="Gere Ring",
@@ -188,7 +188,7 @@ function get_sets()
     legs="Ken. Hakama +1",
     feet="Ken. Sune-Ate +1",
     neck="Fotia Gorget",
-    waist="Moonbow Belt",
+    waist="Moonbow Belt +1",
     left_ear="Sherida Earring",
     right_ear="Mache Earring +1",
     left_ring="Ilabrat Ring",
@@ -203,7 +203,7 @@ function get_sets()
     legs="Mpaca's Hose",
     feet=augments.herc.feet.triple,
     neck="Fotia Gorget",
-    waist="Moonbow Belt",
+    waist="Moonbow Belt +1",
     left_ear="Sherida Earring",
     right_ear="Moonshade Earring",
     left_ring="Gere Ring",
@@ -218,7 +218,7 @@ function get_sets()
     legs="Mpaca's Hose",
     feet="Anch. Gaiters +3",
     neck="Fotia Gorget",
-    waist="Moonbow Belt",
+    waist="Moonbow Belt +1",
     left_ear="Sherida Earring",
     right_ear="Moonshade Earring",
     left_ring="Gere Ring",

@@ -264,7 +264,7 @@ end
 
 function precast(spell)
   if spell.type == 'WeaponSkill' then
-    equip(sets.WS[spell.english] or sets.WS.Rudra)
+    equip(sets.WS[spell.english])
   elseif spell.type == 'JobAbility' then
     if sets.JAs[spell.english] then
       equip(sets.JAs[spell.english])
@@ -354,7 +354,7 @@ function cycle_weapon()
   -- if Abyssea.current > tablelength(Abyssea.weapons) then
   if Abyssea.current > #Abyssea.weapons then
     add_to_chat(122, '*** DD Weapons Equiped ***')
-    equip({ main = "Skinflayer", sub = "Taming Sari" })
+    equip({ main = "Tauret", sub = "Gleti's Knife" })
     Abyssea.current = 0
   else
     local set = Abyssea.weapons[Abyssea.current]

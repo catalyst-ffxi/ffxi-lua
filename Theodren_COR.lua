@@ -259,8 +259,8 @@ function get_sets()
   sets.WS['Savage Blade'] = {
     head="Nyame Helm",
     hands="Nyame Gauntlets",
-    -- body="Nyame Mail",
-    body="Ikenga's Vest",
+    body="Nyame Mail",
+    -- body="Ikenga's Vest",
     legs="Nyame Flanchard",
     feet="Nyame Sollerets",
     neck="Rep. Plat. Medal",
@@ -348,7 +348,7 @@ function get_sets()
     main="Rostam",
     head="Lanun Tricorne +3",
     neck="Regal Necklace",
-    hands="Chasseur's Gants +1",
+    hands="Chasseur's Gants +2",
     rring="Luzaf's Ring",
     back="Camulus's Mantle",
     legs="Desultor Tassets"
@@ -391,6 +391,7 @@ function precast(spell)
     end
 
   elseif spell.english == "Ranged" then
+    equip({ ranged = RangedWeapon.current })
     if buffactive['Triple Shot'] then
       equip(sets.TripleShot)
     else

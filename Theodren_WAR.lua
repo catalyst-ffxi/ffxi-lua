@@ -104,7 +104,7 @@ function get_sets()
   -- sets.JAs.Defender = { hands="Agoge Mufflers +1" }
   sets.JAs['Mighty Strikes'] = { hands="Agoge Mufflers +1" }
   sets.JAs.Warcry = { head="Agoge Mask +3" }
-  sets.JAs['Blood Rage'] = { body="Boii Lorica +1" }
+  sets.JAs['Blood Rage'] = { body="Boii Lorica +2" }
 
   -- This is useless - mufflers must be on during TP which just isn't worth doing.
   -- https://www.ffxiah.com/forum/topic/17977/restraint-and-ravager-mufflers-2#1116664
@@ -164,7 +164,6 @@ function get_sets()
     right_ear="Moonshade Earring",
     left_ring="Niqmaddu Ring",
     right_ring="Regal Ring",
-    -- right_ring="Gelatinous Ring +1",
     back=gear.ambuscape.wsVit -- vit/acc/att/wsd
   }
   sets.WS["King's Justice"] = { -- 3-Hit : 50% STR
@@ -261,8 +260,25 @@ function get_sets()
   sets.WS['Weapon Break'] = sets.WS['Full Break']
   sets.WS['Shield Break'] = sets.WS['Full Break']
 
-  -- Non-gaxe weapon skills
+  -- Savage/Judgement
   sets.WS['Savage Blade'] = {
+    ammo="Knobkierrie",
+    head="Agoge Mask +3",
+    body="Sakpata's Breastplate",
+    hands="Nyame Gauntlets",
+    legs="Boii Cuisses +2",
+    feet="Nyame sollerets",
+    neck="War. Beads +2",
+    waist="Sailfi Belt +1",
+    left_ear="Thrud Earring",
+    right_ear="Moonshade Earring",
+    left_ring="Niqmaddu Ring",
+    right_ring="Epaminondas's Ring",
+    back=gear.ambuscape.wsStr
+  }
+  sets.WS.Judgment = sets.WS['Savage Blade']
+
+  sets.WS['Impulse Drive'] = {
     ammo="Knobkierrie",
     head="Agoge Mask +3",
     body="Sakpata's Breastplate",
@@ -277,8 +293,6 @@ function get_sets()
     right_ring="Epaminondas's Ring",
     back=gear.ambuscape.wsStr
   }
-  sets.WS.Judgment = sets.WS['Savage Blade']
-  sets.WS['Impulse Drive'] = sets.WS['Savage Blade']
 
   -- sets.WS['Impulse Drive'] = {
   --   ammo="Yetshila +1",

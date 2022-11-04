@@ -45,18 +45,17 @@ function get_sets()
     -- sub="Khonsu",
     ammo="Homiliary",
     head="Befouled Crown",
-    body="Agwu's Robe",
-    hands="Nyame Gauntlets",
+    body="Arbatel Gown +2",      -- 12 DT
+    hands="Nyame Gauntlets",     -- 7 DT
     legs="Assid. Pants +1",
-    feet="Nyame Sollerets",
-    neck="Loricate Torque +1",
+    feet="Nyame Sollerets",      -- 7 DT
+    neck="Loricate Torque +1",   -- 6 DT
     waist="Fucho-no-Obi",
     left_ear="Odnowa Earring +1",
     right_ear="Etiolation Earring",
-    -- left_ring=gear.stikini.left,
-    left_ring="Defending Ring",
+    left_ring="Defending Ring",  -- 10 DT
     right_ring=gear.stikini.right,
-    back=gear.cape.nuke
+    back=gear.cape.nuke          -- 10 PDT
   }
   sets.Idle_Submlimation = set_combine(sets.Idle, {
     waist="Embla Sash"
@@ -132,10 +131,7 @@ function get_sets()
     right_ring="Shiva Ring +1",
     back=gear.cape.nuke,
   }
-
   sets.Magic.elemental.MagicBurst = set_combine(sets.Magic.elemental.Normal, {
-    -- main={ name="Mpaca's Staff", priority=2 },-- MB2 +2
-    -- sub={ name="Enki Strap", priority=1 }, 
     main="Bunzi's Rod",
     sub="Ammurapi Shield",
     head="Peda. M.Board +3",               -- MB2 +4
@@ -358,6 +354,11 @@ function precast(spell)
   if spell.type == 'JobAbility' then
     equip(sets.JA[spell.english])
 
+    -- if (spell.english == 'Accession') and not buffactive['Light Arts'] then
+    --   cast_delay(1.3)
+    --   send_command('@input /ja "Light Arts" <me>')
+    -- end
+
   elseif spell.action_type == 'Magic' then
     equip(sets.Magic.FastCast)
     if (spell.type == 'WhiteMagic' and buffactive['Light Arts']) or
@@ -436,13 +437,32 @@ function midcast(spell)
 
   -- Nukes
   elseif spell.skill == 'Elemental Magic' then
-    equip(sets.Magic.elemental[NukingMode.current])
+    -- equip(sets.Magic.elemental[NukingMode.current])
+    equip(set_for_elemental_magic(spell))
     equip_elemental_waist(spell)
   end
 end
 
 function chat(msg)
   add_to_chat(122, msg)
+end
+
+function set_for_elemental_magic(spell)
+  local set = table.copy(sets.Magic.elemental[NukingMode.current])
+
+  if buffactive['Klimaform'] and spell.element == world.weather_element then
+    set.feet = "Arbatel Loafers +3"
+
+    if NukingMode.current == "MagicBurst" then
+      set.left_ring = "Locus Ring"
+    end
+  end
+
+  if buffactive['Ebullience'] then
+    set.head = "Arbatel Bonnet +2"
+  end
+
+  return set
 end
 
 function aftercast(spell)
