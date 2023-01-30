@@ -156,7 +156,7 @@ function get_sets()
     head="Agoge Mask +3",
     body="Nyame Mail",
     hands="Sakpata's Gauntlets",
-    legs="Sakpata's Cuisses",
+    legs="Boii Cuisses +3",
     feet="Nyame Sollerets",
     neck="War. Beads +2",
     waist="Sailfi Belt +1",
@@ -171,7 +171,7 @@ function get_sets()
     head="Agoge Mask +3",
     body="Pumm. Lorica +3",
     hands="Nyame Gauntlets",
-    legs="Pummeler's Cuisses +3",
+    legs="Boii Cuisses +3",
     feet="Sulev. Leggings +2",
     neck="War. Beads +2",
     waist="Sailfi Belt +1",
@@ -186,11 +186,11 @@ function get_sets()
     head="Agoge Mask +3",
     body="Hjarrandi Breast.",
     hands="Flam. Manopolas +2",
-    legs="Pummeler's Cuisses +3",
+    legs="Boii Cuisses +3",
     feet="Pummeler's Calligae +3",
     neck="War. Beads +2",
     waist="Sailfi Belt +1",
-    left_ear="Brutal Earring",
+    left_ear="Boii Earring +1",
     right_ear="Moonshade Earring",
     left_ring="Begrudging Ring",
     right_ring="Regal Ring",
@@ -201,11 +201,11 @@ function get_sets()
     head="Flam. Zucchetto +2",
     body="Hjarrandi Breast.",
     hands="Flam. Manopolas +2",
-    legs="Pummeler's Cuisses +3",
+    legs="Boii Cuisses +3",
     feet="Pummeler's Calligae +3",
     neck="War. Beads +2",
     waist="Sailfi Belt +1",
-    left_ear="Brutal Earring",
+    left_ear="Boii Earring +1",
     right_ear="Moonshade Earring",
     left_ring="Begrudging Ring",
     right_ring="Regal Ring",
@@ -214,10 +214,10 @@ function get_sets()
   sets.WS['Steel Cyclone'] = { -- Single Hit : 60% STR / 60% VIT
     ammo="Knobkierrie",
     head="Agoge Mask +3",
-    body="Pumm. Lorica +3",
+    body="Nyame Mail",
     hands="Nyame Gauntlets",
-    legs=augments.odyssean.legs.wsd,
-    feet="Sulev. Leggings +2",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
     neck="Fotia Gorget",
     waist="Sailfi Belt +1",
     left_ear="Thrud Earring",
@@ -266,7 +266,7 @@ function get_sets()
     head="Agoge Mask +3",
     body="Sakpata's Breastplate",
     hands="Nyame Gauntlets",
-    legs="Boii Cuisses +2",
+    legs="Boii Cuisses +3",
     feet="Nyame sollerets",
     neck="War. Beads +2",
     waist="Sailfi Belt +1",
@@ -283,7 +283,7 @@ function get_sets()
     head="Agoge Mask +3",
     body="Sakpata's Breastplate",
     hands="Nyame Gauntlets",
-    legs="Sakpata's Cuisses",
+    legs="Boii Cuisses +3",
     feet="Nyame sollerets",
     neck="War. Beads +2",
     waist="Sailfi Belt +1",
@@ -420,7 +420,7 @@ function self_command(commandArgs)
       add_to_chat(122, 'SET [' .. mode.description .. '] to ' .. mode.current)
     end
     equip(set_for_engaged())
-  elseif command == 'run' then
+  elseif command == 'idle' then
     equip(sets.Idle)
   end
 end

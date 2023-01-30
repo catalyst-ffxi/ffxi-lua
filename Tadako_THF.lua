@@ -2,7 +2,7 @@ include('Modes.lua')
 include('augments_tadako.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'FullDD', 'FullTH', 'Hybrid', 'HybridTH'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'FullTH', 'HybridTH', 'FullDD', 'Hybrid'}
   Capacity = M(false, 'Capacity Mantle')
 end
 
@@ -101,7 +101,18 @@ function get_sets()
     back=gear.toutatis.tp,
   }
   sets.Idle = {
-    feet="Fajin Boots"
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Fajin Boots",
+    neck="Loricate Torque +1",
+    waist="Sailfi Belt +1",
+    left_ear="Suppanomimi",
+    right_ear="Sherida Earring",
+    left_ring="Gere Ring",
+    right_ring="Gelatinous Ring +1",
+    back=gear.toutatis.tp
   }
 
   -- Weapon Skills
@@ -285,4 +296,3 @@ function self_command(commandArgs)
     equip(sets.Idle)
   end
 end
-

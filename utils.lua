@@ -2,13 +2,13 @@ include('Mote-Mappings.lua')
 
 -- Auto equip doom sets
 function buff_change(buff, gain, bufftable)
-  local doom_set = {
-    neck="Nicander's Necklace",
-    left_ring="Purity Ring",
-    right_ring="Blenmot's Ring",
-    waist="Gishdubar Sash"
-  }
-  if buff:lower() == "doom" then
+  if buff == "Doom" then
+    local doom_set = {
+      neck="Nicander's Necklace",
+      left_ring="Purity Ring",
+      right_ring="Blenmot's Ring",
+      waist="Gishdubar Sash"
+    }
     if gain then
       lock_set(doom_set)
       send_command("input /echo DOOM ON - Equipping doom gear")

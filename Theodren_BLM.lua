@@ -512,8 +512,6 @@ function self_command(commandArgs)
     end
   elseif command == 'idle' then
     equip(sets.Idle)
-  elseif command == 'run' then
-    equip(sets.Idle)
   elseif command == 'auto_aspir' then
     auto_aspir()
   end

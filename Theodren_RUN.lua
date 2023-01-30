@@ -72,10 +72,30 @@ function get_sets()
     sub="Utu Grip",
     ammo="Staunch Tathlum +1",
     head="Nyame Helm",
-    body={ name="Runeist's Coat +3", priority=5 },
+    body={ name="Runeist Coat +3", priority=5 },
+    hands="Erilaz Gauntlets +3",
+    -- legs="Carmine Cuisses +1",
+    legs="Eri. Leg Guards +3",
+    feet="Erilaz Greaves +3",
+    neck="Futhark Torque +2",
+    waist="Flume Belt +1",
+    left_ear={ name="Odnowa Earring +1", priority=5 },
+    -- right_ear="Eabani Earring",
+    right_ear="Erilaz Earring +1",
+    left_ring="Warden's Ring",
+    right_ring={ name="Gelatinous Ring +1", priority=5 },
+    back=gear.ogma.tank
+  }
+
+  sets.IdlePhysical = {
+    sub="Utu Grip",
+    ammo="Staunch Tathlum +1",
+    head="Nyame Helm",
+    body={ name="Runeist Coat +3", priority=5 },
     hands="Nyame Gauntlets",
-    legs="Carmine Cuisses +1",
-    feet="Nyame Sollerets",
+    -- legs="Carmine Cuisses +1",
+    legs="Eri. Leg Guards +3",
+    feet="Erilaz Greaves +3",
     neck="Futhark Torque +2",
     waist="Flume Belt +1",
     left_ear={ name="Odnowa Earring +1", priority=5 },
@@ -83,6 +103,22 @@ function get_sets()
     left_ring="Warden's Ring",
     right_ring={ name="Gelatinous Ring +1", priority=5 },
     back=gear.ogma.tank
+  }
+  sets.IdleMagic = {
+    sub="Utu Grip",                                        -- 3%
+    ammo="Staunch Tathlum +1",
+    head="Nyame Helm",                                     -- 7%
+    body={ name="Runeist Coat +3", priority=5 },
+    hands="Erilaz Gauntlets +3",                           -- 11%
+    legs="Eri. Leg Guards +3",                             -- 13%
+    feet="Erilaz Greaves +3",                              -- 11%
+    neck="Warder's Charm +1",
+    waist="Engraved Belt",
+    left_ear={ name="Odnowa Earring +1", priority=5 },     -- 3%
+    right_ear="Senare Earring",
+    left_ring="Vexer Ring +1",
+    right_ring="Shadow Ring",
+    back=gear.ogma.tank                                    -- 10%
   }
 
   -- Modes
@@ -94,7 +130,7 @@ function get_sets()
     head="Nyame Helm",
     body="Nyame Mail",
     hands="Turms Mittens +1",
-    legs="Eri. Leg Guards +2",
+    legs="Eri. Leg Guards +3",
     feet="Turms Leggings +1",
     neck="Futhark Torque +2",
     waist="Flume Belt +1",
@@ -107,19 +143,21 @@ function get_sets()
   sets.modes.MagicTank = {
     sub="Utu Grip",
     ammo="Staunch Tathlum +1",
-    head="Nyame Helm",
-    body="Runeist's Coat +3",
-    hands="Nyame Gauntlets",
-    legs="Nyame Flanchard",
-    -- feet="Nyame Sollerets",
-    feet="Erilaz Greaves +2",
+    head="Erilaz Galea +3",
+    body="Erilaz Surcoat +3",
+    hands="Erilaz Gauntlets +3",
+    legs="Eri. Leg Guards +3",
+    feet="Erilaz Greaves +3",
     neck="Warder's Charm +1",
     waist="Engraved Belt",
     left_ear={ name="Odnowa Earring +1", priority=5 },
-    right_ear="Eabani Earring",
-    left_ring="Moonlight Ring",
+    right_ear="Sanare Earring",
+    left_ring="Defending Ring",
     right_ring="Shadow Ring",
     back=gear.ogma.tank
+  }
+  sets.modes.NyameDD = {
+    
   }
   sets.modes.HybridDD = {
     sub="Utu Grip",
@@ -251,16 +289,16 @@ function get_sets()
   -- Job Abilities
   --
   sets.JAs = {}
-  sets.JAs.Valiance = { body="Runeist's Coat +3", legs="Futhark Trousers +3", back=gear.ogma.enmity }
+  sets.JAs.Valiance = { body="Runeist Coat +3", legs="Futhark Trousers +3", back=gear.ogma.enmity }
   sets.JAs.Vallation = sets.JAs.Valiance
   sets.JAs.Pflug = { feet="Runeist Bottes +1" }
-  sets.JAs.Gambit = { hands="Runeist's Mitons +3" }
+  sets.JAs.Gambit = { hands="Runeist Mitons +3" }
   sets.JAs.Rayke = { feet="Futhark Boots" }
   sets.JAs.Battuta = { head="Futhark Bandeau +3" }
   sets.JAs.Liement = { body="Futhark Coat +3" }
   sets.JAs['Elemental Sforzo'] = { body="Futhark Coat +3" }
   sets.JAs['Vivacious Pulse'] = {
-    head="Erilaz Galea +2",
+    head="Erilaz Galea +3",
     neck="Incanter's Torque",
     left_ring="Stikini Ring +1",
     right_ring="Stikini Ring +1",
@@ -270,7 +308,7 @@ function get_sets()
   sets.JAs['One for All'] = {
     ammo="Sapience Orb",
     head="Carmine Mask +1",
-    body="Runeist's Coat +3",
+    body="Runeist Coat +3",
     hands="Regal Gauntlets",
     legs="Carmine Cuisses +1",
     feet="Carmine Greaves +1",
@@ -304,8 +342,8 @@ function get_sets()
   sets.Magic = {}
   sets.Magic.FastCast = {
     ammo="Sapience Orb",                -- 2
-    head={ name="Runeist's Bandeau +3", priority=5 }, -- 14
-    body={ name="Erilaz Surcoat +2", priority=5 }, -- 10
+    head={ name="Runeist Bandeau +3", priority=5 }, -- 14
+    body={ name="Erilaz Surcoat +3", priority=5 }, -- 10
     hands="Leyline Gloves",             -- 7
     legs="Agwu's Slops",                -- 6
     feet={ name="Carmine Greaves +1", priority=5 }, -- 8
@@ -325,11 +363,11 @@ function get_sets()
   })
   -- Skill swaps for temper:
   -- head={ name="Carmine Mask +1", priority=5 }, -- 11
-  -- hands={ name="Runeist's Mitons +3", priority=5 }, -- 19
+  -- hands={ name="Runeist Mitons +3", priority=5 }, -- 19
   -- legs={ name="Carmine Cuisses +1", priority=5 }, -- 18
   sets.Magic.Temper = {
     ammo="Staunch Tathlum +1",
-    head="Erilaz Galea +2",          -- 15% duration
+    head="Erilaz Galea +3",          -- 15% duration
     body="Manasa Chasuble",          -- 12    
     hands={ name="Regal Gauntlets", priority=5 }, -- 20% duration
     legs="Futhark Trousers +3",      -- 30% duration
@@ -359,9 +397,19 @@ function get_sets()
     right_ring={ name="Gelatinous Ring +1", priority=5 },
     back="Merciful Cape"             -- 5
   }
+  -- Phalanx+ gear for when others cast on me
+  sets.Magic.PhalanxReceived = {
+    head="Futhark Bandeau +3",
+    body=augments.herc.body.phalanx,
+    hands=augments.taeon.hands.phalanx,
+    legs=augments.taeon.legs.phalanx,
+    feet=augments.taeon.feet.phalanx,
+    right_ear="Erilaz Earring +1"
+  }
+
   sets.Magic.SpellInterrupt = {
     ammo="Staunch Tathlum +1",       -- 11, 3 DT
-    head="Erilaz Galea +2",          -- 15
+    head="Erilaz Galea +3",          -- 25
     body="Nyame Mail",               -- 9 DT
     hands="Regal Gauntlets",         -- 10
     legs="Carmine Cuisses +1",       -- 20
@@ -379,7 +427,7 @@ function get_sets()
   }
   sets.Magic.EnhancingDuration = {
     ammo="Staunch Tathlum +1",       -- 11 SID, 3 DT
-    head="Erilaz Galea +2",          -- 15%
+    head="Erilaz Galea +3",          -- 15%
     hands={ name="Regal Gauntlets", priority=5 }, -- 20%, 10 SID
     body="Nyame Mail",               -- 9 DT
     legs="Futhark Trousers +3",      -- 30%
@@ -402,12 +450,13 @@ function get_sets()
     right_ring="Stikini Ring +1",    -- 8 skill
   })
   sets.Magic.Refresh = set_combine(sets.Magic.EnhancingDuration, {
-    head="Erilaz Galea +2",
+    head="Erilaz Galea +3",
     waist="Gishdubar Sash"
   })
   sets.Magic['Regen IV'] = set_combine(sets.Magic.EnhancingDuration, {
-    head="Runeist's Bandeau +3",
-    waist="Sroda Belt"
+    head="Runeist Bandeau +3",
+    waist="Sroda Belt",
+    right_ear="Erilaz Earring +1"
   })
   -- sets.Magic['Healing Breeze'] = {
   --   ammo="Staunch Tathlum +1",       -- 11 sird, 3 DT
@@ -429,8 +478,8 @@ function get_sets()
     head="Halitus Helm",
     body="Emet Harness +1",
     hands="Kurys Gloves",
-    legs={ name="Eri. Leg Guards +2", priority=3 },
-    feet="Erilaz Greaves +2",
+    legs={ name="Eri. Leg Guards +3", priority=3 },
+    feet="Erilaz Greaves +3",
     neck="Moonlight Necklace",
     waist={ name="Kasiri Belt", priority=4 },
     left_ear="Trux Earring",
@@ -547,7 +596,7 @@ function self_command(commandArgs)
     use_current_rune()
   elseif command == 'cycle_rune' then
     cycle_current_rune()
-  elseif command == 'run' then
+  elseif command == 'idle' then
     equip(set_combine(
       { main = { name=WeaponMode.current, priority=5 } }, sets.Idle
     ))

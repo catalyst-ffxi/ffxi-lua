@@ -31,7 +31,7 @@ function get_sets()
   sets.Idle = {
     ammo="Staunch Tathlum +1",         -- 3 DT
     head="Nyame Helm",                 -- 7 DT
-    body="Hashishin Mintan +2",        -- 12 DT, Refresh
+    body="Hashishin Mintan +3",        -- 12 DT, Refresh
     hands="Nyame Gauntlets",           -- 7 DT
     legs="Carmine Cuisses +1",         -- Zoomies
     feet="Nyame Sollerets",            -- 7 DT
@@ -158,7 +158,10 @@ function get_sets()
     feet="Carmine Greaves +1"     -- 8
                                   -- 65 FastCast, 6 QuickCast
   }
-sets.Magic.SpellInterrupt = {
+  sets.Magic.BlueFastCast = set_combine(
+    sets.Magic.FastCast, { body="Hashishin Mintan +3" }
+  )
+  sets.Magic.SpellInterrupt = {
     ammo="Staunch Tathlum +1",       -- 11
     head="Aya. Zucchetto +2",        -- PDT
     neck="Loricate Torque +1",       -- DT
@@ -180,41 +183,28 @@ sets.Magic.SpellInterrupt = {
   sets.BlueMagic = {}
   sets.BlueMagic.Macc = {
     ammo="Pemphredo Tathlum",
-    head="Amalric Coif +1",
-    body="Hashishin Mintan +2",
-    hands="Malignance Gloves",
-    legs="Malignance Tights",
-    feet="Malignance Boots",
+    head="Hashishin Kavuk +3",
+    body="Hashishin Mintan +3",
+    hands="Hashishin Bazubands +2",
+    legs="Hashishin Tayt +3",
+    feet="Hashishin Basmak +2",
     neck="Mirage Stole +1",
     waist="Luminary Sash",
+    -- waist="Acuity Belt +1" todo augment this
     left_ear="Crep. Earring",
     right_ear="Digni. Earring",
     left_ring="Stikini Ring +1",
-    right_ring="Stikini Ring +1",
-    back="Aurist's Cape +1"
-  }
-  sets.BlueMagic.FastMacc = {
-    ammo="Pemphredo Tathlum",
-    head="Amalric Coif +1",
-    body="Hashishin Mintan +2",
-    hands="Malignance Gloves",
-    legs="Aya. Cosciales +2",
-    feet="Malignance Boots",
-    neck="Mirage Stole +1",
-    waist="Luminary Sash",
-    left_ear="Crep. Earring",
-    right_ear="Digni. Earring",
-    left_ring="Stikini Ring +1",
-    right_ring="Stikini Ring +1",
+    right_ring="Weather. Ring +1",
+    -- right_ring="Stikini Ring +1",
     back="Aurist's Cape +1"
   }
   sets.BlueMagic.Mab = {
     ammo="Pemphredo Tathlum",
-    head="Jhakri Coronal +2",
-    body="Amalric Doublet +1",
-    hands="Amalric Gages +1",
+    head="Hashishin Kavuk +3",
+    body="Hashishin Mintan +3",
+    hands="Hashishin Bazubands +2",
     legs="Amalric Slops +1",
-    feet="Jhakri Pigaches +2",
+    feet="Hashishin Basmak +2",
     neck="Sanctity Necklace",
     waist="Orpheus's Sash",
     left_ear="Regal Earring",
@@ -313,7 +303,7 @@ sets.Magic.SpellInterrupt = {
   sets.WS = {}
   sets.WS['Savage Blade'] = {
     ammo="Coiste Bodhar",
-    head="Nyame Helm",
+    head="Hashishin Kavuk +3",
     body="Nyame Mail",
     hands="Nyame Gauntlets",
     legs="Nyame Flanchard",
@@ -361,6 +351,9 @@ sets.Magic.SpellInterrupt = {
     feet="Jhakri Pigaches +2",
   }
 
+  sets.WS['Black Halo'] = sets.WS['Savage Blade']
+  sets.WS['Judgment'] = sets.WS['Savage Blade']
+
   -- Spell Learning
   -- sets.learn={
   --   main="Wax Sword",
@@ -384,6 +377,9 @@ function precast(spell)
 
   elseif sets.JAs[spell.english] then
     equip(sets.JAs[spell.english])
+
+  elseif spell.skill == 'Blue Magic' then
+    equip(sets.Magic.BlueFastCast)
 
   elseif spell.action_type == 'Magic' then
     equip(sets.Magic.FastCast)
@@ -465,7 +461,7 @@ function self_command(commandArgs)
   end
   command = commandArgs[1]
 
-  if command == 'run' then
+  if command == 'idle' then
     equip(sets.Idle)
   elseif command == "mode" then
     equip(sets.modes[PrimaryMode.current])
@@ -490,13 +486,13 @@ function define_blue_magic()
     'Geist Wall','Hecatomb Wave','Infrasonics','Jettatura','Light of Penance','Lowing',
     'Mind Blast','Mortal Ray','MP Drainkiss','Osmosis','Reaving Wind','Sandspin',
     'Sandspray','Sheep Song','Soporific','Sound Blast','Stinking Gas','Sub-zero Smash',
-    'Triumphant Roar','Venom Shell','Voracious Trunk','Yawn'
+    'Triumphant Roar','Venom Shell','Voracious Trunk','Yawn', 'Subduction'
   }
 
   BlueMagic_Mab = S{
     'Acrid Stream','Dark Orb','Droning Whirlwind','Embalming Earth','Evryone. Grudge',
     'Firespit','Foul Waters','Gates of Hades','Leafstorm','Magic Hammer',
-    'Regurgitation','Rending Deluge','Tem. Upheaval','Thermal Pulse','Water Bomb','Subduction','Retinal Glare',
+    'Regurgitation','Rending Deluge','Tem. Upheaval','Thermal Pulse','Water Bomb','Retinal Glare',
     'Searing Tempest','Spectral Floe','Entomb','Anvil Lightning','Scouring Spate',
     'Blinding Fulgor','Tenebral Crush','Diffusion Ray',
     'Bad Breath','Flying Hip PrePress','Final Sting','Frost Breath','Heat Breath',

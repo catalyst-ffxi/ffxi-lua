@@ -184,7 +184,5 @@ function self_command(commandArgs)
     end
   elseif command == 'idle' then
     equip(sets.Idle)
-  elseif command == 'run' then
-    equip(sets.MoveSpeed)
   end
 end

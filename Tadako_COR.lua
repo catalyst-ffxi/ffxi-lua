@@ -290,7 +290,7 @@ function self_command(commandArgs)
       add_to_chat(122, 'SET [' .. mode.description .. '] to ' .. mode.current)
       equip(sets.Engaged[mode.current])
     end
-  elseif command == 'run' then
+  elseif command == 'idle' then
     equip(sets.Idle)
   end
 end

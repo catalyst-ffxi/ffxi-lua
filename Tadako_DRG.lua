@@ -34,7 +34,7 @@ function get_sets()
     ammo="Coiste Bodhar",
     head="Flam. Zucchetto +2",
     body="Gleti's Cuirass",
-    hands="Pel. Vambraces +2",
+    hands="Pel. Vambraces +3",
     legs=augments.valorous.legs.stp,
     feet="Flam. Gambieras +2",
     neck="Dgn. Collar +2",
@@ -49,7 +49,7 @@ function get_sets()
     ammo="Coiste Bodhar",
     head="Hjarrandi Helm",           -- 10 DT
     body="Gleti's Cuirass",          -- 9 PDT
-    hands="Pel. Vambraces +2",       -- 10 DT
+    hands="Pel. Vambraces +3",       -- 11 DT
     legs=augments.valorous.legs.stp, -- 2 PDT
     -- legs="Flamma dirs +2",
     feet="Flam. Gambieras +2",
@@ -60,12 +60,12 @@ function get_sets()
     left_ring="Moonlight Ring",      -- 5 DT
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.tp           -- 10 PDT
-  }                                  -- 46 PDT
+  }                                  -- 47 PDT
   sets.modes.HybridHeavy = {
     ammo="Coiste Bodhar",
     head="Hjarrandi Helm",           -- 10 DT
     body="Gleti's Cuirass",          -- 9 PDT
-    hands="Pel. Vambraces +2",       -- 10 DT
+    hands="Pel. Vambraces +3",       -- 11 DT
     legs="Nyame Flanchard",          -- 8 DT
     feet="Flam. Gambieras +2",
     neck="Dgn. Collar +2",           -- Wyvern 20 DT
@@ -75,7 +75,7 @@ function get_sets()
     left_ring="Moonlight Ring",      -- 5 DT
     right_ring="Niqmaddu Ring",  
     back=gear.ambuscape.tp           -- 10 PDT
-  }                                  -- 52 PDT
+  }                                  -- 53 PDT
 
   -- Misc
   sets.Idle = {
@@ -90,7 +90,7 @@ function get_sets()
   }
   sets.JAs['Spirit Link'] = {
     head='Vishap Armet +2',
-    hands="Pel. Vambraces +2",
+    hands="Pel. Vambraces +3",
     feet='Ptero. Greaves',
     left_ear="Pratik Earring"  -- TODO
   }
@@ -309,7 +309,7 @@ function self_command(commandArgs)
 
   if command == 'mode' then
     equip(set_for_engaged())
-  elseif command == 'run' then
+  elseif command == 'idle' then
     equip(sets.Idle)
   elseif command == 'cycle' then
     local mode = _G[commandArgs[2]]

@@ -220,8 +220,6 @@ function self_command(commandArgs)
     equip(sets.Idle)
   elseif command == 'idle' then
     equip(sets.Idle)
-  elseif command == 'run' then
-    equip(sets.MoveSpeed)
   elseif command == 'abbyweapon' then
     cycle_weapon()
   end

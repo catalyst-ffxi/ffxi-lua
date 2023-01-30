@@ -58,6 +58,7 @@ function get_sets()
     back=gear.cape.nuke          -- 10 PDT
   }
   sets.Idle_Submlimation = set_combine(sets.Idle, {
+    body="Peda. Gown +3",
     waist="Embla Sash"
   })
 
@@ -171,7 +172,7 @@ function get_sets()
     main="Musa",
     sub="Khonsu",
     head="Telchine Cap",
-    body="Telchine Chasuble",
+    body="Peda. Gown +3",
     hands="Telchine Gloves",
     legs="Telchine Braconi",
     feet="Telchine Pigaches",
@@ -211,7 +212,7 @@ function get_sets()
     main="Musa",
     sub="Khonsu",
     head="Telchine Cap",
-    body="Telchine Chasuble",
+    body="Peda. Gown +3",
     hands="Telchine Gloves",
     legs="Telchine Braconi",
     feet="Telchine Pigaches",
@@ -231,7 +232,7 @@ function get_sets()
     -- sub="Ammurapi Shield",
     -- main="",
     -- sub="",
-    ammo="Impatiens",
+    ammo="Pemphredo Tathlum",
     head="Kaykaus Mitra +1",
     body="Kaykaus Bliaut +1",
     hands="Kaykaus Cuffs +1",
@@ -239,8 +240,8 @@ function get_sets()
     feet="Kaykaus Boots +1", 
     neck="Incanter's Torque",
     waist="Luminary Sash",
-    left_ear="Regal Earring",
-    right_ear="Meili Earring",
+    left_ear="Meili Earring",
+    right_ear="Magnetic Earring",
     left_ring=gear.stikini.left,
     right_ring=gear.stikini.right,
     back=gear.cape.fastCast
@@ -420,7 +421,7 @@ function midcast(spell)
         end
       end
       if buffactive['Perpetuance'] then
-        equip({ hands="Arbatel Bracers +2" })
+        equip({ hands="Arbatel Bracers +3" })
       end
     end
 
@@ -459,7 +460,7 @@ function set_for_elemental_magic(spell)
   end
 
   if buffactive['Ebullience'] then
-    set.head = "Arbatel Bonnet +2"
+    set.head = "Arbatel Bonnet +3"
   end
 
   return set
@@ -478,13 +479,13 @@ function buff_change(buff, gain, bufftable)
     send_command('input /echo <<<<<<<<<<- Submimation Ready! ->>>>>>>>>>')
   end
 
-  if buff == 'Sublimation: Activated' then
-    if gain then
-      equip(sets.Idle_Submlimation)
-    else
-      equip(sets.Idle)
-    end
-  end
+  -- if buff == 'Sublimation: Activated' then
+  --   if gain then
+  --     equip(sets.Idle_Submlimation)
+  --   else
+  --     equip(sets.Idle)
+  --   end
+  -- end
 end
 
 function status_change(new, old)

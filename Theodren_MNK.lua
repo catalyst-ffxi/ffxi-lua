@@ -10,7 +10,6 @@ Reforges:
 AF Head: Focus duration+
 Relic Legs: TP
 Relic Head: Tornado Kick, Howling Fist, Enhances Penance
-Relic Body: Hundred Fists duration+
 Relic Feet: Mantra HP+
 Empy Body: Impetus TP, Impetus Victory Smite
 --]]
@@ -25,9 +24,9 @@ function get_sets()
 
   gear = {
     ambuscape = {
-      tp = { name="Segomo's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
+      daDex = { name="Segomo's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
+      daStr = { name="Segomo's Mantle", augments={'STR+20','Accuracy+20 Attack+20','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
       crit = { name="Segomo's Mantle", augments={'STR+20','Accuracy+20 Attack+20','Crit.hit rate+10',}},
-      wsd = { name="Segomo's Mantle", augments={'STR+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
     }
   }
 
@@ -38,15 +37,15 @@ function get_sets()
     head="Adhemar Bonnet +1",
     body="Mpaca's Doublet",
     hands="Adhemar Wristbands +1",
-    legs="Bhikku Hose +2",
+    legs="Bhikku Hose +3",
     feet="Anch. Gaiters +3",
-    neck="Anu Torque",
+    neck="Monk's Nodowa +2",
     waist="Moonbow Belt +1",
     left_ear="Sherida Earring",
     right_ear="Schere Earring",
     left_ring="Gere Ring",
     right_ring="Niqmaddu Ring",
-    back=gear.ambuscape.tp
+    back=gear.ambuscape.daDex
   }
   sets.modes.HybridLight = {
     main="Godhands",
@@ -54,15 +53,15 @@ function get_sets()
     head="Adhemar Bonnet +1",
     body="Mpaca's Doublet",     -- 10 PDT
     hands="Mpaca's Gloves",     -- 8 PDT
-    legs="Bhikku Hose +2",      -- 13 DT
+    legs="Bhikku Hose +3",      -- 13 DT
     feet="Anch. Gaiters +3",
-    neck="Anu Torque",
+    neck="Monk's Nodowa +2",
     waist="Moonbow Belt +1",
     left_ear="Sherida Earring",
     right_ear="Schere Earring",
     left_ring="Gere Ring",
     right_ring="Niqmaddu Ring",
-    back=gear.ambuscape.tp      -- 10 PDT
+    back=gear.ambuscape.daDex      -- 10 PDT
   }                             -- 41 PDT
   sets.modes.HybridHeavy = {
     main="Godhands",
@@ -70,15 +69,15 @@ function get_sets()
     head="Ken. Jinpachi +1",
     body="Mpaca's Doublet",     -- 10 PDT
     hands="Mpaca's Gloves",     -- 8 PDT
-    legs="Bhikku Hose +2",      -- 13 DT
+    legs="Bhikku Hose +3",      -- 13 DT
     feet="Ken. Sune-Ate +1",
-    neck="Anu Torque",
+    neck="Monk's Nodowa +2",
     waist="Moonbow Belt +1",
     left_ear="Sherida Earring",
     right_ear="Schere Earring",
     left_ring="Gere Ring",
     right_ring="Defending Ring",-- 10 DT
-    back=gear.ambuscape.tp      -- 10 PDT
+    back=gear.ambuscape.daDex      -- 10 PDT
   }                             -- 51 PDT
   
   -- Misc
@@ -95,7 +94,7 @@ function get_sets()
   --   right_ear="Odnowa Earring +1", -- 2 MDT, 3 DT
   --   left_ring="Defending Ring",    -- 10 DT
   --   right_ring="Purity Ring",      -- 4 MDT, 10 Meva
-  --   back=gear.ambuscape.tp         -- 10 PDT
+  --   back=gear.ambuscape.daDex         -- 10 PDT
   -- }
   sets.Idle = {
     feet="Hermes' Sandals"
@@ -139,7 +138,7 @@ function get_sets()
     right_ear="Magnetic Earring",
     left_ring="Defending Ring",
     right_ring="Gelatinous Ring +1",
-    back=gear.ambuscape.tp
+    back=gear.ambuscape.daDex
   }
 
   -- Weapon Skills
@@ -147,6 +146,7 @@ function get_sets()
   -- Tornado Kick > Shijin Spiral (Fragmentation) -> Shijin Spiral (Light) -> Victory Smite (Radiance)
   -- Tornado Kick > Shijin Spiral (Fragmentation) -> Shijin Spiral (Light) -> Shijin Spiral (Radiance)
   -- Asuran Fists > Victory Smite (Fragmentation) -> Shijin Spiral (Light) -> Victory Smite (Radiance)
+  -- asura tk smite smite
   --
   sets.WS = {}
   sets.WS['Victory Smite'] = { -- 80% STR, 4-hit, Crit rate varies, Empyrean WS
@@ -168,17 +168,17 @@ function get_sets()
   sets.WS['Raging Fists'] = { -- 30% STR & DEX, 5-hit, Damage varies
     ammo="Coiste Bodhar",
     head="Mpaca's Cap",
-    body="Ken. Samue +1",
+    body="Mpaca's Doublet",
     hands=augments.herc.hands.reso,
     legs="Mpaca's Hose",
     feet=augments.herc.feet.triple,
     neck="Fotia Gorget",
     waist="Moonbow Belt +1",
-    left_ear="Sherida Earring",
-    right_ear="Moonshade Earring",
+    left_ear="Moonshade Earring",
+    right_ear="Schere Earring",
     left_ring="Gere Ring",
     right_ring="Niqmaddu Ring",
-    back=gear.ambuscape.tp
+    back=gear.ambuscape.daStr
   }
   sets.WS['Shijin Spiral'] = { -- 100% DEX, 5-hit, Plague effect varies
     ammo="Knobkierrie",
@@ -193,37 +193,37 @@ function get_sets()
     right_ear="Mache Earring +1",
     left_ring="Ilabrat Ring",
     right_ring="Niqmaddu Ring",
-    back=gear.ambuscape.tp
+    back=gear.ambuscape.daDex
   }
   sets.WS['Howling Fist'] = { -- 50% VIT / 20% STR, 2-hit, Damage varies
     ammo="Coiste Bodhar",
     head="Mpaca's Cap",
-    body="Nyame Mail",
+    body="Mpaca's Doublet",
     hands=augments.herc.hands.reso,
     legs="Mpaca's Hose",
     feet=augments.herc.feet.triple,
     neck="Fotia Gorget",
     waist="Moonbow Belt +1",
-    left_ear="Sherida Earring",
-    right_ear="Moonshade Earring",
+    left_ear="Moonshade Earring",
+    right_ear="Schere Earring",
     left_ring="Gere Ring",
     right_ring="Niqmaddu Ring",
-    back=gear.ambuscape.wsd
+    back=gear.ambuscape.daStr
   }
   sets.WS['Tornado Kick'] = { -- 40% STR & VIT, 3-hit, Damage varies
     ammo="Coiste Bodhar",
     head="Mpaca's Cap",
-    body="Nyame Mail",
+    body="Mpaca's Doublet",
     hands=augments.herc.hands.reso,
     legs="Mpaca's Hose",
     feet="Anch. Gaiters +3",
     neck="Fotia Gorget",
     waist="Moonbow Belt +1",
-    left_ear="Sherida Earring",
-    right_ear="Moonshade Earring",
+    left_ear="Moonshade Earring",
+    right_ear="Schere Earring",
     left_ring="Gere Ring",
     right_ring="Niqmaddu Ring",
-    back=gear.ambuscape.wsd
+    back=gear.ambuscape.daStr
   }
   sets.WS['Dragon Kick'] = sets.WS['Tornado Kick'] -- 50% STR & VIT, Damage varies
   sets.WS['Spinning Attack'] = sets.WS['Howling Fist'] 
@@ -281,7 +281,7 @@ end
 
 function set_for_ws(named)
   if named == 'Victory Smite' and buffactive['Impetus'] then
-    return set_combine(sets.WS[named], { body = "Bhikku Cyclas +1" })
+    return set_combine(sets.WS[named], { body = "Bhikku Cyclas +2" })
   elseif sets.WS[named] then
     return sets.WS[named]
   else
@@ -291,12 +291,9 @@ end
 
 function set_for_engaged()
   local set = sets.modes[PrimaryMode.current]
-  -- if PrimaryMode.value == 'FullDD' and buffactive['Impetus'] then
-  --   set = set_combine(set, { body = "Bhikku Cyclas +1" })
-  -- end
-  -- if buffactive['Impetus'] then
-  --   set = set_combine(set, { body = "Bhikku Cyclas +1" })
-  -- end
+  if PrimaryMode.value == 'FullDD' and buffactive['Impetus'] then
+    set = set_combine(set, { body = "Bhikku Cyclas +2" })
+  end
   return set
 end
 
@@ -326,7 +323,7 @@ function self_command(commandArgs)
       add_to_chat(122, 'SET [' .. mode.description .. '] to ' .. mode.current)
     end
     equip(set_for_engaged())
-  elseif command == 'run' then
+  elseif command == 'idle' then
     equip(sets.Idle)
   end
 end

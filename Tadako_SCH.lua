@@ -226,8 +226,6 @@ function self_command(commandArgs)
     equip(sets.Idle)
   elseif command == 'idle' then
     equip(sets.Idle)
-  elseif command == 'run' then
-    equip(sets.MoveSpeed)
   elseif command == 'dummy' then
     play_dummy()
   elseif command == 'Liquefaction' then send_command('input /p Opening - Liquefaction [Fire] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Stone" <t>;wait 5.3;input /p Closing - Liquefaction [Fire] ;wait 0.3;input /ja "Immanence" <me>;wait 1.2;input /ma "Fire" <t>;')

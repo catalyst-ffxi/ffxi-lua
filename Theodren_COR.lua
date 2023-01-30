@@ -4,7 +4,7 @@ include('augments.lua')
 include('utils.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'HybridLight', 'HybridHeavy', 'HighAcc'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'Normal', 'HybridLight', 'HybridHeavy', 'Nyame', 'HighAcc'}
   MainWeapon = M{
     ['description'] = 'Main Weapons',
     'Naegling',
@@ -91,7 +91,7 @@ function get_sets()
     head="Malignance Chapeau",        -- 6 DT
     body="Adhemar Jacket +1",
     hands="Adhemar Wristbands +1",
-    legs="Chasseur's Culottes +2",    -- 11 DT
+    legs="Chasseur's Culottes +3",    -- 12 DT
     feet=augments.herc.feet.triple,   -- 2 PDT
     neck="Iskur Gorget",
     waist="Sailfi Belt +1",
@@ -100,12 +100,12 @@ function get_sets()
     left_ring="Defending Ring",       -- 10 DT
     right_ring="Epona's Ring",
     back=gear.camulus.meleeTp,        -- 10 PDT
-  }                                   -- 39 PDT
+  }                                   -- 40 PDT
   sets.modes.HybridHeavy = {
     head="Malignance Chapeau",        -- 6 DT
     body="Malignance Tabard",         -- 9 DT
     hands="Malignance Gloves",        -- 5 DT
-    legs="Chasseur's Culottes +2",    -- 11 DT
+    legs="Chasseur's Culottes +3",    -- 12 DT
     feet="Malignance Boots",          -- 4 DT
     neck="Iskur Gorget",
     waist="Sailfi Belt +1",
@@ -114,12 +114,28 @@ function get_sets()
     left_ring="Gelatinous Ring +1",   -- 7 DT
     right_ring="Epona's Ring",
     back=gear.camulus.meleeTp,        -- 10 PDT
+  }                                   -- 53 PDT
+  sets.modes.Nyame = {
+    head="Nyame Helm",               -- 7
+    body="Nyame Mail",               -- 9
+    hands="Nyame Gauntlets",         -- 7
+    legs="Chasseur's Culottes +3",   -- 12 DT
+    -- legs="Nyame Flanchard",
+    feet="Nyame Sollerets",          -- 7
+    neck="Iskur Gorget",
+    waist="Sailfi Belt +1",
+    left_ear="Telos Earring",
+    right_ear="Crep. Earring",
+    left_ring="Chirich Ring +1",
+    -- right_ring="Shadow Ring",
+    right_ring="Epona's Ring",
+    back=gear.camulus.meleeTp,        -- 10 PDT
   }                                   -- 52 PDT
   sets.modes.HighAcc = {
     head="Malignance Chapeau",
     body="Adhemar Jacket +1",
     hands="Adhemar Wristbands +1",
-    legs="Chasseur's Culottes +2",
+    legs="Chasseur's Culottes +3",
     feet="Malignance Boots",
     neck="Sanctity Necklace",
     waist="Sailfi Belt +1",
@@ -150,15 +166,14 @@ function get_sets()
   sets.Ranged = {
     ammo=gear.bullets.ratt,
     head="Malignance Chapeau",
-    -- body="Ikenga's Vest",
-    body="Malignance Tabard",
+    body="Ikenga's Vest",
     hands="Malignance Gloves",
-    legs="Malignance Tights",
+    legs="Chasseur's Culottes +3",
     feet="Malignance Boots",
     neck="Iskur Gorget",
     waist="Yemaya Belt",
     left_ear="Telos Earring",
-    right_ear="Enervating Earring",
+    right_ear="Crep. Earring",
     left_ring="Ilabrat Ring",
     right_ring="Dingir Ring",
     back=gear.camulus.rangedTp
@@ -200,7 +215,7 @@ function get_sets()
     ammo=gear.bullets.ratt,
     head="Nyame Helm",
     body="Ikenga's Vest",
-    hands="Meg. Gloves +2",
+    hands="Chasseur's Gants +3",
     legs="Nyame Flanchard",
     feet="Lanun Bottes +3",
     neck="Fotia Gorget",
@@ -307,7 +322,7 @@ function get_sets()
     right_ring="Dingir Ring",
     back=gear.camulus.rangedWsMagic,
     legs="Nyame Flanchard",
-    feet="Chasseur's Bottes +2",
+    feet="Chasseur's Bottes +3",
     waist="Eschan Stone"
   }
   sets.JAs.QuickDrawAcc = {
@@ -322,7 +337,7 @@ function get_sets()
     right_ring="Stikini Ring +1",
     back=gear.camulus.rangedWsMagic,
     legs="Nyame Flanchard",
-    feet="Chasseur's Bottes +2",
+    feet="Chasseur's Bottes +3",
     waist="Eschan Stone"
   }
   sets.JAs.QuickDrawStp = {
@@ -348,8 +363,8 @@ function get_sets()
     main="Rostam",
     head="Lanun Tricorne +3",
     neck="Regal Necklace",
-    hands="Chasseur's Gants +2",
-    rring="Luzaf's Ring",
+    hands="Chasseur's Gants +3",
+    -- rring="Luzaf's Ring",
     back="Camulus's Mantle",
     legs="Desultor Tassets"
   }
@@ -457,7 +472,7 @@ function self_command(commandArgs)
   end
   command = commandArgs[1]
 
-  if command == 'run' then
+  if command == 'idle' then
     equip(sets.Idle)
   elseif command == "mode" then
     equip(set_for_engaged())

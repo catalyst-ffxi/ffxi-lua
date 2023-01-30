@@ -135,7 +135,9 @@ function get_sets()
     sub="Tauret"
   })
   sets.Hybrid = {
-    left_ring="Defending Ring"
+    neck="Warder's Charm +1",
+    left_ring="Defending Ring",
+    right_ring="Shadow Ring"
   }
 
   -- Job Abilities
@@ -171,19 +173,21 @@ function get_sets()
   -- Heals
   --
   sets.Magic.Healing = {
-    ammo="Regal Gem",
+    main="Septoptic +1",
+    sub="Thuellaic Ecu +1",
+    ammo="Pemphredo Tathlum",
     head="Kaykaus Mitra +1",
     body="Kaykaus Bliaut +1",
     hands="Kaykaus Cuffs +1",
     legs="Kaykaus Tights +1", 
     feet="Kaykaus Boots +1", 
     neck="Incanter's Torque",
-    waist="Luminary Sash",
-    left_ear="Regal Earring",
-    right_ear="Meili Earring",
-    left_ring=gear.stikini.left,
+    waist="Luminary Sash", -- Shinjutsu-no-Obi +1
+    left_ear="Meili Earring",
+    right_ear="Magnetic Earring",
+    left_ring=gear.stikini.left, -- Mephitas Ring +1
     right_ring=gear.stikini.right,
-    back=gear.sucellos.enfeeble
+    back="Aurist's Cape +1"
   }
   sets.Magic.HealingSelf = set_combine(
     sets.Magic.Healing, {
@@ -203,7 +207,7 @@ function get_sets()
     neck="Malison Medallion",
     waist="Witful Belt",
     left_ear="Malignance Earring",
-    right_ear="Lethargy Earring",
+    right_ear="Lethargy Earring +1",
     left_ring="Haoma's Ring",
     right_ring="Haoma's Ring",
     back="Oretan. Cape +1",
@@ -222,7 +226,7 @@ function get_sets()
     neck="Duelist's Torque +2",
     waist="Embla Sash",
     left_ear="Malignance Earring",
-    right_ear="Lethargy Earring",
+    right_ear="Lethargy Earring +1",
     left_ring="Kishar Ring",
     right_ring="Weatherspoon Ring +1",
     back="Ghostfyre Cape"
@@ -234,12 +238,12 @@ function get_sets()
     head="Lethargy Chappel +2",
     body="Lethargy Sayon +3",
     hands="Atrophy Gloves +3",
-    legs="Lethargy Fuseau +2",
+    legs="Lethargy Fuseau +3",
     feet="Lethargy Houseaux +3",
     neck="Duelist's Torque +2",
     waist="Embla Sash",
     left_ear="Malignance Earring",
-    right_ear="Lethargy Earring",
+    right_ear="Lethargy Earring +1",
     left_ring="Kishar Ring",
     right_ring="Weatherspoon Ring +1",
     back="Ghostfyre Cape"
@@ -247,7 +251,7 @@ function get_sets()
   sets.Magic.Refresh = {
     head="Amalric Coif +1",
     body="Atrophy Tabard +3",
-    legs="Lethargy Fuseau +2"
+    legs="Lethargy Fuseau +3"
   }
   sets.Magic.RefreshSelf = {
     waist="Gishdubar sash",
@@ -265,7 +269,7 @@ function get_sets()
     neck="Incanter's Torque",
     waist="Olympus Sash",
     left_ear="Mimir Earring",
-    right_ear="Lethargy Earring",
+    right_ear="Lethargy Earring +1",
     -- right_ear="Andoaa Earring",
     left_ring=gear.stikini.left,
     right_ring=gear.stikini.right,
@@ -298,7 +302,7 @@ function get_sets()
     -- sub="Bunzi's Rod",
     sub="Daybreak",
     ranged="Ullr",
-    head="Atrophy Chapeau +3",
+    head="Vitiation Chapeau +3",
     body="Atrophy Tabard +3",
     hands="Lethargy Gantherots +3",
     legs="Chironic Hose",
@@ -342,17 +346,23 @@ function get_sets()
     -- sub="Enki Strap"
     left_ring=gear.stikini.left
   })
-
-  -- Dia (maximize duration):
-  sets.Magic.EnfeebleDia = {
+  -- Max duration (Dia or Stymie'd debuffs):
+  sets.Magic.EnfeebleMaxDuration = {
+    main="Bunzi's Rod",
+    sub="Daybreak",
     ammo="Regal Gem",
-    head="Lethargy Chappel +2",
+    head="Vitiation Chapeau +3",
     body="Lethargy Sayon +3",
     hands="Lethargy Gantherots +3",
-    legs="Lethargy Fuseau +2",
+    legs="Lethargy Fuseau +3",
     feet="Lethargy Houseaux +3",
-    waist="Obstin. Sash",
-    left_ring="Kishar Ring"
+    neck="Duelist's Torque +2",
+    waist="Obstinate Sash",
+    left_ear="Snotra Earring",
+    right_ear="Regal Earring",
+    left_ring="Kishar Ring",
+    right_ring="Metamorph Ring +1",
+    back=gear.sucellos.enfeeble
   }
 
   -- Nukes
@@ -378,9 +388,9 @@ function get_sets()
     main="Bunzi's Rod",         -- MB +10
     sub="Ammurapi Shield",
     ammo="Pemphredo Tathlum",
-    head="Ea Hat",              -- MB +6 | MB II +6
+    head="Ea Hat +1",           -- MB +7 | MB II +7
     body="Ea Houppelande",      -- MB +8 | MB II +8
-    hands="Bunzi's Gloves",     -- MB +8 | MB II +4
+    hands="Amalric Gages +1",   --       | MB II +6
     legs="Ea Slops",            -- MB +7 | MB II +7
     feet="Jhakri Pigaches +2",  -- MB +7
     neck="Sibyl Scarf",
@@ -391,6 +401,8 @@ function get_sets()
     right_ring="Mujin Band",    --       | MB II +5
     back=gear.sucellos.nuke
   }
+
+-- hands="Bunzi's Gloves",     -- MB +8 | MB II +4
 
   -- Dark
   sets.Magic.Stun = {
@@ -689,9 +701,13 @@ function set_for_enfeeble(name)
   local set
 
   -- Dias (Max duration)
-  if S{'Dia', 'Dia II', 'Dia III'}:contains(name) then
-    set = sets.Magic.EnfeebleDia
+  -- if S{'Dia', 'Dia II', 'Dia III'}:contains(name) then
+  --   
 
+  -- Maximixe duration
+  if buffactive['Styme'] or S{'Dia', 'Dia II', 'Dia III'}:contains(name) then
+    set = sets.Magic.EnfeebleMaxDuration
+  
   -- Dispelga (Macc + Daybreak)
   elseif name == 'Dispelga' then
     set = set_combine(sets.Magic.EnfeebleAccuracy, { main = "Daybreak", sub = "Ammurapi Shield" })
@@ -765,7 +781,7 @@ function self_command(commandArgs)
       define_aliases()
     end
 
-  elseif command == 'run' then
+  elseif command == 'idle' then
     equip(set_for_current_mode())
 
   elseif command == 'savage_black_halo' then
