@@ -5,25 +5,23 @@ include('augments.lua')
 function define_modes()
   PrimaryMode = M{['description'] = 'Primary Mode', 'FullDD', 'Hybrid', 'TreasureHunter'}
 
-  Abyssea = {
-    current = 0,
-    weapons = {
-      { name="Pluto's Staff", ws="Earth Crusher=Earth, Sunburst=Light" },
-      { name="Wax Sword", ws="Red Lotus Blade=Fire, Seraph Blade=Light" },
-      { name="Ash Club", ws="Seraph Strike=Light" },
-      { name="Uchigatana", ws="Tachi Jinpu=Wind, Koki=Light" },
-      { name="Qutrub Knife", ws="Cyclone=Wind, Energy Drain=Dark" },
-      { name="Kunai", ws="Blade: Ei=Dark" },
-      { name="Lost Sickle", ws="Shadow of Death=Dark" },
-      { name="Lament", ws="Freezebite=Ice" },
-      { name="Tzee Xicu's Blade", ws="Raiden Thrust=Thunder"}
-    }
+  Weapons = M{
+    { main="Heishi Shorinken", sub="Gleti's Knife", text="Full attack!" },
+    { main="Pluto's Staff", text="Earth Crusher=Earth, Sunburst=Light" },
+    { main="Wax Sword", sub="Kunai", text="Red Lotus Blade=Fire, Seraph Blade=Light" },
+    { main="Ash Club", sub="Kunai", text="Seraph Strike=Light" },
+    { main="Qutrub Knife", sub="Kunai", text="Cyclone=Wind, Energy Drain=Dark" },
+    { main="Uchigatana", text="Tachi Jinpu=Wind, Koki=Light" },
+    { main="Kunai", sub="Qutrub Knife", text="Blade: Ei=Dark" },
+    { main="Lost Sickle", text="Shadow of Death=Dark" },
+    { main="Lament", text="Freezebite=Ice" },
+    { main="Tzee Xicu's Blade", text="Raiden Thrust=Thunder"}
   }
 end
 
 function define_aliases()
   send_command("bind ^f1 gs c cycle PrimaryMode")
-  send_command("bind ^f3 gs c abbyweapon")
+  send_command("bind ^f2 gs c WeaponMode")
 end
 
 function define_gear()
@@ -39,8 +37,9 @@ function get_sets()
     head="Nyame Helm",
     body="Nyame Mail",
     hands="Nyame Gauntlets",
-    legs="Track Pants +1",
-    -- feet="Nyame Sollerets",
+    -- legs="Track Pants +1",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
     neck="Loricate Torque +1",
     waist="Flume Belt +1",
     left_ear="Etiolation Earring",
@@ -53,7 +52,7 @@ function get_sets()
   sets.modes = {}
   sets.modes.FullDD = {
     ammo="Coiste Bodhar",
-    head="Adhemar Bonnet +1",
+    head=augments.adhemar.head.pathA,
     body="Adhemar Jacket +1",
     hands="Adhemar Wristbands +1",
     legs="Samnuha Tights",
@@ -251,9 +250,7 @@ function aftercast(spell)
 end
 
 function status_change(new, old)
-  if new == 'Engaged' then
-    equip_set_for_current_mode()
-  end
+  equip_set_for_current_mode()
 end
 
 function self_command(commandArgs)
@@ -267,53 +264,43 @@ function self_command(commandArgs)
   command = commandArgs[1]
 
   if command == 'mode' then
-    equip_set_for_current_mode()
+    equip(set_for_engaged())
   elseif command == 'cycle' then
-
     local mode = _G[commandArgs[2]]
     if mode ~= nil and mode._class == 'mode' then
       mode:cycle()
       add_to_chat(122, 'SET [' .. mode.description .. '] to ' .. mode.current)
-      if mode.description == 'Primary Mode' then
-        equip_set_for_current_mode()
-      elseif mode.description == 'Primary Element' then
-        define_aliases()
-      end
+      equip(set_for_engaged())
     end
   elseif command == 'idle' then
     equip(sets.Idle)
-  elseif command == 'abbyweapon' then
+  elseif command == 'WeaponMode' then
     cycle_weapon()
   end
 end
 
-function set_for_engaged()
-  local set = sets.modes[PrimaryMode.current]
-
-  set = set_combine(set,
-)
-
-  return set
-end
-
 function equip_set_for_current_mode()
-  equip(set_for_engaged())
+  equip(set_for_current_mode())
 end
 
-function cycle_weapon()
-  Abyssea.current = Abyssea.current + 1
+function set_for_engaged()
+  return set_combine(
+    Weapons.current,
+    sets.modes[PrimaryMode.current]
+  )
+end
 
-  if Abyssea.current > #Abyssea.weapons then
-    add_to_chat(122, '*** DD Weapons Equiped ***')
-    equip({ main = "Heishi Shorinken", sub = "Gleti's Knife" })
-    Abyssea.current = 0
+function set_for_current_mode()
+  if player.status == 'Engaged' then
+    return set_for_engaged()
   else
-    local set = Abyssea.weapons[Abyssea.current]
-    add_to_chat(122, 'Switching to ' .. set.name ..'. Use weapon skills: ' .. set.ws)
-    equip({ main = set.name })
+    return sets.Idle
   end
 end
 
-function current_weapon()
-  
+function cycle_weapon()
+  Weapons:cycle()
+
+  add_to_chat(122, 'Weapon [ ' .. Weapons.current.main .. ' ] = { ' .. Weapons.current.text .. ' }')
+  equip(Weapons.current)
 end

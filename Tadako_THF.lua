@@ -13,6 +13,7 @@ function define_aliases()
   send_command('bind !f7 blink')
   send_command('bind !f8 aquaveil')
   send_command("bind ^f1 gs c cycle PrimaryMode")
+  send_command('lua load thtracker')
 end
 
 function get_sets()

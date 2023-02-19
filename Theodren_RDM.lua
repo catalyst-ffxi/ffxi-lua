@@ -4,14 +4,6 @@ include('augments.lua')
 include('utils.lua')
 
 function define_modes()
-  -- PrimaryMode = M{
-  --   ['description'] = 'Primary Mode',
-  --   'EnspellTP',
-  --   'PhysicalTP',
-  --   'MaxentiusTP',
-  --   'EnspellDaggerTP'
-  -- }
-
   PrimaryMode = M{
     ['description'] = 'Primary Mode',
     'CrocDaybreak',
@@ -20,45 +12,16 @@ function define_modes()
     'Maxentius',
     'Tauret'
   }
-
   NukingMode = M{['description'] = 'Nuking Mode', 'Normal', 'MagicBurst'}
-  Element = M{['description'] = 'Primary Element', 'Thunder', 'Blizzard', 'Fire', 'Aero', 'Water', 'Stone'}
-  Gain = M{['description'] = 'Gain Spell', 'MND', 'INT', 'STR'}
   Hybrid = M(false, 'Hybrid')
   WeaponLock = M(true, 'WeaponLock')
 end
 
 function define_aliases()
-  -- Elements
-  send_command('alias tier1 input /ma "'..Element.current..'" <t>')
-  send_command('alias tier2 input /ma "'..Element.current..' II" <t>')
-  send_command('alias tier3 input /ma "'..Element.current..' III" <t>')
-  send_command('alias tier4 input /ma "'..Element.current..' IV" <t>')
-  send_command('alias tier5 input /ma "'..Element.current..' V" <t>')
-  send_command('alias enspell input /ma "En'..Element.current:lower()..'" <me>')
-  send_command('alias gain input /ma "Gain-'..Gain.current..'" <me>')
-
-  -- Function Key Shortcuts
-  -- Nukes
-  -- send_command('bind ^f1 tier2')
-  -- send_command('bind ^f2 tier3')
-  -- send_command('bind ^f3 tier4')
-  -- send_command('bind ^f4 tier5')
-
-  -- Self Buffs
-  -- send_command('bind ^f5 gain')
-  -- send_command('bind ^f6 temper2')
-  -- send_command('bind ^f7 enspell')
-  -- send_command('bind !f5 stoneskin')
-  -- send_command('bind !f6 phalanx')
-  -- send_command('bind !f7 blink')
-  -- send_command('bind !f8 aquaveil')
-
   -- Modes
   send_command("bind ^f1 gs c cycle PrimaryMode")
   send_command("bind ^f2 gs c cycle Hybrid")
   send_command("bind ^f3 gs c cycle NukingMode")
-  send_command("bind ^f4 gs c cycle Element")
   send_command("bind ^f5 gs c cycle WeaponLock")
 end
 
@@ -135,9 +98,9 @@ function get_sets()
     sub="Tauret"
   })
   sets.Hybrid = {
-    neck="Warder's Charm +1",
-    left_ring="Defending Ring",
-    right_ring="Shadow Ring"
+    left_ring="Defending Ring"
+    -- right_ring="Shadow Ring",
+    -- neck="Warder's Charm +1"
   }
 
   -- Job Abilities
@@ -172,6 +135,7 @@ function get_sets()
 
   -- Heals
   --
+  -- Healing gear is tuned for ML38
   sets.Magic.Healing = {
     main="Septoptic +1",
     sub="Thuellaic Ecu +1",
@@ -182,10 +146,10 @@ function get_sets()
     legs="Kaykaus Tights +1", 
     feet="Kaykaus Boots +1", 
     neck="Incanter's Torque",
-    waist="Luminary Sash", -- Shinjutsu-no-Obi +1
+    waist="Luminary Sash", -- TODO augment Shinjutsu-no-Obi +1
     left_ear="Meili Earring",
     right_ear="Magnetic Earring",
-    left_ring=gear.stikini.left, -- Mephitas Ring +1
+    left_ring=gear.stikini.left, -- TODO augment Mephitas Ring +1
     right_ring=gear.stikini.right,
     back="Aurist's Cape +1"
   }
@@ -235,7 +199,7 @@ function get_sets()
     main="Colada",
     sub="Ammurapi Shield",
     ammo="Sapience orb",
-    head="Lethargy Chappel +2",
+    head="Lethargy Chappel +3",
     body="Lethargy Sayon +3",
     hands="Atrophy Gloves +3",
     legs="Lethargy Fuseau +3",
@@ -255,8 +219,6 @@ function get_sets()
   }
   sets.Magic.RefreshSelf = {
     waist="Gishdubar sash",
-  }
-  sets.Magic.Regen = {
   }
   sets.Magic.EnhancingSkill = {
     main="Pukulatmuj +1",
@@ -299,7 +261,6 @@ function get_sets()
   -- Silence/Dispel/Gravity/Sleep/Frazzle2:
   sets.Magic.EnfeebleAccuracy = {
     main="Crocea Mors",
-    -- sub="Bunzi's Rod",
     sub="Daybreak",
     ranged="Ullr",
     head="Vitiation Chapeau +3",
@@ -371,7 +332,7 @@ function get_sets()
     main="Bunzi's Rod",
     sub="Ammurapi Shield",
     ammo="Pemphredo Tathlum",
-    head="Lethargy Chappel +2",
+    head="Lethargy Chappel +3",
     body="Amalric Doublet +1",
     hands="Amalric Gages +1",
     legs="Amalric Slops +1",
@@ -449,23 +410,6 @@ function get_sets()
     back="Perimede Cape"
   }
 
-  -- Enmity...?! Why not!
-  --
-  sets.Enmity = {
-    ammo="Sapience Orb",           -- 2
-    head="Halitus Helm",           -- 8
-    left_ear="Trux Earring",       -- 5
-    right_ear="Friomisi Earring",  -- 2
-    body="Emet Harness +1",        -- 10
-    left_ring="Supershear Ring",   -- 5
-    right_ring="Eihwaz Ring",      -- 5
-    waist="Kasiri Belt",           -- 3
-  }
-  sets.Magic['Kurayami: Ichi'] = sets.Enmity
-  sets.Magic['Hojo: Ichi'] = sets.Enmity
-  sets.Magic['Dokumori: Ichi'] = sets.Enmity
-  sets.Magic['Jubaku: Ichi'] = sets.Enmity
-
   -- Weapon Skill
   sets.WS = {}
   sets.WS['Savage Blade'] = {
@@ -527,7 +471,7 @@ function get_sets()
     right_ear="Sherida Earring",
     left_ring="Begrudging Ring",
     right_ring="Ilabrat Ring",
-    back=gear.sucellos.singleWield -- Crit cape
+    back=gear.sucellos.cdc
   }
   sets.WS.Evisceration = sets.WS['Chant du Cygne']
   sets.WS['Sanguine Blade'] = {
@@ -543,7 +487,7 @@ function get_sets()
     right_ear="Malignance Earring",
     left_ring="Metamorph Ring +1",
     right_ring="Archon Ring",
-    back=gear.sucellos.cdc
+    back=gear.sucellos.sanguine
   }
   sets.WS['Seraph Blade'] = {
     ammo="Pemphredo Tathlum",
@@ -693,16 +637,8 @@ function midcast(spell)
   end
 end
 
-function set_for_enhancing(target, name)
-  local set
-end
-
 function set_for_enfeeble(name)
   local set
-
-  -- Dias (Max duration)
-  -- if S{'Dia', 'Dia II', 'Dia III'}:contains(name) then
-  --   
 
   -- Maximixe duration
   if buffactive['Styme'] or S{'Dia', 'Dia II', 'Dia III'}:contains(name) then
@@ -729,12 +665,7 @@ function set_for_enfeeble(name)
     set = sets.Magic.EnfeebleAccuracy
   end
 
-  -- Sabotuer bonus
-  -- if buffactive['Saboteur'] then
-  --   set = set_combine(set, { hands="Lethargy Gantherots +3" })
-  -- end
-
-  -- Equip shield of not able to dual wield
+  -- Equip shield if not able to dual wield
   if dual_wield_job() == false and set.main ~= 'Contemplator +1' then
     set.sub = 'Ammurapi Shield'
   end
@@ -803,10 +734,6 @@ function set_for_current_mode()
     if player.mpp < 50 then
       set.waist = 'Fucho-no-Obi'
     end
-    -- if player.equipment.ranged == 'Ullr' then
-    --   set.ranged = 'Ullr'
-    --   set.ammo = nil
-    -- end
     return set
   end
 end

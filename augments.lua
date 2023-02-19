@@ -1,5 +1,12 @@
 augments = {
 
+  adhemar = {
+    head = {
+      pathA = { name="Adhemar Bonnet +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+      pathB = { name="Adhemar Bonnet +1", augments={'STR+12','DEX+12','Attack+20',}}
+    }
+  },
+
   chironic = {
     gloves = {
       nuke = { name="Chironic Gloves", augments={'Pet: Attack+11 Pet: Rng.Atk.+11','"Mag.Atk.Bns."+30','Mag. Acc.+20 "Mag.Atk.Bns."+20',}},
@@ -40,6 +47,7 @@ augments = {
       mab = { name="Herculean Boots", augments={'"Mag.Atk.Bns."+19','Phys. dmg. taken -1%','Phalanx +2','Mag. Acc.+14 "Mag.Atk.Bns."+14',}},
       wsDex = { name="Herculean Boots", augments={'Accuracy+11','Weapon skill damage +2%','DEX+15',}},
       th2 = { name="Herculean Boots", augments={'Pet: STR+3','STR+3','"Treasure Hunter"+2',}},
+      crit = { name="Herculean Boots", augments={'Accuracy+3','Crit. hit damage +4%','STR+9','Attack+13',}}
     }
   },
 

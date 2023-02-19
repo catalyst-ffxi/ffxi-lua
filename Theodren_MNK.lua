@@ -16,7 +16,9 @@ Empy Body: Impetus TP, Impetus Victory Smite
 
 function define_modes()
   PrimaryMode = M{['description'] = 'Primary Mode', 'FullDD', 'HybridLight', 'HybridHeavy'}
+  WeaponMode = M{['description'] = 'Weapon Mode', 'Auto', 'Godhands', 'Verethragna'}
   send_command("bind ^f1 gs c cycle PrimaryMode")
+  send_command("bind ^f2 gs c cycle WeaponMode")
 end
 
 function get_sets()
@@ -32,9 +34,8 @@ function get_sets()
 
   sets.modes = {}
   sets.modes.FullDD = {
-    main="Godhands",
     ammo="Coiste Bodhar",
-    head="Adhemar Bonnet +1",
+    head=augments.adhemar.head.pathA,
     body="Mpaca's Doublet",
     hands="Adhemar Wristbands +1",
     legs="Bhikku Hose +3",
@@ -48,9 +49,8 @@ function get_sets()
     back=gear.ambuscape.daDex
   }
   sets.modes.HybridLight = {
-    main="Godhands",
     ammo="Coiste Bodhar",
-    head="Adhemar Bonnet +1",
+    head=augments.adhemar.head.pathA,
     body="Mpaca's Doublet",     -- 10 PDT
     hands="Mpaca's Gloves",     -- 8 PDT
     legs="Bhikku Hose +3",      -- 13 DT
@@ -64,7 +64,6 @@ function get_sets()
     back=gear.ambuscape.daDex      -- 10 PDT
   }                             -- 41 PDT
   sets.modes.HybridHeavy = {
-    main="Godhands",
     ammo="Coiste Bodhar",
     head="Ken. Jinpachi +1",
     body="Mpaca's Doublet",     -- 10 PDT
@@ -79,25 +78,52 @@ function get_sets()
     right_ring="Defending Ring",-- 10 DT
     back=gear.ambuscape.daDex      -- 10 PDT
   }                             -- 51 PDT
-  
+  sets.modes.SubtleBlowDT = {
+    ammo="Coiste Bodhar",
+    head="Ken. Jinpachi +1",
+    body="Mpaca's Doublet",     -- 10 PDT
+    hands="Mpaca's Gloves",     -- 8 PDT
+    legs="Bhikku Hose +3",      -- 13 DT
+    feet="Ken. Sune-Ate +1",
+    neck="Monk's Nodowa +2",
+    waist="Moonbow Belt +1",
+    left_ear="Sherida Earring",
+    right_ear="Schere Earring",
+    left_ring="Defending Ring",  -- 10 DT
+    right_ring="Niqmaddu Ring",
+    back=gear.ambuscape.daDex    -- 10 PDT
+  }
+  sets.modes.Counter = {
+    ammo="Coiste Bodhar",
+    head="Ken. Jinpachi +1",
+    body="Mpaca's Doublet",     -- 10 counter
+    hands="Mpaca's Gloves",
+    legs="Bhikku Hose +3",      -- AF legs  6
+    feet="Nyame Sollerets",     -- rao kote +1  5 counter
+    neck="Monk's Nodowa +2",    -- Bathy choker +1  10
+    waist="Moonbow Belt +1",
+    left_ear="Cryptic Earring", -- 3 counter
+    right_ear="Bhikku Earring +1", -- 8 counter
+    left_ring="Gere Ring",
+    right_ring="Defending Ring",
+    back=gear.ambuscape.counter -- 10 counter
+  }
+
   -- Misc
-  -- sets.Idle = {
-  --   ammo="Staunch Tathlum +1",     -- 3 DT
-  --   head="Malignance Chapeau",     -- 6 DT
-  --   body="Malignance Tabard",      -- 9 DT
-  --   hands="Malignance Gloves",     -- 5 DT
-  --   legs="Malignance Tights",      -- 7 DT
-  --   feet="Hermes' Sandals",        -- Movement speed
-  --   neck="Loricate Torque +1",     -- 6 DT
-  --   waist="Moonbow Belt +1",          -- 5 DT
-  --   left_ear="Eabani Earring",     -- 8 Meva
-  --   right_ear="Odnowa Earring +1", -- 2 MDT, 3 DT
-  --   left_ring="Defending Ring",    -- 10 DT
-  --   right_ring="Purity Ring",      -- 4 MDT, 10 Meva
-  --   back=gear.ambuscape.daDex         -- 10 PDT
-  -- }
   sets.Idle = {
-    feet="Hermes' Sandals"
+    ammo="Staunch Tathlum +1",
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Hermes' Sandals",
+    neck="Loricate Torque +1",
+    waist="Moonbow Belt +1",
+    left_ear="Sherida Earring",
+    right_ear="Eabani Earring",
+    left_ring="Gere Ring",
+    right_ring="Odnowa Earring +1",
+    back=gear.ambuscape.daDex
   }
 
   -- JAs
@@ -150,13 +176,12 @@ function get_sets()
   --
   sets.WS = {}
   sets.WS['Victory Smite'] = { -- 80% STR, 4-hit, Crit rate varies, Empyrean WS
-    ammo="Knobkierrie",
-    -- head="Adhemar Bonnet +1",
-    head="Mpaca's Cap",
+    ammo="Coiste Bodhar",
+    head=augments.adhemar.head.pathB,
     body="Ken. Samue +1",
-    hands="Ryuo Tekko",
+    hands="Ryuo Tekko +1",
     legs="Mpaca's Hose",
-    feet=augments.herc.feet.triple,
+    feet=augments.herc.feet.crit,
     neck="Fotia Gorget",
     waist="Moonbow Belt +1",
     left_ear="Sherida Earring",
@@ -290,18 +315,46 @@ function set_for_ws(named)
 end
 
 function set_for_engaged()
-  local set = sets.modes[PrimaryMode.current]
+  local set = sets.modes[PrimaryMode.value]
+
+  set.main = current_weapon()
+
   if PrimaryMode.value == 'FullDD' and buffactive['Impetus'] then
     set = set_combine(set, { body = "Bhikku Cyclas +2" })
   end
+
+  -- if WeaponMode.value == 'Auto' then
+  --   if buffactive['Impetus'] or (player.equipment.main == 'Verethragna' and buffactive['Aftermath: Lv.3']) then
+  --     set.main = 'Verethragna'
+  --   else
+  --     set.main = 'Godhands'
+  --   end    
+  -- else
+  --   set.main = WeaponMode.value
+  -- end
+
   return set
+end
+
+function current_weapon()
+  local weapon = WeaponMode.value
+
+  if WeaponMode.value == 'Auto' then
+    if buffactive['Impetus'] or (player.equipment.main == 'Verethragna' and buffactive['Aftermath: Lv.3']) then
+      weapon = 'Verethragna'
+    else
+      weapon = 'Godhands'
+    end
+  end
+
+  return weapon
 end
 
 function set_for_current_mode()
   if player.status == 'Engaged' then
     return set_for_engaged()
   else
-    return sets.Idle
+    return set_combine(sets.Idle, { main=current_weapon() })
   end
 end
 

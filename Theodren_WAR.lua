@@ -386,13 +386,6 @@ function set_for_ws(named)
   else
     return sets.WS[named]
   end
-  -- if named == 'Upheaval' and buffactive['Mighty Strikes'] then
-  --   return sets.WS.Upheaval_MS
-  -- elseif sets.WS[named] then
-  --   return sets.WS[named]
-  -- else
-  --   return sets.WS.Upheaval
-  -- end
 end
 
 function set_for_engaged()

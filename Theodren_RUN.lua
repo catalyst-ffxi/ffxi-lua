@@ -6,7 +6,7 @@ include('utils.lua')
 function define_modes()
   PrimaryMode = M{['description'] = 'Primary Mode',
     -- 'Tank',
-    'ParryTank', 'MagicTank',
+    'ParryTank', 'MagicTank', 'Defense',
     'HybridDD', 'FullDD'
   }
   WeaponMode = M{['description'] = 'Weapon Mode', 
@@ -156,8 +156,21 @@ function get_sets()
     right_ring="Shadow Ring",
     back=gear.ogma.tank
   }
-  sets.modes.NyameDD = {
-    
+  sets.modes.Defense = {
+    sub="Utu Grip",
+    ammo="Staunch Tathlum +1",
+    head={ name="Nyame Helm", priority=5 },
+    body={ name="Runeist Coat +3", priority=5 },
+    hands={ name="Nyame Gauntlets", priority=5 },
+    legs={ name="Nyame Flanchard", priority=5 },
+    feet={ name="Nyame Sollerets", priority=5 },
+    neck="Loricate Torque +1",
+    waist="Flume Belt +1",
+    left_ear="Odnowa Earring +1",
+    right_ear="Eabani Earring",
+    left_ring={ name="Moonlight Ring", priority=5 },
+    right_ring={ name="Gelatinous Ring +1", priority=5 },
+    back=gear.ogma.tank
   }
   sets.modes.HybridDD = {
     sub="Utu Grip",
@@ -178,7 +191,7 @@ function get_sets()
   sets.modes.FullDD = {
     sub="Utu Grip",
     ammo="Coiste Bodhar",
-    head="Adhemar Bonnet +1",
+    head=augments.adhemar.head.pathA,
     body="Adhemar Jacket +1",
     hands="Adhemar Wristbands +1",
     legs="Samnuha Tights",
@@ -554,23 +567,27 @@ function midcast(spell)
 end
 
 function aftercast(spell)
-  if player.status == 'Engaged' then
-    equip_set_for_current_mode()
-  else
-    equip(set_combine(
-      { main = { name=WeaponMode.current, priority=5 } }, sets.Idle
-    ))
-  end
+  equip_set_for_current_mode()
+
+  -- if player.status == 'Engaged' then
+  --   equip_set_for_current_mode()
+  -- else
+  --   equip(set_combine(
+  --     { main = { name=WeaponMode.current, priority=5 } }, sets.Idle
+  --   ))
+  -- end
 end
 
 function status_change(new, old)
-  if new == 'Engaged' then
-    equip_set_for_current_mode()
-  else
-    equip(set_combine(
-      { main = { name=WeaponMode.current, priority=5 } }, sets.Idle
-    ))
-  end
+  equip_set_for_current_mode()
+
+  -- if new == 'Engaged' then
+  --   equip_set_for_current_mode()
+  -- else
+  --   equip(set_combine(
+  --     { main = { name=WeaponMode.current, priority=5 } }, sets.Idle
+  --   ))
+  -- end
 end
 
 function self_command(commandArgs)

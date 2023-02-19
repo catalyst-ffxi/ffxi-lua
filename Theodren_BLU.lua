@@ -36,7 +36,8 @@ function get_sets()
     legs="Carmine Cuisses +1",         -- Zoomies
     feet="Nyame Sollerets",            -- 7 DT
     neck="Loricate Torque +1",         -- 6 DT
-    waist="Flume Belt +1",             -- 4 PDT
+    -- waist="Flume Belt +1",             -- 4 PDT
+    waist="Fucho-no-obi",
     left_ear="Eabani Earring",         -- Meva
     right_ear="Odnowa Earring +1",     -- 3 DT
     left_ring="Stikini Ring +1",       -- Refresh
@@ -67,7 +68,7 @@ function get_sets()
   sets.modes = {}
   sets.modes.Normal = {
     ammo="Coiste Bodhar",
-    head="Adhemar Bonnet +1",
+    head=augments.adhemar.head.pathA,
     body="Gleti's Cuirass",
     hands="Adhemar Wristbands +1",
     legs="Samnuha Tights",
@@ -185,14 +186,14 @@ function get_sets()
     ammo="Pemphredo Tathlum",
     head="Hashishin Kavuk +3",
     body="Hashishin Mintan +3",
-    hands="Hashishin Bazubands +2",
+    hands="Hashishin Bazubands +3",
     legs="Hashishin Tayt +3",
-    feet="Hashishin Basmak +2",
-    neck="Mirage Stole +1",
+    feet="Hashishin Basmak +3",
+    neck="Mirage Stole +2",
     waist="Luminary Sash",
     -- waist="Acuity Belt +1" todo augment this
     left_ear="Crep. Earring",
-    right_ear="Digni. Earring",
+    right_ear="Hashi. Earring +1",
     left_ring="Stikini Ring +1",
     right_ring="Weather. Ring +1",
     -- right_ring="Stikini Ring +1",
@@ -202,9 +203,9 @@ function get_sets()
     ammo="Pemphredo Tathlum",
     head="Hashishin Kavuk +3",
     body="Hashishin Mintan +3",
-    hands="Hashishin Bazubands +2",
+    hands="Hashishin Bazubands +3",
     legs="Amalric Slops +1",
-    feet="Hashishin Basmak +2",
+    feet="Hashishin Basmak +3",
     neck="Sanctity Necklace",
     waist="Orpheus's Sash",
     left_ear="Regal Earring",
@@ -319,7 +320,7 @@ function get_sets()
   sets.WS['Requiescat'] = {}
   sets.WS['Chant du Cygne'] = {
     ammo="Yetshila +1",
-    head="Adhemar Bonnet +1",
+    head=augments.adhemar.head.pathA,
     body="Ayanmo Corazza +2",
     hands="Jhakri Cuffs +2",
     legs="Samnuha Tights",
@@ -338,17 +339,32 @@ function get_sets()
   sets.WS['Sanguine Blade'] = {
     ammo="Pemphredo Tathlum",
     head="Pixie Hairpin +1",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
     neck="Sanctity Necklace",
     lear="Regal Earring",
     rear="Friomisi earring",
-    body="Amalric Doublet +1",
-    hands="Jhakri Cuffs +2",
     lring="Archon Ring",
     rring="Epaminondas's Ring",
-    back=gear.rosmerta.magic,
     waist="Orpheus's Sash",
-    legs="Amalric Slops +1",
-    feet="Jhakri Pigaches +2",
+    back=gear.rosmerta.magic
+  }
+  sets.WS['Seraph Blade'] = {
+    ammo="Pemphredo Tathlum",
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
+    neck="Sanctity Necklace",
+    lear="Regal Earring",
+    rear="Friomisi earring",
+    lring="Weatherspoon Ring +1",
+    rring="Epaminondas's Ring",
+    waist="Orpheus's Sash",
+    back=gear.rosmerta.magic
   }
 
   sets.WS['Black Halo'] = sets.WS['Savage Blade']

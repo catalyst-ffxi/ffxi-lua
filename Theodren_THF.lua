@@ -61,7 +61,7 @@ function get_sets()
   sets.modes = {}
   sets.modes.FullDD = {
     ammo="Coiste Bodhar",
-    head="Adhemar Bonnet +1",
+    head=augments.adhemar.head.pathA,
     body="Adhemar Jacket +1",
     hands="Adhemar Wristbands +1",
     legs="Samnuha Tights",
@@ -91,7 +91,7 @@ function get_sets()
   }                                   -- 51 PDT
   sets.modes.FullTH = {
     ammo="Coiste Bodhar",
-    head="Adhemar Bonnet +1",
+    head=augments.adhemar.head.pathA,
     body="Adhemar Jacket +1",
     hands="Plunderer's Armlets +1",
     legs="Samnuha Tights",
@@ -155,7 +155,7 @@ function get_sets()
   }
   sets.WS['Evisceration'] = {
     ammo="Yetshila +1",
-    head="Adhemar Bonnet +1",
+    head=augments.adhemar.head.pathB,
     body="Meg. Cuirie +2",
     -- hands=augments.herc.hands.reso,
     legs="Meg. Chausses +2",

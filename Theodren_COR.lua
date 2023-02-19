@@ -74,7 +74,7 @@ function get_sets()
   }                                   --
   sets.modes = {}
   sets.modes.Normal = {
-    head="Adhemar Bonnet +1",
+    head=augments.adhemar.head.pathA,
     body="Adhemar Jacket +1",
     hands="Adhemar Wristbands +1",
     legs="Samnuha Tights",
@@ -364,7 +364,7 @@ function get_sets()
     head="Lanun Tricorne +3",
     neck="Regal Necklace",
     hands="Chasseur's Gants +3",
-    -- rring="Luzaf's Ring",
+    rring="Luzaf's Ring",
     back="Camulus's Mantle",
     legs="Desultor Tassets"
   }
