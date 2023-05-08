@@ -57,7 +57,7 @@ function get_sets()
     head="Flam. Zucchetto +2",
     body="Kasuga Domaru +3",
     hands="Tatena. Gote +1",
-    legs="Kasuga Haidate +2",
+    legs="Kasuga Haidate +3",
     feet="Ryuo Sune-Ate +1",
     neck="Sam. Nodowa +2",
     waist="Sailfi Belt +1",
@@ -70,10 +70,10 @@ function get_sets()
   sets.modes.HybridLight = {
     sub="Utu Grip",
     ammo="Coiste Bodhar",
-    head="Kasuga Kabuto +2",       -- 9 DT
+    head="Kasuga Kabuto +3",       -- 9 DT
     body="Kasuga Domaru +3",       -- 14 DT
     hands="Tatena. Gote +1",
-    legs="Kasuga Haidate +2",      -- 10 DT
+    legs="Kasuga Haidate +3",      -- 11 DT
     feet="Ryuo Sune-Ate +1",
     neck="Sam. Nodowa +2",
     waist="Sailfi Belt +1",
@@ -82,14 +82,14 @@ function get_sets()
     left_ring="Chirich Ring +1",
     right_ring="Niqmaddu Ring",
     back=gear.smertrios.tp         -- 10 PDT
-  }                                -- 43 PDT
+  }                                -- 44 PDT
   sets.modes.HybridHeavy = {
     sub="Utu Grip",
     ammo="Coiste Bodhar",
-    head="Kasuga Kabuto +2",       -- 9 DT
+    head="Kasuga Kabuto +3",       -- 9 DT
     body="Kasuga Domaru +3",       -- 14 DT
     hands="Mpaca's Gloves",        -- 8 PDT
-    legs="Kasuga Haidate +2",      -- 10 DT
+    legs="Kasuga Haidate +3",      -- 11 DT
     feet="Ken. Sune-Ate +1",       -- Meva
     neck="Sam. Nodowa +2",
     waist="Sailfi Belt +1",
@@ -98,7 +98,7 @@ function get_sets()
     left_ring="Chirich Ring +1",
     right_ring="Niqmaddu Ring",
     back=gear.smertrios.tp         -- 10 PDT
-  }                                -- 51 PDT
+  }                                -- 52 PDT
 
   -- Weapon Skills
   --
@@ -106,38 +106,38 @@ function get_sets()
   sets.WS['Tachi: Fudo'] = {
     ammo="Knobkierrie",
     head="Mpaca's Cap",
+    body="Nyame Mail",
+    hands="Kasuga Kote +3",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
     neck="Sam. Nodowa +2",
-    lear="Thrud Earring",
-    rear="Moonshade earring",
-    body="Sakonji Domaru +3",
-    hands="Nyame Gauntlets",
-    lring="Epaminondas's Ring",
-    rring="Regal Ring",
-    back=gear.smertrios.ws,
     waist="Sailfi Belt +1",
-    legs="Wakido Haidate +3",
-    feet="Nyame Sollerets"
+    left_ear="Thrud Earring",
+    right_ear="Moonshade earring",
+    left_ring="Epaminondas's Ring",
+    right_ring="Regal Ring",
+    back=gear.smertrios.ws
   }
   sets.WS['Tachi: Shoha'] = {
     ammo="Knobkierrie",
     head="Mpaca's Cap",
+    body="Nyame Mail",
+    hands="Kasuga Kote +3",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
     neck="Sam. Nodowa +2",
-    lear="Thrud Earring",
-    rear="Moonshade earring",
-    body="Sakonji Domaru +3",
-    hands="Nyame Gauntlets",
-    lring="Epaminondas's Ring",
-    rring="Regal Ring",
-    back=gear.smertrios.ws,
     waist="Sailfi Belt +1",
-    legs="Wakido Haidate +3",
-    feet="Nyame Sollerets"
+    left_ear="Thrud Earring",
+    right_ear="Moonshade earring",
+    left_ring="Epaminondas's Ring",
+    right_ring="Regal Ring",
+    back=gear.smertrios.ws
   }
   sets.WS['Tachi: Ageha'] = {
     ammo="Pemphredo Tathlum",
     head="Nyame Helm",
     body="Nyame Mail",
-    hands="Nyame Gauntlets",
+    hands="Kasuga Kote +3",
     legs="Nyame Flanchard",
     feet="Nyame Sollerets",
     neck="Sanctity Necklace",

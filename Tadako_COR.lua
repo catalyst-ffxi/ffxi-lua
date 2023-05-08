@@ -25,7 +25,8 @@ function get_sets()
   sets.Idle = {
     main="Naegling",
     sub="Gleti's Knife",
-    ranged="Molybdosis",
+    -- ranged="Molybdosis",
+    ranged="Compensator",
     ammo="Orichalc. Bullet",
     head="Nyame Helm",
     body="Nyame Mail",
@@ -45,25 +46,27 @@ function get_sets()
   sets.Engaged.Normal = {
     main="Naegling",
     sub="Gleti's Knife",
-    ranged="Molybdosis",
+    -- ranged="Molybdosis",
+    ranged="Compensator",
     ammo="Orichalc. Bullet",
-    head="Blistering Sallet +1",
+    head="Adhemar Bonnet",
     body="Adhemar Jacket",
     hands="Nyame Gauntlets",
     legs="Meg. Chausses +2",
     feet="Nyame Sollerets",
-    neck="Sanctity Necklace",
+    neck="Iskur Gorget",
     waist="Sailfi Belt +1",
     left_ear="Digni. Earring",
     right_ear="Cessance Earring",
     left_ring="Chirich Ring +1",
-    right_ring="Chirich Ring +1",
+    right_ring="Petrov Ring",
     back=gear.camulus.tp
   }
   sets.Engaged.Hybrid = {
     main="Naegling",
     sub="Gleti's Knife",
-    ranged="Molybdosis",
+    -- ranged="Molybdosis",
+    ranged="Compensator",
     ammo="Orichalc. Bullet",
     head="Nyame Helm",
     body="Nyame Mail",
@@ -75,7 +78,7 @@ function get_sets()
     left_ear="Digni. Earring",
     right_ear="Cessance Earring",
     left_ring="Chirich Ring +1",
-    right_ring="Chirich Ring +1",
+    right_ring="Petrov Ring",
     back=gear.camulus.tp
   }
 
@@ -180,15 +183,15 @@ function get_sets()
   }
   sets.Ranged = {
     head="Meghanada Visor +2",
-    body="Mummu Jacket +2",
+    body="Nisroch Jerkin",
     hands="Meg. Gloves +2",
     legs="Meg. Chausses +2",
     feet="Meg. Jam. +2",
     neck="Iskur Gorget",
     waist="Eschan Stone",
-    left_ear="Suppanomimi",
-    right_ear="Digni. Earring",
-    left_ring="Mummu Ring",
+    left_ear="Telos Earring",
+    right_ear="Enervating Earring",
+    left_ring="Cacoethic Ring",
     right_ring="Dingir Ring",
     back=gear.camulus.rangedTp
   }

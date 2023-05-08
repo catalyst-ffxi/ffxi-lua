@@ -3,7 +3,7 @@ include('Modes.lua')
 include('augments.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'FullTH', 'HybridTH', 'FullDD', 'HybridDD', 'Accuracy'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'FullTH', 'HybridTH', 'FullDD', 'HybridDD'}
 
   Abyssea = {
     current = 0,
@@ -46,8 +46,8 @@ function get_sets()
     ranged="Exalted Crossbow +1",
     ammo="Gashing Bolt",
     head="Malignance Chapeau",        -- 6 DT
-    body="Malignance Tabard",         -- 9 DT
-    hands="Malignance Gloves",        -- 5 DT
+    body="Gleti's Cuirass",           -- 9 PDT
+    hands="Gleti's Gauntlets",        -- 7 PDT
     legs="Malignance Tights",         -- 7 DT
     feet="Fajin boots",
     neck="Loricate Torque +1",        -- 6 DT
@@ -68,27 +68,27 @@ function get_sets()
     feet=augments.herc.feet.triple,
     neck="Iskur Gorget",
     waist="Windbuffet Belt +1",
-    left_ear="Brutal Earring",
-    right_ear="Sherida Earring",
+    left_ear="Sherida Earring",
+    right_ear="Skulk. Earring +2",
     left_ring="Gere Ring",
     right_ring="Epona's Ring",
     back=gear.toutatis.tp,
   }
   sets.modes.HybridDD = {
     ammo="Coiste Bodhar",
-    head="Malignance Chapeau",        -- 6 DT
-    body="Malignance Tabard",         -- 9 DT
-    hands="Malignance Gloves",        -- 5 DT
-    legs="Malignance Tights",         -- 7 DT
-    feet="Malignance Boots",          -- 4 DT
+    head=augments.adhemar.head.pathA,
+    body="Gleti's Cuirass",           -- 9 PDT
+    hands="Gleti's Gauntlets",        -- 7 PDT
+    legs="Gleti's Breeches",          -- 8 PDT
+    feet=augments.herc.feet.triple,   -- 2 PDT
     neck="Iskur Gorget",
-    waist="Windbuffet Belt +1",
-    left_ear="Suppanomimi",
-    right_ear="Sherida Earring",
+    waist="Reiki Yotai",
+    left_ear="Sherida Earring",
+    right_ear="Skulk. Earring +2",
     left_ring="Gere Ring",
-    right_ring="Defending Ring",      -- 10 DT
+    right_ring="Moonlight Ring",      -- 5 DT
     back=gear.toutatis.tp,            -- 10 PDT
-  }                                   -- 51 PDT
+  }                                   -- 40 PDT
   sets.modes.FullTH = {
     ammo="Coiste Bodhar",
     head=augments.adhemar.head.pathA,
@@ -107,9 +107,9 @@ function get_sets()
   sets.modes.HybridTH = {
     ammo="Coiste Bodhar",
     head="Malignance Chapeau",        -- 6 DT
-    body="Malignance Tabard",         -- 9 DT
+    body="Gleti's Cuirass",           -- 9 PDT
     hands="Plunderer's Armlets +1",
-    legs="Malignance Tights",         -- 7 DT
+    legs="Gleti's Breeches",          -- 8 PDT
     feet=augments.herc.feet.th2,      -- 2 PDT
     neck="Loricate Torque +1",        -- 6 DT
     waist="Windbuffet Belt +1",
@@ -119,21 +119,6 @@ function get_sets()
     right_ring="Defending Ring",      -- 10 DT
     back=gear.toutatis.tp,            -- 10 PDT
   }                                   -- 50 PDT
-  sets.modes.Accuracy = {
-    ammo="Coiste Bodhar",
-    head="Malignance Chapeau",
-    body="Adhemar Jacket +1",
-    hands="Adhemar Wristbands +1",
-    legs="Meg. Chausses +2",
-    feet=augments.herc.feet.triple,
-    neck="Sanctity Necklace",
-    waist="Windbuffet Belt +1",
-    left_ear="Telos Earring",
-    right_ear="Cessance Earring",
-    left_ring="Gere Ring",
-    right_ring="Chirich Ring +1",
-    back=gear.toutatis.tp,
-  }
 
   -- Weapon Skills
   --
@@ -157,12 +142,9 @@ function get_sets()
     ammo="Yetshila +1",
     head=augments.adhemar.head.pathB,
     body="Meg. Cuirie +2",
-    -- hands=augments.herc.hands.reso,
+    hands="Nyame Gauntlets",
     legs="Meg. Chausses +2",
-    -- feet=augments.herc.feet.triple,
-    hands="Meg. Gloves +2",
-    -- legs="Nyame Flanchard",
-    feet="Nyame Sollerets",
+    feet="Adhe. Gamashes +1",
     neck="Fotia Gorget",
     waist="Fotia Belt",
     left_ear="Moonshade Earring",
@@ -255,9 +237,9 @@ function get_sets()
     neck="Iskur Gorget",
     waist="Yemaya Belt",
     left_ear="Telos Earring",
-    right_ear="Enervating Earring",
+    right_ear="Crep. Earring",
     left_ring="Regal Ring",
-    right_ring="Dingir Ring",
+    right_ring="Crepuscular Ring",
     back=gear.toutatis.tp
   }
 end

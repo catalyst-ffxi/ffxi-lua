@@ -6,6 +6,7 @@ function define_modes()
   PrimaryMode = M{['description'] = 'Primary Mode', 'FullDD', 'HybridLight', 'HybridHeavy'}
   WeaponMode = M{['description'] = 'Weapon Mode',
     'Trishula',
+    'Shining',
     'Naegling'
   }
   send_command("bind ^f1 gs c cycle PrimaryMode")
@@ -26,6 +27,7 @@ function get_sets()
 
   sets.weapons = {
     Trishula = { main="Trishula", sub="Utu Grip" },
+    Shining = { main="Shining One", sub="Utu Grip" },
     Naegling = { main="Naegling" }
   }
 
@@ -34,11 +36,10 @@ function get_sets()
     ammo="Coiste Bodhar",
     head="Flam. Zucchetto +2",
     body="Gleti's Cuirass",
-    hands="Pel. Vambraces +3",
-    -- legs=augments.valorous.legs.stp,
+    hands="Sulev. Gauntlets +2",
     legs="Flamma Dirs +2",
     feet="Flam. Gambieras +2",
-    neck="Dgn. Collar +2",
+    neck="Anu Torque",
     waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
@@ -50,33 +51,32 @@ function get_sets()
     ammo="Coiste Bodhar",
     head="Hjarrandi Helm",           -- 10 DT
     body="Gleti's Cuirass",          -- 9 PDT
-    hands="Pel. Vambraces +3",       -- 11 DT
-    -- legs=augments.valorous.legs.stp, -- 2 PDT
+    hands="Sulev. Gauntlets +2",     -- 5 DT
     legs="Flamma dirs +2",
     feet="Flam. Gambieras +2",
-    neck="Dgn. Collar +2",           -- Wyvern 20 DT
+    neck="Anu Torque",
     waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
     left_ring="Moonlight Ring",      -- 5 DT
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.tp           -- 10 PDT
-  }                                  -- 47 PDT
+  }
   sets.modes.HybridHeavy = {
     ammo="Coiste Bodhar",
     head="Hjarrandi Helm",           -- 10 DT
     body="Gleti's Cuirass",          -- 9 PDT
-    hands="Pel. Vambraces +3",       -- 11 DT
+    hands="Sulev. Gauntlets +2",     -- 5 DT
     legs="Nyame Flanchard",          -- 8 DT
     feet="Flam. Gambieras +2",
-    neck="Dgn. Collar +2",           -- Wyvern 20 DT
+    neck="Anu Torque",
     waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
     left_ring="Moonlight Ring",      -- 5 DT
     right_ring="Niqmaddu Ring",  
     back=gear.ambuscape.tp           -- 10 PDT
-  }                                  -- 53 PDT
+  }
 
   -- Misc
   sets.Idle = {
@@ -108,7 +108,7 @@ function get_sets()
     hands="Vis. Fng. Gaunt. +2",-- TP Bonus
     legs=augments.valorous.legs.stp,
     feet="Ostro Greaves",       -- TP Bonus
-    neck="Dgn. Collar +2",
+    neck="Anu Torque",
     waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
     right_ear="Sherida Earring",
@@ -127,7 +127,7 @@ function get_sets()
     hands="Despair Fin. Gaunt.", -- TODO
     feet="Ptero. Greaves +3",    -- TODO
     -- neck="Chanoix's Gorget",     -- TODO
-    neck="Dgn. Collar +2",
+    -- neck="Dgn. Collar +2",
     left_ear="Anastasi Earring", -- TODO
     right_ear="Lancer's Earring",-- TODO
     legs="Vishap Brais +3",
@@ -148,7 +148,7 @@ function get_sets()
     -- hands="Despair Fin. Gaunt.", -- TODO
     legs="Vishap Brais +3",
     feet="Ptero. Greaves",          -- TODO: +1/2/3 these
-    neck="Dgn. Collar +2",
+    -- neck="Dgn. Collar +2",
     -- left_ear="Anastasi Earring", -- TODO
     -- right_ear="Lancer's Earring",-- TODO
     left_ring="Dreki Ring",
@@ -185,17 +185,15 @@ function get_sets()
     hands="Sulev. Gauntlets +2",
     legs="Sulev. Cuisses +2",
     feet="Lustratio Leggings +1",
-    neck="Dgn. Collar +2",
-    -- neck="Fotia Gorget",
+    neck="Fotia Gorget",
     waist="Fotia Belt",
     left_ear="Moonshade Earring",
     right_ear="Sherida Earring",
-    left_ring="Shukuyu Ring",       -- TODO: Regal Ring
+    left_ring="Regal Ring",
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.stardiver
   }
   sets.WS['Penta Thrust'] = set_combine(sets.WS.Stardiver, {
-    neck="Dgn. Collar +2",
     waist="Sailfi Belt +1",
     left_ear="Brutal Earring"
   })
@@ -203,14 +201,14 @@ function get_sets()
     ammo="Knobkierrie",
     head="Nyame Helm",
     body="Nyame Mail",
-    hands="Ptero. Fin. G. +3",
-    legs="Vishap Brais +3",
-    feet="Sulev. Leggings +2",
-    neck="Dgn. Collar +2",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
+    neck="Rep. Plat. Medal",
     waist="Sailfi Belt +1",
     left_ear="Thrud Earring",
     right_ear="Moonshade Earring",
-    left_ring="Shukuyu Ring",     -- TODO: Regal Ring
+    left_ring="Regal Ring",
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.wsd
   }
@@ -226,7 +224,7 @@ function get_sets()
     hands="Flam. Manopolas +2",
     legs="Sulev. Cuisses +2",       -- TODO: Empy legs
     feet=augments.valorous.greaves.crit,
-    neck="Dgn. Collar +2",
+    neck="Rep. Plat. Medal",
     waist="Sailfi Belt +1",
     left_ear="Thrud Earring",
     right_ear="Sherida Earring",

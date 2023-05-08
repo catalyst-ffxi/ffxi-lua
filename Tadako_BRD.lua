@@ -2,7 +2,7 @@ include('Modes.lua')
 include('augments_tadako.lua')
 
 function define_modes()
-  DummySongs = S{"Vivacious Etude", "Bewitching Etude", "Enchanting Etude", "Spirited Etude", "Vital Etude"}
+  DummySongs = S{"Vivacious Etude", "Bewitching Etude", "Enchanting Etude", "Spirited Etude", "Dextrous Etude", "Vital Etude"}
   ForceHarpNext = false
   BadSongNext = false
   PrimaryMode = M{['description'] = 'Primary Mode',
@@ -12,8 +12,8 @@ function define_modes()
   WeaponMode = M{['description'] = 'Weapon Mode',
     'NaeglingFusetto',
     'NaeglingGleti',
-    'Aeneas' --,
-    -- 'Carn'
+    'Aeneas',
+    'Carn'
   }
 end
 
@@ -47,8 +47,8 @@ function get_sets()
   sets.weapons = {
     NaeglingFusetto = { main="Naegling", sub="Fusetto +2" },
     NaeglingGleti = { main="Naegling", sub="Gleti's Knife" },
-    Aeneas =  { main="Aeneas", sub="Gleti's Knife" } --,
-    -- Carn = { main="Carnwenhan", sub="Gleti's Knife" }
+    Aeneas =  { main="Aeneas", sub="Gleti's Knife" },
+    Carn = { main="Carnwenhan", sub="Gleti's Knife" }
   }
 
   -- Modes
@@ -59,7 +59,7 @@ function get_sets()
     body="Inyanga Jubbah +2",       -- refresh
     hands="Inyanga Dastanas +2",    -- refresh
     legs="Inyanga Shalwar +2",      -- refresh
-    feet="Fili Cothurnes +2",
+    feet="Fili Cothurnes +3",
     neck="Loricate Torque +1",      -- 6 DT
     waist="Flume Belt",             -- PDT
     left_ear="Flashward Earring",
@@ -73,7 +73,7 @@ function get_sets()
     body="Nyame Mail",              -- 9 DT
     hands="Nyame Gauntlets",        -- 7 DT
     legs="Nyame Flanchard",         -- 8 DT
-    feet="Fili Cothurnes +2",
+    feet="Fili Cothurnes +3",
     neck="Loricate Torque +1",      -- 6 DT
     waist="Flume Belt",             -- 4 PDT
     left_ear="Flashward Earring",
@@ -90,7 +90,7 @@ function get_sets()
     body="Inyanga Jubbah +2",             -- 14
     hands="Leyline Gloves",               -- 8
     legs="Kaykaus Tights",                -- 6
-    feet="Fili Cothurnes +2",             -- 10
+    feet="Fili Cothurnes +3",             -- 10
     neck="Orunmila's torque",             -- 5
     left_ear="Loquacious earring",        -- 2
     right_ear="Etiolation Earring",       -- 1
@@ -147,7 +147,7 @@ function get_sets()
     head="Brioso Roundlet +3",
     body="Brioso Justaucorps +2",
     hands="Inyanga Dastanas +2",
-    legs="Brioso Cannions +2",
+    legs="Brioso Cannions +3",
     feet="Brioso Slippers +3",
     neck="Moonbow Whistle +1",
     left_ear="Digni. Earring",
@@ -169,7 +169,7 @@ function get_sets()
     -- sub="Kali",
     ranged="Daurdabla",
     -- neck="Moonbow Whistle +1",
-    -- body="Fili Hongreline +2",
+    -- body="Fili Hongreline +3",
     -- legs="Inyanga Shalwar +2",
     -- feet="Brioso Slippers +3"
   }
@@ -181,7 +181,7 @@ function get_sets()
     -- sub="Kali",
     ranged="Gjallarhorn",
     head="Brioso Roundlet +3",
-    body="Fili Hongreline +2",
+    body="Fili Hongreline +3",
     hands="Inyanga Dastanas +2",
     legs="Inyanga Shalwar +2",
     feet="Brioso Slippers +3",
@@ -196,9 +196,9 @@ function get_sets()
   sets.Songs.March = set_combine(sets.Songs.Buffs, { hands="Fili Manchettes +2" })
   sets.Songs.HonorMarch = set_combine(sets.Songs.March, { ranged="Marsyas" })
   sets.Songs.Minne = set_combine(sets.Songs.Buffs, { legs="Mousai Seraweels +1" })
-  sets.Songs.Minuet = set_combine(sets.Songs.Buffs, { body="Fili Hongreline +2" })
+  sets.Songs.Minuet = set_combine(sets.Songs.Buffs, { body="Fili Hongreline +3" })
   sets.Songs.Scherzo = set_combine(sets.Songs.Buffs, {
-    -- feet="Fili Cothurnes +2"
+    -- feet="Fili Cothurnes +3"
   })
   sets.Songs.Etude = set_combine(sets.Songs.Buffs, { head="Mousai Turban +1" })
 
@@ -211,7 +211,7 @@ function get_sets()
     head="Brioso Roundlet +3",
     body="Brioso Justaucorps +2",
     hands="Inyanga Dastanas +2",
-    legs="Brioso Cannions +2",
+    legs="Brioso Cannions +3",
     feet="Brioso Slippers +3",
     neck="Moonbow Whistle +1",
     left_ear="Digni. Earring",
@@ -226,7 +226,7 @@ function get_sets()
     -- sub="Kali",
     ranged="Gjallarhorn",
     head="Brioso Roundlet +3",
-    body="Fili Hongreline +2",
+    body="Fili Hongreline +3",
     hands="Inyanga Dastanas +2",
     legs="Inyanga Shalwar +2",
     feet="Brioso Slippers +3",

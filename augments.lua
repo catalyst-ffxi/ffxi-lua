@@ -110,6 +110,13 @@ augments = {
     }
   },
 
+  telchine = {
+    body = {
+      duration = { name="Telchine Chas.", augments={'Enh. Mag. eff. dur. +10',}},
+      regen = { name="Telchine Chas.", augments={'"Regen" potency+3',}}
+    }
+  },
+
   valorous = {
     mask = {
       stp = {name = "Valorous Mask", augments = {'Accuracy+9 Attack+9','"Store TP"+5','DEX+10','Accuracy+4','Attack+8',}},

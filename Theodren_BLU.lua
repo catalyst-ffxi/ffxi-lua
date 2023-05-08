@@ -73,7 +73,7 @@ function get_sets()
     hands="Adhemar Wristbands +1",
     legs="Samnuha Tights",
     feet=augments.herc.feet.triple,
-    neck="Mirage Stole +1",
+    neck="Mirage Stole +2",
     waist="Reiki Yotai",
     left_ear="Telos Earring",
     right_ear="Dedition Earring",
@@ -88,7 +88,7 @@ function get_sets()
     hands="Adhemar Wristbands +1",
     legs="Malignance Tights",       -- 7 DT
     feet=augments.herc.feet.triple, -- 2 PDT
-    neck="Mirage Stole +1",
+    neck="Mirage Stole +2",
     waist="Reiki Yotai",
     left_ear="Telos Earring",
     right_ear="Dedition Earring",
@@ -103,7 +103,7 @@ function get_sets()
     hands="Malignance Gloves",      -- 5 DT
     legs="Malignance Tights",       -- 7 DT
     feet="Malignance Boots",        -- 4 DT
-    neck="Mirage Stole +1",
+    neck="Mirage Stole +2",
     waist="Reiki Yotai",
     left_ear="Telos Earring",
     right_ear="Cessance Earring",
@@ -118,7 +118,7 @@ function get_sets()
     hands="Adhemar Wristbands +1",
     legs="Malignance Tights",
     feet=augments.herc.feet.triple,
-    neck="Mirage Stole +1",
+    neck="Mirage Stole +2",
     waist="Reiki Yotai",
     left_ear="Telos Earring",
     right_ear="Digni. Earring",
@@ -309,7 +309,7 @@ function get_sets()
     hands="Nyame Gauntlets",
     legs="Nyame Flanchard",
     feet="Nyame Sollerets",
-    neck="Mirage Stole +1",
+    neck="Mirage Stole +2",
     waist="Sailfi Belt +1",
     left_ear="Ishvara Earring",
     right_ear="Moonshade Earring",

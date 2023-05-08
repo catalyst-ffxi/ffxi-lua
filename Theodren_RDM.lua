@@ -12,7 +12,7 @@ function define_modes()
     'Maxentius',
     'Tauret'
   }
-  NukingMode = M{['description'] = 'Nuking Mode', 'Normal', 'MagicBurst'}
+  NukingMode = M{['description'] = 'Nuking Mode', 'MagicBurst', 'Normal'}
   Hybrid = M(false, 'Hybrid')
   WeaponLock = M(true, 'WeaponLock')
 end
@@ -232,19 +232,27 @@ function get_sets()
     waist="Olympus Sash",
     left_ear="Mimir Earring",
     right_ear="Lethargy Earring +1",
-    -- right_ear="Andoaa Earring",
     left_ring=gear.stikini.left,
     right_ring=gear.stikini.right,
     back="Ghostfyre Cape",
   }
-  sets.Magic.Phalanx = set_combine(sets.Magic.EnhancingSkill, {
+  sets.Magic.Phalanx = {
     main="Sakpata's Sword",
+    sub="Ammurapi Shield",
+    ammo="Sapience Orb",
     head=augments.taeon.head.SID,
     body="Chironic Doublet",
     hands=augments.taeon.hands.phalanx,
     legs=augments.taeon.legs.phalanx,
-    feet=augments.taeon.feet.phalanx
-  })
+    feet=augments.taeon.feet.phalanx,
+    neck="Loricate Torque +1",
+    waist="Embla Sash",
+    left_ear="Magnetic Earring",
+    right_ear="Lethargy Earring +1",
+    left_ring="Kishar Ring",
+    right_ring=gear.stikini.right,
+    back="Ghostfyre Cape"
+  }
   sets.Magic.Aquaveil = {
     head="Amalric Coif +1"
   }
@@ -254,6 +262,11 @@ function get_sets()
   }
   sets.Magic.Gain = {
     hands="Viti. Gloves +3"
+  }
+  sets.Magic.Regen = {
+    main="Bolelabunga",
+    body=augments.telchine.body.regen,
+    feet="Bunzi's Sabots"
   }
 
   -- Enfeebles
@@ -333,12 +346,12 @@ function get_sets()
     sub="Ammurapi Shield",
     ammo="Pemphredo Tathlum",
     head="Lethargy Chappel +3",
-    body="Amalric Doublet +1",
-    hands="Amalric Gages +1",
-    legs="Amalric Slops +1",
-    feet="Amalric Nails +1",
+    body="Lethargy Sayon +3",
+    hands="Leth. Ganth. +3",
+    legs="Lethargy Fuseau +3",
+    feet="Lethargy Houseaux +3",
     neck="Sibyl Scarf",
-    waist="Eschan Stone",
+    waist="Sacro Cord",
     left_ear="Regal Earring",
     right_ear="Malignance Earring",
     left_ring="Freke Ring",
@@ -350,16 +363,16 @@ function get_sets()
     sub="Ammurapi Shield",
     ammo="Pemphredo Tathlum",
     head="Ea Hat +1",           -- MB +7 | MB II +7
-    body="Ea Houppelande",      -- MB +8 | MB II +8
-    hands="Amalric Gages +1",   --       | MB II +6
-    legs="Ea Slops",            -- MB +7 | MB II +7
-    feet="Jhakri Pigaches +2",  -- MB +7
+    body="Ea Houppe. +1",      -- MB +8 | MB II +8
+    hands="Bunzi's Gloves",     --       | MB II +5
+    legs="Lethargy Fuseau +3",  -- MB +15
+    feet="Lethargy Houseaux +3",
     neck="Sibyl Scarf",
-    waist="Eschan Stone",
+    waist="Sacro Cord",
     left_ear="Regal Earring",
     right_ear="Malignance Earring",
     left_ring="Freke Ring",
-    right_ring="Mujin Band",    --       | MB II +5
+    right_ring="Metamorph Ring +1",
     back=gear.sucellos.nuke
   }
 
@@ -372,9 +385,9 @@ function get_sets()
     ammo="Regal Gem",
     head="Atrophy Chapeau +3", --16 fc
     body="Atrophy Tabard +3",
-    hands="Kaykaus Cuffs +1",
-    legs="Chironic Hose",
-    feet="Vitiation Boots +3",
+    hands="Lethargy Gantherots +3",
+    legs="Lethargy Fuseau +3",
+    feet="Lethargy Houseaux +3",
     neck="Duelist's Torque +2",
     waist="Obstinate Sash",
     left_ear="Regal Earring",
@@ -518,7 +531,7 @@ function get_sets()
     neck="Fotia Gorget",
     waist="Fotia Belt",
     left_ear="Telos Earring",
-    right_ear="Enervating Earring",
+    right_ear="Crep. Earring",
     left_ring="Epaminondas's Ring",
     right_ring="Ilabrat Ringlet",
     back=gear.sucellos.savage
@@ -583,33 +596,34 @@ function midcast(spell)
     equip(set_combine(sets.Magic.SpellInterrupt, sets.Magic.FastCast))
 
   elseif spell.skill == 'Enhancing Magic' then
-    local set
+    equip(set_for_enhancing(spell))
+    -- local set
 
-    if spell.target.type ~= 'SELF' and buffactive['Composure'] then
-      -- Maximize duration for others
-      equip(sets.Magic.EnhancingComposure)
-    else
-      -- Maximize duration for self
-      equip(sets.Magic.EnhancingDuration)
-    end
+    -- if spell.target.type ~= 'SELF' and buffactive['Composure'] then
+    --   -- Maximize duration for others
+    --   equip(sets.Magic.EnhancingComposure)
+    -- else
+    --   -- Maximize duration for self
+    --   equip(sets.Magic.EnhancingDuration)
+    -- end
 
-    -- Add spell-specific enhancements
-    if string.find(eng, 'Refresh') then
-      equip(sets.Magic.Refresh)
-      if spell.target.type == 'SELF' then
-        equip(sets.Magic.RefreshSelf)
-      end
-    elseif eng == 'Aquaveil' then
-      equip(sets.Magic.Aquaveil)
-    elseif eng == 'Stoneskin' then
-      equip(sets.Magic.Stoneskin)
-    elseif string.find(eng, 'Gain-') then
-      equip(sets.Magic.Gain)
-    elseif eng == 'Phalanx' then
-      equip(sets.Magic.Phalanx)
-    elseif starts_with(eng, 'En') or string.find(eng, 'Temper') then
-      equip(sets.Magic.EnhancingSkill)
-    end
+    -- -- Add spell-specific enhancements
+    -- if string.find(eng, 'Refresh') then
+    --   equip(sets.Magic.Refresh)
+    --   if spell.target.type == 'SELF' then
+    --     equip(sets.Magic.RefreshSelf)
+    --   end
+    -- elseif eng == 'Aquaveil' then
+    --   equip(sets.Magic.Aquaveil)
+    -- elseif eng == 'Stoneskin' then
+    --   equip(sets.Magic.Stoneskin)
+    -- elseif string.find(eng, 'Gain-') then
+    --   equip(sets.Magic.Gain)
+    -- elseif eng == 'Phalanx' then
+    --   equip(sets.Magic.Phalanx)
+    -- elseif starts_with(eng, 'En') or string.find(eng, 'Temper') then
+    --   equip(sets.Magic.EnhancingSkill)
+    -- end
 
   elseif spell.skill == 'Enfeebling Magic' then
     equip(set_for_enfeeble(eng))
@@ -673,6 +687,46 @@ function set_for_enfeeble(name)
   if set.ranged == 'Ullr' and WeaponLock.value and player.status == 'Engaged' then
     set.ranged = ''
     set.ammo = 'Regal Gem'
+  end
+
+  return set
+end
+
+function set_for_enhancing(spell)
+  local set
+  local name = spell.name
+
+  if spell.target.type ~= 'SELF' and buffactive['Composure'] then
+    -- Maximize duration for others
+    set = sets.Magic.EnhancingComposure
+  else
+    -- Maximize duration for self
+    set = sets.Magic.EnhancingDuration
+  end
+
+  if string.find(name, 'Refresh') then
+    set = set_combine(set, sets.Magic.Refresh)
+    if spell.target.type == 'SELF' then
+      set = set_combine(set, sets.Magic.RefreshSelf)
+    end
+
+  elseif name == 'Aquaveil' then
+    set = set_combine(set, sets.Magic.Aquaveil)
+
+  elseif name == 'Stoneskin' then
+    set = set_combine(set, sets.Magic.Stoneskin)
+
+  elseif string.find(name, 'Gain-') then
+    set = set_combine(set, sets.Magic.Gain)
+
+  elseif name == 'Phalanx' then
+    set = set_combine(set, sets.Magic.Phalanx)
+
+  elseif name == 'Regen II' then
+    set = set_combine(set, sets.Magic.Regen)
+
+  elseif starts_with(name, 'En') or string.find(name, 'Temper') then
+    set = set_combine(set, sets.Magic.EnhancingSkill)
   end
 
   return set

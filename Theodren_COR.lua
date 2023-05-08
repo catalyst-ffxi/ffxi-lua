@@ -151,16 +151,16 @@ function get_sets()
     ammo=gear.bullets.ratt,
     head=augments.taeon.head.snapshot,       --   10   0
     neck="Commodore Charm +1",               --   3
-    body="Laksamana's Frac +3",              --   0    18
+    body="Laksamana's Frac +3",              --   0    20
     hands="Carmine Fin. Ga. +1",             --   8    11
     legs="Adhemar Kecks +1",                 --   9    10
     feet="Meg. Jam. +2",                     --  10    0
     waist="Yemaya Belt",                     --   0    5
     back=gear.camulus.snapShot               --  10    0
-                                      -- Total:  50    44
+                                      -- Total:  50    46
   }
   sets.TripleShot = set_combine(sets.Preshot, {
-    body="Chasseur's Frac +1",
+    body="Chasseur's Frac +2",
     hands="Lanun Gants +3"
   })
   sets.Ranged = {
@@ -175,7 +175,7 @@ function get_sets()
     left_ear="Telos Earring",
     right_ear="Crep. Earring",
     left_ring="Ilabrat Ring",
-    right_ring="Dingir Ring",
+    right_ring="Crepuscular Ring",
     back=gear.camulus.rangedTp
   }
 
@@ -189,7 +189,7 @@ function get_sets()
     lear="Etiolation earring",          -- 1
     rear="Loquacious Earring",          -- 2
     lring="Kishar Ring",                -- 4
-    rring="Weatherspoon Ring +1",                 -- 2
+    rring="Weatherspoon Ring +1",       -- 2
     legs=augments.taeon.legs.phalanx,   -- 4
     feet="Carmine Greaves +1"           -- 8
   }                                     -- 54
@@ -352,7 +352,7 @@ function get_sets()
     left_ear="Telos Earring",
     right_ear="Dedition Earring",
     left_ring="Chirich Ring +1",
-    right_ring="Ilabrat Ring",
+    right_ring="Crepuscular Ring",
     back=gear.camulus.meleeTp,
   }
 
@@ -386,7 +386,7 @@ function precast(spell)
   if spell.type == 'CorsairRoll' then
     equip(sets.JAs.PhantomRoll)
     if spell.english == "Tactician's Roll" then
-      equip({ body="Chasseur's Frac +1" })
+      equip({ body="Chasseur's Frac +2" })
     end
 
   elseif spell.english == "Double-Up" then

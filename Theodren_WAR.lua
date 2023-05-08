@@ -44,7 +44,7 @@ function get_sets()
     ammo="Coiste Bodhar",
     head="Flam. Zucchetto +2",
     body="Sakpata's Breastplate",
-    hands="Sakpata's gauntlets",
+    hands="Sakpata's Gauntlets",
     legs="Tatenashi Haidate +1",
     feet="Tatenashi Sune-Ate +1",
     neck="War. Beads +2",
@@ -59,7 +59,7 @@ function get_sets()
     ammo="Coiste Bodhar",
     head="Flam. Zucchetto +2",
     body="Sakpata's Breastplate",
-    hands="Sakpata's gauntlets",
+    hands="Sakpata's Gauntlets",
     legs="Pummeler's Cuisses +3",
     feet="Pummeler's Calligae +3", 
     neck="War. Beads +2",
@@ -74,7 +74,7 @@ function get_sets()
     ammo="Coiste Bodhar",
     head="Sakpata's Helm",
     body="Sakpata's Breastplate",
-    hands="Sakpata's gauntlets",
+    hands="Sakpata's Gauntlets",
     legs="Sakpata's Cuisses",
     feet="Sakpata's Leggings", 
     neck="War. Beads +2",
@@ -108,7 +108,7 @@ function get_sets()
 
   -- This is useless - mufflers must be on during TP which just isn't worth doing.
   -- https://www.ffxiah.com/forum/topic/17977/restraint-and-ravager-mufflers-2#1116664
-  -- sets.JAs.Restraint = { hands="Boii Mufflers +1" }
+  -- sets.JAs.Restraint = { hands="Boii Mufflers +3" }
 
   -- Enmity
   sets.JAs.Provoke = {
@@ -265,7 +265,7 @@ function get_sets()
     ammo="Knobkierrie",
     head="Agoge Mask +3",
     body="Sakpata's Breastplate",
-    hands="Nyame Gauntlets",
+    hands="Boii Mufflers +3",
     legs="Boii Cuisses +3",
     feet="Nyame sollerets",
     neck="War. Beads +2",
@@ -282,7 +282,7 @@ function get_sets()
     ammo="Knobkierrie",
     head="Agoge Mask +3",
     body="Sakpata's Breastplate",
-    hands="Nyame Gauntlets",
+    hands="Boii Mufflers +3",
     legs="Boii Cuisses +3",
     feet="Nyame sollerets",
     neck="War. Beads +2",
@@ -324,6 +324,22 @@ function get_sets()
     right_ear="Friomisi Earring",
     left_ring="Weatherspoon Ring +1",
     right_ring="Epaminondas's Ring",
+    back=gear.ambuscape.wsStr
+  }
+
+  sets.WS.Decimation = {
+    ammo="Seeth. Bomblet +1",
+    head="Sakpata's Helm",
+    body="Sakpata's Breastplate",
+    hands="Sakpata's Gauntlets",
+    legs="Boii Cuisses +3",
+    feet="Sakpata's Leggings",
+    neck="Fotia Gorget",
+    waist="Fotia Belt",
+    left_ear="Schere Earring",
+    right_ear="Boii Earring +1",
+    left_ring="Niqmaddu Ring",
+    right_ring="Regal Ring",
     back=gear.ambuscape.wsStr
   }
 end

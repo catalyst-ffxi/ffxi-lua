@@ -41,26 +41,35 @@ function get_sets()
   -- Mode Sets
   --
   sets.Idle = {
-    -- main="Mpaca's Staff",
-    -- sub="Khonsu",
     ammo="Homiliary",
-    head="Befouled Crown",
-    body="Arbatel Gown +2",      -- 12 DT
+    head="Nyame Helm",           -- 8 DT
+    body="Arbatel Gown +3",      -- 13 DT
     hands="Nyame Gauntlets",     -- 7 DT
-    legs="Assid. Pants +1",
+    legs="Nyame Flanchard",      -- 8 DT
     feet="Nyame Sollerets",      -- 7 DT
-    neck="Loricate Torque +1",   -- 6 DT
+    neck="Loricate Torque +1",   -- 6 DT   -- Sibyl Scarf?
     waist="Fucho-no-Obi",
-    left_ear="Odnowa Earring +1",
-    right_ear="Etiolation Earring",
-    left_ring="Defending Ring",  -- 10 DT
+    left_ear="Odnowa Earring +1",-- 3 DT
+    right_ear="Eabani Earring",
+    left_ring=gear.stikini.left,
     right_ring=gear.stikini.right,
     back=gear.cape.nuke          -- 10 PDT
-  }
-  sets.Idle_Submlimation = set_combine(sets.Idle, {
+  }                              -- total 62
+  sets.Idle_Submlimation = {
+    ammo="Homiliary",
+    head="Nyame Helm",           -- 8 DT
     body="Peda. Gown +3",
-    waist="Embla Sash"
-  })
+    hands="Nyame Gauntlets",     -- 7 DT
+    legs="Nyame Flanchard",      -- 8 DT
+    feet="Nyame Sollerets",      -- 7 DT
+    neck="Loricate Torque +1",   -- 6 DT
+    waist="Embla Sash",
+    left_ear="Odnowa Earring +1",-- 3 DT
+    right_ear="Genmei Earring",  -- 2 PDT
+    left_ring=gear.stikini.left,
+    right_ring=gear.stikini.right,
+    back=gear.cape.nuke          -- 10 PDT
+  }                              -- total 51
 
   -- Base Sets
   --
@@ -76,12 +85,12 @@ function get_sets()
     feet="Amalric Nails +1",  -- 6
     neck="Orunmila's Torque", -- 5
     waist="Embla Sash",       -- 5
-    lear="Loquacious earring",-- 2
-    rear="Etiolation earring",-- 1
+    left_ear="Malignance Earring", -- 4
+    right_ear="Loquacious earring",-- 2
     lring="Kishar Ring",      -- 4
     rring="Weatherspoon Ring +1",-- 6
     back=gear.cape.fastCast   -- 10
-  }                           -- 78
+  }                           -- 80
   sets.Magic.GrimoireFastCast = {
     head="Peda. M.Board +3" -- 13
   }
@@ -94,8 +103,8 @@ function get_sets()
     ammo="Pemphredo Tathlum",
     head="Amalric Coif +1",
     neck="Argute Stole +2",
-    lear="Digni. Earring",
-    rear="Gwati Earring",
+    left_ear="Malignance Earring",
+    right_ear="Digni. Earring",
     body="Amalric Doublet +1",
     hands="Nyame Gauntlets",
     left_ring=gear.stikini.left,
@@ -114,49 +123,51 @@ function get_sets()
   --
   sets.Magic.elemental = {}
   sets.Magic.elemental.Normal = {
-    -- main={ name="Mpaca's Staff", priority=2 },
-    -- sub={ name="Enki Strap", priority=1 }, 
     main="Bunzi's Rod",
     sub="Ammurapi Shield",
     ammo="Pemphredo Tathlum",
-    head="C. Palug Crown",
-    body="Amalric Doublet +1",
-    hands="Amalric Gages +1",
-    legs="Amalric Slops +1",
-    feet="Amalric Nails +1",
-    neck="Sanctity Necklace",
-    waist="Eschan Stone",
-    left_ear="Regal Earring",
-    right_ear="Malignance Earring",
+    head="Arbatel bonnet +3",
+    body="Agwu's Robe",
+    hands="Arbatel Bracers +3",
+    legs="Agwu's Slops",
+    feet="Arbatel Loafers +3",
+    neck="Argute Stole +2",
+    waist="Sacro Cord",
+    left_ear="Malignance Earring",
+    right_ear="Regal Earring",
     left_ring="Freke Ring",
-    right_ring="Shiva Ring +1",
-    back=gear.cape.nuke,
+    right_ring="Metamorph Ring +1",
+    back=gear.cape.nuke
   }
-  sets.Magic.elemental.MagicBurst = set_combine(sets.Magic.elemental.Normal, {
-    main="Bunzi's Rod",
+  sets.Magic.elemental.MagicBurst = {
+    main="Bunzi's Rod",                    -- MB +10
     sub="Ammurapi Shield",
-    head="Peda. M.Board +3",               -- MB2 +4
+    ammo="Pemphredo Tathlum",
+    head="Peda. M.Board +3",               --        MB2 +4
     body="Agwu's Robe",                    -- MB +10
-    hands="Agwu's Gages",                  -- MB +8, MB2 +1
+    hands="Agwu's Gages",                  -- MB +8, MB2 +5
     legs="Agwu's Slops",                   -- MB +9
-    feet="Agwu's Pigaches",                -- MB +7
-    neck="Argute Stole +2",                -- MB +7
-    right_ring="Mujin Band"                -- MB2 +5
-  })                                       -- TOTALS
-                                           -- MB +41 (over)
-                                           -- MB2 +11
-
+    feet="Arbatel Loafers +3",             --        MB2 +5
+    neck="Argute Stole +2",                -- MB +10
+    waist="Sacro Cord",
+    left_ear="Malignance Earring",
+    right_ear="Regal Earring",
+    left_ring="Freke Ring",
+    right_ring="Metamorph Ring +1",
+    back=gear.cape.nuke
+  }                                        -- MB +47 MB2 +14
+  
   -- Enfeebling Magic
   --
   sets.Magic.Enfeebling = {
     main="Musa",
     sub="Khonsu",
     ammo="Pemphredo Tathlum",
-    head="Amalric Coif +1",
-    body="Amalric Doublet +1",
+    head="Arbatel Bonnet +3",
+    body="Arbatel Gown +3",
     hands="Kaykaus Cuffs +1",
     legs="Chironic Hose",
-    feet="Jhakri Pigaches +2",
+    feet="Arbatel Loafers +3",
     neck="Argute Stole +2",
     waist="Obstinate Sash",
     lear="Digni. Earring",
@@ -196,7 +207,23 @@ function get_sets()
     main="Musa",
     sub="Khonsu",
     head="Telchine Cap",
-    body="Telchine Chasuble",
+    body="Peda. Gown +3",
+    hands="Telchine Gloves",
+    legs="Telchine Braconi",
+    feet="Telchine Pigaches",
+    neck="Incanter's Torque",
+    waist="Embla Sash",
+    left_ear="Mimir Earring",
+    right_ear="Andoaa Earring",
+    left_ring=gear.stikini.left,
+    right_ring=gear.stikini.right,
+    back="Lugh's Cape",
+  }
+  sets.Magic.PhalanxOthers = {
+    main="Musa",
+    sub="Khonsu",
+    head="Telchine Cap",
+    body="Peda. Gown +3",
     hands="Telchine Gloves",
     legs="Telchine Braconi",
     feet="Telchine Pigaches",
@@ -255,8 +282,8 @@ function get_sets()
   )
   -- Cursna chance to clear doom affected by Healing Magic and Cursna Effect+ gear
   sets.Magic.Cursna = {
-    main="Gada",
-    sub="Ammurapi Shield",
+    -- main="Gada",
+    -- sub="Ammurapi Shield",
     ammo="Sapience Orb",
     head="Vanya Hood",
     body="Kaykaus Bliaut +1",
@@ -265,27 +292,30 @@ function get_sets()
     feet="Vanya Clogs",
     neck="Malison Medallion",
     waist="Witful Belt",
-    left_ear="Loquac. Earring",
-    right_ear="Meili Earring",
+    left_ear="Meili Earring",
+    right_ear="Loquac. Earring",
     left_ring="Haoma's Ring",
     right_ring="Haoma's Ring",
     back="Oretan. Cape +1",
   }
-  sets.Magic.SpellInterrupt = {
-    ammo="Staunch Tathlum +1",       -- 11
-    -- head=augments.taeon.head.SID,    -- 7
-    -- body="Malignance Tabard",        -- DT
-    -- hands="Malignance Gloves",       -- DT
-    -- legs="Carmine Cuisses +1",       -- 20
-    -- feet=augments.taeon.feet.phalanx,-- 9
-    neck="Loricate Torque +1",       -- DT
-    waist="Rumination Sash",         -- 10
-    left_ear="Odnowa Earring +1",    -- DT
-    right_ear="Magnetic Earring",    -- 8
-    left_ring="Defending Ring",      -- DT
-    right_ring="Gelatinous Ring +1", -- DT
-    back=gear.cape.nuke              -- DT
-  }
+
+  sets.Magic.SpellInterrupt = {  --        8 SRD (merit)
+    main="Bunzi's Rod",
+    sub="Culminus",              --        10 SRD
+    ammo="Staunch Tathlum +1",   -- 3 DT   11 SRD
+    head="Agwu's Cap",           --        10 SRD
+    body="Arbatel Gown +3",      -- 13 DT
+    hands="Chironic Gloves",     --        31 SIRD
+    legs="Nyame Flanchard",      -- 8 DT
+    feet="Nyame Sollerets",      -- 7 DT
+    neck="Loricate Torque +1",   -- 6 DT   5 SRD
+    waist="Rumination Sash",     --        10 SRD
+    left_ear="Odnowa Earring +1",-- 3 DT
+    right_ear="Magnetic Earring",--        8 SRD
+    left_ring="Freke Ring",      --        10 SRD
+    right_ring="Gelatinous Ring +1",-- 7 DT
+    back=gear.cape.nuke          -- 10 PDT
+  }                              -- 57 PDT 103 SRD
 
   -- Job Abilities
   --
@@ -438,11 +468,19 @@ function midcast(spell)
 
   -- Nukes
   elseif spell.skill == 'Elemental Magic' then
-    -- equip(sets.Magic.elemental[NukingMode.current])
-    equip(set_for_elemental_magic(spell))
-    equip_elemental_waist(spell)
+    if Magic_SC_Spell:contains(spell.english) then
+      equip(sets.Magic.SpellInterrupt)
+    else
+      equip(set_for_elemental_magic(spell))
+      equip_elemental_waist(spell)
+    end
   end
 end
+
+Magic_SC_Spell = S{
+  'Fire', 'Thunder', 'Blizzard', 'Water', 'Stone', 'Water',
+  'Cryohelix', 'Pyrohelix', 'Anemohelix', 'Geohelix', 'Ionohelix', 'Hydrohelix', 'Luminohelix', 'Noctohelix'
+}
 
 function chat(msg)
   add_to_chat(122, msg)
@@ -453,10 +491,6 @@ function set_for_elemental_magic(spell)
 
   if buffactive['Klimaform'] and spell.element == world.weather_element then
     set.feet = "Arbatel Loafers +3"
-
-    if NukingMode.current == "MagicBurst" then
-      set.left_ring = "Locus Ring"
-    end
   end
 
   if buffactive['Ebullience'] then
@@ -479,13 +513,9 @@ function buff_change(buff, gain, bufftable)
     send_command('input /echo <<<<<<<<<<- Submimation Ready! ->>>>>>>>>>')
   end
 
-  -- if buff == 'Sublimation: Activated' then
-  --   if gain then
-  --     equip(sets.Idle_Submlimation)
-  --   else
-  --     equip(sets.Idle)
-  --   end
-  -- end
+  if buff == 'Klimaform' and not gain then
+    add_to_chat(122, ' <<<<<<<<<<- Klimaform Down ->>>>>>>>>>')
+  end
 end
 
 function status_change(new, old)

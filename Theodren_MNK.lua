@@ -3,20 +3,9 @@ include('Modes.lua')
 include('augments.lua')
 include('utils.lua')
 
---[[
-# TODO List
-
-Reforges:
-AF Head: Focus duration+
-Relic Legs: TP
-Relic Head: Tornado Kick, Howling Fist, Enhances Penance
-Relic Feet: Mantra HP+
-Empy Body: Impetus TP, Impetus Victory Smite
---]]
-
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'FullDD', 'HybridLight', 'HybridHeavy'}
-  WeaponMode = M{['description'] = 'Weapon Mode', 'Auto', 'Godhands', 'Verethragna'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'FullDD', 'HybridLight', 'HybridHeavy', 'SubtleBlowDT', 'Ngai'}
+  WeaponMode = M{['description'] = 'Weapon Mode', 'Verethragna', 'Godhands', 'Auto'}
   send_command("bind ^f1 gs c cycle PrimaryMode")
   send_command("bind ^f2 gs c cycle WeaponMode")
 end
@@ -108,6 +97,21 @@ function get_sets()
     right_ring="Defending Ring",
     back=gear.ambuscape.counter -- 10 counter
   }
+  -- sets.modes.Ngai = {
+  --   ammo="Coiste Bodhar",
+  --   head="Nyame Helm",          -- 7 DT
+  --   body="Mpaca's Doublet",     -- 10 PDT
+  --   hands="Nyame Gauntlets",    -- 7 DT
+  --   legs="Bhikku Hose +3",      -- 14 DT
+  --   feet="Nyame Sollerets",     -- 7 DT
+  --   neck="Monk's Nodowa +2",
+  --   waist="Moonbow Belt +1",
+  --   left_ear="Sherida Earring",
+  --   right_ear="Schere Earring",
+  --   left_ring="Shadow Ring",
+  --   right_ring="Niqmaddu Ring",
+  --   back=gear.ambuscape.daDex   -- 10 PDT
+  -- }                             -- 55 PDT
 
   -- Misc
   sets.Idle = {
@@ -115,30 +119,100 @@ function get_sets()
     head="Nyame Helm",
     body="Nyame Mail",
     hands="Nyame Gauntlets",
-    legs="Nyame Flanchard",
+    legs="Bhikku Hose +3",
     feet="Hermes' Sandals",
     neck="Loricate Torque +1",
-    waist="Moonbow Belt +1",
+    waist="Ask Sash",
     left_ear="Sherida Earring",
     right_ear="Eabani Earring",
     left_ring="Gere Ring",
-    right_ring="Odnowa Earring +1",
+    right_ring="Defending Ring",
     back=gear.ambuscape.daDex
   }
 
   -- JAs
   sets.JAs = {}
-  sets.JAs.Footwork = { feet="Shukuyu Sune-Ate" }
+  sets.JAs.Footwork = { feet="Bhikku Gaiters +3" }
+  sets.JAs['Hundred Fists'] = { legs="Hes. Hose +2" }
   sets.JAs.Provoke = {
-    ammo="Sapience Orb",           -- 2
-    head="Halitus Helm",           -- 8
-    left_ear="Trux Earring",       -- 5
-    right_ear="Cryptic Earring",   -- 4
-    body="Emet Harness +1",        -- 10
-    left_ring="Supershear Ring",   -- 5
-    right_ring="Eihwaz Ring",      -- 5
-    neck="Moonlight Necklace",     -- 15
-    waist="Kasiri Belt",           -- 3
+    ammo="Sapience Orb",
+    head="Halitus Helm",
+    body="Emet Harness +1",
+    hands="Kurys Gloves",
+    legs="Bhikku Hose +3",
+    feet="Nyame Sollerets",
+    neck="Loricate Torque +1",
+    left_ear="Trux Earring",
+    right_ear="Cryptic Earring",
+    left_ring="Supershear Ring",
+    right_ring="Eihwaz Ring",
+    waist="Kasiri Belt",
+    back=gear.ambuscape.daDex
+  }
+  sets.JAs['Perfect Counter'] = sets.JAs.Provoke
+  sets.JAs['Chi Blast'] = {
+    ammo="Sapience Orb",
+    head="Hes. Crown +2", -- penance
+    body="Emet Harness +1",
+    hands="Kurys Gloves",
+    legs="Bhikku Hose +3",
+    feet="Nyame Sollerets",
+    neck="Moonlight Necklace",
+    left_ear="Trux Earring",
+    right_ear="Cryptic Earring",
+    left_ring="Supershear Ring",
+    right_ring="Eihwaz Ring",
+    waist="Kasiri Belt",
+    back=gear.ambuscape.daDex
+  }
+  sets.JAs.Mantra = {
+    ammo="Sapience Orb",
+    -- head="Halitus Helm",
+    -- body="Emet Harness +1",
+    -- hands="Kurys Gloves",
+    -- legs="Bhikku Hose +3",
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Hes. Gaiters +2", -- mantra
+    neck="Loricate Torque +1",
+    left_ear="Trux Earring",
+    right_ear="Cryptic Earring",
+    left_ring="Supershear Ring",
+    right_ring="Eihwaz Ring",
+    waist="Kasiri Belt",
+    back=gear.ambuscape.daDex
+  }
+  -- sets.JAs.Mantra = {
+  --   ammo="Sapience Orb",
+  --   head="Nyame Helm",
+  --   body="Nyame Mail",
+  --   hands="Nyame Gauntlets",
+  --   legs="Nyame Flanchard",
+  --   feet="Hes. Gaiters +2", -- mantra
+  --   neck="Dualism Collar +1",
+  --   waist="Oneiros Belt",
+  --   left_ear="Odnowa Earring +1",
+  --   right_ear="Etiolation Earring",
+  --   left_ring="Eihwaz Ring",
+  --   right_ring="Gelatinous Ring +1",
+  --   back=gear.ambuscape.daDex
+  -- }
+  sets.JAs.Chakra = {
+    ammo="Sapience Orb",
+    head="Nyame Helm",
+    body="Anch. Cyclas +1", -- chakra
+    hands="Hes. Gloves +2", -- chakra
+    legs="Bhikku Hose +3",
+    feet="Nyame Sollerets",
+    neck="Loricate Torque +1",
+    left_ear="Odnowa Earring +1",
+    right_ear="Eabani Earring",
+    left_ring="Gelatinous Ring +1",
+    right_ring="Defending Ring",
+    waist="Moonbow Belt +1",
+    back=gear.ambuscape.daDex
   }
 
   -- Magic
@@ -165,6 +239,12 @@ function get_sets()
     left_ring="Defending Ring",
     right_ring="Gelatinous Ring +1",
     back=gear.ambuscape.daDex
+  }
+  sets.Magic.Phalanx = {
+    body=augments.herc.body.phalanx,
+    hands=augments.taeon.hands.phalanx,
+    legs=augments.taeon.legs.phalanx,
+    feet=augments.taeon.feet.phalanx
   }
 
   -- Weapon Skills
@@ -268,6 +348,57 @@ function get_sets()
   --   right_ring="Niqmaddu Ring",
   --   back=gear.ambuscape.wsd
   -- }
+
+  sets.modes.Ngai = {
+    ammo="Coiste Bodhar",
+    head="Nyame Helm",          -- 7 DT
+    -- body="Nyame Mail",     -- 9 DT
+    -- hands="Nyame Gauntlets",    -- 7 DT
+    body="Mpaca's Doublet",
+    hands="Mpaca's Gloves",
+    legs="Bhikku Hose +3",
+    feet="Nyame Sollerets",     -- 7 DT
+    neck="Monk's Nodowa +2",
+    waist="Moonbow Belt +1",   -- 6 DT
+    left_ear="Sherida Earring",
+    right_ear="Schere Earring",
+    left_ring="Shadow Ring",
+    right_ring="Niqmaddu Ring",
+    back=gear.ambuscape.daDex   -- 10 PDT
+  }                             -- 55 PDT
+
+  sets.WS.Ngai = {}
+  sets.WS.Ngai['Victory Smite'] = {
+    ammo="Coiste Bodhar",
+    head="Mpaca's Cap",         -- 7 PDT
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",     -- 7 DT
+    neck="Fotia Gorget",
+    waist="Moonbow Belt +1",    -- 6 DT
+    left_ear="Sherida Earring",
+    right_ear="Schere Earring",
+    left_ring="Gere Ring",
+    right_ring="Niqmaddu Ring",
+    back=gear.ambuscape.crit   -- 10 PDT
+  }
+  sets.WS.Ngai['Tornado Kick'] = {
+    ammo="Coiste Bodhar",
+    head="Mpaca's Cap",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    -- feet="Anch. Gaiters +3",
+    feet="Nyame Sollerets",
+    neck="Fotia Gorget",
+    waist="Moonbow Belt +1",
+    left_ear="Moonshade Earring",
+    right_ear="Schere Earring",
+    left_ring="Gere Ring",
+    right_ring="Niqmaddu Ring",
+    back=gear.ambuscape.daStr
+  }
 end
 
 function precast(spell)
@@ -305,8 +436,10 @@ function status_change(new, old)
 end
 
 function set_for_ws(named)
-  if named == 'Victory Smite' and buffactive['Impetus'] then
-    return set_combine(sets.WS[named], { body = "Bhikku Cyclas +2" })
+  if PrimaryMode.value == 'Ngai' then
+    return sets.WS.Ngai[named]
+  elseif named == 'Victory Smite' and buffactive['Impetus'] then
+    return set_combine(sets.WS[named], { body = "Bhikku Cyclas +3" })
   elseif sets.WS[named] then
     return sets.WS[named]
   else
@@ -319,8 +452,8 @@ function set_for_engaged()
 
   set.main = current_weapon()
 
-  if PrimaryMode.value == 'FullDD' and buffactive['Impetus'] then
-    set = set_combine(set, { body = "Bhikku Cyclas +2" })
+  if (PrimaryMode.value == 'FullDD' or PrimaryMode.value == 'HybridLight') and buffactive['Impetus'] then
+    set = set_combine(set, { body = "Bhikku Cyclas +3" })
   end
 
   -- if WeaponMode.value == 'Auto' then
@@ -354,7 +487,11 @@ function set_for_current_mode()
   if player.status == 'Engaged' then
     return set_for_engaged()
   else
-    return set_combine(sets.Idle, { main=current_weapon() })
+    local set = set_combine(sets.Idle, { main=current_weapon() })
+    -- if buffactive['Boost'] then
+    --   set.waist = 'Ask Sash'
+    -- end
+    return set
   end
 end
 

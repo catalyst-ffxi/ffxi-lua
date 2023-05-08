@@ -567,27 +567,27 @@ function midcast(spell)
 end
 
 function aftercast(spell)
-  equip_set_for_current_mode()
+  -- equip_set_for_current_mode()
 
-  -- if player.status == 'Engaged' then
-  --   equip_set_for_current_mode()
-  -- else
-  --   equip(set_combine(
-  --     { main = { name=WeaponMode.current, priority=5 } }, sets.Idle
-  --   ))
-  -- end
+  if player.status == 'Engaged' then
+    equip_set_for_current_mode()
+  else
+    equip(set_combine(
+      { main = { name=WeaponMode.current, priority=5 } }, sets.Idle
+    ))
+  end
 end
 
 function status_change(new, old)
-  equip_set_for_current_mode()
+  -- equip_set_for_current_mode()
 
-  -- if new == 'Engaged' then
-  --   equip_set_for_current_mode()
-  -- else
-  --   equip(set_combine(
-  --     { main = { name=WeaponMode.current, priority=5 } }, sets.Idle
-  --   ))
-  -- end
+  if new == 'Engaged' then
+    equip_set_for_current_mode()
+  else
+    equip(set_combine(
+      { main = { name=WeaponMode.current, priority=5 } }, sets.Idle
+    ))
+  end
 end
 
 function self_command(commandArgs)
