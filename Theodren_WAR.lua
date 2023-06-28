@@ -100,11 +100,11 @@ function get_sets()
   -- JAs
   sets.JAs = {}
   sets.JAs.Aggressor = { head="Pummeler's Mask +1", body="Agoge Lorica +3" }
-  sets.JAs.Berserk = { body="Pumm. Lorica +3", feet="Agoge Calligae", back="Cichol's Mantle" }
+  sets.JAs.Berserk = { body="Pumm. Lorica +3", feet="Agoge Calligae +1", back="Cichol's Mantle" }
   -- sets.JAs.Defender = { hands="Agoge Mufflers +1" }
   sets.JAs['Mighty Strikes'] = { hands="Agoge Mufflers +1" }
   sets.JAs.Warcry = { head="Agoge Mask +3" }
-  sets.JAs['Blood Rage'] = { body="Boii Lorica +2" }
+  sets.JAs['Blood Rage'] = { body="Boii Lorica +3" }
 
   -- This is useless - mufflers must be on during TP which just isn't worth doing.
   -- https://www.ffxiah.com/forum/topic/17977/restraint-and-ravager-mufflers-2#1116664
@@ -183,11 +183,11 @@ function get_sets()
   }
   sets.WS["Ukko's Fury"] = { -- 2-Hit : 80% STR : Crit Rate
     ammo="Yetshila +1",
-    head="Agoge Mask +3",
+    head="Boii Mask +2",
     body="Hjarrandi Breast.",
     hands="Flam. Manopolas +2",
     legs="Boii Cuisses +3",
-    feet="Pummeler's Calligae +3",
+    feet="Boii Calligae +3",
     neck="War. Beads +2",
     waist="Sailfi Belt +1",
     left_ear="Boii Earring +1",
@@ -198,11 +198,11 @@ function get_sets()
   }
   sets.WS['Raging Rush'] = { -- 3-Hit : 50% STR : Crit Rate
     ammo="Yetshila +1",
-    head="Flam. Zucchetto +2",
+    head="Boii Mask +2",
     body="Hjarrandi Breast.",
     hands="Flam. Manopolas +2",
     legs="Boii Cuisses +3",
-    feet="Pummeler's Calligae +3",
+    feet="Boii Calligae +3",
     neck="War. Beads +2",
     waist="Sailfi Belt +1",
     left_ear="Boii Earring +1",
@@ -397,7 +397,8 @@ end
 function set_for_ws(named)
   if buffactive['Mighty Strikes'] then
     return set_combine(sets.WS[named], {
-      ammo="Yetshila +1"
+      ammo="Yetshila +1",
+      feet="Boii Calligae +3"
     })
   else
     return sets.WS[named]

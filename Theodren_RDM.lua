@@ -32,12 +32,12 @@ function get_sets()
   gear = {
     sucellos = {
       nuke = { name="Sucellos's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10',}},
-      enfeeble = { name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','Enmity-10','Phys. dmg. taken-10%'}},
+      enfeeble = { name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Phys. dmg. taken-10%'}},
       singleWield = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
       dualWield = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dual Wield"+10',}},
       cdc = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Crit.hit rate+10',}},
       savage = { name="Sucellos's Cape", augments={'STR+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
-      sanguine = { name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','Weapon skill damage +10%',}},
+      sanguine = { name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','Weapon skill damage +10%',}}
     },
     stikini = {
       left = { name="Stikini Ring +1", bag="wardrobe1" },
@@ -380,10 +380,10 @@ function get_sets()
 
   -- Dark
   sets.Magic.Stun = {
-    main="Crocea Mors",        -- 20 fc
+    main="Crocea Mors",            -- 20 fc
     sub="Ammurapi Shield",
     ammo="Regal Gem",
-    head="Atrophy Chapeau +3", --16 fc
+    head="Atrophy Chapeau +3",     --16 fc
     body="Atrophy Tabard +3",
     hands="Lethargy Gantherots +3",
     legs="Lethargy Fuseau +3",
@@ -391,31 +391,17 @@ function get_sets()
     neck="Duelist's Torque +2",
     waist="Obstinate Sash",
     left_ear="Regal Earring",
-    right_ear="Malignance Earring",-- 4 fc
+    right_ear="Lethargy Earring +1",-- 8 fc
     left_ring=gear.stikini.left,
     right_ring=gear.stikini.right,
-    back=gear.sucellos.nuke
-  }                             -- 40 + 30 + 8 = 78 fc
-  sets.Magic['Absorb-TP'] = sets.Magic.Stun
-  sets.Magic.Aspir = {
-    main="Crocea Mors",
-    sub="Ammurapi Shield",
-    ammo="Regal Gem",
-    head="Atrophy Chapeau +3",
-    body="Atrophy Tabard +3",
-    hands="Jhakri Cuffs +2",
-    legs="Chironic Hose",
-    -- feet=augments.merlinic.crackows.nuke,
-    feet="Vitiation Boots +3",
-    neck="Erra Pendant",
-    waist="Fucho-no-Obi",
-    left_ear="Regal Earring",
-    right_ear="Malignance Earring",
-    left_ring=gear.stikini.left,
-    right_ring=gear.stikini.right,
-    back=gear.sucellos.nuke
-  }
-  sets.Magic.Drain = sets.Magic.Aspir
+    back=gear.sucellos.enfeeble     -- 10 fc
+  }                                 -- 
+  sets.Magic['Absorb-TP'] = set_combine(sets.Magic.Stun, {
+    neck="Erra Pendant"
+  })
+  sets.Magic.Aspir = sets.Magic['Absorb-TP']
+  sets.Magic.Drain = sets.Magic['Absorb-TP']
+
   sets.Magic.Bio = { -- DOT depends on dark magic skill, but attack down is static
     neck="Erra Pendant",
     left_ring=gear.stikini.left,

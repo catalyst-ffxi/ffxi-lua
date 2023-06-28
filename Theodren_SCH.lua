@@ -259,7 +259,7 @@ function get_sets()
     -- sub="Ammurapi Shield",
     -- main="",
     -- sub="",
-    ammo="Pemphredo Tathlum",
+    ammo="Staunch Tathlum +1",
     head="Kaykaus Mitra +1",
     body="Kaykaus Bliaut +1",
     hands="Kaykaus Cuffs +1",
@@ -298,7 +298,6 @@ function get_sets()
     right_ring="Haoma's Ring",
     back="Oretan. Cape +1",
   }
-
   sets.Magic.SpellInterrupt = {  --        8 SRD (merit)
     main="Bunzi's Rod",
     sub="Culminus",              --        10 SRD
@@ -440,7 +439,7 @@ function midcast(spell)
       -- elseif eng == 'Phalanx' then
       --   equip(sets.Magic.EnhancingPhalanx)
       else
-        equip(sets.Magic.EnhancingDuration)
+        equip(set_combine(sets.Magic.SpellInterrupt, sets.Magic.EnhancingDuration))
         if string.find(eng, 'Regen') then
           equip(sets.Magic.EnhancingRegen)
         elseif eng == 'Refresh' then
@@ -478,7 +477,7 @@ function midcast(spell)
 end
 
 Magic_SC_Spell = S{
-  'Fire', 'Thunder', 'Blizzard', 'Water', 'Stone', 'Water',
+  'Fire', 'Thunder', 'Blizzard', 'Water', 'Stone', 'Water', 'Aero',
   'Cryohelix', 'Pyrohelix', 'Anemohelix', 'Geohelix', 'Ionohelix', 'Hydrohelix', 'Luminohelix', 'Noctohelix'
 }
 

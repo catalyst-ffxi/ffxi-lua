@@ -51,6 +51,8 @@ function get_sets()
   -- Magic
   sets.Magic = {}
   sets.Magic.FastCast = {
+    main="Mpaca's Staff",          -- 5
+    sub="Enki Strap",
     ammo="Sapience Orb",           -- 2
     head="Amalric Coif +1",        -- 11
     body="Agwu's Robe",            -- 8
@@ -63,7 +65,7 @@ function get_sets()
     right_ear="Loquacious earring",-- 2
     left_ring="Kishar Ring",       -- 4
     back=gear.taranus.fastCast,    -- 10
-  }                                -- 68 fc
+  }                                -- 73 fc
   sets.Magic.QuickCast = set_combine(sets.Magic.FastCast, {
     right_ring="Weatherspoon Ring +1",-- 6 FC 4 QC
   })
@@ -91,7 +93,7 @@ function get_sets()
   sets.Magic.Elemental = {}
   sets.Magic.Elemental.FreeNuke = {
     ammo="Pemphredo Tathlum",
-    head="Wicce Petasos +2",
+    head="Wicce Petasos +3",
     body="Amalric Doublet +1",
     hands="Amalric Gages +1",
     legs="Amalric Slops +1",
@@ -201,9 +203,9 @@ function get_sets()
     feet="Nyame Sollerets",
     neck="Sanctity Necklace",
     waist="Windbuffet Belt +1",
-    left_ear="Brutal Earring",
+    left_ear="Cessance Earring",
     right_ear="Telos Earring",
-    left_ring="Hetairoi Ring",
+    left_ring="Petrov Ring",
     right_ring="Chirich Ring +1",
     back="Taranus's Cape"
   }
@@ -320,10 +322,7 @@ function midcast(spell)
   elseif spell.skill == 'Elemental Magic' then
     equip(sets.Magic.Elemental[NukingMode.current])
     equip_elemental_waist(spell)
-    if spell.element == 'Earth' then
-      equip({neck = 'Quanpur Necklace'})
-    end
-    if should_use_spaekonas() then
+    if player.mp < 700 then
       equip({body = "Spaekona's Coat +3"})
     end
   
@@ -396,11 +395,4 @@ function auto_aspir()
   elseif aspir_1 == 0 then
     send_command('@input /ma "Aspir" <t>')
   end
-end
-
-function should_use_spaekonas()
-  if player.mp < 700 then
-    return true
-  end
-  return false
 end

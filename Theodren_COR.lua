@@ -67,9 +67,9 @@ function get_sets()
     neck="Loricate Torque +1",        -- 6 DT
     waist="Flume Belt +1",            -- 4 PDT
     left_ear="Etiolation Earring",    -- 3 MDT
-    right_ear="Odnowa Earring +1",    -- 2 MDT
+    right_ear="Sanare Earring",      -- 2 MDB
     left_ring="Defending Ring",       -- 10 DT
-    right_ring="Purity Ring",         -- 4 MDT, 10 Meva
+    right_ring="Shadow Ring",         --
     back=gear.camulus.meleeTp,        -- 10 PDT
   }                                   --
   sets.modes = {}
@@ -160,7 +160,7 @@ function get_sets()
                                       -- Total:  50    46
   }
   sets.TripleShot = set_combine(sets.Preshot, {
-    body="Chasseur's Frac +2",
+    body="Chasseur's Frac +3",
     hands="Lanun Gants +3"
   })
   sets.Ranged = {
@@ -386,7 +386,7 @@ function precast(spell)
   if spell.type == 'CorsairRoll' then
     equip(sets.JAs.PhantomRoll)
     if spell.english == "Tactician's Roll" then
-      equip({ body="Chasseur's Frac +2" })
+      equip({ body="Chasseur's Frac +3" })
     end
 
   elseif spell.english == "Double-Up" then
