@@ -25,6 +25,10 @@ function get_sets()
       tp={ name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
       ws={ name="Rosmerta's Cape", augments={'STR+20','Accuracy+20 Attack+20','Weapon skill damage +10%',}},
       fast={ name="Rosmerta's Cape", augments={'MND+20','"Fast Cast"+10',}},
+    },
+    stikini = {
+      left = { name="Stikini Ring +1", bag="wardrobe1" },
+      right = { name="Stikini Ring +1", bag="wardrobe2" }
     }
   }
 
@@ -38,10 +42,10 @@ function get_sets()
     neck="Loricate Torque +1",         -- 6 DT
     -- waist="Flume Belt +1",             -- 4 PDT
     waist="Fucho-no-obi",
-    left_ear="Eabani Earring",         -- Meva
+    left_ear="Sanare Earring",         -- Meva
     right_ear="Odnowa Earring +1",     -- 3 DT
-    left_ring="Stikini Ring +1",       -- Refresh
-    right_ring="Stikini Ring +1",      -- Refresh
+    left_ring=gear.stikini.left,       -- 1 Refresh
+    right_ring=gear.stikini.right,     -- 1 Refresh
     back=gear.rosmerta.tp              -- 10 PDT
   }                                    -- 47 PDT
 
@@ -163,22 +167,20 @@ function get_sets()
     sets.Magic.FastCast, { body="Hashishin Mintan +3" }
   )
   sets.Magic.SpellInterrupt = {
-    ammo="Staunch Tathlum +1",       -- 11
-    head="Aya. Zucchetto +2",        -- PDT
-    neck="Loricate Torque +1",       -- DT
-    lear="Odnowa Earring +1",        -- MDT/HP
-    rear="Magnetic Earring",         -- 8
-    body="Malignance Tabard",        -- PDT
-    hands="Rawhide Gloves",          -- 15
-    left_ring="Defending Ring",      -- DT
-    right_ring="Gelatinous Ring +1", -- PDT
-    back=gear.rosmerta.tp,           -- PDT
-    waist="Rumination Sash",         -- 10
-    legs="Carmine Cuisses +1",       -- 20
-    feet=augments.taeon.feet.phalanx -- 9
-                                     -- 8 Merit
-                                     -- 81 Total
-  }
+    ammo="Staunch Tathlum +1",       -- 11 SIRD 3 DT
+    head=augments.taeon.head.SID,    -- 7 SIRD
+    body="Nyame Mail",               -- 9 DT
+    hands="Nyame Gauntlets",         -- 7 DT
+    legs="Carmine Cuisses +1",       -- 20 SIRD
+    feet=augments.taeon.feet.phalanx,-- 10 SIRD
+    neck="Loricate Torque +1",       -- 6 DT
+    waist="Rumination Sash",         -- 10 SIRD
+    lear="Odnowa Earring +1",        -- 3 DT
+    rear="Magnetic Earring",         -- 8 SIRD
+    left_ring="Defending Ring",      -- 10 DT
+    right_ring="Gelatinous Ring +1", -- 7 PDT
+    back=gear.rosmerta.tp,           -- 10 PDT
+  }                                  -- 66 SIRD, 55 PDT
 
   -- Blue Magic
   sets.BlueMagic = {}
@@ -194,9 +196,8 @@ function get_sets()
     -- waist="Acuity Belt +1" todo augment this
     left_ear="Crep. Earring",
     right_ear="Hashi. Earring +1",
-    left_ring="Stikini Ring +1",
-    right_ring="Weather. Ring +1",
-    -- right_ring="Stikini Ring +1",
+    left_ring=gear.stikini.left,
+    right_ring=gear.stikini.right,
     back="Aurist's Cape +1"
   }
   sets.BlueMagic.Mab = {
@@ -204,24 +205,24 @@ function get_sets()
     head="Hashishin Kavuk +3",
     body="Hashishin Mintan +3",
     hands="Hashishin Bazubands +3",
-    legs="Amalric Slops +1",
+    legs="Hashishin Tayt +3",
     feet="Hashishin Basmak +3",
     neck="Sanctity Necklace",
     waist="Orpheus's Sash",
     left_ear="Regal Earring",
     right_ear="Friomisi Earring",
     left_ring="Shiva Ring +1",
-    right_ring="Stikini Ring +1",
+    right_ring=gear.stikini.right,
     back=gear.rosmerta.mab -- INT/MAB/Macc/Mdmg
   }
   sets.BlueMagic.Physical = {
-    -- ammo="Falcon Eye", -- Stored
-    head="Jhakri Coronal +2",
-    body="Jhakri Robe +2",
-    hands="Jhakri Cuffs +2",
-    legs="Jhakri Slops +2",
-    feet="Jhakri Pigaches +2",
-    neck="Caro Necklace",
+    ammo="Coiste Bodhar",
+    head="Hashishin Kavuk +3",
+    body="Hashishin Mintan +3",
+    hands="Hashishin Bazubands +3",
+    legs="Hashishin Tayt +3",
+    feet="Hashishin Basmak +3",
+    neck="Rep. Plat. Medal",
     waist="Sailfi Belt +1",
     left_ear="Telos Earring",
     right_ear="Dignitary's Earring",
@@ -231,17 +232,17 @@ function get_sets()
   }
   sets.BlueMagic.Healing = {
     -- ammo="Quartz Tathlum +1",        -- MND
-    head="Aya. Zucchetto +2",        -- MND/VIT
+    head="Hashishin kavuk +3",      -- MND/VIT
     body="Vrikodara Jupon",          -- 13%
     hands="Telchine Gloves",         -- 18%
-    legs="Psycloth Lappas",          -- 36 MND
+    legs="Hashishin Tayt +3",        -- MND/VIT
     feet="Medium's Sabots",          -- 10%
     neck="Phalaina Locket",          -- 4%
     waist="Luminary Sash",           -- MND
     left_ear="Regal Earring",        -- MND
     right_ear="Mendi. Earring",      -- 5%
-    left_ring="Stikini Ring +1",     -- 11 skill 8 MND
-    right_ring="Stikini Ring +1",    -- 11 skill 8 MND
+    left_ring=gear.stikini.left,     -- 11 skill 8 MND
+    right_ring=gear.stikini.right,   -- 11 skill 8 MND
     back=gear.rosmerta.fast,         -- MND
                              -- Total: +50% Cure Potency
   }
@@ -314,21 +315,36 @@ function get_sets()
     left_ear="Ishvara Earring",
     right_ear="Moonshade Earring",
     left_ring="Epaminondas's Ring",
-    right_ring="Shukuyu Ring",
+    right_ring="Ephramad's Ring",
+    back=gear.rosmerta.ws
+  }
+  sets.WS['Expiacion'] = {
+    ammo="Coiste Bodhar",
+    head="Hashishin Kavuk +3",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
+    neck="Mirage Stole +2",
+    waist="Sailfi Belt +1",
+    left_ear="Ishvara Earring",
+    right_ear="Moonshade Earring",
+    left_ring="Epaminondas's Ring",
+    right_ring="Ephramad's Ring",
     back=gear.rosmerta.ws
   }
   sets.WS['Requiescat'] = {}
   sets.WS['Chant du Cygne'] = {
     ammo="Yetshila +1",
     head=augments.adhemar.head.pathA,
-    body="Ayanmo Corazza +2",
-    hands="Jhakri Cuffs +2",
-    legs="Samnuha Tights",
-    feet="Thereoid Greaves",
+    body="Gleti's Cuirass",
+    hands="Gleti's Gauntlets",
+    legs="Gleti's Breeches",
+    feet="Nyame Gauntlets",
     neck="Fotia Gorget",
     waist="Fotia Belt",
-    left_ear="Mache Earring +1",
-    right_ear="Brutal Earring",
+    left_ear="Brutal Earring",
+    right_ear="Mache Earring +1",
     left_ring="Ilabrat Ring",
     right_ring="Epona's Ring",
     back=gear.rosmerta.tp
@@ -369,20 +385,6 @@ function get_sets()
 
   sets.WS['Black Halo'] = sets.WS['Savage Blade']
   sets.WS['Judgment'] = sets.WS['Savage Blade']
-
-  -- Spell Learning
-  -- sets.learn={
-  --   main="Wax Sword",
-  --   ammo="Staunch Tathlum +1",
-  --   hands="Magus Bazubands",
-  --   neck="Loricate Torque +1",
-  --   waist="Flume Belt +1",
-  --   left_ear="Brutal Earring",
-  --   right_ear="Telos Earring",
-  --   left_ring="Ayanmo Ring",
-  --   right_ring="Defending Ring",
-  --   back="Solemnity Cape",
-  -- }
 end
 
 function precast(spell)
@@ -435,11 +437,11 @@ function midcast(spell)
     equip(sets.BlueMagic.Macc)
 
   elseif spell.action_type == 'Magic' then
-    equip(sets.Magic.SpellInterrupt)
-  end
-
-  if buffactive['Diffusion'] and spell.target.type == 'SELF' then
-    equip(sets.BlueMagic.Diffusion)
+    if buffactive['Diffusion'] and spell.target.type == 'SELF' then
+      equip(set_combine(sets.Magic.SpellInterrupt, sets.BlueMagic.Diffusion))
+    else
+      equip(sets.Magic.SpellInterrupt)
+    end
   end
 end
 
@@ -460,11 +462,11 @@ function set_for_current_mode()
 end
 
 function set_for_ws(named)
-  if sets.WS[named] then
+  -- if sets.WS[named] then
     return sets.WS[named]
-  else
-    return sets.WS['Savage Blade']
-  end
+  -- else
+  --   return sets.WS['Savage Blade']
+  -- end
 end
 
 function self_command(commandArgs)

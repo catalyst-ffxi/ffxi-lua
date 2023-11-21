@@ -35,7 +35,6 @@ function get_sets()
     head="Flam. Zucchetto +2",
     body="Gleti's Cuirass",
     hands="Pel. Vambraces +3",
-    -- legs=augments.valorous.legs.stp,
     legs="Flamma Dirs +2",
     feet="Flam. Gambieras +2",
     neck="Dgn. Collar +2",
@@ -51,7 +50,6 @@ function get_sets()
     head="Hjarrandi Helm",           -- 10 DT
     body="Gleti's Cuirass",          -- 9 PDT
     hands="Pel. Vambraces +3",       -- 11 DT
-    -- legs=augments.valorous.legs.stp, -- 2 PDT
     legs="Flamma dirs +2",
     feet="Flam. Gambieras +2",
     neck="Dgn. Collar +2",           -- Wyvern 20 DT
@@ -190,7 +188,7 @@ function get_sets()
     waist="Fotia Belt",
     left_ear="Moonshade Earring",
     right_ear="Sherida Earring",
-    left_ring="Shukuyu Ring",       -- TODO: Regal Ring
+    left_ring="Ephramad's Ring",
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.stardiver
   }
@@ -210,7 +208,7 @@ function get_sets()
     waist="Sailfi Belt +1",
     left_ear="Thrud Earring",
     right_ear="Moonshade Earring",
-    left_ring="Shukuyu Ring",     -- TODO: Regal Ring
+    left_ring="Ephramad's Ring",
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.wsd
   }

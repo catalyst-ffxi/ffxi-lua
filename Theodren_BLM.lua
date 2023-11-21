@@ -58,14 +58,14 @@ function get_sets()
     body="Agwu's Robe",            -- 8
     hands="Agwu's Gages",          -- 6
     legs="Agwu's Slops",           -- 7
-    feet="Agwu's Pigaches",        -- 4
+    feet="Amalric Nails +1",       -- 6
     neck="Orunmila's Torque",      -- 5
     waist="Embla Sash",            -- 5
     left_ear="Malignance Earring", -- 4
     right_ear="Loquacious earring",-- 2
     left_ring="Kishar Ring",       -- 4
     back=gear.taranus.fastCast,    -- 10
-  }                                -- 73 fc
+  }                                -- 75 fc
   sets.Magic.QuickCast = set_combine(sets.Magic.FastCast, {
     right_ring="Weatherspoon Ring +1",-- 6 FC 4 QC
   })
@@ -73,10 +73,10 @@ function get_sets()
   sets.Magic.Dark = {
     ammo="Pemphredo Tathlum",
     head="Amalric Coif +1",
-    body="Amalric Doublet +1",
-    hands="Amalric Gages +1",
+    body="Wicce Coat +3",
+    hands="Agwu's Gages",
     legs="Spaekona's Tonban +2",
-    feet=augments.merlinic.crackows.nuke,
+    feet="Wicce Sabots +3",
     neck="Erra Pendant",
     waist="Sacro Cord",
     lear="Digni. Earring",
@@ -94,10 +94,10 @@ function get_sets()
   sets.Magic.Elemental.FreeNuke = {
     ammo="Pemphredo Tathlum",
     head="Wicce Petasos +3",
-    body="Amalric Doublet +1",
-    hands="Amalric Gages +1",
-    legs="Amalric Slops +1",
-    feet="Amalric Nails +1",
+    body="Wicce Coat +3",
+    hands="Agwu's Gages",
+    legs="Wicce Chausses +3",
+    feet="Wicce Sabots +3",
     neck="Src. Stole +2",
     waist="Sacro Cord",
     left_ear="Malignance Earring",
@@ -128,7 +128,7 @@ function get_sets()
     hands="Archmage's Gloves +3",
     legs="Archmage's Tonban +3",
     feet="Archmage's Sabots +3",
-    neck="Sorcerer's stole +2 ",
+    neck="Src. Stole +2",
     waist="Sacro Cord",
     left_ear="Malignance Earring",
     right_ear="Crep. Earring",
@@ -143,7 +143,7 @@ function get_sets()
     hands="Agwu's Gages",
     legs="Wicce Chausses +3",
     feet="Agwu's Pigaches",
-    neck="Sorcerer's stole +2 ",
+    neck="Src. Stole +2",
     waist="Sacro Cord",
     left_ear="Malignance Earring",
     right_ear="Crep. Earring",
@@ -173,9 +173,9 @@ function get_sets()
   sets.Magic.Healing = {
     ammo="Pemphredo Tathlum",
     head="Vanya Hood",
-    body="Vanya Robe",
+    body="Vanya Robe", -- *
     hands="Telchine Gloves",
-    legs="Vanya Slops",
+    legs="Vanya Slops", -- *
     feet="Vanya Clogs",
     neck="Incanter's Torque",
     waist="Luminary Sash",
@@ -183,7 +183,7 @@ function get_sets()
     right_ear="Mendi. Earring",
     left_ring=gear.stikini.left,
     right_ring=gear.stikini.right,
-    back="Solemnity Cape"
+    back="Solemnity Cape" -- *
   }
   sets.Magic.HealingSelf = set_combine(sets.Magic.Healing, {
     neck="Phalaina Locket",      -- 4% self
@@ -194,7 +194,7 @@ function get_sets()
   -- Melee
   sets.Engaged = {
     main="Mpaca's Staff",
-    sub="Enki Grip",
+    sub="Enki Strap",
     ammo="Oshasha's Treatise",
     head="Nyame Helm",
     body="Nyame Mail",
@@ -240,10 +240,25 @@ function get_sets()
     right_ring="Epaminondas's Ring",
     back="Taranus's Cape"
   }
+  sets.WS.Vidohunir = {
+    ammo="Pemphredo Tathlum",
+    head="Wicce Petasos +3",
+    body="Wicce Coat +3",
+    hands="Wicce Gloves +3",
+    legs="Wicce Chausses +3",
+    feet="Wicce Sabots +3",
+    neck="Src. Stole +2",
+    waist="Sacro Cord",
+    left_ear="Malignance Earring",
+    right_ear="Moonshade Earring",
+    left_ring=gear.stikini.left,
+    right_ring=gear.stikini.right,
+    back=gear.taranus.nuke
+  }
 
   -- JAs
   sets.JAs = {}
-  sets.JAs.Manafont = {}
+  sets.JAs.Manafont = { body="Archmage's Coat" }
   sets.JAs['Mana Wall'] = { feet="Wicce Sabots +3" }
 end
 
@@ -322,7 +337,7 @@ function midcast(spell)
   elseif spell.skill == 'Elemental Magic' then
     equip(sets.Magic.Elemental[NukingMode.current])
     equip_elemental_waist(spell)
-    if player.mp < 700 then
+    if player.mp < 500 then
       equip({body = "Spaekona's Coat +3"})
     end
   

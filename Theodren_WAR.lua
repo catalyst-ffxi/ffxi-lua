@@ -10,10 +10,12 @@ function define_modes()
     'HybridHeavy'
   }
   WeaponMode = M{['description'] = 'Weapon Mode',
-    'Chango',
+    -- 'Chango',
     'ShiningOne',
-    'Naegling',
+    -- 'Naegling',
+    'Ikenga',
     'Loxotic'
+    -- 'Dolichenus'
   }
   send_command("bind ^f1 gs c cycle PrimaryMode")
   send_command("bind ^f2 gs c cycle WeaponMode")
@@ -36,7 +38,9 @@ function get_sets()
     Chango = { main="Chango", sub="Utu Grip" },
     ShiningOne = { main="Shining One", sub="Utu Grip" },
     Naegling = { main="Naegling", sub="Blurred Shield +1" },
-    Loxotic = { main="Loxotic Mace +1", sub="Blurred Shield +1" }
+    Loxotic = { main="Loxotic Mace +1", sub="Blurred Shield +1" },
+    Ikenga = { main="Ikenga's Axe", sub="Blurred Shield +1" },
+    Dolichenus = { main='Dolichenus', sub="Blurred Shield +1" }
   }
 
   sets.modes = {}
@@ -57,7 +61,7 @@ function get_sets()
   }
   sets.modes.HybridLight = {
     ammo="Coiste Bodhar",
-    head="Flam. Zucchetto +2",
+    head="Sakpata's Helm",
     body="Sakpata's Breastplate",
     hands="Sakpata's Gauntlets",
     legs="Pummeler's Cuisses +3",
@@ -67,7 +71,7 @@ function get_sets()
     left_ear="Schere Earring",
     right_ear="Telos Earring",
     left_ring="Niqmaddu Ring", 
-    right_ring="Petrov Ring",
+    right_ring="Moonlight Ring",
     back=gear.ambuscape.tp
   }
   sets.modes.HybridHeavy = {
@@ -87,9 +91,9 @@ function get_sets()
   }
 
   -- Misc
-  sets.Idle = {
-    feet="Hermes' Sandals"
-  }
+  -- sets.Idle = {
+  --   feet="Hermes' Sandals"
+  -- }
   sets.Doom = {
     neck="Nicander's Necklace",
     left_ring="Purity Ring",
@@ -122,6 +126,23 @@ function get_sets()
     neck="Moonlight Necklace",     -- 15
     waist="Kasiri Belt",           -- 3
   }
+
+  sets.JAs.Jump = {
+    ammo="Coiste Bodhar",
+    head="Sakpata's Helm",
+    body="Sakpata's Breastplate",
+    hands="Sakpata's Gauntlets",
+    legs="Pummeler's Cuisses +3",
+    feet="Pummeler's Calligae +3", 
+    neck="War. Beads +2",
+    waist="Sailfi Belt +1",
+    left_ear="Schere Earring",
+    right_ear="Telos Earring",
+    left_ring="Chirich Ring", 
+    right_ring="Moonlight Ring",
+    back=gear.ambuscape.tp
+  }
+  sets.JAs['High Jump'] = sets.JAs.Jump
 
   -- Magic
   --
@@ -163,28 +184,28 @@ function get_sets()
     left_ear="Thrud Earring",
     right_ear="Moonshade Earring",
     left_ring="Niqmaddu Ring",
-    right_ring="Regal Ring",
+    right_ring="Ephramad's Ring",
     back=gear.ambuscape.wsVit -- vit/acc/att/wsd
   }
   sets.WS["King's Justice"] = { -- 3-Hit : 50% STR
     ammo="Knobkierrie",
     head="Agoge Mask +3",
-    body="Pumm. Lorica +3",
-    hands="Nyame Gauntlets",
+    body="Nyame Mail",
+    hands="Sakpata's Gauntlets",
     legs="Boii Cuisses +3",
-    feet="Sulev. Leggings +2",
+    feet="Nyame Sollerets",
     neck="War. Beads +2",
     waist="Sailfi Belt +1",
     left_ear="Thrud Earring",
     right_ear="Moonshade Earring",
     left_ring="Niqmaddu Ring",
-    right_ring="Regal Ring",
+    right_ring="Ephramad's Ring",
     back=gear.ambuscape.wsStr
   }
   sets.WS["Ukko's Fury"] = { -- 2-Hit : 80% STR : Crit Rate
     ammo="Yetshila +1",
     head="Boii Mask +2",
-    body="Hjarrandi Breast.",
+    body="Sakpata's Plate",    
     hands="Flam. Manopolas +2",
     legs="Boii Cuisses +3",
     feet="Boii Calligae +3",
@@ -193,13 +214,13 @@ function get_sets()
     left_ear="Boii Earring +1",
     right_ear="Moonshade Earring",
     left_ring="Begrudging Ring",
-    right_ring="Regal Ring",
+    right_ring="Ephramad's Ring",
     back=gear.ambuscape.wsStr
   }
   sets.WS['Raging Rush'] = { -- 3-Hit : 50% STR : Crit Rate
     ammo="Yetshila +1",
     head="Boii Mask +2",
-    body="Hjarrandi Breast.",
+    body="Sakpata's Plate",
     hands="Flam. Manopolas +2",
     legs="Boii Cuisses +3",
     feet="Boii Calligae +3",
@@ -208,7 +229,7 @@ function get_sets()
     left_ear="Boii Earring +1",
     right_ear="Moonshade Earring",
     left_ring="Begrudging Ring",
-    right_ring="Regal Ring",
+    right_ring="Ephramad's Ring",
     back=gear.ambuscape.wsStr
   }
   sets.WS['Steel Cyclone'] = { -- Single Hit : 60% STR / 60% VIT
@@ -223,7 +244,7 @@ function get_sets()
     left_ear="Thrud Earring",
     right_ear="Moonshade Earring",
     left_ring="Niqmaddu Ring",
-    right_ring="Regal Ring",
+    right_ring="Ephramad's Ring",
     back=gear.ambuscape.wsStr
   }
   sets.WS['Fell Cleave'] = {  -- Single Hit : 60% STR
@@ -238,7 +259,7 @@ function get_sets()
     left_ear="Thrud Earring",
     right_ear="Moonshade Earring",
     left_ring="Niqmaddu Ring",
-    right_ring="Regal Ring",
+    right_ring="Ephramad's Ring",
     back=gear.ambuscape.wsStr
   }
   sets.WS['Full Break'] = {   -- Single Hit : 50% STR / 50% VIT
@@ -272,11 +293,13 @@ function get_sets()
     waist="Sailfi Belt +1",
     left_ear="Thrud Earring",
     right_ear="Moonshade Earring",
-    left_ring="Niqmaddu Ring",
+    left_ring="Ephramad's Ring",
     right_ring="Epaminondas's Ring",
     back=gear.ambuscape.wsStr
   }
   sets.WS.Judgment = sets.WS['Savage Blade']
+  sets.WS.Calamity = sets.WS['Savage Blade']
+  sets.WS['Mistral Axe'] = sets.WS['Savage Blade']
 
   sets.WS['Impulse Drive'] = {
     ammo="Knobkierrie",
@@ -284,51 +307,17 @@ function get_sets()
     body="Sakpata's Breastplate",
     hands="Boii Mufflers +3",
     legs="Boii Cuisses +3",
-    feet="Nyame sollerets",
+    feet="Boii Calligae +3",
     neck="War. Beads +2",
     waist="Sailfi Belt +1",
     left_ear="Thrud Earring",
-    right_ear="Moonshade Earring",
-    left_ring="Niqmaddu Ring",
+    right_ear="Boii Earring +1",
+    left_ring="Ephramad's Ring",
     right_ring="Epaminondas's Ring",
     back=gear.ambuscape.wsStr
   }
-
-  -- sets.WS['Impulse Drive'] = {
-  --   ammo="Yetshila +1",
-  --   head="Agoge Mask +3",
-  --   body="Hjarrandi Breast.",
-  --   hands="Nyame Gauntlets",
-  --   legs="Sakpata's Cuisses",
-  --   feet="Sulev. Leggings +2",
-  --   neck="War. Beads +2",
-  --   waist="Sailfi Belt +1",
-  --   left_ear="Thrud Earring",
-  --   right_ear="Moonshade Earring",
-  --   left_ring="Niqmaddu Ring",
-  --   right_ring="Epaminondas's Ring",
-  --   back=gear.ambuscape.wsStr
-  -- }
-
-  sets.WS['Flash Nova'] = {
-    ammo="Knobkierrie",
-    head="Nyame Helm",
-    body="Nyame Mail",
-    hands="Nyame Gauntlets",
-    legs="Nyame Flanchard",
-    feet="Nyame Sollerets",
-    -- neck="Sanctity Necklace",
-    neck="Fotia Gorget",
-    waist="Orpheus's Sash",
-    left_ear="Thrud Earring",
-    right_ear="Friomisi Earring",
-    left_ring="Weatherspoon Ring +1",
-    right_ring="Epaminondas's Ring",
-    back=gear.ambuscape.wsStr
-  }
-
   sets.WS.Decimation = {
-    ammo="Seeth. Bomblet +1",
+    ammo="Coiste Bodhar",
     head="Sakpata's Helm",
     body="Sakpata's Breastplate",
     hands="Sakpata's Gauntlets",
@@ -339,7 +328,22 @@ function get_sets()
     left_ear="Schere Earring",
     right_ear="Boii Earring +1",
     left_ring="Niqmaddu Ring",
-    right_ring="Regal Ring",
+    right_ring="Ephramad's Ring",
+    back=gear.ambuscape.wsStr
+  }
+  sets.WS.Cloudsplitter = {
+    ammo="Knobkierrie",
+    head="Nyame Helm",
+    body="Nyame Mail",
+    hands="Nyame Gauntlets",
+    legs="Nyame Flanchard",
+    feet="Nyame Sollerets",
+    neck="War. Beads +2",
+    waist="Orpheus's Sash",
+    left_ear="Friomisi Earring",
+    right_ear="Moonshade Earring",
+    left_ring="Metamor. Ring +1",
+    right_ring="Epaminondas's Ring",
     back=gear.ambuscape.wsStr
   }
 end

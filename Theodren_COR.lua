@@ -165,9 +165,9 @@ function get_sets()
   })
   sets.Ranged = {
     ammo=gear.bullets.ratt,
-    head="Malignance Chapeau",
+    head="Ikenga's Hat",
     body="Ikenga's Vest",
-    hands="Malignance Gloves",
+    hands="Ikenga's Gloves",
     legs="Chasseur's Culottes +3",
     feet="Malignance Boots",
     neck="Iskur Gorget",
@@ -222,7 +222,7 @@ function get_sets()
     left_ear="Ishvara Earring",
     right_ear="Moonshade earring",
     left_ring="Epaminondas's Ring",
-    right_ring="Regal Ring",
+    right_ring="Ephramad's Ring",
     back=gear.camulus.rangedWsPhys,
     waist="Fotia Belt"
   }
@@ -260,7 +260,7 @@ function get_sets()
     ammo=gear.bullets.ratt,
     head="Nyame Helm",
     body="Nyame Mail",
-    hands="Nyame Gauntlets",
+    hands="Chasseur's Gants +3",
     legs="Nyame Flanchard",
     feet="Lanun Bottes +3",
     neck="Fotia Gorget",
@@ -273,9 +273,8 @@ function get_sets()
   }
   sets.WS['Savage Blade'] = {
     head="Nyame Helm",
-    hands="Nyame Gauntlets",
+    hands="Chasseur's Gants +3",
     body="Nyame Mail",
-    -- body="Ikenga's Vest",
     legs="Nyame Flanchard",
     feet="Nyame Sollerets",
     neck="Rep. Plat. Medal",
@@ -283,14 +282,14 @@ function get_sets()
     left_ear="Ishvara Earring",
     right_ear="Moonshade Earring",
     left_ring="Epaminondas's Ring",
-    right_ring="Regal Ring",
+    right_ring="Ephramad's Ring",
     back=gear.camulus.meleeWs
   }
   sets.WS['Aeolian Edge'] = {
     ammo=gear.bullets.magic,
     head="Nyame Helm",
     body="Lanun Frac +3",
-    hands="Nyame Gauntlets",
+    hands="Chasseur's Gants +3",
     legs="Nyame Flanchard",
     feet="Lanun Bottes +3",
     neck="Sanctity Necklace",
@@ -345,7 +344,7 @@ function get_sets()
     head="Malignance Chapeau",
     body="Malignance Tabard",
     hands="Malignance Gloves",
-    legs="Malignance Tights",
+    legs="Chasseur's Culottes +3",
     feet="Malignance Boots",
     neck="Iskur Gorget",
     waist="Yemaya Belt",

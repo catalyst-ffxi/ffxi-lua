@@ -311,7 +311,7 @@ function get_sets()
     left_ear="Regal Earring",
     right_ear="Ishvara Earring",
     left_ring="Ilabrat Ring",
-    right_ring="Shukuyu Ring",
+    right_ring="Ephramad's Ring",
     back=gear.cape.wsChr
   }
   sets.WS['Aeolian Edge'] = {
@@ -343,7 +343,7 @@ function get_sets()
     left_ear="Moonshade Earring",
     right_ear="Ishvara Earring",
     left_ring="Ifrit Ring +1",
-    right_ring="Shukuyu Ring",
+    right_ring="Ephramad's Ring",
     back=gear.cape.wsStr
   }
 end
@@ -460,7 +460,7 @@ function set_for_engaged()
 end
 
 function set_for_idle()
-  local set = player.sub_job == 'WHM' and sets.IdleRefresh or sets.IdleDT
+  local set = (player.sub_job == 'WHM' or player.sub_job == 'BLM') and sets.IdleRefresh or sets.IdleDT
 
   if dual_wield_job() == false then
     set = set_combine(set, { sub = "Genbu's Shield" })

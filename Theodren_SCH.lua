@@ -101,18 +101,18 @@ function get_sets()
     main="Musa",
     sub="Khonsu",
     ammo="Pemphredo Tathlum",
-    head="Amalric Coif +1",
+    head="Arbatel Bonnet +3",
+    body="Arbatel Gown +3",
+    hands="Arbatel Bracers +3",
+    legs="Agwu's Slops",
+    feet="Arbatel Loafers +3",
     neck="Argute Stole +2",
+    waist="Obstinate Sash",
     left_ear="Malignance Earring",
     right_ear="Digni. Earring",
-    body="Amalric Doublet +1",
-    hands="Nyame Gauntlets",
     left_ring=gear.stikini.left,
     right_ring=gear.stikini.right,
-    back=gear.cape.nuke,
-    waist="Obstinate Sash",
-    legs="Nyame Flanchard",
-    feet="Nyame Sollerets"
+    back=gear.cape.nuke
   }
   sets.Magic.DrainAspir = set_combine(sets.Magic.Dark, {
     neck="Erra Pendant",
@@ -327,10 +327,10 @@ function get_sets()
   sets.WS.Myrkr = {
     ammo="Pemphredo Tathlum",
     head="Pixie Hairpin +1",
-    body="Nyame Mail",
-    hands="Nyame Gauntlets",
-    legs="Amalric Slops +1",
-    feet="Nyame Sollerets",
+    body="Arbatel Gown +3",
+    hands="Arbatel Bracers +3",
+    legs="Agwu's Slops",
+    feet="Arbatel Loafers +3s",
     neck="Sanctity Necklace",
     waist="Luminary Sash",
     left_ear="Moonshade Earring",
@@ -338,9 +338,6 @@ function get_sets()
     left_ring="Supershear Ring",
     right_ring="Weather. Ring +1",
     back="Merciful Cape"
-    -- hands="Otomi Gloves", -- stored
-    -- lring="Etana Ring", -- stored
-    -- rring="Bifrost Ring",
   }
   sets.WS['Black Halo'] = {
     main="Maxentius",
@@ -351,8 +348,8 @@ function get_sets()
     hands="Nyame Gauntlets",
     legs="Nyame Flanchard",
     feet="Nyame Sollerets",
-    neck="Caro Necklace",
-    waist="Grunfeld Rope",
+    neck="Rep. Plat. Medal",
+    waist="Sailfi Belt +1",
     left_ear="Brutal Earring",
     right_ear="Moonshade Earring",
     left_ring="Shukuyu Ring",

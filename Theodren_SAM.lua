@@ -1,6 +1,7 @@
 include('Mote-Mappings.lua')
 include('Modes.lua')
 include('augments.lua')
+include('organizer-lib')
 
 function define_modes()
   PrimaryMode = M{['description'] = 'Primary Mode',
@@ -115,7 +116,7 @@ function get_sets()
     left_ear="Thrud Earring",
     right_ear="Moonshade earring",
     left_ring="Epaminondas's Ring",
-    right_ring="Regal Ring",
+    right_ring="Ephramad's Ring",
     back=gear.smertrios.ws
   }
   sets.WS['Tachi: Shoha'] = {
@@ -130,7 +131,7 @@ function get_sets()
     left_ear="Thrud Earring",
     right_ear="Moonshade earring",
     left_ring="Epaminondas's Ring",
-    right_ring="Regal Ring",
+    right_ring="Ephramad's Ring",
     back=gear.smertrios.ws
   }
   sets.WS['Tachi: Ageha'] = {
@@ -160,7 +161,7 @@ function get_sets()
     left_ear="Friomisi earring",
     right_ear="Moonshade earring",
     left_ring="Epaminondas's Ring",
-    right_ring="Regal Ring",
+    right_ring="Ephramad's Ring",
     back=gear.smertrios.ws
   }
   sets.WS['Tachi: Kagero'] = sets.WS['Tachi: Jinpu']
@@ -182,7 +183,7 @@ function get_sets()
     waist="Fotia Belt",
     left_ear="Thrud earring",
     right_ear="Moonshade earring",
-    left_ring="Regal Ring",
+    left_ring="Ephramad's Ring",
     right_ring="Epaminondas's Ring",
     back=gear.smertrios.ws  
   }

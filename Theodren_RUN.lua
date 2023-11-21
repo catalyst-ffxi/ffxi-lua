@@ -5,12 +5,14 @@ include('utils.lua')
 
 function define_modes()
   PrimaryMode = M{['description'] = 'Primary Mode',
-    -- 'Tank',
-    'ParryTank', 'MagicTank', 'Defense',
-    'HybridDD', 'FullDD'
+    'ParryTank', 'MagicTank', 'Defense', 'HybridDD'
+    -- , 'FullDD'
   }
   WeaponMode = M{['description'] = 'Weapon Mode', 
-    'Epeolatry', 'Lionheart', 'Hepatizon Axe +1'
+    'Epeolatry',
+    'Lionheart', 
+    'Kaja chopper'
+    --'Hepatizon Axe +1'
   }
 
   Runes = {
@@ -82,7 +84,7 @@ function get_sets()
     left_ear={ name="Odnowa Earring +1", priority=5 },
     -- right_ear="Eabani Earring",
     right_ear="Erilaz Earring +1",
-    left_ring="Warden's Ring",
+    left_ring="Moonlight Ring",
     right_ring={ name="Gelatinous Ring +1", priority=5 },
     back=gear.ogma.tank
   }
@@ -100,13 +102,13 @@ function get_sets()
     waist="Flume Belt +1",
     left_ear={ name="Odnowa Earring +1", priority=5 },
     right_ear="Eabani Earring",
-    left_ring="Warden's Ring",
+    left_ring="Moonlight Ring",
     right_ring={ name="Gelatinous Ring +1", priority=5 },
     back=gear.ogma.tank
   }
   sets.IdleMagic = {
-    sub="Utu Grip",                                        -- 3%
-    ammo="Staunch Tathlum +1",
+    sub="Utu Grip",
+    ammo="Staunch Tathlum +1",                             -- 3%
     head="Nyame Helm",                                     -- 7%
     body={ name="Runeist Coat +3", priority=5 },
     hands="Erilaz Gauntlets +3",                           -- 11%
@@ -136,7 +138,7 @@ function get_sets()
     waist="Flume Belt +1",
     left_ear={ name="Odnowa Earring +1", priority=5 },
     right_ear="Eabani Earring",
-    left_ring="Warden's Ring",
+    left_ring="Moonlight Ring",
     right_ring={ name="Gelatinous Ring +1", priority=5 },
     back=gear.ogma.parry
   }
@@ -176,9 +178,9 @@ function get_sets()
     sub="Utu Grip",
     ammo="Coiste Bodhar",
     head={ name="Nyame Helm", priority=5 },
-    body="Ayanmo Corazza +2",
+    body="Ashera Harness",
     hands={ name="Nyame Gauntlets", priority=5 },
-    legs="Meg. Chausses +2",
+    legs="Nyame Flanchard",
     feet={ name="Nyame Sollerets", priority=5 },
     neck="Anu Torque",
     waist="Sailfi Belt +1",
@@ -192,7 +194,7 @@ function get_sets()
     sub="Utu Grip",
     ammo="Coiste Bodhar",
     head=augments.adhemar.head.pathA,
-    body="Adhemar Jacket +1",
+    body="Ashera Harness",
     hands="Adhemar Wristbands +1",
     legs="Samnuha Tights",
     feet=augments.herc.feet.triple,
@@ -213,14 +215,14 @@ function get_sets()
     head="Nyame Helm",
     body="Nyame Mail",
     hands=augments.herc.hands.reso,
-    legs="Meg. Chausses +2",
+    legs="Nyame Flanchard",
     feet=augments.herc.feet.triple,
     neck="Fotia Gorget",
     waist="Fotia Belt",
     left_ear="Moonshade Earring",
     right_ear="Sherida Earring",
     left_ring="Niqmaddu Ring",
-    right_ring="Regal Ring",
+    right_ring="Ephramad's Ring",
     back=gear.ogma.reso
   }
   sets.WS.Dimidiation = {
@@ -230,26 +232,26 @@ function get_sets()
     hands="Nyame Gauntlets",
     legs="Nyame Flanchard",
     feet="Nyame Sollerets",
-    neck="Caro Necklace",
-    waist="Grunfeld Rope",
+    neck="Fotia Gorget",
+    waist="Sailfi Belt +1",
     left_ear="Moonshade Earring",
     right_ear="Sherida Earring",
     left_ring="Epaminondas's Ring",
-    right_ring="Regal Ring",
+    right_ring="Ephramad's Ring",
     back=gear.ogma.dimi
   }
   sets.WS['Ground Strike'] = {
     ammo="Knobkierrie",
     head="Nyame Helm",
     body="Nyame Mail",
-    hands="Meg. Gloves +2",
+    hands="Nyame Gauntlets",
     legs="Nyame Flanchard",
     feet="Nyame Sollerets",
     neck="Fotia Gorget",
     waist="Fotia Belt",
     left_ear="Moonshade Earring",
     right_ear="Sherida Earring",
-    left_ring="Regal Ring",
+    left_ring="Ephramad's Ring",
     right_ring="Epaminondas's Ring",
     back=gear.ogma.reso
   }
@@ -287,14 +289,14 @@ function get_sets()
     ammo="Knobkierrie",
     head="Nyame Helm",
     body="Nyame Mail",
-    hands="Meg. Gloves +2",
+    hands="Nyame Gauntlets",
     legs="Nyame Flanchard",
     feet="Nyame Sollerets",
-    neck="Caro Necklace",
+    neck="Rep. Plat. Medal",
     waist="Sailfi Belt +1",
     left_ear="Moonshade Earring",
     right_ear="Sherida Earring",
-    left_ring="Regal Ring",
+    left_ring="Ephramad's Ring",
     right_ring="Epaminondas's Ring",
     back=gear.ogma.reso
   }
@@ -326,7 +328,7 @@ function get_sets()
     legs="Carmine Cuisses +1",
     feet="Carmine Greaves +1",
     neck="Futhark Torque +2",
-    waist="Oneiros Belt",
+    waist="Plat. Mog. Belt",
     left_ear="Odnowa Earring +1",
     right_ear="Etiolation Earring",
     left_ring="Moonlight Ring",
@@ -361,7 +363,7 @@ function get_sets()
     legs="Agwu's Slops",                -- 6
     feet={ name="Carmine Greaves +1", priority=5 }, -- 8
     neck="Orunmila's Torque",           -- 5
-    waist={ name="Oneiros Belt", priority=5 }, -- HP
+    waist={ name="Plat. Mog. Belt", priority=5 }, -- HP
     lear="Loquacious earring",          -- 2
     rear={ name="Etiolation Earring", priority=5 }, -- 1
     lring="Weatherspoon Ring +1",       -- 6
@@ -468,8 +470,12 @@ function get_sets()
   })
   sets.Magic['Regen IV'] = set_combine(sets.Magic.EnhancingDuration, {
     head="Runeist Bandeau +3",
+    neck="Sacro Gorget",
     waist="Sroda Belt",
     right_ear="Erilaz Earring +1"
+  })
+  sets.Magic.Stoneskin = set_combine(sets.Magic.EnhancingDuration, {
+    waist="Siegel Sash"
   })
   -- sets.Magic['Healing Breeze'] = {
   --   ammo="Staunch Tathlum +1",       -- 11 sird, 3 DT
@@ -569,13 +575,13 @@ end
 function aftercast(spell)
   -- equip_set_for_current_mode()
 
-  if player.status == 'Engaged' then
+  -- if player.status == 'Engaged' then
     equip_set_for_current_mode()
-  else
-    equip(set_combine(
-      { main = { name=WeaponMode.current, priority=5 } }, sets.Idle
-    ))
-  end
+  -- else
+  --   equip(set_combine(
+  --     { main = { name=WeaponMode.current, priority=5 } }, sets.Idle
+  --   ))
+  -- end
 end
 
 function status_change(new, old)

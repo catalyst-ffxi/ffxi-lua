@@ -4,7 +4,7 @@ include('augments.lua')
 include('utils.lua')
 
 function define_modes()
-  PrimaryMode = M{['description'] = 'Primary Mode', 'FullDD', 'HybridLight', 'HybridHeavy', 'SubtleBlowDT', 'Ngai'}
+  PrimaryMode = M{['description'] = 'Primary Mode', 'FullDD', 'HybridHeavy', 'MagicTank'}
   WeaponMode = M{['description'] = 'Weapon Mode', 'Verethragna', 'Godhands', 'Auto'}
   send_command("bind ^f1 gs c cycle PrimaryMode")
   send_command("bind ^f2 gs c cycle WeaponMode")
@@ -25,63 +25,48 @@ function get_sets()
   sets.modes.FullDD = {
     ammo="Coiste Bodhar",
     head=augments.adhemar.head.pathA,
-    body="Mpaca's Doublet",
-    hands="Adhemar Wristbands +1",
-    legs="Bhikku Hose +3",
-    feet="Anch. Gaiters +3",
-    neck="Monk's Nodowa +2",
-    waist="Moonbow Belt +1",
-    left_ear="Sherida Earring",
-    right_ear="Schere Earring",
-    left_ring="Gere Ring",
-    right_ring="Niqmaddu Ring",
-    back=gear.ambuscape.daDex
-  }
-  sets.modes.HybridLight = {
-    ammo="Coiste Bodhar",
-    head=augments.adhemar.head.pathA,
     body="Mpaca's Doublet",     -- 10 PDT
-    hands="Mpaca's Gloves",     -- 8 PDT
-    legs="Bhikku Hose +3",      -- 13 DT
+    hands="Adhemar Wristbands +1",
+    legs="Bhikku Hose +3",      -- 14 DT
     feet="Anch. Gaiters +3",
     neck="Monk's Nodowa +2",
-    waist="Moonbow Belt +1",
+    waist="Moonbow Belt +1",    -- 6 DT
     left_ear="Sherida Earring",
     right_ear="Schere Earring",
     left_ring="Gere Ring",
     right_ring="Niqmaddu Ring",
-    back=gear.ambuscape.daDex      -- 10 PDT
-  }                             -- 41 PDT
+    back=gear.ambuscape.daDex   -- 10 PDT
+  }                             -- 40 PDT
   sets.modes.HybridHeavy = {
     ammo="Coiste Bodhar",
-    head="Ken. Jinpachi +1",
+    head="Mpaca's Cap",         -- 7 PDT
     body="Mpaca's Doublet",     -- 10 PDT
     hands="Mpaca's Gloves",     -- 8 PDT
-    legs="Bhikku Hose +3",      -- 13 DT
-    feet="Ken. Sune-Ate +1",
+    legs="Bhikku Hose +3",      -- 14 DT
+    feet="Anch. Gaiters +3",
     neck="Monk's Nodowa +2",
-    waist="Moonbow Belt +1",
+    waist="Moonbow Belt +1",    -- 6 DT
     left_ear="Sherida Earring",
     right_ear="Schere Earring",
     left_ring="Gere Ring",
-    right_ring="Defending Ring",-- 10 DT
-    back=gear.ambuscape.daDex      -- 10 PDT
-  }                             -- 51 PDT
-  sets.modes.SubtleBlowDT = {
+    right_ring="Niqmaddu Ring",
+    back=gear.ambuscape.daDex   -- 10 PDT
+  }                             -- 55 PDT
+  sets.modes.MagicTank = {
     ammo="Coiste Bodhar",
-    head="Ken. Jinpachi +1",
+    head="Nyame Helm",          -- 7 DT
     body="Mpaca's Doublet",     -- 10 PDT
     hands="Mpaca's Gloves",     -- 8 PDT
-    legs="Bhikku Hose +3",      -- 13 DT
-    feet="Ken. Sune-Ate +1",
+    legs="Bhikku Hose +3",      -- 14 DT
+    feet="Nyame Sollerets",     -- 7 DT
     neck="Monk's Nodowa +2",
-    waist="Moonbow Belt +1",
+    waist="Moonbow Belt +1",    -- 6 DT
     left_ear="Sherida Earring",
     right_ear="Schere Earring",
-    left_ring="Defending Ring",  -- 10 DT
+    left_ring="Shadow Ring",
     right_ring="Niqmaddu Ring",
-    back=gear.ambuscape.daDex    -- 10 PDT
-  }
+    back=gear.ambuscape.daDex   -- 10 PDT
+  }                             -- 55 PDT
   sets.modes.Counter = {
     ammo="Coiste Bodhar",
     head="Ken. Jinpachi +1",
@@ -97,21 +82,6 @@ function get_sets()
     right_ring="Defending Ring",
     back=gear.ambuscape.counter -- 10 counter
   }
-  -- sets.modes.Ngai = {
-  --   ammo="Coiste Bodhar",
-  --   head="Nyame Helm",          -- 7 DT
-  --   body="Mpaca's Doublet",     -- 10 PDT
-  --   hands="Nyame Gauntlets",    -- 7 DT
-  --   legs="Bhikku Hose +3",      -- 14 DT
-  --   feet="Nyame Sollerets",     -- 7 DT
-  --   neck="Monk's Nodowa +2",
-  --   waist="Moonbow Belt +1",
-  --   left_ear="Sherida Earring",
-  --   right_ear="Schere Earring",
-  --   left_ring="Shadow Ring",
-  --   right_ring="Niqmaddu Ring",
-  --   back=gear.ambuscape.daDex   -- 10 PDT
-  -- }                             -- 55 PDT
 
   -- Misc
   sets.Idle = {
@@ -184,21 +154,6 @@ function get_sets()
     waist="Kasiri Belt",
     back=gear.ambuscape.daDex
   }
-  -- sets.JAs.Mantra = {
-  --   ammo="Sapience Orb",
-  --   head="Nyame Helm",
-  --   body="Nyame Mail",
-  --   hands="Nyame Gauntlets",
-  --   legs="Nyame Flanchard",
-  --   feet="Hes. Gaiters +2", -- mantra
-  --   neck="Dualism Collar +1",
-  --   waist="Oneiros Belt",
-  --   left_ear="Odnowa Earring +1",
-  --   right_ear="Etiolation Earring",
-  --   left_ring="Eihwaz Ring",
-  --   right_ring="Gelatinous Ring +1",
-  --   back=gear.ambuscape.daDex
-  -- }
   sets.JAs.Chakra = {
     ammo="Sapience Orb",
     head="Nyame Helm",
@@ -258,7 +213,7 @@ function get_sets()
   sets.WS['Victory Smite'] = { -- 80% STR, 4-hit, Crit rate varies, Empyrean WS
     ammo="Coiste Bodhar",
     head=augments.adhemar.head.pathB,
-    body="Ken. Samue +1",
+    body="Mpaca's Doublet",
     hands="Ryuo Tekko +1",
     legs="Mpaca's Hose",
     feet=augments.herc.feet.crit,
@@ -287,15 +242,15 @@ function get_sets()
   }
   sets.WS['Shijin Spiral'] = { -- 100% DEX, 5-hit, Plague effect varies
     ammo="Knobkierrie",
-    head="Ken. Jinpachi +1",
-    body="Ken. Samue +1",
-    hands="Ken. Tekko +1",
-    legs="Ken. Hakama +1",
-    feet="Ken. Sune-Ate +1",
+    head="Mpaca's Helm",
+    body="Mpaca's Doublet",
+    hands="Mpaca's Gloves",
+    legs="Mpaca's Hose",
+    feet="Nyame Sollerets",
     neck="Fotia Gorget",
     waist="Moonbow Belt +1",
     left_ear="Sherida Earring",
-    right_ear="Mache Earring +1",
+    right_ear="Schere Earring",
     left_ring="Ilabrat Ring",
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.daDex
@@ -315,14 +270,14 @@ function get_sets()
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.daStr
   }
-  sets.WS['Tornado Kick'] = { -- 40% STR & VIT, 3-hit, Damage varies
+  sets.WS.TK_FOOTWORK = {
     ammo="Coiste Bodhar",
     head="Mpaca's Cap",
     body="Mpaca's Doublet",
-    hands=augments.herc.hands.reso,
+    hands="Nyame Gauntlets",  
     legs="Mpaca's Hose",
     feet="Anch. Gaiters +3",
-    neck="Fotia Gorget",
+    neck="Mnk. Nodowa +2",
     waist="Moonbow Belt +1",
     left_ear="Moonshade Earring",
     right_ear="Schere Earring",
@@ -330,66 +285,12 @@ function get_sets()
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.daStr
   }
-  sets.WS['Dragon Kick'] = sets.WS['Tornado Kick'] -- 50% STR & VIT, Damage varies
-  sets.WS['Spinning Attack'] = sets.WS['Howling Fist'] 
-
-  -- sets.WS['Asuran Fists'] = { -- 15% STR & VIT, 8-hit, Accuracy varies
-  --   ammo="Coiste Bodhar",
-  --   head="Ken. Jinpachi +1",
-  --   body="Ken. Samue +1",
-  --   hands="Ken. Tekko +1",
-  --   legs="Ken. Hakama +1",
-  --   feet="Ken. Sune-Ate +1",
-  --   neck="Fotia Gorget",
-  --   waist="Fotia Belt",
-  --   left_ear="Sherida Earring",
-  --   right_ear="Moonshade Earring",
-  --   left_ring="Regal Ring",
-  --   right_ring="Niqmaddu Ring",
-  --   back=gear.ambuscape.wsd
-  -- }
-
-  sets.modes.Ngai = {
-    ammo="Coiste Bodhar",
-    head="Nyame Helm",          -- 7 DT
-    -- body="Nyame Mail",     -- 9 DT
-    -- hands="Nyame Gauntlets",    -- 7 DT
-    body="Mpaca's Doublet",
-    hands="Mpaca's Gloves",
-    legs="Bhikku Hose +3",
-    feet="Nyame Sollerets",     -- 7 DT
-    neck="Monk's Nodowa +2",
-    waist="Moonbow Belt +1",   -- 6 DT
-    left_ear="Sherida Earring",
-    right_ear="Schere Earring",
-    left_ring="Shadow Ring",
-    right_ring="Niqmaddu Ring",
-    back=gear.ambuscape.daDex   -- 10 PDT
-  }                             -- 55 PDT
-
-  sets.WS.Ngai = {}
-  sets.WS.Ngai['Victory Smite'] = {
-    ammo="Coiste Bodhar",
-    head="Mpaca's Cap",         -- 7 PDT
-    body="Nyame Mail",
-    hands="Nyame Gauntlets",
-    legs="Nyame Flanchard",
-    feet="Nyame Sollerets",     -- 7 DT
-    neck="Fotia Gorget",
-    waist="Moonbow Belt +1",    -- 6 DT
-    left_ear="Sherida Earring",
-    right_ear="Schere Earring",
-    left_ring="Gere Ring",
-    right_ring="Niqmaddu Ring",
-    back=gear.ambuscape.crit   -- 10 PDT
-  }
-  sets.WS.Ngai['Tornado Kick'] = {
+  sets.WS.TK_NO_FOOTWORK = {
     ammo="Coiste Bodhar",
     head="Mpaca's Cap",
-    body="Nyame Mail",
-    hands="Nyame Gauntlets",
-    legs="Nyame Flanchard",
-    -- feet="Anch. Gaiters +3",
+    body="Mpaca's Doublet",
+    hands="Nyame Gauntlets",  
+    legs="Mpaca's Hose",
     feet="Nyame Sollerets",
     neck="Fotia Gorget",
     waist="Moonbow Belt +1",
@@ -399,6 +300,7 @@ function get_sets()
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.daStr
   }
+  sets.WS['Spinning Attack'] = sets.WS['Howling Fist'] 
 end
 
 function precast(spell)
@@ -436,14 +338,16 @@ function status_change(new, old)
 end
 
 function set_for_ws(named)
-  if PrimaryMode.value == 'Ngai' then
-    return sets.WS.Ngai[named]
-  elseif named == 'Victory Smite' and buffactive['Impetus'] then
+  if named == 'Victory Smite' and buffactive['Impetus'] then
     return set_combine(sets.WS[named], { body = "Bhikku Cyclas +3" })
-  elseif sets.WS[named] then
-    return sets.WS[named]
+  elseif named == 'Tornado Kick' or named == 'Dragon Kick' then
+    if buffactive['Footwork'] then
+      return sets.WS.TK_FOOTWORK
+    else
+      return sets.WS.TK_NO_FOOTWORK
+    end
   else
-    return sets.WS['Raging Fists']
+    return sets.WS[named]
   end
 end
 

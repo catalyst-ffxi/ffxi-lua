@@ -189,7 +189,7 @@ function get_sets()
     waist="Fotia Belt",
     left_ear="Moonshade Earring",
     right_ear="Sherida Earring",
-    left_ring="Regal Ring",
+    left_ring="Ephramad's Ring",
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.stardiver
   }
@@ -208,7 +208,7 @@ function get_sets()
     waist="Sailfi Belt +1",
     left_ear="Thrud Earring",
     right_ear="Moonshade Earring",
-    left_ring="Regal Ring",
+    left_ring="Ephramad's Ring",
     right_ring="Niqmaddu Ring",
     back=gear.ambuscape.wsd
   }

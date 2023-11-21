@@ -32,12 +32,12 @@ function get_sets()
 
   define_modes()
   define_aliases()
+  define_ninjutsu()
 
   sets.Idle = {
     head="Nyame Helm",
     body="Nyame Mail",
     hands="Nyame Gauntlets",
-    -- legs="Track Pants +1",
     legs="Nyame Flanchard",
     feet="Nyame Sollerets",
     neck="Loricate Torque +1",
@@ -53,7 +53,7 @@ function get_sets()
   sets.modes.FullDD = {
     ammo="Coiste Bodhar",
     head=augments.adhemar.head.pathA,
-    body="Adhemar Jacket +1",
+    body="Mpaca's Doublet",
     hands="Adhemar Wristbands +1",
     legs="Samnuha Tights",
     feet=augments.herc.feet.triple,
@@ -83,7 +83,7 @@ function get_sets()
   sets.modes.TreasureHunter = {
     ammo="Per. Lucky Egg",
     head="Malignance Chapeau",
-    body="Adhemar Jacket +1",
+    body="Mpaca's Doublet",
     hands="Adhemar Wristbands +1",
     legs="Malignance Tights",
     feet=augments.herc.feet.th2,
@@ -110,7 +110,7 @@ function get_sets()
     waist="Sailfi Belt +1",
     left_ear="Moonshade Earring",
     right_ear="Ishvara Earring",
-    left_ring="Regal Ring",
+    left_ring="Ephramad's Ring",
     right_ring="Epaminondas's Ring",
     back="Andartia's Mantle"
   }
@@ -124,8 +124,8 @@ function get_sets()
     neck="Fortia Gorget",
     waist="Fotia Belt",
     left_ear="Moonshade Earring",
-    right_ear="Hattori Earring +1",
-    left_ring="Regal Ring",
+    right_ear="Brutal Earring",
+    left_ring="Ephramad's Ring",
     right_ring="Gere Ring",
     back="Andartia's Mantle"
   }
@@ -153,9 +153,9 @@ function get_sets()
   feet="Nyame Sollerets",
   neck="Fotia Gorget",
   waist="Sailfi Belt +1",
-  left_ear="Hattori Earring +1",
+  left_ear="Telos Earring",
   right_ear="Ishvara Earring",
-  left_ring="Regal Ring",
+  left_ring="Ephramad's Ring",
   right_ring="Gear Ring",
   back="Andartia's Mantle"
 }
@@ -175,9 +175,12 @@ function get_sets()
     lear="Loquacious earring",          -- 2
     rear="Etiolation Earring",          -- 1
     lring="Kishar Ring",                -- 4
-    rring="Weatherspoon Ring +1",                -- 2
+    rring="Weatherspoon Ring +1",       -- 2
     legs=augments.taeon.legs.phalanx,   -- 3
   }
+  sets.Magic.FastCastUtsusemi = set_combine(sets.Magic.FastCast, {
+    neck="Magoraga Beads"
+  })
   sets.Magic.SpellInterrupt = {
     ammo="Staunch Tathlum +1",       -- 11
     -- head="",
@@ -192,6 +195,14 @@ function get_sets()
     waist="Flume Belt +1",            -- PDT
     -- legs="",
     feet=augments.taeon.feet.phalanx -- 9
+  }
+  sets.Magic.NinjutsuEnfeeble = {
+    -- fill me in
+    right_ear="Crep. Earring"
+  }
+  sets.Magic.NinjutsuMab = {
+    -- fill me in
+    waist="Orpheus's Sash",
   }
 
   -- Ranged Attack
@@ -223,7 +234,11 @@ function precast(spell)
     equip(sets.Enmity)
     equip(sets.JAs[spell.english])
   elseif spell.action_type == 'Magic' then
-    equip(sets.Magic.FastCast)
+    if string.find(spell.english, 'Utsusemi') then
+      equip(sets.Magic.FastCastUtsusemi)
+    else
+      equip(sets.Magic.FastCast)
+    end
     if spell.english == 'Utsusemi: Ichi' and (
       buffactive['Copy Image'] or
       buffactive['Copy Image (2)'] or
@@ -241,7 +256,13 @@ end
 
 function midcast(spell)
   if spell.action_type == 'Magic' then
-    equip(sets.Magic.SpellInterrupt)
+    if NinjutsuEnfeeble:contains(spell.english) then
+      equip(sets.Magic.NinjutsuEnfeeble)
+    elseif NinjutsuMab:contains(spell.english) then
+      equip(sets.Magic.NinjutsuMab)
+    else
+      equip(sets.Magic.SpellInterrupt)
+    end
   end
 end
 
@@ -303,4 +324,17 @@ function cycle_weapon()
 
   add_to_chat(122, 'Weapon [ ' .. Weapons.current.main .. ' ] = { ' .. Weapons.current.text .. ' }')
   equip(Weapons.current)
+end
+
+function define_ninjutsu()
+  NinjutsuEnfeeble = S{
+    'Kurayami: Ichi', 'Hojo: Ichi', 'Dokumori: Ichi', 'Jubaku: Ichi',
+    'Kurayami: Ni', 'Hojo: Ni',
+    'Aisha: Ichi', 'Yurin: Ichi'
+  }
+  NinjutsuMab = S{
+    'Katon: Ichi', 'Suiton: Ichi', 'Doton: Ichi', 'Hyoton: Ichi', 'Huton: Ichi', 'Raiton: Ichi',
+    'Katon: Ni', 'Suiton: Ni', 'Doton: Ni', 'Hyoton: Ni', 'Huton: Ni', 'Raiton: Ni',
+    'Katon: San', 'Suiton: San', 'Doton: San', 'Hyoton: San', 'Huton: San', 'Raiton: San'
+  }
 end
